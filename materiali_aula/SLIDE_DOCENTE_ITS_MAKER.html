@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Slide Docente - Git, Unsloth Studio e OpenCode (ITS MAKER Bologna)</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Liberation Sans", "DejaVu Sans", "Segoe UI", Arial, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      overflow: hidden;
+    }
+    .deck {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+    .slide {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      padding: 40px 64px 64px 64px;
+      background: #0f172a;
+      color: #f8fafc;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .slide.active {
+      display: flex;
+    }
+    .slide.cover-slide {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      justify-content: center;
+    }
+    .slide-header {
+      font-size: 13px;
+      color: #94a3b8;
+      border-bottom: 1px solid #334155;
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .slide-content h1 {
+      font-size: 36px;
+      color: #60a5fa;
+      margin: 0 0 16px 0;
+    }
+    .slide-content h2 {
+      font-size: 28px;
+      color: #38bdf8;
+      margin: 0 0 8px 0;
+    }
+    .slide-content h3 {
+      font-size: 20px;
+      color: #94a3b8;
+      font-weight: normal;
+      margin: 0 0 18px 0;
+    }
+    .slide-content p, .slide-content li {
+      font-size: 19px;
+      line-height: 1.5;
+      margin: 8px 0;
+    }
+    .slide-content ul, .slide-content ol {
+      padding-left: 28px;
+    }
+    .slide-content strong {
+      color: #facc15;
+    }
+    .slide-content pre {
+      background: #1e293b;
+      border: 1px solid #475569;
+      border-left: 5px solid #38bdf8;
+      padding: 14px 18px;
+      border-radius: 6px;
+      font-size: 16px;
+      color: #e2e8f0;
+      overflow-x: auto;
+      margin: 14px 0;
+    }
+    .slide-content code {
+      font-family: "Liberation Mono", "DejaVu Sans Mono", monospace;
+      background: #1e293b;
+      color: #38bdf8;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .slide-content pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+    }
+    .slide-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 16px;
+    }
+    .slide-content th, .slide-content td {
+      border: 1px solid #475569;
+      padding: 10px 12px;
+      text-align: left;
+    }
+    .slide-content th {
+      background: #1e3a8a;
+      color: #ffffff;
+    }
+    .slide-content blockquote {
+      margin-top: 18px;
+      background: #1e293b;
+      border-left: 5px solid #f59e0b;
+      padding: 10px 16px;
+      color: #fde68a;
+      font-size: 16px;
+      border-radius: 4px;
+    }
+    .controls {
+      position: fixed;
+      bottom: 14px;
+      right: 24px;
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+    .controls button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    @media print {
+      body { overflow: visible; background: white; color: #0f172a; }
+      .controls { display: none; }
+      .slide {
+        display: block !important;
+        width: 100%;
+        height: auto;
+        page-break-after: always;
+        background: white !important;
+        color: #0f172a !important;
+        padding: 12mm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <section class="slide cover-slide" data-index="1">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 1/22</div>
+    <div class="slide-content"><h1>Slide Docente – Modulo Pratico: Git, Unsloth Studio e OpenCode per la Digitalizzazione Industriale</h1>
+<p><strong>Ente:</strong> Fondazione ITS MAKER – Sede di Bologna</p>
+<p><strong>Durata:</strong> 6 Ore (Core: Blocchi 1–6) + 2 Ore (Estensione: Blocchi 7–8)</p>
+<p><strong>Formato Didattico:</strong> 20% Inquadramento al Proiettore / 80% Laboratorio su VM</p></div>
+  </section>
+<section class="slide cover-slide" data-index="2">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 2/22</div>
+    <div class="slide-content"><h1>BLOCCO 1 (Ora 1) – L'Ecosistema Open Source e Git come "Salvataggio Partita"</h1></div>
+  </section>
+<section class="slide " data-index="3">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 3/22</div>
+    <div class="slide-content"><h2>Slide 1.1 – Benvenuti nell'Officina Digitale</h2>
+<h3>Dal pezzo meccanico al software di reparto</h3>
+<ul>
+<li><strong>In officina non costruisci una vite M8 dal pieno:</strong> apri il catalogo, leggi la scheda tecnica e la prelevi dal magazzino.</li>
+<li><strong>Nel software industriale funziona uguale:</strong></li>
+<li><strong>Open Source (GitHub):</strong> il magazzino mondiale dei semilavorati software gratuiti e ispezionabili.</li>
+<li><strong>Git:</strong> la macchina del tempo che salva ogni lavorazione buona e ti riporta indietro se sbagli.</li>
+<li><strong>Unsloth Studio:</strong> il banco prova motori dove facciamo girare l'Intelligenza Artificiale in locale (senza mandare dati riservati all'esterno).</li>
+<li><strong>OpenCode:</strong> l'operatore robotico a cui dettiamo in italiano cosa costruire (<em>Vibe Coding</em>).</li>
+</ul>
+<blockquote>
+<p><strong>Regia Docente (3 min):</strong> Rompere subito il ghiaccio: <em>"Oggi non faremo un esame di programmazione a memoria. Impareremo a dirigere un'officina digitale: scegliere i pezzi giusti, testare il motore AI sulla nostra macchina e far scrivere il codice a un agente senza mai perdere il lavoro."</em></p>
+</blockquote></div>
+  </section>
+<section class="slide " data-index="4">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 4/22</div>
+    <div class="slide-content"><h2>Slide 1.2 – Come si legge un Progetto Open Source in 60 Secondi</h2>
+<h3>Il file <code>README.md</code> è la scheda tecnica della macchina</h3>
+<p>Quando cerchi uno strumento su GitHub (es. un lettore di file CSV, un cruscotto di manutenzione, un calcolatore di tempi), guarda sempre <strong>4 indicatori</strong>:</p>
+<table><thead>
+<tr><th>Indicatore su GitHub</th><th>Cosa significa in Officina</th><th>Segnale Verde (Affidabile)</th><th>Segnale Rosso (Scartare)</th></tr>
+</thead><tbody>
+<tr><td><strong><code>README.md</code></strong></td><td>Manuale d'uso e montaggio</td><td>Spiega cosa fa, ha screenshot e istruzioni chiare</td><td>Assente o di 2 righe incomprensibili</td></tr>
+<tr><td><strong>Ultimo Commit</strong></td><td>Ultima manutenzione effettuata</td><td>Pochi giorni/mesi fa (o tool stabile e completo)</td><td>7 anni fa con 50 errori aperti</td></tr>
+<tr><td><strong>Stars / Issues</strong></td><td>Quante fabbriche lo usano / Segnalazioni guasti</td><td>Buon numero di stelle, problemi risolti</td><td>Errori bloccanti senza risposta</td></tr>
+<tr><td><strong>Licenza (MIT / Apache)</strong></td><td>Permesso di utilizzo in azienda</td><td>Uso commerciale e modifica consentiti</td><td>Nessuna licenza o divieto d'uso</td></tr>
+</tbody></table>
+<blockquote>
+<p><strong>Regia Docente (5 min):</strong> Aprire al proiettore un repository reale (es. <code>github.com/unslothai/unsloth</code> o il repository template della lezione) e indicare con il mouse dove si trovano <code>README.md</code>, <em>Commits</em>, <em>Issues</em> e <em>License</em>.</p>
+</blockquote></div>
+  </section>
+<section class="slide " data-index="5">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 5/22</div>
+    <div class="slide-content"><h2>Slide 1.3 – Perché nasce Git: Basta con <code>Scheda_ Finale_v3_VERA_ULTIMA.xlsx</code>!</h2>
+<h3>Il problema dei file duplicati in Ufficio Tecnico</h3>
+<ul>
+<li>Chi non usa Git salva i file così:</li>
+<li><code>manutenzione.html</code></li>
+<li><code>manutenzione_nuova.html</code></li>
+<li><code>manutenzione_ok_giovedi.html</code></li>
+<li><code>manutenzione_NON_TOCCARE_DEFINITIVA.html</code></li>
+<li><strong>Risultato:</strong> dopo due ore (specialmente quando usi l'AI per modificare i file!) non sai più quale file funziona e quale ha il calcolo rotto.</li>
+<li><strong>Con Git hai UN SOLO FILE nella cartella</strong>, ma dietro c'è una <strong>linea del tempo invisibile</strong> con tutti i punti di salvataggio certificati (<em>Commit</em>).</li>
+</ul>
+<blockquote>
+<p><strong>Regia Docente (3 min):</strong> Chiedere per alzata di mano chi ha mai chiamato una tesina o un disegno CAD <code>definitivo_ultimo_2</code>. Spiegare che nel <em>Vibe Coding</em> l'AI modifica 200 righe in 3 secondi: senza Git, se il terzo comando rompe tutto, bisogna buttare via il lavoro.</p>
+</blockquote></div>
+  </section>
+<section class="slide " data-index="6">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 6/22</div>
+    <div class="slide-content"><h2>Slide 1.4 – I 4 Comandi Git dell'Officina (Gli unici che vi servono oggi)</h2>
+<h3>Dal Magazzino al Fungo di Emergenza</h3>
+<pre><code># 1. PRELEVA DAL MAGAZZINO (Scarica una copia completa del progetto sulla tua VM)
+git clone &lt;indirizzo-progetto&gt;
+
+# 2. ISPEZIONA IL BANCO (Controlla quali file hai modificato dall'ultimo salvataggio)
+git status
+
+# 3. METTI IN CASSAFORTE (Prepara il pezzo e registra il punto di salvataggio con un'etichetta)
+git add .
+git commit -m "v1: tabella manutenzione funzionante"
+
+# 4. FUNGO DI EMERGENZA! (Hai rotto tutto? Torna istantaneamente all'ultimo commit buono)
+git restore .</code></pre>
+<blockquote>
+<p><strong>Regia Docente (4 min):</strong> Mostrare i 4 comandi in diretta al proiettore in meno di 2 minuti. Sottolineare il comando <code>git restore .</code>: <em>"Questo è il vostro paracadute quando tra poco useremo l'AI."</em> Passare subito la parola agli studenti per il <strong>Laboratorio 1 (45 min)</strong>.</p>
+</blockquote></div>
+  </section>
+<section class="slide cover-slide" data-index="7">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 7/22</div>
+    <div class="slide-content"><h1>BLOCCO 2 (Ora 2) – Dentro il Motore AI: Unsloth Studio e Modelli GGUF</h1></div>
+  </section>
+<section class="slide " data-index="8">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 8/22</div>
+    <div class="slide-content"><h2>Slide 2.1 – Perché far girare l'AI sulla propria Macchina (e non solo su ChatGPT)?</h2>
+<h3>Tre motivi concreti per le aziende manifatturiere della Motor Valley / Packaging Valley</h3>
+<ol>
+<li><strong>Segreto Industriale e Privacy:</strong></li>
+</ol>
+<ul>
+<li>Non puoi incollare distinte base riservate, costi fornitore, disegni o log di produzione di un cliente su un sito pubblico gratuito. Un modello locale su <strong>Unsloth Studio</strong> gira <strong>100% offline</strong> dentro il perimetro aziendale.</li>
+</ul>
+<ol>
+<li><strong>Continuità Operativa in Reparto (Zero Internet):</strong></li>
+</ol>
+<ul>
+<li>A bordo macchina o in un capannone schermato il Wi-Fi può cadere. Il modello locale sul PC di reparto continua a rispondere.</li>
+</ul>
+<ol>
+<li><strong>Zero Costi a Consumo:</strong></li>
+</ol>
+<ul>
+<li>Nessun abbonamento mensile per operatore: usi l'hardware che hai già.</li>
+</ul>
+<blockquote>
+<p><strong>Regia Docente (5 min):</strong> Collegare il tema alla realtà delle PMI meccaniche e meccatroniche bolognesi: gli uffici tecnici vogliono usare l'AI, ma i titolari bloccano tutto per paura che escano listini e codici ricambi.</p>
+</blockquote></div>
+  </section>
+<section class="slide " data-index="9">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 9/22</div>
+    <div class="slide-content"><h2>Slide 2.2 – Il Problema Hardware: Come entra un Motore AI in una VM senza Scheda Video?</h2>
+<h3>Parametri (Miliardi) e Quantizzazione (GGUF) spiegati senza matematica</h3>
+<ul>
+<li><strong>Cosa sono i Parametri (<code>0.6B</code>, <code>1.5B</code>, <code>3B</code>, <code>70B</code>)?</strong></li>
+<li>Sono i "neuroni/ingranaggi" del modello. <code>1.5B</code> = 1,5 Miliardi di parametri.</li>
+<li>Più parametri = più cultura e ragionamento, ma <strong>più RAM e più lentezza</strong>.</li>
+<li><strong>Cos'è la Quantizzazione (<code>GGUF</code> a 4-bit, 2-bit, 1.58-bit)?</strong></li>
+<li>È come comprimere un assieme CAD 3D da 500 MB in un file STEP/PDF leggero da 25 MB:</li>
+<li><strong>16-bit (Originale):</strong> precisione millimetrica al centesimo di micron, ma pesa <strong>3 GB</strong> ogni miliardo di parametri (serve una GPU costosa).</li>
+<li><strong>4-bit (<code>Q4_K_M</code>):</strong> ottimo compromesso! Pesa <strong>75% in meno</strong> (~0.9 GB per 1.5B parametri) e mantiene quasi tutta l'intelligenza.</li>
+<li><strong>1.58-bit / 2-bit (<code>UD-IQ2_M</code>):</strong> compressione estrema! Entra ovunque (450 MB), corre velocissimo su CPU, ma inizia a "perdere colpi" sui calcoli precisi.</li>
+</ul>
+<blockquote>
+<p><strong>Regia Docente (5 min):</strong> Usare il paragone delle tolleranze meccaniche: <em>"Per fare un'etichetta o una bozza non ti serve la rettifica al micron (16-bit), ti basta una lavorazione standard a 4-bit che pesa un quarto. Ma se scendi a 1.58-bit (sgrossatura pesante), il pezzo entra ovunque ma balla nelle sedi."</em></p>
+</blockquote></div>
+  </section>
+<section class="slide " data-index="10">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 10/22</div>
+    <div class="slide-content"><h2>Slide 2.3 – Il Cruscotto di Unsloth Studio (<code>localhost:8888</code>)</h2>
+<h3>Leggere i semafori hardware prima di avviare il motore</h3>
+<pre><code># Avvio del server web locale di Unsloth Studio
+unsloth studio -p 8888</code></pre>
+<p>Quando scegliete un modello GGUF dentro Unsloth Studio, il sistema analizza la vostra VM e mostra un badge:</p>
+<ul>
+<li><strong>RECOMMENDED (Verde):</strong> il modello entra comodamente nella RAM della VM e girerà fluido.</li>
+<li><strong>TIGHT (Giallo):</strong> entra al pelo nella memoria; chiudete le schede browser inutili.</li>
+<li><strong>OOM – Out Of Memory (Rosso):</strong> troppo pesante per questa macchina! Se lo caricate, la VM si blocca.</li>
+</ul>
+<blockquote>
+<p><strong>Regia Docente (5 min):</strong> Mostrare al proiettore l'apertura di <code>http://localhost:8888</code>, far vedere dove sono elencati i modelli GGUF pre-caricati nella VM e lanciare il <strong>Laboratorio 2A (45 min)</strong> di misurazione RAM e Token/s.</p>
+</blockquote></div>
+  </section>
+<section class="slide cover-slide" data-index="11">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 11/22</div>
+    <div class="slide-content"><h1>BLOCCO 3 (Ora 3) – Stress Test Industriale nella Model Arena</h1></div>
+  </section>
+<section class="slide " data-index="12">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 12/22</div>
+    <div class="slide-content"><h2>Slide 3.1 – Il Trilemma dell'AI Locale in Officina</h2>
+<h3>Peso (RAM) vs Velocità (Token/s) vs Precisione (Allucinazioni)</h3>
+<table><thead>
+<tr><th>Taglia &amp; Quantizzazione</th><th>Velocità su CPU VM</th><th>Consumo RAM</th><th>Risultato sui Compiti di Reparto</th></tr>
+</thead><tbody>
+<tr><td><strong><code>0.6B</code> / <code>1B</code> a 2-bit (<code>UD-IQ2_M</code>)</strong></td><td><strong>22–28 token/s</strong> (Istantaneo)</td><td><strong>&lt; 850 MB</strong> (Leggerissimo)</td><td>Riassume testi brevi, ma <strong>sbaglia le sottrazioni</strong> (es. <code>78°C - 65°C</code>) o inventa codici ricambio (<em>allucinazione</em>).</td></tr>
+<tr><td><strong><code>1.5B Coder</code> a 4-bit (<code>Q4_K_M</code>)</strong></td><td><strong>12–15 token/s</strong> (Fluido)</td><td><strong>~1.45 GB</strong> (Ideale per VM)</td><td><strong>Punto di equilibrio (Sweet Spot):</strong> capisce l'italiano tecnico, rispetta le tabelle e scrive ottimo codice HTML/JS/Python.</td></tr>
+<tr><td><strong><code>3B Coder</code> a 3-bit (<code>UD-Q3_K_M</code>)</strong></td><td><strong>5–8 token/s</strong> (Lento su CPU)</td><td><strong>~2.2 GB</strong> (Impegnativo)</td><td>Molto preciso sul codice complesso, ma se 24 VM lo usano insieme la CPU condivisa rallenta.</td></tr>
+</tbody></table>
+<blockquote>
+<p><strong>Regia Docente (10 min):</strong> Mostrare dal vivo la scheda <strong>Model Arena</strong> di Unsloth Studio. Incollare la nota di fermo macchina della Pressa P03 e far vedere agli studenti come il modello ultra-compresso a 2-bit risponde per primo ma sbaglia il calcolo del superamento soglia termica, mentre il 4-bit risponde giusto. Avviare il <strong>Laboratorio 2B (50 min)</strong>.</p>
+</blockquote></div>
+  </section>
+<section class="slide cover-slide" data-index="13">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 13/22</div>
+    <div class="slide-content"><h1>BLOCCO 4 (Ora 4) – Dal Motore al Braccio Operativo: OpenCode e il Vibe Coding</h1></div>
+  </section>
+<section class="slide " data-index="14">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 14/22</div>
+    <div class="slide-content"><h2>Slide 4.1 – Cos'è il "Vibe Coding" (e perché cambia il lavoro tecnico)</h2>
+<h3>Tu sei il Capo Reparto, OpenCode è l'Operatore che scrive il codice</h3>
+<ul>
+<li><strong>Vecchio metodo (Copia-Incolla dalla Chat):</strong></li>
+</ul>
+<ol>
+<li>Chiedi a una chat AI di scrivere un programma.</li>
+<li>Copi il codice, apri un editor, incolli, salvi.</li>
+<li>Al secondo giro non sai più <em>dove</em> incollare le modifiche e rompi il file.</li>
+</ol>
+<ul>
+<li><strong>Metodo Agente con OpenCode (<code>unsloth start opencode</code>):</strong></li>
+</ul>
+<ol>
+<li>OpenCode vive <strong>dentro la tua cartella di lavoro</strong>.</li>
+<li>Legge da solo i file esistenti, crea o modifica <code>manutenzione.html</code> direttamente su disco.</li>
+<li>Tu tieni aperto il browser, premi <strong>F5 (Aggiorna)</strong>, collaudi visivamente il risultato e dai l'ordine successivo!</li>
+</ol>
+<blockquote>
+<p><strong>Regia Docente (8 min):</strong> Mostrare la differenza tra Unsloth Chat (solo conversazione) e OpenCode (agente che tocca i file veri nella cartella).</p>
+</blockquote></div>
+  </section>
+<section class="slide " data-index="15">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 15/22</div>
+    <div class="slide-content"><h2>Slide 4.2 – Come Collegare Unsloth Studio a OpenCode (Piano A e Piano B d'Aula)</h2>
+<h3>Architettura Locale o Server di Reparto Condiviso</h3>
+<pre><code># PIANO A: Uso il motore AI caricato sulla MIA macchina virtuale
+cd ~/mio-progetto-maker
+unsloth start opencode</code></pre>
+<p><strong>Cosa succede se tutte le 24 VM generano codice contemporaneamente e la CPU rallenta? Passiamo al Piano B (Server di Reparto LAN del Docente):</strong></p>
+<ul>
+<li>In azienda non si mette un motore pesante su ogni tablet: si mette <strong>un unico server AI in rete locale</strong> e tutti i terminali di reparto si collegano a quello.</li>
+<li>In OpenCode basta digitare <code>/model</code> → <code>Connect provider</code> → <code>Custom</code>:</li>
+<li><strong>Base URL:</strong> <code>http://&lt;IP-DOCENTE&gt;:8888/v1/</code></li>
+<li><strong>API Key:</strong> <code>sk-unsloth-aula</code></li>
+</ul>
+<blockquote>
+<p><strong>Regia Docente (7 min):</strong> Far lanciare <code>unsloth start opencode</code> agli studenti. Tenere già acceso sul PC docente <code>unsloth run --model unsloth/Qwen2.5-Coder-7B-Instruct-GGUF -H 0.0.0.0 --disable-tools -p 8888</code> pronto come turbo di backup per chi ha la VM lenta. Lanciare il <strong>Laboratorio 3 – Fase v1 (45 min)</strong>.</p>
+</blockquote></div>
+  </section>
+<section class="slide cover-slide" data-index="16">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 16/22</div>
+    <div class="slide-content"><h1>BLOCCO 5 (Ora 5) – Iterazione Rapida e Gestione del "Disastro Controllato"</h1></div>
+  </section>
+<section class="slide " data-index="17">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 17/22</div>
+    <div class="slide-content"><h2>Slide 5.1 – La Regola d'Oro del Vibe Coding Industriale</h2>
+<h3>Mai fare il passo <code>v2</code> senza aver messo in cassaforte il passo <code>v1</code>!</h3>
+<p>Il ciclo di lavoro obbligatorio in 4 mosse:</p>
+<ol>
+<li><strong>ORDINA (<code>OpenCode</code>):</strong> Dai un prompt chiaro, specifico e un passo alla volta (es. <em>"Crea la tabella base con 6 controlli"</em>).</li>
+<li><strong>COLLAUDA (<code>Browser</code>):</strong> Apri il file <code>.html</code> nel browser e clicca tutti i pulsanti. Funziona?</li>
+<li><strong>METTI IN CASSAFORTE (<code>Git</code>):</strong></li>
+</ol>
+<pre><code>   git add .
+   git commit -m "v1: scheda base funzionante"</code></pre>
+<ol>
+<li><strong>RIPETI o RIPRISTINA:</strong> Ora chiedi la <code>v2</code>. Se l'AI impazzisce e cancella metà pagina:</li>
+</ol>
+<pre><code>   git restore .</code></pre>
+<p>In <strong>1 secondo</strong> sei tornato alla <code>v1</code> perfetta e puoi riformulare la richiesta!</p>
+<blockquote>
+<p><strong>Regia Docente (10 min):</strong> Simulare dal vivo al proiettore un prompt sbagliato che rompe il file HTML. Mostrare <code>git diff</code> (le righe rosse cancellate dall'AI) e poi il salvataggio miracoloso con <code>git restore .</code>. Avviare il <strong>Laboratorio 3 – Fasi v2 e v3 (50 min)</strong>.</p>
+</blockquote></div>
+  </section>
+<section class="slide cover-slide" data-index="18">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 18/22</div>
+    <div class="slide-content"><h1>BLOCCO 6 (Ora 6) – Collaudo Finale, Documentazione <code>README.md</code> e Consegna</h1></div>
+  </section>
+<section class="slide " data-index="19">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 19/22</div>
+    <div class="slide-content"><h2>Slide 6.1 – Un Software senza Manuale non entra in Officina</h2>
+<h3>Far scrivere a OpenCode il <code>README.md</code> e verificare la Storia Git</h3>
+<p>Un progetto professionale è completo solo quando un collega di un altro turno può aprirlo e capire subito come usarlo:</p>
+<ol>
+<li><strong>Chiedi a OpenCode di documentare il lavoro:</strong></li>
+</ol>
+<pre><code>   Crea un file README.md chiaro in italiano per i colleghi del reparto che spieghi:
+   1. Quale problema di officina risolve questo strumento.
+   2. Come si apre e utilizza passo dopo passo (senza bisogno di internet).
+   3. Elenco delle funzioni implementate nelle versioni v1, v2 e v3.</code></pre>
+<ol>
+<li><strong>Sigilla la consegna con Git e controlla il libretto tagliandi (<code>git log</code>):</strong></li>
+</ol>
+<pre><code>   git add .
+   git commit -m "docs: aggiunto manuale operativo README.md"
+   git log --oneline</code></pre>
+<blockquote>
+<p><strong>Regia Docente (10 min):</strong> Mostrare come <code>git log --oneline</code> visualizza i 4 commit ordinati (<code>v1</code>, <code>v2</code>, <code>v3</code>, <code>docs</code>). Negli ultimi 20 minuti organizzare il <strong>Collaudo Incrociato</strong>: ogni studente prova l'app del vicino di banco cercando di metterla in crisi!</p>
+</blockquote></div>
+  </section>
+<section class="slide " data-index="20">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 20/22</div>
+    <div class="slide-content"><h1>BLOCCHI 7 &amp; 8 (Estensione 8 Ore) – Dati Sporchi CSV e Regole Aziendali <code>AGENTS.md</code></h1></div>
+  </section>
+<section class="slide " data-index="21">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 21/22</div>
+    <div class="slide-content"><h2>Slide 7.1 – [Ora 7] La Realtà delle Aziende: I Dati sono sempre "Sporchi"!</h2>
+<h3>Ripulire esportazioni gestionali e log PLC con Unsloth + OpenCode</h3>
+<p>Quando esportate un file <code>.csv</code> da un vecchio gestionale AS/400, da Excel o da un PLC, trovate sempre:</p>
+<ul>
+<li>Punto e virgola (<code>;</code>) mescolati alle virgole (<code>,</code>).</li>
+<li>Prezzi scritti con la virgola (<code>12,50</code>) che bloccano i calcoli matematici (<code>NaN</code>).</li>
+<li>Codici articolo duplicati o righe vuote a metà tabella.</li>
+</ul>
+<p><strong>Come si risolve in Vibe Coding:</strong></p>
+<ol>
+<li>Carichiamo il file <code>distinta_sporca.csv</code> nella cartella del progetto.</li>
+<li>Diciamo a OpenCode: <em>"Leggi <code>distinta_sporca.csv</code>, guarda come sono formattate le righe rotte e modifica la nostra web-app per accettare sia <code>;</code> sia <code>,</code>, convertire i decimali italiani e segnalare in rosso le anomalie."</em></li>
+</ol>
+<blockquote>
+<p><strong>Regia Docente (10 min):</strong> Mostrare il file <code>distinta_sporca.csv</code> reale in Blocco Note, far vedere gli errori nascosti e lanciare la sfida pratica da 50 minuti.</p>
+</blockquote></div>
+  </section>
+<section class="slide " data-index="22">
+    <div class="slide-header">ITS MAKER Bologna &bull; Modulo Git + Unsloth Studio + OpenCode &bull; Slide 22/22</div>
+    <div class="slide-content"><h2>Slide 8.1 – [Ora 8] Standardizzare l'Agente: Il File <code>AGENTS.md</code></h2>
+<h3>Dare a OpenCode il "Regolamento di Fabbrica" una volta per tutte</h3>
+<p>Invece di ripetere in ogni prompt <em>"scrivi in italiano, non usare librerie internet, usa colori ad alto contrasto"</em>, creiamo nella cartella un file chiamato <strong><code>AGENTS.md</code></strong>. OpenCode lo legge automaticamente prima di ogni operazione!</p>
+<pre><code># Regole di Reparto ITS MAKER (AGENTS.md)
+1. Lingua: Tutte le etichette, i messaggi di errore e i commenti devono essere in ITALIANO tecnico chiaro.
+2. Architettura Offline: Vietato usare CDN esterni (niente Bootstrap, Tailwind o Chart.js da internet). Tutto il codice HTML, CSS e JS deve funzionare 100% offline sulla VM.
+3. Ergonomia Bordo Macchina: Pulsanti alti almeno 48px (usabili su schermi touch con i guanti), colori semaforici ISO (Verde #16a34a = OK, Giallo #eab308 = Attenzione, Rosso #dc2626 = Allarme/Fermo).
+4. Sicurezza Dati: Non cancellare mai funzioni esistenti quando aggiungi una nuova richiesta.</code></pre>
+<blockquote>
+<p><strong>Regia Docente (10 min):</strong> Spiegare che <code>AGENTS.md</code> è il capitolato tecnico fisso dell'officina. Gli studenti creano il proprio <code>AGENTS.md</code>, lanciano un ultimo aggiornamento grafico/funzionale e presentano il progetto finale alla classe.</p>
+</blockquote></div>
+  </section>
+  </div>
+  <div class="controls">
+    <button onclick="prevSlide()">&#8592; Precedente</button>
+    <button onclick="nextSlide()">Successiva &#8594;</button>
+  </div>
+  <script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+    function showSlide(n) {
+      slides.forEach((s, idx) => s.classList.toggle('active', idx === n));
+    }
+    function nextSlide() {
+      if (current < slides.length - 1) { current++; showSlide(current); }
+    }
+    function prevSlide() {
+      if (current > 0) { current--; showSlide(current); }
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') nextSlide();
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') prevSlide();
+    });
+    showSlide(0);
+  </script>
+</body>
+</html>
