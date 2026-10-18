@@ -1,0 +1,4 @@
+# Solo rigenerazione dei materiali del docente; gli studenti usano la libreria standard.
+Markdown==3.7
+playwright==1.58.0
+pymdown-extensions==10.14.3
