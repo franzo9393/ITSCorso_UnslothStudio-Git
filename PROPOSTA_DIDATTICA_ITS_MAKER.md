@@ -1,114 +1,113 @@
-# Progettazione Modulo Didattico: Fondamenti AI/LLM, Git e RAG con Unsloth Studio e OpenCode
+# Progettazione modulo: costruire e verificare un assistente documentale RAG
 
 **Corso:** Tecnico Superiore per la Digitalizzazione dei Processi Industriali – ITS MAKER Bologna  
-**Destinatari:** 20–24 studenti tecnici (neofiti AI/LLM). Laboratorio a coppie con ruoli alternati (*Operatore* e *Collaudatore*).  
-**Hardware e Budget:** Postazioni con budget di risorse assegnate (4 vCPU, 8 GB RAM, no GPU dedicata) da misurare empiricamente su host VMware; assenza di garanzie a priori sulle prestazioni di picco condivise.  
-**Durata:** 6 ore base (360 min tot: 315 min attività nette, 45 min pause/margini; obiettivo ~80% attività nette al banco) / 8 ore estese (+120 min).
+**Destinatari:** 20–24 studenti tecnici, neofiti AI/LLM; lavoro a coppie con ruoli Operatore e Collaudatore alternati a ogni blocco.  
+**Durata:** 6 ore: 315 minuti di attività e 45 di pause/margine. Estensione a 8 ore: altri 120 minuti.  
+**Prodotto finale:** corpus aggiornato, prove documentate e report di un piccolo assistente documentale. Nessun collegamento a macchine, PLC o funzioni di sicurezza.
 
----
+## 1. Principio didattico e obiettivi
 
-## 1. Obiettivi Didattici Osservabili e Concetti Chiave
+**Semplificare gli strumenti, non il ragionamento.** Il corso parte da una domanda concreta e insegna a decidere se una risposta è sostenuta dalle fonti. Unsloth Studio è l'ambiente, non l'oggetto principale della valutazione. Non servono installazioni, programmazione o scelta dei modelli durante il percorso base.
 
-- **Inferenza vs Addestramento:** lo studente spiega con un esperimento la differenza fra usare il modello e modificarne i pesi. La chat può conservare cronologie o memorie applicative senza addestrare il modello.
-- **RAG (Retrieval-Augmented Generation):** inietta passaggi documentali pertinenti nella context window; non riaddestra il modello e non ne altera i pesi neurali.
-- **Plausibilità vs Verità:** un modello linguistico genera testo sintatticamente coerente anche quando inventa dati (allucinazioni). L'output richiede costante validazione umana rispetto alle fonti primarie.
-- **Ruoli Distinti:** Pesi LLM (modello statico), Runtime di inferenza (Unsloth Studio su base GGUF), Agente operativo (OpenCode con accesso a file locali via tool).
-- **GGUF e Quantizzazione:** GGUF è un formato file contenitore; la quantizzazione riduce la precisione numerica dei pesi (es. FP16 a 4-bit o 2-bit). Un modello da 1 miliardo di parametri (1B) a 16-bit richiede 2 GB decimali di soli pesi; la RAM totale include runtime e memoria per la KV cache di contesto.
-- **Nessun Dogma:** nessuna soglia magica a 7B, nessun vincitore prestabilito a priori e nessuna tabella tok/s teorica non misurata sul campo.
+Al termine lo studente sa:
 
----
+- distinguere modello, contesto e documenti; spiegare perché interrogare o aggiornare un RAG non modifica i pesi dell'LLM;
+- associare un corpus alla chat e aprire i passaggi recuperati;
+- valutare separatamente recupero e risposta, verificando citazioni, identificativi e calcoli;
+- riconoscere un dato assente e una confusione fra macchine simili;
+- aggiornare la fonte corrente senza riscrivere un evento storico;
+- applicare il metodo a un documento nuovo, con una domanda rispondibile e una su un dato omesso;
+- conservare evidenze e revisioni con pochi comandi Git.
 
-## 2. RAG Nativo in Unsloth Studio: Knowledge Base Locale
+Token ed embedding si spiegano qualitativamente: unità di testo e rappresentazioni utili alla ricerca. Quantizzazione, formati dei pesi e benchmark non sono prerequisiti. Un errore del modello riconosciuto e spiegato è un risultato didattico valido.
 
-Il percorso usa la base documentale indicizzata associata alla chat e lo store SQLite di Studio. Non richiede un database esterno né presume la presenza, in ogni release, di un menu per creare una KB nominata:
-1. **Configurazione Embedding:** impostato in `Settings > General > Documents & RAG`. Il default upstream è `bge-small-en-v1.5` (inglese); per il corpus tecnico italiano il docente pre-configura un modello di embedding multilingue verificato in cache locale.
-2. **Associazione Documenti alla Chat:** all'interno della sessione chat, tramite l'icona `+ > Chat with Files > Add files to chat with`, si associano i file del corpus.
-3. **Persistenza per Chat:** ogni nuova chat richiede la riassociazione del corpus documentale; non si deve presumere un indice globale condiviso tra conversazioni indipendenti.
-4. **Controllo Whole-Doc:** `laboratorio/avvia_studio.py` imposta nel processo `RAG_THREAD_WHOLE_DOC=0`, controllo presente nel sorgente upstream per evitare l'inserimento integrale dei piccoli allegati. Non è una garanzia inter-versione: il docente deve osservare il recupero dei passaggi e aprirne le fonti.
-5. **Procedura Aggiornamento Documentale:** per testare la manutenzione documentale, si rimuove `03_catalogo_ricambi.md` (rev1: P03 -> FLT-992), si carica `03_catalogo_ricambi_rev2.md` (rev2: P03 -> FLT-993) e si apre una nuova chat riassociando il corpus aggiornato, verificando che la query T01 restituisca FLT-993 mentre lo storico guasto del 14/10/2026 mantenga traccia di FLT-992.
+## 2. Percorso base: sei ore
 
----
+| Blocco | Minuti | Attività e risultato osservabile |
+| --- | ---: | --- |
+| B1 · Il problema e i fondamenti | 40 | T01 senza fonti nei primi minuti; esperimento sul contesto; distinguere plausibilità ed evidenza. |
+| B2 · Primo RAG guidato | 65 | Associare i cinque documenti, osservare recupero e fonti, ripetere T01. |
+| B3 · Prove e diagnosi | 75 | T02–T06, domanda autonoma T07, doppio giudizio recupero/risposta. |
+| B4 · Aggiornare le fonti | 40 | Conservare rev1, sostituire catalogo, nuova chat con corpus aggiornato, verificare corrente e storico. |
+| B5 · Git sulle evidenze | 25 | Salvare corpus e risultati; leggere stato, differenze e cronologia. Nessun esercizio separato su codice macchina. |
+| B6 · Autonomia e restituzione | 70 | Scrivere un documento nuovo, prove T08/T09 con coppia vicina, report e spiegazione finale. |
+| Pause e margine | 45 | Distribuiti dal docente. |
+| **Totale** | **360** | **315 minuti netti; spiegazioni comprese nei blocchi.** |
 
-## 3. Matrice Query Canoniche T01–T06 e Valutazione Umana Separata
+Tempi proposti da provare sull'aula reale. Il docente prepara workspace e avvia Studio prima di B1; non si sottrae tempo al RAG per configurare l'ambiente.
 
-Gli studenti registrano ogni esito nel tracciato `risultati.csv` (UTF-8, separatore `;`). La valutazione umana separa rigorosamente l'esito del recupero dei passaggi dall'esito della risposta generata (`OK`, `ERRORE`, `NON_ESEGUITO`).
+## 3. Il caso d'officina e le prove
 
-| Caso | Criterio osservabile | Fonti da verificare |
-| :--- | :--- | :--- |
-| T01 · Catalogo | Identifica filtro, macchina e revisione corrente, distinguendoli dalla registrazione storica. | DOC-RICAMBI |
-| T02 · Calcolo | Recupera temperatura e soglia del rapporto; verifica il superamento con un calcolo indipendente. | DOC-FERMO |
-| T03 · Quantità | Non confonde quantità ordinata, consegnata e mancante. | DOC-BOLLA |
-| T04 · Parafrasi | Trova la durata del fermo anche se la domanda usa «indisponibilità». | DOC-FERMO |
-| T05 · Dato assente | Riconosce l'assenza di evidenza; si astiene senza valori o citazioni inventati. | Nessuna fonte contiene il dato richiesto |
-| T06 · Distrattore | Distingue le due macchine simili e cita entrambe le schede pertinenti. | DOC-P03 e DOC-P30 |
+Il corpus iniziale contiene cinque Markdown sintetici: scheda P03, rapporto di fermo P03, catalogo ricambi, bolla di consegna e scheda P30. Il corpus piccolo rende leggibili tutte le fonti: non dimostra capacità su archivi industriali di grandi dimensioni.
 
----
+| Caso | Competenza da osservare |
+| --- | --- |
+| T01 · Catalogo | Identificare il filtro nel catalogo corrente, con revisione; non dedurlo dal rapporto storico. |
+| T02 · Calcolo | Recuperare temperatura e soglia, controllare la differenza con un calcolo indipendente. |
+| T03 · Quantità | Distinguere quantità ordinata e consegnata. |
+| T04 · Parafrasi | Trovare la durata del fermo chiedendo dell'indisponibilità. |
+| T05 · Dato assente | Verificare l'assenza nel corpus e riconoscere astensione o invenzione. |
+| T06 · Distrattore | Distinguere P03 e P30 e verificare entrambe le fonti. |
+| T07 · Domanda della coppia | Formulare una domanda incrociata sui documenti iniziali e motivare il giudizio. |
+| T08 · Documento nuovo | Verificare un dato presente in DOC-T10, scritto durante B6. |
+| T09 · Test negativo autonomo | Chiedere un dato intenzionalmente omesso in DOC-T10 e controllare l'astensione. |
 
-## 4. Architettura d'Aula a Tre Livelli e Limiti di Concorrenza
+### Evidenze leggere, giudizi rigorosi
 
-1. **Piano A – Locale su VM (Scenario Base):**
-   Avvio tramite wrapper locale dalla root del repository:
-   ```bash
-   python laboratorio/avvia_studio.py --offline
-   ```
-   Lo script imposta nel processo figlio le modalità offline Hub/Transformers e il controllo whole-doc, senza disabilitare i tool RAG. Non è un firewall: disattivare web search e provider remoti e verificare l'avvio senza rete. Un rallentamento dell'host VMware può coinvolgere più VM.
-2. **Piano B – LAN d'Aula per OpenCode (Scenario Docente):**
-   Il docente espone un server dedicato per OpenCode su porta distinta (8889) per non interferire con la porta 8888 di Unsloth Studio:
-   ```bash
-   unsloth run --model unsloth/Qwen2.5-Coder-7B-Instruct-GGUF:Q4_K_M -H 0.0.0.0 -p 8889 --disable-tools
-   ```
-   *Note tecniche:* `--disable-tools` è una scelta esplicita per lasciare gli strumenti a OpenCode. Configurare nel client il provider OpenAI-compatible con URL `http://IP_DOCENTE:8889/v1`, modello e chiave realmente generata in `Settings > API`; il comando locale non seleziona da solo questo server. Limitare la porta alla LAN e revocare le chiavi a fine laboratorio. La concorrenza sostenibile va misurata: non è garantita dal numero di parametri o dalla sola connettività.
-3. **Piano C – Fallback Cloud (Emergenza):**
-   Uso di endpoint cloud compatibili OpenAI (es. OpenRouter). Soggetto a limiti di traffico (free tier base: 20 RPM, 50 req/giorno) e vincolato all'uso **esclusivo di dati sintetici didattici**, senza invio di dati industriali riservati.
+Usare `risultati.csv` con lo schema esistente: `id;domanda;documenti_recuperati;risposta;citazioni;esito_recupero;esito_risposta;note`. Il docente predispone un foglio elettronico/editor tabellare con importazione ed esportazione UTF-8, separatore `;`, verificata prima dell'aula. Gli studenti non devono gestire manualmente virgolette e righe CSV.
 
----
+Registrare una risposta osservata breve ma fedele, fonte/sezione/revisione e una nota solo quando serve. Non copiare conversazioni intere. Stati ammessi: `OK`, `ERRORE`, `NON_ESEGUITO`; mai trasformare un errore dell'AI in successo per completare la consegna. Se il recupero non è osservabile, lasciare il relativo giudizio NON_ESEGUITO e dichiarare il limite. Per T05/T09 un risultato di ricerca vuoto non prova da solo che il dato sia assente: controllare anche il corpus.
 
-## 5. Strumenti Operativi: Git Essenziale e OpenCode
+La baseline senza fonti di B1 resta nel quaderno, distinta dai risultati RAG. Prima di aggiornare il catalogo salvare `risultati_rev1.csv`; dopo il confronto salvare `risultati_rev2.csv`. Usare le note di T01 per conservare anche la risposta osservata sul ricambio storico. In B6 aggiungere T08/T09 a `risultati.csv`, senza cambiare colonne.
 
-- **Configurazione Identità:** rigorosamente locale al repository dello studente (`git config user.name "..."` e `git config user.email "..."`), mai globale a livello di sistema.
-- **Comandi Ammessi:**
-  - `git status`: ispezione file modificati e staging area.
-  - `git diff`: differenze tra working tree e indice di staging (`git diff HEAD` per confrontare col commit).
-  - `git add <file>` e `git commit -m "..."`: checkpoint atomici prima di ogni intervento.
-  - `git log --oneline`: visualizzazione cronologica sintetica.
-  - `git restore -- <file>`: ripristina modifiche non indicizzate (non staged) su file già tracciati. Non rimuove file untracked e non annulla commit storici. Vietati comandi distruttivi (`git clean -fd`, `git reset --hard`).
-- **OpenCode e Report:** nella cartella studente (creata da `prepara_laboratorio.py`), lo studente esegue `python genera_report.py` (presente nella root del workspace) e guida OpenCode nell'aggiunta di un filtro client-side ("*Solo da rivedere*") per righe `ERRORE` o `NON_ESEGUITO`.
-- **Sicurezza Didattica:** nessun collegamento a macchinari fisici. Lavorare solo nella cartella personale con permessi controllati. Chiedere al modello di trattare i documenti come dati è una mitigazione, non una protezione garantita dalle prompt injection o una sandbox del sistema operativo.
+## 4. Una sola configurazione di riferimento, preparata prima dell'aula
 
----
+Il percorso base usa Studio locale già pronto, un solo LLM e un embedding multilingue collaudato sul corpus italiano. Nessun database esterno, OCR o PDF scansito. Nessuna scelta di provider o gestione di chiavi per gli studenti.
 
-## 6. Checklist Golden Image e Matrice Go / No-Go
+Il budget indicativo delle VM (4 vCPU, 8 GB RAM, nessuna GPU dedicata) **non è una garanzia di compatibilità o prestazioni**. Il responsabile tecnico deve qualificare l'immagine sull'host VMware con il carico delle 10–12 coppie prima dell'erogazione.
 
-- **Script `preflight.py`:** registra Python, versioni CLI, opzioni help e impronte SHA256 del corpus; non collauda inferenza, RAG o carico. Un hash registrato permette un confronto successivo, ma non certifica da solo l'integrità.
-- **Preparazione prima del corso:** scegliere e registrare release Studio/runtime, modello GGUF e revisione, quantizzazione, embedding multilingue, contesto e thread. Scaricare tutte le risorse prima dell'aula. Il riscontro locale della CLI 2026.10.6 non equivale a una release RAG qualificata.
-- **GO soltanto dopo prove reali:** avvio senza rete, indicizzazione dei cinque file, recupero e citazioni osservati, esecuzione delle sei domande, aggiornamento rev2, report e creazione/modifica file tramite OpenCode. Misurare anche il carico delle 10–12 coppie sulla rete e sull'host reali.
-- **NO-GO:** un backend alternativo è utilizzabile solo se già qualificato per lo stesso laboratorio. Un'API di generazione LAN/cloud non sostituisce da sola il recupero documentale. Risolvere i prerequisiti prima dell'aula; non sostituire le prove con risposte preparate.
-- **Guida operativa:** [laboratorio/docente/SOLUZIONI.md](laboratorio/docente/SOLUZIONI.md) contiene preparazione, risposte attese e rubrica. Distribuire agli studenti solo lo starter; la separazione in cartelle nella repository pubblica non è una misura di segretezza.
+La [guida docente](laboratorio/docente/SOLUZIONI.md) contiene la scheda d'ambiente da completare con versioni effettive, modelli e revisioni, impostazioni e schermate dei menu. Il repository non include pesi o embedding e non fornisce una configurazione già qualificata per l'aula.
 
----
+### Condizioni GO / NO-GO del percorso base
 
-## 7. Cronoprogramma Modulare (6 Ore Base / 8 Ore Estese)
+GO dopo prova reale di avvio offline, indicizzazione, passaggi recuperati osservabili, T01–T06, aggiornamento rev2, documento nuovo con dato assente, esportazione tabellare, report e Git, con carico concorrente e tempi accettabili misurati. Documentare gli errori: non occorre che ogni risposta del modello sia corretta, ma il laboratorio deve consentire di diagnosticarla.
 
-| Blocco | Durata | Min Teoria | Min Pratica | Titolo Modulo e Attività Pratica |
-| :---: | :---: | :---: | :---: | :--- |
-| **B1** | 60 min | 10 | 50 | **Fondamenti AI/LLM:** esperimenti su conteggio token e contesto, distinzione modello/UI/agente. Studio è già avviato dal docente prima di B1. |
-| **B2** | 30 min | 5 | 25 | **Git Essenziale:** setup locale, modifica `parametri_cnc.html` (3200 -> 4500 RPM), commit e prova mirata di ripristino. |
-| **B3** | 30 min | 5 | 25 | **Unsloth e Configurazioni:** riuso di Studio, confronto di due configurazioni a impostazioni comparabili, misura RAM e latenza. Per isolare la quantizzazione deve restare uguale il modello. |
-| **B4** | 90 min | 15 | 75 | **RAG Nativo in Studio:** associazione corpus officina in chat, esecuzione query T01–T06 su `risultati.csv`, aggiornamento a rev2 del catalogo e re-test. |
-| **B5** | 45 min | 10 | 35 | **OpenCode e Report:** modifica a `genera_report.py`, filtro "Solo da rivedere", prova con fixture esplicitamente distinta dai risultati AI e commit. |
-| **B6** | 60 min | 10 | 50 | **Collaudo Incrociato e Consegna:** inversione ruoli operatore/collaudatore, verifica incrociata dei CSV/report tra banchi, consegna repository. |
-| *P* | 45 min | – | – | *Pause e margini distribuiti.* Totale 360 min: 315 min attività, di cui 250 di pratica prevista. Tempi da collaudare sull'aula, non prestazioni garantite. |
-| **E1** | +60 min | 10 | 50 | **[Estensione 8h] Tuning RAG a Variabili Isolate:** variazione controllata di un parametro alla volta (chunk, overlap, prompt) su query in italiano. |
-| **E2** | +60 min | 10 | 50 | **[Estensione 8h] Corpus Custom e Sfida:** redazione scheda tecnica d'officina, scambio tra banchi, formulazione query trappola e autovalutazione. |
+`preflight.py` registra CLI e impronte del corpus: non certifica inferenza o RAG. OpenCode non è un requisito GO del corso base. Se il RAG non funziona, correggere l'ambiente prima del corso; un'API di generazione LAN/cloud non sostituisce il recupero e non è un fallback automatico. Un eventuale ambiente alternativo deve essere qualificato per lo stesso percorso completo.
 
----
+## 5. Aggiornamento e autonomia: i due passaggi decisivi
 
-## 8. Fonti Primarie e Documentazione Ufficiale
+In B4 il docente consegna la rev2: sostituire il contenuto di `corpus/03_catalogo_ricambi.md`, senza tenere due cataloghi entrambi correnti. Aprire una chat pulita e riassociare i cinque file aggiornati. T01 deve essere confrontata con DOC-RICAMBI rev2 (FLT-993); il rapporto storico conserva FLT-992. Se il sistema sbaglia, registrare e diagnosticare fonte, revisione e contesto. Non cambiare retroattivamente le prove rev1.
 
-- [Unsloth Studio Chat & UI](https://unsloth.ai/docs/new/studio/chat)
-- [Unsloth Changelog Ufficiale](https://unsloth.ai/docs/new/changelog)
-- [Unsloth Studio API](https://unsloth.ai/docs/basics/api)
-- [Integrazione Unsloth & OpenCode](https://unsloth.ai/docs/integrations/opencode)
-- [Sorgente RAG Config Unsloth (`config.py`)](https://github.com/unslothai/unsloth/blob/main/studio/backend/core/rag/config.py)
-- [Sorgente RAG Vector Store Unsloth (`store.py`)](https://github.com/unslothai/unsloth/blob/main/studio/backend/core/rag/store.py)
-- [OpenRouter Pricing & Rate Limits](https://openrouter.ai/pricing)
+In B6 ogni coppia scrive `06_scheda_macchina_T10.md` con DocID DOC-T10, data, revisione, due dati sintetici e un dato intenzionalmente omesso, assente anche dagli altri documenti. Nuova chat con il corpus corrente e il sesto file. La coppia vicina esegue una domanda su un dato presente (T08) e una sul dato omesso (T09). Si valuta la capacità di controllare le fonti, non la coincidenza con un copione.
+
+Il report si genera con `python genera_report.py`, senza modificare il codice e senza OpenCode. Consegna: corpus corrente, CSV rev1/rev2, CSV finale T01–T09, report e breve spiegazione nelle note di un errore o rischio diagnosticato. Git conserva questi materiali, non credenziali né soluzioni docente.
+
+## 6. Valutazione coerente con il fulcro RAG
+
+| Criterio | Peso | Evidenza |
+| --- | ---: | --- |
+| Fonti e diagnosi recupero/risposta | 40% | Citazioni aperte, dati e calcoli verificati, giudizi distinti e motivati. |
+| Revisioni e storico | 25% | Confronto prima/dopo, fonte corrente distinta dall'evento passato. |
+| Autonomia e test negativo | 20% | Documento nuovo, domanda presente/assente e controllo indipendente. |
+| Tracciabilità delle evidenze e Git | 10% | Risultati conservati, differenze comprese, salvataggio finale. |
+| Collaborazione | 5% | Alternanza dei ruoli e revisione tra coppie. |
+
+Non valutare lo studente con la percentuale di risposte corrette del modello o il numero di commit. OpenCode e benchmark non modificano la rubrica base.
+
+## 7. Otto ore e approfondimenti facoltativi
+
+- **E1 · +60 minuti: diagnosi delle domande.** Stesso corpus e stessa configurazione; confrontare domanda letterale, sinonimi e gergo d'officina. Annotare passaggi recuperati e cambiamenti della risposta. Nessun tuning di chunk, overlap o embedding.
+- **E2 · +60 minuti: sfida documentale ampliata.** Espandere il corpus con altri documenti sintetici, scambio fra coppie e collaudo cieco con dati presenti e assenti. È un approfondimento rispetto alla prima prova autonoma già obbligatoria in B6.
+
+**Alternative facoltative a E2, scelte prima del corso:** un laboratorio OpenCode sul filtro del report, oppure un confronto guidato fra due configurazioni già disponibili. Occupano gli stessi 60 minuti di E2, non si sommano al programma di otto ore e non sono richiesti nelle sei ore. Per OpenCode servono qualifica aggiuntiva dell'agente e backend; per il confronto modelli, misure reali e variabili controllate. Dettagli nell'appendice docente.
+
+## 8. Fonti primarie
+
+- [Unsloth Studio Chat](https://unsloth.ai/docs/new/studio/chat)
+- [Changelog](https://unsloth.ai/docs/new/changelog)
+- [Configurazione RAG](https://github.com/unslothai/unsloth/blob/main/studio/backend/core/rag/config.py)
+- [Store RAG](https://github.com/unslothai/unsloth/blob/main/studio/backend/core/rag/store.py)
+- [API Studio](https://unsloth.ai/docs/basics/api)
+- [OpenCode, solo approfondimento](https://unsloth.ai/docs/integrations/opencode)
+
+I menu e i sorgenti upstream cambiano: fanno fede le prove e le schermate della release congelata per l'aula, non una compatibilità presunta.

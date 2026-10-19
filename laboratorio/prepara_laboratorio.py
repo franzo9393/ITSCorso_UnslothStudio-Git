@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
-STARTER_FILES = ("genera_report.py", "risultati.csv", "parametri_cnc.html")
+STARTER_FILES = ("genera_report.py", "risultati.csv")
 
 
 def prepare(destination):
@@ -42,8 +42,8 @@ def main():
         parser.exit(1, f"Preparazione non riuscita: {exc}\n")
     print(f"Materiale studente copiato in: {destination}")
     print("Nessuna soluzione docente copiata; nessuna configurazione Git modificata.")
-    print("Apri un terminale nella cartella, poi: git init")
-    print("Configura nome/email soltanto in quel repository e segui la dispensa.")
+    print("Studio e modello devono essere pronti prima di B1; segui la dispensa.")
+    print("Git si introduce in B5 sui risultati e sul corpus, con identità locale.")
     print("Il report iniziale si genera con: python genera_report.py")
 
 

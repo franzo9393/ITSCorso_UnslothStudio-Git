@@ -50,14 +50,19 @@ def inspect_environment():
     cli_ok = (
         sys.version_info >= (3, 10)
         and len(corpus) == 5
-        and all(value["ok"] for value in versions.values())
-        and all(value["ok"] for value in contracts.values())
+        and all(versions[name]["ok"] for name in ("git", "unsloth"))
+        and contracts["studio"]["ok"]
     )
     return {
         "data_utc": datetime.now(timezone.utc).isoformat(),
         "python": platform.python_version(), "piattaforma": platform.platform(),
         "versioni_cli": versions, "contratti_cli": contracts, "corpus_sha256": hashes,
         "prerequisiti_cli_ok": cli_ok,
+        "verifiche_facoltative": {
+            "opencode_cli_ok": versions["opencode"]["ok"],
+            "backend_agente_ok": contracts["run"]["ok"] and contracts["opencode"]["ok"],
+            "nota": "Solo per l'approfondimento OpenCode; non blocca il percorso RAG base.",
+        },
         "verifica": "CLI_E_CORPUS_SOLTANTO",
         "collaudi_manuali_obbligatori": [
             "Registrare modello/quantizzazione, revisioni e impostazioni effettivamente usati.",
@@ -65,7 +70,7 @@ def inspect_environment():
             "Indicizzare solo corpus/ in una knowledge base e osservare il recupero dei passaggi.",
             "Eseguire le sei domande e verificare fonti e astensione con la griglia docente.",
             "Provare avvio senza rete e carico concorrente sull'infrastruttura dell'aula.",
-            "Provare creazione e modifica di un file tramite OpenCode, non soltanto testo in chat.",
+            "Provare rev2, documento nuovo con dato omesso, export CSV, report e salvataggi Git.",
         ],
     }
 

@@ -31,403 +31,397 @@ button:disabled { opacity: .5; cursor: default; }
  pre, blockquote { background: #f0f3f8; } blockquote p { color: #614900; }
  .slide-header { color: #46546b; } .controls { display: none; }
 }
-</style></head><body><div class="deck"><section class="slide" data-index="1"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 1/27</div><div class="slide-content"><h2>Slide 01 – AI, LLM e RAG nell'officina digitale</h2>
-<p><strong>ITS MAKER Bologna · Laboratorio introduttivo, tecnico e pratico</strong></p>
+</style></head><body><div class="deck"><section class="slide" data-index="1"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 1/26</div><div class="slide-content"><h2>Slide 01 – Possiamo fidarci di questa risposta?</h2>
+<p><strong>ITS MAKER Bologna · Costruire e verificare un assistente documentale</strong></p>
+<blockquote>
+<p>Nel catalogo didattico corrente, quale filtro è associato alla P03?</p>
+</blockquote>
 <ul>
-<li>Capire un LLM attraverso esperimenti, non soltanto usare una chat.</li>
-<li>Costruire una base documentale con Unsloth Studio e verificare le risposte.</li>
-<li>Usare Git per tracciare il lavoro e OpenCode per una piccola modifica.</li>
-<li>Lavorare in coppia: Operatore alla tastiera, Collaudatore alle fonti; scambio a ogni blocco.</li>
-<li>Solo dati inventati: nessun collegamento a macchine, PLC o funzioni di sicurezza.</li>
+<li>Chiederlo subito in una chat pulita, senza documenti.</li>
+<li>Annotare la risposta: dato, astensione o invenzione.</li>
+<li>Senza il catalogo, come possiamo verificarla?</li>
+<li>Questa è una baseline, non ancora una prova RAG.</li>
 </ul>
 <blockquote>
-<p><strong>Regia docente:</strong> Studio e modello devono essere già avviati prima di B1. Le spiegazioni sono comprese nei blocchi, non si aggiungono alle attività pratiche.</p>
-</blockquote></div></section><section class="slide" data-index="2"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 2/27</div><div class="slide-content"><h2>Slide 02 – Il programma: sei ore complessive</h2>
+<p><strong>Regia docente · B1:</strong> Studio già avviato, workspace già distribuiti. Nessuna installazione. Non imporre che il modello sbagli e non caricare ancora il corpus.</p>
+</blockquote></div></section><section class="slide" data-index="2"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 2/26</div><div class="slide-content"><h2>Slide 02 – Il progetto delle sei ore</h2>
 <table>
 <thead>
 <tr>
 <th>Blocco</th>
-<th>Minuti</th>
-<th>Risultato al banco</th>
+<th style="text-align: right;">Minuti</th>
+<th>Risultato</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>B1 · AI e LLM</td>
-<td>60</td>
-<td>Esperimenti su token, contesto e risposte</td>
+<td>B1 · Problema e fondamenti</td>
+<td style="text-align: right;">40</td>
+<td>Plausibilità non è evidenza</td>
 </tr>
 <tr>
-<td>B2 · Git essenziale</td>
-<td>30</td>
-<td>Checkpoint e recupero di un guasto guidato</td>
+<td>B2 · Primo RAG guidato</td>
+<td style="text-align: right;">65</td>
+<td>T01 con fonti controllate</td>
 </tr>
 <tr>
-<td>B3 · Modelli locali</td>
-<td>30</td>
-<td>Confronto di due configurazioni</td>
+<td>B3 · Prove e diagnosi</td>
+<td style="text-align: right;">75</td>
+<td>T02–T07, due giudizi</td>
 </tr>
 <tr>
-<td>B4 · RAG</td>
-<td>90</td>
-<td>Documenti indicizzati e prove T01–T06</td>
+<td>B4 · Aggiornare le fonti</td>
+<td style="text-align: right;">40</td>
+<td>Corrente distinto dallo storico</td>
 </tr>
 <tr>
-<td>B5 · OpenCode</td>
-<td>45</td>
-<td>Filtro nel report già funzionante</td>
+<td>B5 · Git sulle evidenze</td>
+<td style="text-align: right;">25</td>
+<td>Risultati conservati</td>
 </tr>
 <tr>
-<td>B6 · Collaudo</td>
-<td>60</td>
-<td>Verifica incrociata e consegna</td>
+<td>B6 · Autonomia</td>
+<td style="text-align: right;">70</td>
+<td>Documento nuovo e collaudo</td>
 </tr>
 <tr>
-<td>Pause e margine</td>
-<td>45</td>
-<td>Totale: 360 minuti</td>
+<td>Pause/margine</td>
+<td style="text-align: right;">45</td>
+<td>Totale 360 minuti</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p><strong>Regia docente:</strong> 315 minuti di attività nette, con obiettivo di circa 250 minuti pratici. Tempi proposti, da collaudare sull'aula. Per otto ore aggiungere E1 ed E2.</p>
-</blockquote></div></section><section class="slide" data-index="3"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 3/27</div><div class="slide-content"><h2>Slide 03 – Token: le unità di testo del modello</h2>
+<p><strong>Regia docente:</strong> 315 minuti netti, spiegazioni comprese. Il RAG è il filo conduttore. Confronto modelli e OpenCode non sono richiesti nelle sei ore.</p>
+</blockquote></div></section><section class="slide" data-index="3"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 3/26</div><div class="slide-content"><h2>Slide 03 – Due ruoli, una verifica</h2>
 <ul>
-<li>Un token può essere una parola, una parte di parola o un altro frammento.</li>
-<li>Il tokenizer associa i frammenti a identificativi numerici; il modello genera i token successivi.</li>
-<li>Suddivisione e conteggi dipendono da modello, lingua e testo: nessuna proporzione fissa parole/token.</li>
-<li>In due chat pulite confrontare una frase comune e una frase con codici come SKF-6204.</li>
-<li>Registrare l'usage disponibile: il conteggio input può includere anche le istruzioni di sistema.</li>
+<li><strong>Operatore:</strong> usa Studio e registra i risultati.</li>
+<li><strong>Collaudatore:</strong> apre le fonti, controlla dati e giudizi.</li>
+<li>Scambio a ogni blocco; revisione finale con la coppia vicina.</li>
+<li>Solo dati sintetici: nessun collegamento a macchine o PLC.</li>
+<li>Il prodotto finale è un assistente documentale collaudato, non un controllo macchina.</li>
 </ul>
 <blockquote>
-<p><strong>Regia docente:</strong> Seguire B1 della dispensa. Se l'interfaccia non mostra il conteggio, annotare «non osservabile»: non disegnare una suddivisione inventata come misura reale.</p>
-</blockquote></div></section><section class="slide" data-index="4"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 4/27</div><div class="slide-content"><h2>Slide 04 – Contesto e pesi non sono la stessa cosa</h2>
+<p><strong>Regia docente:</strong> Far formulare a ogni coppia la domanda «dove è scritto?». Il risultato non è ottenere sempre una risposta corretta, ma saperla valutare.</p>
+</blockquote></div></section><section class="slide" data-index="4"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 4/26</div><div class="slide-content"><h2>Slide 04 – Contesto non significa addestramento</h2>
 <ul>
-<li><strong>Addestramento:</strong> modifica i pesi del modello. Non lo eseguiamo nel corso.</li>
-<li><strong>Inferenza:</strong> usa i pesi per generare una risposta, senza aggiornarli.</li>
-<li><strong>Contesto:</strong> istruzioni, messaggi e documenti disponibili nella richiesta corrente.</li>
-<li>Prova: dare una regola inventata sul codice colore del turno, poi fare una domanda.</li>
-<li>Ripetere in una chat senza quella regola, senza allegati o memorie; annotare ciò che accade.</li>
-<li>La chat può salvare cronologie su disco: non significa che il modello sia stato addestrato.</li>
+<li>Inserire: «Il codice colore inventato del turno è BLU-17».</li>
+<li>Chiedere il codice nella stessa chat.</li>
+<li>Ripetere in una chat pulita, senza memorie o allegati.</li>
+<li><strong>Contesto:</strong> informazioni disponibili in quella richiesta.</li>
+<li><strong>Addestramento:</strong> modifica i pesi; non lo facciamo nel corso.</li>
 </ul>
 <blockquote>
-<p><strong>Regia docente:</strong> Usare la regola BLU-17 della dispensa. Non imporre un errore come esito. Riavviare il modello da solo non cancella la memoria gestita dall'applicazione.</p>
-</blockquote></div></section><section class="slide" data-index="5"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 5/27</div><div class="slide-content"><h2>Slide 05 – Modello, interfaccia e agente</h2>
+<p><strong>Regia docente · B1:</strong> Osservare gli esiti senza imporli. Una cronologia salvata dall'applicazione non è un aggiornamento dei pesi. Riavviare il modello non cancella necessariamente la chat.</p>
+</blockquote></div></section><section class="slide" data-index="5"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 5/26</div><div class="slide-content"><h2>Slide 05 – Le parole necessarie, senza configurazioni</h2>
 <ul>
-<li><strong>Modello LLM:</strong> il motore che genera token a partire dal contesto.</li>
-<li><strong>Unsloth Studio:</strong> l'applicazione per chat, documenti, impostazioni e runtime.</li>
-<li><strong>OpenCode:</strong> un agente che usa il modello e strumenti per leggere o modificare file.</li>
-<li>Una risposta di codice in chat non dimostra una modifica sul disco.</li>
-<li>Verifica pratica: chi genera la risposta? Chi la mostra? Chi salva il file?</li>
+<li><strong>LLM:</strong> genera testo a partire dal contesto.</li>
+<li><strong>Token:</strong> unità di testo elaborate dal modello.</li>
+<li><strong>Embedding:</strong> rappresentazione utile a confrontare domanda e passaggi.</li>
+<li><strong>Studio:</strong> ambiente per chat e ricerca documentale.</li>
+<li>Fluidità e somiglianza non sono prove di correttezza.</li>
 </ul>
 <blockquote>
-<p><strong>Regia docente:</strong> Far associare ogni azione al componente corretto. In questo corso Studio consulta i documenti; OpenCode modifica soltanto il report nella cartella personale.</p>
-</blockquote></div></section><section class="slide" data-index="6"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 6/27</div><div class="slide-content"><h2>Slide 06 – Una risposta plausibile può essere falsa</h2>
-<ul>
-<li>Un LLM può inventare codici, numeri, riferimenti o citazioni con tono convincente.</li>
-<li>Temperatura bassa e istruzioni precise non garantiscono correttezza.</li>
-<li>Controllare identificativo macchina, unità di misura, revisione e calcoli.</li>
-<li>Se il dato non è nei documenti, il comportamento richiesto è dichiararne l'assenza.</li>
-<li>Rilevare e spiegare un errore è un buon risultato didattico: non falsificare gli esiti.</li>
-</ul>
+<p><strong>Regia docente:</strong> Spiegazione qualitativa breve. Niente benchmark obbligatorio, scelta dei modelli o calcolo della RAM: servono al tecnico che prepara, non a questa prima attività.</p>
+</blockquote></div></section><section class="slide" data-index="6"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 6/26</div><div class="slide-content"><h2>Slide 06 – RAG: cercare prima di rispondere</h2>
+<ol>
+<li><strong>Corpus:</strong> documenti da consultare.</li>
+<li><strong>Indice:</strong> passaggi preparati per la ricerca.</li>
+<li><strong>Recupero:</strong> passaggi pertinenti alla domanda.</li>
+<li><strong>Generazione:</strong> risposta con quei passaggi nel contesto.</li>
+<li><strong>Verifica:</strong> lettura delle fonti da parte nostra.</li>
+</ol>
+<p><strong>Aggiornare i documenti non riaddestra il modello.</strong></p>
 <blockquote>
-<p><strong>Regia docente:</strong> Fare una domanda su un dettaglio inventato senza fornire il documento. Il modello può astenersi oppure inventare: entrambi gli esiti sono materiale di osservazione.</p>
-</blockquote></div></section><section class="slide" data-index="7"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 7/27</div><div class="slide-content"><h2>Slide 07 – Git: preparare il banco personale</h2>
-<p>Dalla root della repository del corso:</p>
-<pre class="highlight"><code class="language-text">python laboratorio/prepara_laboratorio.py --dest ../officina-studente
-cd ../officina-studente
-git init</code></pre>
-<ul>
-<li>Il kit rifiuta una cartella esistente e non copia le soluzioni docente.</li>
-<li>Configurare nome ed email nel repository locale, senza <code>--global</code>.</li>
-<li>Registrare lo stato iniziale come indicato nella dispensa.</li>
-</ul>
-<blockquote>
-<p><strong>Regia docente:</strong> Il preflight dell'ambiente è già stato eseguito prima della lezione. Gli studenti non installano pacchetti né scaricano modelli.</p>
-</blockquote></div></section><section class="slide" data-index="8"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 8/27</div><div class="slide-content"><h2>Slide 08 – Il ciclo Git essenziale</h2>
-<pre class="highlight"><code class="language-text">git status
-git diff parametri_cnc.html
-git add parametri_cnc.html
-git commit -m "test: valore didattico verificato"</code></pre>
-<ul>
-<li>Modificare il valore della pagina simulata e verificarlo nel browser.</li>
-<li><code>diff</code> confronta di default file di lavoro e indice; <code>add</code> prepara il contenuto per il commit.</li>
-<li><code>commit</code> registra un checkpoint: il suo messaggio deve descrivere ciò che è stato verificato.</li>
-</ul>
-<blockquote>
-<p><strong>Regia docente:</strong> Nella dispensa il valore passa da 3200 a 4500 RPM. È soltanto testo di una pagina didattica, non una configurazione di una macchina reale.</p>
-</blockquote></div></section><section class="slide" data-index="9"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 9/27</div><div class="slide-content"><h2>Slide 09 – Ripristino: un perimetro preciso</h2>
-<pre class="highlight"><code class="language-text">git restore -- parametri_cnc.html</code></pre>
-<ul>
-<li>Nel guasto guidato, modificare un file già tracciato <strong>senza</strong> mettere il guasto in staging.</li>
-<li>Il comando recupera il contenuto presente nell'indice; nell'esercizio coincide con l'ultimo commit.</li>
-<li>Non elimina file nuovi, non annulla commit e non recupera automaticamente modifiche già staged.</li>
-<li>Prima usare <code>status</code> e <code>diff</code>; nei casi diversi fermarsi con il docente.</li>
-<li>Nessun <code>reset --hard</code> o <code>clean</code>: niente cancellazioni automatiche del lavoro.</li>
-</ul>
-<blockquote>
-<p><strong>Regia docente:</strong> Far spiegare perché il ripristino riesce nell'esercizio e perché non è un tasto universale «annulla tutto».</p>
-</blockquote></div></section><section class="slide" data-index="10"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 10/27</div><div class="slide-content"><h2>Slide 10 – Locale, offline e dati: condizioni reali</h2>
-<ul>
-<li>Modello ed embedding locali permettono di lavorare senza API cloud.</li>
-<li>Servono anche runtime, tokenizer e file già disponibili prima della lezione.</li>
-<li>Disattivare web search, provider remoti e strumenti non necessari.</li>
-<li>Le variabili offline Hub/Transformers non sono un firewall del computer.</li>
-<li>Eventuali servizi LAN/cloud devono essere collaudati e dichiarati; usare solo dati sintetici.</li>
-</ul>
-<blockquote>
-<p><strong>Regia docente:</strong> Non promettere riservatezza assoluta né un servizio gratuito illimitato. Il backend condiviso va provato con le coppie reali e può accodare le richieste.</p>
-</blockquote></div></section><section class="slide" data-index="11"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 11/27</div><div class="slide-content"><h2>Slide 11 – GGUF, quantizzazione e memoria</h2>
-<ul>
-<li><strong>GGUF:</strong> formato che contiene pesi e metadati del modello.</li>
-<li><strong>Quantizzazione:</strong> riduce la precisione numerica dei pesi; non è sinonimo di GGUF.</li>
-</ul>
+<p><strong>Regia docente · B2:</strong> Usare questo schema durante tutta la lezione. I documenti sono piccoli per rendere la verifica praticabile, non per dimostrare scalabilità industriale.</p>
+</blockquote></div></section><section class="slide" data-index="7"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 7/26</div><div class="slide-content"><h2>Slide 07 – Cinque documenti, un caso leggibile</h2>
 <table>
 <thead>
 <tr>
-<th>Conto teorico per un miliardo di pesi</th>
-<th>Memoria dei soli pesi</th>
+<th>Fonte</th>
+<th>Contenuto</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>16 bit esatti per peso</td>
-<td>2 GB decimali</td>
+<td>DOC-P03</td>
+<td>Scheda e soglia della P03</td>
 </tr>
 <tr>
-<td>4 bit esatti per peso</td>
-<td>0,5 GB decimali</td>
+<td>DOC-FERMO</td>
+<td>Evento storico della P03</td>
+</tr>
+<tr>
+<td>DOC-RICAMBI</td>
+<td>Catalogo corrente dei filtri</td>
+</tr>
+<tr>
+<td>DOC-BOLLA</td>
+<td>Quantità ordinate e consegnate</td>
+</tr>
+<tr>
+<td>DOC-P30</td>
+<td>Un'altra macchina, non la P03</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>Il file reale include metadati e formati misti; l'esecuzione richiede anche contesto, runtime e sistema operativo.</li>
-<li>Misurare RAM e latenza: meno bit non garantisce più velocità su ogni CPU.</li>
+<li>Associare solo i cinque file di <code>corpus/</code>.</li>
+<li>Non caricare CSV, quaderno o soluzioni.</li>
 </ul>
 <blockquote>
-<p><strong>Regia docente:</strong> Far eseguire il conto byte/parametro. Non trasformarlo in una promessa di RAM totale o fluidità della VM.</p>
-</blockquote></div></section><section class="slide" data-index="12"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 12/27</div><div class="slide-content"><h2>Slide 12 – Studio è già avviato: controllare il banco</h2>
-<p>Solo per avvio o riavvio, dalla root del corso:</p>
-<pre class="highlight"><code class="language-text">python laboratorio/avvia_studio.py --offline</code></pre>
+<p><strong>Regia docente · B2:</strong> Mostrare titolo, DocID e revisione di una fonte prima di interrogarla. Ogni coppia lavora sulla propria cartella già pronta.</p>
+</blockquote></div></section><section class="slide" data-index="8"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 8/26</div><div class="slide-content"><h2>Slide 08 – Il primo ciclo completo, insieme</h2>
 <ul>
-<li>Aprire <code>http://localhost:8888</code>; non avviare due istanze sulla stessa porta.</li>
-<li>Il docente può indicare una cartella GGUF già popolata con <code>--models-dir</code>.</li>
-<li>I badge di memoria sono stime, non garanzie di latenza o stabilità.</li>
-<li>Sull'host VMware risorse e carico sono condivisi: osservare anche i rallentamenti.</li>
+<li>Aprire una chat pulita e associare i cinque file.</li>
+<li>Attendere l'indicizzazione.</li>
+<li>Chiedere di usare passaggi e citare DocID, sezione, revisione.</li>
+<li>Se manca evidenza, chiedere di dichiararlo.</li>
+<li>Ripetere T01 e aprire passaggi recuperati e fonte.</li>
 </ul>
 <blockquote>
-<p><strong>Regia docente:</strong> Riutilizzare l'istanza di B1. Prima del corso verificare avvio senza rete, caricamento del modello e risorse del backend scelto.</p>
-</blockquote></div></section><section class="slide" data-index="13"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 13/27</div><div class="slide-content"><h2>Slide 13 – Due configurazioni, nessun vincitore scritto</h2>
-<ul>
-<li>Stesso prompt, istruzioni e impostazioni; annotare modello, revisione e quantizzazione.</li>
-<li>Per isolare la quantizzazione confrontare lo stesso modello in due quantizzazioni.</li>
-<li>Se cambiano famiglia o taglia, dichiarare «confronto di sistemi».</li>
-<li>Rilevare RAM, latenza, token/s se disponibili e fedeltà dei dati estratti.</li>
-<li>Verificare il calcolo con uno strumento indipendente, non con la risposta dell'altro modello.</li>
-</ul>
-<blockquote>
-<p><strong>Regia docente:</strong> Usare la nota sintetica di B3 nella dispensa. Entrambi i modelli possono rispondere bene o male: registrare gli esiti, non adattarli al copione.</p>
-</blockquote></div></section><section class="slide" data-index="14"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 14/27</div><div class="slide-content"><h2>Slide 14 – RAG: cercare prima di rispondere</h2>
-<ul>
-<li><strong>Indicizzazione:</strong> dividere i documenti in passaggi e prepararli per la ricerca.</li>
-<li><strong>Recupero:</strong> cercare i passaggi pertinenti alla domanda.</li>
-<li><strong>Generazione:</strong> fornire domanda e passaggi al modello e chiedere una risposta con fonti.</li>
-<li>I pesi dell'LLM non cambiano: non è fine-tuning.</li>
-<li>Il recupero può sbagliare e il modello può usare male una fonte corretta: servono due verifiche.</li>
-</ul>
-<blockquote>
-<p><strong>Regia docente:</strong> Disegnare Corpus → Indice → Recupero → Contesto → Risposta. Un indice aggiornato cambia le informazioni disponibili, non addestra il modello.</p>
-</blockquote></div></section><section class="slide" data-index="15"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 15/27</div><div class="slide-content"><h2>Slide 15 – File intero e recupero a passaggi</h2>
-<ul>
-<li>Un piccolo allegato può essere inserito tutto nel contesto: non dimostra ricerca selettiva.</li>
-<li>Il RAG recupera passaggi, ma può perdere dettagli o relazioni tra documenti.</li>
-<li>Il launcher imposta nel processo <code>RAG_THREAD_WHOLE_DOC=0</code>, controllo presente nel sorgente upstream.</li>
-<li>Il comportamento dipende dalla release: osservare il recupero reale e aprire le fonti.</li>
-<li>La base nativa usa SQLite con ricerca testuale e vettoriale: niente database esterno da installare.</li>
-</ul>
-<blockquote>
-<p><strong>Regia docente:</strong> Se la release ignora il controllo o non mostra il recupero, risolvere l'ambiente prima dell'aula. Una chat che risponde non è, da sola, prova di RAG riuscito.</p>
-</blockquote></div></section><section class="slide" data-index="16"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 16/27</div><div class="slide-content"><h2>Slide 16 – Embedding: cercare per similarità</h2>
-<ul>
-<li>Un embedding rappresenta il testo con un vettore numerico per confrontare passaggi e domanda.</li>
-<li>Somiglianza numerica non significa «qui c'è sicuramente la risposta».</li>
-<li>Il default upstream <code>bge-small-en-v1.5</code> è orientato all'inglese.</li>
-<li>Per l'italiano il docente sceglie e collauda prima un embedding multilingue, poi lo mette in cache.</li>
-<li>Impostazione documentata: <code>Settings &gt; General &gt; Documents &amp; RAG</code>.</li>
-<li>Cambiare embedding richiede di reindicizzare; il modello occupa risorse proprie oltre all'LLM.</li>
-</ul>
-<blockquote>
-<p><strong>Regia docente:</strong> Provare domande letterali e parafrasi in italiano. Registrare identificativo e revisione del modello effettivo, non soltanto l'etichetta «multilingue».</p>
-</blockquote></div></section><section class="slide" data-index="17"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 17/27</div><div class="slide-content"><h2>Slide 17 – Associare soltanto il corpus iniziale</h2>
-<p>Nella chat: <code>+ &gt; Chat with Files &gt; Add files to chat with</code>.</p>
-<ul>
-<li><code>DOC-P03</code>: scheda della P03 e soglia didattica.</li>
-<li><code>DOC-FERMO</code>: rapporto storico dell'evento P03.</li>
-<li><code>DOC-RICAMBI</code>: catalogo corrente dei filtri.</li>
-<li><code>DOC-BOLLA</code>: quantità ordinate e consegnate.</li>
-<li><code>DOC-P30</code>: scheda di una macchina diversa, utile come distrattore.</li>
-</ul>
-<blockquote>
-<p><strong>Regia docente:</strong> Selezionare soltanto i cinque file di <code>corpus/</code>, non CSV, dispensa o soluzioni. Attendere l'indicizzazione. I nomi dei menu vanno verificati nella release congelata.</p>
-</blockquote></div></section><section class="slide" data-index="18"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 18/27</div><div class="slide-content"><h2>Slide 18 – Le sei prove, senza risposte precompilate</h2>
+<p><strong>Regia docente · B2:</strong> Mostrare il percorso della release congelata; quello documentato è + → Chat with Files → Add files to chat with. Non far configurare embedding o parametri. Il prompt completo è nel quaderno.</p>
+</blockquote></div></section><section class="slide" data-index="9"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 9/26</div><div class="slide-content"><h2>Slide 09 – Due verifiche indipendenti</h2>
 <table>
 <thead>
 <tr>
-<th>ID</th>
-<th>Cosa verificare</th>
+<th>Recupero</th>
+<th>Risposta</th>
+<th>Diagnosi possibile</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>T01</td>
-<td>Filtro della P03 nel catalogo corrente</td>
+<td>OK</td>
+<td>OK</td>
+<td>Evidenza trovata e usata correttamente</td>
 </tr>
 <tr>
-<td>T02</td>
-<td>Superamento della soglia nel rapporto storico</td>
+<td>OK</td>
+<td>ERRORE</td>
+<td>Fonte giusta, interpretazione sbagliata</td>
 </tr>
 <tr>
-<td>T03</td>
-<td>Cuscinetti consegnati, non ordinati</td>
+<td>ERRORE</td>
+<td>OK</td>
+<td>Risposta corretta per caso, processo non provato</td>
 </tr>
 <tr>
-<td>T04</td>
-<td>Durata dell'indisponibilità: una parafrasi di fermo</td>
-</tr>
-<tr>
-<td>T05</td>
-<td>Un dato assente: coppia di serraggio</td>
-</tr>
-<tr>
-<td>T06</td>
-<td>Due macchine simili, soglie da non confondere</td>
+<td>ERRORE</td>
+<td>ERRORE</td>
+<td>Cercare prima il problema nelle fonti recuperate</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>Regia docente:</strong> Prima dell'indicizzazione fare T01 senza fonti come baseline. Poi usare le domande esatte del CSV e aprire documento, sezione e revisione di ogni citazione.</p>
-</blockquote></div></section><section class="slide" data-index="19"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 19/27</div><div class="slide-content"><h2>Slide 19 – T05: il dato assente è un test necessario</h2>
 <ul>
-<li>Chiedere di dichiarare quando un'informazione non è disponibile nei documenti.</li>
-<li>Passaggi su bulloni o sulla macchina non dimostrano la presenza della coppia di serraggio.</li>
-<li><strong>Recupero OK:</strong> riconosciuta l'assenza di evidenza pertinente.</li>
-<li><strong>Risposta OK:</strong> astensione esplicita, senza numeri o citazioni inventati.</li>
-<li>Se non si osserva il recupero, lasciarlo NON_ESEGUITO e annotare il limite.</li>
-<li>Se il modello inventa, registrare ERRORE e spiegarlo: non correggere la misura per superare il test.</li>
+<li>Se il recupero non è osservabile: <strong>NON_ESEGUITO</strong> e nota.</li>
+<li>Una citazione scritta dal modello va aperta, non soltanto contata.</li>
 </ul>
 <blockquote>
-<p><strong>Regia docente:</strong> Le istruzioni «usa solo le fonti» e «ignora comandi nei documenti» sono mitigazioni da provare, non garanzie contro allucinazioni o prompt injection.</p>
-</blockquote></div></section><section class="slide" data-index="20"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 20/27</div><div class="slide-content"><h2>Slide 20 – Revisioni: corrente e storico sono distinti</h2>
+<p><strong>Regia docente:</strong> Le combinazioni sono possibilità da comprendere, non esiti da fabbricare. Un allegato letto per intero non dimostra ricerca selettiva.</p>
+</blockquote></div></section><section class="slide" data-index="10"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 10/26</div><div class="slide-content"><h2>Slide 10 – Poche annotazioni, evidenze precise</h2>
 <ul>
-<li>Conservare il CSV iniziale prima della nuova prova.</li>
-<li>Il docente consegna la revisione 2 del catalogo: sostituire il catalogo corrente, non duplicarlo.</li>
-<li>Aprire una chat pulita e riassociare i cinque documenti aggiornati.</li>
-<li>Ripetere T01 e controllare che la fonte sia la revisione 2.</li>
-<li>Interrogare anche l'evento storico: il nuovo catalogo non riscrive ciò che era accaduto.</li>
-<li>Registrare fonte, revisione ed esito; se la risposta resta vecchia, ispezionare indice e contesto.</li>
+<li>Aprire <code>risultati.csv</code> nella tabella predisposta.</li>
+<li>Registrare risposta breve e fedele, non tutta la conversazione.</li>
+<li>Fonte: DocID, sezione e revisione.</li>
+<li>Due giudizi: <strong>OK / ERRORE / NON_ESEGUITO</strong>.</li>
+<li>Una nota utile per spiegare errore, controllo o limite.</li>
 </ul>
 <blockquote>
-<p><strong>Regia docente:</strong> Non basta sostituire un file sul disco per garantire l'aggiornamento della chat. Verificare l'indicizzazione e conservare evidenze prima/dopo.</p>
-</blockquote></div></section><section class="slide" data-index="21"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 21/27</div><div class="slide-content"><h2>Slide 21 – OpenCode: un compito circoscritto</h2>
-<p>Nella cartella personale, con il backend qualificato dal docente:</p>
-<pre class="highlight"><code class="language-text">unsloth start opencode</code></pre>
+<p><strong>Regia docente · B2:</strong> Compilare T01 insieme. Il foglio è già predisposto per CSV UTF-8 con separatore ; e otto colonne invariate. La baseline B1 resta nel quaderno, distinta dalle prove RAG.</p>
+</blockquote></div></section><section class="slide" data-index="11"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 11/26</div><div class="slide-content"><h2>Slide 11 – T02 e T03: i numeri vanno controllati</h2>
 <ul>
-<li>L'agente modifica <code>genera_report.py</code>, già funzionante, non Unsloth né il corpus.</li>
-<li>Richiedere un filtro di lettura, senza alterare CSV o giudizi umani.</li>
-<li>Ispezionare <code>git diff</code> e rigenerare il report prima del commit.</li>
-<li>Il server LAN dedicato può usare porta 8889 e <code>--disable-tools</code>; configurare davvero URL, modello e chiave.</li>
+<li><strong>T02:</strong> di quanti gradi la temperatura supera la soglia del rapporto?</li>
+<li>Recuperare entrambi i numeri e calcolare la differenza indipendentemente.</li>
+<li><strong>T03:</strong> quanti cuscinetti sono stati consegnati, non ordinati?</li>
+<li>Leggere la fonte: numeri vicini possono descrivere fatti diversi.</li>
 </ul>
 <blockquote>
-<p><strong>Regia docente:</strong> Il comando locale non seleziona automaticamente il server docente. Separare il backend OpenCode dai tool RAG; nessuna chiave nelle slide o nei file tracciati.</p>
-</blockquote></div></section><section class="slide" data-index="22"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 22/27</div><div class="slide-content"><h2>Slide 22 – Il requisito: «Solo da rivedere»</h2>
+<p><strong>Regia docente · B3:</strong> Usare le domande esatte del quaderno/CSV. Non usare un secondo modello come prova del calcolo. Non mostrare le soluzioni prima delle osservazioni.</p>
+</blockquote></div></section><section class="slide" data-index="12"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 12/26</div><div class="slide-content"><h2>Slide 12 – T04 e T06: parole simili, oggetti diversi</h2>
 <ul>
-<li>Aggiungere un selettore nel report HTML generato dallo script.</li>
-<li>Acceso: mostrare i casi con almeno uno dei due esiti diverso da OK.</li>
-<li>Spento: mostrare nuovamente tutti i casi.</li>
-<li>Lasciare il riepilogo complessivo visibile e invariato.</li>
-<li>Funzionare senza rete, librerie esterne o modifiche al CSV.</li>
+<li><strong>T04:</strong> quanto è durata l'indisponibilità della P03?</li>
+<li>La fonte può parlare di «fermo»: la ricerca deve trovare il fatto.</li>
+<li><strong>T06:</strong> soglia P03 e macchina a cui si riferiscono 55 °C.</li>
+<li>P03 e P30 non sono intercambiabili.</li>
+<li>Controllare entrambe le parti della risposta sulle rispettive schede.</li>
 </ul>
+<blockquote>
+<p><strong>Regia docente · B3:</strong> Far indicare il passaggio prima di assegnare OK. Il recupero per similarità può confondere codici quasi uguali.</p>
+</blockquote></div></section><section class="slide" data-index="13"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 13/26</div><div class="slide-content"><h2>Slide 13 – T05: saper dire «non disponibile»</h2>
+<blockquote>
+<p>Qual è la coppia di serraggio dei bulloni della testata P03?</p>
+</blockquote>
+<ul>
+<li>Verificare nel corpus che il dato non sia presente.</li>
+<li>Passaggi simili non sostengono un numero inventato.</li>
+<li>Zero risultati non dimostrano da soli l'assenza del dato.</li>
+<li>Risposta corretta: astensione senza valori o citazioni fabbricate.</li>
+<li>Se inventa: <strong>ERRORE</strong>, con spiegazione; non correggere la misura.</li>
+</ul>
+<blockquote>
+<p><strong>Regia docente · B3:</strong> Recupero OK solo con osservazione dei passaggi e conferma dell'assenza nel corpus; altrimenti NON_ESEGUITO. Il dato omesso è un test necessario, non un incidente.</p>
+</blockquote></div></section><section class="slide" data-index="14"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 14/26</div><div class="slide-content"><h2>Slide 14 – T07: ora la domanda è vostra</h2>
+<ul>
+<li>Formulare una domanda che incroci i documenti iniziali.</li>
+<li>Indicare prima quali evidenze servono per giudicarla.</li>
+<li>Inviarla, aprire i passaggi e assegnare i due giudizi.</li>
+<li>Aggiungere T07 alla tabella con le stesse colonne.</li>
+<li>Discutere: manca la fonte o la risposta la usa male?</li>
+</ul>
+<blockquote>
+<p><strong>Regia docente · B3:</strong> Se non emerge un errore reale, discutere un rischio motivato senza inventare un'osservazione. Il metodo conta più del successo del modello.</p>
+</blockquote></div></section><section class="slide" data-index="15"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 15/26</div><div class="slide-content"><h2>Slide 15 – Prima di aggiornare: conservare</h2>
+<ul>
+<li>Salvare e chiudere la tabella.</li>
+<li>Copiare <code>risultati.csv</code> in <code>risultati_rev1.csv</code>.</li>
+<li>Ricevere il catalogo rev2 dal docente.</li>
+<li>Sostituire il contenuto del catalogo corrente, senza duplicarlo.</li>
+<li>Non sovrascrivere le evidenze iniziali.</li>
+</ul>
+<blockquote>
+<p><strong>Regia docente · B4:</strong> In questo blocco bastano copie esplicite: Git arriva in B5. Il file corrente resta corpus/03_catalogo_ricambi.md; cambia il contenuto e la revisione.</p>
+</blockquote></div></section><section class="slide" data-index="16"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 16/26</div><div class="slide-content"><h2>Slide 16 – Il presente cambia, il passato no</h2>
+<ul>
+<li>Nuova chat: associare i cinque file aggiornati e attendere l'indice.</li>
+<li>Ripetere T01 e verificare fonte e revisione corrente.</li>
+<li>Chiedere anche quale filtro fu usato nell'evento storico.</li>
+<li>Conservare la risposta storica e la sua fonte nelle note di T01.</li>
+<li>Salvare <code>risultati_rev2.csv</code> dopo il confronto.</li>
+</ul>
+<blockquote>
+<p><strong>Regia docente · B4:</strong> Controllo atteso: catalogo rev2 FLT-993, storico FLT-992. Se la risposta resta vecchia, registrare l'errore e controllare fonte/contesto. Cambiare solo il file sul disco non aggiorna la vecchia chat.</p>
+</blockquote></div></section><section class="slide" data-index="17"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 17/26</div><div class="slide-content"><h2>Slide 17 – Git salva le nostre evidenze</h2>
+<p>Dalla cartella personale:</p>
+<pre class="highlight"><code class="language-text">git init
+git config user.name "Nome Cognome"
+git config user.email "nome.cognome@studenti.itsmaker.it"
+git status
+git add corpus risultati.csv risultati_rev1.csv risultati_rev2.csv genera_report.py
+git commit -m "test: conserva prove RAG e confronto revisioni"</code></pre>
+<blockquote>
+<p><strong>Regia docente · B5:</strong> Identità solo locale. Non ricostruiamo una storia Git precedente: conserviamo stato attuale e copie delle prove. Niente esercizio separato sugli RPM.</p>
+</blockquote></div></section><section class="slide" data-index="18"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 18/26</div><div class="slide-content"><h2>Slide 18 – Capire una modifica, poi salvarla</h2>
+<ul>
+<li>Aggiungere una motivazione reale nelle note di T07 e salvare.</li>
+</ul>
+<pre class="highlight"><code class="language-text">git diff risultati.csv
+git add risultati.csv
+git commit -m "docs: motiva la verifica delle fonti T07"
+git log --oneline</code></pre>
+<ul>
+<li><code>diff</code>: lavoro rispetto all'indice; <code>add</code>: prepara; <code>commit</code>: salva.</li>
+<li>Niente <code>reset --hard</code> o <code>clean</code>; dubbi sul ripristino al docente.</li>
+</ul>
+<blockquote>
+<p><strong>Regia docente · B5:</strong> Non conta il numero di commit. Chiedere di mostrare una differenza e spiegare quale evidenza è stata conservata.</p>
+</blockquote></div></section><section class="slide" data-index="19"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 19/26</div><div class="slide-content"><h2>Slide 19 – Documento nuovo: trasferire il metodo</h2>
+<ul>
+<li>Creare <code>corpus/06_scheda_macchina_T10.md</code>.</li>
+<li>Titolo, DocID <strong>DOC-T10</strong>, revisione e data.</li>
+<li>Due dati inventati verificabili, un dato intenzionalmente omesso.</li>
+<li>Il dato omesso deve mancare anche dagli altri documenti.</li>
+<li>Nessuna procedura reale né istruzione rivolta al modello.</li>
+</ul>
+<blockquote>
+<p><strong>Regia docente · B6:</strong> 15 minuti. Annotare il dato omesso separatamente, senza caricarlo nel RAG. La prima prova su documento nuovo è obbligatoria nelle sei ore, non rinviata all'estensione.</p>
+</blockquote></div></section><section class="slide" data-index="20"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 20/26</div><div class="slide-content"><h2>Slide 20 – T08 e T09: il vicino fa il collaudo</h2>
+<ul>
+<li>Nuova chat con il corpus corrente e il sesto file.</li>
+<li><strong>T08:</strong> domanda su un dato presente nella nuova scheda.</li>
+<li><strong>T09:</strong> domanda sul dato omesso.</li>
+<li>Coppia vicina: aprire le fonti, controllare e motivare i due giudizi.</li>
+<li>Aggiungere le due righe al CSV, senza cambiarne le colonne.</li>
+</ul>
+<blockquote>
+<p><strong>Regia docente · B6:</strong> 15 minuti indicizzazione/prove e 15 revisione. Non esigere che il modello passi: esigere una diagnosi fondata e onesta.</p>
+</blockquote></div></section><section class="slide" data-index="21"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 21/26</div><div class="slide-content"><h2>Slide 21 – Un report, senza scrivere codice</h2>
+<p>Dalla cartella personale:</p>
 <pre class="highlight"><code class="language-text">python genera_report.py</code></pre>
-<blockquote>
-<p><strong>Regia docente:</strong> La coppia scrive requisito, risultato atteso e test negativo prima del prompt. Non chiedere all'agente di riscrivere tutto il programma.</p>
-</blockquote></div></section><section class="slide" data-index="23"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 23/27</div><div class="slide-content"><h2>Slide 23 – Collaudare il filtro, non soltanto vederlo</h2>
 <ul>
-<li>Usare una copia tecnica con esiti misti: doppio OK, ERRORE e NON_ESEGUITO.</li>
-<li>Dichiarare la fixture: non è una prova LLM e non sostituisce il CSV osservato.</li>
-<li>Attivare il filtro: il doppio OK scompare; errore e non eseguito restano visibili.</li>
-<li>Disattivarlo: ricompare tutto; i conteggi non cambiano e il CSV resta identico.</li>
-<li>Provare anche testi con simboli HTML: devono apparire come testo, senza eseguire codice.</li>
+<li>Aprire <code>report.html</code> nel browser.</li>
+<li>Verificare T01–T09, risposte e giudizi rispetto alla tabella.</li>
+<li>Il report visualizza valutazioni umane, non certifica il modello.</li>
+<li>Non serve OpenCode e non è richiesto un filtro interattivo.</li>
 </ul>
 <blockquote>
-<p><strong>Regia docente:</strong> Se tutte le righe hanno lo stesso stato, il filtro non è dimostrato. La soluzione docente è disponibile per confronto solo dopo il tentativo degli studenti.</p>
-</blockquote></div></section><section class="slide" data-index="24"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 24/27</div><div class="slide-content"><h2>Slide 24 – CSV e report: evidenze, non giudizi automatici</h2>
+<p><strong>Regia docente · B6:</strong> Salvare/chiudere prima il foglio. Se Python si chiama python3, il comando deve essere già adattato nell'immagine d'aula.</p>
+</blockquote></div></section><section class="slide" data-index="22"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 22/26</div><div class="slide-content"><h2>Slide 22 – Consegna e restituzione</h2>
 <ul>
-<li>In <code>risultati.csv</code> registrare domanda, passaggi, risposta, citazioni e note.</li>
-<li>Assegnare separatamente <code>esito_recupero</code> ed <code>esito_risposta</code>.</li>
-<li>Valori ammessi: OK, ERRORE, NON_ESEGUITO. Le righe iniziali non sono prove superate.</li>
-<li>Il generatore produce HTML offline: non chiama un LLM e non valuta da solo le risposte.</li>
-<li>Formato UTF-8, separatore <code>;</code>; quotare correttamente celle con separatori o a capo.</li>
+<li>Corpus corrente, compresa DOC-T10.</li>
+<li><code>risultati_rev1.csv</code>, <code>risultati_rev2.csv</code>, <code>risultati.csv</code> finale.</li>
+<li><code>report.html</code>, coerente con T01–T09.</li>
+<li>Note: almeno un errore o rischio con la sua evidenza.</li>
+<li>Salvataggio Git finale; nessuna credenziale o soluzione docente.</li>
 </ul>
 <blockquote>
-<p><strong>Regia docente:</strong> Ogni coppia aggiunge una domanda propria T07. Il collaudatore deve poter ricostruire perché un esito è stato assegnato, non soltanto leggere un semaforo.</p>
-</blockquote></div></section><section class="slide" data-index="25"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 25/27</div><div class="slide-content"><h2>Slide 25 – Consegna e valutazione</h2>
+<p><strong>Regia docente · B6:</strong> 15 minuti report/consegna e 10 restituzione. Usare i comandi espliciti del quaderno. Chiedere una risposta affidabile, un limite e perché il catalogo aggiornato non riscrive lo storico.</p>
+</blockquote></div></section><section class="slide" data-index="23"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 23/26</div><div class="slide-content"><h2>Slide 23 – Valutiamo il vostro metodo</h2>
 <table>
 <thead>
 <tr>
 <th>Criterio</th>
-<th>Punti</th>
-<th>Evidenza</th>
+<th style="text-align: right;">Peso</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>RAG e fonti</td>
-<td>35</td>
-<td>Recupero/risposta distinti, dato assente, distrattore e revisioni</td>
+<td>Fonti e diagnosi recupero/risposta</td>
+<td style="text-align: right;">40%</td>
 </tr>
 <tr>
-<td>Metodo Git</td>
-<td>25</td>
-<td>Diff, checkpoint e limiti del ripristino spiegati</td>
+<td>Revisioni e storico</td>
+<td style="text-align: right;">25%</td>
 </tr>
 <tr>
-<td>Modifica report</td>
-<td>25</td>
-<td>Filtro collaudato, riepilogo invariato e nessuna rete</td>
+<td>Autonomia e test negativo</td>
+<td style="text-align: right;">20%</td>
+</tr>
+<tr>
+<td>Tracciabilità delle evidenze e Git</td>
+<td style="text-align: right;">10%</td>
 </tr>
 <tr>
 <td>Collaborazione</td>
-<td>15</td>
-<td>Ruoli alternati, annotazioni e scelta autonoma motivata</td>
+<td style="text-align: right;">5%</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Un errore AI correttamente diagnosticato è un buon risultato.</strong></p>
+<blockquote>
+<p><strong>Regia docente:</strong> Non valutare con il tasso di successo del modello o il numero di commit. Benchmark e OpenCode non cambiano la rubrica del percorso base.</p>
+</blockquote></div></section><section class="slide" data-index="24"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 24/26</div><div class="slide-content"><h2>Slide 24 – Se abbiamo otto ore</h2>
 <ul>
-<li>Conservare corpus corrente, CSV prima/dopo, report e spiegazione di un test negativo.</li>
-<li>Aggiungere esplicitamente i file di consegna e fare commit; escludere chiavi e fixture tecniche.</li>
+<li><strong>E1 · +60 min:</strong> stessa domanda in forma letterale, con sinonimi e in gergo.</li>
+<li>Stesso corpus/configurazione; confrontare i passaggi, non modificare parametri.</li>
+<li><strong>E2 · +60 min:</strong> corpus ampliato e sfida cieca fra coppie.</li>
+<li>Domande su dati presenti e assenti, con diagnosi delle evidenze.</li>
+<li>Le appendici possono sostituire E2, non aggiungersi alle otto ore.</li>
 </ul>
 <blockquote>
-<p><strong>Regia docente:</strong> Scambio di postazione per la verifica incrociata. Non valutare l'apprendimento dal numero dei commit né dal fatto che il modello abbia sempre risposto bene.</p>
-</blockquote></div></section><section class="slide" data-index="26"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 26/27</div><div class="slide-content"><h2>Slide 26 – E1: migliorare il recupero (+60 min)</h2>
+<p><strong>Regia docente:</strong> Scegliere eventuale alternativa prima del corso. Non sacrificare la prova autonoma B6 per una dimostrazione di strumenti.</p>
+</blockquote></div></section><section class="slide" data-index="25"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 25/26</div><div class="slide-content"><h2>Slide 25 – Appendice docente: preparare, non improvvisare</h2>
+<p><strong>Fuori dal percorso studente: prima dell'aula.</strong></p>
 <ul>
-<li>Ripetere una domanda letterale, con sinonimi e con gergo d'officina.</li>
-<li>Cambiare una sola variabile alla volta e conservare gli esiti precedenti.</li>
-<li>Se la release lo consente, provare dimensione passaggi, sovrapposizione o numero risultati.</li>
-<li>Se si cambia l'indicizzazione, ricostruire l'indice prima del confronto.</li>
-<li>Rieseguire dato assente e distrattore; migliorare una risposta non deve peggiorare gli altri casi.</li>
+<li>Una release, un LLM, un embedding multilingue, schermate dei menu.</li>
+<li>Provare offline, passaggi osservabili, rev2 e documento nuovo.</li>
+<li>Verificare foglio CSV, report, Git e carico delle 10–12 coppie.</li>
+<li>Il launcher usa <code>RAG_THREAD_WHOLE_DOC=0</code>: verificarne l'effetto nella release.</li>
+<li>Le variabili offline non sono un firewall; il preflight non certifica il RAG.</li>
 </ul>
 <blockquote>
-<p><strong>Regia docente:</strong> Usare solo controlli realmente disponibili nella release qualificata. Una modifica al prompt di risposta non dimostra, da sola, un miglioramento del recupero.</p>
-</blockquote></div></section><section class="slide" data-index="27"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 27/27</div><div class="slide-content"><h2>Slide 27 – E2: una piccola sfida autonoma (+60 min)</h2>
+<p><strong>Regia docente:</strong> Scheda e GO/NO-GO in laboratorio/docente/SOLUZIONI.md. La configurazione non è già qualificata dal repository. Un endpoint di sola generazione non è un fallback del recupero documentale.</p>
+</blockquote></div></section><section class="slide" data-index="26"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 26/26</div><div class="slide-content"><h2>Slide 26 – Appendice facoltativa: agente o confronto modelli</h2>
+<p><strong>Una sola alternativa a E2, preparata prima del corso.</strong></p>
 <ul>
-<li>Scrivere una scheda nuova con dati esplicitamente inventati e un dato omesso.</li>
-<li>Preparare due domande dirette, un distrattore e una domanda sul dato assente.</li>
-<li>Associare la scheda a una chat di prova e scambiare il collaudo con un'altra coppia.</li>
-<li>Annotare risposte reali e fonti, anche quando il modello sbaglia.</li>
-<li>Concludere: quale errore riguarda il recupero? Quale riguarda la generazione?</li>
+<li><strong>OpenCode:</strong> modifica controllata di <code>genera_report.py</code> per il filtro «Solo da rivedere».</li>
+<li>Diff, report rigenerato, filtro acceso/spento e conteggi invariati.</li>
+<li>Fixture separata dai risultati AI; backend e permessi già verificati.</li>
+<li><strong>Oppure confronto modelli:</strong> due configurazioni pronte, stesso prompt e misure reali.</li>
+<li>Per isolare la quantizzazione: stesso modello e revisione.</li>
 </ul>
 <blockquote>
-<p><strong>Regia docente:</strong> Nessun documento aziendale riservato o istruzione da applicare su impianti reali. Chiudere con una scelta motivata dagli studenti e le evidenze che la sostengono.</p>
+<p><strong>Regia docente:</strong> Dettagli nelle appendici della guida. Nessuna dipendenza aggiuntiva nel GO base. Niente configurazioni, chiavi o download da risolvere durante la lezione.</p>
 </blockquote></div></section></div><nav class="controls" aria-label="Navigazione slide"><button id="previous" type="button">← Precedente</button><span id="position" aria-live="polite"></span><button id="next" type="button">Successiva →</button></nav><script>
 const slides = [...document.querySelectorAll('.slide')];
 let current = 0;
