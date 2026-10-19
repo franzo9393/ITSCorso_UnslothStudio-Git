@@ -60,6 +60,13 @@ I token sono unità di testo elaborate dal modello; gli embedding aiutano a cerc
 
 **Operatore B · Collaudatore A.** Il docente mostra il ciclo completo, poi ogni coppia lo ripete.
 
+### Due momenti diversi
+
+- **Preparazione:** i documenti associati vengono suddivisi in passaggi (*chunk*), rappresentati con embedding e organizzati nell'indice per la ricerca.
+- **Interrogazione:** a ogni domanda il sistema cerca nell'indice e inserisce i passaggi recuperati nel contesto dell'LLM, che genera la risposta.
+
+L'indice è una struttura derivata dalle fonti, non un nuovo addestramento del modello. Quando cambiano i documenti, occorre aggiornare anche ciò che il sistema consulta: lo faremo in B4.
+
 ### Caricare il corpus e chiedere con le fonti
 
 1. Aprire una chat pulita. Usare il comando per associare documenti mostrato dal docente: nella versione documentata, `+ → Chat with Files → Add files to chat with`.
@@ -81,6 +88,8 @@ I token sono unità di testo elaborate dal modello; gli embedding aiutano a cerc
 | Risposta | Il testo è corretto e sostenuto da quei passaggi? |
 
 Una risposta giusta per caso non dimostra un recupero riuscito. Un allegato inserito per intero nel contesto non dimostra ricerca selettiva: osservare i passaggi con il docente. Le istruzioni aiutano, ma non garantiscono correttezza o protezione da comandi malevoli nei documenti.
+
+> **Perché non incollare tutto nella chat?** Il contesto ha una capacità limitata; testo irrilevante o ripetuto può rendere più difficile individuare il dato e aumentare il lavoro di elaborazione. Il RAG cerca di selezionare i passaggi utili, ma può recuperarne di sbagliati o incompleti. I cinque documenti del laboratorio non dimostrano prestazioni su grandi archivi.
 
 ### Compilazione leggera della tabella
 
@@ -112,6 +121,10 @@ Usare `OK`, `ERRORE`, `NON_ESEGUITO`. Se non si può osservare il recupero, lasc
 | T06 | Qual è la soglia didattica di temperatura della P03 e a quale macchina si riferiscono i 55 °C? | Distinguere due macchine e controllare entrambe le fonti. |
 | T07 | Domanda autonoma della coppia su un dettaglio incrociato dei documenti. | Aggiungere una riga con le stesse colonne e motivare i due giudizi. |
 
+> **Un passaggio contiene tutto ciò che serve?** Esempio su carta, esterno al corpus: «La durata è 12 minuti». Senza macchina ed evento non sappiamo a quale caso attribuirla. Un *chunk* può lasciare fuori il titolo o la frase che chiarisce il dato: aprire la fonte e controllare il contesto. Questo esempio non richiede una nuova riga nel CSV né dimostra un errore di Studio.
+
+> **Significato simile non significa codice uguale.** In T04 «indisponibilità» e «fermo» possono descrivere lo stesso evento: è il valore della ricerca semantica. In T06 P03 e P30 restano identificatori distinti: occorre una corrispondenza esatta. Ricerca lessicale e semantica possono completarsi, ma non sostituiscono il controllo di macchina, dato e revisione.
+
 Per T05, leggere anche il corpus per confermare che il valore non è presente. Passaggi simili o zero risultati non provano da soli l'assenza. Recupero OK se i passaggi osservati non sostengono il dato e il controllo del corpus conferma l'assenza; risposta OK se si astiene senza numeri o citazioni inventati. Se il modello inventa, registrare ERRORE: averlo identificato è un buon lavoro.
 
 **Una diagnosi da discutere:** manca la fonte, oppure la fonte c'è ma la risposta la interpreta male?
@@ -126,7 +139,7 @@ Per T05, leggere anche il corpus per confermare che il valore non è presente. P
 
 1. Salvare e chiudere la tabella. Copiare `risultati.csv` come `risultati_rev1.csv` nella cartella personale. Non sovrascriverla nelle prove successive.
 2. Ricevere dal docente il catalogo rev2. Sostituire il contenuto di `corpus/03_catalogo_ricambi.md`; non lasciare due cataloghi correnti nel corpus.
-3. Aprire una **nuova chat pulita** e associare i cinque file aggiornati. Modificare il file sul disco non aggiorna automaticamente la vecchia chat.
+3. Aprire una **nuova chat pulita**, riassociare i cinque file aggiornati e attendere la nuova indicizzazione. Modificare il file sul disco non aggiorna automaticamente la vecchia chat: fonte, indice e passaggi nel contesto devono riferirsi al corpus corrente.
 4. Ripetere T01 e aggiornare la riga in `risultati.csv` con risposta e revisione effettivamente osservate.
 5. Chiedere: «Quale filtro è registrato nell'evento storico di fermo P03?» Verificare DOC-FERMO e conservare domanda, risposta e fonte nelle note di T01.
 6. Confrontare catalogo corrente e storico, poi salvare una copia `risultati_rev2.csv`. Se la risposta è vecchia, controllare fonte recuperata e chat; non cancellare l'errore.
@@ -179,6 +192,8 @@ Creare `corpus/06_scheda_macchina_T10.md` con:
 - due dati inventati, per esempio codice di un accessorio e durata di un evento simulato;
 - un dato intenzionalmente omesso, assente anche dagli altri documenti;
 - avvertenza di uso esclusivamente didattico; nessuna procedura per macchine reali.
+
+> **Scrivere per chi dovrà cercare e verificare.** Usare titoli espliciti e indicare vicino a ciascun dato la macchina, l'unità di misura quando applicabile e le eventuali condizioni di validità. Evitare rimandi ambigui come «questa macchina» o «il valore precedente». DocID, revisione e data restano necessari: una buona struttura aiuta, ma non garantisce il recupero.
 
 Non mettere nel documento la risposta al dato omesso né istruzioni rivolte al modello. Concordare il dato omesso su un appunto separato, non caricato nel RAG.
 
@@ -239,7 +254,7 @@ Si valuta il vostro metodo, non la percentuale di successi del modello o il nume
 
 ## Estensione a otto ore
 
-**E1 · +60 min: la domanda cambia, le fonti no.** Confrontare tre formulazioni della stessa domanda: «Qual è la soglia di temperatura della P03?», «Qual è il limite didattico della temperatura dell'olio della P03?», «Limite caldo olio P03?». Stesso corpus e configurazione: annotare passaggi, risposta e differenze senza cambiare parametri tecnici.
+**E1 · +60 min: la domanda cambia, le fonti no.** Confrontare tre formulazioni della stessa domanda: «Qual è la soglia di temperatura della P03?», «Qual è il limite didattico della temperatura dell'olio della P03?», «Limite caldo olio P03?». Mantenere esatti il codice P03 e le condizioni della domanda: cambiano le parole, non la macchina o il fatto cercato. Stesso corpus e configurazione: annotare passaggi, risposta e differenze senza cambiare parametri tecnici.
 
 **E2 · +60 min: sfida documentale ampliata.** Aggiungere documenti sintetici oltre la prima scheda B6, scambiarli fra coppie e svolgere un collaudo cieco con domande rispondibili e dati assenti. Discutere le diagnosi, non una classifica di risposte fortunate.
 

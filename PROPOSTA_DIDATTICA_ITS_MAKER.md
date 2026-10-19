@@ -21,6 +21,8 @@ Al termine lo studente sa:
 
 Token ed embedding si spiegano qualitativamente: unità di testo e rappresentazioni utili alla ricerca. Quantizzazione, formati dei pesi e benchmark non sono prerequisiti. Un errore del modello riconosciuto e spiegato è un risultato didattico valido.
 
+Nei blocchi esistenti si chiariscono i due momenti del RAG (preparazione dell'indice e interrogazione), il possibile contesto mancante nei passaggi e la differenza fra somiglianza semantica e identità dei codici. Brevi box spiegano i limiti del contesto esteso e la redazione di fonti verificabili. Non sono moduli aggiuntivi: restano invariati tempi, strumenti, prove T01–T09 e rubrica.
+
 ## 2. Percorso base: sei ore
 
 | Blocco | Minuti | Attività e risultato osservabile |
@@ -96,7 +98,7 @@ Non valutare lo studente con la percentuale di risposte corrette del modello o i
 
 ## 7. Otto ore e approfondimenti facoltativi
 
-- **E1 · +60 minuti: diagnosi delle domande.** Stesso corpus e stessa configurazione; confrontare domanda letterale, sinonimi e gergo d'officina. Annotare passaggi recuperati e cambiamenti della risposta. Nessun tuning di chunk, overlap o embedding.
+- **E1 · +60 minuti: diagnosi delle domande.** Stesso corpus e stessa configurazione; confrontare domanda letterale, sinonimi e gergo d'officina mantenendo esatti codici e condizioni. Annotare passaggi recuperati e cambiamenti della risposta, senza sostituire gli esiti precedenti con tentativi favorevoli. Nessun tuning di chunk, overlap o embedding.
 - **E2 · +60 minuti: sfida documentale ampliata.** Espandere il corpus con altri documenti sintetici, scambio fra coppie e collaudo cieco con dati presenti e assenti. È un approfondimento rispetto alla prima prova autonoma già obbligatoria in B6.
 
 **Alternative facoltative a E2, scelte prima del corso:** un laboratorio OpenCode sul filtro del report, oppure un confronto guidato fra due configurazioni già disponibili. Occupano gli stessi 60 minuti di E2, non si sommano al programma di otto ore e non sono richiesti nelle sei ore. Per OpenCode servono qualifica aggiuntiva dell'agente e backend; per il confronto modelli, misure reali e variabili controllate. Dettagli nell'appendice docente.

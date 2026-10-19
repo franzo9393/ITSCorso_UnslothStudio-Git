@@ -60,6 +60,12 @@ Percorso documentato, da congelare con schermate reali:
 
 Lo store nativo combina ricerca testuale e vettoriale in SQLite: non serve un server aggiuntivo. Nei documenti piccoli il controllo whole-doc è importante per osservare il recupero; non presentare il corpus didattico come prova di scalabilità industriale.
 
+### Note tecniche: chiarire senza aggiungere strumenti
+
+- **Metadati testuali e filtri non coincidono.** DocID, macchina, data e revisione nell'intestazione aiutano la verifica umana. Diventano filtri software solo se acquisiti come campi strutturati e usati effettivamente dal motore: non presumere che Studio lo faccia automaticamente. Nessun esercizio su filtri o nuova funzione dell'interfaccia nel percorso base.
+- **Uno score non è una percentuale di correttezza.** Se la release mostra punteggi, verificarne il significato prima di commentarli: una similarità di solito cresce con l'affinità, una distanza diminuisce. Non fissare soglie universali né dedurre la verità del dato dal numero; leggere il passaggio resta il controllo decisivo.
+- **RAG e comportamento agentico sono dimensioni diverse.** Il RAG porta evidenze documentali nel contesto; un agente può scegliere ed eseguire strumenti, anche di recupero. Possono coesistere. Questo chiarimento non introduce azioni su macchine o gestionali né un nuovo laboratorio obbligatorio.
+
 ### GO / NO-GO base
 
 Prima dell'erogazione provare: avvio offline, indicizzazione e passaggi osservabili, sei domande, aggiornamento rev2 e storico, aggiunta di un documento nuovo con dato omesso, roundtrip del foglio risultati, report HTML, salvataggi Git e carico concorrente sull'aula. Documentare tempi ed errori. Un modello che sbaglia può essere istruttivo; un sistema che non permette di osservare il recupero non realizza il laboratorio dichiarato.
@@ -71,14 +77,16 @@ OpenCode e il suo tool calling sono fuori dal GO base. Un'API LAN/cloud di sola 
 | Blocco | Minuti | Regia e controllo di uscita |
 | --- | ---: | --- |
 | B1 | 40 | T01 senza documenti subito; annotazione nel quaderno, non nel CSV RAG. Regola BLU-17 nella stessa chat e poi chat pulita: distinguere contesto e pesi. |
-| B2 | 65 | Mostrare una volta l'intero ciclo corpus → recupero → risposta → fonte. Ripetere T01 e compilare insieme una riga. |
-| B3 | 75 | Coppie su T02–T06, poi T07 propria. Confrontare almeno un caso di fonte pertinente/risposta errata o discuterne il rischio se non osservato. |
+| B2 | 65 | Distinguere preparazione (corpus, chunk, embedding, indice) e interrogazione (ricerca, contesto, risposta), poi verificare la fonte. Ripetere T01 e compilare insieme una riga. |
+| B3 | 75 | Coppie su T02–T06, poi T07 propria. Chiarire contesto dei chunk e semantica/codici esatti sui casi esistenti. Confrontare fonte pertinente/risposta errata o discuterne il rischio se non osservato. |
 | B4 | 40 | Copia risultati rev1; consegna rev2; nuova chat col corpus aggiornato; T01 e domanda sullo storico; copia rev2. |
 | B5 | 25 | Git sui file del laboratorio: inizializzazione, checkpoint, diff e conservazione. Non insegnare un secondo caso sugli RPM. |
 | B6 | 70 | 15 min documento nuovo, 15 indicizzazione e T08/T09, 15 revisione vicina, 15 report/consegna, 10 restituzione. |
 | Pause/margine | 45 | Distribuire. Totale 360, attività nette 315. |
 
 Scambiare Operatore/Collaudatore a ogni blocco. Le spiegazioni sono incluse, non aggiuntive. Se una risposta sbaglia, non correggere il CSV per farlo sembrare un successo.
+
+In B2 il box sul contesto esteso risponde a «perché non incollare tutto?»: capacità, rumore e lavoro di elaborazione, senza promettere che il RAG sia sempre più rapido o corretto. In B3 usare l'esempio su carta dei 12 minuti per distinguere dato isolato e contesto necessario; non modificare il corpus per provocare un errore e non aggiungere prove al CSV. Per T04/T06 distinguere somiglianza di significato e identità dei codici, senza presentare la ricerca ibrida come garanzia. Questi chiarimenti sostengono le attività esistenti, non aggiungono blocchi o minuti.
 
 ## 4. Risposte sostenute dal corpus e doppio giudizio
 
@@ -99,6 +107,8 @@ Scambiare Operatore/Collaudatore a ogni blocco. Le spiegazioni sono incluse, non
 
 Raccogliere risposta breve fedele, DocID/sezione/revisione e nota motivata, non trascrizioni integrali. Il report non interroga un modello e non assegna i giudizi.
 
+Non rieseguire finché compare una risposta favorevole cancellando gli esiti precedenti. Una riformulazione è un'osservazione distinta da conservare, anche in E1. Un'esecuzione senza errori software non misura la correttezza della risposta: valgono i due giudizi e le fonti verificate.
+
 ## 5. Revisioni e prova autonoma
 
 ### B4: non riscrivere la storia
@@ -112,7 +122,7 @@ Raccogliere risposta breve fedele, DocID/sezione/revisione e nota motivata, non 
 
 ### B6: trasferire il metodo
 
-Ogni coppia scrive `corpus/06_scheda_macchina_T10.md`: DocID DOC-T10, data e revisione, due dati inventati verificabili e un dato omesso anche dal resto del corpus. Non includere procedure reali o istruzioni rivolte all'assistente. Nuova chat con i sei documenti correnti. La coppia vicina verifica T08 (dato presente) e T09 (dato omesso), registrate come nuove righe nello stesso CSV. La prima esperienza autonoma resta obbligatoria nelle sei ore.
+Ogni coppia scrive `corpus/06_scheda_macchina_T10.md`: DocID DOC-T10, data e revisione, due dati inventati verificabili e un dato omesso anche dal resto del corpus. Usare titoli espliciti e mantenere vicino a ciascun dato macchina, unità quando applicabile e condizioni di validità; evitare rimandi ambigui. È un criterio redazionale della stessa scheda, non un esercizio di tuning. Non includere procedure reali o istruzioni rivolte all'assistente. Nuova chat con i sei documenti correnti. La coppia vicina verifica T08 (dato presente) e T09 (dato omesso), registrate come nuove righe nello stesso CSV. La prima esperienza autonoma resta obbligatoria nelle sei ore.
 
 Consegna: `corpus/`, `risultati_rev1.csv`, `risultati_rev2.csv`, `risultati.csv` con T01–T09 e `report.html`; note con spiegazione di un errore/rischio e sua evidenza. Salvare tutto con Git dopo il collaudo. Nessuna credenziale e nessuna soluzione docente.
 
@@ -130,7 +140,7 @@ Valutare il metodo dello studente, non la percentuale di successi del modello n�
 
 ## 7. Estensione a otto ore
 
-**E1 (+60):** tre formulazioni della stessa domanda (letterale, sinonimi, gergo); stesso corpus e configurazione. Confrontare i passaggi, non cambiare chunk/overlap/embedding.
+**E1 (+60):** tre formulazioni della stessa domanda (letterale, sinonimi, gergo); mantenere identici codici macchina e condizioni, variando solo l'espressione. Stesso corpus e configurazione: confrontare i passaggi e conservare le osservazioni, non cambiare chunk/overlap/embedding.
 
 **E2 (+60):** sfida con corpus ampliato e collaudo cieco fra coppie, domande presenti/assenti e discussione degli errori. Non è la prima prova autonoma, già svolta in B6.
 

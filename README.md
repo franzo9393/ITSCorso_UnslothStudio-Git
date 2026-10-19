@@ -37,6 +37,8 @@ I Markdown sono i sorgenti; HTML/PDF didattici si rigenerano con `scripts/build_
 
 Valutazione: 40% fonti/diagnosi, 25% revisioni/storico, 20% autonomia/test negativo, 10% tracciabilità/Git, 5% collaborazione. Non si valuta lo studente con la percentuale di risposte corrette del modello.
 
+I chiarimenti su indice/interrogazione, contesto dei passaggi e semantica/codici esatti sono integrati nei blocchi esistenti. Box su contesto esteso e qualità delle fonti completano il quaderno; metadati/filtri, score e rapporto fra RAG e agenti restano note docente. Nessun modulo, strumento o test aggiuntivo.
+
 **Otto ore:** E1 +60 minuti su domande letterali/sinonimi/gergo, senza tuning tecnico; E2 +60 su corpus ampliato e collaudo cieco. Un approfondimento OpenCode oppure confronto modelli può sostituire E2 se scelto e preparato prima; non si somma alle otto ore e non è obbligatorio nelle sei.
 
 ## 3. Preparazione: solo docente, prima dell'aula

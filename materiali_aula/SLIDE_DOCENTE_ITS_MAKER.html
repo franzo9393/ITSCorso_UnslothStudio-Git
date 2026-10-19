@@ -124,14 +124,12 @@ button:disabled { opacity: .5; cursor: default; }
 <blockquote>
 <p><strong>Regia docente:</strong> Spiegazione qualitativa breve. Niente benchmark obbligatorio, scelta dei modelli o calcolo della RAM: servono al tecnico che prepara, non a questa prima attività.</p>
 </blockquote></div></section><section class="slide" data-index="6"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 6/26</div><div class="slide-content"><h2>Slide 06 – RAG: cercare prima di rispondere</h2>
-<ol>
-<li><strong>Corpus:</strong> documenti da consultare.</li>
-<li><strong>Indice:</strong> passaggi preparati per la ricerca.</li>
-<li><strong>Recupero:</strong> passaggi pertinenti alla domanda.</li>
-<li><strong>Generazione:</strong> risposta con quei passaggi nel contesto.</li>
-<li><strong>Verifica:</strong> lettura delle fonti da parte nostra.</li>
-</ol>
-<p><strong>Aggiornare i documenti non riaddestra il modello.</strong></p>
+<ul>
+<li><strong>Preparazione:</strong> corpus → passaggi (<em>chunk</em>) → embedding → indice.</li>
+<li><strong>A ogni domanda:</strong> ricerca nell'indice → passaggi nel contesto → risposta dell'LLM.</li>
+<li><strong>Verifica umana:</strong> aprire le fonti e controllare la risposta.</li>
+</ul>
+<p><strong>Preparare l'indice non riaddestra il modello.</strong></p>
 <blockquote>
 <p><strong>Regia docente · B2:</strong> Usare questo schema durante tutta la lezione. I documenti sono piccoli per rendere la verifica praticabile, non per dimostrare scalabilità industriale.</p>
 </blockquote></div></section><section class="slide" data-index="7"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 7/26</div><div class="slide-content"><h2>Slide 07 – Cinque documenti, un caso leggibile</h2>
@@ -236,18 +234,19 @@ button:disabled { opacity: .5; cursor: default; }
 <li><strong>T03:</strong> quanti cuscinetti sono stati consegnati, non ordinati?</li>
 <li>Leggere la fonte: numeri vicini possono descrivere fatti diversi.</li>
 </ul>
+<p>Un <em>chunk</em> può essere incompleto: «La durata è 12 minuti» non identifica macchina né evento. Aprire la fonte per recuperarne il contesto.</p>
 <blockquote>
-<p><strong>Regia docente · B3:</strong> Usare le domande esatte del quaderno/CSV. Non usare un secondo modello come prova del calcolo. Non mostrare le soluzioni prima delle osservazioni.</p>
+<p><strong>Regia docente · B3:</strong> Usare le domande esatte del quaderno/CSV e un calcolo indipendente. L'esempio dei 12 minuti è inventato, esterno al corpus: non è una prova da registrare né un errore da imporre a Studio. Non anticipare le soluzioni.</p>
 </blockquote></div></section><section class="slide" data-index="12"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 12/26</div><div class="slide-content"><h2>Slide 12 – T04 e T06: parole simili, oggetti diversi</h2>
 <ul>
 <li><strong>T04:</strong> quanto è durata l'indisponibilità della P03?</li>
-<li>La fonte può parlare di «fermo»: la ricerca deve trovare il fatto.</li>
+<li><strong>Ricerca semantica:</strong> «indisponibilità» e «fermo» possono indicare lo stesso evento.</li>
 <li><strong>T06:</strong> soglia P03 e macchina a cui si riferiscono 55 °C.</li>
-<li>P03 e P30 non sono intercambiabili.</li>
+<li><strong>Corrispondenza esatta:</strong> P03 e P30 sono codici diversi, non sinonimi.</li>
 <li>Controllare entrambe le parti della risposta sulle rispettive schede.</li>
 </ul>
 <blockquote>
-<p><strong>Regia docente · B3:</strong> Far indicare il passaggio prima di assegnare OK. Il recupero per similarità può confondere codici quasi uguali.</p>
+<p><strong>Regia docente · B3:</strong> La ricerca lessicale cerca termini e codici; quella semantica espressioni affini. Lo store combina le due, senza garantire il risultato. Far indicare il passaggio prima di assegnare OK: similarità non significa identità.</p>
 </blockquote></div></section><section class="slide" data-index="13"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 13/26</div><div class="slide-content"><h2>Slide 13 – T05: saper dire «non disponibile»</h2>
 <blockquote>
 <p>Qual è la coppia di serraggio dei bulloni della testata P03?</p>
@@ -283,14 +282,14 @@ button:disabled { opacity: .5; cursor: default; }
 <p><strong>Regia docente · B4:</strong> In questo blocco bastano copie esplicite: Git arriva in B5. Il file corrente resta corpus/03_catalogo_ricambi.md; cambia il contenuto e la revisione.</p>
 </blockquote></div></section><section class="slide" data-index="16"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 16/26</div><div class="slide-content"><h2>Slide 16 – Il presente cambia, il passato no</h2>
 <ul>
-<li>Nuova chat: associare i cinque file aggiornati e attendere l'indice.</li>
+<li>Nuova chat: riassociare i cinque file aggiornati e attendere la nuova indicizzazione.</li>
 <li>Ripetere T01 e verificare fonte e revisione corrente.</li>
 <li>Chiedere anche quale filtro fu usato nell'evento storico.</li>
 <li>Conservare la risposta storica e la sua fonte nelle note di T01.</li>
 <li>Salvare <code>risultati_rev2.csv</code> dopo il confronto.</li>
 </ul>
 <blockquote>
-<p><strong>Regia docente · B4:</strong> Controllo atteso: catalogo rev2 FLT-993, storico FLT-992. Se la risposta resta vecchia, registrare l'errore e controllare fonte/contesto. Cambiare solo il file sul disco non aggiorna la vecchia chat.</p>
+<p><strong>Regia docente · B4:</strong> Riprendere i due momenti di B2: fonte aggiornata → nuovo indice → passaggi nel contesto. Cambiare solo il file sul disco non aggiorna la vecchia chat. Atteso: catalogo rev2 FLT-993, storico FLT-992; un esito diverso va registrato e diagnosticato.</p>
 </blockquote></div></section><section class="slide" data-index="17"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 17/26</div><div class="slide-content"><h2>Slide 17 – Git salva le nostre evidenze</h2>
 <p>Dalla cartella personale:</p>
 <pre class="highlight"><code class="language-text">git init
@@ -320,6 +319,7 @@ git log --oneline</code></pre>
 <li>Creare <code>corpus/06_scheda_macchina_T10.md</code>.</li>
 <li>Titolo, DocID <strong>DOC-T10</strong>, revisione e data.</li>
 <li>Due dati inventati verificabili, un dato intenzionalmente omesso.</li>
+<li>Dati con macchina, unità e condizioni esplicite; evitare rimandi ambigui.</li>
 <li>Il dato omesso deve mancare anche dagli altri documenti.</li>
 <li>Nessuna procedura reale né istruzione rivolta al modello.</li>
 </ul>
@@ -393,7 +393,7 @@ git log --oneline</code></pre>
 </blockquote></div></section><section class="slide" data-index="24"><div class="slide-header">ITS MAKER · AI, LLM e RAG · 24/26</div><div class="slide-content"><h2>Slide 24 – Se abbiamo otto ore</h2>
 <ul>
 <li><strong>E1 · +60 min:</strong> stessa domanda in forma letterale, con sinonimi e in gergo.</li>
-<li>Stesso corpus/configurazione; confrontare i passaggi, non modificare parametri.</li>
+<li>Confrontare i passaggi mantenendo esatti codici e condizioni; nessun tuning.</li>
 <li><strong>E2 · +60 min:</strong> corpus ampliato e sfida cieca fra coppie.</li>
 <li>Domande su dati presenti e assenti, con diagnosi delle evidenze.</li>
 <li>Le appendici possono sostituire E2, non aggiungersi alle otto ore.</li>

@@ -67,13 +67,11 @@
 
 ## Slide 06 – RAG: cercare prima di rispondere
 
-1. **Corpus:** documenti da consultare.
-2. **Indice:** passaggi preparati per la ricerca.
-3. **Recupero:** passaggi pertinenti alla domanda.
-4. **Generazione:** risposta con quei passaggi nel contesto.
-5. **Verifica:** lettura delle fonti da parte nostra.
+- **Preparazione:** corpus → passaggi (*chunk*) → embedding → indice.
+- **A ogni domanda:** ricerca nell'indice → passaggi nel contesto → risposta dell'LLM.
+- **Verifica umana:** aprire le fonti e controllare la risposta.
 
-**Aggiornare i documenti non riaddestra il modello.**
+**Preparare l'indice non riaddestra il modello.**
 
 > **Regia docente · B2:** Usare questo schema durante tutta la lezione. I documenti sono piccoli per rendere la verifica praticabile, non per dimostrare scalabilità industriale.
 
@@ -143,19 +141,21 @@
 - **T03:** quanti cuscinetti sono stati consegnati, non ordinati?
 - Leggere la fonte: numeri vicini possono descrivere fatti diversi.
 
-> **Regia docente · B3:** Usare le domande esatte del quaderno/CSV. Non usare un secondo modello come prova del calcolo. Non mostrare le soluzioni prima delle osservazioni.
+Un *chunk* può essere incompleto: «La durata è 12 minuti» non identifica macchina né evento. Aprire la fonte per recuperarne il contesto.
+
+> **Regia docente · B3:** Usare le domande esatte del quaderno/CSV e un calcolo indipendente. L'esempio dei 12 minuti è inventato, esterno al corpus: non è una prova da registrare né un errore da imporre a Studio. Non anticipare le soluzioni.
 
 ---
 
 ## Slide 12 – T04 e T06: parole simili, oggetti diversi
 
 - **T04:** quanto è durata l'indisponibilità della P03?
-- La fonte può parlare di «fermo»: la ricerca deve trovare il fatto.
+- **Ricerca semantica:** «indisponibilità» e «fermo» possono indicare lo stesso evento.
 - **T06:** soglia P03 e macchina a cui si riferiscono 55 °C.
-- P03 e P30 non sono intercambiabili.
+- **Corrispondenza esatta:** P03 e P30 sono codici diversi, non sinonimi.
 - Controllare entrambe le parti della risposta sulle rispettive schede.
 
-> **Regia docente · B3:** Far indicare il passaggio prima di assegnare OK. Il recupero per similarità può confondere codici quasi uguali.
+> **Regia docente · B3:** La ricerca lessicale cerca termini e codici; quella semantica espressioni affini. Lo store combina le due, senza garantire il risultato. Far indicare il passaggio prima di assegnare OK: similarità non significa identità.
 
 ---
 
@@ -199,13 +199,13 @@
 
 ## Slide 16 – Il presente cambia, il passato no
 
-- Nuova chat: associare i cinque file aggiornati e attendere l'indice.
+- Nuova chat: riassociare i cinque file aggiornati e attendere la nuova indicizzazione.
 - Ripetere T01 e verificare fonte e revisione corrente.
 - Chiedere anche quale filtro fu usato nell'evento storico.
 - Conservare la risposta storica e la sua fonte nelle note di T01.
 - Salvare `risultati_rev2.csv` dopo il confronto.
 
-> **Regia docente · B4:** Controllo atteso: catalogo rev2 FLT-993, storico FLT-992. Se la risposta resta vecchia, registrare l'errore e controllare fonte/contesto. Cambiare solo il file sul disco non aggiorna la vecchia chat.
+> **Regia docente · B4:** Riprendere i due momenti di B2: fonte aggiornata → nuovo indice → passaggi nel contesto. Cambiare solo il file sul disco non aggiorna la vecchia chat. Atteso: catalogo rev2 FLT-993, storico FLT-992; un esito diverso va registrato e diagnosticato.
 
 ---
 
@@ -249,6 +249,7 @@ git log --oneline
 - Creare `corpus/06_scheda_macchina_T10.md`.
 - Titolo, DocID **DOC-T10**, revisione e data.
 - Due dati inventati verificabili, un dato intenzionalmente omesso.
+- Dati con macchina, unità e condizioni esplicite; evitare rimandi ambigui.
 - Il dato omesso deve mancare anche dagli altri documenti.
 - Nessuna procedura reale né istruzione rivolta al modello.
 
@@ -316,7 +317,7 @@ python genera_report.py
 ## Slide 24 – Se abbiamo otto ore
 
 - **E1 · +60 min:** stessa domanda in forma letterale, con sinonimi e in gergo.
-- Stesso corpus/configurazione; confrontare i passaggi, non modificare parametri.
+- Confrontare i passaggi mantenendo esatti codici e condizioni; nessun tuning.
 - **E2 · +60 min:** corpus ampliato e sfida cieca fra coppie.
 - Domande su dati presenti e assenti, con diagnosi delle evidenze.
 - Le appendici possono sostituire E2, non aggiungersi alle otto ore.
