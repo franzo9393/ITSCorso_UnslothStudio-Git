@@ -120,13 +120,13 @@ def slides_html():
     for index, chunk in enumerate(chunks, start=1):
         sections.append(
             f'<section class="slide" data-index="{index}">'
-            f'<div class="slide-header">ITS MAKER · AI, LLM e RAG · {index}/{len(chunks)}</div>'
+            f'<div class="slide-header">ITS MAKER · Unsloth Studio · {index}/{len(chunks)}</div>'
             f'<div class="slide-content">{convert(chunk)}</div></section>'
         )
     return (
         '<!doctype html><html lang="it"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width, initial-scale=1">'
-        f'<title>ITS MAKER — AI, LLM e RAG</title><style>{SLIDE_CSS}</style></head><body>'
+        f'<title>ITS MAKER — Unsloth Studio</title><style>{SLIDE_CSS}</style></head><body>'
         f'<div class="deck">{"".join(sections)}</div>'
         '<nav class="controls" aria-label="Navigazione slide">'
         '<button id="previous" type="button">← Precedente</button>'

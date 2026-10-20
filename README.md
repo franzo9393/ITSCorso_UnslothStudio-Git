@@ -1,53 +1,62 @@
-# ITS MAKER Bologna: costruire e verificare un assistente documentale RAG
+# ITS MAKER Bologna · Unsloth Studio
 
-Corso pratico di 6–8 ore: partire da una domanda d'officina, cercare nei documenti, controllare le risposte, aggiornare le fonti e collaudare un documento nuovo. **Il RAG è il filo conduttore; Git conserva le evidenze.** Nessuna installazione o programmazione nel percorso studente base. Confronto modelli e OpenCode sono facoltativi.
+**Esplorare i modelli, lavorare sui documenti e capire la personalizzazione.** Modulo di 6–8 ore per studenti tecnici neofiti: Unsloth Studio è il prodotto al centro; il RAG è il laboratorio principale, affiancato da chat/contesto, scelta dell'approccio, dataset, valutazione ed export.
 
-Il prodotto finale è corpus aggiornato, prove documentate e report; non un sistema di controllo macchina. Si usano solo dati sintetici.
+**Nessun deployment obbligatorio sui PC studenti.** Ambiente docente qualificato, sandbox Unsloth nel browser solo se collaudate, eventuali turni di gruppo e casi offline ricavati da esecuzioni reali. Non si presume potenza delle macchine, GPU gratuita o multiutenza sicura. NotebookLM è soltanto un confronto facoltativo.
 
 ## 1. Materiali
 
-- [Proposta didattica](PROPOSTA_DIDATTICA_ITS_MAKER.md) e [PDF](PROPOSTA_DIDATTICA_ITS_MAKER.pdf): obiettivi, tempi, valutazione e condizioni di erogazione.
-- [Quaderno studenti](materiali_aula/DISPENSA_OPERATIVA_STUDENTI.md) e [PDF](materiali_aula/DISPENSA_OPERATIVA_STUDENTI.pdf): percorso operativo B1–B6, prove e consegna.
-- [Slide docente](materiali_aula/SLIDE_DOCENTE_ITS_MAKER.md), [presentazione HTML offline](materiali_aula/SLIDE_DOCENTE_ITS_MAKER.html) e [PDF](materiali_aula/SLIDE_DOCENTE_ITS_MAKER.pdf).
-- [Guida docente](laboratorio/docente/SOLUZIONI.md): preparazione unica dell'ambiente, risposte, scheda di qualifica e appendici facoltative.
+- [Proposta didattica](PROPOSTA_DIDATTICA_ITS_MAKER.md) · [PDF](PROPOSTA_DIDATTICA_ITS_MAKER.pdf): obiettivi, tempi, modalità e valutazione.
+- [Quaderno studenti](materiali_aula/DISPENSA_OPERATIVA_STUDENTI.md) · [PDF](materiali_aula/DISPENSA_OPERATIVA_STUDENTI.pdf): esperimenti, scheda risultati, mini-dataset e verifica individuale.
+- [Slide docente](materiali_aula/SLIDE_DOCENTE_ITS_MAKER.md) · [HTML offline](materiali_aula/SLIDE_DOCENTE_ITS_MAKER.html) · [PDF](materiali_aula/SLIDE_DOCENTE_ITS_MAKER.pdf).
+- [Guida docente](laboratorio/docente/SOLUZIONI.md): regia, risposte, preparazione e GO distinti per percorso guidato, sandbox e training.
+- [Risorse e accesso](materiali_aula/RISORSE_E_ACCESSO.md): documentazione ufficiale, risorse gratuite, limiti cloud e checklist di selezione.
 
-I Markdown sono i sorgenti; HTML/PDF didattici si rigenerano con `scripts/build_materiali.py`. I PDF non sono byte-identici tra compilazioni. `report.html` è invece un prodotto del laboratorio.
-
-### Kit operativo
-
-- `laboratorio/corpus/`: cinque documenti sintetici, leggibili integralmente per verificare le fonti.
-- `laboratorio/starter/risultati.csv`: T01–T06 inizialmente NON_ESEGUITO; la coppia aggiunge T07–T09 durante il corso.
-- `laboratorio/starter/genera_report.py`: report HTML offline delle valutazioni umane, nessuna chiamata AI e nessuna modifica richiesta.
-- `laboratorio/prepara_laboratorio.py`: crea il workspace senza soluzioni.
-- `laboratorio/preflight.py`: registra CLI e hash del corpus; le verifiche OpenCode sono facoltative e non bloccano il base. Non certifica inferenza o RAG.
-- `laboratorio/avvia_studio.py`: launcher per l'ambiente preparato dal docente.
-- `laboratorio/docente/`: rev2 da consegnare in B4 e soluzione filtro del solo approfondimento OpenCode. Repository pubblico: la separazione evita copie accidentali, non rende segrete le soluzioni.
+Markdown come sorgente; `scripts/build_materiali.py` rigenera HTML delle slide e tre PDF didattici. I PDF non sono byte-identici fra compilazioni.
 
 ## 2. Programma delle sei ore
 
 | Blocco | Minuti | Risultato |
 | --- | ---: | --- |
-| B1 · Problema e fondamenti | 40 | T01 senza fonti subito; modello, contesto e plausibilità. |
-| B2 · Primo RAG guidato | 65 | Corpus associato, T01 con passaggi e fonti verificati. |
-| B3 · Prove e diagnosi | 75 | T02–T06 e T07 autonoma; recupero e risposta separati. |
-| B4 · Aggiornare le fonti | 40 | Catalogo rev2 e storico; evidenze prima/dopo conservate. |
-| B5 · Git sulle evidenze | 25 | Salvataggi di corpus e risultati, lettura delle differenze. |
-| B6 · Autonomia e restituzione | 70 | Nuova DOC-T10, T08/T09, peer review e report finale. |
+| B1 · Potenzialità e scelte | 35 | Mappa di Studio, ricerca manuale e scelta istruzioni/RAG/fine-tuning. |
+| B2 · Esplorazione guidata di Studio | 50 | Chat, contesto, baseline T01 senza documenti, orientamento nel prodotto. |
+| B3 · Laboratorio documentale e diagnosi | 80 | T01, T02, T05, T06; fonti e recupero/risposta. T03/T04 facoltative. |
+| B4 · Aggiornamento e ricollaudo | 45 | Rev2 e storico; intervento su fonte ambigua separata e controllo prima/dopo. |
+| B5 · Dataset e personalizzazione | 45 | Esempi input/output, controesempio, caso non visto; training/valutazione/export spiegati in Studio. |
+| B6 · Sfida e restituzione | 60 | T07, nuova DOC-T10 e T08/T09, dossier e verifica individuale. |
 | Pause e margine | 45 | Totale 360 minuti, 315 netti. |
 
-Valutazione: 40% fonti/diagnosi, 25% revisioni/storico, 20% autonomia/test negativo, 10% tracciabilità/Git, 5% collaborazione. Non si valuta lo studente con la percentuale di risposte corrette del modello.
+**Otto ore:** E1 +60 su corpus ampliato e collaudo cieco; E2 +60 su dataset e valutazione. OpenCode oppure confronto modelli può sostituire E2 se preparato prima, non sommarsi alle otto ore.
 
-I chiarimenti su indice/interrogazione, contesto dei passaggi e semantica/codici esatti sono integrati nei blocchi esistenti. Box su contesto esteso e qualità delle fonti completano il quaderno; metadati/filtri, score e rapporto fra RAG e agenti restano note docente. Nessun modulo, strumento o test aggiuntivo.
+Valutazione: scelta e comprensione Unsloth 20%, fonti/diagnosi 30%, revisione/intervento 20%, autonomia e verifica individuale 20%, tracciabilità e collaborazione 10%. Non si valuta l'accesso all'hardware o la percentuale di risposte corrette del modello.
 
-**Otto ore:** E1 +60 minuti su domande letterali/sinonimi/gergo, senza tuning tecnico; E2 +60 su corpus ampliato e collaudo cieco. Un approfondimento OpenCode oppure confronto modelli può sostituire E2 se scelto e preparato prima; non si somma alle otto ore e non è obbligatorio nelle sei.
+## 3. Accesso e continuità
 
-## 3. Preparazione: solo docente, prima dell'aula
+Per ogni prova dichiarare una modalità: `ESEGUITO_STUDENTE`, `OSSERVATO_DOCENTE`, `ANALISI_CASO`. Non confondere la provenienza dell'evidenza con il giudizio sul risultato. Analizzare correttamente una traccia non certifica di aver eseguito autonomamente la funzione.
 
-Una sola configurazione locale con Studio, LLM ed embedding multilingue già disponibili; cartelle studente preparate e Studio avviato prima di B1. Nessun database esterno o OCR. La [guida](laboratorio/docente/SOLUZIONI.md) separa questa preparazione dal percorso studente e indica cosa registrare e collaudare.
+Il minimo è un ambiente **Unsloth docente collaudato in preparazione**, con casi offline disponibili per proseguire in caso di interruzioni. Sandbox separate o turni su postazioni predisposte sono un'estensione dell'accesso, non un obbligo su ogni PC. Nessuna installazione, account esterno, carta di credito, chiave API o programmazione richiesta agli studenti nel percorso guidato.
 
-Il repository non contiene pesi/embedding e non certifica prestazioni su VM da 4 vCPU/8 GB senza GPU. Qualificare l'ambiente e il carico delle 10–12 coppie reali prima dell'erogazione.
+**Il kit non include pesi, embedding, immagine qualificata, schermate d'aula o tracce AI registrate.** Prima dell'erogazione il docente deve produrre queste evidenze sull'ambiente scelto, secondo la guida. Non dichiarare il laboratorio pronto perché gli script di supporto funzionano. Senza una traccia, discutere solo il risultato atteso dalle fonti e non inventare output.
 
-Dalla root del repository, con destinazione e manifesto nuovi:
+Il GO sandbox richiede verifica di rete, autenticazione, isolamento chat/file, autorizzazioni, pulizia e carico. Non basta esporre Studio sulla LAN o condividere un accesso amministrativo. Training e integrazioni agentiche hanno un GO aggiuntivo; non sono requisiti delle sei ore.
+
+## 4. Kit operativo e consegna
+
+- `laboratorio/corpus/`: cinque documenti sintetici leggibili integralmente. Non prova di scalabilità industriale.
+- `laboratorio/starter/risultati.csv`: schema di otto colonne invariato; T01–T06 inizialmente NON_ESEGUITO. T03/T04 facoltative; T07–T09 si aggiungono in B6. Modalità e riferimento della traccia nelle note.
+- `laboratorio/starter/genera_report.py`: supporto facoltativo per un report HTML offline dei giudizi umani; non interroga l'AI.
+- `laboratorio/prepara_laboratorio.py`: prepara una cartella senza soluzioni, non installa Studio.
+- `laboratorio/preflight.py`: registra CLI e hash; non certifica inferenza/RAG, isolamento o hardware. OpenCode facoltativo.
+- `laboratorio/avvia_studio.py`: launcher per l'ambiente predisposto dal docente; non crea sandbox remote o utenti.
+- `laboratorio/docente/`: guida, catalogo rev2 per B4 e soluzione dell'estensione OpenCode. Repository pubblico: separazione didattica, non controllo di accesso.
+
+Consegna minima: scheda cartacea/digitale con scelta dell'approccio, prove/fonti e modalità, confronto rev1/rev2, ipotesi/intervento/ricollaudo, documento nuovo, mini-dataset con caso riservato e risposte individuali. CSV, Python/report e Git non obbligatori. Solo dati sintetici, nessun uso su macchine o PLC.
+
+Se si usa il CSV: UTF-8 e separatore `;`, import/export verificato dal docente, risposte brevi fedeli, citazioni controllate e giudizi `OK`, `ERRORE`, `NON_ESEGUITO`. Recupero non osservabile resta NON_ESEGUITO; non è sufficiente una citazione. Conservare rev1 prima dell'aggiornamento e rev2 dopo. T03/T04 non svolte: nota «facoltativa non svolta». Non pretendere nove prove eseguite da ogni coppia.
+
+## 5. Preparazione tecnica: solo docente
+
+Dalla root, con destinazione e manifesto nuovi:
 
 ```bash
 python laboratorio/preflight.py --output ambiente.json
@@ -55,54 +64,23 @@ python laboratorio/prepara_laboratorio.py --dest ../officina-studente
 python laboratorio/avvia_studio.py --offline
 ```
 
-Interfaccia prevista `http://localhost:8888`. Embedding già scelto in `Settings > General > Documents & RAG`; documenti tramite `+ > Chat with Files > Add files to chat with`. Verificare menu e salvare schermate della release adottata. Per ogni nuova chat riassociare il corpus corrente.
+Questi comandi non scaricano pesi né qualificano l'ambiente. Indirizzo locale previsto `http://localhost:8888`, da controllare nella release adottata; non è l'indirizzo delle eventuali sandbox remote. Salvare schermate reali dei menu, versione e risultati della prova completa.
 
-Il launcher imposta `RAG_THREAD_WHOLE_DOC=0` e, con `--offline`, modalità offline Hub/Transformers. Non è un firewall né una garanzia inter-versione: osservare realmente i passaggi recuperati. Eventuale `--models-dir` indica una cartella già popolata.
+Il launcher imposta `RAG_THREAD_WHOLE_DOC=0` e, con `--offline`, le modalità offline Hub/Transformers. Non è un firewall né una garanzia inter-versione. Osservare realmente il recupero; cambiare il file sul disco non aggiorna automaticamente vecchie chat/indici. Un endpoint di sola generazione non sostituisce il RAG.
 
-**GO base:** prove reali offline, indicizzazione/recupero osservati, sei query, rev2/storico, documento nuovo, export CSV, report, Git e carico concorrente. OpenCode non è richiesto. Un endpoint di sola generazione LAN/cloud non sostituisce il recupero; nessun fallback improvvisato in aula.
+Se si usa Git come supporto, fare il primo checkpoint **prima di B4**, con corpus rev1 e prove iniziali, e confrontare poi il catalogo aggiornato. Il docente può generare il report dal workspace con `python genera_report.py`; non far installare Python agli studenti per consegnare.
 
-## 4. Operazioni studente
+## 6. Compilazione dei materiali
 
-Seguire il quaderno. Aprire `risultati.csv` nell'applicazione tabellare predisposta, conservando colonne, UTF-8 e separatore `;`. Risposte brevi fedeli, citazioni con sezione/revisione, due giudizi. Il docente verifica il roundtrip prima del corso.
-
-In B4 conservare `risultati_rev1.csv` e `risultati_rev2.csv`. In B5, dalla cartella personale:
-
-```bash
-git init
-git config user.name "Nome Cognome"
-git config user.email "nome.cognome@studenti.itsmaker.it"
-git status
-git add corpus risultati.csv risultati_rev1.csv risultati_rev2.csv genera_report.py
-git commit -m "test: conserva prove RAG e confronto revisioni"
-git log --oneline
-```
-
-In B6, dopo DOC-T10 e T08/T09:
-
-```bash
-python genera_report.py
-```
-
-Aprire `report.html` e controllare la corrispondenza con le prove. Nessun filtro o modifica al codice richiesti. Salvare corpus, tre CSV e report con Git secondo la dispensa. Non tracciare credenziali.
-
-## 5. Compilazione documenti: solo docente
-
-Ambiente Python dedicato; gli studenti non hanno bisogno di queste dipendenze. Per i PDF occorre Chrome/Chromium/Edge già installato.
+Ambiente Python dedicato del docente, con Chrome/Chromium/Edge disponibile:
 
 ```bash
 python -m pip install -r requirements-docs.txt
 python scripts/build_materiali.py
 ```
 
-Opzioni: `--html-only` per solo HTML, `--browser PERCORSO` per un browser specifico. HTML di stampa in `.build-materiali/`, slide HTML e tre PDF accanto ai relativi sorgenti.
+`--html-only` genera HTML senza browser; `--browser PERCORSO` sceglie l'eseguibile. HTML di stampa in `.build-materiali/`, slide HTML e tre PDF accanto ai sorgenti. Risorse e guida docente sono consultabili in Markdown.
 
-## 6. Approfondimenti e fonti
+## 7. Risorse ufficiali
 
-Backend, credenziali e collaudo dell'agente sono nell'appendice della [guida docente](laboratorio/docente/SOLUZIONI.md), non nel percorso base. Nessuna soglia magica di parametri o promessa di velocità; usare misure reali.
-
-- [Unsloth Studio Chat](https://unsloth.ai/docs/new/studio/chat)
-- [Changelog](https://unsloth.ai/docs/new/changelog)
-- [Configurazione RAG](https://github.com/unslothai/unsloth/blob/main/studio/backend/core/rag/config.py)
-- [Store RAG](https://github.com/unslothai/unsloth/blob/main/studio/backend/core/rag/store.py)
-- [API Studio](https://unsloth.ai/docs/basics/api)
-- [OpenCode, facoltativo](https://unsloth.ai/docs/integrations/opencode)
+Partire da [Unsloth Studio](https://unsloth.ai/docs/new/studio), dal [percorso guidato](https://unsloth.ai/docs/new/studio/start) e dalla [guida risorse del modulo](materiali_aula/RISORSE_E_ACCESSO.md). La documentazione descrive possibilità del prodotto, non una configurazione già qualificata sulle macchine dell'istituto. Nessuna promessa di velocità, training o GPU gratuita.
