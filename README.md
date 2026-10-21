@@ -40,6 +40,8 @@ Il minimo è un ambiente **Unsloth docente collaudato in preparazione**, con cas
 
 Il GO sandbox richiede verifica di rete, autenticazione, isolamento chat/file, autorizzazioni, pulizia e carico. Non basta esporre Studio sulla LAN o condividere un accesso amministrativo. Training e integrazioni agentiche hanno un GO aggiuntivo; non sono requisiti delle sei ore.
 
+**Indirizzo operativo in valutazione:** Studio nelle VM locali degli studenti con risorse limitate, partendo dal collaudo di un RAG lessicale BM25. La scuola segnala anche Copilot Basic disponibile agli studenti: chat documentale, Copilot Notebooks e Agenti hanno requisiti distinti da provare con un vero account studente. Non presumere inclusi Notebooks o agenti con conoscenza su file/SharePoint, né attivare consumi a pagamento. Scelte, limiti e checklist sono nelle [sezioni 3.1 e 3.2 di Risorse e accesso](materiali_aula/RISORSE_E_ACCESSO.md#31-indirizzo-operativo-vm-locali-con-risorse-limitate); non costituiscono un collaudo già superato o una sostituzione implicita del percorso locale.
+
 ## 4. Kit operativo e consegna
 
 - `laboratorio/corpus/`: cinque documenti sintetici leggibili integralmente. Non prova di scalabilità industriale.

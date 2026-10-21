@@ -83,6 +83,52 @@ Riferimenti della valutazione tecnica, non attestazioni di collaudo:
 - [Configurazione embedding e contesto a documento intero](https://github.com/unslothai/unsloth/blob/46c3bbbdf6ebf6098b22d5fb9953ea55c5ed1dfc/studio/backend/core/rag/config.py).
 - [Modello candidato e quantizzazioni ufficiali](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF).
 
+### 3.2 Copilot Basic disponibile agli studenti: confronto cloud da qualificare
+
+Gli studenti dispongono anche di **Microsoft Copilot con licenza indicata come Basic**, secondo quanto comunicato dalla scuola. Questo conferma la disponibilità dichiarata del prodotto, non le singole funzioni del tenant. Distinguere le etichette `Copilot Chat (Basic)` e `Microsoft 365 Copilot (Basic)`: integrazione nelle applicazioni Office, accessi e limiti dipendono da licenze e configurazione. Usare account scolastici, non personali.
+
+Copilot può affiancare il percorso Unsloth locale per attività che non consumano risorse di inferenza nella VM, ma richiedono rete e servizio cloud. Non sostituisce implicitamente il laboratorio locale né garantisce disponibilità continua: upload e altre funzioni con accesso standard sono soggetti alla capacità del servizio. Usare soltanto i dati sintetici del corso; non introdurre account esterni o acquisti obbligatori.
+
+#### Blocchi appunti: prima opzione documentale da provare
+
+Si intendono i **Copilot Notebooks**, non i normali blocchi di OneNote. Valutarli per una raccolta persistente delle fonti del caso d'officina, interrogazione dei documenti e confronto tra revisioni. **Disponibilità agli studenti Basic non ancora verificata.** La pagina Microsoft sui requisiti consultata presenta indicazioni non perfettamente allineate: la tabella cita una licenza Microsoft Copilot, mentre il testo cita Microsoft Copilot o Copilot Chat. Le policy del tenant possono inoltre disabilitare i Notebooks. Non promettere accesso sulla sola base del nome della licenza o della presenza della voce nel menu.
+
+Se il collaudo riesce, ogni coppia crea un blocco dedicato, aggiunge le fonti nei formati effettivamente supportati, interroga un dato presente e uno assente, controlla i riferimenti e confronta rev1/rev2 chiaramente identificate. Registra domanda, risposta fedele, fonte e giudizio. Presentare l'attività come **interrogazione documentale e verifica delle fonti**: non presumere accesso a embedding, chunking, ranking o all'intera traccia di recupero.
+
+#### Agenti: distinguere istruzioni da conoscenza documentale
+
+| Capacità | Copilot Chat senza fatturazione a consumo |
+| --- | --- |
+| Istruzioni personalizzate e ricerca web pubblica | Previste nella matrice Microsoft, con limiti d'uso; verificare creazione, utilizzo e policy per gli account studenti. |
+| Conoscenza su SharePoint o file incorporati nell'agente | Non inclusa nella configurazione senza fatturazione a consumo descritta dalla matrice; richiede licenza appropriata o abilitazione a consumo, oltre alle policy. |
+
+La presenza di **Agenti** non prova che si possa creare gratuitamente un assistente sul corpus dell'officina. Non confondere allegare un file alla chat con configurarlo come conoscenza permanente dell'agente. Non attivare Copilot Credits, fatturazione a consumo o nuove sottoscrizioni per aggirare il limite senza autorizzazione.
+
+Se la creazione è abilitata, un esercizio compatibile da valutare è un agente classificatore GUASTO/MANUTENZIONE/INFORMAZIONE basato su istruzioni: definizione delle categorie, casi nuovi, analisi degli errori e revisione delle istruzioni. Non chiamarlo RAG documentale o fine-tuning.
+
+#### Attività comuni e GO Copilot
+
+Riutilizzare corpus, domande e scheda delle evidenze del laboratorio locale: miglioramento delle istruzioni, estrazione di macchina/evento/durata con campi assenti espliciti, controllo P03/P30, confronto revisioni e classificazione con casi esclusi dagli esempi. Per il confronto Copilot–Unsloth mantenere domanda e dati uguali, dichiarando che si confrontano sistemi diversi e non si isola la qualità del solo modello.
+
+Prima di inserire le attività nel programma, collaudare con **un account studente Basic reale**, non soltanto docente o amministratore:
+
+- [ ] Registrare etichetta/licenze effettive, accesso con account scolastico e policy applicate.
+- [ ] Provare upload e analisi di due documenti sintetici, formati ammessi, riferimenti, dato assente e limiti del servizio.
+- [ ] Verificare creazione di un Notebook, aggiunta delle fonti e interrogazione riferita ai documenti; distinguere semplice visibilità della funzione da uso riuscito.
+- [ ] Verificare separatamente creazione/utilizzo degli agenti e sorgenti consentite, specificando eventuali costi aggiuntivi senza abilitarli.
+- [ ] Per esperimenti solo documentali, verificare il controllo della ricerca web con i tecnici: una richiesta nel prompt non garantisce che il web sia escluso.
+- [ ] Registrare cosa è davvero osservabile; non giudicare il recupero dalla sola presenza di citazioni.
+
+Se i Notebooks non sono disponibili, la chat con allegati resta un'attività distinta, da verificare e dichiarare; non presentarla come knowledge base persistente. Il NO-GO Copilot non autorizza a dichiarare eseguite le attività né elimina la necessità di qualificare Unsloth.
+
+Fonti ufficiali consultate per queste considerazioni; accesso del tenant scolastico non ancora provato:
+
+- [Copilot Chat: Basic, funzionalità e accesso standard](https://learn.microsoft.com/en-us/copilot/overview).
+- [Requisiti dei Copilot Notebooks](https://learn.microsoft.com/en-us/microsoft-365/loop/cpcn-requirements) e [policy amministrative](https://learn.microsoft.com/en-us/microsoft-365/loop/cpcn-admin-configuration).
+- [Capacità degli agenti e modelli di licenza](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/prerequisites#agent-capabilities-and-licensing-models).
+- [Agent Builder e controlli di accesso](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder).
+- [Account scolastici e controllo amministrativo della ricerca web](https://learn.microsoft.com/en-us/copilot/manage).
+
 
 ## 4. Checklist prima dell'aula
 
