@@ -36,6 +36,54 @@ Modalità e giudizio sono indipendenti: una risposta errata osservata può esser
 
 **Browser non significa compute assente:** l'inferenza deve girare su una macchina qualificata. Non presumere isolamento multiutente di un'istanza condivisa; HTTPS e login da soli non dimostrano separazione di file e chat. Se l'isolamento non è verificato, adottare turni su ambiente docente o istanze distinte predisposte dal tecnico.
 
+### 3.1 Indirizzo operativo: VM locali con risorse limitate
+
+La configurazione preferita per il laboratorio pratico è **Unsloth Studio installato nella VM di ogni studente**, con lavoro anche a coppie e ruoli alternati. Non è sufficiente la sola dimostrazione del docente per attestare uso autonomo. Questa è una scelta di predisposizione da collaudare, non una configurazione già qualificata: le modalità guidata e di analisi restano distinte e non sostituiscono implicitamente l'attività pratica.
+
+**Vincolo prioritario: specifiche di sistema molto limitate.** Dimensionare sulla VM effettiva, non sul PC host. La GPU dell'host non è automaticamente disponibile nella VM: senza passthrough o vGPU verificati, progettare la prova per CPU. Rilevare sistema operativo/architettura, vCPU, CPU host, RAM assegnata, spazio libero, eventuale GPU accessibile e memoria video, numero di VM concorrenti e risorse complessive dell'host. Non fissare requisiti minimi o tempi garantiti prima della misura.
+
+#### Configurazione minima da provare
+
+| Componente | Scelta di collaudo |
+| --- | --- |
+| Inferenza | Un solo piccolo modello instruct GGUF quantizzato, già scaricato; primo candidato Qwen2.5-1.5B-Instruct Q4_K_M, non scelta definitiva né garanzia di qualità sul corpus. |
+| Recupero | RAG lessicale nativo di Studio, modalità **BM25 only**; non presumere necessario un database vettoriale esterno. |
+| Corpus | I cinque piccoli documenti Markdown del corso; niente scansioni, OCR, immagini o grandi manuali nella prova iniziale. |
+| Passaggi | Partire da due passaggi; verificare le domande a più fonti e aumentare solo entro il contesto disponibile. |
+| Contesto e risposte | Contesto corto e controllato, risposte brevi con dato/fonte/limite, nuove chat per confronti indipendenti. |
+| Funzioni escluse dal laboratorio minimo | Ricerca web, esecuzione di codice, vision, generazione massiva di dataset e training. |
+| Distribuzione | Stessa versione Studio e stessi modelli/materiali; installazioni e download completati prima della lezione. |
+
+BM25 più generazione è RAG anche senza ricerca vettoriale: seleziona passaggi in base ai termini e li fornisce al modello. È adatto a sperimentare codici esatti e termini presenti; sinonimi e parafrasi sono un limite da misurare, non una capacità semantica garantita. L'embedding è distinto dall'LLM generativo e serve se si adotta il recupero vettoriale. Il predefinito inglese non è automaticamente adeguato al corpus italiano; cambiando spazio di embedding occorre ricostruire i vettori.
+
+**Punto aperto decisivo:** il selettore `BM25 only` riguarda la ricerca e non dimostra che il caricamento/indicizzazione eviti il modello di embedding. Verificare dipendenze caricate, memoria e tempi lungo tutto il percorso. Non dichiarare già disponibile un RAG leggero senza embedding. Le impostazioni vanno controllate nella release installata: il codice upstream esaminato non è una prova di esecuzione sulla VM.
+
+Per osservare davvero il recupero, verificare anche che Studio non inserisca integralmente i piccoli documenti nel contesto. La configurazione upstream esaminata espone `RAG_THREAD_WHOLE_DOC=0` per disabilitare tale comportamento; verificarne l'effetto sul percorso adottato. Citazioni o badge delle fonti, da soli, non dimostrano tutti i passaggi forniti al modello.
+
+#### Attività studente e accettazione
+
+Gli studenti creano una knowledge base locale, caricano il corpus, attendono l'indicizzazione e la selezionano nella chat. Confrontano una domanda senza fonti e con recupero, controllano codici P03/P30, numeri e dato assente; conservano risposta e fonti, distinguendo recupero e generazione solo quando osservabili. Confrontano poi rev1/rev2 in nuove chat, selezionando soltanto la raccolta pertinente; due raccolte separate sono una prima modalità di confronto controllabile.
+
+Restano pratiche anche la progettazione di istruzioni, la classificazione con pochi esempi nel prompt e un caso di verifica escluso dagli esempi, la correzione documentale e lo scambio di un nuovo documento sintetico tra coppie. Non confondere esempi nel prompt con fine-tuning, né testo incollato nel contesto con recupero RAG. Un GGUF funzionante in inferenza non prova capacità di addestramento della VM.
+
+Prima di replicare l'immagine, provare su **una VM pilota con le risorse effettive degli studenti**:
+
+- [ ] Avvio Studio e caricamento del piccolo modello; risposta breve in italiano.
+- [ ] Creazione della knowledge base e indicizzazione dei cinque documenti; osservazione di memoria, tempi e componenti caricati, anche in modalità BM25.
+- [ ] Recupero su codice esatto, domanda a più fonti e dato assente; verifica di passaggi effettivamente consultabili e risposta fedele.
+- [ ] Aggiornamento catalogo e ripetizione della domanda senza contaminazione da chat o raccolte precedenti.
+- [ ] Prova con tutte le VM concorrenti: misurare attese e pressione sulle risorse dell'host, non soltanto la singola VM isolata.
+
+Se Studio resta troppo pesante, cambiare soltanto LLM potrebbe non bastare. Un recuperatore BM25 esterno collegato all'inferenza è un'architettura alternativa da concordare esplicitamente, non un'aggiunta implicita. Se il RAG non supera il collaudo, non dichiararlo attività autonoma garantita e non sostituirlo silenziosamente con allegati integrali o dimostrazione docente.
+
+Riferimenti della valutazione tecnica, non attestazioni di collaudo:
+
+- [Controlli nativi di recupero: BM25, hybrid, top K e recupero automatico](https://github.com/unslothai/unsloth/blob/46c3bbbdf6ebf6098b22d5fb9953ea55c5ed1dfc/studio/frontend/src/features/rag/components/retrieval-settings-section.tsx).
+- [Knowledge base e caricamento documenti](https://github.com/unslothai/unsloth/blob/46c3bbbdf6ebf6098b22d5fb9953ea55c5ed1dfc/studio/frontend/src/features/rag/components/knowledge-base-dialog.tsx).
+- [Configurazione embedding e contesto a documento intero](https://github.com/unslothai/unsloth/blob/46c3bbbdf6ebf6098b22d5fb9953ea55c5ed1dfc/studio/backend/core/rag/config.py).
+- [Modello candidato e quantizzazioni ufficiali](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF).
+
+
 ## 4. Checklist prima dell'aula
 
 ### Percorso guidato: requisito minimo
