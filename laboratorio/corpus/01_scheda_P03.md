@@ -15,7 +15,7 @@ La soglia utilizzata negli esercizi per la temperatura dell'olio della P03 è **
 
 ## Informazioni disponibili
 
-Il rapporto dell'evento P03 è nel documento DOC-FERMO. Il catalogo corrente dei ricambi è DOC-RICAMBI. Questa scheda non specifica coppie di serraggio, sequenze di intervento o autorizzazioni a riavviare una macchina.
+Il rapporto dell'evento P03 è nel ticket TICKET-MANUTENZIONE-P03. Il catalogo corrente dei ricambi è DOC-RICAMBI. Questa scheda non specifica coppie di serraggio, sequenze di intervento o autorizzazioni a riavviare una macchina.
 
 ## Limiti d'uso
 

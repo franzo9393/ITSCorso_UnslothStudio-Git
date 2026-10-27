@@ -18,7 +18,7 @@ Per l'esercizio sostituire il documento DOC-RICAMBI revisione 1 nella knowledge 
 
 ## Catalogo corrente e storia sono distinti
 
-Questo cambiamento non altera il rapporto storico DOC-FERMO del 2026-10-14, che continua a registrare il filtro FLT-992 usato in quell'evento. Se la domanda riguarda il catalogo corrente usare la revisione 2; se riguarda l'evento usare il rapporto storico.
+Questo cambiamento non altera il rapporto storico TICKET-MANUTENZIONE-P03 del 2026-10-14, che continua a registrare il filtro FLT-992 usato in quell'evento. Se la domanda riguarda il catalogo corrente usare la revisione 2; se riguarda l'evento usare il rapporto storico.
 
 ## Limiti d'uso
 
