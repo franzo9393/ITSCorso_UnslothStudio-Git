@@ -20,7 +20,7 @@ ITS MAKER Bologna · Tecnico Superiore per la Digitalizzazione dei Processi Indu
 | :--- | :---: | :--- |
 | **Micro-lezione** | 5–7 min | Presentiamo un solo problema reale d'officina e vediamo l'errore tipico dell'AI a video. |
 | **Sfida a coppie** | 10–12 min | Lavorate al computer a ruoli alternati: 1 persona scrive il prompt, 1 persona collauda l'esito. |
-| **Debrief collettivo** | 5 min | Proiettiamo i risultati, discutiamo cosa ha funzionato e fissiamo la regola d'oro. |
+| **Confronto e regola** | 5 min | Proiettiamo i risultati, discutiamo cosa ha funzionato e fissiamo la regola d'oro. |
 
 Le 4 sfide di oggi:
 1. **Formato e vincoli:** fermare la logorrea dell'AI per inserire dati nel gestionale.
@@ -71,7 +71,7 @@ Nessun gestionale aziendale (MES o ERP) può digerire un testo del genere. Serve
 
 ---
 
-# Slide 06 – Sfida 1: Debrief & Regola 1
+# Slide 06 – Sfida 1: Cosa impariamo & Regola 1
 
 ```
               ┌────────────────────────────────────────────────┐
@@ -118,7 +118,7 @@ Riscrivete il prompt fornendo **un modello di riferimento**:
 
 ---
 
-# Slide 09 – Sfida 2: Debrief & Regola 2
+# Slide 09 – Sfida 2: Cosa impariamo & Regola 2
 
 ### Perché il Few-Shot vince sulle spiegazioni lunghe?
 
@@ -165,7 +165,7 @@ Un LLM prevede parole e numeri probabili, non esegue calcoli su un circuito arit
 
 ---
 
-# Slide 12 – Sfida 3: Debrief & Regola 3
+# Slide 12 – Sfida 3: Cosa impariamo & Regola 3
 
 ```
 DOMANDA DIRETTA   ──►  L'AI "spara" un numero a intuito linguistico  ──► RISCHIO ERRORE
@@ -207,7 +207,7 @@ In un processo industriale o su una macchina:
 
 ---
 
-# Slide 15 – Sfida 4: Debrief & Regola 4
+# Slide 15 – Sfida 4: Cosa impariamo & Regola 4
 
 ```
 TRABOCCHETTO      ──►  «Chi è l'operatore?»  ──► «Il tecnico specializzato...» (Invenzione)
