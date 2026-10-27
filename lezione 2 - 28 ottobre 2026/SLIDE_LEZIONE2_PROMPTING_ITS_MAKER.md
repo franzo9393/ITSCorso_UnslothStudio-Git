@@ -1,13 +1,13 @@
 # Slide 01 – Copertina
 
 **Digitalizzare i processi con l'Intelligenza Artificiale**  
-*Lezione 2 · Tecniche di prompting d'officina e guida operativa degli LLM*
+*Lezione 2 · Tecniche di prompting: trasformare testo grezzo in dati strutturati*
 
 ITS MAKER Bologna · Tecnico Superiore per la Digitalizzazione dei Processi Industriali
 
 - Dalla teoria alla pratica a coppie (Driver & Tester).
 - Il prompt come dima di processo: specificare, guidare, controllare.
-- 4 micro-sfide hands-on su dati reali d'officina.
+- 4 micro-sfide hands-on su dati reali di produzione.
 - Nessuna programmazione richiesta: linguaggio naturale e collaudo visivo.
 
 > **Regia docente:** Aula pronta a coppie con una finestra di chat aperta (ChatGPT, Claude o sandbox locale). Proiettare le slide delle sfide durante i 10 minuti di lavoro autonomo.
@@ -18,7 +18,7 @@ ITS MAKER Bologna · Tecnico Superiore per la Digitalizzazione dei Processi Indu
 
 | Fase | Minuti | Cosa facciamo |
 | :--- | :---: | :--- |
-| **Micro-lezione** | 5–7 min | Presentiamo un solo problema reale d'officina e vediamo l'errore tipico dell'AI a video. |
+| **Micro-lezione** | 5–7 min | Presentiamo un solo problema di processo e vediamo l'errore tipico dell'AI a video. |
 | **Sfida a coppie** | 10–12 min | Lavorate al computer a ruoli alternati: 1 persona scrive il prompt, 1 persona collauda l'esito. |
 | **Confronto e regola** | 5 min | Proiettiamo i risultati, discutiamo cosa ha funzionato e fissiamo la regola d'oro. |
 
@@ -32,7 +32,7 @@ Le 4 sfide di oggi:
 
 # Slide 03 – Il nostro pezzo grezzo: il rapporto di fermo
 
-Per tutte le prove di oggi lavoriamo su questo rapporto d'officina (DOC-FERMO):
+Per tutte le prove di oggi lavoriamo su questo rapporto di manutenzione (DOC-FERMO):
 
 ```text
 Rapporto del 14 Ottobre (DOC-FERMO):
@@ -138,7 +138,7 @@ Riscrivete il prompt fornendo **un modello di riferimento**:
 Molti credono che gli LLM siano calcolatori elettronici. **Falso.**  
 Un LLM prevede parole e numeri probabili, non esegue calcoli su un circuito aritmetico.
 
-### Il caso pratico d'officina:
+### Il caso pratico di produzione:
 - Tariffa di fermo impianto aziendale: **160 €/ora**.
 - La pressa P03 è rimasta ferma per **45 minuti**.
 - Quanto è costato il fermo all'azienda?
@@ -229,7 +229,7 @@ Oggi avete imparato a governare l'AI su un singolo paragrafo:
 | **Tabelle e vincoli** | Dati puliti per il MES/ERP | Estrazione automatica nei campi del database |
 | **Few-shot con 1 esempio** | Standardizzazione del linguaggio | Classificazione automatica dei cartellini guasto |
 | **Passaggi intermedi (CoT)** | Controllo qualità e tempi | Verifica incrociata tra formule e registri |
-| **Clausola di astensione** | Sicurezza e conformità | Risposte affidabili basate solo sui manuali d'officina |
+| **Clausola di astensione** | Sicurezza e conformità | Risposte affidabili basate solo sui manuali tecnici |
 
 Nella prossima lezione collegheremo l'AI **all'intero archivio tecnico** (schede macchina, cataloghi ricambi rev1 e rev2) usando Unsloth Studio!
 

@@ -11,7 +11,7 @@
 
 ---
 
-## Il testo d'officina di partenza
+## Il testo di manutenzione di partenza
 Copiate e incollate questo rapporto di fermo (DOC-FERMO) per tutte le attività:
 
 ```text
@@ -105,7 +105,7 @@ Fermo macchina totale: 45 minuti.
 
 ## Sintesi per la classe: Il ponte verso Unsloth Studio e il RAG
 
-Avete appena applicato le stesse 4 regole che useremo quando collegheremo l'AI ai manuali e cataloghi d'officina:
+Avete appena applicato le stesse 4 regole che useremo quando collegheremo l'AI ai manuali e cataloghi tecnici:
 
 | Problema visto oggi | Come lo abbiamo risolto | Cosa diventerà con Unsloth Studio e RAG |
 | :--- | :--- | :--- |
