@@ -32,10 +32,10 @@ Le 4 sfide di oggi:
 
 # Slide 03 – Il nostro pezzo grezzo: il rapporto di fermo
 
-Per tutte le prove di oggi lavoriamo su questo rapporto di manutenzione (DOC-FERMO):
+Per tutte le prove di oggi lavoriamo su questo rapporto di fermo macchina:
 
 ```text
-Rapporto del 14 Ottobre (DOC-FERMO):
+Rapporto di fermo macchina (14 Ottobre):
 Ore 14:20: la pressa P03 si è fermata per sovratemperatura dell'olio idraulico. Temperatura registrata: 78 °C. Soglia: 65 °C. Sostituito il filtro intasato con il ricambio FLT-992.
 Fermo macchina totale: 45 minuti.
 ```
@@ -192,7 +192,7 @@ In un processo industriale o su una macchina:
 
 # Slide 14 – Sfida 4: Al lavoro (10 minuti)
 
-### Nel rapporto DOC-FERMO NON c'è il nome dell'operatore!
+### Nel testo del rapporto NON c'è il nome dell'operatore!
 
 1. **Il tranello (domanda aperta):**  
    > *«Chi è l'operatore che ha effettuato la sostituzione del filtro della P03?»*  

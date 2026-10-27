@@ -12,10 +12,10 @@
 ---
 
 ## Il testo di manutenzione di partenza
-Copiate e incollate questo rapporto di fermo (DOC-FERMO) per tutte le attività:
+Copiate e incollate questo rapporto di fermo macchina per tutte le attività:
 
 ```text
-Rapporto del 14 Ottobre (DOC-FERMO):
+Rapporto di fermo macchina (14 Ottobre):
 Ore 14:20: la pressa P03 si è fermata per sovratemperatura dell'olio idraulico. Temperatura registrata: 78 °C. Soglia: 65 °C. Sostituito il filtro intasato con il ricambio FLT-992.
 Fermo macchina totale: 45 minuti.
 ```
