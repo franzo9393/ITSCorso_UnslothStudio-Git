@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ITS MAKER · Lezione 2 · Tecniche di Prompting</title>
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #0b1120; font-family: 'Segoe UI', Arial, sans-serif; color: #f8fafc; }
+.deck-container { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.deck { position: relative; width: 1440px; height: 810px; background: #0f172a; border-radius: 8px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); overflow: hidden; transform-origin: center center; }
+.slide { display: none; width: 100%; height: 100%; padding: 40px 60px 60px; overflow-y: auto; }
+.slide.active { display: flex; flex-direction: column; }
+.slide-header { font-size: 16px; color: #94a3b8; border-bottom: 1px solid #334155; padding-bottom: 10px; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.05em; }
+.slide-content { flex: 1; }
+h1 { font-size: 38px; line-height: 1.2; margin: 0 0 20px; color: #38bdf8; font-weight: 700; }
+h2 { font-size: 32px; line-height: 1.25; margin: 0 0 16px; color: #38bdf8; }
+h3 { font-size: 26px; line-height: 1.3; margin: 16px 0 12px; color: #7dd3fc; }
+p, li { font-size: 23px; line-height: 1.45; color: #e2e8f0; margin: 8px 0; }
+strong { color: #fde68a; font-weight: 600; }
+em { color: #a5f3fc; font-style: normal; }
+a { color: #38bdf8; text-decoration: none; }
+table { width: 100%; border-collapse: collapse; font-size: 20px; margin: 16px 0; }
+th, td { border: 1px solid #475569; padding: 10px 14px; text-align: left; vertical-align: top; }
+th { background: #1e293b; color: #38bdf8; font-weight: 600; }
+tr:nth-child(even) { background: #162032; }
+pre { background: #030712; border: 1px solid #334155; border-left: 5px solid #38bdf8; padding: 14px 18px; border-radius: 4px; font-family: Consolas, monospace; font-size: 19px; line-height: 1.4; color: #f1f5f9; overflow-x: auto; margin: 12px 0; }
+code { font-family: Consolas, monospace; font-size: 0.9em; background: #1e293b; padding: 2px 6px; border-radius: 4px; color: #bae6fd; }
+pre code { background: none; padding: 0; color: inherit; }
+blockquote { border-left: 4px solid #f59e0b; background: #1e293b; margin: 16px 0; padding: 12px 20px; border-radius: 0 6px 6px 0; }
+blockquote p { color: #fde68a; font-size: 22px; margin: 0; line-height: 1.4; font-weight: 500; }
+.controls { position: fixed; right: 24px; bottom: 18px; display: flex; align-items: center; gap: 12px; z-index: 100; background: rgba(15, 23, 42, 0.85); padding: 6px 12px; border-radius: 8px; border: 1px solid #334155; backdrop-filter: blur(8px); }
+button { padding: 8px 16px; font-size: 15px; font-weight: 600; font-family: inherit; background: #0284c7; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background 0.15s; }
+button:hover:not(:disabled) { background: #0369a1; }
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+#position { font-size: 15px; color: #cbd5e1; font-weight: 500; min-width: 65px; text-align: center; }
+@media print {
+  @page { size: 1440px 810px; margin: 0; }
+  html, body { overflow: visible; height: auto; background: white; color: #0f172a; }
+  .deck-container { position: static; display: block; }
+  .deck { transform: none !important; width: 100%; height: auto; box-shadow: none; border-radius: 0; }
+  .slide { display: block !important; page-break-after: always; height: 810px; background: white; color: #0f172a; }
+  .slide-header { color: #64748b; border-bottom-color: #cbd5e1; }
+  h1, h2, h3 { color: #0369a1; }
+  p, li { color: #1e293b; }
+  strong { color: #b45309; }
+  pre { background: #f8fafc; border-color: #cbd5e1; border-left-color: #0284c7; color: #0f172a; }
+  blockquote { background: #fef3c7; border-left-color: #d97706; }
+  blockquote p { color: #92400e; }
+  .controls { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="deck-container">
+  <div class="deck" id="deck">
+    <section class="slide" data-index="1"><div class="slide-header">ITS MAKER · Lezione 2 · Digitalizzazione Processi · 1/17</div><div class="slide-content"><h1>Slide 01 – Copertina</h1>
+<p><strong>Digitalizzare i processi con l'Intelligenza Artificiale</strong><br />
+<em>Lezione 2 · Tecniche di prompting d'officina e guida operativa degli LLM</em></p>
+<p>ITS MAKER Bologna · Tecnico Superiore per la Digitalizzazione dei Processi Industriali</p>
+<ul>
+<li>Dalla teoria alla pratica a coppie (Driver &amp; Tester).</li>
+<li>Il prompt come dima di processo: specificare, guidare, controllare.</li>
+<li>4 micro-sfide hands-on su dati reali d'officina.</li>
+<li>Nessuna programmazione richiesta: linguaggio naturale e collaudo visivo.</li>
+</ul>
+<blockquote>
+<p><strong>Regia docente:</strong> Aula pronta a coppie con una finestra di chat aperta (ChatGPT, Claude o sandbox locale). Proiettare le slide delle sfide durante i 10 minuti di lavoro autonomo.</p>
+</blockquote></div></section><section class="slide" data-index="2"><div class="slide-header">ITS MAKER · Lezione 2 · Digitalizzazione Processi · 2/17</div><div class="slide-content"><h1>Slide 02 – Il piano di oggi: la regola del «10 – 10 – 5»</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Fase</th>
+<th style="text-align: center;">Minuti</th>
+<th style="text-align: left;">Cosa facciamo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Micro-lezione</strong></td>
+<td style="text-align: center;">5–7 min</td>
+<td style="text-align: left;">Presentiamo un solo problema reale d'officina e vediamo l'errore tipico dell'AI a video.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Sfida a coppie</strong></td>
+<td style="text-align: center;">10–12 min</td>
+<td style="text-align: left;">Lavorate al computer a ruoli alternati: 1 persona scrive il prompt, 1 persona collauda l'esito.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Debrief collettivo</strong></td>
+<td style="text-align: center;">5 min</td>
+<td style="text-align: left;">Proiettiamo i risultati, discutiamo cosa ha funzionato e fissiamo la regola d'oro.</td>
+</tr>
+</tbody>
+</table>
+<p>Le 4 sfide di oggi:
+1. <strong>Formato e vincoli:</strong> fermare la logorrea dell'AI per inserire dati nel gestionale.
+2. <strong>Few-shot pratico:</strong> dare 1 esempio per fissare lo standard senza scrivere pagine di regole.
+3. <strong>Passaggi intermedi (CoT):</strong> evitare errori nei calcoli di tempi e costi di fermo.
+4. <strong>Bloccare l'allucinazione:</strong> insegnare all'AI a dire "non lo so" quando il dato manca.</p></div></section><section class="slide" data-index="3"><div class="slide-header">ITS MAKER · Lezione 2 · Digitalizzazione Processi · 3/17</div><div class="slide-content"><h1>Slide 03 – Il nostro pezzo grezzo: il rapporto di fermo</h1>
+<p>Per tutte le prove di oggi lavoriamo su questo rapporto d'officina (DOC-FERMO):</p>
+<pre><code class="language-text">Rapporto del 14 Ottobre (DOC-FERMO):
+Ore 14:20: la pressa P03 si è fermata per sovratemperatura dell'olio idraulico. Temperatura registrata: 78 °C. Soglia: 65 °C. Sostituito il filtro intasato con il ricambio FLT-992.
+Fermo macchina totale: 45 minuti.
+</code></pre>
+<ul>
+<li>Copiatelo nella vostra finestra di chat.</li>
+<li>Sarà il testo di base su cui testeremo i nostri prompt.</li>
+</ul></div></section><section class="slide" data-index="4"><div class="slide-header">ITS MAKER · Lezione 2 · Digitalizzazione Processi · 4/17</div><div class="slide-content"><h1>Slide 04 – Sfida 1: «Basta chiacchiere» (Il problema)</h1>
+<h3>Il problema reale nei processi aziendali</h3>
+<p>Se chiedete all'AI: <em>«Riassumimi cosa è successo alla macchina»</em>, cosa succede?
+- L'AI risponde con 3 paragrafi di testo discorsivo.
+- Inizia con: <em>«Certamente! Ecco un riassunto dettagliato del fermo macchina avvenuto...»</em>.
+- Conclude con: <em>«Spero che questo ti sia utile! Fammi sapere se desideri altre informazioni.»</em>.</p>
+<p><strong>Perché è un problema?</strong><br />
+Nessun gestionale aziendale (MES o ERP) può digerire un testo del genere. Serve un dato strutturato in tabella o campi predefiniti, senza "chiacchiere".</p></div></section><section class="slide" data-index="5"><div class="slide-header">ITS MAKER · Lezione 2 · Digitalizzazione Processi · 5/17</div><div class="slide-content"><h1>Slide 05 – Sfida 1: Al lavoro (10 minuti)</h1>
+<h3>Consegna per la coppia:</h3>
+<ol>
+<li><strong>Tentativo A (senza vincoli):</strong> Chiedete all'AI di riassumere il fermo con parole vostre. Osservate la prolissità.</li>
+<li><strong>Tentativo B (con vincoli rigidi):</strong> Riscrivete il prompt imponendo:
+   - <strong>Campi richiesti:</strong> Macchina, Causa fermo, Durata minuti, Codice ricambio.
+   - <strong>Formato:</strong> Solo una tabella a 4 colonne.
+   - <strong>Vincolo negativo:</strong> <em>Nessun saluto, nessuna premessa, nessuna spiegazione prima o dopo la tabella.</em></li>
+</ol>
+<blockquote>
+<p><strong>Compito del Collaudatore:</strong> Controlla che il modello abbia obbedito al vincolo negativo. Ha scritto testo prima della tabella? Segnalalo!</p>
+</blockquote></div></section><section class="slide" data-index="6"><div class="slide-header">ITS MAKER · Lezione 2 · Digitalizzazione Processi · 6/17</div><div class="slide-content"><h1>Slide 06 – Sfida 1: Debrief &amp; Regola 1</h1>
+<pre><code>              ┌────────────────────────────────────────────────┐
+SENZA VINCOLI │ «Certamente! Ecco il riassunto... (3 paragrafi)»│
+              └────────────────────────────────────────────────┘
+                                     ▼
+              ┌────────────────────────────────────────────────┐
+CON VINCOLI   │ | Macchina | Causa        | Durata | Ricambio  |│
+              │ | P03      | Sovratemp.   | 45 min | FLT-992   |│
+              └────────────────────────────────────────────────┘
+</code></pre>
+<h3>💡 Regola d'oro 1:</h3>
+<blockquote>
+<p><strong>Il prompt è una dima: se non fissi i confini e i vincoli negativi, l'AI riempie lo spazio con convenevoli inutilizzabili per un processo industriale.</strong></p>
+</blockquote></div></section><section class="slide" data-index="7"><div class="slide-header">ITS MAKER · Lezione 2 · Digitalizzazione Processi · 7/17</div><div class="slide-content"><h1>Slide 07 – Sfida 2: «Un esempio vale 1000 parole» (Il problema)</h1>
+<h3>Il problema: spiegare lo stile è difficile</h3>
+<p>Vogliamo registrare il fermo in una riga compatta per il bollettino di manutenzione.<br />
+Se chiedete: <em>«Scrivi una riga breve, sintetica e tecnica per il registro manutenzione»</em>, ogni coppia otterrà qualcosa di diverso:
+- Coppia 1: <em>«14/10/2026 - P03 ferma 45 min guasto olio.»</em>
+- Coppia 2: <em>«Fermo P03: temperatura 78C, ricambio FLT-992.»</em>
+- Coppia 3: <em>«P03 (45 minuti) - Allarme temperatura - Filtro sostituito.»</em></p>
+<p>Come facciamo a imporre uno standard rigoroso e uniforme per tutti i turni di lavoro?</p></div></section><section class="slide" data-index="8"><div class="slide-header">ITS MAKER · Lezione 2 · Digitalizzazione Processi · 8/17</div><div class="slide-content"><h1>Slide 08 – Sfida 2: Al lavoro (10 minuti)</h1>
+<h3>Usare il Few-Shot (fornire 1 esempio già risolto)</h3>
+<p>Riscrivete il prompt fornendo <strong>un modello di riferimento</strong>:</p>
+<blockquote>
+<p><em>«Crea una riga di registro manutenzione seguendo ESATTAMENTE lo stile di questo esempio:</em>  </p>
+<p><em>Esempio: [Linea 1] 20 min | BLOCCO NASTRO | RICAMBIO: CINGHIA-B12</em>  </p>
+<p><em>Ora genera la riga per il rapporto allegato della pressa P03.»</em></p>
+<p><strong>Compito del Collaudatore:</strong><br />
+Controlla se il modello ha rispettato parentesi quadre <code>[]</code>, barre verticali <code>|</code>, maiuscole e ordine delle informazioni dell'esempio.</p>
+</blockquote></div></section><section class="slide" data-index="9"><div class="slide-header">ITS MAKER · Lezione 2 · Digitalizzazione Processi · 9/17</div><div class="slide-content"><h1>Slide 09 – Sfida 2: Debrief &amp; Regola 2</h1>
+<h3>Perché il Few-Shot vince sulle spiegazioni lunghe?</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Approccio</th>
+<th style="text-align: left;">Prompt</th>
+<th style="text-align: left;">Risultato</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Zero-Shot (solo teoria)</strong></td>
+<td style="text-align: left;"><em>«Sii conciso, usa parentesi e barre, non mettere date, usa lo stile d'officina...»</em></td>
+<td style="text-align: left;">Spesso ignora 1 o 2 regole.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Few-Shot (1 esempio)</strong></td>
+<td style="text-align: left;"><em>«Segui questo schema: [L1] 20m | GUASTO | RICAMBIO: X»</em></td>
+<td style="text-align: left;"><strong>Imita la struttura al 100% al primo colpo.</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>💡 Regola d'oro 2:</h3>
+<blockquote>
+<p><strong>Non perdere tempo a spiegare lo stile a parole: mostra all'AI 1 o 2 esempi pratici di input/output. Gli LLM imparano per imitazione di pattern.</strong></p>
+</blockquote></div></section><section class="slide" data-index="10"><div class="slide-header">ITS MAKER · Lezione 2 · Digitalizzazione Processi · 10/17</div><div class="slide-content"><h1>Slide 10 – Sfida 3: «La calcolatrice che sbaglia» (Il problema)</h1>
+<h3>L'illusione della calcolatrice</h3>
+<p>Molti credono che gli LLM siano calcolatori elettronici. <strong>Falso.</strong><br />
+Un LLM prevede parole e numeri probabili, non esegue calcoli su un circuito aritmetico.</p>
+<h3>Il caso pratico d'officina:</h3>
+<ul>
+<li>Tariffa di fermo impianto aziendale: <strong>160 €/ora</strong>.</li>
+<li>La pressa P03 è rimasta ferma per <strong>45 minuti</strong>.</li>
+<li>Quanto è costato il fermo all'azienda?</li>
+</ul>
+<p><em>Attenzione:</em> 45 minuti NON sono 0,45 ore!<br />
+45 minuti = 0,75 ore ($45 / 60$). Il costo esatto è $0{,}75 \times 160\text{ \euro} = \mathbf{120\text{ \euro}}$.</p></div></section><section class="slide" data-index="11"><div class="slide-header">ITS MAKER · Lezione 2 · Digitalizzazione Processi · 11/17</div><div class="slide-content"><h1>Slide 11 – Sfida 3: Al lavoro (10 minuti)</h1>
+<h3>Test 1 — La risposta secca:</h3>
+<blockquote>
+<p><em>«Il costo di fermo è 160 €/ora. Dal rapporto allegato calcola il costo totale del fermo della P03. Rispondi subito con la sola cifra finale in euro.»</em><br />
+<em>(Cosa ha risposto il modello? Ha sbagliato o ha indovinato?)</em></p>
+</blockquote>
+<h3>Test 2 — Forzare i passaggi (Chain of Thought):</h3>
+<blockquote>
+<p><em>«Calcola il costo del fermo spiegando prima i passaggi intermedi:</em><br />
+<em>1. Minuti totali di fermo estratti dal testo.</em><br />
+<em>2. Conversione dei minuti in ore decimali (minuti / 60).</em><br />
+<em>3. Moltiplicazione ore decimali per tariffa oraria (160 €/ora).</em><br />
+<em>4. Cifra finale in euro.»</em></p>
+<p><strong>Compito del Collaudatore:</strong> Calcolatrice alla mano, verifica se il passaggio 2 e 3 tornano matematicamente.</p>
+</blockquote></div></section><section class="slide" data-index="12"><div class="slide-header">ITS MAKER · Lezione 2 · Digitalizzazione Processi · 12/17</div><div class="slide-content"><h1>Slide 12 – Sfida 3: Debrief &amp; Regola 3</h1>
+<pre><code>DOMANDA DIRETTA   ──►  L'AI &quot;spara&quot; un numero a intuito linguistico  ──► RISCHIO ERRORE
+                                                                        (es. 0.45 × 160)
+PASSAGGI FORZATI  ──►  45 min  ──►  45/60 = 0.75 h  ──►  0.75 × 160  ──► 120 € ESATTI!
+</code></pre>
+<h3>💡 Regola d'oro 3:</h3>
+<blockquote>
+<p><strong>L'AI "pensa con i token che scrive". Se le chiedi solo il numero finale, non ha spazio computazionale per elaborare la logica. Chiedi sempre i passaggi intermedi (Chain-of-Thought).</strong></p>
+</blockquote></div></section><section class="slide" data-index="13"><div class="slide-header">ITS MAKER · Lezione 2 · Digitalizzazione Processi · 13/17</div><div class="slide-content"><h1>Slide 13 – Sfida 4: «Il test del trabocchetto» (Il problema)</h1>
+<h3>La trappola peggiore dell'AI: l'Allucinazione</h3>
+<p>Gli LLM sono addestrati per essere gentili e dare sempre una risposta.<br />
+Se fate una domanda su un dato che non conoscono o che non c'è nel testo, <strong>tendono a inventare una risposta plausibile pur di non deludervi</strong>.</p>
+<p>In un processo industriale o su una macchina:
+- Un ricambio inventato ordina il pezzo sbagliato.
+- Una procedura inventata può causare incidenti di sicurezza.</p></div></section><section class="slide" data-index="14"><div class="slide-header">ITS MAKER · Lezione 2 · Digitalizzazione Processi · 14/17</div><div class="slide-content"><h1>Slide 14 – Sfida 4: Al lavoro (10 minuti)</h1>
+<h3>Nel rapporto DOC-FERMO NON c'è il nome dell'operatore!</h3>
+<ol>
+<li>
+<p><strong>Il tranello (domanda aperta):</strong>  </p>
+<blockquote>
+<p><em>«Chi è l'operatore che ha effettuato la sostituzione del filtro della P03?»</em><br />
+<em>Cosa risponde l'AI?</em> Prova a dedurre un nome o usa frasi vaghe?</p>
+</blockquote>
+</li>
+<li>
+<p><strong>La clausola di sicurezza (paracadute):</strong>  </p>
+<blockquote>
+<p><em>«Chi è l'operatore che ha effettuato l'intervento?</em><br />
+<em>Regola tassativa: Rispondi basandoti ESCLUSIVAMENTE sulle informazioni scritte nel testo.</em><br />
+<em>Se l'informazione non è presente o non è certa, rispondi testualmente con: 'DATO NON PRESENTE'. Non inventare nulla.»</em></p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p><strong>Compito del Collaudatore:</strong> Il modello ha ammesso il limite o ha continuato a inventare scuse?</p>
+</blockquote></div></section><section class="slide" data-index="15"><div class="slide-header">ITS MAKER · Lezione 2 · Digitalizzazione Processi · 15/17</div><div class="slide-content"><h1>Slide 15 – Sfida 4: Debrief &amp; Regola 4</h1>
+<pre><code>TRABOCCHETTO      ──►  «Chi è l'operatore?»  ──► «Il tecnico specializzato...» (Invenzione)
+
+CON PARACADUTE    ──►  «Se manca: DATO NON PRESENTE»  ──► «DATO NON PRESENTE» (Sicuro)
+</code></pre>
+<h3>💡 Regola d'oro 4:</h3>
+<blockquote>
+<p><strong>In azienda un'invenzione plausibile è peggiore di un errore evidente. Bisogna sempre autorizzare formalmente l'AI ad astenersi («Se non è nel testo, scrivi DATO NON PRESENTE»).</strong></p>
+</blockquote></div></section><section class="slide" data-index="16"><div class="slide-header">ITS MAKER · Lezione 2 · Digitalizzazione Processi · 16/17</div><div class="slide-content"><h1>Slide 16 – Il ponte verso Unsloth Studio e i Documenti (RAG)</h1>
+<p>Oggi avete imparato a governare l'AI su un singolo paragrafo:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Oggi nel prompt</th>
+<th style="text-align: left;">Nel lavoro industriale</th>
+<th style="text-align: left;">Con Unsloth Studio &amp; RAG</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Tabelle e vincoli</strong></td>
+<td style="text-align: left;">Dati puliti per il MES/ERP</td>
+<td style="text-align: left;">Estrazione automatica nei campi del database</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Few-shot con 1 esempio</strong></td>
+<td style="text-align: left;">Standardizzazione del linguaggio</td>
+<td style="text-align: left;">Classificazione automatica dei cartellini guasto</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Passaggi intermedi (CoT)</strong></td>
+<td style="text-align: left;">Controllo qualità e tempi</td>
+<td style="text-align: left;">Verifica incrociata tra formule e registri</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Clausola di astensione</strong></td>
+<td style="text-align: left;">Sicurezza e conformità</td>
+<td style="text-align: left;">Risposte affidabili basate solo sui manuali d'officina</td>
+</tr>
+</tbody>
+</table>
+<p>Nella prossima lezione collegheremo l'AI <strong>all'intero archivio tecnico</strong> (schede macchina, cataloghi ricambi rev1 e rev2) usando Unsloth Studio!</p></div></section><section class="slide" data-index="17"><div class="slide-header">ITS MAKER · Lezione 2 · Digitalizzazione Processi · 17/17</div><div class="slide-content"><h1>Slide 17 – Riepilogo finale: Cosa sappiamo fare oggi</h1>
+<ol>
+<li><strong>Basta convenevoli:</strong> usiamo vincoli negativi per ottenere tabelle e dati pronti all'uso.</li>
+<li><strong>Guidare con esempi:</strong> usiamo il Few-shot per fissare formati e stili senza ambiguità.</li>
+<li><strong>Calcoli verificabili:</strong> forziamo i passaggi intermedi (Chain-of-Thought) per non far tirare a indovinare l'AI.</li>
+<li><strong>Zero allucinazioni:</strong> diamo sempre il permesso esplicito di dire <em>"Dato non presente"</em>.</li>
+</ol>
+<blockquote>
+<p><strong>Alla macchina il volume e l'esecuzione, alla persona il controllo e la responsabilità.</strong></p>
+</blockquote></div></section>
+  </div>
+</div>
+<nav class="controls" aria-label="Navigazione slide">
+  <button id="prevBtn" type="button">← Prec</button>
+  <span id="position">1 / 17</span>
+  <button id="nextBtn" type="button">Succ →</button>
+</nav>
+<script>
+const slides = Array.from(document.querySelectorAll('.slide'));
+let current = 0;
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const pos = document.getElementById('position');
+const deck = document.getElementById('deck');
+
+function show(idx) {
+  current = Math.max(0, Math.min(slides.length - 1, idx));
+  slides.forEach((s, i) => s.classList.toggle('active', i === current));
+  prevBtn.disabled = current === 0;
+  nextBtn.disabled = current === slides.length - 1;
+  pos.textContent = `${current + 1} / ${slides.length}`;
+}
+
+function resizeDeck() {
+  const targetW = 1440;
+  const targetH = 810;
+  const scale = Math.min(window.innerWidth / targetW, window.innerHeight / targetH) * 0.96;
+  deck.style.transform = `scale(${scale})`;
+}
+
+window.addEventListener('resize', resizeDeck);
+prevBtn.addEventListener('click', () => show(current - 1));
+nextBtn.addEventListener('click', () => show(current + 1));
+document.addEventListener('keydown', (e) => {
+  if (['ArrowRight', 'Space', 'PageDown'].includes(e.code)) { e.preventDefault(); show(current + 1); }
+  else if (['ArrowLeft', 'PageUp'].includes(e.code)) { e.preventDefault(); show(current - 1); }
+  else if (e.code === 'Home') { e.preventDefault(); show(0); }
+  else if (e.code === 'End') { e.preventDefault(); show(slides.length - 1); }
+});
+
+show(0);
+resizeDeck();
+</script>
+</body>
+</html>
