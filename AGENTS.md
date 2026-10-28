@@ -32,6 +32,11 @@ Queste regole valgono per la creazione e la revisione dei materiali del corso. L
 
 ## Progettazione degli esercizi
 
+- Privilegiare un approccio pratico basato sul fare da parte degli studenti, riducendo al minimo la spiegazione frontale iniziale.
+- Evitare esercizi che si risolvano in pochi minuti o si riducano a una sequenza passiva di «copia, incolla e verifica» in cui il lavoro progettuale è già stato svolto nella scheda e l'intelligenza artificiale esegue tutta l'analisi al primo tentativo.
+- Fornire agli studenti l'obiettivo del caso, i vincoli e i risultati attesi, ma non consegnare istruzioni complete già pronte da copiare e incollare: devono essere gli studenti a ideare, scrivere, provare e correggere per tentativi le istruzioni per l'assistente.
+- Prevedere spazi di creatività e decisione autonoma: per esempio progettare assistenti che pongono domande prima di produrre una risposta, incrociare più informazioni o regole (appunti, listini, priorità, vincoli operativi) e prendere decisioni motivate.
+- Nelle fasi di verifica e confronto tra coppie non fornire solo frasi di prova precompilate: chiedere agli studenti di inventare i casi critici e i tranelli con cui mettere alla prova l'assistente dei compagni e di correggere poi le proprie istruzioni dove emergono falle.
 - Per sintesi ed estrazione usare una fonte sufficientemente lunga e ricca di eventi, non un testo già ridotto ai pochi dati della risposta.
 - Mantenere semplici e coerenti dati e consegne. La difficoltà deve stare nel riconoscere, ordinare e controllare le informazioni, non nel conoscere termini tecnici complessi.
 - Le annotazioni ordinarie e le ripetizioni contestuali possono essere parte dell'esercizio: non eliminarle come se fossero note organizzative inutili.
