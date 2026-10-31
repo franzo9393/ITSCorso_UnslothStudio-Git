@@ -11,6 +11,7 @@
 - [Slide docente](materiali_aula/SLIDE_DOCENTE_ITS_MAKER.md) · [HTML offline](materiali_aula/SLIDE_DOCENTE_ITS_MAKER.html) · [PDF](materiali_aula/SLIDE_DOCENTE_ITS_MAKER.pdf).
 - [Guida docente](laboratorio/docente/SOLUZIONI.md): regia, risposte, preparazione e GO distinti per percorso guidato, sandbox e training.
 - [Risorse e accesso](materiali_aula/RISORSE_E_ACCESSO.md): documentazione ufficiale, risorse gratuite, limiti cloud e checklist di selezione.
+- **Prossima lezione · RAG con Copilot:** [canovaccio docente](lezione%203%20-%20system%20prompt%20e%20agenti/docente/CANOVACCIO_LEZIONE3_RAG_COPILOT.md), sviluppato nel confronto con Gemini 4 Argon. Riprende gli agenti P03 e distingue analisi nei Blocchi appunti, sportello documentale e collaudo tra coppie; include materiali da predisporre e verifiche pre-aula, non un laboratorio già collaudato. Non sostituisce ancora le presentazioni esistenti.
 
 Markdown come sorgente; `scripts/build_materiali.py` rigenera HTML delle slide e tre PDF didattici. I PDF non sono byte-identici fra compilazioni.
 
