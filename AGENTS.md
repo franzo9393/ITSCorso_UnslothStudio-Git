@@ -16,6 +16,7 @@ Queste regole valgono per la creazione e la revisione dei materiali del corso. L
 
 - Scrivere in italiano comune, con frasi brevi e istruzioni concrete. Il pubblico è composto da studenti tecnici alle prime armi: attività semplici, comprensibili e coinvolgenti.
 - Niente gergo, anglicismi superflui, sigle non spiegate o nomi di comandi da imparare inutilmente. Preferire parole come istruzioni, richiesta, risposta, registro, tabella, nuova conversazione e controllo. Conservare i nomi reali dei prodotti; spiegare al primo uso le estensioni necessarie, come `.md`.
+- Usare nomi concreti per attività e ruoli. Spiegare al primo uso eventuali termini nuovi o metafore, senza presentarli come funzioni del programma. Nelle consegne indicare chi compie ogni azione, dove scrive e in quale ordine procede. Presentare ogni istruzione e tabella nel passaggio in cui va usata, non dopo.
 - Dire chiaramente quale programma aprire, che cosa scrivere o copiare, che cosa controllare, che cosa salvare e che cosa consegnare.
 - Non inserire note sulla progettazione della lezione, giudizi sul livello degli studenti, riferimenti alle soluzioni o alla loro collocazione, né altre informazioni riservate al docente.
 - Un registro usato come fonte deve raccontare i fatti. Evitare suggerimenti che anticipino la soluzione o annuncino artificialmente quali dati mancano.

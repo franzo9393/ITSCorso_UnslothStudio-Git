@@ -1,152 +1,176 @@
-# Lezione 3 — Lo sportello della P03
+# Lezione 3 — L'assistente di reparto della P03
 
 **ITS MAKER Bologna · 4 novembre 2026 · Microsoft Copilot Basic**
 
-## La missione
+## Che cosa costruite
 
-Un collega del reparto vuole capire che cosa risulta dai documenti della pressa e verificare una richiesta di ricambi. Progettate uno sportello in Microsoft Copilot che lo aiuti a orientarsi nelle fonti e a controllare i conti. Il servizio prepara proposte: non ordina materiale, non modifica il magazzino e non autorizza interventi sulle macchine.
+In questa attività, **assistente di reparto** significa Microsoft Copilot con le istruzioni che progettate voi. Aiuta un collega a leggere i documenti della P03 e a verificare una richiesta di ricambi. Non è un nuovo programma da installare.
 
-La situazione di magazzino del caso si riferisce al **19 ottobre 2026**, non al giorno della lezione.
+L'assistente prepara risposte e tabelle da controllare: non ordina materiale, non modifica il magazzino e non autorizza interventi sulle macchine. I dati di magazzino descrivono il **19 ottobre 2026**, non il giorno della lezione.
 
-## Aprite i materiali
+## Che cosa aprire
 
-1. In **Teams**, scaricate questa scheda e `01_FONTI_SPORTELLO_P03.txt`. Il file `.txt` contiene testo semplice: si apre con un normale programma per leggere e scrivere testi. Il fascicolo è disponibile anche in Word e PDF.
-2. Aprite **Microsoft Copilot** con l'account scolastico. Recuperate le vostre istruzioni P03 della lezione precedente.
-3. Aprite **Copilot Blocchi appunti** nella modalità indicata dal docente e aggiungete il fascicolo. Se lavorate con lettura diretta, annotatelo nella scheda.
+1. In **Teams**, scaricate `ATTIVITA_LEZIONE3.docx` e `01_DOCUMENTI_P03.txt`.
+2. Aprite questa scheda in **Word o LibreOffice Writer**: scriverete qui le decisioni e i controlli. Il PDF serve per leggere o stampare la stessa scheda.
+3. Aprite `01_DOCUMENTI_P03.txt` con un programma di testo, per esempio **Blocco note**. Contiene diario, catalogo e magazzino. Il `.txt` è un file di testo semplice. Se il docente indica la versione Word o PDF, usate quella: non servono più copie dello stesso documento in Copilot.
+4. Aprite **Microsoft Copilot** con l'account scolastico. Recuperate il testo delle istruzioni P03 salvato nella lezione precedente.
 
-Una persona usa il computer; l'altra controlla le fonti e annota le decisioni. Scambiate i compiti nella progettazione e nelle prove.
+Una persona usa il computer; l'altra legge i documenti e annota i controlli. Scambiate i compiti nella progettazione e nelle prove.
 
-## 1. Scegliete il servizio
+## 1. Decidete a chi serve l'assistente
 
-Date un destinatario concreto allo sportello. Decidete che cosa gli sarà utile ricevere e quale lavoro resterà alla persona.
+Scegliete un collega del reparto che potrebbe usarlo. Decidete quali domande deve poter fare e quali decisioni resteranno alla persona.
 
 | Progetto della coppia | Da compilare |
 | --- | --- |
 | Nomi dei componenti | |
-| Destinatario del servizio | |
-| Che cosa deve poter ottenere | |
-| Che cosa resta fuori dal servizio | |
-| Come rendere comprensibile una risposta al destinatario | |
-
-## 2. Studiate prima di scrivere le istruzioni
-
-Leggete i tre documenti del fascicolo. Prima di interrogare Copilot, scegliete un fatto e individuate il passaggio che lo documenta. Usate i Blocchi appunti per esplorare collegamenti e differenze con richieste scritte da voi; controllate le risposte sui testi originali. Non chiedete un nuovo riassunto del diario o una nuova tabella dei 24 appunti.
-
-| Documento e data/revisione | Passaggio utile e che cosa sostiene | Che cosa non permette di concludere |
-| --- | --- | --- |
-| | | |
-| | | |
-| | | |
+| Chi userà l'assistente? | |
+| Che cosa deve poter ottenere? | |
+| Che cosa l'assistente non deve fare? | |
+| Come rendere la risposta facile da controllare? | |
 
 <!-- pagebreak -->
 
-## 3. Progettate le vostre istruzioni
+## 2. Leggete e controllate i documenti
 
-Confrontate lo sportello che volete costruire con il lavoro della lezione precedente. Se non avete il vecchio file, ricostruite il progetto con parole vostre.
+Leggete diario, catalogo e magazzino. Scegliete un fatto e trovate il passaggio che lo documenta, prima di chiedere aiuto a Copilot.
 
-| Decisione sulle istruzioni | Regola scelta e motivazione |
+Se il docente indica **Copilot Blocchi appunti**, apritelo ora e aggiungete `01_DOCUMENTI_P03.txt`. Scrivete domande vostre e confrontate le risposte con i documenti. Altrimenti fate il controllo leggendo direttamente i testi. Non ricompilate il registro dei 24 appunti: usatelo per controllare le nuove risposte.
+
+Completate la prima colonna con data e revisione, quando presente.
+
+| Documento, data e revisione | Fatto controllato e passaggio che lo documenta | Che cosa non permette di affermare |
+| --- | --- | --- |
+| Diario P03 | | |
+| Catalogo ricambi | | |
+| Magazzino | | |
+
+### Annotate subito il controllo svolto
+
+Se avete usato i Blocchi appunti, riportate una richiesta realmente inviata e un breve pezzo della risposta ricevuta. Se avete svolto soltanto lettura diretta, descrivete quel controllo: non inventate una risposta di Copilot.
+
+| Controllo sui documenti | Da compilare |
+| --- | --- |
+| Come abbiamo lavorato: Blocchi appunti o lettura diretta | |
+| Richiesta inviata o controllo svolto | |
+| Parte della risposta ricevuta, se presente | |
+| Passaggio originale usato per controllare | |
+| La risposta è corretta? Perché? Che cosa non dimostra? | |
+
+## 3. Scrivete le vostre istruzioni
+
+In questo lavoro ci sono tre testi diversi:
+
+- **Istruzioni:** le regole di comportamento che scrivete per l'assistente.
+- **Documenti:** i fatti del caso da consultare, non da cambiare.
+- **Richiesta di prova:** la domanda di un collega che inventate per vedere come risponde l'assistente.
+
+Rileggete le istruzioni della lezione precedente e decidete che cosa serve ancora. Se non avete il vecchio file, partite dal progetto della vostra coppia.
+
+| Decisione sulle istruzioni | Regola scelta e motivo |
 | --- | --- |
 | Una regola che conserviamo | |
 | Una regola che cambiamo o eliminiamo | |
 | Una regola nuova, se necessaria | |
 
-Un servizio utile sa affrontare sia richieste complete sia richieste che non permettono ancora una verifica. Decidete quali informazioni cambiano davvero il lavoro da svolgere. Una domanda di chiarimento deve servire, non allungare la conversazione.
+Decidete quando la richiesta contiene già tutto ciò che serve e quando manca un'informazione che cambia la risposta. Una domanda di chiarimento deve essere utile, non obbligatoria in ogni conversazione.
 
-Scrivete voi le istruzioni: non chiedete a Copilot di prepararle al vostro posto. Salvatele in `istruzioni_sportello_P03.txt`. I fatti restano nei documenti, non vanno ricopiati tutti nelle istruzioni.
+Scrivete le istruzioni con parole vostre, senza farle preparare a Copilot. Salvatele in `istruzioni_assistente_P03.txt`. I dati del caso rimangono nei documenti: non vanno ricopiati tutti nelle istruzioni.
 
-Se state configurando un agente, aggiornate il suo campo delle istruzioni. Se il docente ha indicato una normale chat, le istruzioni sono un primo messaggio della conversazione: non sono un vero messaggio di sistema.
+Se usate un agente, aggiornate il suo campo **Istruzioni**. Se il docente indica una normale chat, inviate il vostro testo nel primo messaggio: sono istruzioni dell'utente, non un vero messaggio di sistema. In una nuova chat normale dovrete inviarle di nuovo.
 
-## 4. Provate il servizio e il calcolo
+<!-- pagebreak -->
 
-Aprite una conversazione nuova e fornite il fascicolo completo nella modalità indicata dal docente. I file non passano automaticamente dai Blocchi appunti alla conversazione. Ogni conversazione nuova deve ricevere di nuovo le fonti.
+## 4. Provate una richiesta e controllate il calcolo
 
-Inventate una richiesta pertinente al vostro destinatario che richieda più documenti. La quantità che il collega vorrebbe ritirare è una vostra ipotesi, non un prelievo già eseguito. Non scrivete nella domanda i dati che lo sportello dovrebbe cercare nelle fonti.
+1. Aprite una conversazione nuova con l'agente preparato. Se usate una normale chat, inviate prima le vostre istruzioni.
+2. Allegate `01_DOCUMENTI_P03.txt`, o il formato indicato dal docente, con il pulsante per aggiungere file al messaggio. Se il docente vi fa usare il testo incollato, inviate la raccolta integrale, non un riassunto. I documenti non passano da soli dai Blocchi appunti all'agente.
+3. Inventate una richiesta del collega che richieda almeno due documenti e un calcolo. La quantità richiesta la scegliete voi: è un'ipotesi, non un prelievo reale. La disponibilità, invece, deve essere ricavata dal documento, non inventata né suggerita nella domanda.
+4. Prima di inviare la richiesta, annotate nella tabella quali dati usereste e quale risultato vi aspettate. Poi inviatela a Copilot.
 
-Per una verifica numerica, progettate le istruzioni in modo che Copilot usi **Python**, il linguaggio con cui può eseguire calcoli nel proprio ambiente separato, detto *sandbox*. Non dovete scrivere codice. Dovete capire quali numeri vengono usati, quale operazione viene eseguita e che cosa significa il risultato.
+Progettate le istruzioni perché Copilot esegua il calcolo con **Python**, un linguaggio di programmazione. Copilot lo usa in un ambiente separato, chiamato *sandbox*. Voi non dovete programmare: dovete controllare i numeri usati, l'operazione e il risultato.
 
-Controllate la traccia di esecuzione mostrata dall'interfaccia: vedere codice scritto nella risposta, da solo, non dimostra che sia stato eseguito. Scaricate il prospetto prodotto, apritelo e confrontatelo con le fonti. Un file `.csv` è una tabella che si può aprire con Excel o LibreOffice Calc.
+Il docente vi mostra dove leggere i dettagli del calcolo nell'interfaccia. Controllate che Python sia stato eseguito: vedere soltanto codice scritto nel messaggio non basta. Se non riuscite a verificarlo, chiedete aiuto e annotatelo.
 
-| Controllo della prova numerica | Evidenza della coppia |
+Fate produrre un file con la tabella dei risultati, scaricatelo e apritelo. Confrontate numeri e risultati con i documenti. Un file `.csv` contiene una tabella che si può aprire con **Excel o LibreOffice Calc**.
+
+| Controllo della prova numerica | Da compilare |
 | --- | --- |
 | Richiesta scritta da noi | |
-| Dati scelti dalle fonti, con riferimento | |
+| Numeri scelti e documento da cui provengono | |
 | Operazione e risultato attesi da noi | |
-| Traccia osservata dell'esecuzione e risultato ricevuto | |
-| Nome del file scaricato e controllo del contenuto | |
-| Che cosa il risultato non autorizza a fare | |
+| Come abbiamo verificato l'esecuzione di Python e quale risultato abbiamo ricevuto | |
+| Nome del file scaricato e controllo del suo contenuto | |
+| Che cosa resta da decidere a una persona | |
 
 <!-- pagebreak -->
 
-## 5. Conservate una prova sui documenti
+## 5. Mettete alla prova l'assistente di un'altra coppia
 
-Registrate una richiesta effettiva dei Blocchi appunti e un estratto della risposta. Se avete svolto solo lettura diretta, descrivete quella modalità senza inventare una risposta di Copilot.
+Inventate una richiesta adatta all'assistente dei compagni. Prima di inviarla, compilate nella tabella qui sotto la richiesta, il risultato atteso e i documenti da controllare. Non inserite il risultato atteso nella domanda inviata a Copilot.
 
-| Prova sulle fonti | Da compilare |
+Potete verificare una risposta che usa più documenti, il confronto tra un evento e un documento successivo, una richiesta incompleta oppure un'informazione non presente nei testi. Non serve una frase ingannevole: serve un controllo utile. Scegliete una richiesta diversa da quella già usata dai compagni.
+
+Per controllare le domande di chiarimento, potete togliere un'informazione davvero necessaria e poi fornirla: osservate se l'assistente sa chiedere ciò che manca e riprendere il lavoro.
+
+1. La **coppia A** apre il proprio assistente in una conversazione nuova e fornisce di nuovo tutti i documenti. Se usa una chat normale, invia anche le proprie istruzioni iniziali.
+2. La **coppia B** usa il computer della coppia A, senza cambiare account: invia la richiesta e completa la tabella nella scheda della coppia A. Una persona scrive, l'altra verifica i documenti. La coppia A osserva senza suggerire risposte.
+3. Invertite A e B: ogni coppia deve provare l'assistente altrui e ricevere una prova sul proprio. Non scambiate credenziali e non modificate le istruzioni dei compagni.
+
+| Prova dei compagni, da registrare nella scheda di chi ha creato l'assistente | Da compilare |
 | --- | --- |
-| Modalità effettivamente svolta | |
-| Richiesta o verifica svolta | |
-| Estratto della risposta, se ricevuta | |
-| Passaggio originale usato per controllare | |
-| Giudizio motivato e limite della risposta | |
-
-## 6. Preparate il collaudo dei compagni
-
-Inventate una richiesta per lo sportello di un'altra coppia. Prima di inviarla, decidete quali documenti e quali controlli permetteranno di giudicare la risposta. Scegliete un caso diverso da quello già provato dai proprietari.
-
-Potete mettere alla prova un incrocio tra documenti, il rapporto tra un evento e un documento successivo, una richiesta incompleta oppure un'informazione non documentata. Non suggerite la risposta nella domanda. Non serve costruire una frase ingannevole: serve una verifica che abbia un significato per il servizio.
-
-Una richiesta completa dovrebbe poter procedere senza conferme inutili. Se togliete un'informazione davvero decisiva, osservate che cosa cambia; se la fornite di nuovo, controllate che il servizio possa riprendere.
-
-Scambiatevi di postazione senza scambiare credenziali. I proprietari aprono una conversazione nuova e forniscono il fascicolo; gli ospiti interrogano lo sportello senza ricevere prima la risposta attesa. Una persona invia la richiesta, l'altra verifica le fonti. Poi invertite ospiti e proprietari: ogni coppia deve ricevere e svolgere un collaudo.
-
-| Collaudo ospite, da registrare nella scheda dei proprietari | Da compilare |
-| --- | --- |
-| Coppia ospite e ruoli svolti | |
+| Coppia che ha svolto la prova e compiti dei due studenti | |
 | Richiesta realmente inviata | |
-| Estratto della risposta ricevuta | |
-| Fonte, passaggio e data del controllo | |
-| Dati e calcolo controllati, se pertinenti | |
-| Giudizio motivato | |
+| Risultato atteso, scritto prima dell'invio | |
+| Documenti da controllare e motivo della scelta | |
+| Parte della risposta ricevuta | |
+| Documento, passaggio e data controllati | |
+| Numeri e calcolo controllati, se presenti | |
+| La risposta è corretta? Perché? | |
 
 <!-- pagebreak -->
 
-## 7. Decidete che cosa cambiare
+## 6. Decidete se cambiare le istruzioni
 
-Tornate al vostro sportello e scambiate i compiti nella coppia. Non suggerite ai compagni la risposta durante il loro collaudo.
+Tornate al vostro assistente e scambiate i compiti nella coppia.
 
-Se è emerso un problema, cercate che cosa è osservabile: fonte non utilizzata, dato scelto male, operazione diversa da quella richiesta o risultato non controllato. Non attribuite automaticamente ogni problema a una regola mancante.
+Se è emerso un problema, cercate che cosa è successo: un documento non usato, un numero scelto male, un'operazione diversa da quella richiesta o un risultato non controllato. Non date per scontato che ogni problema dipenda da una regola mancante.
 
-Modificate soltanto ciò che sapete motivare. Se la risposta era già corretta, conservate la regola che ha funzionato e verificate un diverso confine del servizio. Non è necessario trovare un errore.
+Cambiate soltanto ciò che sapete spiegare. Se la risposta era già corretta, indicate quale regola ha funzionato e scegliete un altro tipo di richiesta da provare. Non è necessario trovare un errore.
 
-| Decisione dei proprietari | Da compilare |
+Se cambiate una regola, deve servire anche ad altre richieste: non inserite nelle istruzioni la risposta alla singola prova. Per riprovare, ripetete i primi due passaggi della sezione 4: conversazione nuova, istruzioni se necessarie e documenti forniti di nuovo.
+
+| Decisione della coppia che ha creato l'assistente | Da compilare |
 | --- | --- |
 | Che cosa conserviamo o cambiamo e perché | |
-| Nuova prova scelta | |
-| Fonte fornita nella conversazione nuova | |
-| Esito effettivo e confronto con la prova precedente | |
+| Nuova richiesta di prova | |
+| Documenti forniti nella nuova conversazione | |
+| Risultato ricevuto e confronto con la prova precedente | |
 
-## 8. Risposta individuale, senza Copilot
+## 7. Risposta individuale, senza Copilot
 
-Ciascuno risponde con parole proprie, usando una prova realmente svolta.
+Ognuno risponde con parole proprie, usando una prova realmente svolta.
 
 | Primo componente | Risposta |
 | --- | --- |
 | Nome | |
-| Quale passaggio e quale data sostengono una frase della risposta? | |
-| Quali dati sono entrati nel calcolo e che cosa non autorizza il risultato? | |
-| Quale regola avete conservato o modificato, e perché? | |
+| Quale frase avete controllato? In quale documento e data trovate il riscontro? | |
+| Quali numeri sono entrati nel calcolo? Che cosa resta da decidere a una persona? | |
+| Quale regola avete conservato o cambiato, e perché? | |
 
 | Secondo componente | Risposta |
 | --- | --- |
 | Nome | |
-| Quale passaggio e quale data sostengono una frase della risposta? | |
-| Quali dati sono entrati nel calcolo e che cosa non autorizza il risultato? | |
-| Quale regola avete conservato o modificato, e perché? | |
+| Quale frase avete controllato? In quale documento e data trovate il riscontro? | |
+| Quali numeri sono entrati nel calcolo? Che cosa resta da decidere a una persona? | |
+| Quale regola avete conservato o cambiato, e perché? | |
 
 ## Che cosa consegnare su Teams
 
-- Questa scheda compilata, con prove effettive e contributi individuali riconoscibili.
-- `istruzioni_sportello_P03.txt`, nella versione finale.
-- Il prospetto prodotto con Python e controllato dalla coppia.
+Nel punto indicato dal docente, caricate:
 
-Indicate sempre se un passaggio è stato eseguito da voi, osservato nella dimostrazione del docente o soltanto analizzato sui documenti. Non presentate un risultato atteso come una vera esecuzione.
+- questa scheda compilata, con le prove e le due risposte individuali;
+- `istruzioni_assistente_P03.txt`, nella versione finale;
+- il file con la tabella dei risultati prodotta da Python e controllata da voi.
+
+Indicate se ogni passaggio è stato eseguito da voi, osservato nella dimostrazione del docente o soltanto controllato sui documenti. Un risultato atteso non è una vera esecuzione di Copilot.

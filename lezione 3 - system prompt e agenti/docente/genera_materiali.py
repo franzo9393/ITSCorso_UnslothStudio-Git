@@ -301,10 +301,10 @@ def build_pptx(slides: list[dict]) -> Path:
                     run.font.name = FONT
                     run.font.size = Pt(11)
                     run.font.color.rgb = RGBColor.from_string(MUTED)
-    prs.core_properties.title = 'Lezione 3 — Lo sportello della P03'
+    prs.core_properties.title = "Lezione 3 — L'assistente di reparto della P03"
     prs.core_properties.subject = 'Microsoft Copilot Basic: fonti fornite, istruzioni e calcolo Python'
     prs.core_properties.comments = ''
-    output = LESSON / 'Lezione3_Sportello_P03_ITS_MAKER.pptx'
+    output = LESSON / 'Lezione3_Assistente_Reparto_P03_ITS_MAKER.pptx'
     prs.save(output)
     return output
 
@@ -359,8 +359,8 @@ def build_html(slides: list[dict], backgrounds: dict[str, str]) -> None:
     js = '''
 const slides=[...document.querySelectorAll('.slide')];let current=0;const previous=document.getElementById('previous'),next=document.getElementById('next'),position=document.getElementById('position');function show(index){current=Math.max(0,Math.min(slides.length-1,index));slides.forEach((slide,i)=>{slide.classList.toggle('active',i===current);slide.setAttribute('aria-hidden',i===current?'false':'true')});previous.disabled=current===0;next.disabled=current===slides.length-1;position.textContent=`${current+1} / ${slides.length}`}function fit(){const scale=Math.max(.1,Math.min((innerWidth-24)/1280,(innerHeight-72)/800));document.querySelector('.deck').style.transform=`translateX(-50%) scale(${scale})`}previous.addEventListener('click',()=>show(current-1));next.addEventListener('click',()=>show(current+1));document.addEventListener('keydown',event=>{if(event.target.closest('button,input,textarea,select,a'))return;if(['ArrowRight','PageDown',' '].includes(event.key)){event.preventDefault();show(current+1)}if(['ArrowLeft','PageUp'].includes(event.key)){event.preventDefault();show(current-1)}if(event.key==='Home')show(0);if(event.key==='End')show(slides.length-1)});addEventListener('resize',fit);show(0);fit();
 '''
-    output = '<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lezione 3 — Lo sportello della P03</title><style>' + css + '</style></head><body><main class="deck">' + ''.join(pages) + '</main><nav class="controls" aria-label="Navigazione slide"><button id="previous">Indietro</button><span id="position" aria-live="polite"></span><button id="next">Avanti</button></nav><script>' + js + '</script></body></html>'
-    (LESSON / 'Lezione3_Sportello_P03_ITS_MAKER.html').write_text(output, encoding='utf-8')
+    output = '<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lezione 3 — L&#39;assistente di reparto della P03</title><style>' + css + '</style></head><body><main class="deck">' + ''.join(pages) + '</main><nav class="controls" aria-label="Navigazione slide"><button id="previous">Indietro</button><span id="position" aria-live="polite"></span><button id="next">Avanti</button></nav><script>' + js + '</script></body></html>'
+    (LESSON / 'Lezione3_Assistente_Reparto_P03_ITS_MAKER.html').write_text(output, encoding='utf-8')
 
 
 def document_style(doc, title: str) -> None:
@@ -480,17 +480,17 @@ def source_book() -> Path:
     sources = [HERE / 'fonti/01_DIARIO_P03.txt', HERE / 'fonti/02_CATALOGO_RICAMBI.txt', HERE / 'fonti/03_MAGAZZINO_RICAMBI.txt']
     contents = [path.read_text(encoding='utf-8').strip() for path in sources]
     joined = '\n\n'.join(f'===== DOCUMENTO {i} =====\n\n{text}' for i, text in enumerate(contents, 1)) + '\n'
-    (STUDENTS / '01_FONTI_SPORTELLO_P03.txt').write_text(joined, encoding='utf-8')
+    (STUDENTS / '01_DOCUMENTI_P03.txt').write_text(joined, encoding='utf-8')
     doc = Document(DIARY_WORD)
     for section in doc.sections:
         for paragraph in section.header.paragraphs:
             for run in paragraph.runs:
-                run.text = run.text.replace('LEZIONE 2', 'LEZIONE 3 · FONTI')
-    doc.core_properties.title = 'Fonti dello sportello P03 — diario, catalogo e magazzino'
+                run.text = run.text.replace('LEZIONE 2', 'LEZIONE 3 · DOCUMENTI')
+    doc.core_properties.title = 'Documenti della P03 — diario, catalogo e magazzino'
     for content in contents[1:]:
         doc.add_page_break()
         add_source_text(doc, content)
-    target = STUDENTS / '01_FONTI_SPORTELLO_P03.docx'
+    target = STUDENTS / '01_DOCUMENTI_P03.docx'
     doc.save(target)
     return target
 
