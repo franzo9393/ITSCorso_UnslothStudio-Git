@@ -4,7 +4,7 @@
 
 Progettazione sviluppata nel confronto con Gemini 4 Argon. Questo documento definisce la regia della prossima lezione: non è una scheda da distribuire agli studenti e non contiene istruzioni complete da incollare in Copilot.
 
-**Stato:** canovaccio di progettazione, non attestazione di collaudo del tenant scolastico. Le fonti web, il documento di magazzino e i materiali studenti descritti sotto devono essere predisposti e verificati prima dell'erogazione. Questo lavoro non attiva GitHub Pages e non modifica le presentazioni esistenti.
+**Stato:** canovaccio di progettazione, non attestazione di collaudo del tenant scolastico. Le fonti web, il documento di magazzino e i materiali studenti descritti sotto devono essere predisposti e verificati prima dell'erogazione. Il canovaccio non modifica le presentazioni esistenti.
 
 ## 1. Missione e perimetro
 
@@ -46,16 +46,6 @@ Alla fine ogni studente deve saper:
 Il documento deve essere una normale fonte di reparto, non un esercizio già risolto. Specificare identificativo, revisione e data della situazione descritta; distinguere quantità disponibili, movimenti e relativi riferimenti temporali. Usare poche voci coerenti e annotazioni ordinarie utili alla lettura, senza introdurre prezzi, soglie di riordino o regole manutentive per rendere il caso più complicato.
 
 I valori numerici nuovi devono essere fissati dal docente nella fonte prima delle prove: non sono fatti già presenti nel diario e non devono essere inventati da studenti o modello. Non inserire avvisi artificiali del tipo «qui manca il dato da cercare». La fonte deve permettere almeno una domanda che richieda l'incrocio con il catalogo, senza ripetere in ogni riga quale macchina usa ogni codice.
-
-### Indirizzi previsti, non fonti già attive
-
-Usare pagine piatte come `registro-p03.html`, `catalogo-ricambi.html` e `magazzino-ricambi.html` alla radice del sito pubblicato. Per esempio:
-
-```text
-https://franzo9393.github.io/ITSCorso_UnslothStudio-Git/registro-p03.html
-```
-
-Il nome del repository occupa il primo livello del percorso; la pagina occupa il secondo. La cartella sorgente `docs/`, se scelta per la pubblicazione, non compare nell'indirizzo pubblico. Non aggiungere un livello `/rag/` e non usare i normali link GitHub `blob/main/...`.
 
 ## 3. Prima dell'aula: condizioni per usare entrambi gli strumenti
 
@@ -208,4 +198,3 @@ Da ricontrollare insieme alle funzioni effettivamente disponibili prima dell'aul
 - [Microsoft — Fonti di conoscenza in Agent Builder](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/agent-builder-add-knowledge).
 - [Microsoft — Ricerca web e fonti degli agenti dichiarativi](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/knowledge-sources).
 - [Microsoft — Licenze e fonti supportate nei Blocchi appunti](https://support.microsoft.com/en-us/microsoft-365-copilot/copilot-notebooks-licensing).
-- [GitHub — Configurare la sorgente di pubblicazione di Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
