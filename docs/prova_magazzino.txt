@@ -1,0 +1,13 @@
+MAGAZZINO DI COLLAUDO
+
+Identificativo documento: TEST-MAG-001
+Revisione: 1
+Data di riferimento: 19 ottobre 2026
+
+Le quantità riportate sono saldi già chiusi. I movimenti precedenti alla data di riferimento sono già compresi nelle disponibilità.
+
+Codice articolo | Disponibilità (pezzi) | Data del saldo
+TST-417 | 17 | 19/10/2026
+TST-826 | 6 | 19/10/2026
+
+Dati sintetici per un collaudo tecnico. Codici e quantità sono inventati e non rappresentano le scorte del caso P03 né di un magazzino reale.

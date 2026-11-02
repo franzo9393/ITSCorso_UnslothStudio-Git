@@ -12,7 +12,7 @@
 - [Guida docente](laboratorio/docente/SOLUZIONI.md): regia, risposte, preparazione e GO distinti per percorso guidato, sandbox e training.
 - [Risorse e accesso](materiali_aula/RISORSE_E_ACCESSO.md): documentazione ufficiale, risorse gratuite, limiti cloud e checklist di selezione.
 - **Prossima lezione · RAG con Copilot:** [canovaccio docente](lezione%203%20-%20system%20prompt%20e%20agenti/docente/CANOVACCIO_LEZIONE3_RAG_COPILOT.md), sviluppato nel confronto con Gemini 4 Argon. Riprende gli agenti P03 e distingue analisi nei Blocchi appunti, sportello documentale e collaudo tra coppie; include materiali da predisporre e verifiche pre-aula, non un laboratorio già collaudato. Non sostituisce ancora le presentazioni esistenti.
-- **Collaudo tecnico Copilot Web + Python:** [fonte pubblica di prova](https://franzo9393.github.io/ITSCorso_UnslothStudio-Git/) · [HTML sorgente](docs/index.html). Due articoli con dati interamente sintetici, separati dal caso P03. La pubblicazione della fonte non attesta il recupero web o l'esecuzione Python con l'account scolastico.
+- **Collaudo tecnico Copilot:** [pagina di prova](https://franzo9393.github.io/ITSCorso_UnslothStudio-Git/) · [documento da allegare (.txt)](docs/prova_magazzino.txt). Dati sintetici, separati dal caso P03. Il collaudo su allegato non dipende da Bing e non attesta il recupero web; le funzioni dell'agente vanno verificate con l'account scolastico.
 
 Markdown come sorgente; `scripts/build_materiali.py` rigenera HTML delle slide e tre PDF didattici. I PDF non sono byte-identici fra compilazioni.
 
