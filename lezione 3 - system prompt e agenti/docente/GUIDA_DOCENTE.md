@@ -138,6 +138,8 @@ Consegna minima su Teams: scheda compilata, `istruzioni_assistente_P03.txt`, fil
 
 `genera_materiali.py` genera presentazione, HTML autosufficiente, PDF e documenti Word dalle fonti testuali della lezione. Il modello PowerPoint ripulito conserva l'identità grafica ufficiale ITS MAKER 16:10. Non distribuire il generatore o questa guida come scheda studenti.
 
+Revisione con Argon conclusa il 2 novembre 2026. Verificati scheda in Word e LibreOffice, presentazione in PowerPoint e HTML in Chrome. Restano da eseguire i controlli con account studente della sezione 2.
+
 - [Microsoft — Interprete di codice per gli agenti](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/code-interpreter).
 - [Microsoft — Licenze di Copilot Blocchi appunti](https://support.microsoft.com/en-us/microsoft-365-copilot/copilot-notebooks-licensing).
 

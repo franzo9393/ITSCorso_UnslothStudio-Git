@@ -57,6 +57,8 @@ Se avete usato i Blocchi appunti, riportate una richiesta realmente inviata e un
 | Passaggio originale usato per controllare | |
 | La risposta è corretta? Perché? Che cosa non dimostra? | |
 
+<!-- pagebreak -->
+
 ## 3. Scrivete le vostre istruzioni
 
 In questo lavoro ci sono tre testi diversi:
@@ -107,7 +109,7 @@ Fate produrre un file con la tabella dei risultati, scaricatelo e apritelo. Conf
 
 ## 5. Mettete alla prova l'assistente di un'altra coppia
 
-Inventate una richiesta adatta all'assistente dei compagni. Prima di inviarla, compilate nella tabella qui sotto la richiesta, il risultato atteso e i documenti da controllare. Non inserite il risultato atteso nella domanda inviata a Copilot.
+Inventate una richiesta adatta all'assistente dei compagni. Prima di inviarla sul computer dei compagni, compilate nella tabella della loro scheda la richiesta, il risultato atteso e i documenti da controllare. Non inserite il risultato atteso nella domanda inviata a Copilot.
 
 Potete verificare una risposta che usa più documenti, il confronto tra un evento e un documento successivo, una richiesta incompleta oppure un'informazione non presente nei testi. Non serve una frase ingannevole: serve un controllo utile. Scegliete una richiesta diversa da quella già usata dai compagni.
 
