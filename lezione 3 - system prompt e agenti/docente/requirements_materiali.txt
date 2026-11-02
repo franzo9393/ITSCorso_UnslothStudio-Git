@@ -1,0 +1,5 @@
+# Solo generazione dei materiali docente; gli studenti non installano questi pacchetti.
+python-pptx==1.0.2
+python-docx==1.2.0
+Markdown==3.11.2
+Pillow==12.3.0
