@@ -15,7 +15,7 @@ Il passaggio dal primo al secondo strumento avviene con la **scheda di passaggio
 
 La lezione ha tre parti:
 
-1. **Le istruzioni della lezione 2.** Discussione delle istruzioni e delle verifiche consegnate il 28 ottobre. Viene per prima perché la volta scorsa non c'è stato tempo e perché introduce il tema del giorno: istruzioni scritte da noi e controllo dei risultati.
+1. **Gli agenti della lezione 2.** Nella lezione 2 le coppie hanno creato in aula un proprio agente in Copilot, dopo la dimostrazione del docente, ma non c'è stato tempo per vederli. Oggi li riaprono, li provano con una domanda e alcune coppie li mostrano. Viene per prima perché introduce il tema del giorno: istruzioni scritte da noi e controllo dei risultati.
 2. **Blocco appunti.** Domande scritte dagli studenti, controllo delle citazioni, conteggio di un mese a mano, stesura della scheda di passaggio.
 3. **Agente con Python.** Progetto delle istruzioni, Prova A (solo scheda), Prova B (scheda e file Excel), analisi di che cosa si perde nel passaggio, confronto con le istruzioni di esempio, proposta al responsabile.
 
@@ -73,17 +73,20 @@ Il file Excel contiene gli stessi dati dei diari Word: un foglio per mese, con i
 
 ## 5. Regia
 
-### Parte 1 — Le istruzioni della lezione 2
+### Parte 1 — Gli agenti della lezione 2
 
-Gli studenti riaprono `istruzioni_P03.txt` e `verifica_P03.md` consegnati il 28 ottobre e compilano la prima tabella. Scegliere due o tre coppie con esiti diversi e farle mostrare al proiettore.
+Gli studenti non hanno consegnato file nella lezione 2: gli agenti sono salvati nei loro account Copilot. Le coppie aprono l'agente, rileggono le istruzioni, fanno una domanda di prova scelta da loro e compilano la prima tabella. Scegliere due o tre coppie con agenti diversi e farli mostrare al proiettore: istruzioni e una risposta.
 
-Nella lezione 2 le istruzioni di partenza erano fornite nella scheda e inviate come primo messaggio di una conversazione normale: non erano agenti configurati. Far emergere la differenza, che oggi diventa pratica:
+Se una coppia non trova più l'agente (account diverso, agente non salvato), lavora con una coppia vicina.
 
-- istruzioni inviate in un messaggio valgono solo in quella conversazione;
+Far emergere i punti che servono oggi:
+
 - le istruzioni salvate in un agente valgono in ogni conversazione con lui;
-- in entrambi i casi la risposta resta una proposta da controllare.
+- un'istruzione utile è verificabile su una risposta precisa; un'istruzione vaga non si può controllare;
+- una risposta ben scritta non è per forza corretta: va confrontata con la fonte;
+- nella Parte 3 creeranno un nuovo agente, questa volta con la funzione che esegue Python.
 
-Domande utili: quale regola era misurabile, cioè verificabile su una risposta precisa? Quale regola era vaga? Una risposta ben scritta era anche corretta rispetto al registro?
+Domande utili: quale istruzione avete visto rispettata davvero? Quale avete scritto ma non sapete se funziona? Che cosa succede se fate all'agente una domanda fuori dal suo compito?
 
 ### Parte 2 — Blocco appunti
 

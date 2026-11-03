@@ -45,14 +45,28 @@ Queste regole valgono per la creazione e la revisione dei materiali del corso. L
 - Eventuali difficoltà aggiuntive devono essere realistiche, poche e leggibili. Non complicare progressivamente il caso soltanto per ottenere un errore dell'intelligenza artificiale.
 - Non presentare testi o risposte preparati a mano come vere esecuzioni del modello.
 - Distinguere le decisioni approvate dalle idee discusse: non applicare automaticamente proposte di modifica che l'utente non ha richiesto di eseguire.
+- Prima di richiamare una lezione precedente, verificare con l'utente che cosa è successo davvero in aula (consegne, agenti creati, attività saltate). I materiali di una lezione descrivono il progetto, non quello che è stato svolto.
+- Quando un'attività passa informazioni da uno strumento all'altro (per esempio dal Blocco appunti a un agente), rendere esplicito che cosa si può perdere nel passaggio e dare un controllo esterno per verificarlo, come un riepilogo calcolato con regole note.
+- Le istruzioni di esempio per un assistente si consegnano solo dopo il tentativo degli studenti e stanno in una cartella separata, con il momento della consegna nel nome, per esempio `da_pubblicare_dopo_prova_B/`.
+
+## Fonti, dati e strumenti
+
+- Le fonti pubbliche si usano solo con un permesso di riuso letto sul sito della fonte; registrare titolo, indirizzo, versione e licenza. Non usare come fonte pubblica una sintesi o traduzione scritta con l'intelligenza artificiale.
+- I dati del caso si ricavano con uno script dai file originali, conservati intatti nel backup del docente. Lo script controlla la coerenza interna (per esempio i riepiloghi con le righe) e produce i valori di riferimento della guida: non trascrivere numeri a mano.
+- Prima di aggiungere un documento al caso, controllare che sia coerente con gli altri: stessa macchina, date compatibili, quantità che tornano. Un'incoerenza non voluta diventa un falso indizio per gli studenti.
+- Non indicare come certi i nomi dei comandi dell'interfaccia di Copilot o le funzioni disponibili con l'account studente se non sono verificati: citare la documentazione Microsoft e mettere la prova nella tabella di verifica pre-aula della guida docente.
+- Ogni lezione ha un generatore autonomo nella propria cartella `docente/`: non legge file di altre lezioni e funziona su Windows con LibreOffice installato.
 
 ## Distribuzione e verifica
 
-- Separare i documenti da distribuire in `studenti/` e le fonti complete, le risposte e le indicazioni riservate in `docente/`.
+- Separare i documenti da distribuire in `studenti/` e le fonti complete, le risposte e le indicazioni riservate in `docente/`. In `studenti/` restano solo i file da pubblicare; sorgenti Markdown, copie in altri formati e fonti del generatore vanno in `studenti/backup/` o `docente/backup/`.
 - Se gli studenti devono ricavare il registro in `.md`, non distribuire loro il registro già pronto in quel formato.
 - Aggiornare tutti i formati e i riferimenti interessati da una modifica: Markdown, PowerPoint, HTML, Word e PDF quando pertinenti. Non lasciare versioni obsolete concorrenti o collegamenti ai vecchi nomi.
 - Verificare apertura e impaginazione con i programmi reali, non soltanto leggendo il sorgente: PowerPoint o LibreOffice per le presentazioni e i documenti, navigazione e leggibilità per l'HTML.
 - Controllare che siano conservati i dati del caso, le righe previste, le celle vuote da compilare e il modello grafico. Rimuovere copie e risorse temporanee dopo la verifica.
+- Negli spazi da compilare usare tabelle con celle vuote, non righe di trattini bassi: nel Markdown convertito in Word spariscono.
+- Prima di rigenerare chiudere i file aperti in PowerPoint o Word, che restano bloccati. L'avviso di Windows «Waiting for printer connection» durante le esportazioni di LibreOffice dipende dalla stampante predefinita non raggiungibile e non blocca la conversione.
+- Nei commit, se un file contiene anche modifiche estranee dell'utente, includere solo le righe pertinenti al lavoro svolto.
 
 ## Contesto della variante attuale della lezione 2
 
@@ -66,7 +80,7 @@ Queste regole valgono per la creazione e la revisione dei materiali del corso. L
 ## Contesto della lezione 3
 
 - Cartella: `lezione 3 - RAG e calcolo deterministico/`. Generatore: `docente/genera_materiali.py`; dati e valori di riferimento: `docente/dati_p03.py`.
-- Programma: Microsoft Copilot con account scolastico. Parte 1: discussione delle istruzioni consegnate nella lezione 2. Parte 2: Blocco appunti con i documenti della P03. Parte 3: agente creato dagli studenti con la funzione che esegue Python.
+- Programma: Microsoft Copilot con account scolastico. Parte 1: le coppie riaprono e mostrano gli agenti creati in aula nella lezione 2 (non hanno consegnato file). Parte 2: Blocco appunti con i documenti della P03. Parte 3: agente creato dagli studenti con la funzione che esegue Python.
 - La macchina è la P03. I diari di gennaio–giugno 2026 derivano dallo zip originale in `docente/backup/fonti/`, dove la macchina era indicata come P-01.
 - Il passaggio dal Blocco appunti all'agente è manuale, con la scheda di passaggio scritta dagli studenti. Il rischio di perdere dati e definizioni nel passaggio va reso esplicito: i dati si prendono dal file Excel originale e si confrontano con i riepiloghi mensili.
 - Gli studenti progettano prima le proprie istruzioni dell'agente; `studenti/da_pubblicare_dopo_prova_B/ESEMPIO_ISTRUZIONI_AGENTE_P03.txt` si pubblica solo dopo la Prova B.

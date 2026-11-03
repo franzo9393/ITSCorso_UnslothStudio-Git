@@ -14,17 +14,21 @@ Lavorate in coppia: una persona usa Copilot, l'altra controlla i documenti e com
 
 **Nomi della coppia:** _________________________________________________
 
-## Parte 1 — Le istruzioni della lezione 2
+## Parte 1 — Gli agenti della lezione 2
 
-Aprite **Teams** e riaprite i file che avete consegnato il 28 ottobre: `istruzioni_P03.txt` e `verifica_P03.md`. Se avete creato un agente in Copilot, apritelo.
+Aprite **Microsoft Copilot** con l'account scolastico e cercate l'agente che avete creato nella lezione del 28 ottobre. Aprite le sue impostazioni e rileggete le istruzioni che gli avete dato.
 
-Rileggete le istruzioni e le prove che avete fatto, poi rispondete. Il docente chiederà ad alcune coppie di mostrare le risposte alla classe.
+Poi aprite una nuova conversazione con l'agente e fategli una domanda di prova, scelta da voi, per controllare se segue le istruzioni. Il docente chiederà ad alcune coppie di mostrare il proprio agente alla classe.
 
 | Domanda | Risposta |
 | --- | --- |
-| Quale regola delle istruzioni ha funzionato? Da quale risposta di Copilot ve ne siete accorti? | |
-| In quale caso Copilot non ha seguito le istruzioni o ha dato una risposta sbagliata? | |
+| Nome dell'agente e compito che gli avevate dato | |
+| Domanda di prova che avete fatto e risposta in breve | |
+| Quale istruzione ha funzionato? Da quale risposta ve ne siete accorti? | |
+| Quale istruzione non è stata seguita o era troppo vaga? | |
 | Che cosa cambiereste oggi nelle istruzioni, e perché? | |
+
+Se non trovate l'agente, scrivetelo nella prima riga e lavorate con l'agente di un'altra coppia, insieme a loro.
 
 <!-- pagebreak -->
 

@@ -25,7 +25,7 @@ La decisione finale resta al responsabile.
 
 | Parte | Dove lavorate | Che cosa ottenete |
 | --- | --- | --- |
-| 1. Le istruzioni della lezione 2 | Teams e scheda Word | Che cosa ha funzionato e che cosa no |
+| 1. Gli agenti della lezione 2 | Copilot e scheda Word | Che cosa ha funzionato e che cosa no |
 | 2. Cercare nei documenti | Blocco appunti di Copilot | Risposte con citazioni e scheda di passaggio |
 | 3. Contare e calcolare | Agente di Copilot con Python | Numeri controllati e proposta |
 
@@ -36,20 +36,20 @@ Lavorate in coppia: uno usa Copilot, l'altro controlla i documenti. Scambiatevi 
 # Slide 04 — Riprendiamo la lezione 2
 <!-- layout: SEZIONE -->
 
-Le vostre istruzioni alla prova dei fatti.
+I vostri agenti alla prova dei fatti.
 
 ---
 
-# Slide 05 — Che cosa ci insegnano le istruzioni del 28 ottobre
+# Slide 05 — Che cosa ci insegnano i vostri agenti
 <!-- layout: CONTENUTO -->
 
-Riaprite da Teams le istruzioni e la verifica consegnate nella lezione 2.
+Aprite in Copilot l'agente che avete creato il 28 ottobre e rileggete le sue istruzioni.
 
-- Quale regola ha funzionato? Come ve ne siete accorti?
-- In quale caso Copilot non ha seguito le istruzioni?
+- Fategli una domanda di prova: risponde come volevate?
+- Quale istruzione ha funzionato? Quale no, o era troppo vaga?
 - Che cosa cambiereste oggi, e perché?
 
-Scrivete le risposte nella scheda. Alcune coppie le mostreranno alla classe.
+Scrivete le risposte nella scheda. Alcune coppie mostreranno il proprio agente alla classe.
 
 ---
 
@@ -137,7 +137,7 @@ Python però calcola solo quello che gli chiedete: con una regola sbagliata, anc
 # Slide 13 — Progettate il vostro agente
 <!-- layout: CONTENUTO -->
 
-Un agente è una versione di Copilot con un nome e con istruzioni salvate, che valgono in ogni conversazione con lui.
+Avete già creato un agente nella lezione 2. Questa volta l'agente deve contare e calcolare con Python.
 
 1. Su carta: compito, che cosa riceve, che cosa non deve fare, come controlla i risultati, come risponde.
 2. Scrivete le istruzioni in istruzioni_agente_P03.txt.
