@@ -2,7 +2,7 @@
 
 **ITS MAKER Bologna · Microsoft Copilot Basic**
 
-**Documento storico di idee non adottate.** La lezione operativa del 4 novembre 2026 è descritta nella [guida docente](GUIDA_DOCENTE.md) e usa il caso P03. Le proposte seguenti restano appunti di confronto, non consegne da distribuire.
+**Documento storico di idee non adottate.** La lezione operativa del 4 novembre 2026 è descritta nella [guida docente](GUIDA_DOCENTE.docx) e usa il caso P03. Le proposte seguenti restano appunti di confronto, non consegne da distribuire.
 
 Questo documento raccoglie 5 format di attività completamente diversi dalla Lezione 2, progettati secondo i vincoli di `AGENTS.md`:
 - **Nessuna ripetizione dello schema "leggi un lungo registro e compila una tabella di 24 righe".**

@@ -1,14 +1,14 @@
-"""Rigenera soltanto la lezione 3 con il modello PowerPoint ufficiale.
+"""Rigenera la lezione 3 con il modello PowerPoint ufficiale.
 
 Prima esecuzione:
-    python3 genera_materiali.py --template /percorso/Lezione1_AI_processi_ITS_MAKER.pptx
+    python genera_materiali.py --template /percorso/Lezione1_AI_processi_ITS_MAKER.pptx
 Rigenerazioni successive:
-    python3 genera_materiali.py
+    python genera_materiali.py
 
-Richiede i pacchetti di requirements_materiali.txt e i programmi libreoffice,
-pdftoppm e fc-match. Non occorre installare nulla sulle postazioni studente.
-Il modello ripulito conserva quattro pagine ufficiali prive di vecchi contenuti
- e note; HTML e PowerPoint usano gli stessi fondali e testi modificabili.
+Richiede i pacchetti di requirements_materiali.txt e LibreOffice. Non occorre
+installare nulla sulle postazioni studente. Il modello ripulito conserva quattro
+pagine ufficiali prive di vecchi contenuti e note; HTML e PowerPoint usano gli
+stessi fondali e testi modificabili.
 """
 from __future__ import annotations
 
@@ -16,6 +16,7 @@ import argparse
 import base64
 import copy
 import html
+import os
 import re
 import shutil
 import subprocess
@@ -31,22 +32,49 @@ from docx.oxml.ns import qn
 from docx.shared import Inches as DocInches
 from docx.shared import Pt as DocPt
 from docx.shared import RGBColor as DocColor
+import pymupdf
 from lxml import html as lxml_html
 from PIL import ImageFont
 from pptx import Presentation
 from pptx.dml.color import RGBColor
 from pptx.util import Inches, Pt
 
+import dati_p03
+
 HERE = Path(__file__).resolve().parent
 LESSON = HERE.parent
-ROOT = LESSON.parent
 STUDENTS = LESSON / 'studenti'
+STUDENTS_BACKUP = STUDENTS / 'backup'
+TEACHER_BACKUP = HERE / 'backup'
+SOURCES = TEACHER_BACKUP / 'fonti'
+PUBLIC_SOURCES = TEACHER_BACKUP / 'fonti_online'
+NOTEBOOK_DOCS = STUDENTS / 'Documenti_P03_Blocco_appunti'
+WORKBOOK = STUDENTS / 'Diari_P03_gennaio_giugno_2026.xlsx'
+DECK_NAME = 'Lezione3_Blocco_appunti_e_agente_Python_P03_ITS_MAKER'
 MODEL = HERE / 'MODELLO_ITS_MAKER.pptx'
-DIARY_WORD = ROOT / 'lezione 2 - 28 ottobre 2026/ipotesi 2 - system prompt e agenti/studenti/01_REGISTRO_FERMO_P03_STUDENTI.docx'
+TITLE = 'Lezione 3 — Dai diari della P03 a numeri controllati'
+REPARTO_DOCS = (
+    (SOURCES / '02_GUIDA_ALLARMI_P03.md', 'Guida_allarmi_P03_IO-P03-07.docx', 'Guida agli allarmi della pressa P03', 'Reparto presse · IO-P03-07 Rev. 3 · pag. '),
+    (SOURCES / '03_REGOLE_INDICATORI_P03.md', 'Regole_indicatori_P03_PR-IND-03.docx', 'Regole di calcolo degli indicatori della P03', 'Ufficio produzione · PR-IND-03 Rev. 2 · pag. '),
+    (SOURCES / '04_REGISTRO_P03_13-15_OTTOBRE_2026.txt', 'Registro_P03_13-15_ottobre_2026.docx', 'Registro della pressa P03 · 13–15 ottobre 2026', 'Registro della pressa P03 · pag. '),
+)
 LAYOUTS = ('COPERTINA', 'CONTENUTO', 'SEZIONE', 'CHIUSURA')
+PROGRAM = ('UNSLOTH STUDIO', 'MICROSOFT COPILOT')
 BLUE, INK, MUTED, PALE = '1064A0', '17344D', '4B6275', 'EAF0F6'
 FONT = 'Arial'
+BODY_SIZE, BODY_GAP = 26, 0.16  # punti e pollici: testo delle slide di contenuto e spazio fra i paragrafi
 FONT_FILES: dict[bool, str] = {}
+
+
+def office_program() -> str:
+    for name in ('soffice', 'libreoffice'):
+        if found := shutil.which(name):
+            return found
+    for folder in (os.environ.get('ProgramFiles', ''), os.environ.get('ProgramFiles(x86)', '')):
+        candidate = Path(folder) / 'LibreOffice/program/soffice.exe'
+        if folder and candidate.is_file():
+            return str(candidate)
+    raise SystemExit('Programma necessario non disponibile: LibreOffice')
 
 
 def command(args: list[str], timeout: int = 180) -> str:
@@ -149,7 +177,13 @@ def blocks(text: str) -> list[dict]:
 
 def font_file(bold: bool = False) -> str:
     if bold not in FONT_FILES:
-        value = command(['fc-match', '-f', '%{file}', 'Arial:style=Bold' if bold else 'Arial']).strip()
+        windows = Path(os.environ.get('WINDIR', 'C:/Windows')) / 'Fonts' / ('arialbd.ttf' if bold else 'arial.ttf')
+        if windows.is_file():
+            value = str(windows)
+        elif shutil.which('fc-match'):
+            value = command(['fc-match', '-f', '%{file}', 'Arial:style=Bold' if bold else 'Arial']).strip()
+        else:
+            value = ''
         if not value:
             raise RuntimeError('Carattere Arial o sostituto metrico non disponibile.')
         FONT_FILES[bold] = value
@@ -230,7 +264,7 @@ def add_paragraph_box(slide, text: str, top: float, size: float = 23, bold: bool
     run.font.size = Pt(size)
     run.font.bold = bold
     run.font.color.rgb = RGBColor.from_string(INK)
-    return top + height + 0.10
+    return top + height + BODY_GAP
 
 
 def add_slide_table(slide, rows: list[list[str]], top: float) -> float:
@@ -264,8 +298,20 @@ def add_slide_table(slide, rows: list[list[str]], top: float) -> float:
     return top + sum(heights) + 0.18
 
 
-def build_pptx(slides: list[dict]) -> Path:
+def load_model():
+    """Modello ufficiale con il programma della lezione nella fascia in basso."""
     prs = Presentation(MODEL)
+    for layout in prs.slide_layouts:
+        for shape in layout.shapes:
+            if shape.has_text_frame and not shape.is_placeholder:
+                for paragraph in shape.text_frame.paragraphs:
+                    for run in paragraph.runs:
+                        run.text = run.text.replace(*PROGRAM)
+    return prs
+
+
+def build_pptx(slides: list[dict]) -> Path:
+    prs = load_model()
     styles = template_styles(prs)
     layouts = {layout.name: layout for layout in prs.slide_layouts}
     remove_slides(prs)
@@ -292,7 +338,7 @@ def build_pptx(slides: list[dict]) -> Path:
                 if block['kind'] == 'table':
                     top = add_slide_table(slide, block['rows'], top)
                 elif 'text' in block:
-                    top = add_paragraph_box(slide, block['text'], top, 23, block['kind'].startswith('h'))
+                    top = add_paragraph_box(slide, block['text'], top, BODY_SIZE, block['kind'].startswith('h'))
         number = next((shape for shape in slide.placeholders if shape.placeholder_format.idx == 4294967295), None)
         if number is not None:
             number.text = str(index)
@@ -301,10 +347,10 @@ def build_pptx(slides: list[dict]) -> Path:
                     run.font.name = FONT
                     run.font.size = Pt(11)
                     run.font.color.rgb = RGBColor.from_string(MUTED)
-    prs.core_properties.title = "Lezione 3 — L'assistente di reparto della P03"
-    prs.core_properties.subject = 'Microsoft Copilot Basic: fonti fornite, istruzioni e calcolo Python'
+    prs.core_properties.title = TITLE
+    prs.core_properties.subject = 'Microsoft Copilot: Blocco appunti, scheda di passaggio e agente con Python'
     prs.core_properties.comments = ''
-    output = LESSON / 'Lezione3_Assistente_Reparto_P03_ITS_MAKER.pptx'
+    output = LESSON / f'{DECK_NAME}.pptx'
     prs.save(output)
     return output
 
@@ -312,7 +358,7 @@ def build_pptx(slides: list[dict]) -> Path:
 def pdfs(inputs: list[Path], output: Path, work: Path) -> list[Path]:
     output.mkdir(parents=True, exist_ok=True)
     profile = work / 'libreoffice-profile'
-    log = command(['libreoffice', '-env:UserInstallation=' + profile.as_uri(), '--headless', '--convert-to', 'pdf', '--outdir', str(output), *map(str, inputs)])
+    log = command([office_program(), '-env:UserInstallation=' + profile.as_uri(), '--headless', '--convert-to', 'pdf', '--outdir', str(output), *map(str, inputs)], timeout=600)
     print(log.strip())
     paths = [output / (path.stem + '.pdf') for path in inputs]
     for path in paths:
@@ -322,17 +368,19 @@ def pdfs(inputs: list[Path], output: Path, work: Path) -> list[Path]:
 
 
 def background_images(work: Path) -> dict[str, str]:
-    prs = Presentation(MODEL)
+    prs = load_model()
     order = [slide.slide_layout.name for slide in prs.slides]
     for slide in prs.slides:
         for shape in list(slide.shapes):
             shape._element.getparent().remove(shape._element)
     blank = work / 'fondali_ufficiali.pptx'
     prs.save(blank)
-    pdf = pdfs([blank], work / 'fondali', work)[0]
-    prefix = work / 'fondale'
-    command(['pdftoppm', '-png', '-r', '96', '-scale-to-x', '1280', '-scale-to-y', '800', str(pdf), str(prefix)])
-    return {name: base64.b64encode((work / f'fondale-{i}.png').read_bytes()).decode('ascii') for i, name in enumerate(order, 1)}
+    pdf = pymupdf.open(pdfs([blank], work / 'fondali', work)[0])
+    images = {}
+    for page, name in zip(pdf, order):
+        pixmap = page.get_pixmap(matrix=pymupdf.Matrix(1280 / page.rect.width, 800 / page.rect.height))
+        images[name] = base64.b64encode(pixmap.tobytes('png')).decode('ascii')
+    return images
 
 
 def build_html(slides: list[dict], backgrounds: dict[str, str]) -> None:
@@ -355,15 +403,15 @@ def build_html(slides: list[dict], backgrounds: dict[str, str]) -> None:
         pages.append(f'<section class="slide {layout.lower()}" aria-label="Slide {index}: {title}" style="background-image:url(data:image/png;base64,{backgrounds[layout]})">{inner}</section>')
     css = '''
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:Arial,sans-serif}body{background:#eaf0f6;color:#17344d;overflow:hidden}.deck{position:absolute;left:50%;top:12px;width:1280px;height:800px;transform-origin:top center}.slide{display:none;position:absolute;inset:0;width:1280px;height:800px;background-size:1280px 800px;overflow:hidden}.slide.active{display:block}.slide h1{position:absolute;margin:0;font-weight:700;line-height:1.12}.contenuto h1{left:62.4px;top:59.52px;width:1012.8px;height:100.8px;color:#1064a0;font-size:37.333px}.body{position:absolute;left:72px;top:187.2px;width:1132.8px;height:537.6px;font-size:30.667px;line-height:1.2}.body p{margin:0 0 12px}.body ul,.body ol{margin:0 0 12px;padding-left:29px}.body li{margin:0 0 12px}.body table{width:100%;border-collapse:collapse;margin:0 0 17px;font-size:24px;line-height:1.22}.body th,.body td{border:1px solid #4b6275;padding:8px;text-align:left;vertical-align:top}.body th{background:#1064a0;color:white}.body td{background:#eaf0f6}.slide-number{position:absolute;left:1118.4px;top:763.2px;width:98.9px;height:21.1px;text-align:right;font-size:14.667px;color:#4b6275}.copertina h1{left:62.4px;top:192px;width:1152px;height:139.2px;color:#1064a0;font-size:52px}.copertina .subtitle{position:absolute;left:62.4px;top:345.6px;width:1152px;margin:0;font-size:25.333px;line-height:1.2}.copertina .course{position:absolute;left:62.4px;top:408px;width:1142.4px;margin:0;font-size:24px}.sezione .section-number{position:absolute;left:62.4px;top:129.6px;width:384px;height:144px;color:#f5820b;font-size:106.667px;font-weight:700;line-height:1}.sezione h1{left:62.4px;top:283.2px;width:672px;height:139.2px;color:white;font-size:52px}.section-body{position:absolute;left:62.4px;top:456px;width:662.4px;height:153.6px;color:white;font-size:30.667px;line-height:1.2}.section-body p{margin:0}.chiusura h1{left:62.4px;top:211.2px;width:681.6px;height:153.6px;color:white;font-size:52px}.closing-body{position:absolute;left:62.4px;top:403.2px;width:662.4px;height:211.2px;color:white;font-size:30.667px;line-height:1.2}.closing-body p{margin:0 0 12px}.controls{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;font-size:15px;white-space:nowrap}button{font:inherit;padding:8px 14px;border:1px solid #1064a0;background:white;color:#1064a0;border-radius:3px;min-height:40px}button:disabled{opacity:.45}@media print{@page{size:1280px 800px;margin:0}html,body{height:auto;overflow:visible}.deck{position:static;transform:none!important;width:1280px;height:auto}.slide{display:block!important;position:relative;break-after:page;print-color-adjust:exact;-webkit-print-color-adjust:exact}.slide:last-child{break-after:auto}.controls{display:none}}
-'''
+''' + f'.body{{font-size:{BODY_SIZE * 4 / 3:.3f}px}}.body p,.body ul,.body ol,.body li{{margin-bottom:{BODY_GAP * 96:.0f}px}}'
     js = '''
 const slides=[...document.querySelectorAll('.slide')];let current=0;const previous=document.getElementById('previous'),next=document.getElementById('next'),position=document.getElementById('position');function show(index){current=Math.max(0,Math.min(slides.length-1,index));slides.forEach((slide,i)=>{slide.classList.toggle('active',i===current);slide.setAttribute('aria-hidden',i===current?'false':'true')});previous.disabled=current===0;next.disabled=current===slides.length-1;position.textContent=`${current+1} / ${slides.length}`}function fit(){const scale=Math.max(.1,Math.min((innerWidth-24)/1280,(innerHeight-72)/800));document.querySelector('.deck').style.transform=`translateX(-50%) scale(${scale})`}previous.addEventListener('click',()=>show(current-1));next.addEventListener('click',()=>show(current+1));document.addEventListener('keydown',event=>{if(event.target.closest('button,input,textarea,select,a'))return;if(['ArrowRight','PageDown',' '].includes(event.key)){event.preventDefault();show(current+1)}if(['ArrowLeft','PageUp'].includes(event.key)){event.preventDefault();show(current-1)}if(event.key==='Home')show(0);if(event.key==='End')show(slides.length-1)});addEventListener('resize',fit);show(0);fit();
 '''
-    output = '<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lezione 3 — L&#39;assistente di reparto della P03</title><style>' + css + '</style></head><body><main class="deck">' + ''.join(pages) + '</main><nav class="controls" aria-label="Navigazione slide"><button id="previous">Indietro</button><span id="position" aria-live="polite"></span><button id="next">Avanti</button></nav><script>' + js + '</script></body></html>'
-    (LESSON / 'Lezione3_Assistente_Reparto_P03_ITS_MAKER.html').write_text(output, encoding='utf-8')
+    output = '<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + html.escape(TITLE) + '</title><style>' + css + '</style></head><body><main class="deck">' + ''.join(pages) + '</main><nav class="controls" aria-label="Navigazione slide"><button id="previous">Indietro</button><span id="position" aria-live="polite"></span><button id="next">Avanti</button></nav><script>' + js + '</script></body></html>'
+    (TEACHER_BACKUP / f'{DECK_NAME}.html').write_text(output, encoding='utf-8')
 
 
-def document_style(doc, title: str) -> None:
+def document_style(doc, title: str, footer_text: str = 'ITS MAKER Bologna · Lezione 3 · ') -> None:
     section = doc.sections[0]
     section.page_width, section.page_height = DocInches(8.2677), DocInches(11.6929)
     section.top_margin = section.bottom_margin = DocInches(0.62)
@@ -382,7 +430,7 @@ def document_style(doc, title: str) -> None:
     doc.core_properties.title = title
     doc.core_properties.author = 'ITS MAKER Bologna'
     footer = section.footer.paragraphs[0]
-    footer.text = 'ITS MAKER Bologna · Lezione 3 · '
+    footer.text = footer_text
     field = OxmlElement('w:fldSimple')
     field.set(qn('w:instr'), 'PAGE')
     footer._p.append(field)
@@ -423,9 +471,9 @@ def word_table(doc, rows: list[list[str]]) -> None:
                 cell._tc.get_or_add_tcPr().append(shade)
 
 
-def markdown_doc(source: Path, target: Path) -> None:
+def markdown_doc(source: Path, target: Path, title: str | None = None, footer_text: str | None = None) -> None:
     doc = Document()
-    document_style(doc, source.stem.replace('_', ' '))
+    document_style(doc, title or source.stem.replace('_', ' '), *([footer_text] if footer_text else []))
     pending_break = False
     previous_table = False
     for block in blocks(source.read_text(encoding='utf-8')):
@@ -476,52 +524,68 @@ def add_source_text(doc, text: str) -> None:
                 run.font.name, run.font.size = FONT, DocPt(10.5)
     
 
-def source_book() -> Path:
-    sources = [HERE / 'fonti/01_DIARIO_P03.txt', HERE / 'fonti/02_CATALOGO_RICAMBI.txt', HERE / 'fonti/03_MAGAZZINO_RICAMBI.txt']
-    contents = [path.read_text(encoding='utf-8').strip() for path in sources]
-    joined = '\n\n'.join(f'===== DOCUMENTO {i} =====\n\n{text}' for i, text in enumerate(contents, 1)) + '\n'
-    (STUDENTS / '01_DOCUMENTI_P03.txt').write_text(joined, encoding='utf-8')
-    doc = Document(DIARY_WORD)
-    for section in doc.sections:
-        for paragraph in section.header.paragraphs:
-            for run in paragraph.runs:
-                run.text = run.text.replace('LEZIONE 2', 'LEZIONE 3 · DOCUMENTI')
-    doc.core_properties.title = 'Documenti della P03 — diario, catalogo e magazzino'
-    for content in contents[1:]:
-        doc.add_page_break()
-        add_source_text(doc, content)
-    target = STUDENTS / '01_DOCUMENTI_P03.docx'
+def text_doc(source: Path, target: Path, title: str, footer_text: str) -> None:
+    doc = Document()
+    document_style(doc, title, footer_text)
+    add_source_text(doc, source.read_text(encoding='utf-8'))
     doc.save(target)
-    return target
+
+
+def notebook_documents() -> list[Path]:
+    """Cartella da caricare nel Blocco appunti: diari P03, documenti di reparto e fonti pubbliche."""
+    for old in NOTEBOOK_DOCS.glob('*') if NOTEBOOK_DOCS.is_dir() else ():
+        old.unlink()
+    files = dati_p03.convert_diaries(NOTEBOOK_DOCS)
+    for source, name, title, footer_text in REPARTO_DOCS:
+        target = NOTEBOOK_DOCS / name
+        if source.suffix == '.md':
+            markdown_doc(source, target, title, footer_text)
+        else:
+            text_doc(source, target, title, footer_text)
+        files.append(target)
+    public = sorted(path for path in PUBLIC_SOURCES.glob('E[0-9][0-9]_*') if path.is_file())
+    if not public:
+        raise RuntimeError(f'Nessuna fonte pubblica in {PUBLIC_SOURCES}')
+    for path in public:
+        files.append(Path(shutil.copy2(path, NOTEBOOK_DOCS / path.name)))
+    return files
+
+
+def workbook() -> Path:
+    months = dati_p03.read_months(NOTEBOOK_DOCS)
+    problems = [problem for month in months for problem in dati_p03.check_summary(month, dati_p03.indicators(month))]
+    if problems:
+        raise RuntimeError('Riepiloghi dei diari non coerenti: ' + '; '.join(problems))
+    return dati_p03.write_workbook(months, WORKBOOK)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--template', type=Path, help='Modello PowerPoint ufficiale originale, richiesto soltanto alla prima esecuzione.')
     args = parser.parse_args()
-    for program in ('libreoffice', 'pdftoppm', 'fc-match'):
-        if shutil.which(program) is None:
-            raise SystemExit(f'Programma necessario non disponibile: {program}')
+    office_program()
+    font_file()
     if args.template:
         prepare_model(args.template.resolve())
     elif not MODEL.is_file():
         raise SystemExit('Fornire il modello originale con --template alla prima esecuzione.')
-    slides = parse_slides((LESSON / 'SLIDE_LEZIONE3.md').read_text(encoding='utf-8'))
-    STUDENTS.mkdir(parents=True, exist_ok=True)
+    slides = parse_slides((TEACHER_BACKUP / 'SLIDE_LEZIONE3.md').read_text(encoding='utf-8'))
+    STUDENTS_BACKUP.mkdir(parents=True, exist_ok=True)
+    documents = notebook_documents()
+    workbook()
     pptx = build_pptx(slides)
     worksheet = STUDENTS / 'ATTIVITA_LEZIONE3.docx'
     guide = HERE / 'GUIDA_DOCENTE.docx'
-    markdown_doc(STUDENTS / 'ATTIVITA_LEZIONE3.md', worksheet)
-    markdown_doc(HERE / 'GUIDA_DOCENTE.md', guide)
-    sources = source_book()
+    markdown_doc(STUDENTS_BACKUP / 'ATTIVITA_LEZIONE3.md', worksheet, 'Lezione 3 — scheda di lavoro')
+    markdown_doc(TEACHER_BACKUP / 'GUIDA_DOCENTE.md', guide, 'Lezione 3 — guida docente')
     with tempfile.TemporaryDirectory(prefix='its-maker-lezione3-') as folder:
         work = Path(folder)
         build_html(slides, background_images(work))
-        inputs = [pptx, worksheet, guide, sources]
-        converted = pdfs(inputs, work / 'pdf', work)
-        for source, pdf in zip(inputs, converted):
-            shutil.copyfile(pdf, source.with_suffix('.pdf'))
-    print(f'Creati {len(slides)} slide e documenti della lezione 3 in {LESSON}')
+        outputs = {pptx: TEACHER_BACKUP, worksheet: STUDENTS_BACKUP, guide: TEACHER_BACKUP}
+        converted = pdfs(list(outputs), work / 'pdf', work)
+        for (source, folder_pdf), pdf in zip(outputs.items(), converted):
+            shutil.copyfile(pdf, folder_pdf / f'{source.stem}.pdf')
+    print(f'Creati {len(slides)} slide, {len(documents)} documenti per il Blocco appunti e il file Excel dei diari in {LESSON}')
 
 
 if __name__ == '__main__':

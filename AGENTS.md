@@ -63,6 +63,16 @@ Queste regole valgono per la creazione e la revisione dei materiali del corso. L
 - Le due risposte per le proposte sono «PROPOSTA DA CONTROLLARE» e «SERVE UN CONTROLLO»: non sono strumenti collegati a un gestionale o alla pressa.
 - Il resto del corso contiene anche Unsloth Studio: non sostituire quella piattaforma in altre lezioni senza una richiesta specifica.
 
+## Contesto della lezione 3
+
+- Cartella: `lezione 3 - RAG e calcolo deterministico/`. Generatore: `docente/genera_materiali.py`; dati e valori di riferimento: `docente/dati_p03.py`.
+- Programma: Microsoft Copilot con account scolastico. Parte 1: discussione delle istruzioni consegnate nella lezione 2. Parte 2: Blocco appunti con i documenti della P03. Parte 3: agente creato dagli studenti con la funzione che esegue Python.
+- La macchina è la P03. I diari di gennaio–giugno 2026 derivano dallo zip originale in `docente/backup/fonti/`, dove la macchina era indicata come P-01.
+- Il passaggio dal Blocco appunti all'agente è manuale, con la scheda di passaggio scritta dagli studenti. Il rischio di perdere dati e definizioni nel passaggio va reso esplicito: i dati si prendono dal file Excel originale e si confrontano con i riepiloghi mensili.
+- Gli studenti progettano prima le proprie istruzioni dell'agente; `studenti/da_pubblicare_dopo_prova_B/ESEMPIO_ISTRUZIONI_AGENTE_P03.txt` si pubblica solo dopo la Prova B.
+- Le fonti pubbliche aggiunte al Blocco appunti devono avere una licenza di riuso verificata, registrata in `docente/backup/fonti_online/LICENZE_E_FONTI.md` e citata nella scheda studenti.
+- In `studenti/` restano solo i file da distribuire. Sorgenti Markdown, copie in altri formati (PDF, HTML) e fonti del generatore stanno in `studenti/backup/` o `docente/backup/`, che non si pubblicano.
+
 ## Perimetro delle modifiche e Git
 
 - Non modificare lezioni o varianti non richieste per uniformarle a una scelta locale.
