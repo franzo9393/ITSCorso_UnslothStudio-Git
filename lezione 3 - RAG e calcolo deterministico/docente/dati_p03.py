@@ -3,7 +3,8 @@
 I diari originali dello zip `backup/fonti/Diari_pressa_gennaio_giugno_2026.zip` riportano la
 macchina come «P-01»: qui diventano «P03» senza toccare impaginazione e dati.
 
-Uso per il docente (stampa i valori di riferimento della guida):
+Uso per il docente (stampa i valori di riferimento della guida, gli stessi che il generatore
+inserisce in GUIDA_DOCENTE al posto dei segnaposto {{nome}}):
     python dati_p03.py
 """
 from __future__ import annotations
@@ -19,6 +20,9 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SOURCE_ZIP = HERE / 'backup' / 'fonti' / 'Diari_pressa_gennaio_giugno_2026.zip'
+ALARM_GUIDE = HERE / 'backup' / 'fonti' / '02_GUIDA_ALLARMI_P03.md'
+FIRST_QUARTER = ('Gennaio', 'Febbraio', 'Marzo')
+SUMMED = ('giornate', 'ore', 'pezzi_teorici', 'fault', 'fermo_min', 'fermo_min_fino_ripristino', 'pezzi_persi')
 MACHINE_OLD, MACHINE = 'P-01', 'P03'
 EVENT_COLUMNS = ('Data / ora', 'Evento', 'Pz/ora', 'Dettaglio evento')
 STOP_EVENTS = ('ARRESTO', 'FAULT')
@@ -207,29 +211,105 @@ def write_workbook(months: list[Month], target: Path) -> Path:
     return target
 
 
-def report(months: list[Month]) -> str:
-    lines = ['Mese | Giornate | Ore | Pezzi teorici | Fault | Fermo (fino ad AVVIO) | Fermo (fino a RIPRISTINO) | Pezzi teorici persi']
-    by_type: dict[str, list] = defaultdict(lambda: [0, 0.0, 0.0, []])
-    totals = defaultdict(float)
-    problems = []
-    for month in months:
-        values = indicators(month)
-        problems += check_summary(month, values)
-        lines.append(f"{month.name} | {values['giornate']} | {values['ore']:.1f} | {values['pezzi_teorici']:.0f} | {values['fault']} | {values['fermo_min']:.0f} | {values['fermo_min_fino_ripristino']:.0f} | {values['pezzi_persi']:.0f}")
-        for key in ('giornate', 'ore', 'pezzi_teorici', 'fault', 'fermo_min', 'fermo_min_fino_ripristino', 'pezzi_persi'):
-            totals[key] += values[key]
+def machine_parts(path: Path = ALARM_GUIDE) -> dict[str, str]:
+    """Tipo di allarme -> parte della macchina, dalla tabella del paragrafo 2 della guida IO-P03-07."""
+    section = re.search(r'^## 2\..*?\n(.*?)^## ', path.read_text(encoding='utf-8'), re.M | re.S).group(1)
+    rows = [line.strip().strip('|').split('|') for line in section.splitlines() if line.startswith('|')]
+    parts = {}
+    for part, alarms in rows[2:]:
+        for alarm in alarms.split('·'):
+            parts[alarm.strip()] = part.strip()
+    if not parts:
+        raise RuntimeError(f'{path.name}: tabella delle parti della macchina non trovata')
+    return parts
+
+
+def it_number(value: float, decimals: int = 0) -> str:
+    """Numero all'italiana: punto per le migliaia, virgola per i decimali."""
+    return f'{value:,.{decimals}f}'.replace(',', ' ').replace('.', ',').replace(' ', '.')
+
+
+def slug(text: str) -> str:
+    return re.sub(r'[^a-z0-9]+', '_', text.lower()).strip('_')
+
+
+def md_table(header: list[str], rows: list[list[str]]) -> str:
+    lines = [header, ['---'] * len(header), *rows]
+    return '\n'.join('| ' + ' | '.join(row) + ' |' for row in lines)
+
+
+def reference_values(months: list[Month]) -> dict[str, str]:
+    """Valori di riferimento della guida docente, già formattati: tabelle Markdown e numeri citati nel testo.
+
+    Si ferma se un riepilogo stampato non torna con i dati o se un tipo di fault manca nella guida agli allarmi.
+    """
+    monthly = [(month, indicators(month)) for month in months]
+    problems = [problem for month, values in monthly for problem in check_summary(month, values)]
+    if problems:
+        raise RuntimeError('Riepiloghi dei diari non coerenti: ' + '; '.join(problems))
+    if tuple(month.name for month in months[:3]) != FIRST_QUARTER:
+        raise RuntimeError('Mesi non in ordine da gennaio a giugno')
+    parts = machine_parts()
+    totals = {key: sum(values[key] for _, values in monthly) for key in SUMMED}
+    by_type: dict[str, list] = defaultdict(lambda: [0, 0.0, 0.0])
+    by_part: dict[str, list] = defaultdict(lambda: [0, 0.0, 0.0, 0, 0])
+    for month, values in monthly:
         for fault in values['dettaglio_fault']:
-            entry = by_type[fault['tipo']]
-            entry[0] += 1
-            entry[1] += fault['minuti_fino_avvio']
-            entry[2] += fault['pezzi_persi']
-            entry[3].append(month.name[:3])
-    lines.append(f"Totale | {totals['giornate']:.0f} | {totals['ore']:.1f} | {totals['pezzi_teorici']:.0f} | {totals['fault']:.0f} | {totals['fermo_min']:.0f} | {totals['fermo_min_fino_ripristino']:.0f} | {totals['pezzi_persi']:.0f}")
-    lines += ['', 'Tipo di fault | N. | Minuti di fermo | Pezzi teorici persi | Mesi']
-    for name, (count, minutes, lost, when) in sorted(by_type.items(), key=lambda item: -item[1][1]):
-        lines.append(f'{name} | {count} | {minutes:.0f} | {lost:.0f} | {", ".join(when)}')
-    lines += ['', 'Controllo dei riepiloghi stampati: ' + ('tutti coerenti' if not problems else '; '.join(problems))]
-    return '\n'.join(lines)
+            if fault['tipo'] not in parts:
+                raise RuntimeError(f"Tipo di fault assente dalla guida IO-P03-07: {fault['tipo']}")
+            for entry in (by_type[fault['tipo']], by_part[parts[fault['tipo']]]):
+                entry[0] += 1
+                entry[1] += fault['minuti_fino_avvio']
+                entry[2] += fault['pezzi_persi']
+            by_part[parts[fault['tipo']]][3 if month.name in FIRST_QUARTER else 4] += 1
+
+    def summary_row(label: str, v: dict) -> list[str]:
+        return [label, str(v['giornate']), it_number(v['ore'], 1), it_number(v['pezzi_teorici']), str(v['fault']),
+                it_number(v['fermo_min']), it_number(v['pezzi_persi'])]
+
+    values = {
+        'tabella_riepiloghi': md_table(
+            ['Mese', 'Giornate', 'Ore di produzione', 'Pezzi teorici', 'Fault', 'Fermo per fault (min)', 'Pezzi teorici persi'],
+            [summary_row(month.name, v) for month, v in monthly] + [[f'**{cell}**' for cell in summary_row('Totale', totals)]]),
+        'righe_eventi': it_number(sum(len(month.events) for month in months)),
+        'fault_totali': str(totals['fault']),
+        'fermo_totale': it_number(totals['fermo_min']),
+        'fermo_totale_ripristino': it_number(totals['fermo_min_fino_ripristino']),
+        'fermo_ripristino_mesi': ', '.join(it_number(v['fermo_min_fino_ripristino']) for _, v in monthly),
+        'fault_mese_min': str(min(v['fault'] for _, v in monthly)),
+        'fault_mese_max': str(max(v['fault'] for _, v in monthly)),
+    }
+    ranked_types = sorted(by_type.items(), key=lambda item: -item[1][1])
+    values['tabella_tipi'] = md_table(
+        ['Tipo di fault', 'N.', 'Minuti di fermo', 'Pezzi teorici persi'],
+        [[name, str(n), it_number(minutes), it_number(lost)] for name, (n, minutes, lost) in ranked_types])
+    for place, (name, (n, minutes, lost)) in enumerate(ranked_types, start=1):
+        key = slug(name)
+        values.update({f'n_{key}': str(n), f'min_{key}': it_number(minutes), f'persi_{key}': it_number(lost), f'posto_min_{key}': str(place)})
+    ranked_parts = sorted(by_part.items(), key=lambda item: -item[1][1])
+    values['tabella_parti'] = md_table(
+        ['Parte della macchina', 'N.', 'Minuti di fermo', 'Pezzi teorici persi', 'Fault gennaio–marzo', 'Fault aprile–giugno'],
+        [[name, str(n), it_number(minutes), it_number(lost), str(q1), str(q2)] for name, (n, minutes, lost, q1, q2) in ranked_parts])
+    for name, (n, minutes, lost, q1, q2) in ranked_parts:
+        key = slug(name)
+        values.update({f'n_{key}': str(n), f'trim1_{key}': str(q1), f'trim2_{key}': str(q2)})
+    return values
+
+
+def fill(text: str, values: dict[str, str]) -> str:
+    """Sostituisce i segnaposto {{nome}}; un nome sconosciuto ferma la generazione."""
+    def value(match: re.Match) -> str:
+        if match.group(1) not in values:
+            raise KeyError(f'Segnaposto senza valore: {match.group(0)}')
+        return values[match.group(1)]
+    return re.sub(r'\{\{(\w+)\}\}', value, text)
+
+
+def report(months: list[Month]) -> str:
+    values = reference_values(months)
+    tables = [values[key] for key in ('tabella_riepiloghi', 'tabella_tipi', 'tabella_parti')]
+    inline = [f'{key}: {value}' for key, value in values.items() if not key.startswith('tabella_')]
+    return '\n\n'.join(tables + ['\n'.join(inline), 'Controllo dei riepiloghi stampati: tutti coerenti'])
 
 
 if __name__ == '__main__':

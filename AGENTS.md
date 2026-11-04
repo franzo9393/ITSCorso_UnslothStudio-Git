@@ -20,7 +20,7 @@ Queste regole valgono per la creazione e la revisione dei materiali del corso. L
 - Dire chiaramente quale programma aprire, che cosa scrivere o copiare, che cosa controllare, che cosa salvare e che cosa consegnare.
 - Non inserire note sulla progettazione della lezione, giudizi sul livello degli studenti, riferimenti alle soluzioni o alla loro collocazione, né altre informazioni riservate al docente.
 - Un registro usato come fonte deve raccontare i fatti. Evitare suggerimenti che anticipino la soluzione o annuncino artificialmente quali dati mancano.
-- Non inserire tempi di completamento: niente durata complessiva prevista, minuti assegnati agli esercizi, tabelle delle durate o formule come «se resta tempo». La regola vale anche per la guida docente, salvo richiesta esplicita contraria.
+- Non inserire tempi di completamento: niente durata complessiva prevista, minuti assegnati agli esercizi, tabelle delle durate o formule come «se resta tempo». La regola vale anche per la guida docente, salvo richiesta esplicita contraria. La stima dei tempi della revisione didattica resta nel rapporto del revisore e non entra nei materiali.
 - Conservare invece date, orari e durate che sono dati del caso, per esempio gli orari e i minuti del fermo macchina.
 
 ## Programma di intelligenza artificiale e funzioni effettive
@@ -68,6 +68,15 @@ Queste regole valgono per la creazione e la revisione dei materiali del corso. L
 - Prima di rigenerare chiudere i file aperti in PowerPoint o Word, che restano bloccati. L'avviso di Windows «Waiting for printer connection» durante le esportazioni di LibreOffice dipende dalla stampante predefinita non raggiungibile e non blocca la conversione.
 - Nei commit, se un file contiene anche modifiche estranee dell'utente, includere solo le righe pertinenti al lavoro svolto.
 
+## Revisione didattica delle nuove lezioni
+
+- Ogni nuova lezione, nuova variante o riprogettazione di un'attività passa dal revisore didattico definito in `.omp/agents/revisore-didattico.md`. Il revisore valuta efficacia, facilità di insegnamento, chiarezza, interattività e copertura delle 2 ore di lezione.
+- Il revisore lavora sempre con Claude Opus 5.5 e livello di ragionamento alto, come fissato nel file dell'agente (`model: anthropic/claude-opus-5-5`, `thinking-level: high`). Non sostituirlo con un altro agente o un altro modello, non passare un modello diverso al momento dell'avvio e non aggiungere una voce `revisore-didattico` in `task.agentModelOverrides`. Se il modello non è disponibile, fermarsi e chiedere all'utente.
+- Momento: dopo la generazione dei materiali e le verifiche di apertura e impaginazione, prima di dichiarare conclusa la lezione e prima del commit. Nell'incarico indicare la cartella della lezione o della variante, il programma usato e le decisioni dell'utente da rispettare.
+- Il revisore non modifica i file: restituisce un rapporto con esito APPROVATA, DA CORREGGERE o DA RIPROGETTARE. L'agente principale applica le correzioni ai problemi bloccanti e importanti in tutti i formati interessati, rigenera i materiali e ripete la revisione finché l'esito è APPROVATA o l'utente decide diversamente.
+- Le proposte che cambiano la struttura dell'attività o contraddicono decisioni approvate si presentano all'utente prima di applicarle.
+- Riportare all'utente l'esito finale, la stima dei tempi e le verifiche che restano da fare in aula o con l'account studente.
+
 ## Contesto della variante attuale della lezione 2
 
 - Cartella: `lezione 2 - 28 ottobre 2026/ipotesi 2 - system prompt e agenti/`.
@@ -80,11 +89,14 @@ Queste regole valgono per la creazione e la revisione dei materiali del corso. L
 ## Contesto della lezione 3
 
 - Cartella: `lezione 3 - RAG e calcolo deterministico/`. Generatore: `docente/genera_materiali.py`; dati e valori di riferimento: `docente/dati_p03.py`.
-- Programma: Microsoft Copilot con account scolastico. Parte 1: le coppie riaprono e mostrano gli agenti creati in aula nella lezione 2 (non hanno consegnato file). Parte 2: Blocco appunti con i documenti della P03. Parte 3: agente creato dagli studenti con la funzione che esegue Python.
+- Programma: Microsoft Copilot con account scolastico. Parte 1: le coppie riaprono e mostrano gli agenti creati in aula nella lezione 2 (non hanno consegnato file), senza scrivere nulla. Parte 2: Blocco appunti con i documenti della P03. Parte 3: agente creato dagli studenti con la funzione che esegue Python.
+- Ogni studente lavora sul proprio computer. La coppia divide il lavoro per argomento, non per ruolo: chi segue gli allarmi e chi segue i numeri, per tutta la lezione, senza scambi di controllore e scrittore. Chi segue i numeri scrive la scheda di passaggio mentre chi segue gli allarmi scrive le istruzioni dell'agente; poi ognuno legge il testo dell'altro e li correggono insieme. Prova A e Prova B si svolgono nello stesso momento, una per persona, con la richiesta di fault e minuti di fermo per tipo (senza pezzi teorici persi); non si ripete la Prova B, non si scarica il file prodotto dall'agente e non si prova di nuovo dopo l'esempio. L'analisi di che cosa si è perso si scrive in una riga e si discute con tutta la classe insieme all'esempio. Niente risposta individuale.
+- `studenti/ATTIVITA_LEZIONE3.docx` è la consegna da leggere: gli studenti non compilano un documento Word, ma consegnano `scheda_passaggio_P03.txt`, `istruzioni_agente_P03.txt` e `proposta_P03.txt`.
+- I valori di riferimento della guida docente sono segnaposto fra doppie parentesi graffe in `docente/backup/GUIDA_DOCENTE.md`, riempiti da `dati_p03.py` durante la generazione.
 - La macchina è la P03. I diari di gennaio–giugno 2026 derivano dallo zip originale in `docente/backup/fonti/`, dove la macchina era indicata come P-01.
 - Il passaggio dal Blocco appunti all'agente è manuale, con la scheda di passaggio scritta dagli studenti. Il rischio di perdere dati e definizioni nel passaggio va reso esplicito: i dati si prendono dal file Excel originale e si confrontano con i riepiloghi mensili.
 - Gli studenti progettano prima le proprie istruzioni dell'agente; `studenti/da_pubblicare_dopo_prova_B/ESEMPIO_ISTRUZIONI_AGENTE_P03.txt` si pubblica solo dopo la Prova B.
-- Le fonti pubbliche aggiunte al Blocco appunti devono avere una licenza di riuso verificata, registrata in `docente/backup/fonti_online/LICENZE_E_FONTI.md` e citata nella scheda studenti.
+- Le fonti pubbliche aggiunte al Blocco appunti devono avere una licenza di riuso verificata, registrata in `docente/backup/fonti_online/LICENZE_E_FONTI.md` e citata nella consegna per gli studenti.
 - In `studenti/` restano solo i file da distribuire. Sorgenti Markdown, copie in altri formati (PDF, HTML) e fonti del generatore stanno in `studenti/backup/` o `docente/backup/`, che non si pubblicano.
 
 ## Perimetro delle modifiche e Git

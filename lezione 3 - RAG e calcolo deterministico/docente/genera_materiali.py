@@ -471,12 +471,13 @@ def word_table(doc, rows: list[list[str]]) -> None:
                 cell._tc.get_or_add_tcPr().append(shade)
 
 
-def markdown_doc(source: Path, target: Path, title: str | None = None, footer_text: str | None = None) -> None:
+def markdown_doc(source: Path, target: Path, title: str | None = None, footer_text: str | None = None, values: dict[str, str] | None = None) -> None:
     doc = Document()
     document_style(doc, title or source.stem.replace('_', ' '), *([footer_text] if footer_text else []))
     pending_break = False
     previous_table = False
-    for block in blocks(source.read_text(encoding='utf-8')):
+    text = source.read_text(encoding='utf-8')
+    for block in blocks(dati_p03.fill(text, values) if values is not None else text):
         kind = block['kind']
         if kind == 'pagebreak':
             pending_break = True
@@ -551,14 +552,6 @@ def notebook_documents() -> list[Path]:
     return files
 
 
-def workbook() -> Path:
-    months = dati_p03.read_months(NOTEBOOK_DOCS)
-    problems = [problem for month in months for problem in dati_p03.check_summary(month, dati_p03.indicators(month))]
-    if problems:
-        raise RuntimeError('Riepiloghi dei diari non coerenti: ' + '; '.join(problems))
-    return dati_p03.write_workbook(months, WORKBOOK)
-
-
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--template', type=Path, help='Modello PowerPoint ufficiale originale, richiesto soltanto alla prima esecuzione.')
@@ -572,12 +565,14 @@ def main() -> None:
     slides = parse_slides((TEACHER_BACKUP / 'SLIDE_LEZIONE3.md').read_text(encoding='utf-8'))
     STUDENTS_BACKUP.mkdir(parents=True, exist_ok=True)
     documents = notebook_documents()
-    workbook()
+    months = dati_p03.read_months(NOTEBOOK_DOCS)
+    values = dati_p03.reference_values(months)  # si ferma se i riepiloghi non tornano con i dati
+    dati_p03.write_workbook(months, WORKBOOK)
     pptx = build_pptx(slides)
     worksheet = STUDENTS / 'ATTIVITA_LEZIONE3.docx'
     guide = HERE / 'GUIDA_DOCENTE.docx'
-    markdown_doc(STUDENTS_BACKUP / 'ATTIVITA_LEZIONE3.md', worksheet, 'Lezione 3 — scheda di lavoro')
-    markdown_doc(TEACHER_BACKUP / 'GUIDA_DOCENTE.md', guide, 'Lezione 3 — guida docente')
+    markdown_doc(STUDENTS_BACKUP / 'ATTIVITA_LEZIONE3.md', worksheet, 'Lezione 3 — attività')
+    markdown_doc(TEACHER_BACKUP / 'GUIDA_DOCENTE.md', guide, 'Lezione 3 — guida docente', values=values)
     with tempfile.TemporaryDirectory(prefix='its-maker-lezione3-') as folder:
         work = Path(folder)
         build_html(slides, background_images(work))
