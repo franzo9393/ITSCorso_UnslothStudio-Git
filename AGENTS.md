@@ -99,6 +99,16 @@ Queste regole valgono per la creazione e la revisione dei materiali del corso. L
 - Le fonti pubbliche aggiunte al Blocco appunti devono avere una licenza di riuso verificata, registrata in `docente/backup/fonti_online/LICENZE_E_FONTI.md` e citata nella consegna per gli studenti.
 - In `studenti/` restano solo i file da distribuire. Sorgenti Markdown, copie in altri formati (PDF, HTML) e fonti del generatore stanno in `studenti/backup/` o `docente/backup/`, che non si pubblicano.
 
+## Contesto della lezione 4
+
+- Cartella: `lezione 4 - modello locale e istruzioni di sistema/`, giovedì 12 novembre 2026, 2 ore. Generatore: `docente/genera_materiali.py`. Fonti: `docente/backup/SLIDE_LEZIONE4.md`, `studenti/backup/ATTIVITA_LEZIONE4.md`, `docente/backup/GUIDA_DOCENTE.md`. Il percorso delle lezioni 4–7 è in `docente/backup/BOZZA_PERCORSO_LEZIONI_4-7.md` (lezione 5: 18 novembre; lezione 6: 25 novembre; lezione 7: 2 dicembre, 4 ore, lavoro di gruppo e test finale).
+- Programma: Unsloth Studio nella macchina virtuale di ogni studente (VMware Workstation Pro, Windows 10 o 11, 8 GB di RAM, nessuna GPU, internet e permessi di installazione). Si installa in aula con l'installer, in modalità senza PyTorch (`UNSLOTH_NO_TORCH=1`); le VM non si possono preparare prima. Modello: `unsloth/Qwen3.5-2B-GGUF`, versione `UD-Q4_K_XL`, 2,0 GB.
+- Rete: l'indirizzo pubblico della scuola è condiviso. Nella lezione 3 Copilot non ha risposto per circa 10 minuti (ipotesi: limite di richieste per indirizzo). Perciò: solo siti che elaborano nel browser (Transformer Explainer, Tokenizer Playground, ChunkViz, OCTOO, Vector Search Methods Comparison); niente HackMerlin, Prompt Airlines o Gandalf; modello consegnato su chiavetta, non scaricato da tutti.
+- Il modello e l'installer sono stati provati solo su Linux. Non dichiarare provato nulla su Windows, sulla VM o sulla rete della scuola finché il docente non lo conferma.
+- Studio all'avvio ha **Search** e **Tools** attivi: gli studenti li disattivano. **Context Length** su Auto può occupare più memoria di quella della VM: si porta a 8192.
+- Le istruzioni di esempio (`da_pubblicare_dopo_parte_4C/`) sono provate su un solo caso: non presentarle come soluzione.
+- Lezione 3: svolta il 4 novembre, finita a 1 h 40 min (il revisore aveva stimato circa 141 minuti: le sue stime sono sovrastimate di circa il 30%).
+
 ## Perimetro delle modifiche e Git
 
 - Non modificare lezioni o varianti non richieste per uniformarle a una scelta locale.

@@ -4,12 +4,12 @@ Documento riservato al docente. **Bozza da approvare**: non sono ancora material
 
 ## Struttura
 
-| Incontro | Durata | Contenuto |
-| --- | --- | --- |
-| Lezione 4 | 2 ore | Modello locale e istruzioni di sistema |
-| Lezione 5 | 2 ore | Documenti e recupero (RAG) |
-| Lezione 6 | 2 ore | Agenti, permessi e difese |
-| Lezione 7 | 4 ore | Lavoro di gruppo e test individuale |
+| Incontro | Data | Durata | Contenuto |
+| --- | --- | --- | --- |
+| Lezione 4 | 12 novembre 2026 | 2 ore | Modello locale e istruzioni di sistema |
+| Lezione 5 | 18 novembre 2026 | 2 ore | Documenti e recupero (RAG) |
+| Lezione 6 | 25 novembre 2026 | 2 ore | Agenti, permessi e difese |
+| Lezione 7 | 2 dicembre 2026 | 4 ore | Lavoro di gruppo e test finale individuale |
 
 ## Vincoli
 
@@ -17,8 +17,9 @@ Documento riservato al docente. **Bozza da approvare**: non sono ancora material
   - Un solo modello GGUF piccolo e quantizzato, caricato prima della lezione.
   - Niente Model Arena (carica due modelli), addestramento, esportazioni o conversioni.
   - RAG in modalità BM25, già indicata in `materiali_aula/RISORSE_E_ACCESSO.md` §3.1.
-- **Siti esterni dal browser del PC fisico**, Unsloth Studio nella VM. La memoria della VM resta per Studio e per il modello. Restano esclusi gli strumenti che richiedono WebGPU (WebLLM, Qwen3 Embedding Scatterplot) finché non si conoscono le schede grafiche dei PC fisici.
-- **La lezione 3 non è ancora stata svolta.** La lezione 4 non presuppone risultati, file o agenti della lezione 3; eventuali richiami si decidono dopo averla svolta.
+- **Siti esterni dal browser del PC fisico, solo quelli che elaborano nel browser** (decisione del 5 novembre 2026). Nella lezione 3 Copilot non ha risposto a nessuno per circa 10 minuti: ipotesi, limite di richieste dallo stesso indirizzo pubblico in uscita, non verificata. Restano nel percorso solo siti statici o che calcolano nel browser; sono esclusi HackMerlin, Prompt Airlines e Gandalf, che interrogano un modello sul server. Il controllo dei siti è nella tabella «Siti esterni» più sotto. Unsloth Studio gira nella VM e non usa la rete. Restano esclusi anche gli strumenti che richiedono WebGPU (WebLLM, Qwen3 Embedding Scatterplot) finché non si conoscono le schede grafiche dei PC fisici.
+- **La VM non si può provare prima della lezione 4** (decisione del 5 novembre 2026). Il percorso ha un ramo di riserva: se Studio o il modello non partono, la lezione prosegue senza modello locale (vedi «Ramo di riserva» nella lezione 4). Le misure sulla VM sono un'attività in più, non il filo della lezione.
+- **Lezione 3 svolta il 4 novembre 2026** (resoconto del docente del 5 novembre). Svolti: agenti con Python creati dagli studenti; Prova A e Prova B «più o meno»; confronto dell'output dell'agente con e senza la scheda di passaggio (`.handoff`), sul file `.xlsx`; limiti e potenzialità del RAG. Il blocco di Copilot ha rallentato i lavori, ma il materiale non copriva comunque le 2 ore: finito a 1 h 40 min. La stima del revisore (circa 141 minuti) era quindi troppo alta; per la lezione 4 si può progettare una lezione più piena. I materiali per gli studenti non citano tempi.
 - Regole del progetto: gli studenti scrivono e correggono le proprie istruzioni; i casi di prova li inventano loro; nessuna attività si basa sull'errore atteso del modello; le istruzioni di esempio si pubblicano dopo il tentativo, in una cartella separata; nessun tempo di completamento nei materiali.
 
 ## Filo conduttore
@@ -34,16 +35,24 @@ flowchart LR
 
 ## Lezione 4 · Un modello che gira sul tuo computer
 
+**Materiali pronti:** `Lezione4_Modello_locale_e_istruzioni_di_sistema_ITS_MAKER.pptx`, `studenti/ATTIVITA_LEZIONE4.docx`, `docente/GUIDA_DOCENTE.docx`. Fa fede la guida docente: questa sezione riassume le scelte.
+
 Obiettivo: capire che cosa vuol dire usare un modello in locale e progettare istruzioni di sistema vere.
 
-1. **Come sceglie la parola successiva** · [Transformer Explainer](https://poloclub.github.io/transformer-explainer/), browser del PC fisico. Le coppie scrivono una frase breve in inglese, prevedono come cambieranno le probabilità alzando o abbassando la temperatura, poi osservano e spiegano la differenza. Si osservano le distribuzioni, non si cerca un errore.
-2. **Che cosa occupa il modello** · Unsloth Studio + monitor di sistema della VM. Ogni studente annota la memoria prima del caricamento, a modello caricato e durante una risposta, insieme al tempo di risposta. La coppia confronta le misure e spiega perché sulla VM gira solo un modello piccolo. Facoltativo: [OCTOO VRAM Calculator](https://octooai.com/llm-vram-calculator/) per un server di reparto con GPU, tenendo distinta la stima dalla misura sulla VM.
-3. **Quanto pesa il testo** · [The Tokenizer Playground](https://huggingface.co/spaces/Xenova/the-tokenizer-playground). Gli studenti contano i token di un estratto del diario P03 e di una versione riscritta da loro, e verificano in Studio se il tempo di risposta cambia.
-4. **Scegliere i parametri** · Unsloth Studio. La coppia fissa prima i criteri di una buona estrazione (campi da trovare in un breve estratto del diario), prova più impostazioni di temperatura, top-p e top-k ripetendo la stessa richiesta e sceglie l'impostazione motivandola.
-5. **Il campo di sistema** · Unsloth Studio. Ogni studente scrive nel campo System Prompt le istruzioni di un assistente che fa domande prima di rispondere quando mancano dati. Il compagno inventa casi di prova e tranelli; poi ciascuno corregge le proprie istruzioni.
+**Decisione del 5 novembre 2026: installazione in diretta.** Le VM degli studenti (8 GB di RAM, Windows 10 o 11, internet e permessi) non si possono preparare prima. Gli studenti installano Unsloth Studio con l'installer in modalità senza PyTorch (`UNSLOTH_NO_TORCH=1`, solo GGUF) e, mentre l'installazione procede nella VM, lavorano sul PC reale con i due siti statici. Il modello `unsloth/Qwen3.5-2B-GGUF` `UD-Q4_K_XL` pesa 2,0 GB per postazione: il docente lo scarica una volta e lo porta in uno zip, su più chiavette. **Se l'installazione è lenta** il docente anticipa la scrittura delle istruzioni (decisione del 5 novembre).
 
-Consegne: `misure_VM.txt` (tabella con celle vuote), `istruzioni_assistente_P03.txt`, `casi_di_prova.txt`.
-Esempio di istruzioni in `da_pubblicare_dopo_prova_sistema/`.
+Parti, come nella consegna degli studenti:
+
+1. **Installare Unsloth Studio** · PowerShell nella VM.
+2. **Come risponde un modello** · [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) (previsione sulla temperatura, poi osservazione) e [The Tokenizer Playground](https://huggingface.co/spaces/Xenova/the-tokenizer-playground) (token del registro e di una versione breve scritta dagli studenti, scambiata fra compagni), sul PC reale durante l'installazione.
+3. **Il modello sul computer** · Unsloth Studio. Primo avvio; memoria prima del caricamento, con Context Length su Auto e su 8192 (stima di Studio contro misura in Gestione attività); secondi e tok/s con testo breve e con il registro; criteri e prove sui parametri (Temperature, Top P, Top K) divise fra i compagni.
+4. **Le istruzioni dell'assistente** · casella System Prompt. Ogni studente scrive le istruzioni di un assistente che fa domande prima di rispondere quando mancano dati; il compagno inventa casi di prova e tranelli; ciascuno corregge o conferma le proprie istruzioni.
+
+Consegne di ogni studente: `misure_VM.txt`, `istruzioni_assistente_P03.txt`, `casi_di_prova.txt`. Esempio di istruzioni in `studenti/da_pubblicare_dopo_parte_4C/`, da pubblicare dopo la parte 4C.
+
+### Ramo di riserva della lezione 4
+
+Segnale per decidere, un evento e non un tempo: l'installazione non è finita quando le coppie hanno terminato la parte 2. La regola in due passi (scrittura anticipata delle istruzioni, poi ramo di riserva per le coppie senza Studio) è nella guida docente («Se l'installazione è lenta»); il ramo, attività per attività, è nella guida («Se Studio non parte») e nella consegna degli studenti. Se una sola VM della coppia funziona, la coppia lavora a turno su quella.
 
 ## Lezione 5 · Il modello legge i documenti
 
@@ -60,8 +69,8 @@ Consegna: registro delle prove (domanda, passaggi recuperati, risposta, giudizio
 
 Obiettivo: vedere che cosa fa un agente oltre a scrivere testo e dove si mettono le protezioni.
 
-1. **Istruzioni nascoste** · [HackMerlin](https://hackmerlin.io/). Per ogni livello affrontato la coppia scrive quale istruzione di difesa immagina, poi confronta le ipotesi con le istruzioni reali dei livelli pubblicate su [GitHub](https://github.com/bgalek/hackmerlin.io). Superare i livelli non è richiesto. Scelto rispetto a Gandalf perché le istruzioni reali sono leggibili; [Gandalf](https://play.lakera.ai/gandalf) resta come alternativa se HackMerlin non è raggiungibile.
-2. **Dentro un agente** · [Prompt Airlines](https://promptairlines.com/). Prima una richiesta legittima: le coppie annotano quali strumenti l'agente chiama, con quali dati e con quale risultato, distinguendo ciò che l'agente scrive da ciò che esegue. Poi propongono un test e analizzano sia la riuscita sia il rifiuto.
+1. **Istruzioni nascoste** · attività da riprogettare senza server esterni. HackMerlin e Gandalf sono esclusi perché interrogano un modello sul server. Candidata: le coppie scrivono su carta le istruzioni di difesa per un assistente di reparto, le scambiano e provano ad aggirarle in Unsloth Studio (o con il ramo di riserva della lezione 4). Da approvare.
+2. **Dentro un agente** · attività da riprogettare senza Prompt Airlines (server esterno). Candidata: la scheda ricavata da [Hugging Face Agents Course · Unità 1](https://huggingface.co/learn/agents-course/unit1/agent-steps-and-structure) (Apache-2.0): una persona della coppia fa da programma di controllo, decide quando fermare il modello, quale funzione eseguire e quale risultato reinserire; l'altra fa da modello e risponde solo con il formato Pensiero–Azione–Osservazione. Si svolge sulla carta o in un file di testo, senza rete. Da approvare.
 3. **Istruzioni dentro un documento** · Unsloth Studio. Ogni studente inserisce in un documento sintetico della knowledge base del compagno una nota che contiene un'istruzione. Il compagno controlla se il proprio assistente la tratta come dato o come ordine; entrambi gli esiti si analizzano e si decide che cosa protegge davvero: istruzioni, permessi o controllo umano.
 4. **Tabella dei permessi** · Unsloth Studio, esecuzione di codice. Solo se il collaudo sulla VM riesce: la coppia decide che cosa l'assistente può fare da solo, che cosa deve chiedere e che cosa gli è vietato, poi prova un calcolo eseguito e lo confronta con un riepilogo calcolato con regole note. Senza collaudo positivo la tabella si progetta senza esecuzione.
 
@@ -88,15 +97,15 @@ Consegna del gruppo: istruzioni finali, DOC-T10, registro del collaudo incrociat
 
 ## Da verificare prima delle lezioni
 
-**Prossimo passo, da fare:** prova preliminare di Unsloth Studio sul computer del docente, limitato a 8 GB di RAM e senza GPU: memoria e tempi con un modello da 1,5B e uno da 3–4B, campo System Prompt, knowledge base BM25, esecuzione di codice. Non sostituisce la prova sulle VM della scuola.
+**Stato delle prove (5 novembre 2026):** Unsloth Studio e il modello `unsloth/Qwen3.5-2B-GGUF` sono stati provati sul portatile del docente, Linux, anche in sola CPU (dettagli nella guida della lezione 4). Restano da provare Windows, la VM da 8 GB e la rete della scuola; la knowledge base BM25, l'esecuzione di codice e i modelli più grandi non sono stati provati.
 
 | Punto | Controllo |
 | --- | --- |
-| Modello | Qwen2.5-1.5B Q4_K_M e un modello 3–4B quantizzato: memoria, tempi con tutte le VM accese, capacità di seguire istruzioni in italiano |
+| Modello | `unsloth/Qwen3.5-2B-GGUF` `UD-Q4_K_XL` scelto per la lezione 4: memoria e tempi nella VM con tutte le VM accese, capacità di seguire istruzioni in italiano. Per le lezioni 5–7 decidere in base alle misure raccolte il 12 novembre |
 | Unsloth Studio | Versione installata, campo System Prompt, parametri, knowledge base, impostazioni di recupero, esecuzione di codice |
 | Memoria | Studio e modello entro 8 GB durante indicizzazione e risposta |
 | Corpus | Coerenza di `laboratorio/corpus/` con i dati P03 della lezione 3: stessa macchina, date compatibili, quantità che tornano |
-| Siti esterni | Transformer Explainer, Tokenizer Playground, ChunkViz, Vector Search Methods Comparison, HackMerlin, Gandalf, Prompt Airlines dalla rete della scuola e dal browser del PC fisico; limiti per IP, termini, età |
+| Siti esterni | Il controllo su pagina e codice, fatto il 5 novembre 2026, conferma che **elaborano nel browser, senza modello sul server**: [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) (GPT-2 nel browser, README), [The Tokenizer Playground](https://huggingface.co/spaces/Xenova/the-tokenizer-playground) (Space statico), [Vector Search Methods Comparison](https://huggingface.co/spaces/arad1367/Vector_Search_Methods_Comparison) (Space statico), [ChunkViz](https://chunkviz.up.railway.app/) (applicazione statica, divisione del testo in `chunkers.js`; ospitata su piano gratuito), [OCTOO VRAM Calculator](https://octooai.com/llm-vram-calculator/) (la pagina dichiara che gira nel browser). Tiktokenizer: tokenizzazione nel browser secondo la validazione. Restano da provare dalla rete della scuola: caricamento del modello e dei tokenizzatori scaricati da ogni postazione, cache e proxy. Un sito statico può comunque scaricare file dalla rete: non è dimostrato che non raggiunga mai un limite per indirizzo. |
 | Collaudo incrociato | Modo di scambiare documenti e istruzioni fra VM (cartella condivisa, chiavetta, posta scolastica) |
 
 ## Decisioni
