@@ -1,6 +1,6 @@
 ESEMPIO DI ISTRUZIONI PER L'ASSISTENTE DI REPARTO P03
 
-Da incollare nella casella System Prompt di Unsloth Studio. È un esempio da confrontare con le vostre istruzioni: non garantisce che il modello le segua sempre.
+Per provarlo, incollate nella casella System Prompt di Unsloth Studio solo il testo sotto la riga ----. È un esempio da confrontare con le vostre istruzioni: non garantisce che il modello le segua sempre.
 
 Confrontatelo con le vostre. Che cosa avete scritto voi e non c'è qui? Che cosa c'è qui e vi manca? Quale regola ha fatto cambiare il comportamento del vostro assistente?
 

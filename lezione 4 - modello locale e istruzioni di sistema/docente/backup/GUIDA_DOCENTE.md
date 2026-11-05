@@ -84,7 +84,7 @@ Preparazione sul tuo portatile (Linux), dopo aver scaricato il modello con Studi
 mkdir -p ~/modello_per_VM
 cp -rL ~/.cache/huggingface/hub/models--unsloth--Qwen3.5-2B-GGUF ~/modello_per_VM/
 rm -rf ~/modello_per_VM/models--unsloth--Qwen3.5-2B-GGUF/blobs ~/modello_per_VM/models--unsloth--Qwen3.5-2B-GGUF/.transport*
-cd ~/modello_per_VM && zip -r modello_Qwen3.5-2B.zip models--unsloth--Qwen3.5-2B-GGUF
+cd ~/modello_per_VM && zip -0 -r modello_Qwen3.5-2B.zip models--unsloth--Qwen3.5-2B-GGUF
 ```
 
 `cp -rL` copia i file veri al posto dei collegamenti simbolici, che Windows non gestisce. Nella VM lo zip va estratto in `%USERPROFILE%\.cache\huggingface\hub` (barra dell'indirizzo di Esplora file), in modo che dentro `hub` ci sia la cartella `models--unsloth--Qwen3.5-2B-GGUF`; se `.cache`, `huggingface` o `hub` non esistono, si creano uno alla volta. Il file è di circa 1,9 GB. L'estrazione su Windows non è stata provata.
@@ -97,11 +97,11 @@ All'ingresso fai accendere la VM e accedere a Windows, prima delle slide 1–3. 
 
 **Controllo di Context Length, durante la parte 2.** Avvia l'installazione anche sulla tua postazione di prova, oppure segui la prima VM che la finisce. Fai il controllo della riga «Context Length» dei controlli prima dell'aula, nell'ordine indicato lì, e comunica la decisione alla classe prima che arrivi a 3A, punto 5: le consegne fanno aspettare la tua indicazione prima di cliccare Select model. **Finché il controllo non è finito** dì: «caricate con Auto tenendo aperta Gestione attività; se la memoria arriva quasi al massimo chiudete PowerShell come in 3A e scrivete "bloccato" nella prima riga della tabella di 3B».
 
-Con l'esito (a) dì anche che nella riapertura di Studio (consegna, 3A) Context Length si porta a 8192 prima di Select model, per non ripetere il blocco.
+Dopo un blocco, chi lo ha avuto non clicca di nuovo Select model finché non lo decidi tu (la consegna lo dice). Con l'esito (a): Context Length a 8192 prima di Select model, anche nella riapertura di Studio. Con l'esito (c): nessun nuovo caricamento su quella VM; la coppia lavora sulla VM del compagno.
 
 Se il comando con `$env:UNSLOTH_NO_TORCH=1;` non funziona, prova la forma normale, `irm https://unsloth.ai/install.ps1 | iex`: scarica anche PyTorch ed è molto più pesante.
 
-Decidi presto se il modello arriva dallo zip o dalla rete: il file è lo stesso per tutti.
+Il modello arriva dallo zip; il download dalla rete si fa solo su alcune VM e non su tutte insieme (vedi «Da preparare a casa»). La consegna e la slide 11 dicono agli studenti senza zip di aspettarti. Il file è lo stesso per tutti.
 
 ### Parte 2 · Browser del computer reale
 
@@ -115,7 +115,7 @@ Qui la classe lavora mentre l'installazione procede. Non spiegare prima: lascia 
 - **Primo avvio.** La password serve ogni volta; i fogli con le password evitano blocchi più avanti. La memoria prima del caricamento si legge prima di scegliere il modello. Search e Tools sono attivi di partenza: chi non li disattiva può far partire una ricerca su internet o l'esecuzione di codice nella VM.
 - **Misure.** Gli studenti confrontano tre cose: la stima di Studio (Estimated Memory Usage) con la memoria misurata in Gestione attività; la memoria con Context Length su Auto e con 8192; il numero di token del Tokenizer Playground con quello mostrato in alto da Studio. La memoria del modello è la memoria in uso dopo il caricamento meno quella misurata prima. La domanda breve e il registro intero mostrano l'effetto del testo lungo sul tempo. Se la VM ha poca RAM libera, con Auto Studio può scegliere un contesto grande (nel portatile 262.144 token, circa 5,4 GB): se la VM rallenta o si blocca, fai portare subito Context Length a 8192 e fai riaprire Studio come nella consegna. Il registro intero ne usa circa 3.200. Il cambio vale dopo **Reload model**: se non si ricarica al primo clic, si clicca ancora. Raccogli da tutte le coppie memoria a modello caricato, secondi e tok/s con il registro intero: servono per scegliere il modello delle lezioni 5–7.
 - **Parametri.** In coppia: criteri e richiesta insieme, poi le prove divise per regolazione (uno Temperature, l'altro Top P oppure Top K, a scelta, ognuno nella propria VM), una nuova conversazione per ogni prova. I valori di partenza li prova chi segue la Temperature, controllando la risposta già ottenuta in 3B con i criteri della coppia e rifacendo la prova solo se la richiesta scritta in 3C è diversa; ognuno prova poi un valore basso e uno alto. Non cercare un valore «giusto»: un'impostazione con valori bassi e una con valori alti possono dare entrambe una risposta valida; conta come la giustificano. Se due impostazioni danno la stessa risposta, è un risultato. A parità di richiesta il modello può dare risposte diverse: chiedi di ripetere la prova solo alle coppie le cui due impostazioni hanno dato risposte diverse. Valori di partenza visti su Linux: Temperature 0,6, Top P 0,95, Top K 20; su Windows da verificare.
-- **Se le risposte sono lente** (decisione del 5 novembre 2026). Una regola legata a un evento, non a una durata: se in 3B la risposta con il registro intero è molto più lenta dei 25 secondi visti su Linux, in 3C ognuno prova **un solo** valore della propria regolazione (il basso o l'alto, a scelta) invece di due; i valori di partenza restano quelli di 3B. Dillo a voce alla classe prima di 3C e controlla che in «Scelta» compaia una riga per prova. Le prove di 4B e 4C non cambiano. I dati sulla velocità raccolti in 3B servono comunque per le lezioni 5–7.
+- **Se le risposte sono lente** (decisione del 5 novembre 2026). Una regola legata a un evento, non a una durata: se in 3B la risposta con il registro intero arriva molto dopo i 25 secondi visti su Linux (tempo totale, dall'invio alla fine di una risposta di una riga: per risposte brevi coincide quasi con il tempo alla prima parola che misurano gli studenti), in 3C ognuno prova **un solo** valore della propria regolazione (il basso o l'alto, a scelta) invece di due; i valori di partenza restano quelli di 3B. Dillo a voce alla classe prima di 3C e controlla che in «Scelta» compaia una riga per prova. Le prove di 4B e 4C non cambiano. I dati sulla velocità raccolti in 3B servono comunque per le lezioni 5–7.
 
 ### Parte 4 · Istruzioni
 

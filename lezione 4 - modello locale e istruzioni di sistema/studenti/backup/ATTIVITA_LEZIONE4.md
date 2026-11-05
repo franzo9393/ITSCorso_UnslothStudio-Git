@@ -26,7 +26,7 @@ Lavorate nella macchina virtuale.
 
 Aprite **PowerShell**: menu Start, scrivete `PowerShell`, premete Invio. Si apre una finestra, blu o nera, in cui si scrivono comandi.
 
-Incollate questa riga e premete Invio. Dice a Windows di scaricare e avviare il programma di installazione di Unsloth Studio.
+Incollate questa riga e premete Invio. Se nella macchina virtuale non si incolla, scrivetela a mano, carattere per carattere, dalla slide proiettata. Dice a Windows di scaricare e avviare il programma di installazione di Unsloth Studio.
 
 `$env:UNSLOTH_NO_TORCH=1; irm https://unsloth.ai/install.ps1 | iex`
 
@@ -57,8 +57,6 @@ Un modello non legge le parole intere: le divide in pezzi chiamati **token**. Pi
 3. Scrivete voi una versione più breve del registro, che tenga gli stessi fatti importanti: cancellate il testo incollato e riscrivetelo più breve direttamente nella casella della pagina. Scrivete in `misure_VM.txt` il nuovo numero di token.
 4. Leggete la versione breve del compagno sul suo schermo. Quale fatto importante ha tolto? Scrivetelo sotto «Token».
 
-Il modello di Unsloth Studio usa un tokenizzatore diverso da quello della pagina: i numeri sono una stima.
-
 Se l'installazione non è finita quando avete terminato la parte 2, avvisate il docente.
 
 ## Parte 3 · Il modello sul vostro computer
@@ -72,11 +70,11 @@ Tornate nella macchina virtuale.
 3. Chiudete la scheda di Teams nel browser della macchina virtuale. Aprite **Gestione attività** con i tasti Ctrl+Maiusc+Esc, scheda **Prestazioni**, voce **Memoria**. Scrivete in `misure_VM.txt`, sotto il titolo «Misure», la memoria in uso **prima** di caricare il modello.
 4. Se avete lo zip del modello sul Desktop, aprite Esplora file e scrivete `%USERPROFILE%\.cache\huggingface\hub` nella barra dell'indirizzo. Se la cartella non esiste, createla un passo alla volta: `.cache`, poi `huggingface`, poi `hub`. Estraete lo zip dentro `hub`: se Windows propone una sottocartella con il nome dello zip, toglietela dal percorso. Controllate che dentro `hub` compaia la cartella `models--unsloth--Qwen3.5-2B-GGUF`.
 5. Tenete aperta Gestione attività. **Context Length** è il numero massimo di token che il modello tiene presenti (lo trovate in Run settings, vedi 3B). Prima di cliccare **Select model** aspettate l'indicazione del docente.
-6. Cliccate **Select model**. Se avete estratto lo zip, aprite **On Device**. Altrimenti cercate `unsloth/Qwen3.5-2B-GGUF` e scegliete la versione `UD-Q4_K_XL`: Studio la scarica e può metterci a lungo.
-7. Quando il modello si carica, se la memoria arriva quasi al massimo o la finestra non risponde, chiudete la finestra di PowerShell in cui gira Studio, scrivete «bloccato» nella prima riga della tabella di 3B, al posto della stima e della memoria, avvisate il docente e leggete più sotto come riaprirlo.
+6. Cliccate **Select model**. Se avete estratto lo zip, aprite **On Device**. Se non avete lo zip, aspettate il docente: il modello si scarica dalla rete solo su alcune macchine virtuali, perché la rete è la stessa per tutti.
+7. Quando il modello si carica, se la memoria arriva quasi al massimo o la finestra non risponde, chiudete la finestra di PowerShell in cui gira Studio, scrivete «bloccato» nella prima riga della tabella di 3B, al posto della stima e della memoria, e avvisate il docente. Non cliccate di nuovo **Select model**: aspettate le sue indicazioni.
 8. Nella casella dove scrivete i messaggi ci sono **Search** e **Tools**: all'inizio sono attivi (verdi). Cliccateli: devono diventare grigi. L'assistente deve usare solo i testi che gli date.
 
-Per riaprire Studio: chiudete la finestra di PowerShell in cui gira, aprite una nuova finestra di PowerShell, scrivete `unsloth studio -p 8888` e premete Invio. Poi, nel browser, aprite `http://127.0.0.1:8888`, cliccate **Select model**, aprite **On Device** e scegliete il modello. Subito dopo, in **Run settings**, portate **Context Length** a 8192 e cliccate **Reload model**.
+Per riaprire Studio, quando il docente ve lo dice: aprite una nuova finestra di PowerShell, scrivete `unsloth studio -p 8888` e premete Invio. Poi, nel browser, aprite `http://127.0.0.1:8888` e aspettate l'indicazione del docente prima di **Select model**. Con la sua indicazione: **Select model**, **On Device**, il modello. In **Run settings** portate **Context Length** a 8192 e cliccate **Reload model**.
 
 ### B · Che cosa occupa il modello
 
@@ -93,7 +91,7 @@ Aprite **Run settings** (icona in alto a destra): sotto **Estimated Memory Usage
 
 **Context Length** è il numero massimo di token che il modello può tenere presenti. Per cambiarlo scrivete 8192 nel riquadro, premete Invio e poi cliccate **Reload model**: il modello si ricarica con il nuovo valore.
 
-Se la macchina virtuale rallenta molto o si blocca con Context Length su Auto, chiudete la finestra di PowerShell in cui gira Studio, riapritelo come indicato in 3A, portate subito Context Length a 8192, scrivete «bloccato» nella prima riga della tabella, al posto della stima e della memoria, e avvisate il docente.
+Se la macchina virtuale rallenta molto o si blocca con Context Length su Auto, chiudete la finestra di PowerShell in cui gira Studio, scrivete «bloccato» nella prima riga della tabella, al posto della stima e della memoria, e avvisate il docente. Per riaprire Studio seguite le indicazioni in 3A.
 
 Confrontate le misure con il compagno. Il numero di token di Studio è uguale a quello del Tokenizer Playground? Da che cosa dipendono le differenze di memoria e di tempo? Scrivete la vostra spiegazione in due righe in `misure_VM.txt`, sotto il titolo «Spiegazione».
 
@@ -129,7 +127,7 @@ In Run settings c'è la casella **System Prompt**. Le istruzioni scritte lì val
 ### B · Mettete alla prova l'assistente del compagno
 
 1. Mandatevi il testo delle istruzioni: scrivetelo in un messaggio su Teams, dal browser della macchina virtuale oppure dal computer reale.
-2. Aprite Teams nel browser della macchina virtuale, copiate il messaggio del compagno, incollatelo nel vostro System Prompt e chiudete di nuovo la scheda di Teams. Se non riuscite a copiarlo, riscrivetelo a mano.
+2. Aprite Teams nel browser della macchina virtuale, copiate il messaggio del compagno, incollatelo nel vostro System Prompt e chiudete di nuovo la scheda di Teams. Se non riuscite a copiarlo, riscrivetelo a mano. Prima di provare, contate le regole incollate e leggete al compagno la prima e l'ultima: devono essere uguali al suo file.
 3. Inventate voi almeno quattro casi di prova e tranelli: pensate a che cosa può sfuggire a un assistente che conosce solo questo registro.
 4. Per ogni caso aprite una nuova conversazione, controllate in Run settings che **System Prompt** contenga le istruzioni del compagno, incollate il registro e, sotto, la domanda del caso. Scrivete in `casi_di_prova.txt`: la domanda, la risposta ricevuta, `OK` oppure `ERRORE`, e perché.
 
@@ -139,7 +137,7 @@ In Run settings c'è la casella **System Prompt**. Le istruzioni scritte lì val
 2. Per ogni `ERRORE` decidete che cosa correggere: le istruzioni, la domanda o il testo dato all'assistente.
 3. Correggete o aggiungete le regole nel testo di `istruzioni_assistente_P03.txt`. In fondo, sotto «Correzioni dopo le prove», scrivete che cosa avete cambiato e il motivo.
 4. Se tutti i casi sono `OK`, scrivete sotto «Correzioni dopo le prove» quale regola ha funzionato in ogni caso. Poi inventate un caso che le vostre istruzioni non coprono ancora, aggiungete al testo la regola che lo copre e scrivete il caso sotto «Correzioni dopo le prove».
-5. Incollate in System Prompt solo le regole, corrette o confermate, e controllate in Run settings che ci siano. Riprovate ogni caso con `ERRORE` (oppure il caso nuovo) in una nuova conversazione. Scrivete sotto la correzione l'esito della nuova prova: `OK` oppure `ERRORE`.
+5. Incollate in System Prompt solo le regole, corrette o confermate, senza la parte «Correzioni dopo le prove», e controllate in Run settings che ci siano. Riprovate ogni caso con `ERRORE` (oppure il caso nuovo) in una nuova conversazione. Scrivete sotto la correzione l'esito della nuova prova: `OK` oppure `ERRORE`.
 
 ## Se Unsloth Studio non parte
 

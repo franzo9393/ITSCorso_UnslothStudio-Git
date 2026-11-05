@@ -112,7 +112,7 @@ Quando l'installazione finisce, PowerShell chiede se avviare Unsloth Studio: scr
 
 1. Zip sul Desktop? Estraetelo in %USERPROFILE%\\.cache\huggingface\hub e controllate la cartella models--unsloth--Qwen3.5-2B-GGUF.
 2. Aspettate l'indicazione del docente su Context Length.
-3. Cliccate Select model: con lo zip aprite On Device, altrimenti cercate unsloth/Qwen3.5-2B-GGUF e scegliete UD-Q4_K_XL.
+3. Cliccate Select model: con lo zip aprite On Device. Senza zip aspettate il docente: la rete è la stessa per tutti.
 4. Search e Tools all'inizio sono attivi (verdi): cliccateli, devono diventare grigi.
 
 Memoria quasi al massimo? Slide 13.
@@ -138,9 +138,9 @@ tok/s: token al secondo. 1.5k: circa 1.500 token. Context Length: token tenuti p
 # Slide 13 — Se Studio si blocca
 <!-- layout: CONTENUTO -->
 
-Se la macchina virtuale rallenta molto o la finestra non risponde: chiudete la finestra di PowerShell in cui gira Studio, scrivete «bloccato» nella prima riga della tabella di 3B e avvisate il docente.
+Se la macchina virtuale rallenta molto o la finestra non risponde: chiudete la finestra di PowerShell in cui gira Studio, scrivete «bloccato» nella prima riga della tabella di 3B e avvisate il docente. Non cliccate Select model: aspettate le sue indicazioni.
 
-Per riaprire Studio: nuova finestra di PowerShell, unsloth studio -p 8888, Invio. Nel browser aprite http://127.0.0.1:8888, Select model, On Device, il modello. Poi in Run settings portate Context Length a 8192 e cliccate Reload model.
+Per riaprire Studio, col via del docente: nuova finestra di PowerShell, unsloth studio -p 8888, Invio. Nel browser aprite http://127.0.0.1:8888 e aspettate il docente prima di Select model. Poi in Run settings Context Length a 8192 e Reload model.
 
 ---
 
@@ -210,7 +210,7 @@ Rileggete i casi del compagno sul vostro assistente.
 
 Per ogni ERRORE decidete che cosa correggere: le istruzioni, la domanda o il testo dato all'assistente.
 
-Correggete le regole nel testo delle istruzioni e scrivete sotto «Correzioni dopo le prove» che cosa avete cambiato, il motivo e l'esito. Tutti OK? Scrivete quale regola ha funzionato e aggiungete la regola per un caso nuovo. In System Prompt incollate solo le regole e riprovate.
+Correggete le regole nel testo delle istruzioni e scrivete sotto «Correzioni dopo le prove» che cosa avete cambiato, il motivo e l'esito. Tutti OK? Scrivete quale regola ha funzionato e aggiungete la regola per un caso nuovo. In System Prompt incollate solo le regole, senza «Correzioni dopo le prove».
 
 ---
 
