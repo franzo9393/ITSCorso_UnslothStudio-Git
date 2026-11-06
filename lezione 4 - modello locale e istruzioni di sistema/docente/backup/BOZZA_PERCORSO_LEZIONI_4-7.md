@@ -21,10 +21,11 @@ Documento riservato al docente. **Bozza da approvare**: non sono ancora material
 - **La VM non si può provare prima della lezione 4** (decisione del 5 novembre 2026). Il percorso ha un ramo di riserva: se Studio o il modello non partono, la lezione prosegue senza modello locale (vedi «Ramo di riserva» nella lezione 4). Le misure sulla VM sono un'attività in più, non il filo della lezione.
 - **Lezione 3 svolta il 4 novembre 2026** (resoconto del docente del 5 novembre). Svolti: agenti con Python creati dagli studenti; Prova A e Prova B «più o meno»; confronto dell'output dell'agente con e senza la scheda di passaggio (`.handoff`), sul file `.xlsx`; limiti e potenzialità del RAG. Il blocco di Copilot ha rallentato i lavori, ma il materiale non copriva comunque le 2 ore: finito a 1 h 40 min. La stima del revisore (circa 141 minuti) era quindi troppo alta; per la lezione 4 si può progettare una lezione più piena. I materiali per gli studenti non citano tempi.
 - Regole del progetto: gli studenti scrivono e correggono le proprie istruzioni; i casi di prova li inventano loro; nessuna attività si basa sull'errore atteso del modello; le istruzioni di esempio si pubblicano dopo il tentativo, in una cartella separata; nessun tempo di completamento nei materiali.
+- **Niente consegna di file, verifica a voce, nessun voto nelle lezioni intermedie** (decisione del 6 novembre 2026). Con 22 studenti, PC lenti e Teams lento caricare i file non è praticabile. Il voto sarà assegnato solo al lavoro di gruppo della lezione 7 e al test finale, che richiede consegne di file. Le consegne indicate più sotto per le lezioni 5 e 6 sono da riprogettare in appunti personali con verifica a voce quando si progettano quelle lezioni. Scopo delle lezioni intermedie: far vedere che cosa si può fare con lo strumento.
 
 ## Filo conduttore
 
-Ogni studente costruisce sulla propria VM un **assistente di reparto per la P03**. Ogni lezione riusa i file prodotti nella precedente; nella lezione 7 il gruppo lo estende a un documento nuovo e lo fa collaudare da un altro gruppo.
+Ogni lezione riparte dall'assistente costruito nella precedente: le istruzioni restano nel campo System Prompt e negli appunti personali della VM, se la VM resta uguale da una lezione all'altra (controllo nella guida della lezione 4). Nella lezione 7 il gruppo lo estende a un documento nuovo e lo fa collaudare da un altro gruppo.
 
 ```mermaid
 flowchart LR
@@ -48,7 +49,7 @@ Parti, come nella consegna degli studenti:
 3. **Il modello sul computer** · Unsloth Studio. Primo avvio; memoria prima del caricamento, con Context Length su Auto e su 8192 (stima di Studio contro misura in Gestione attività); secondi e tok/s con testo breve e con il registro; criteri e prove sui parametri (Temperature, Top P, Top K) divise fra i compagni.
 4. **Le istruzioni dell'assistente** · casella System Prompt. Ogni studente scrive le istruzioni di un assistente che fa domande prima di rispondere quando mancano dati; il compagno inventa casi di prova e tranelli; ciascuno corregge o conferma le proprie istruzioni.
 
-Consegne di ogni studente: `misure_VM.txt`, `istruzioni_assistente_P03.txt`, `casi_di_prova.txt`. Esempio di istruzioni in `studenti/da_pubblicare_dopo_parte_4C/`, da pubblicare dopo la parte 4C.
+Appunti personali di ogni studente, non consegnati (decisione del 6 novembre 2026): `misure_VM.txt`, `istruzioni_assistente_P03.txt`, `casi_di_prova.txt`. Esempio di istruzioni in `studenti/da_pubblicare_dopo_parte_4C/`, da pubblicare dopo la parte 4C.
 
 ### Ramo di riserva della lezione 4
 

@@ -17,8 +17,9 @@ Il testo di lavoro è il registro della P03 del 13–15 ottobre, che già conosc
 - Siete in coppia, ma ognuno lavora sulla propria macchina virtuale e sul proprio computer reale.
 - Il **computer reale** è quello fisico sul banco. La **macchina virtuale** è il computer simulato che si apre dentro una finestra, con Windows e Unsloth Studio.
 - Unsloth Studio gira nella macchina virtuale. I siti internet della parte 2 si aprono nel browser del computer reale, per non togliere memoria alla macchina virtuale.
-- Ognuno consegna i propri tre file di testo: `misure_VM.txt`, `istruzioni_assistente_P03.txt`, `casi_di_prova.txt`. Li scrivete con Blocco note **dentro la macchina virtuale**, e li lasciate aperti: li riempite man mano durante la lezione. Salvate con Ctrl+S ogni volta che scrivete qualcosa.
-- Il registro lo trovate su Teams. Scaricatelo sul computer reale, per la parte 2, e dentro la macchina virtuale, aprendo Teams nel browser della macchina virtuale. Se il copia e incolla tra i due computer funziona potete usarlo, ma non è necessario.
+- Non consegnate nessun file. Scrivete tre file di testo come appunti vostri: `misure_VM.txt`, `istruzioni_assistente_P03.txt`, `casi_di_prova.txt`. Li scrivete con Blocco note **dentro la macchina virtuale** e li lasciate aperti: li riempite man mano durante la lezione. Salvate con Ctrl+S ogni volta che scrivete qualcosa.
+- Mentre lavorate il docente passa tra i banchi: vi chiede di mostrare lo schermo e di raccontare che cosa avete fatto e perché.
+- Il registro lo trovate su Teams. Scaricatelo sul computer reale, per la parte 2. Per la macchina virtuale lo trovate anche sulla chiavetta, insieme allo zip del modello; se non c'è, scaricatelo da Teams aprendolo nel browser della macchina virtuale. Se il copia e incolla tra i due computer funziona potete usarlo, ma non è necessario.
 
 ## Parte 1 · Installate Unsloth Studio
 
@@ -32,7 +33,7 @@ Incollate questa riga e premete Invio. Se nella macchina virtuale non si incolla
 
 - Lasciate la finestra aperta. L'installazione scarica molti file e può metterci a lungo.
 - Se compare un messaggio di errore in rosso, non chiudete la finestra: chiamate subito il docente, che deve leggerlo prima che sparisca.
-- Mentre l'installazione procede, aprite Teams nel browser della macchina virtuale e scaricate il registro. Se il docente vi consegna lo zip del modello, copiatelo sul Desktop della macchina virtuale: il docente vi mostra come (chiavetta collegata alla macchina virtuale, oppure file trascinato nella sua finestra). Restituite subito la chiavetta.
+- Mentre l'installazione procede, copiate dalla chiavetta sul Desktop della macchina virtuale lo zip del modello e il registro: il docente vi mostra come (chiavetta collegata alla macchina virtuale, oppure file trascinato nella sua finestra). Restituite subito la chiavetta. Se non avete la chiavetta o il registro non c'è, aprite Teams nel browser della macchina virtuale e scaricate il registro.
 - Aprite Blocco note e salvate nella cartella Documenti tre file vuoti: `misure_VM.txt`, `istruzioni_assistente_P03.txt`, `casi_di_prova.txt`. Poi passate alla parte 2 sul computer reale.
 
 ## Parte 2 · Come risponde un modello
@@ -43,7 +44,7 @@ Lavorate nel browser del computer reale. Quello che scrivete va nei file di Bloc
 
 1. Aprite Transformer Explainer: `poloclub.github.io/transformer-explainer`. È un modello molto piccolo che completa frasi in inglese. Non è un assistente: non risponde a domande.
 2. Scrivete una frase breve in inglese e guardate quali parole propone dopo, con le loro probabilità.
-3. Prima di toccare il cursore della **temperatura**, scrivete in `misure_VM.txt`, sotto il titolo «Previsioni»: che cosa pensate che succeda alle probabilità se la alzate? E se la abbassate?
+3. Prima di toccare il cursore della **temperatura**, scrivete in `misure_VM.txt`, sotto il titolo «Previsioni»: che cosa pensate che succeda alle probabilità se la alzate? E se la abbassate? Dite la previsione a voce al compagno.
 4. Provate. Scrivete sotto la previsione che cosa avete visto davvero e spiegatelo al compagno.
 
 Qui non c'è una risposta sbagliata da trovare: si guardano le probabilità.
@@ -65,9 +66,9 @@ Tornate nella macchina virtuale.
 
 ### A · Primo avvio
 
-1. Quando l'installazione finisce, PowerShell chiede se avviare Unsloth Studio. Scrivete `Y` e premete Invio.
+1. Quando l'installazione finisce, PowerShell chiede se avviare Unsloth Studio. Scrivete `Y` e premete Invio. Non chiudete questa finestra: se la chiudete, Studio si ferma.
 2. Nel browser della macchina virtuale aprite `http://127.0.0.1:8888`. Al primo avvio vi chiede di creare una password di almeno 8 caratteri. Scrivetela su un foglio: serve ogni volta che riaprite Studio.
-3. Chiudete la scheda di Teams nel browser della macchina virtuale. Aprite **Gestione attività** con i tasti Ctrl+Maiusc+Esc, scheda **Prestazioni**, voce **Memoria**. Scrivete in `misure_VM.txt`, sotto il titolo «Misure», la memoria in uso **prima** di caricare il modello.
+3. Se avete aperto Teams nel browser della macchina virtuale, chiudete la scheda. Aprite **Gestione attività** con i tasti Ctrl+Maiusc+Esc, scheda **Prestazioni**, voce **Memoria**. Scrivete in `misure_VM.txt`, sotto il titolo «Misure», la memoria in uso **prima** di caricare il modello.
 4. Se avete lo zip del modello sul Desktop, aprite Esplora file e scrivete `%USERPROFILE%\.cache\huggingface\hub` nella barra dell'indirizzo. Se la cartella non esiste, createla un passo alla volta: `.cache`, poi `huggingface`, poi `hub`. Estraete lo zip dentro `hub`: se Windows propone una sottocartella con il nome dello zip, toglietela dal percorso. Controllate che dentro `hub` compaia la cartella `models--unsloth--Qwen3.5-2B-GGUF`.
 5. Tenete aperta Gestione attività. **Context Length** è il numero massimo di token che il modello tiene presenti (lo trovate in Run settings, vedi 3B). Prima di cliccare **Select model** aspettate l'indicazione del docente.
 6. Cliccate **Select model**. Se avete estratto lo zip, aprite **On Device**. Se non avete lo zip, aspettate il docente: il modello si scarica dalla rete solo su alcune macchine virtuali, perché la rete è la stessa per tutti.
@@ -104,8 +105,8 @@ Qui lavorate in coppia: i criteri li scrivete insieme, le prove le dividete.
    - **Temperature**: con un valore basso le risposte sono più prevedibili, con uno alto più varie.
    - **Top P** e **Top K**: limitano le parole tra cui il modello può scegliere.
 3. Dividetevi il lavoro: uno prova la Temperature, l'altro prova Top P oppure Top K, a scelta.
-4. I valori di partenza li prova chi segue la Temperature: sono già quelli della risposta che avete ottenuto in 3B, quindi controllatela con i vostri criteri. Se la richiesta che avete scritto qui al punto 1 è diversa, rifate la prova con la vostra richiesta. Scrivete i valori di partenza in `misure_VM.txt`, sotto il titolo «Scelta».
-5. Poi ognuno prova un valore basso e uno alto della propria regolazione: per esempio Temperature 0,2 e 1,0, oppure Top P 0,5 e 1,0, oppure Top K 5 e 100. Decidete voi i valori. Per ogni prova aprite una nuova conversazione, impostate il valore in Run settings e controllate che sia quello prima di inviare il registro e la richiesta in un solo messaggio. Cambiate una sola regolazione alla volta.
+4. I valori di partenza li prova chi segue la Temperature, senza cambiarli. Se la richiesta che avete scritto qui al punto 1 è uguale a quella di 3B, controllate con i vostri criteri la risposta che avete già ottenuto. Se è diversa, inviate il registro e la richiesta del punto 1 e controllate quella risposta. Scrivete i valori di partenza in `misure_VM.txt`, sotto il titolo «Scelta».
+5. Poi ognuno prova un valore basso e uno alto della propria regolazione: per esempio Temperature 0.2 e 1.0, oppure Top P 0.5 e 1.0, oppure Top K 5 e 100. Se Studio non accetta il punto, scrivete la virgola. Decidete voi i valori. Per ogni prova aprite una nuova conversazione, impostate il valore in Run settings e controllate che sia quello prima di inviare il registro e la richiesta in un solo messaggio. Cambiate una sola regolazione alla volta.
 6. Controllate ogni risposta sul registro, con i vostri criteri. Scrivete sotto «Scelta» una riga per prova: valore usato, dati trovati, dati mancanti o sbagliati. Scambiatevi i risultati.
 7. Scegliete insieme l'impostazione che userete e scrivete in «Scelta» quale valore avete scelto e perché.
 
@@ -127,7 +128,7 @@ In Run settings c'è la casella **System Prompt**. Le istruzioni scritte lì val
 ### B · Mettete alla prova l'assistente del compagno
 
 1. Mandatevi il testo delle istruzioni: scrivetelo in un messaggio su Teams, dal browser della macchina virtuale oppure dal computer reale.
-2. Aprite Teams nel browser della macchina virtuale, copiate il messaggio del compagno, incollatelo nel vostro System Prompt e chiudete di nuovo la scheda di Teams. Se non riuscite a copiarlo, riscrivetelo a mano. Prima di provare, contate le regole incollate e leggete al compagno la prima e l'ultima: devono essere uguali al suo file.
+2. Aprite Teams nel browser della macchina virtuale, copiate il messaggio del compagno e incollatelo nel vostro System Prompt. Se non riuscite a copiarlo, riscrivetelo a mano leggendo il messaggio. Poi chiudete la scheda di Teams e controllate in Gestione attività che la memoria non sia vicina al massimo. Prima di provare, contate le regole incollate e leggete al compagno la prima e l'ultima: devono essere uguali al suo file.
 3. Inventate voi almeno quattro casi di prova e tranelli: pensate a che cosa può sfuggire a un assistente che conosce solo questo registro.
 4. Per ogni caso aprite una nuova conversazione, controllate in Run settings che **System Prompt** contenga le istruzioni del compagno, incollate il registro e, sotto, la domanda del caso. Scrivete in `casi_di_prova.txt`: la domanda, la risposta ricevuta, `OK` oppure `ERRORE`, e perché.
 
@@ -148,11 +149,11 @@ Se una sola macchina virtuale della coppia funziona, lavorate insieme su quella,
 - **Memoria del modello:** aprite `octooai.com/llm-vram-calculator` nel browser del computer reale. Scegliete un modello piccolo, da circa 2 miliardi di parametri, a 4 bit, e provate prima con il contesto 8192 e poi con quello massimo. È una stima per schede grafiche, non una misura della vostra macchina virtuale: scrivetelo in `misure_VM.txt`.
 - **Regolare le risposte:** usate Transformer Explainer. Scrivete insieme i criteri per estrarre i dati del fermo, scegliete una temperatura e scrivete perché. Segnate in «Scelta» che avete lavorato senza Studio.
 - **Istruzioni:** scrivete `istruzioni_assistente_P03.txt` e provatele come primo messaggio in Microsoft Copilot, con il registro sotto. Non è la casella System Prompt, e così il registro esce dal reparto: scrivetelo in `casi_di_prova.txt`. Se Copilot non risponde o non accetta il messaggio, chi ha inventato i casi li pone e l'autore delle istruzioni risponde applicando alla lettera solo le regole che ha scritto; scrivete anche questo in `casi_di_prova.txt`.
-- Gli altri file si consegnano come sempre.
+- Gli appunti si scrivono come sempre.
 
-## Che cosa consegnate
+## I vostri appunti
 
-Ognuno consegna i propri tre file di testo, caricati nel compito su Teams dal browser della macchina virtuale. Se non ci riuscite, copiate il testo sul computer reale e caricatelo da lì.
+Non c'è niente da consegnare o da caricare: i file servono a voi, per ricordare e per raccontare a voce quello che avete fatto.
 
 | File | Contenuto |
 | --- | --- |
@@ -160,8 +161,9 @@ Ognuno consegna i propri tre file di testo, caricati nel compito su Teams dal br
 | `istruzioni_assistente_P03.txt` | Istruzioni dell'assistente e correzioni dopo le prove |
 | `casi_di_prova.txt` | I casi inventati per l'assistente del compagno e gli esiti |
 
-## Prima di consegnare
+## Prima di finire
 
-- Nei vostri file ci sono le previsioni, i numeri di token e le misure?
+- Nei vostri appunti ci sono le previsioni, i numeri di token e le misure?
 - Le istruzioni dicono quando l'assistente deve fare una domanda?
 - Ogni `ERRORE` ha una correzione, con il motivo e con l'esito della nuova prova?
+- Sapete raccontare a voce che cosa avete provato e che cosa avete cambiato?

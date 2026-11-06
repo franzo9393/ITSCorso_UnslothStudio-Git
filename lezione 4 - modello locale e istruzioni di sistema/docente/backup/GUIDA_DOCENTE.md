@@ -8,7 +8,7 @@ Documento riservato al docente.
 
 Il caso è la P03 della lezione 3, con un cambio: il modello non è più un servizio esterno ma gira nella macchina virtuale (VM) di ogni studente. Il filo della lezione è l'assistente di reparto che «non fa uscire i registri».
 
-| Parte | Dove | Che cosa fanno gli studenti | Consegna |
+| Parte | Dove | Che cosa fanno gli studenti | Appunti personali |
 | --- | --- | --- | --- |
 | 1. Installare | VM, PowerShell | Eseguono l'installer di Unsloth Studio | |
 | 2A. Parola successiva | Computer reale, browser | Prevedono e poi osservano l'effetto della temperatura in Transformer Explainer | `misure_VM.txt`: previsioni |
@@ -27,16 +27,42 @@ L'installazione e il caricamento del modello dipendono dalla rete e non si posso
 1. Alla fine della parte 2 l'installazione non è finita su una VM: ognuno scrive il proprio `istruzioni_assistente_P03.txt` (4A, punto 1) in Blocco note, senza Studio. Fai vedere le slide 15–16, che spiegano il System Prompt: se l'anticipo riguarda solo alcune coppie, mostrale a quelle coppie dal tuo portatile o rimandale alla parte 4A della consegna; proiettale per tutti solo se riguarda la maggior parte della classe. La regola dell'esempio dopo il tentativo non cambia; le prove restano in Studio.
 2. Finita la scrittura anticipata: le coppie con almeno una VM con Studio aperto proseguono (a turno, se ne funziona una sola); le coppie senza Studio passano al ramo di riserva («Se Studio non parte»). Se più di metà della classe è senza Studio, il ramo vale per tutti. Questa è l'unica soglia: le altre sezioni la richiamano.
 
-Tutti e tre i file `.txt` si scrivono con Blocco note dentro la VM, che si può usare anche durante la parte 2. Ogni studente consegna i propri tre file.
+I tre file `.txt` si scrivono con Blocco note dentro la VM, che si può usare anche durante la parte 2. Sono appunti personali: **non si consegna nulla** e non c'è un voto (decisione del 6 novembre 2026). Con 22 studenti, PC lenti e Teams lento, raccogliere i file non è praticabile; il voto ci sarà solo nel lavoro di gruppo della lezione 7. Qui lo scopo è far vedere che cosa si può fare con lo strumento.
+
+### Come verifichi, a voce
+
+Passi tra i banchi e chiedi alle coppie di mostrare lo schermo e raccontare. Non segni punteggi. Con 11 coppie non puoi sentirle tutte a ogni momento: a ogni momento senti 3–4 coppie diverse, a rotazione, così ogni coppia è sentita almeno una volta. Una domanda sola per momento, legata a ciò che la coppia ha sullo schermo.
+
+1. **Fine della parte 3** (la coppia ha finito 3C). «Mostrate "Scelta" in `misure_VM.txt`: quale valore avete scelto e perché?» Mentre la coppia mostra il file, leggi tu la sezione «Misure» e annota i numeri nella tua tabella. Le coppie senza Studio mostrano i criteri e la temperatura scelta in Transformer Explainer. Le altre domande (Search e Tools grigi, perché la memoria misurata è diversa dalla stima di Studio, perché il registro intero richiede più tempo della domanda breve, la riga «Spiegazione») le fai nella discussione finale, alla domanda 1 della slide 22.
+2. **Durante la parte 4B.** «Mostrate un caso in `casi_di_prova.txt`: perché è `OK` o `ERRORE`?»
+3. **Fine della parte 4C.** «Quale regola avete cambiato e com'è andata la nuova prova?»
+
+Una tabella tua per sapere chi hai già sentito (non è una consegna degli studenti):
+
+| Coppia | Momento sentito | Annotazione |
+| --- | --- | --- |
+| 1 | | |
+| 2 | | |
+| 3 | | |
+| 4 | | |
+| 5 | | |
+| 6 | | |
+| 7 | | |
+| 8 | | |
+| 9 | | |
+| 10 | | |
+| 11 | | |
+
+Nella chiusura due o tre coppie leggono ad alta voce, dal proprio schermo, la domanda di un caso fallito, la risposta e la regola cambiata: non serve portare la VM di uno studente sul proiettore. Scrivi la regola alla lavagna. Prendi tu nota dei dati utili per la lezione 5 (vedi «Dati da raccogliere»): nessun file arriva a te.
 
 ## Prima di giovedì 12 novembre
 
 ### Da preparare a casa
 
 1. **Modello già pronto.** Il modello pesa circa 2 GB e la rete della scuola è la stessa per tutti: se lo scaricano tutti insieme, il rischio è quello visto con Copilot nella lezione 3. Scaricalo tu una volta sola, con Studio, sul tuo portatile (Select model → `unsloth/Qwen3.5-2B-GGUF` → `UD-Q4_K_XL`) e prepara lo zip come nella sezione «Copia del modello». Porta **più chiavette, una ogni 4–5 studenti**: lo zip è di circa 1,9 GB. **Come entra nella VM** (da scegliere e provare, nulla è stato provato su VMware): con VMware Workstation la chiavetta si può collegare direttamente alla VM (menu VM, Removable Devices, la chiavetta, Connect), oppure lo zip si copia sul computer reale e si trascina nella finestra della VM. Mostra la via scelta alla classe nella parte 1. Le chiavette girano durante la parte 1 e la parte 2: ognuno copia lo zip sul Desktop della VM subito dopo aver avviato l'installazione e restituisce la chiavetta senza aspettare l'estrazione; l'estrazione in `hub` avviene in 3A. Se nessuna via funziona, lo scarico dalla rete va fatto solo su alcune VM e le coppie lavorano a turno su quelle: non su tutte insieme. Con l'estrazione di Windows («Estrai tutto») compare una sottocartella con il nome dello zip: va tolta, perché Studio potrebbe non trovare il modello (non provato).
-2. **Pubblica su Teams prima della lezione** `studenti/ATTIVITA_LEZIONE4.docx` e `Registro_P03_13-15_ottobre_2026.txt` (cartella `studenti/`), e crea il compito per i tre file `.txt`. Gli studenti scaricano il registro sul computer reale e, aprendo Teams nel browser della VM, anche nella VM; consegnano da Teams.
+2. **Pubblica su Teams prima della lezione** `studenti/ATTIVITA_LEZIONE4.docx` e `Registro_P03_13-15_ottobre_2026.txt` (cartella `studenti/`). Gli studenti scaricano il registro sul computer reale. Copia lo stesso registro anche sulle chiavette, accanto allo zip: nella VM entra così, senza Teams mentre 22 installazioni occupano la rete. Chi non lo trova sulla chiavetta lo scarica da Teams nel browser della VM. Non serve un compito: non si consegna nulla.
 3. **Esempio di istruzioni.** `studenti/da_pubblicare_dopo_parte_4C/ESEMPIO_ISTRUZIONI_ASSISTENTE_P03.txt` non si pubblica prima: solo dopo la parte 4C.
-4. **Windows nella VM.** Verifica che dalla VM si raggiunga internet e Teams, con l'account studente e l'eventuale verifica in due passaggi. Il copia e incolla tra computer reale e VM (VMware: appunti condivisi, trascinamento, cartella condivisa o USB) è una comodità, tranne per lo zip del modello (punto 1). Se non funziona, gli studenti scrivono a mano il comando di installazione dalla slide 5, controllandolo lettera per lettera; scaricano il registro da Teams nella VM e consegnano da lì; il testo delle istruzioni da mandare al compagno lo scrivono in un messaggio su Teams.
+4. **Windows nella VM.** Verifica che dalla VM si raggiunga internet e Teams, con l'account studente e l'eventuale verifica in due passaggi. Il copia e incolla tra computer reale e VM (VMware: appunti condivisi, trascinamento, cartella condivisa o USB) è una comodità, tranne per lo zip del modello (punto 1). Se non funziona, gli studenti scrivono a mano il comando di installazione dalla slide 5, controllandolo lettera per lettera; copiano il registro dalla chiavetta o lo scaricano da Teams nella VM; il testo delle istruzioni da mandare al compagno lo scrivono in un messaggio su Teams.
 
 ### Controlli prima dell'aula
 
@@ -54,12 +80,14 @@ Non è stato possibile provare nulla sulle VM della scuola né dalla rete della 
 | Copia del modello | Lo zip estratto in `%USERPROFILE%\.cache\huggingface\hub` (cartella creata da Esplora file se manca) viene riconosciuto da Studio: compare in On Device, `UD-Q4_K_XL`, e si carica | |
 | Memoria dell'host | Con la VM da 8 GB accesa e due schede del browser aperte sul computer reale (Transformer Explainer) la memoria del PC reale regge | |
 | Rete | Transformer Explainer e Tokenizer Playground si aprono dalla rete della scuola, con tutte le postazioni accese insieme; leggere quanti dati scarica Transformer Explainer per caricare il modello nel browser. Per decidere vale la regola di «Se l'installazione è lenta» | |
-| Passaggio dei file | Teams si apre nel browser della VM; il testo di `istruzioni_assistente_P03.txt` si manda al compagno con un messaggio su Teams; i tre file si caricano dal browser della VM, o si copiano sul computer reale | |
+| Passaggio dei file | Teams si apre nel browser della VM; il testo di `istruzioni_assistente_P03.txt` si manda al compagno con un messaggio su Teams | |
 | Zip del modello | Lo zip passa dalla chiavetta alla VM (collegamento USB di VMware o trascinamento) e si estrae in `%USERPROFILE%\.cache\huggingface\hub`; misurare tempo di copia ed estrazione | |
 | Context Length | Ordine del controllo: prima «si può impostare prima del caricamento?» (prova senza rischio), poi «la stima di Studio cambia senza Reload?», poi «Studio ricorda l'ultimo valore dopo la riapertura?», per ultimo il caricamento con Auto, che può bloccare la VM: «Studio riduce da solo il contesto alla memoria libera?» (lo fa pensare `--fit on` tra i parametri del motore su Linux, ma non è stato visto con poca RAM). Tre esiti per la classe: (a) si può impostare prima: dì di caricare subito con 8192 e di scrivere nella prima riga della tabella di 3B (Context Length su Auto) solo la stima di Studio; (b) non si può impostare prima ma Auto regge: si segue la consegna; (c) Auto blocca e il valore non si può impostare prima né resta: quella VM non carica il modello, la coppia lavora a turno sull'altra VM e, se il blocco c'è su entrambe, passa al ramo di riserva. Chi ha il blocco scrive «bloccato» nella prima riga della tabella di 3B, al posto della stima e della memoria | |
 | Copilot | Con l'account studente accetta in un solo messaggio le istruzioni e il registro intero (circa 10.600 caratteri): serve al ramo di riserva della parte 4. Nella lezione 2 il registro si incollava in quattro parti | |
 | System Prompt e regolazioni | Aprendo una nuova conversazione, System Prompt, Temperature, Top P e Top K restano quelli impostati, con il modello caricato e dopo almeno una risposta. Su Linux il System Prompt è rimasto dopo «New chat» (senza modello caricato) e dopo Reload model (con modello caricato); Temperature, Top P e Top K non sono stati verificati. In 4B e 4C gli studenti alternano comunque le istruzioni del compagno e le proprie: le consegne chiedono di controllare Run settings prima di provare | |
-| Teams nella VM | Accesso con l'account studente, anche con la verifica in due passaggi; caricamento dei tre file | |
+| Teams nella VM | Accesso con l'account studente, anche con la verifica in due passaggi; scarico del registro e lettura di un messaggio | |
+| Documenti della VM | I tre file in Documenti della VM ci sono ancora il 18 novembre: la VM non viene ripristinata né cancellata tra una lezione e l'altra | |
+| Separatore decimale | Le caselle Temperature e Top P accettano il punto, la virgola o entrambi. La consegna scrive 0.2 e 1.0 con il punto e chiede di provare la virgola se Studio non li accetta | |
 
 ## Che cosa è stato provato
 
@@ -113,20 +141,22 @@ Qui la classe lavora mentre l'installazione procede. Non spiegare prima: lascia 
 ### Parte 3 · Studio
 
 - **Primo avvio.** La password serve ogni volta; i fogli con le password evitano blocchi più avanti. La memoria prima del caricamento si legge prima di scegliere il modello. Search e Tools sono attivi di partenza: chi non li disattiva può far partire una ricerca su internet o l'esecuzione di codice nella VM.
-- **Misure.** Gli studenti confrontano tre cose: la stima di Studio (Estimated Memory Usage) con la memoria misurata in Gestione attività; la memoria con Context Length su Auto e con 8192; il numero di token del Tokenizer Playground con quello mostrato in alto da Studio. La memoria del modello è la memoria in uso dopo il caricamento meno quella misurata prima. La domanda breve e il registro intero mostrano l'effetto del testo lungo sul tempo. Se la VM ha poca RAM libera, con Auto Studio può scegliere un contesto grande (nel portatile 262.144 token, circa 5,4 GB): se la VM rallenta o si blocca, fai portare subito Context Length a 8192 e fai riaprire Studio come nella consegna. Il registro intero ne usa circa 3.200. Il cambio vale dopo **Reload model**: se non si ricarica al primo clic, si clicca ancora. Raccogli da tutte le coppie memoria a modello caricato, secondi e tok/s con il registro intero: servono per scegliere il modello delle lezioni 5–7.
+- **Misure.** Gli studenti confrontano tre cose: la stima di Studio (Estimated Memory Usage) con la memoria misurata in Gestione attività; la memoria con Context Length su Auto e con 8192; il numero di token del Tokenizer Playground con quello mostrato in alto da Studio. La memoria del modello è la memoria in uso dopo il caricamento meno quella misurata prima. La domanda breve e il registro intero mostrano l'effetto del testo lungo sul tempo. Se la VM ha poca RAM libera, con Auto Studio può scegliere un contesto grande (nel portatile 262.144 token, circa 5,4 GB): se la VM rallenta o si blocca, fai portare subito Context Length a 8192 e fai riaprire Studio come nella consegna. Il registro intero ne usa circa 3.200. Il cambio vale dopo **Reload model**: se non si ricarica al primo clic, si clicca ancora. Nel momento 1 della verifica a voce annota nella colonna «Annotazione» della tua tabella le misure delle coppie che senti (memoria a modello caricato, secondi alla prima parola e tok/s con il registro intero): sono un campione, non tutta la classe, e servono per scegliere il modello delle lezioni 5–7.
 - **Parametri.** In coppia: criteri e richiesta insieme, poi le prove divise per regolazione (uno Temperature, l'altro Top P oppure Top K, a scelta, ognuno nella propria VM), una nuova conversazione per ogni prova. I valori di partenza li prova chi segue la Temperature, controllando la risposta già ottenuta in 3B con i criteri della coppia e rifacendo la prova solo se la richiesta scritta in 3C è diversa; ognuno prova poi un valore basso e uno alto. Non cercare un valore «giusto»: un'impostazione con valori bassi e una con valori alti possono dare entrambe una risposta valida; conta come la giustificano. Se due impostazioni danno la stessa risposta, è un risultato. A parità di richiesta il modello può dare risposte diverse: chiedi di ripetere la prova solo alle coppie le cui due impostazioni hanno dato risposte diverse. Valori di partenza visti su Linux: Temperature 0,6, Top P 0,95, Top K 20; su Windows da verificare.
-- **Se le risposte sono lente** (decisione del 5 novembre 2026). Una regola legata a un evento, non a una durata. Il riferimento su Linux è di circa 25 secondi in totale; gli studenti misurano invece i secondi fino alla prima parola, che su Linux non è stato misurato e non è confrontabile con il totale. Poiché la prima parola arriva prima della fine della risposta, vale solo un confronto in un senso: se i secondi alla prima parola scritti dagli studenti in 3B superano già i 25 secondi, la VM è più lenta del portatile. In quel caso, in 3C ognuno prova **un solo** valore della propria regolazione (il basso o l'alto, a scelta) invece di due; i valori di partenza restano quelli di 3B. Con valori vicini o minori di 25 secondi la regola non scatta, anche se il totale potrebbe essere più lungo: usa il giudizio sui tok/s e sull'attesa in aula. Dillo a voce alla classe prima di 3C e controlla che in «Scelta» compaia una riga per prova. Le prove di 4B e 4C non cambiano. I dati sulla velocità raccolti in 3B servono comunque per le lezioni 5–7.
+- **Se le risposte sono lente, o l'installazione è stata lenta** (decisione del 5 novembre 2026, allargata il 6 novembre). Una regola legata a un evento, non a una durata. Scatta in due casi: (1) hai applicato la regola «Se l'installazione è lenta»; (2) i secondi alla prima parola scritti dagli studenti in 3B superano già i 25 secondi. Per il caso 2: il riferimento su Linux è di circa 25 secondi in totale; gli studenti misurano invece i secondi fino alla prima parola, che su Linux non è stato misurato e non è confrontabile con il totale. Poiché la prima parola arriva prima della fine della risposta, vale solo un confronto in un senso: sopra i 25 secondi la VM è più lenta del portatile. Con valori vicini o minori di 25 secondi il caso 2 non scatta, anche se il totale potrebbe essere più lungo: usa il giudizio sui tok/s e sull'attesa in aula. Quando la regola scatta vale per tutta la classe: in 3C ognuno prova **un solo** valore della propria regolazione (il basso o l'alto, a scelta) invece di due; i valori di partenza restano quelli di 3B. Dillo a voce alla classe prima di 3C e controlla che in «Scelta» compaia una riga per prova. Le prove di 4B e 4C non cambiano. I dati sulla velocità raccolti in 3B servono comunque per le lezioni 5–7.
+- **Verifica a voce.** Momento 1 della sezione «Come verifichi, a voce»: domanda sul valore scelto in 3C.
 
 ### Parte 4 · Istruzioni
 
 - Gli studenti scrivono le istruzioni senza esempio. Se chiedono «come si scrive?», rimanda alle quattro voci della consegna.
-- La prova del compagno richiede il passaggio del testo delle istruzioni, con un messaggio su Teams: verifica che funzioni per tutte le coppie. Ogni prova è una nuova conversazione con registro e domanda in un solo messaggio; in 4C gli studenti rimettono nel System Prompt le proprie istruzioni prima di riprovare.
+- La prova del compagno richiede il passaggio del testo delle istruzioni, con un messaggio su Teams: verifica che funzioni per tutte le coppie. Dopo la copia le coppie chiudono la scheda di Teams e controllano in Gestione attività che la memoria non sia vicina al massimo, perché la VM ha il modello caricato. Ogni prova è una nuova conversazione con registro e domanda in un solo messaggio; in 4C gli studenti rimettono nel System Prompt le proprie istruzioni prima di riprovare.
 - Casi che sanno inventare: dato assente nel registro, domanda senza giorno, due note che danno valori diversi, richiesta di un'azione sulla macchina, domanda fuori dal registro. Non suggerirli: li devono trovare loro.
 - **Esempio di istruzioni.** Dopo la parte 4C pubblica `ESEMPIO_ISTRUZIONI_ASSISTENTE_P03.txt` e chiedi di confrontarlo con le proprie: che cosa manca? Che cosa è inutile? Quale regola ha cambiato il comportamento? Non presentarlo come soluzione: è provato su un solo caso. Se la classe vede un comportamento diverso dal tuo, è un dato valido e va discusso.
+- **Verifica a voce.** Momento 2 durante la 4B e momento 3 alla fine della 4C.
 
 ### Chiusura
 
-Ordine: fai consegnare i tre file; poi pubblica l'esempio di istruzioni e fai il confronto con le istruzioni degli studenti; poi le tre domande della slide 22. In questo modo l'esempio non può cambiare i file consegnati. Risposte attese, dai valori misurati in aula: (1) la memoria dipende dal modello e da Context Length, che si fissa al caricamento; il testo lungo aumenta i token e i secondi di attesa. Con l'esito (b) si confrontano le misure con Auto e con 8192, con l'esito (a) le stime di Studio, con l'esito (c) il blocco è il dato; (2) con la temperatura alta il modello sceglie più spesso parole meno probabili e le risposte variano di più; se i dati restano giusti lo dice il controllo con i criteri, non il valore della temperatura; (3) un caso di prova che ha fatto cambiare o confermare una regola delle proprie istruzioni, con il motivo. Se un valore misurato non coincide, è un dato da discutere.
+Ordine: pubblica l'esempio di istruzioni dopo la 4C e fai il confronto con le istruzioni degli studenti; poi due o tre coppie leggono ad alta voce un caso fallito, la risposta e la regola cambiata (risposta alla domanda 3 della slide 22); poi le domande 1 e 2 della slide 22, a voce. Pubblicando l'esempio dopo la 4C, il confronto parte dalle istruzioni scritte da loro. Risposte attese, dai valori misurati in aula: (1) la memoria dipende dal modello e da Context Length, che si fissa al caricamento; il testo lungo aumenta i token e i secondi di attesa. Con l'esito (b) si confrontano le misure con Auto e con 8192, con l'esito (a) le stime di Studio, con l'esito (c) il blocco è il dato; (2) con la temperatura alta il modello sceglie più spesso parole meno probabili e le risposte variano di più; se i dati restano giusti lo dice il controllo con i criteri, non il valore della temperatura; (3) un caso di prova che ha fatto cambiare o confermare una regola delle proprie istruzioni, con il motivo. Se un valore misurato non coincide, è un dato da discutere.
 
 ## Valori di riferimento del registro
 
@@ -147,7 +177,7 @@ La regola per decidere è quella di «Se l'installazione è lenta» (sopra): eve
 | 3C Parametri | Prove divise in Studio | Si usano le distribuzioni di Transformer Explainer: la coppia scrive i criteri, sceglie una temperatura e la motiva; in «Scelta» segna che ha lavorato senza Studio |
 | 4 Istruzioni | System Prompt di Studio | Le istruzioni si provano come primo messaggio in Copilot, con il registro sotto, scrivendo che non è il campo di sistema e che il registro esce dal reparto. Se Copilot non risponde o non accetta il messaggio, chi ha inventato i casi li pone e l'autore delle istruzioni risponde applicando alla lettera solo le regole che ha scritto, e lo scrive nei casi |
 
-I file consegnati sono gli stessi: cambia la nota su come sono stati ottenuti.
+Gli appunti sono gli stessi: cambia la nota su come sono stati ottenuti.
 
 ## Problemi probabili
 
@@ -163,4 +193,4 @@ I file consegnati sono gli stessi: cambia la nota su come sono stati ottenuti.
 
 ## Dati da raccogliere per le lezioni 5–7
 
-Prima di riprendere con la lezione 5 (18 novembre): quante VM hanno finito l'installazione, con quale metodo è arrivato il modello e quanto ha impiegato; memoria e secondi di risposta; quali istruzioni di sistema sono state seguite e quali ignorate dal modello da 2 miliardi di parametri; che cosa è passato dal campo System Prompt e che cosa no.
+Prima di riprendere con la lezione 5 (18 novembre), prendi nota tu, durante il giro tra i banchi e nella discussione finale. Le misure sono un campione delle coppie che hai sentito, non di tutta la classe. Annota: quante VM hanno finito l'installazione, con quale metodo è arrivato il modello e quanto ha impiegato; memoria e secondi di risposta; quali regole del System Prompt il modello ha rispettato nelle risposte e quali no.

@@ -28,7 +28,7 @@ Il caso è quello che conoscete: la pressa P03 e il registro del 13–15 ottobre
 | 3. Misurare e regolare | Unsloth Studio | misure_VM.txt |
 | 4. Scrivere le istruzioni dell'assistente | Unsloth Studio | istruzioni_assistente_P03.txt e casi_di_prova.txt |
 
-In coppia, ognuno con la propria macchina virtuale. I tre file si scrivono con Blocco note dentro la macchina virtuale.
+In coppia, ognuno con la propria macchina virtuale. I tre file si scrivono con Blocco note dentro la macchina virtuale: sono appunti vostri, non si consegnano. Il docente passa tra i banchi e vi chiede di raccontare che cosa avete fatto.
 
 ---
 
@@ -50,7 +50,7 @@ $env:UNSLOTH_NO_TORCH=1; irm https://unsloth.ai/install.ps1 | iex
 
 - Non chiudete la finestra: scarica molti file e può metterci a lungo.
 - Se compare un errore in rosso, chiamate il docente.
-- Intanto aprite Teams nella macchina virtuale e scaricate il registro; copiate lo zip del modello sul Desktop e restituite la chiavetta; create in Documenti i tre file .txt vuoti. Poi la parte 2 sul computer reale.
+- Intanto copiate dalla chiavetta sul Desktop lo zip del modello e il registro, e restituitela (registro mancante: scaricatelo da Teams); create in Documenti i tre file .txt vuoti. Poi la parte 2.
 
 ---
 
@@ -69,7 +69,7 @@ Sul computer reale, nel browser: poloclub.github.io/transformer-explainer
 È un modello piccolo che completa frasi in inglese: non è un assistente.
 
 1. Scrivete una frase breve in inglese e guardate quali parole propone dopo.
-2. Prima di muovere la temperatura, scrivete in misure_VM.txt, nella macchina virtuale, che cosa pensate che succeda alle probabilità se la alzate e se la abbassate.
+2. Prima di muovere la temperatura, scrivete in misure_VM.txt che cosa pensate che succeda alle probabilità se la alzate o la abbassate, e dite la previsione al compagno.
 3. Provate. Poi scrivete che cosa avete visto e spiegatelo al compagno.
 
 Si osservano le probabilità: non c'è un errore da trovare.
@@ -99,10 +99,10 @@ Avviamo Studio e carichiamo il modello.
 # Slide 10 — Il primo avvio
 <!-- layout: CONTENUTO -->
 
-Quando l'installazione finisce, PowerShell chiede se avviare Unsloth Studio: scrivete Y e premete Invio.
+Alla fine PowerShell chiede se avviare Unsloth Studio: scrivete Y e premete Invio. Non chiudete questa finestra: Studio si fermerebbe.
 
 1. Nel browser della macchina virtuale aprite http://127.0.0.1:8888 e create una password di almeno 8 caratteri. Scrivetela su un foglio.
-2. Chiudete la scheda di Teams e aprite Gestione attività: Ctrl+Maiusc+Esc, Prestazioni, Memoria.
+2. Teams aperto nella macchina virtuale? Chiudetelo. Aprite Gestione attività: Ctrl+Maiusc+Esc, Prestazioni, Memoria.
 3. Scrivete in misure_VM.txt la memoria in uso prima di caricare il modello.
 
 ---
@@ -193,7 +193,7 @@ Le istruzioni non servono a farlo rispondere bene a qualunque domanda: servono a
 # Slide 18 — Mettetevi alla prova
 <!-- layout: CONTENUTO -->
 
-Mandatevi il testo delle istruzioni con un messaggio su Teams. Poi ognuno prova l'assistente del compagno nel proprio Studio.
+Mandatevi il testo delle istruzioni su Teams; dopo averlo copiato chiudete Teams e guardate la memoria in Gestione attività. Poi ognuno prova l'assistente del compagno nel proprio Studio.
 
 Inventate voi almeno quattro casi di prova e tranelli: che cosa può sfuggire a un assistente che legge solo questo registro?
 
@@ -206,7 +206,7 @@ Ogni prova in una nuova conversazione.
 # Slide 19 — Correggete le istruzioni
 <!-- layout: CONTENUTO -->
 
-Rileggete i casi del compagno sul vostro assistente.
+Guardate con il compagno il suo casi_di_prova.txt: sono le prove fatte sul vostro assistente.
 
 Per ogni ERRORE decidete che cosa correggere: le istruzioni, la domanda o il testo dato all'assistente.
 
@@ -214,10 +214,10 @@ Correggete le regole nel testo delle istruzioni e scrivete sotto «Correzioni do
 
 ---
 
-# Slide 20 — Le consegne
+# Slide 20 — I vostri appunti
 <!-- layout: CONTENUTO -->
 
-Ognuno consegna i propri tre file .txt nel compito su Teams, dal browser della macchina virtuale oppure dal computer reale:
+Non c'è niente da consegnare o da caricare: i tre file .txt sono appunti vostri, per ricordare e raccontare a voce.
 
 | File | Contenuto |
 | --- | --- |
