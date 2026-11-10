@@ -48,11 +48,15 @@ TEACHER_BACKUP = HERE / 'backup'
 SOURCES = TEACHER_BACKUP / 'fonti'
 REGISTER_SOURCE = SOURCES / '04_REGISTRO_P03_13-15_OTTOBRE_2026.txt'
 REGISTER_COPY = STUDENTS / 'Registro_P03_13-15_ottobre_2026.txt'
-DECK_NAME = 'Lezione4_Modello_locale_e_istruzioni_di_sistema_ITS_MAKER'
+TEXT_DOCUMENTS = {  # documenti del caso: sorgente Markdown, copia di testo semplice da incollare in Copilot
+    SOURCES / '02_GUIDA_ALLARMI_P03.md': STUDENTS / 'Guida_allarmi_P03.txt',
+    SOURCES / '03_REGOLE_INDICATORI_P03.md': STUDENTS / 'Regole_indicatori_P03.txt',
+}
+DECK_NAME = 'Lezione4_Reti_neurali_e_agenti_con_orchestrazione_ITS_MAKER'
 MODEL = HERE / 'MODELLO_ITS_MAKER.pptx'
-TITLE = 'Lezione 4 — Un assistente sul computer del reparto'
+TITLE = 'Lezione 4 — Un agente che sa fare più cose'
 LAYOUTS = ('COPERTINA', 'CONTENUTO', 'SEZIONE', 'CHIUSURA')
-PROGRAM = 'UNSLOTH STUDIO'
+PROGRAM = ('UNSLOTH STUDIO', 'MICROSOFT COPILOT')  # il modello riporta ancora il programma della lezione 1: si sostituisce al caricamento
 BLUE, INK, MUTED, PALE = '1064A0', '17344D', '4B6275', 'EAF0F6'
 FONT = 'Arial'
 BODY_SIZE, BODY_GAP = 26, 0.16  # punti e pollici: testo delle slide di contenuto e spazio fra i paragrafi
@@ -303,9 +307,15 @@ def add_slide_table(slide, rows: list[list[str]], top: float) -> float:
 def load_model():
     """Modello ufficiale; la fascia in basso delle pagine di contenuto deve riportare il programma della lezione."""
     prs = Presentation(MODEL)
+    for layout in prs.slide_layouts:
+        for shape in layout.shapes:
+            if shape.has_text_frame and not shape.is_placeholder:
+                for paragraph in shape.text_frame.paragraphs:
+                    for run in paragraph.runs:
+                        run.text = run.text.replace(*PROGRAM)
     band = [shape.text_frame.text for layout in prs.slide_layouts for shape in layout.shapes if shape.has_text_frame and not shape.is_placeholder]
-    if not any(PROGRAM in text for text in band):
-        raise SystemExit(f'La fascia in basso del modello non riporta «{PROGRAM}»: aggiornare il testo nel modello.')
+    if not any(PROGRAM[1] in text for text in band):
+        raise SystemExit(f'La fascia in basso del modello non riporta «{PROGRAM[1]}»: controllare il testo nel modello.')
     return prs
 
 
@@ -347,7 +357,7 @@ def build_pptx(slides: list[dict]) -> Path:
                     run.font.size = Pt(11)
                     run.font.color.rgb = RGBColor.from_string(MUTED)
     prs.core_properties.title = TITLE
-    prs.core_properties.subject = 'Unsloth Studio: modello locale e istruzioni di sistema'
+    prs.core_properties.subject = 'Reti neurali nel browser e agente con più competenze in Microsoft Copilot'
     prs.core_properties.comments = ''
     output = LESSON / f'{DECK_NAME}.pptx'
     prs.save(output)
@@ -632,6 +642,63 @@ def register_tables(values: dict) -> str:
     ])
 
 
+def turn_notes(text: str) -> str:
+    """Tabella Markdown delle note del registro che nominano il turno, più i cambi turno per giorno e le divisioni accettabili delle note."""
+    headers = list(NOTE_HEADER.finditer(text))
+    rows = ['| Data e ora | Frase della nota che nomina il turno |', '| --- | --- |']
+    days: dict[str, dict[str, list[str]]] = {}
+    for header, following in zip(headers, headers[1:] + [None]):
+        day, month, year, hour, minute = map(int, header.groups())
+        body = ' '.join(text[header.end():following.start() if following else len(text)].strip().split('\n\n')[0].split())
+        key, clock = f'{day:02}/{month:02}', f'{hour:02}:{minute:02}'
+        entry = days.setdefault(key, {'first': [], 'changes': []})
+        entry['first'].append(clock)
+        sentences = [s for s in re.split(r'(?<=[.!?])\s+', body) if re.search(r'\bturno\b', s, re.I)]
+        if sentences:
+            rows.append(f'| {day:02}/{month:02}/{year} · {clock} | {" ".join(sentences)} |')
+        if re.search(r'cambio del turno', body, re.I):
+            entry['changes'].append(clock)
+    if len(rows) == 2:
+        register_fail('nessuna nota nomina il turno.')
+    changes = '; '.join(f'{key}: {" e ".join(entry["changes"]) if entry["changes"] else "nessuno"}' for key, entry in days.items())
+    divisions = [f'{key}, note dalle {start} alle {end}' for key, entry in days.items() for start, end in zip(entry['first'][:1] + entry['changes'][:-1], entry['changes'])]
+    return '\n'.join(rows) + f'\n\nCambi turno indicati con «cambio del turno», per giorno: {changes}. Divisioni delle note in turni che l\'agente può proporre, tutte accettabili: {"; ".join(divisions)}.'
+
+
+def alarm_table(text: str) -> str:
+    """Per ogni allarme della guida: quali delle tre parti del lavoro «Spiegare un allarme» sono scritte, e quali altre parti ha."""
+    parts = ('Che cosa significa', "Primo controllo dell'operatore", 'Chi interviene')
+    sections = re.split(r'^### ', text, flags=re.M)[1:]
+    if not sections:
+        raise SystemExit('Guida allarmi: nessun allarme trovato (titoli «### Nome dell\'allarme»).')
+    rows = ['| Allarme | ' + ' | '.join(parts) + ' | Altre parti |', '| --- | ' + ' | '.join('---' for _ in parts) + ' | --- |']
+    for section in sections:
+        title, _, body = section.partition('\n')
+        labels = re.findall(r'^\*\*(.+?)\.\*\*', body, re.M)
+        others = [label for label in labels if label not in parts]
+        rows.append(f'| {title.strip()} | ' + ' | '.join('scritto' if part in labels else 'non indicato' for part in parts) + f' | {", ".join(others) if others else "nessuna"} |')
+    return '\n'.join(rows)
+
+
+def plain_text(source: str) -> str:
+    """Markdown dei documenti del caso in testo semplice: niente simboli di titolo o di grassetto, tabelle come righe «voce: descrizione»."""
+    lines = []
+    table_header = True
+    for line in source.splitlines():
+        if line.startswith('|'):
+            cells = [cell.strip() for cell in line.strip().strip('|').split('|')]
+            if all(re.fullmatch(r':?-{3,}:?', cell) for cell in cells):
+                table_header = False
+                continue
+            if table_header:
+                continue
+            lines.append(': '.join(cells))
+            continue
+        table_header = True
+        lines.append(re.sub(r'^#+\s*', '', line).replace('**', ''))
+    return re.sub(r'\n{3,}', '\n\n', '\n'.join(lines)).strip() + '\n'
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--template', type=Path, help='Modello PowerPoint ufficiale originale, richiesto soltanto alla prima esecuzione.')
@@ -649,8 +716,15 @@ def main() -> None:
     guide = HERE / 'GUIDA_DOCENTE.docx'
     markdown_doc(STUDENTS_BACKUP / 'ATTIVITA_LEZIONE4.md', worksheet, 'Lezione 4 — attività')
     values = register_values(REGISTER_SOURCE.read_text(encoding='utf-8'))  # si ferma se il registro non torna
-    markdown_doc(TEACHER_BACKUP / 'GUIDA_DOCENTE.md', guide, 'Lezione 4 — guida docente', replacements={'{{VALORI_REGISTRO}}': register_tables(values)})
-    shutil.copyfile(REGISTER_SOURCE, REGISTER_COPY)  # testo da incollare in Unsloth Studio, copia byte per byte (UTF-8)
+    replacements = {
+        '{{VALORI_REGISTRO}}': register_tables(values),
+        '{{NOTE_TURNO}}': turn_notes(REGISTER_SOURCE.read_text(encoding='utf-8')),
+        '{{VALORI_GUIDA}}': alarm_table((SOURCES / '02_GUIDA_ALLARMI_P03.md').read_text(encoding='utf-8')),
+    }
+    markdown_doc(TEACHER_BACKUP / 'GUIDA_DOCENTE.md', guide, 'Lezione 4 — guida docente', replacements=replacements)
+    shutil.copyfile(REGISTER_SOURCE, REGISTER_COPY)  # testo da incollare in Copilot, copia byte per byte (UTF-8)
+    for source, target in TEXT_DOCUMENTS.items():
+        target.write_text(plain_text(source.read_text(encoding='utf-8')), encoding='utf-8')
     with tempfile.TemporaryDirectory(prefix='its-maker-lezione4-') as folder:
         work = Path(folder)
         build_html(slides, background_images(work))
@@ -658,7 +732,7 @@ def main() -> None:
         converted = pdfs(list(outputs), work / 'pdf', work)
         for (source, folder_pdf), pdf in zip(outputs.items(), converted):
             shutil.copyfile(pdf, folder_pdf / f'{source.stem}.pdf')
-    print(f'Creati {len(slides)} slide, due documenti Word e il registro da incollare in {LESSON}')
+    print(f'Creati {len(slides)} slide, due documenti Word, il registro e due documenti di testo da incollare in {LESSON}')
 
 
 if __name__ == '__main__':

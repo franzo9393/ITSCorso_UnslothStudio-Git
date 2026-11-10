@@ -25,7 +25,7 @@ from pathlib import Path
 
 import psutil
 
-CORPUS_PREDEFINITO = Path(__file__).resolve().parents[3] / "laboratorio" / "corpus"
+CORPUS_PREDEFINITO = Path(__file__).resolve().parents[4] / "laboratorio" / "corpus"
 ISTRUZIONI = ("Sei l'assistente di reparto della pressa P03. Rispondi in italiano, in modo breve. "
               "Usa solo i documenti forniti. Se un dato non c'è, scrivi 'dato assente'.")
 MB = 2**20

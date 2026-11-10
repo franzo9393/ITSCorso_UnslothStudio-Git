@@ -153,3 +153,15 @@ Affermazioni **non dimostrate** da non riportare nei materiali: tempi di rispost
 | Browser delle postazioni | WebGL, WebGPU, proxy, download, cache | |
 | Giochi selezionati | Partita anonima completa sullo scenario scelto, limiti per IP, raccolta messaggi, termini | |
 | Account Google | Workspace scolastico ed età, se si usa un servizio Google | |
+
+## Reti neurali e addestramento (aggiunta del 10 novembre 2026)
+
+La lezione 4 è stata riprogettata senza Unsloth Studio (vedi `BOZZA_PERCORSO_LEZIONI_4-7.md`). Le risorse sopra su Studio, System Prompt e RAG restano valide per le lezioni 5–7. Per la nuova lezione 4 serviva una ricerca su giochi nel browser che mostrino come funziona una rete neurale; il rapporto è in `ricerca_attivita_online/08_ricerca_reti_neurali.md` e le licenze in `fonti_online/LICENZE_E_FONTI.md`.
+
+| Risorsa | Esito | Uso nella lezione 4 |
+| --- | --- | --- |
+| [TensorFlow Playground](https://playground.tensorflow.org/) | C | Parte 2: addestramento con esempi, pesi, Training loss e Test loss, rumore. Apache-2.0 (repository); la pagina dichiara che si può usare «in any way that follows our Apache License». Contatta Google Fonts e Google Analytics. |
+| [Flappy Learning](https://xviniette.github.io/FlappyLearning/) | C | Parte 3: neuroevoluzione, un'analogia con addestrare premiando i risultati. MIT (repository). Contatta Google Fonts. |
+| [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) | C, con riserva | Parte 1, già in questa ricerca. Il 10 novembre la pagina dichiara lo scarico di circa 600 MB all'apertura: su 22 postazioni è un carico sulla rete della scuola (vedi guida docente, «Parte 1»). |
+
+Esiti **C**: confermata da lettura di licenza, apertura e prove con Chromium dalla postazione del docente, rete non scolastica. Funzionamento dalla rete della scuola e dalle postazioni degli studenti da provare.

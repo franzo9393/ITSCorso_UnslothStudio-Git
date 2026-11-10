@@ -14,18 +14,18 @@ Documento riservato al docente. **Bozza da approvare**: non sono ancora material
 ## Vincoli
 
 - **VM della scuola: al massimo 8 GB di RAM, nessuna GPU.** Unsloth Studio dichiara il funzionamento su sola CPU ([Chat](https://unsloth.ai/docs/new/studio/chat)); memoria e tempi sulla VM sono da misurare.
-  - Un solo modello GGUF piccolo e quantizzato, portato su chiavetta e caricato in aula.
+  - Un solo modello GGUF piccolo e quantizzato, già presente nella VM che il docente consegna alla lezione 5.
   - Niente Model Arena (carica due modelli), addestramento, esportazioni o conversioni.
   - RAG in modalità BM25, già indicata in `materiali_aula/RISORSE_E_ACCESSO.md` §3.1.
 - **Siti esterni dal browser del PC fisico, solo quelli che elaborano nel browser** (decisione del 5 novembre 2026). Nella lezione 3 Copilot non ha risposto a nessuno per circa 10 minuti: ipotesi, limite di richieste dallo stesso indirizzo pubblico in uscita, non verificata. Restano nel percorso solo siti statici o che calcolano nel browser; sono esclusi HackMerlin, Prompt Airlines e Gandalf, che interrogano un modello sul server. Il controllo dei siti è nella tabella «Siti esterni» più sotto. Unsloth Studio gira nella VM e non usa la rete. Restano esclusi anche gli strumenti che richiedono WebGPU (WebLLM, Qwen3 Embedding Scatterplot) finché non si conoscono le schede grafiche dei PC fisici.
-- **La VM non si può provare prima della lezione 4** (decisione del 5 novembre 2026). Il percorso ha un ramo di riserva: se Studio o il modello non partono, la lezione prosegue senza modello locale (vedi «Ramo di riserva» nella lezione 4). Le misure sulla VM sono un'attività in più, non il filo della lezione.
+- **La VM con Studio si prepara a casa e si consegna alla lezione 5** (decisione del 10 novembre 2026, che sostituisce quella del 5 novembre). Il docente copia una VM dai PC della scuola su un HDD, a casa installa Studio e il modello, e la redistribuisce il 18 novembre. La lezione 4 non usa Studio, e nessuna parte della lezione 4 dipende dalla VM. Le misure sulla VM, i parametri e la prova delle istruzioni nel System Prompt passano alla lezione 5. Quello che resta valido della vecchia lezione 4 con Studio è in `docente/backup/da_riprendere_lezione_5/NOTE_STUDIO_PER_LEZIONE_5.md`.
 - **Lezione 3 svolta il 4 novembre 2026** (resoconto del docente del 5 novembre). Svolti: agenti con Python creati dagli studenti; Prova A e Prova B «più o meno»; confronto dell'output dell'agente con e senza la scheda di passaggio (`.handoff`), sul file `.xlsx`; limiti e potenzialità del RAG. Il blocco di Copilot ha rallentato i lavori, ma il materiale non copriva comunque le 2 ore: finito a 1 h 40 min. La stima del revisore (circa 141 minuti) era quindi troppo alta; per la lezione 4 si può progettare una lezione più piena. I materiali per gli studenti non citano tempi.
 - Regole del progetto: gli studenti scrivono e correggono le proprie istruzioni; i casi di prova li inventano loro; nessuna attività si basa sull'errore atteso del modello; le istruzioni di esempio si pubblicano dopo il tentativo, in una cartella separata; nessun tempo di completamento nei materiali.
 - **Niente consegna di file, verifica a voce, nessun voto nelle lezioni intermedie** (decisione del 6 novembre 2026). Con 22 studenti, PC lenti e Teams lento caricare i file non è praticabile. Il voto sarà assegnato solo al lavoro di gruppo della lezione 7 e al test finale, che richiede consegne di file. Le consegne indicate più sotto per le lezioni 5 e 6 sono da riprogettare in appunti personali con verifica a voce quando si progettano quelle lezioni. Scopo delle lezioni intermedie: far vedere che cosa si può fare con lo strumento.
 
 ## Filo conduttore
 
-Ogni lezione riparte dall'assistente costruito nella precedente: le istruzioni restano nel campo System Prompt e negli appunti personali della VM, se la VM resta uguale da una lezione all'altra (controllo nella guida della lezione 4). Nella lezione 7 il gruppo lo estende a un documento nuovo e lo fa collaudare da un altro gruppo.
+Ogni lezione riparte dall'assistente costruito nella precedente: il testo delle istruzioni è nel file `istruzioni_assistente_P03.txt` degli appunti personali di ogni studente. Nella lezione 4 è il testo dell'agente di Microsoft Copilot; dalla lezione 5 si può incollare anche nel campo System Prompt di Studio, se la VM resta uguale da una lezione all'altra (controllo da fare nella lezione 5). Nella lezione 7 il gruppo lo estende a un documento nuovo e lo fa collaudare da un altro gruppo.
 
 ```mermaid
 flowchart LR
@@ -34,28 +34,30 @@ flowchart LR
   L6 -->|tabella_permessi_P03.txt| L7["Lezione 7<br/>gruppi + test individuale"]
 ```
 
-## Lezione 4 · Un modello che gira sul tuo computer
+## Lezione 4 · Un agente che sa fare più cose
 
-**Materiali pronti:** `Lezione4_Modello_locale_e_istruzioni_di_sistema_ITS_MAKER.pptx`, `studenti/ATTIVITA_LEZIONE4.docx`, `docente/GUIDA_DOCENTE.docx`. Fa fede la guida docente: questa sezione riassume le scelte.
+**Materiali pronti:** `Lezione4_Reti_neurali_e_agenti_con_orchestrazione_ITS_MAKER.pptx`, `studenti/ATTIVITA_LEZIONE4.docx`, `docente/GUIDA_DOCENTE.docx`. Fa fede la guida docente: questa sezione riassume le scelte.
 
-Obiettivo: capire che cosa vuol dire usare un modello in locale e progettare istruzioni di sistema vere.
+Obiettivo: capire, giocando, come impara un programma di intelligenza artificiale e progettare un agente di Microsoft Copilot con più competenze.
 
-**Decisione del 5 novembre 2026: installazione in diretta.** Le VM degli studenti (8 GB di RAM, Windows 10 o 11, internet e permessi) non si possono preparare prima. Gli studenti installano Unsloth Studio con l'installer in modalità senza PyTorch (`UNSLOTH_NO_TORCH=1`, solo GGUF) e, mentre l'installazione procede nella VM, lavorano sul PC reale con i due siti statici. Il modello `unsloth/Qwen3.5-2B-GGUF` `UD-Q4_K_XL` pesa 2,0 GB per postazione: il docente lo scarica una volta e lo porta in uno zip, su più chiavette. **Se l'installazione è lenta** il docente anticipa la scrittura delle istruzioni (decisione del 5 novembre).
+**Decisione del 10 novembre 2026: lezione senza Unsloth Studio, con reti neurali nel browser e agente con orchestrazione, a lavoro singolo.** Ognuno lavora da solo sul proprio computer, con il browser e con Copilot (account scolastico), senza scambi di postazione né controlli incrociati con altri studenti. Il percorso nasce da tre richieste del docente: un'attività in browser all'inizio, poi qualcosa di più strutturato; il caso P03 come testo di lavoro; un esempio dato dal docente su un caso diverso dalla P03 (noleggio di biciclette), poi il progetto degli studenti, che non deve essere una copiatura.
 
 Parti, come nella consegna degli studenti:
 
-1. **Installare Unsloth Studio** · PowerShell nella VM.
-2. **Come risponde un modello** · [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) (previsione sulla temperatura, poi osservazione) e [The Tokenizer Playground](https://huggingface.co/spaces/Xenova/the-tokenizer-playground) (token del registro e di una versione breve scritta dagli studenti, scambiata fra compagni), sul PC reale durante l'installazione.
-3. **Il modello sul computer** · Unsloth Studio. Primo avvio; memoria prima del caricamento, con Context Length su Auto e su 8192 (stima di Studio contro misura in Gestione attività); secondi e tok/s con testo breve e con il registro; criteri e prove sui parametri (Temperature, Top P, Top K) divise fra i compagni.
-4. **Le istruzioni dell'assistente** · casella System Prompt. Ogni studente scrive le istruzioni di un assistente che fa domande prima di rispondere quando mancano dati; il compagno inventa casi di prova e tranelli; ciascuno corregge o conferma le proprie istruzioni.
+1. **Come sceglie la parola successiva** · [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) (MIT): previsione sulla temperatura, poi osservazione.
+2. **Una rete che impara** · [TensorFlow Playground](https://playground.tensorflow.org/) (Apache-2.0): prima il cerchio, poi la spirale; criterio scelto prima, rete più piccola che lo rispetta, effetto del rumore sul Training loss e sul Test loss.
+3. **Imparare dai risultati** · [Flappy Learning](https://xviniette.github.io/FlappyLearning/) (MIT): neuroevoluzione; previsione, osservazione e confronto fra ricariche. Fa da ponte verso l'idea di addestrare uno stile premiando risposte preferite.
+4. **L'agente con più competenze** · Microsoft Copilot. Esempio del docente (noleggio di biciclette), tre lavori sui documenti P03 (nota di passaggio dal registro, spiegazione di un allarme dalla guida, durata del fermo dalle regole degli indicatori), progetto individuale di due lavori su tre con regole, indice, competenze, gestione di richieste su più competenze e stile con esempi scritti dallo studente, creazione dell'agente, prova del proprio agente con cinque casi inventati, uno per ciascun tipo indicato nella consegna (prima si scrive che cosa ci si aspetta, poi si guarda la risposta e si controlla il dato sul documento), correzione, e un confronto finale con Copilot normale e tra due risposte dell'agente per vedere che gli esempi nelle istruzioni non cambiano il modello e che scegliere tra risposte è il tipo di dato con cui si addestra uno stile.
 
-Appunti personali di ogni studente, non consegnati (decisione del 6 novembre 2026): `misure_VM.txt`, `istruzioni_assistente_P03.txt`, `casi_di_prova.txt`. Esempio di istruzioni in `studenti/da_pubblicare_dopo_parte_4C/`, da pubblicare dopo la parte 4C.
+Appunti personali di ogni studente, non consegnati (decisione del 6 novembre 2026): `appunti_reti.txt`, `istruzioni_assistente_P03.txt`, `casi_di_prova.txt`. Esempio di istruzioni in `studenti/da_pubblicare_dopo_parte_4F/`, da pubblicare dopo la parte 4F. Non è stato provato in Copilot.
 
-### Ramo di riserva della lezione 4
+### Rami di riserva della lezione 4
 
-Segnale per decidere, un evento e non un tempo: l'installazione non è finita quando le coppie hanno terminato la parte 2. La regola in due passi (scrittura anticipata delle istruzioni, poi ramo di riserva per le coppie senza Studio) è nella guida docente («Se l'installazione è lenta»); il ramo, attività per attività, è nella guida («Se Studio non parte») e nella consegna degli studenti. Se una sola VM della coppia funziona, la coppia lavora a turno su quella.
+Senza Studio non c'è un modello locale di riserva. Se l'agente non si crea o non accetta il testo si usa una conversazione normale; se Copilot non risponde ogni studente applica alla lettera sulla carta il proprio indice e le proprie competenze (guida docente, «Se Copilot non funziona»).
 
 ## Lezione 5 · Il modello legge i documenti
+
+**Da riprogettare (decisione del 10 novembre 2026).** La lezione 5 è la prima in cui gli studenti usano Unsloth Studio, nella VM che il docente consegna già pronta. Va deciso come entrano avvio, misure di memoria, parametri (Temperature, Top P, Top K) e System Prompt con le istruzioni della lezione 4: il materiale è in `docente/backup/da_riprendere_lezione_5/`. Il resto di questa sezione è la versione precedente e non è stato rivisto.
 
 Obiettivo: rendere visibile il recupero dei passaggi e distinguere un errore di recupero da un errore di risposta.
 
@@ -98,7 +100,7 @@ Consegna del gruppo: istruzioni finali, DOC-T10, registro del collaudo incrociat
 
 ## Da verificare prima delle lezioni
 
-**Stato delle prove (5 novembre 2026):** Unsloth Studio e il modello `unsloth/Qwen3.5-2B-GGUF` sono stati provati sul portatile del docente, Linux, anche in sola CPU (dettagli nella guida della lezione 4). Restano da provare Windows, la VM da 8 GB e la rete della scuola; la knowledge base BM25, l'esecuzione di codice e i modelli più grandi non sono stati provati.
+**Stato delle prove (5 novembre 2026):** Unsloth Studio e il modello `unsloth/Qwen3.5-2B-GGUF` sono stati provati sul portatile del docente, Linux, anche in sola CPU (dettagli in `da_riprendere_lezione_5/NOTE_STUDIO_PER_LEZIONE_5.md`). Restano da provare Windows, la VM da 8 GB e la rete della scuola; la knowledge base BM25, l'esecuzione di codice e i modelli più grandi non sono stati provati.
 
 | Punto | Controllo |
 | --- | --- |
