@@ -1,202 +1,223 @@
 # Guida docente · Lezione 4
 
-**ITS MAKER Bologna · Lezione 4 · 12 novembre 2026 · Microsoft Copilot e giochi nel browser**
+**ITS MAKER Bologna · 12 novembre 2026 · Microsoft Copilot e siti nel browser**
 
 Documento riservato al docente.
 
-## Che cosa cambia rispetto alla versione precedente
+## La lezione da condurre
 
-Decisione del 10 novembre 2026: la lezione 4 **non usa Unsloth Studio**. La macchina virtuale con Studio e il modello già installati la prepari tu a casa e la consegni agli studenti alla lezione 5 (18 novembre). Quello che serve di Studio per la lezione 5 è in `docente/backup/da_riprendere_lezione_5/NOTE_STUDIO_PER_LEZIONE_5.md`.
+Ognuno lavora da solo. Non passi tra i banchi, non raccogli file e non fai compilare appunti o registri di controllo. Gli esiti si leggono sugli schermi; il confronto collettivo avviene dal proiettore. Nessun nuovo strumento, cruscotto o punteggio legato alla fortuna del modello.
 
-Altra decisione del 10 novembre 2026: in questa lezione **si lavora da soli**, ognuno sul proprio computer. Non ci sono scambi di postazione né controlli incrociati tra studenti: le prove le fa ognuno sul proprio agente, e la verifica la fai tu a voce.
+L'ordine resta **Transformer Explainer → TensorFlow Playground → Flappy Learning → agente P03**. Si passa da probabilità, pesi e selezione dei risultati alla distinzione fra istruzioni e addestramento. I siti sono dimostrazioni di meccanismi diversi, non riproduzioni di Copilot.
 
-La lezione 4 diventa: tre giochi nel browser per capire come impara un programma (parti 1–3), poi un agente di Microsoft Copilot con più competenze (parte 4). Il testo dell'agente, `istruzioni_assistente_P03.txt`, si potrà riprendere nella lezione 5 (System Prompt di Studio), se vorrai: non è stato provato che un modello piccolo segua istruzioni con indice e competenze.
+Nella parte P03 si prova subito una competenza, prima di completare l'agente. Poi ciascuno aggiunge un secondo lavoro e inventa due casi critici. Il criterio è superare collaudi controllabili sulle fonti: un risultato corretto al primo invio e uno ottenuto dopo una correzione hanno lo stesso valore. Non occorre provocare un errore.
 
-## Che cosa si fa
+Si salva un solo file personale, `istruzioni_assistente_P03.txt`, con **solo le istruzioni**: niente diario delle correzioni, richieste o esiti in fondo. Si usa Blocco note per scrivere un oggetto da provare, non per compilare una scheda. Nessuna consegna e nessun voto in questa lezione.
 
-Il caso è la P03, con tre testi: il registro del 13–15 ottobre, la guida agli allarmi e le regole degli indicatori. Sono quelli già usati nella lezione 3, ma la consegna non presume che ogni studente li ricordi. Il responsabile vuole un solo assistente che sappia fare tre lavori.
+Unsloth Studio non si usa. Le note per preparare la macchina virtuale della lezione successiva restano in `docente/backup/da_riprendere_lezione_5/NOTE_STUDIO_PER_LEZIONE_5.md`. Non promettere che le istruzioni P03 funzioneranno allo stesso modo con un modello piccolo. Non presumere che gli studenti abbiano svolto attività specifiche nella lezione precedente.
 
-| Parte | Dove | Che cosa fanno gli studenti | Appunti personali |
-| --- | --- | --- | --- |
-| 1. Parola successiva | Browser, Transformer Explainer | Con gli esempi del menu Examples prevedono e poi osservano l'effetto della temperatura | `appunti_reti.txt` |
-| 2. Una rete che impara | Browser, TensorFlow Playground | Criterio, prova, rete più piccola e rumore sul cerchio; poi la spirale | `appunti_reti.txt` |
-| 3. Imparare dai risultati | Browser, Flappy Learning | Prevedono e osservano in quale generazione l'uccellino non muore più; ricaricano e confrontano | `appunti_reti.txt` |
-| 4A. Esempio | Proiettore, Copilot | Guardano l'agente del noleggio di biciclette e annotano quali richieste toccano più competenze | `casi_di_prova.txt` |
-| 4B. I tre lavori | Consegna | Leggono obiettivo e limiti dei tre lavori | |
-| 4C. Progettare | Blocco note | Scrivono il proprio agente: due lavori su tre | `istruzioni_assistente_P03.txt` |
-| 4D. Creare e provare | Copilot | Creano l'agente e provano una richiesta per competenza e una che ne tocca due | |
-| 4E. Mettere alla prova | Copilot | Inventano casi critici per il proprio agente; scrivono prima che cosa si aspettano, poi che cosa succede | `casi_di_prova.txt` |
-| 4F. Correzione | Copilot | Correggono dove emergono falle e riprovano | `istruzioni_assistente_P03.txt` |
-| 4G. Istruzioni o addestramento | Copilot | Stessa richiesta con agente e senza; due risposte dell'agente a confronto; che cosa è cambiato e che cosa no | `appunti_reti.txt` |
+## Prima dell'aula
 
-I tre file `.txt` si scrivono con Blocco note e sono appunti personali: **non si consegna nulla** e non c'è un voto (decisione del 6 novembre 2026). Il voto ci sarà solo nel lavoro di gruppo della lezione 7. `istruzioni_assistente_P03.txt` contiene solo il testo dell'agente e, in fondo, «Correzioni dopo le prove».
+### Da predisporre
 
-### Come verifichi, a voce
+- Pubblica su Teams `studenti/ATTIVITA_LEZIONE4.docx` e i tre testi `Registro_P03_13-15_ottobre_2026.txt`, `Guida_allarmi_P03.txt`, `Regole_indicatori_P03.txt`. Non pubblicare le cartelle di backup né l'esempio P03 all'inizio.
+- Prepara la dimostrazione con `docente/ESEMPIO_DIMOSTRAZIONE_NOLEGGIO_BICICLETTE.txt`: nelle istruzioni dell'agente va soltanto il testo **tra i due separatori**, non l'introduzione né le richieste suggerite. Prova in anticipo le richieste del file, ciascuna in una chat nuova. Se non puoi eseguirlo, mostra il testo dichiarando che non è una risposta del modello.
+- Tieni riservato `studenti/da_pubblicare_dopo_collaudo/ESEMPIO_ISTRUZIONI_AGENTE_P03.txt` fino alla fine della parte **4E**. È un esempio da discutere, non una soluzione già collaudata in Copilot. Provalo prima dell'aula se l'account lo consente.
+- Prepara il proiettore per mostrare **prima le richieste e soltanto dopo i criteri**. I valori P03 vengono dalle tavole automatiche in fondo a questa guida, non da numeri ricopiati a mano. La generazione è affidata a `docente/genera_materiali.py`, che legge gli originali in `docente/backup/fonti/`: conserva quei file intatti.
+- Apri i siti dalla rete scolastica e controlla le impostazioni. Non aprire Transformer Explainer da tutte le postazioni in anticipo: usare Examples non ferma lo scarico del modello. Se la rete non regge, usa solo il proiettore.
 
-Passi tra i banchi e chiedi di mostrare lo schermo e raccontare. Non segni punteggi. Con 22 studenti non puoi sentirli tutti a ogni momento: a ogni momento senti **8 studenti** diversi, a rotazione, così ognuno è sentito almeno una volta. Una domanda sola per momento, legata a ciò che lo studente ha sullo schermo.
+### Controlli pre-aula
 
-1. **Fine della parte 3.** «Mostrate le previsioni in `appunti_reti.txt`: che cosa pensavate e che cosa avete visto?» Chi sbaglia la previsione non sbaglia: è quello che ci si aspetta di vedere.
-2. **Durante la parte 4E.** «Mostrate un caso in `casi_di_prova.txt`: che cosa vi aspettavate, che cosa è successo, il dato c'è nel documento?»
-3. **Fine della parte 4F.** «Quale regola avete cambiato e com'è andata la nuova prova?» Durante la 4C, a chi sta scrivendo: «Perché avete scritto questa regola dell'indice?»
+**Copilot non è stato provato con l'account studente.** La documentazione non sostituisce la prova sulla piattaforma della scuola. Mostra l'interfaccia agli studenti solo dopo il controllo; non dare per certi nomi di comandi o autorizzazioni.
 
-Una tabella tua per sapere chi hai già sentito (non è una consegna degli studenti):
-
-| Studente | Momento sentito | Annotazione |
+| Controllo | Che cosa accertare | Esito |
 | --- | --- | --- |
-| 1 | | |
-| 2 | | |
-| 3 | | |
-| 4 | | |
-| 5 | | |
-| 6 | | |
-| 7 | | |
-| 8 | | |
-| 9 | | |
-| 10 | | |
-| 11 | | |
-| 12 | | |
-| 13 | | |
-| 14 | | |
-| 15 | | |
-| 16 | | |
-| 17 | | |
-| 18 | | |
-| 19 | | |
-| 20 | | |
-| 21 | | |
-| 22 | | |
+| Agente in Copilot | Creazione disponibile, campo delle istruzioni, salvataggio, modifica e riapertura in una chat nuova con le istruzioni aggiornate. Riferimento Microsoft: https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder; indirizzo già registrato nella ricerca del corso, non riletto in questa riscrittura. | |
+| Scrittura autonoma | Se la piattaforma propone di generare le istruzioni, mostra come evitarlo: gli studenti le scrivono loro. | |
+| Limiti del testo | Prova istruzioni e messaggi con registro, regole e guida. Controlla che non si perdano righe nel copia-incolla e che le modifiche siano salvate. Non assumere un limite di caratteri non misurato. | |
+| Nuove conversazioni | Verifica come aprire chat separate con l'agente e senza agente. Controlla eventuale memoria o personalizzazione dell'account: possono influire sul confronto finale. | |
+| Transformer Explainer | Primo esempio, Top-k a 5, Probabilities leggibile, bersagli sopra 90% e sotto 30% con il solo Temperature. Controlla anche dopo lo scarico completo: quella condizione non è stata provata. | |
+| Playground | Impostazioni della consegna, velocità, visibilità di Test loss, Training loss ed Epoch. Prepara anche il confronto sul rumore al proiettore. | |
+| Flappy Learning | Pulsanti della pagina pubblicata, ritorno da MAX a x1 e lettura di Score e Generation. La velocità delle postazioni scolastiche non è misurata. | |
+| Rete e classe | Apertura simultanea dei siti e richieste Copilot con gli account scolastici. L'indirizzo pubblico è condiviso; prepara il ramo senza servizio. | |
+| Documenti | I tre testi si aprono in Blocco note e si incollano senza perdere accenti, righe e numeri. | |
 
-Nella chiusura due o tre studenti leggono ad alta voce, dal proprio schermo, la richiesta di un caso fallito, la risposta e la regola cambiata. Scrivi la regola alla lavagna.
+## Parti 1–3 · Risultati visibili, senza scrittura
 
-## Prima di giovedì 12 novembre
+### Transformer Explainer · Due bersagli sulle probabilità
 
-### Da preparare a casa
+Traduci «Data visualization empowers users to»: «La visualizzazione dei dati permette agli utenti di…». Dai anche il significato delle candidate quando le mostri. Non farne una prova di inglese.
 
-1. **Agente di prova.** Con un account studente (o equivalente), se lo hai, crea un agente con il testo di `docente/ESEMPIO_DIMOSTRAZIONE_NOLEGGIO_BICICLETTE.txt` (la parte sotto la riga `----`) e prova le quattro richieste suggerite in fondo al file, ognuna in una nuova conversazione. Tieni la schermata pronta per il proiettore. Se non riesci a eseguirlo, mostra solo il testo (slide 11–13) e dichiara che non è stato eseguito. Controlla anche se la funzione per creare agenti offre di scrivere le istruzioni al posto dello studente: se sì, la consegna dice di non usarla.
-2. **Esempio P03.** Prova `studenti/da_pubblicare_dopo_parte_4F/ESEMPIO_ISTRUZIONI_AGENTE_P03.txt` allo stesso modo: una richiesta per competenza (con i documenti giusti incollati) e una che ne tocca due. Non è stato provato in Copilot: annota che cosa fa davvero. Non pubblicarlo prima della parte 4F.
-3. **Pubblica su Teams** `studenti/ATTIVITA_LEZIONE4.docx`, `studenti/Registro_P03_13-15_ottobre_2026.txt`, `studenti/Guida_allarmi_P03.txt` e `studenti/Regole_indicatori_P03.txt`. Non serve un compito: non si consegna nulla. Gli ultimi tre sono testi da incollare in Copilot: controlla che si aprano con Blocco note.
-4. **Siti.** Apri dal browser delle postazioni (con la rete della scuola) i tre siti e controlla la tabella qui sotto. Transformer Explainer scarica da solo circa 650 MB all'apertura (63 file, 656.662.664 byte misurati il 10 novembre): su una postazione con buona connessione non si nota, con 22 postazioni insieme sono circa 14 GB sulla rete della scuola. Se la prova con più postazioni dà problemi, falla tu al proiettore e gli studenti scrivono comunque previsione e osservazione.
-5. **Macchina virtuale per la lezione 5.** Non fa parte di questa lezione; le note sono nel file indicato sopra.
+Prima di muovere Temperature, chiedi per alzata di mano se alzandola la barra più lunga salirà o scenderà. La sfida usa **il primo esempio, Top-k a 5**: prima barra sopra 90%, poi sotto 30%, cambiando soltanto Temperature. Niente conteggio di estrazioni, Sampling o Generate. Il criterio è leggibile nelle percentuali; non serve che la parola estratta cambi ogni volta.
 
-### Controlli prima dell'aula
+Se il riquadro «What is Transformer?» copre la pagina, chiudilo con la X. Probabilities è all'estrema destra: prova zoom e leggibilità sulla postazione reale. Alla fine chiudi la scheda, anche al proiettore. Se fai la prova soltanto tu, gli studenti prevedono e leggono i risultati, ma non hanno manipolato il sito personalmente: non presentare le due modalità come identiche.
 
-La colonna «Esito» resta da compilare in aula o prima. Nulla di quanto segue su Copilot è stato provato.
+Punto da dire: il testo precedente influenza le probabilità della prossima parola; la temperatura ne cambia la concentrazione. La parola più probabile non è una verifica di verità. Non conosciamo le impostazioni interne di Copilot.
 
-| Controllo | Che cosa verificare | Esito |
-| --- | --- | --- |
-| Transformer Explainer | La pagina scarica da sola circa 650 MB all'apertura. Controllare con la rete della scuola e più postazioni insieme quanto ci mette e se rallenta gli altri. Il 10 novembre è stato provato, durante lo scarico, solo l'esempio già presente nella pagina: controllare che anche gli altri esempi del menu Examples funzionino mentre il modello si scarica | |
-| TensorFlow Playground | Si apre dalla rete della scuola. Il 10 novembre, dalla postazione del docente (rete non scolastica), la pagina ha chiamato anche `fonts.googleapis.com`, `fonts.gstatic.com` e `www.google-analytics.com`: controllare che il gioco funzioni anche se la rete blocca queste chiamate | |
-| Flappy Learning | Si apre dalla rete della scuola. Chiama `fonts.googleapis.com` e `fonts.gstatic.com` per il carattere: controllare che funzioni anche se bloccate | |
-| Agente in Copilot | Con l'account studente: la funzione per creare un agente esiste, c'è un campo per le istruzioni, si salva, e una nuova conversazione con l'agente riparte da quelle istruzioni. Documentazione Microsoft: https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/agent-builder (indirizzo preso da `RICERCA_ATTIVITA_ONLINE.md`, 4 novembre 2026; non riletto il 10 novembre). Non nominare comandi non verificati | |
-| Creazione guidata | La funzione offre di scrivere le istruzioni da una descrizione a parole? Se sì, dire agli studenti di non usarla | |
-| Lunghezza delle istruzioni | Quanto testo accetta il campo. L'esempio P03 ha circa 3.050 caratteri, quello del noleggio circa 2.500. Se il limite è più basso, la consegna dice di accorciare prima gli esempi di stile e le frasi ripetute, senza togliere l'indice né la regola per due competenze | |
-| Documenti incollati | Con l'agente, un messaggio con il registro da solo (10.600 caratteri), con registro e regole degli indicatori (13.075) e con tutti e tre i testi (18.739) viene accettato; altrimenti gli studenti incollano i soli giorni del registro che servono (la consegna lo dice) | |
-| Copilot senza agente | Parte 4G: in una conversazione nuova senza agente, lo stile degli esempi non compare. Se compare (memoria o personalizzazione dell'account), annotarlo e dirlo alla classe | |
-| Classe intera | Comportamento con 22 account collegati insieme, ognuno con almeno 12 richieste lunghe: la lezione 3 ha avuto un blocco di circa 10 minuti, ipotesi limite di richieste per indirizzo pubblico condiviso | |
-| Registro e documenti | I tre testi si incollano senza perdere caratteri accentati, righe o numeri | |
+### TensorFlow Playground · Il proprio risultato con meno neuroni
 
-## Che cosa è stato verificato
+Impostazioni comuni: **Classification; cerchio; solo X1 e X2; Learning rate 0,03; Activation Tanh; Noise 0; 50% addestramento; Batch size 10; nessuna regolarizzazione; due strati da 4 e 2 neuroni**. L'indirizzo può conservare impostazioni precedenti: controllale.
 
-Il 10 novembre 2026 da una postazione Linux del docente, **rete non scolastica**, con Chromium senza interfaccia. Non è Windows, non è la rete della scuola, non è Copilot.
+Regola: **Test loss < 0,05 entro 1.500 Epoch**, usando meno neuroni nascosti possibile. Prima una prova con la struttura iniziale; poi riducono neuroni o strati, una scelta per volta. Non si modificano gli ingressi e non si usa Regenerate. L'azzeramento rinnova i pesi, non i punti. Contano i quadratini nascosti, non ingressi e uscita.
 
-- **Licenze, lette sul repository GitHub.** TensorFlow Playground: Apache-2.0 (la pagina dice: «You're free to use it in any way that follows our Apache License»). Flappy Learning (xviniette): MIT. Transformer Explainer: MIT, letto il 4 novembre. Non sono state lette informative sulla privacy di questi siti.
-- **Transformer Explainer si apre.** La pagina dice «Try the examples while GPT-2 model is being downloaded (600MB)» e il pulsante Generate resta disattivato durante lo scarico. La dimensione reale, sommando i 63 file del modello (`gpt2.onnx.part0`–`part62`, misurati con richieste HEAD), è di 656.662.664 byte (circa 626 MiB). Con l'esempio già presente nella pagina, il cursore Temperature cambia le probabilità senza che il modello sia scaricato: sull'esempio «powers users to» la parola più probabile ha 97,66% a temperatura 0,2, 54,67% a 0,8 e 22,26% a 10. La pagina ha chiamato anche `fonts.googleapis.com`, `www.googletagmanager.com`, `cdn.jsdelivr.net`, `www.youtube.com`, `googleads.g.doubleclick.net`, `www.google.com`, `region1.google-analytics.com` e `huggingface.co`; una richiesta a Google Analytics è fallita. Non sono state lette informative sulla privacy: non dire agli studenti «nessun dato viene raccolto».
-- **Playground si apre e funziona.** Nessun errore in console. Richieste verso `playground.tensorflow.org`, `fonts.googleapis.com`, `fonts.gstatic.com` e `www.google-analytics.com`. Nel repository `analytics.js` ha l'identificativo segnaposto «Add your own analytics ID here»: non è noto cosa faccia il sito ospitato. Non dire agli studenti «nessun dato viene raccolto».
-- **Prove di Playground** (stessa impostazione di partenza della consegna: X1 e X2, tasso di apprendimento 0,03, Tanh, rumore 0, 50% dei punti per l'addestramento). Cerchio senza strati nascosti: Test loss resta 0,505 dopo 963 epoche. Cerchio con strati da 4 e 2 neuroni: Test loss 0,001 dopo 902 epoche. Cerchio con un solo strato da 2 neuroni: 0,28 dopo 965 epoche, non scende più. Spirale con 4 e 2 neuroni: Test loss 0,435 dopo 963 epoche, non scende sotto 0,43. Cerchio con rumore 50 e 4 e 2 neuroni: il Training loss scende da 0,315 (circa 660 epoche) a 0,297 (circa 3.500) mentre il Test loss sale da 0,306 (circa 660 epoche) a 0,325 (circa 2.100) e poi resta intorno a 0,325. Reti grandi (8,8,8) in Chromium senza interfaccia vanno lente (circa 3 epoche al secondo): sulle postazioni potrebbe essere diverso.
-- **Flappy Learning si apre e funziona.** Nessun errore. Tre prove con velocità MAX: il punteggio ha cominciato a salire senza fermarsi alla generazione 40, 10 e circa 90. Il numero cambia da una prova all'altra.
-- **Coerenza dei documenti.** Il limite di 65 °C del registro è quello della guida allarmi; l'allarme «temperatura dell'olio troppo alta» del 14 ottobre corrisponde a «Sovratemperatura olio idraulico»; il filtro dell'olio intasato è tra le cause elencate nella guida; il fermo dalle 14:20 alle 15:05 è di 45 minuti, come il registro scrive e come dà la definizione (dal FAULT al primo AVVIO). Nel registro non compaiono le parole FAULT e AVVIO. **La cadenza non è nel registro:** per i pezzi teorici persi l'agente deve chiederla. La guida dice che la pressa riparte dopo il raffreddamento dell'olio e il controllo dello scambiatore di calore; il registro non nomina lo scambiatore. Non è un errore del caso: se emerge nelle prove, la risposta giusta è «il registro non lo dice».
+Lasciano una prova valida sullo schermo o ne fanno uno screenshot. Se non riescono, mostrano il risultato raggiunto: niente diario e nessun obbligo di riuscire. Il numero ottenuto è un record osservato, non un minimo dimostrato. Ripetono la domanda sulla **spirale**, con gli stessi ingressi e criterio; anche un insuccesso è completo. Non aggiungere un livello sulle Features.
 
-## Svolgimento
+Spiega i termini mentre servono: pesi = numeri dei collegamenti; Epoch = giri sui punti per imparare; Training loss = errore su quei punti; Test loss = errore sui punti riservati alla prova. Indica una linea che cambia: si stanno modificando numeri, non istruzioni testuali.
 
-### Parte 1 · Browser, Transformer Explainer
+**Rumore soltanto al proiettore:** cerchio, X1 e X2, Noise 50, quota di addestramento 10%, rete da 8 e 8; lascia le altre impostazioni comuni. Leggi Training loss e Test loss attorno a 200 Epoch, poi di nuovo attorno a 1.000. Chiedi se migliorare sui punti già visti assicura un miglioramento sugli altri. Nessun esito è promesso: se Test loss non peggiora, leggi quel risultato. Non è una gara e non serve ripetere finché compare il peggioramento desiderato.
 
-Non spiegare prima: lascia che prevedano e poi guardino. Domande utili: che cosa succede alla barra più lunga quando la temperatura sale? Perché a temperatura bassa il modello sceglie quasi sempre la stessa parola? È un modello molto piccolo, in inglese: non giudicare la qualità delle frasi.
+### Flappy Learning · Una previsione, due esecuzioni
 
-La consegna chiede di usare solo il menu Examples e di chiudere la scheda alla fine, per via dello scarico (vedi «Da preparare a casa», punto 4). Il legame con la parte 4: il modello sceglie la parola successiva leggendo il testo che sta prima, e le istruzioni dell'agente sono testo messo prima della richiesta. Dillo in una frase, senza spiegare come funziona un trasformatore. Se salti la parte 1, dì alla classe questa frase e che la scelta non è sempre la stessa, perché la consegna richiama la parte 1 nella parte 4 e nella 4G.
+La pagina parte da sola. Fai osservare una generazione a x1: Alive cala e torna a indicare la nuova popolazione. **Score conta passi della simulazione, non tubi.** La rete legge l'altezza dell'uccellino e quella del bordo superiore del prossimo varco; gli ingressi sono ricavati dal codice, non mostrati sullo schermo.
 
-### Parte 2 · Browser, TensorFlow Playground
+Prima di MAX fanno una previsione per fasce: **1–10, 11–30, 31–60, oltre 60**. Traguardo **Score ≥ 10.000**. Quando lo vedono, tornano a x1 e leggono Generation. Non chiamarlo «prima generazione esatta»: a MAX possono aver perso passaggi. Max Score, da solo, non identifica la generazione del record. A 100 generazioni senza aver visto la soglia, l'esito è completo.
 
-- Lo scopo è vedere che una rete impara cambiando i propri pesi con esempi, e che serve una struttura abbastanza grande. Non spiegare i termini tecnici di Playground: la consegna dà solo i pochi che servono (rete, addestramento, pesi, Test loss, Training loss, Epoch, Hidden layers).
-- Tutti cominciano dal cerchio e alla fine ripetono con la spirale: con poche unità può non arrivare al criterio, ed è un risultato; si scrive fin dove si arriva.
-- Le previsioni non vanno giudicate. Con zero strati e il cerchio la rete resta ferma intorno a 0,50 (vedi «Che cosa è stato verificato»): è utile se la previsione era diversa.
-- **Il passo del rumore.** Che cosa dovrebbero vedere: con Noise a 50 e la rete da 4 e 2 neuroni il Training loss continua a scendere piano mentre il Test loss smette di scendere e sale un po': la rete impara anche il disturbo dei punti di addestramento. L'effetto è piccolo (nella prova del 10 novembre da 0,306 a 0,325) e potrebbe non vedersi chiaramente: anche questo è un risultato. Se la postazione è lenta, lascia andare la rete mentre lo studente scrive le altre note.
-- Domanda utile: i punti usati per provare la rete sono gli stessi usati per addestrarla? Perché conta? È la stessa idea dei casi di prova nella parte 4: non devono essere gli esempi già usati nelle istruzioni.
+Ricaricano una sola volta e ripetono con lo stesso criterio. Un risultato uguale è valido; non chiedere altre ricariche per farlo cambiare. Nessun punto per una previsione fortunata e nessuna promessa di un uccellino che «non muore più».
 
-### Parte 3 · Browser, Flappy Learning
+Il codice conserva le migliori reti, ne introduce di nuove e combina o varia le precedenti. Il singolo uccellino non corregge i propri pesi durante quel volo. Fai distinguere la selezione di reti dal cambiamento dei pesi mediante esempi in Playground. Le preferenze umane su risposte linguistiche possono diventare dati di addestramento, ma non sono lo stesso algoritmo del gioco.
 
-- Il gioco non ha comandi se non la velocità. Il fare è prevedere, osservare, ricaricare e confrontare: la differenza tra le ricariche è il dato.
-- Con x5 una prova richiede un po' di attesa; con MAX l'animazione scorre troppo veloce per leggere la generazione. Se una prova sembra non finire, ricaricare.
-- Il punto da far dire a voce: in questo gioco nessuno mostra la risposta giusta, ma i risultati migliori restano. È un'analogia con l'addestramento da preferenze (si confrontano risposte e il modello viene spinto verso quelle preferite), che è un modo tra altri di addestrare uno stile; senza entrare nei dettagli dei modelli reali.
-- **Verifica a voce.** Momento 1.
+## Parte 4 · Copilot, richiesta, criterio, correzione
 
-### Parte 4 · L'agente con più competenze
+### 4A · Prima le biciclette, non le istruzioni P03
 
-**4A. Esempio.** Mostra l'agente del noleggio di biciclette: prima le slide 11–13, poi, se funziona, una o due richieste eseguite. Fai notare solo le cinque parti e la riga «Competenza usata»: non spiegare le soluzioni dei casi complessi. Nell'esempio, la richiesta «La bici 12 ha i freni che non tengono. Mi ridate anche i soldi?» può portare l'agente a chiedere prima giorno e importo: anche questo è un comportamento corretto, perché la competenza RIMBORSO li richiede. Chiedi di annotare quali richieste toccano più competenze.
+Mostra il caso del file del noleggio. Prima della risposta, fai scegliere per alzata di mano quale competenza serve alla richiesta mostrata, o se ne servono due. Usa le richieste già presenti nel file: non serve un personaggio aggiunto o un altro caso.
 
-**4B. I tre lavori.** I limiti dei lavori sono quelli della consegna: sono obiettivi, non istruzioni da copiare. Non dare tu le istruzioni; se chiedono «come si scrive?», rimanda alle cinque parti della consegna.
+Poi mostra l'esecuzione reale, se disponibile, e i pezzi del testo che la guidano: regole, indice, competenze, gestione di due competenze o nessuna, stile. Una domanda per ottenere dati effettivamente necessari è un esito corretto. «Competenza usata» è una dichiarazione del modello, non una prova di instradamento software. Indice e competenze restano testo letto da Copilot.
 
-**4C. Progettare.** È il cuore della lezione: ognuno scrive il proprio agente da solo, senza chiedere a Copilot di scriverlo. Lascia che sbaglino la struttura. Se un testo è troppo lungo per Copilot, la regola è la stessa che trovano nella consegna: accorciare prima gli esempi di stile e le frasi ripetute; non togliere né l'indice né la regola per le richieste che toccano due competenze. Passando, chiedi: «Perché avete scritto questa regola dell'indice?».
+Nella richiesta sui freni e sul rimborso, la regola 2 dell'esempio dà precedenza a «Non usare la bici» e alla proposta di cambio, anche se manca il numero della bici. Solo dopo viene la domanda sui dati mancanti. Una domanda sul rimborso senza la gestione iniziale del guasto non rispetta le istruzioni.
 
-**4D. Creare e provare.** Mostra al proiettore dove si crea un agente e dove si incolla il testo (solo dopo aver verificato nel controllo «Agente in Copilot»). La riga «Competenza usata» è una dichiarazione dell'agente, non la prova che il programma abbia instradato la richiesta: dillo se qualcuno la tratta come prova. Se l'agente fa una domanda e gli studenti la scambiano per un errore, ricorda che mancava un dato.
+Non distribuire un agente P03 già scritto. L'obiettivo non è copiare le cinque sezioni e aspettare fino alla fine per vedere se funzionano.
 
-**4E. Mettere alla prova.** Ognuno prova il proprio agente: nessun controllo incrociato. Il controllo viene dal fatto che gli studenti scrivono prima competenza e dato che si aspettano e solo dopo guardano la risposta, e che il campo «dato nel documento» li costringe a confrontarla con il testo. I **tipi** dei cinque casi sono nella consegna (richiesta fuori indice, su due competenze, a cui manca un dato, che chiede un dato che il documento non contiene, per la competenza provata meno); le richieste concrete le inventano loro. Per tuo orientamento, richieste che possono uscire, senza suggerirle: richiesta senza giorno, allarme non nominato, calcolo senza cadenza, richiesta che sposta la decisione al responsabile, due note che danno valori diversi. Una competenza giusta con un dato assente (per esempio un «primo controllo» per la sovratemperatura, che la guida non contiene) è `ERRORE`. **Verifica a voce.** Momento 2.
+### 4B · FERMO entra subito in prova
 
-**4F. Correzione.** Alla fine pubblica `ESEMPIO_ISTRUZIONI_AGENTE_P03.txt` e chiedi di confrontarlo con le proprie: che cosa manca? Che cosa è inutile? Quale regola ha cambiato il comportamento? Non presentarlo come soluzione: non è stato provato in Copilot. Se la classe vede un comportamento diverso dal tuo, è un dato valido. **Verifica a voce.** Momento 3.
+Fai aprire Blocco note e salvare `istruzioni_assistente_P03.txt`. Scrivono regole comuni e **solo FERMO**: durata con gli orari secondo le definizioni della fonte, dati mancanti, forma della risposta. Tu dai obiettivi e limiti, non una frase pronta da incollare. Non chiedono a Copilot di scrivere le istruzioni.
 
-**4G. Istruzioni o addestramento.** Lo scopo non è che Copilot «impari» lo stile, ma che gli studenti vedano tre cose: gli esempi scritti nelle istruzioni cambiano la risposta dell'agente e solo quella (una conversazione normale non ne porta traccia, a meno che l'account abbia memoria o personalizzazione: vedi controllo «Copilot senza agente»); la stessa richiesta può dare risposte diverse anche con lo stesso agente (si ricollega alla parte 1: la scelta della parola successiva non è sempre la stessa); scegliere tra due risposte è il tipo di dato con cui si può addestrare uno stile. Risposta attesa alla domanda su quante scelte servirebbero: moltissime, migliaia di confronti; dentro il modello cambierebbero i pesi, come per gli uccellini scelti a ogni generazione. Un vero addestramento richiede molta potenza di calcolo e non si fa in aula. Non dichiarare cosa Copilot fa internamente.
+Mostra dove inserire, salvare e modificare le istruzioni **solo se controllato pre-aula**. Se la funzione non c'è, passa al primo messaggio in chat normale. Gli studenti incollano registro e regole degli indicatori in una nuova conversazione, poi inviano:
 
-### Chiusura
+> **M1 · «Quanto è durato il fermo del 14 ottobre? Mostrami gli orari.»**
 
-Ordine: confronto con l'esempio P03; due o tre studenti leggono un caso fallito, la risposta e la regola cambiata; poi le domande della slide 22, a voce. Risposte attese: (1) quando si addestra un programma i numeri dentro cambiano e il cambiamento resta; quando si scrivono istruzioni la conversazione cambia ma il modello è lo stesso, e se si apre una conversazione senza le istruzioni non c'è traccia; (2) la regola che ha dato risultati dipende dall'agente: accetta ogni risposta motivata che si appoggi a un caso; (3) un caso dove l'indice non prevedeva la richiesta o due competenze si pestavano i piedi.
+**Rivela il criterio dopo la risposta:** i due estremi devono essere fermo e ripresa effettiva della produzione, non la fine della sostituzione né la scomparsa dell'allarme. Durata e orari devono coincidere con la riga del fermo nella tavola automatica **Valori di riferimento del registro**. Proietta quei valori generati, senza ricopiarli in questa guida.
 
-## Valori di riferimento del registro
+Prima alzata di mano collettiva P03: «La vostra risposta rispetta tutti questi criteri?» Il confronto non assegna punti: serve a vedere subito se modificare le istruzioni. Chi deve correggere aggiorna il testo e riprova M1 in una chat nuova con le stesse fonti.
 
-Ricavati dallo script del generatore dal testo di `Registro_P03_13-15_ottobre_2026.txt`.
+Nella chat di M1 inviano poi:
+
+> **M2 · «E quanti pezzi abbiamo perso?»**
+
+**Soltanto dopo rivela:** manca la cadenza della ricetta, necessaria secondo le regole. È corretto chiederla o dichiarare che non si può calcolare il numero senza quel dato; non sceglierla né dedurla dai contatori del registro. Non fornire una cadenza inventata per chiudere il calcolo. Non occorre un'altra alzata di mano: leggono il criterio e correggono dove serve. Il seguito nella stessa chat serve a vedere se il limite viene rispettato anche quando la richiesta riprende un lavoro già avviato.
+
+### 4C · Una seconda competenza e un indice proprio
+
+Scelgono **ALLARMI oppure PASSAGGIO**, oltre a FERMO. Gli obiettivi e i documenti sono nella consegna; la formulazione delle istruzioni resta loro.
+
+Aggiungono un indice che riconosca le richieste, la gestione di due competenze e delle richieste fuori indice, e **due esempi di stile scritti da loro**. Ogni competenza deve indicare fonti, informazioni necessarie e modo di rispondere quando le fonti non bastano. Non richiedere tutte e tre le competenze.
+
+Dopo il salvataggio aggiornano Copilot e controllano che il testo sia stato trasferito intero. Se il campo è corto, eliminano ridondanze e accorciano gli esempi, senza perdere fonti, limiti e regole dell'indice. Il file non contiene una sezione «correzioni».
+
+### 4D · Due casi originali, non un registro da compilare
+
+Ciascuno inventa:
+
+- un caso che incroci **entrambe le competenze**;
+- un caso con dato mancante, fonte insufficiente o richiesta fuori indice.
+
+Prima dell'invio decide che cosa conterà come corretto e trova sullo schermo i passi dei documenti utili al confronto. Può dirlo a voce; nessuna riga da compilare. Scrive poi il caso direttamente in Copilot, una chat nuova per caso.
+
+Per **FERMO + ALLARMI** servono registro, regole degli indicatori e guida allarmi. Per **FERMO + PASSAGGIO** servono registro e regole. Nel secondo caso sceglie le fonti pertinenti senza aggiungere apposta il dato assente. Fai notare la differenza fra un dato non fornito al modello e un dato assente dalla fonte.
+
+Dopo la risposta controlla contenuto e fonti, non soltanto il nome della competenza. Una risposta corretta al primo invio resta valida. Se tutti i casi funzionano, lo studente spiega quale regola ha reso possibile il comportamento e inventa un altro caso: non deve peggiorare le istruzioni né creare un errore artificiale.
+
+### 4E · Ultimo collaudo e correzioni mirate
+
+In una nuova chat fanno la richiesta seguente con il **registro**:
+
+> **«Come si chiama il tecnico che ha cambiato il filtro?»**
+
+**Rivela dopo:** il nome non è nel registro. È valido dichiararlo, chiedere la fonte che lo contenga oppure segnalare che la domanda è fuori ambito. Può essere valida anche una competenza diversa da quella prevista dal docente, purché l'agente non inventi un nome e rispetti i propri limiti.
+
+Correggono solo dove occorre: regola, indice, competenza oppure documenti trasferiti. Aggiornano Copilot e riprovano in una nuova chat il caso interessato, compreso un caso originale se aveva mostrato un problema. Non chiedere di scrivere gli esiti.
+
+Seconda e ultima alzata di mano collettiva P03: «Dopo i controlli e le eventuali correzioni, le risposte rispettano i criteri e le fonti?» Non distinguere chi è riuscito subito da chi ha corretto. Chiedi poi ad alcuni studenti, dal posto e guardando il loro schermo, di raccontare un caso e quale regola hanno mantenuto o cambiato. Non devono necessariamente raccontare un fallimento.
+
+**Solo ora** pubblica l'esempio nella cartella `studenti/da_pubblicare_dopo_collaudo/`. È un testo da confrontare con il loro: non una soluzione garantita e non un motivo per sostituire istruzioni proprie già funzionanti.
+
+### 4F · Lo stile non dimostra un addestramento
+
+Riutilizzano una risposta **reale** dell'agente già ottenuta nel collaudo. Scelgono quella richiesta con i documenti esatti e mantengono le istruzioni che hanno prodotto la risposta scelta: se intanto le hanno cambiate, scelgono una prova ottenuta con la versione che confronteranno.
+
+Fanno due nuovi invii in chat separate: stessa richiesta e stessi documenti con **Copilot normale, senza istruzioni proprie**, e poi ancora con **l'agente**. Hanno così due risposte reali dell'agente e una senza. Non sostituire una risposta con un esempio scritto a mano.
+
+Confrontano ordine, lunghezza e parole. Tra le due dell'agente scelgono la preferita motivando a voce con due ragioni; una parità motivata è valida. Confrontano anche con Copilot normale. Non promettere differenze: due risposte possono coincidere, e una chat senza agente può avere già uno stile simile o risentire di personalizzazioni dell'account.
+
+La conclusione dipende dall'operazione svolta, non dall'aspetto della risposta: qui hanno modificato **testo letto dal modello**, non i **pesi**. Preferenze umane come queste possono diventare dati per un vero addestramento; questa attività non lo esegue. Nessuna stima esatta degli esempi necessari e nessuna affermazione che una singola preferenza addestri Copilot.
+
+## Fonti P03 e valori automatici
+
+I tre testi sono inventati per l'esercitazione ITS MAKER: non sono fonti pubbliche né documenti industriali reali. Non modificare i fatti per rendere l'attività più facile o per ottenere un errore.
+
+`docente/genera_materiali.py` ricava le tavole seguenti dagli originali. Sono il riferimento per controllare risposte e proiettare criteri numerici: qui non si trascrivono manualmente valori, calcoli o riepiloghi concorrenti.
+
+### Valori di riferimento del registro
 
 {{VALORI_REGISTRO}}
 
-Dati che il registro **non** contiene, utili per i tranelli: nome del tecnico, contatore del 15 ottobre, il motivo per cui il filtro si è intasato (il registro dice solo che era intasato), nome del responsabile del turno, cadenza della ricetta, controllo dello scambiatore.
+Per M1 usa la riga del fermo. La lettura di temperatura durante le prove dopo il cambio filtro **precede la ripartenza**, non la segue: l'assenza dell'allarme non significa ancora produzione ripresa. Non scambiare il controllo successivo alla ripartenza con le prove precedenti. Le righe originali distinguono esplicitamente queste fasi.
+
+La cadenza, il nome del tecnico e il controllo dello scambiatore non sono documentati nel registro. La guida allarmi richiede il controllo dello scambiatore per la ripartenza: è una prescrizione della guida, non la prova che quell'intervento sia avvenuto nel caso. Il filtro intasato è il problema trovato; il registro non spiega perché si sia intasato. Non colmare i vuoti con una ricostruzione plausibile.
 
 ### Note che nominano il turno
 
-Per il lavoro «Passaggio di turno»: il registro non divide le note per turno. Queste sono le note che nominano il turno (ricavate dallo script).
-
 {{NOTE_TURNO}}
 
-Comportamento atteso dell'agente: chiede di quale giorno o turno si parla, oppure dichiara quali note ha usato.
+Il registro non suddivide tutte le note per turno. Per PASSAGGIO, se il giorno o il turno non sono identificabili, l'agente chiede; se la selezione è già chiara, rende riconoscibili le note usate. Non trasformare le note sparse in una suddivisione dei turni inventata.
 
-## Guida allarmi: che cosa contiene
-
-Per il lavoro «Spiegare un allarme» l'agente deve scrivere tre punti, ma la guida non li ha tutti per ogni allarme. La tabella è ricavata dallo script dal testo di `Guida_allarmi_P03.txt`.
+### Che cosa contiene la guida allarmi
 
 {{VALORI_GUIDA}}
 
-Dove la guida non indica un punto, la risposta attesa è che l'agente lo dica («La guida non lo indica») e non lo scriva da sé. Un'informazione presa da un'altra parte dello stesso allarme (per esempio il capoturno che autorizza la ripartenza dopo l'arresto di emergenza, o che verifica come si lavora vicino alla pressa dopo l'intervento della barriera) è corretta se è citata dalla guida. Per la barriera di sicurezza e l'arresto di emergenza vale la regola scritta nella guida: nessun consiglio che non sia già lì.
+La guida non contiene significato, primo controllo e incaricato in modo identico per tutti gli allarmi. Dove manca un'informazione, dirlo è corretto. È ammesso citare un'informazione presente in un'altra parte della stessa voce, distinguendo il ruolo citato da un intervento effettivamente eseguito. Nessun consiglio aggiunto sulle protezioni, nessuna autorizzazione operativa: resta un'esercitazione testuale.
 
-## Se Copilot non funziona
+## Se manca il servizio o qualcosa non passa
 
-Il 4 novembre Copilot non ha risposto a nessuna postazione per circa 10 minuti. Senza Studio questa lezione non ha un modello locale di riserva: le parti 1–3 si fanno nel browser, la parte 4 ha questi rami.
+Nella lezione del 4 novembre Copilot non ha risposto alle postazioni per circa 10 minuti. Un limite di richieste sull'indirizzo pubblico condiviso è un'ipotesi, non una causa accertata. Non aggiungere servizi online alternativi: niente HackMerlin, Prompt Airlines o Gandalf. Questa lezione non ha un modello locale di riserva.
 
-| Situazione | Che cosa fare |
+| Situazione | Condotta |
 | --- | --- |
-| L'agente non si crea o non accetta il testo | Conversazione normale: in ogni nuova conversazione incollare per prime le istruzioni, poi documenti e richiesta. Nella 4G si confrontano una conversazione che comincia con le istruzioni e una senza. Non è l'agente: lo scrivono nei casi |
-| Copilot non risponde | Prova sulla carta: per ogni caso della 4E lo studente cerca nel proprio testo la riga dell'indice o della competenza che lo gestisce e la copia accanto al caso; se non c'è, è `ERRORE`. Poi scrive quale competenza e quale risposta |
-| Il registro intero non viene accettato | Incollare solo i giorni che servono alla richiesta |
-| Solo alcune postazioni hanno problemi | Chi ha problemi lavora sulla carta come sopra, fino a quando Copilot risponde |
+| Agente non disponibile | Chat normale: prima il messaggio con le istruzioni dello studente, poi documenti e richiesta. Ripetere quel primo messaggio in ogni chat nuova. Non chiamarlo vera istruzione di sistema. In 4F confrontare con e senza quel messaggio. |
+| Copilot non risponde | Prova a secco collettiva dal proiettore: stessa richiesta, fonti e istruzioni di uno studente; cercare quale regola copre il caso o quale manca. Correggere il testo, ma non presentare la discussione come risposta del modello né come prova della sua affidabilità. Il confronto di risposte reali non si può eseguire finché il servizio manca. |
+| Messaggio troppo lungo | Usare soltanto i giorni completi necessari del registro, senza spezzare la sequenza del fermo. Conservare le regole e le altre fonti richieste dal caso. |
+| Istruzioni tagliate o non aggiornate | Controllare il passaggio dal file, accorciare ridondanze e salvare di nuovo; non eliminare le regole sostanziali per fare entrare il testo. |
+| Sito bloccato | Provare un altro browser; se non si apre, usare il proiettore dove disponibile. Non presentare schermate o testi preparati come esecuzioni avvenute in classe. |
 
-Gli appunti sono gli stessi: cambia la nota su come sono stati ottenuti.
+## Che cosa sappiamo dei siti e della rete
 
-## Problemi probabili
+Le osservazioni seguenti sono del **10 novembre 2026, postazione Linux del docente, rete non scolastica, Chromium senza interfaccia**. Non sono prove su Windows, sulla rete della scuola o su Copilot. Le nuove letture del codice e le esecuzioni dei siti non risolvono i controlli pre-aula.
 
-| Sintomo | Possibile causa | Che cosa fare |
+### Misure e osservazioni già registrate
+
+- **Transformer Explainer:** il messaggio della pagina parla di un modello da 600 MB; Generate è disattivato durante lo scarico. Le richieste HEAD ai 63 file `gpt2.onnx.part0`–`part62` hanno dato complessivamente **656.662.664 byte**, circa 626 MiB, comunemente arrotondati qui a 650 MB. Le aperture simultanee moltiplicano il traffico anche usando Examples. Sul primo esempio, la prima candidata aveva probabilità **97,66% a Temperature 0,2; 90,86% a 0,3; 54,67% a 0,8; 22,26% a 10**. I bersagli della consegna sono stati osservati, non garantiti per versioni future. Tutti e cinque gli esempi sono stati aperti anche con il download del modello bloccato; il comportamento a download finito resta da provare.
+- **Playground, prove precedenti:** cerchio, X1/X2, rate 0,03, Tanh, Noise 0, 50% addestramento: senza strati nascosti Test loss **0,505 a 963 Epoch**; con 4 e 2 neuroni **0,001 a 902**; con uno strato da 2 **0,28 a 965**. Spirale con 4 e 2: **0,435 a 963**, senza scendere sotto 0,43. Cerchio con Noise 50 e 4 e 2: Training loss da **0,315** (circa 660) a **0,297** (circa 3.500); Test loss da **0,306** (circa 660) a **0,325** (circa 2.100), poi intorno a quel valore. Le reti 8,8,8 erano lente, circa 3 epoche al secondo: non è una misura delle postazioni scolastiche.
+- **Playground, nuove prove:** con uno strato da 4, Test loss **0,014 a 1.085** e **0,009 a 1.072**, cambiando seme dei dati. Con 3 neuroni: **0,028 e 0,015 a 1.265**, ma circa **0,26** con un altro seme. Per la dimostrazione con Noise 50, 10% addestramento, 8 e 8: una prova passava da Training/Test **0,236/0,375** attorno a 172 Epoch a **0,066/0,556** attorno a 1.000; altre prove a 1.000 davano **0,174/0,374** e **0,116/0,545**. Sono esecuzioni, non un esito obbligatorio. Non trasferire alla spirale o a punti diversi una garanzia di successo sul cerchio.
+- **Flappy Learning:** nessun errore rilevato. Le vecchie prove a MAX descrivevano voli lunghi nelle generazioni **40, 10 e circa 90**, senza una soglia finita: non dimostrano immortalità. Nelle nuove prove, al controllo Score era già oltre 10.000 nelle generazioni **26, 22, 45 e 44**, con rispettivamente **1, 2, 1 e 1** uccellini vivi. Sono letture osservate, non la prima generazione esatta del superamento e non una frequenza attesa per la classe.
+
+### Chiamate di rete e privacy
+
+| Sito | Osservato dalla postazione del docente | Limite da conservare |
 | --- | --- | --- |
-| Il gioco non si apre | Rete della scuola o chiamate ai caratteri di Google bloccate | Usare un altro browser; se non serve, aspettare e passare al gioco successivo |
-| Transformer Explainer lento o fermo | Scarico di circa 650 MB su una rete condivisa | Usare solo gli esempi, farla al proiettore o saltarla (vedi «Parte 1») |
-| Playground molto lento con la rete grande | Postazione lenta | Chiedere di usare una rete piccola e di far andare meno epoche |
-| Nessuna differenza tra le ricariche di Flappy | Nessuna | È un dato: chiedere di riprovare |
-| L'agente scrive la riga «Competenza usata» ma risponde con un'altra competenza | L'indice è ambiguo | È un caso da registrare: va in `casi_di_prova.txt` come `ERRORE` |
-| Il testo dell'agente viene tagliato | Limite del campo | Accorciare prima gli esempi di stile e le frasi ripetute; annotare cosa è stato tolto |
+| Transformer Explainer | Oltre al sito: `fonts.googleapis.com`, `www.googletagmanager.com`, `cdn.jsdelivr.net`, `www.youtube.com`, `googleads.g.doubleclick.net`, `www.google.com`, `region1.google-analytics.com`, `huggingface.co`; una richiesta Analytics è fallita. | Non è stato provato il blocco selettivo di queste destinazioni. Gli esempi non evitano il download del modello. |
+| Playground | Nessun errore in console; richieste a `playground.tensorflow.org`, `fonts.googleapis.com`, `fonts.gstatic.com`, `www.google-analytics.com`. | Il repository contiene un identificativo Analytics segnaposto; non sappiamo che cosa faccia il sito ospitato. Provare anche con blocchi della rete scolastica. |
+| Flappy Learning | Nessun errore; chiamate a `fonts.googleapis.com` e `fonts.gstatic.com`. | Funzionamento con caratteri bloccati e velocità MAX scolastica non provati. |
 
-## Dati da raccogliere per le lezioni 5–7
+Non sono state lette le informative sulla privacy. «Elabora nel browser» non significa «nessun dato viene raccolto». Riferimenti e licenze già letti sono in `docente/backup/fonti_online/LICENZE_E_FONTI.md`: Transformer Explainer e Flappy Learning **MIT**, TensorFlow Playground **Apache-2.0**. Si collegano i siti, non si redistribuisce codice.
 
-Prendi nota tu, durante il giro tra i banchi e nella discussione finale. Annota: quanti agenti hanno funzionato in Copilot e con quale limite di lunghezza; quali lavori hanno scelto gli studenti; quali regole dell'indice sono state le più corrette; se Copilot ha avuto rallentamenti o blocchi; quanto ha scaricato Transformer Explainer e come ha retto la rete.
+Fonti tecniche del controllo del 10 novembre:
+
+- Transformer Explainer: repository https://github.com/poloclub/transformer-explainer, commit `bfe50afba10b9b560b84143ee1107d977defa74f`; componenti `InputForm.svelte`, `Temperature.svelte`, `src/utils/data.ts` e `src/store/index.ts`. Licenza letta il 4 novembre.
+- Playground: https://github.com/tensorflow/playground, `src/state.ts` e `src/playground.ts`, ramo master letto il 10 novembre senza fissare il commit; il sito ospitato può differire. Licenza letta il 10 novembre.
+- Flappy: pagina pubblicata https://xviniette.github.io/FlappyLearning/, file `game.js` e `Neuroevolution.js` della versione pubblicata. Non confondere master con gh-pages: i controlli non coincidono. Licenza letta il 10 novembre.
+
+## Chiusura dal proiettore
+
+Chiedi una regola utile mostrata da un caso reale e la differenza fra cambiare istruzioni e addestrare pesi. Non raccogliere un'autovalutazione scritta. Gli studenti salvano il solo file delle istruzioni.
+
+Dalla discussione puoi conservare tu le informazioni utili per le lezioni successive: funzioni Copilot effettivamente disponibili, limiti osservati, competenze scelte, regole motivate e problemi di rete. Non serve una tabella nominativa né un giro di controllo delle postazioni.

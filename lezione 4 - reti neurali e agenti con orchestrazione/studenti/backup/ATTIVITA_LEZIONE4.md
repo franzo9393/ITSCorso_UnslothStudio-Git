@@ -1,172 +1,144 @@
 # Lezione 4 · Un agente che sa fare più cose
 
-**ITS MAKER Bologna · 12 novembre 2026 · Microsoft Copilot e giochi nel browser**
+**ITS MAKER Bologna · 12 novembre 2026 · Microsoft Copilot e tre siti nel browser**
 
-## Il caso
+## Da dove partiamo
 
-Il responsabile del reparto presse vi scrive:
+Il responsabile del reparto presse chiede:
 
-> «Per la pressa P03 mi servirebbe un solo assistente che sappia fare più lavori: preparare la nota per chi arriva al turno dopo, spiegare un allarme a un operatore nuovo e controllare quanto è durato un fermo. Non voglio tre assistenti diversi: ne voglio uno che capisce da solo quale lavoro gli sto chiedendo.»
+> «Per la P03 vorrei un solo assistente: deve controllare un fermo e saper fare anche un altro lavoro. Quando gli chiedo due cose insieme, deve capire quali informazioni servono.»
 
-Prima capite, giocando nel browser, come impara un programma di intelligenza artificiale. Poi costruite in Microsoft Copilot un agente con più competenze e lo mettete alla prova.
+Prima provate come imparano piccole reti nel browser. Poi scrivete e provate le vostre istruzioni in Microsoft Copilot. È un'esercitazione: Copilot produce testo, non comanda la pressa.
 
-I testi di lavoro sono tre file di testo semplice, che si aprono con Blocco note (l'estensione `.txt` indica questo tipo di file): `Registro_P03_13-15_ottobre_2026.txt` (il registro della P03 del 13–15 ottobre), `Guida_allarmi_P03.txt` (la guida agli allarmi della pressa) e `Regole_indicatori_P03.txt` (le regole di calcolo degli indicatori).
+Ognuno lavora sul proprio computer. Non ci sono file da consegnare né un diario da compilare. Il risultato si guarda sullo schermo e si discute insieme dal proiettore. Salvate un solo file vostro: `istruzioni_assistente_P03.txt`, con **solo le istruzioni dell'agente**.
 
-## Come lavorate
+## Parte 1 · Cambiate le probabilità
 
-- Ognuno lavora da solo sul proprio computer.
-- I siti dei giochi si aprono nel browser. Copilot si apre con l'account scolastico.
-- Non consegnate nessun file. Scrivete tre file di testo come appunti vostri: `appunti_reti.txt`, `istruzioni_assistente_P03.txt`, `casi_di_prova.txt`. Li scrivete con Blocco note e li lasciate aperti: li riempite man mano durante la lezione. Salvate con Ctrl+S ogni volta che scrivete qualcosa.
-- Mentre lavorate il docente passa tra i banchi: vi chiede di mostrare lo schermo e di raccontare che cosa avete fatto e perché.
-- I tre testi di lavoro li trovate su Teams. Scaricateli sul vostro computer. Per usarli: aprite il file con Blocco note, premete Ctrl+A per selezionare tutto, Ctrl+C per copiare, poi incollate con Ctrl+V dove serve.
+**Sfida: portate la barra più lunga sopra il 90%, poi sotto il 30%, cambiando solo Temperature.**
 
-## Parte 1 · Come sceglie la parola successiva
+1. Aprite Transformer Explainer: `https://poloclub.github.io/transformer-explainer/`, quando lo dice il docente, oppure seguite il proiettore. La pagina avvia uno scarico di circa 650 MB anche se usate gli esempi. Se compare «What is Transformer?», chiudetelo con la X.
+2. Usate il primo esempio del menu **Examples**: «Data visualization empowers users to». Il docente traduce la frase e le parole candidate: non è una prova d'inglese. È un modello che completa un testo, non un assistente a cui fare domande.
+3. Guardate a destra **Probabilities**, le probabilità delle parole successive. Prima di toccare il cursore, scegliete per alzata di mano: alzando **Temperature**, la barra più lunga salirà o scenderà?
+4. Cercate i due bersagli della sfida. Lasciate **Top-k** a 5; non toccate **Sampling** né **Generate**. Leggete le percentuali, non contate quante volte esce una parola.
+5. Confrontate i due risultati e chiudete la scheda.
 
-Lavorate nel browser. Quello che scrivete va in `appunti_reti.txt`.
+La parola più probabile non è l'unica possibile. Una probabilità alta non significa che un'affermazione sia vera.
 
-1. Aprite Transformer Explainer: `poloclub.github.io/transformer-explainer`. È un modello molto piccolo che completa frasi in inglese. Non è un assistente: non risponde a domande. La pagina scarica il modello (circa 650 MB): finché non ha finito non potete scrivere frasi vostre, quindi usate il menu **Examples**, che contiene frasi in inglese già pronte.
-2. Scegliete un esempio e guardate, sotto **Probabilities**, quali parole il modello propone dopo la frase, con la probabilità di ciascuna.
-3. Prima di muovere il cursore **Temperature**, scrivete in `appunti_reti.txt`, sotto il titolo «Parola successiva»: che cosa pensate che succeda alle probabilità se la alzate? E se la abbassate?
-4. Provate. Scrivete sotto la previsione che cosa avete visto davvero e perché secondo voi.
-5. Quando avete finito chiudete la scheda, così il browser non continua a scaricare.
+## Parte 2 · Quanto piccola può essere la rete?
 
-Qui non c'è una risposta sbagliata da trovare: si guardano le probabilità. Il modello sceglie la parola successiva leggendo il testo che sta prima: tenetelo a mente per la parte 4.
+**Sfida: Test loss sotto 0,05 entro 1.500 Epoch, con meno neuroni nascosti possibile.**
 
-## Parte 2 · Una rete che impara
+Aprite TensorFlow Playground: `https://playground.tensorflow.org/`. La rete deve separare punti di due colori. Una parte dei punti serve ad addestrarla; gli altri servono a provarla.
 
-Una **rete neurale** è un programma fatto di tanti piccoli calcoli collegati fra loro. Si **addestra**: le si mostrano esempi e i collegamenti tra i calcoli cambiano, un poco alla volta, finché la rete sbaglia meno. I numeri che cambiano si chiamano **pesi**.
+Controllate queste impostazioni: **Classification**, cerchio, solo **X1** e **X2**, **Learning rate** 0,03, **Activation** Tanh, **Noise** 0, 50% dei dati per l'addestramento, **Batch size** 10, nessuna regolarizzazione. Lasciate inizialmente due strati nascosti da **4 e 2 neuroni**: sono le colonne di quadratini tra gli ingressi e l'uscita.
 
-Lavorate nel browser. Quello che scrivete va in `appunti_reti.txt`, sotto il titolo «Rete».
+1. Avviate e guardate **Test loss**, l'errore sui punti di prova: più è basso, meglio è. **Epoch** conta i giri sui punti di addestramento. Fermate alla soglia oppure a 1.500 giri.
+2. Provate a usare meno neuroni o meno strati, cambiando una scelta per prova. Non cambiate le altre impostazioni. L'azzeramento ricomincia con pesi nuovi sugli stessi punti; non usate **Regenerate**, che cambia i punti.
+3. Lasciate sullo schermo la vostra migliore prova valida, oppure fate uno screenshot. Contate solo i neuroni nascosti. È il vostro risultato osservato, non la dimostrazione del minimo possibile. Se non raggiungete la soglia, mostrate dove siete arrivati.
+4. Selezionate la spirale e provate la stessa sfida, mantenendo gli stessi ingressi e criteri. Anche non riuscire entro il limite è un risultato da spiegare.
 
-1. Aprite TensorFlow Playground: `playground.tensorflow.org`. A destra vedete punti arancioni e blu: la rete deve imparare a dire di che colore è un punto. Metà dei punti serve per addestrare la rete, l'altra metà per provarla: la prova usa punti che la rete non ha mai visto.
-2. Cominciate dal cerchio: è il primo disegno nella colonna **Data** (punti blu al centro e arancioni attorno). Alla fine ripeterete la prova con la spirale.
-3. La colonna **Features** contiene le informazioni che date alla rete: X1 e X2 sono le due coordinate di ogni punto. Lasciate accesi solo X1 e X2. Sopra la rete c'è **Hidden layers** (strati nascosti: le colonne di neuroni, i quadratini, tra le informazioni in ingresso e l'uscita). Con i pulsanti **−** togliete tutti gli strati nascosti, fino a zero.
-4. Prima di premere il pulsante di avvio in alto a sinistra, scrivete: riuscirà a separare i punti? Perché?
-5. Decidete come giudicherete la rete: scrivete il valore di **Test loss** sotto il quale dite che funziona. Il Test loss misura quanto la rete sbaglia sui punti di prova: più è basso, meglio è. Il **Training loss** è la stessa misura sui punti usati per addestrare.
-6. Premete l'avvio, guardate Epoch, Training loss, Test loss e i colori dello sfondo, poi fermate. **Epoch** conta i giri di addestramento: a ogni giro la rete rivede i punti di addestramento. Scrivete che cosa è successo.
-7. Cambiate **una cosa alla volta**: neuroni e strati (con i pulsanti **+** e **−**), Features, **Learning rate** (la velocità di apprendimento). Cercate la rete più piccola che rispetta il vostro criterio. Scrivete una riga per ogni prova: che cosa avete cambiato, Test loss, funziona sì o no.
-8. Alzate **Noise** (il disturbo nei punti) a 50, usate la rete con 4 e 2 neuroni e lasciatela andare per qualche migliaio di **Epoch**. Guardate Training loss e Test loss mentre passa il tempo: che cosa fanno? Scrivete che cosa notate e una spiegazione.
-9. Guardate le linee tra i neuroni: più sono spesse, più il peso è grande. Scrivete in due righe che cosa avete capito di come impara la rete.
-10. Ripetete la ricerca della rete più piccola con la spirale (l'ultimo disegno nella colonna Data). Può anche non riuscire: scrivete fin dove siete arrivati.
+I **pesi** sono i numeri dei collegamenti tra i neuroni: durante l'addestramento cambiano. La struttura della rete e i pesi iniziali possono cambiare il risultato.
 
-## Parte 3 · Imparare dai risultati
+Poi guardate il proiettore: il docente aggiunge disturbo ai punti e confronta **Training loss**, l'errore sui punti usati per imparare, con **Test loss**. Migliorare sui punti già visti basta per migliorare anche sugli altri? Leggete quello che succede, senza aspettarvi per forza un peggioramento.
 
-Nel gioco di prima la rete riceveva esempi con il colore giusto. Qui nessuno dice agli uccellini che cosa fare: ognuno ha una piccola rete che decide quando saltare guardando due numeri (la sua altezza e la posizione del varco tra i tubi). Quando un uccellino colpisce un tubo, la sua partita finisce. Alla fine di ogni giro, chiamato **generazione**, restano i migliori, copiati con piccole variazioni.
+## Parte 3 · Quando arrivano al traguardo?
 
-Lavorate nel browser. Quello che scrivete va in `appunti_reti.txt`, sotto il titolo «Uccellini».
+Aprite Flappy Learning: `https://xviniette.github.io/FlappyLearning/`. Parte da solo: ogni uccellino ha una piccola rete che decide quando saltare. Alla fine di una generazione, i risultati migliori contribuiscono alle reti della successiva, con variazioni.
 
-1. Aprite Flappy Learning: `xviniette.github.io/FlappyLearning`. Il gioco parte da solo con 50 uccellini. Sullo schermo: **Generation** (il numero del giro), **Max Score** (il punteggio migliore), **Alive** (quanti sono ancora vivi). I pulsanti **x1**–**MAX** cambiano la velocità.
-2. Prima di guardare, scrivete: dopo quante generazioni pensate che un uccellino riesca a non morire più?
-3. Avviate con **x5**. Scrivete la generazione in cui il punteggio comincia a salire senza fermarsi.
-4. Ricaricate la pagina (ricomincia da zero) due volte e scrivete di nuovo la generazione. Il numero è lo stesso? Se no, che cosa è cambiato?
-5. Scrivete: quali due numeri guarda ogni uccellino? Chi decide quali uccellini restano per il giro dopo?
-6. Scrivete due righe: in che cosa questo gioco è diverso dal gioco della parte 2?
+**Sfida: prevedete in quale fascia vedrete Score arrivare almeno a 10.000: 1–10, 11–30, 31–60 oppure oltre 60 generazioni.**
 
-Un modo di insegnare a un programma a scrivere come piace a voi funziona in modo simile: si mostrano esempi di risposte buone e si premiano quelle che piacciono di più. Un vero addestramento cambia i numeri dentro il modello e richiede molti esempi e molta potenza di calcolo. Nella parte 4 farete una cosa diversa, più semplice: scriverete degli esempi dentro le istruzioni dell'agente. Alla fine vedrete la differenza.
+1. Guardate una generazione a **x1**. **Alive** indica gli uccellini ancora vivi; **Generation** il giro; **Score** conta i passi della simulazione, non i tubi superati. **Max Score** è il miglior punteggio finora.
+2. Scegliete la fascia prima di passare a **MAX**. Quando vedete **Score ≥ 10.000**, tornate a x1 e leggete Generation. A MAX potete perdere passaggi: è la generazione osservata, non una misura esatta della prima soglia raggiunta. Se arrivate a 100 generazioni senza vederla, la prova è completa così.
+3. Ricaricate una sola volta, fate una nuova previsione e ripetete con la stessa soglia. Il risultato può essere diverso oppure uguale: nessuno guadagna punti per una previsione fortunata.
 
-## Parte 4 · L'agente con più competenze
+Discutete a voce: chi decide quali reti contribuiscono al giro dopo? Qui si selezionano reti in base ai risultati; in Playground si modificavano i pesi usando esempi con il colore giusto. Non sono lo stesso procedimento.
 
-Lavorate in Microsoft Copilot, con l'account scolastico.
+## Parte 4 · Costruite e collaudate l'agente P03
 
-Alcune parole:
+Aprite Microsoft Copilot con l'account scolastico. Scaricate da Teams questi tre testi e apriteli con Blocco note:
 
-- **Agente**: un assistente di Copilot con le istruzioni che scrivete voi. Ogni nuova conversazione con l'agente parte da quelle istruzioni.
-- **Competenza**: la parte delle istruzioni che spiega come svolgere un tipo di lavoro.
-- **Indice delle richieste**: l'elenco che dice all'agente quale competenza usare per ogni tipo di richiesta.
-- **Orchestrazione**: scegliere la competenza giusta e l'ordine in cui usarle, anche quando una richiesta ne tocca più d'una.
+- `Registro_P03_13-15_ottobre_2026.txt`: i fatti della pressa;
+- `Regole_indicatori_P03.txt`: le definizioni per i calcoli;
+- `Guida_allarmi_P03.txt`: le spiegazioni e i limiti degli interventi.
 
-Le istruzioni dell'agente sono testo che Copilot legge prima della vostra richiesta, come le parole che precedono quella da prevedere nel gioco della parte 1. Indice e competenze sono pezzi di testo come gli altri: Copilot li legge e decide da solo che cosa fare, il programma non li esegue come funzioni separate. La riga in cui l'agente scrive quale competenza ha usato è una sua dichiarazione: va controllata sulla risposta.
+L'estensione `.txt` indica un file di testo semplice. Per copiarlo: Ctrl+A, Ctrl+C; per incollarlo: Ctrl+V. I documenti restano fonti separate: non vanno copiati nel file delle istruzioni.
 
-### A · Guardate un esempio
+Un **agente** è un assistente di Copilot con istruzioni salvate. Una **competenza** è una parte delle istruzioni dedicata a un lavoro. L'**indice delle richieste** collega le domande alle competenze. **Orchestrazione** significa scegliere quali usare e in quale ordine: qui lo chiedete con del testo, non programmate funzioni separate.
 
-Il docente mostra al proiettore un agente con più competenze, su un caso diverso dalla P03: il noleggio di biciclette di una città. Intanto scrivete in `casi_di_prova.txt`, sotto il titolo «Esempio del docente»: quali richieste del noleggio toccano più di una competenza? Come le gestisce l'agente?
+### 4A · Scegliete prima di vedere la risposta
 
-### B · I tre lavori da fare
+Il docente mostra un agente per un noleggio di biciclette. Per la richiesta proiettata, scegliete per alzata di mano quale competenza serve, oppure se ne servono due. Poi guardate la risposta e le istruzioni che l'hanno guidata. La riga «Competenza usata» è una dichiarazione del modello: controllate anche quello che fa davvero.
 
-Il responsabile vuole che l'agente sappia fare questi tre lavori. Per ognuno vi diciamo che cosa deve ottenere e quali limiti ha. Le istruzioni per ottenerlo le scrivete voi.
+### 4B · Provate subito una competenza
 
-| Lavoro | Documento | Che cosa deve ottenere | Limiti |
-| --- | --- | --- | --- |
-| 1. Passaggio di turno | Registro P03 | Una nota per chi inizia il turno dopo: fermi, valori letti, interventi, cose ancora da controllare | Usa solo fatti scritti nel registro. Se non si capisce di quale giorno o turno si parla, chiede prima. |
-| 2. Spiegare un allarme | Guida allarmi P03 | Una risposta breve per un operatore nuovo: che cosa significa, primo controllo, chi interviene | Non aggiunge istruzioni che la guida non contiene. Non suggerisce mai di escludere o aggirare una protezione. |
-| 3. Durata del fermo | Regole indicatori P03 e registro | I minuti di fermo secondo la definizione scritta nelle regole, con gli orari usati, e i pezzi teorici persi | Usa la definizione del documento, non una sua. Se manca un dato per il calcolo, lo chiede invece di sceglierne uno. |
+Aprite Blocco note e salvate `istruzioni_assistente_P03.txt`. Scrivete voi, senza far preparare il testo a Copilot:
 
-Valgono per tutti i lavori: l'agente usa solo i testi che gli date; ciò che nei testi non c'è, non lo inventa; la prima riga di ogni risposta dice «Competenza usata:» e il nome della competenza.
+- le regole comuni: ruolo, lingua, fonti ammesse e limiti;
+- una competenza **FERMO**, che ricavi la durata secondo le regole, mostri gli orari usati e chieda i dati necessari quando mancano.
 
-### C · Progettate l'agente
+Decidete come deve essere fatta la risposta. Deve cominciare con «Competenza usata:» e il nome. Le istruzioni devono permettere di distinguere un dato documentato da un dato assente: non basta dire «rispondi bene».
 
-Scegliete **due lavori su tre**.
+Il docente mostra come inserire e salvare le istruzioni, se la funzione agente è disponibile. Non usate la creazione automatica del testo. Copiate le vostre istruzioni, poi aprite una nuova conversazione con l'agente.
 
-Scrivete voi il testo, con Blocco note: non chiedete a Copilot di scriverlo. Il file `istruzioni_assistente_P03.txt` contiene solo il testo dell'agente e, in fondo, «Correzioni dopo le prove». Il testo ha queste parti, nell'ordine:
+Incollate **registro e regole degli indicatori**, poi la prima richiesta dal proiettore, senza aggiungere suggerimenti. Inviatela prima che il docente mostri i criteri. Confrontate risposta e fonti con i criteri rivelati, poi rispondete per alzata di mano. Se serve, correggete le istruzioni e riprovate in una conversazione nuova.
 
-1. **Regole per tutte le richieste**: chi è l'agente, in che lingua risponde, quali testi usa, che cosa non fa.
-2. **Indice delle richieste**: per ogni tipo di richiesta, quale competenza usare.
-3. **Una competenza per ogni lavoro scelto.**
-4. **Che cosa fare** quando una richiesta tocca due competenze e quando non ne tocca nessuna.
-5. **Stile delle risposte**: almeno due esempi che scrivete voi, di come volete che l'agente risponda (per esempio una nota di passaggio nello stile del reparto).
+Nella chat che contiene la prima prova proseguite con la seconda richiesta del proiettore. Aspettate la risposta prima di leggere il nuovo criterio. Controllate se il modello usa dati presenti oppure sceglie da solo quelli che gli servono. Correggete soltanto dove occorre.
 
-Le scelte sono vostre: come chiamarlo, quante competenze scrivere, con quali parole riconoscere una richiesta, quando deve farvi una domanda prima di rispondere, quale stile usare.
+### 4C · Aggiungete un secondo lavoro
 
-Prima di creare l'agente controllate che ogni competenza dica: quando si usa, quali documenti servono, che cosa chiedere se manca un dato, come scrivere la risposta.
+Scegliete una delle due competenze:
 
-### D · Create e provate l'agente
+| Competenza | Fonte | Obiettivo e limiti |
+| --- | --- | --- |
+| ALLARMI | Guida allarmi | Spiegare significato, primo controllo e chi interviene, dove la guida lo indica. Niente consigli aggiunti né aggiramenti delle protezioni. |
+| PASSAGGIO | Registro | Preparare una nota per il turno successivo con fatti, interventi e controlli ancora richiesti. Chiarire giorno o turno quando non sono identificabili. |
 
-1. Aprite Copilot. Il docente vi mostra dove si crea un agente. Usate solo il campo delle istruzioni: se Copilot vi offre di scrivere le istruzioni al posto vostro, non usate quella funzione.
-2. Copiate da `istruzioni_assistente_P03.txt` tutto il testo tranne «Correzioni dopo le prove», incollatelo nel campo delle istruzioni e salvate l'agente con un nome. Se Copilot non accetta tutto il testo, accorciate prima gli esempi di stile e le frasi ripetute: non togliete l'indice né la regola per le richieste che toccano due competenze. Scrivete in «Correzioni dopo le prove» che cosa avete tolto.
-3. Aprite una nuova conversazione con il vostro agente. Incollate in un solo messaggio i documenti che servono alla richiesta, uno sotto l'altro (per la durata del fermo: le regole e il registro), e sotto la richiesta. Se Copilot non accetta tutto il testo, incollate solo i giorni del registro che servono alla richiesta.
-4. Fate almeno una richiesta per ogni competenza scritta e una richiesta che ne tocca due. Ogni richiesta va in una nuova conversazione. Se l'agente vi fa una domanda, rispondete nella stessa conversazione: se mancava davvero un dato, è il comportamento richiesto.
-5. Controllate la riga «Competenza usata» e la risposta, confrontandole con il documento. Se qualcosa non va, correggete il testo e riprovate.
+Aggiungete al vostro file la competenza scelta e un indice per riconoscere le richieste. Stabilite che cosa fare se una richiesta richiede **entrambe** le competenze, in quale ordine usarle e che cosa rispondere a una richiesta **fuori indice**. Ogni competenza deve dire quali documenti servono e che cosa fare se le fonti non bastano.
 
-### E · Mettete alla prova il vostro agente
+Scrivete anche **due esempi vostri** del modo in cui volete ricevere le risposte. Devono mostrare uno stile, non diventare risposte da ripetere a tutte le domande.
 
-1. Rileggete il vostro indice: che cosa non prevede? Dove due competenze si toccano?
-2. Inventate cinque casi critici e tranelli. Non state cercando di far sbagliare l'agente: state cercando che cosa avete dimenticato di prevedere. Tra i cinque casi ci devono essere: una richiesta che il vostro indice non prevede; una che tocca due competenze; una a cui manca un dato; una che chiede un dato che il documento non contiene; una per la competenza che avete provato meno. Le richieste le inventate voi.
-3. **Prima di provare**, scrivete in `casi_di_prova.txt`, una riga per caso: la richiesta, la competenza che vi aspettate e il dato che vi aspettate nella risposta (o la domanda che l'agente dovrebbe fare).
-4. Per ogni caso aprite una nuova conversazione con il vostro agente, incollate i documenti che servono e, sotto, la richiesta. **Dopo la risposta** completate la riga: la competenza usata dall'agente, se il dato della risposta c'è nel documento (sì oppure no), `OK` oppure `ERRORE`, e perché. È `ERRORE` anche una competenza giusta con un dato che nel documento non c'è. Se manca un dato e l'agente fa una domanda, è la risposta attesa.
+Salvate e aggiornate le istruzioni in Copilot. Controllate che il testo sia arrivato intero: nel passaggio possono perdersi righe. Il file conserva soltanto le istruzioni, senza appunti sulle modifiche.
 
-### F · Correggete le vostre istruzioni
+### 4D · Inventate due casi che contano
 
-1. Per ogni `ERRORE` decidete che cosa correggere: una regola generale, l'indice, una competenza, la richiesta o il documento incollato.
-2. Correggete il testo in `istruzioni_assistente_P03.txt`. In fondo, sotto «Correzioni dopo le prove», scrivete che cosa avete cambiato e il motivo.
-3. Se tutti i casi sono `OK`, scrivete sotto «Correzioni dopo le prove» quale regola ha funzionato in ogni caso. Poi inventate un caso che le vostre istruzioni non coprono ancora, aggiungete la regola che lo copre e scrivete il caso sotto «Correzioni dopo le prove».
-4. Aggiornate il vostro agente con il testo corretto, senza la parte «Correzioni dopo le prove». Riprovate ogni caso con `ERRORE` (oppure il caso nuovo) in una nuova conversazione e scrivete sotto la correzione l'esito: `OK` oppure `ERRORE`.
+Inventate voi due richieste, diverse dagli esempi di stile:
 
-### G · Istruzioni o addestramento
+- una che richieda **entrambe le competenze**;
+- una con **un dato mancante, una fonte insufficiente o una richiesta fuori indice**.
 
-1. Scegliete una richiesta e i documenti che le servono.
-2. Fate la stessa richiesta due volte, ognuna in una nuova conversazione: una con il vostro agente, una con Copilot normale, senza agente. Confrontate le due risposte: lunghezza, ordine delle informazioni, parole usate. Scrivete tre righe in `appunti_reti.txt`, sotto il titolo «Istruzioni o addestramento».
-3. Ripetete la richiesta con il vostro agente, in un'altra nuova conversazione. Ora avete due risposte dell'agente alla stessa richiesta. Sono uguali? Perché? Ripensate alla parte 1. Scegliete la risposta che preferite e scrivete due motivi. Una scelta come questa, tra risposte migliori e peggiori, è il tipo di dato con cui si può addestrare uno stile. Quante scelte pensate che servirebbero? Che cosa cambierebbe dentro il modello? Scrivete due righe.
-4. In Playground e in Flappy Learning cambiavano i numeri dentro la rete, i pesi. Nel vostro agente che cosa è cambiato: i numeri dentro Copilot o il testo che Copilot legge? Scrivete la risposta.
+Prima di inviare ogni caso, decidete che cosa conterà come risposta corretta e individuate sullo schermo i passi delle fonti che permettono di controllarla. Potete dirlo a voce: non compilate un registro.
 
-## Se Copilot non funziona
+Scrivete la richiesta direttamente in Copilot, in una **nuova conversazione per ogni caso**, insieme ai documenti necessari. Con FERMO + ALLARMI servono registro, regole degli indicatori e guida allarmi; con FERMO + PASSAGGIO servono registro e regole. Nel secondo caso scegliete le fonti in base alla richiesta, senza aggiungere il dato che volete mettere alla prova.
 
-Avvisate subito il docente. Non restate fermi.
+Confrontate la risposta con ciò che avevate deciso e con i documenti. Una domanda per ottenere un dato davvero necessario può essere la risposta corretta. Se tutto funziona, spiegate quale vostra regola lo rende possibile e inventate un altro caso: non peggiorate le istruzioni per provocare un errore.
 
-- **L'agente non si crea o non accetta il testo:** usate una conversazione normale. In ogni nuova conversazione incollate per prime le istruzioni, poi in un solo messaggio i documenti e la richiesta. Nella parte G confrontate una conversazione che comincia con le vostre istruzioni e una che comincia senza. Non sono vere istruzioni dell'agente: scrivetelo in `casi_di_prova.txt`.
-- **Copilot non risponde:** lavorate sulla carta. Per ogni caso della parte E cercate nel vostro testo la riga dell'indice o della competenza che lo gestisce e copiatela accanto al caso, applicandola alla lettera senza aggiungere nulla: scrivete quale competenza userebbe l'agente e che risposta darebbe. Se non c'è nessuna riga che lo gestisce, è `ERRORE`. Segnatelo in `casi_di_prova.txt`.
-- Gli appunti si scrivono come sempre.
+### 4E · L'ultima richiesta e le correzioni
 
-## I vostri appunti
+Aprite una nuova conversazione, incollate il **registro** e inviate l'ultima richiesta dal proiettore. Solo dopo la risposta il docente mostra il criterio.
 
-Non c'è niente da consegnare o da caricare: i file servono a voi, per ricordare e per raccontare a voce quello che avete fatto.
+Riguardate anche i vostri casi originali. Se qualcosa non rispetta fonti o istruzioni, correggete il punto necessario nel file, aggiornate Copilot e riprovate quel caso in una conversazione nuova. Un collaudo superato dopo una correzione vale quanto uno superato al primo invio. Non c'è un errore da ottenere per forza.
 
-| File | Contenuto |
-| --- | --- |
-| `appunti_reti.txt` | Previsioni e osservazioni su Transformer Explainer, Playground e Flappy Learning; confronto tra istruzioni e addestramento (parte G) |
-| `istruzioni_assistente_P03.txt` | Il testo dell'agente e, in fondo, le correzioni dopo le prove |
-| `casi_di_prova.txt` | L'esempio del docente e i casi inventati per il vostro agente, con gli esiti |
+Nel confronto finale raccontate dal vostro schermo un caso e la regola che avete mantenuto o cambiato. Niente elenco scritto degli esiti.
 
-## Prima di finire
+### 4F · Avete cambiato i pesi o il testo?
 
-- Nei vostri appunti ci sono le previsioni e le osservazioni dei tre giochi?
-- Il testo dell'agente ha le cinque parti: regole, indice, competenze, richieste che ne toccano più d'una o nessuna, stile?
-- Ogni `ERRORE` ha una correzione, con il motivo e con l'esito della nuova prova?
-- Sapete raccontare a voce che cosa avete provato e che cosa avete cambiato?
+1. Scegliete una richiesta del collaudo per cui avete già una risposta reale del vostro agente. Riutilizzate quella risposta e conservate esattamente richiesta e documenti.
+2. In una nuova conversazione con **Copilot normale, senza agente**, inviate gli stessi documenti e la stessa richiesta, senza le vostre istruzioni.
+3. In un'altra nuova conversazione con l'agente, inviate ancora gli stessi documenti e la stessa richiesta. Per il confronto mantenete le stesse istruzioni della prima risposta scelta.
+4. Confrontate ordine, lunghezza e parole delle tre risposte. Tra le due risposte reali dell'agente, scegliete quella che preferite e dite **due motivi** a voce; se sono equivalenti, motivate la parità. Confrontatele anche con quella senza agente.
 
-## Da dove vengono i giochi
+Possono uscire risposte uguali o differenze poco visibili: sono risultati validi. Le istruzioni cambiano il **testo letto** da Copilot, non i suoi **pesi**. Le preferenze tra risposte possono diventare dati per un vero addestramento; questa attività non addestra il modello. Flappy e Playground aiutano a distinguere i procedimenti, non riproducono l'addestramento di Copilot.
 
-| Gioco | Indirizzo | Autori | Licenza |
-| --- | --- | --- | --- |
-| Transformer Explainer | `poloclub.github.io/transformer-explainer` | Georgia Tech, Polo Club of Data Science | MIT |
-| TensorFlow Playground | `playground.tensorflow.org` | Daniel Smilkov e Shan Carter | Apache-2.0 |
-| Flappy Learning | `xviniette.github.io/FlappyLearning` | xviniette | MIT |
+## Se Copilot non è disponibile
+
+Avvisate il docente. Se non potete creare un agente, usate una conversazione normale: in ogni chat nuova inviate prima le vostre istruzioni, poi documenti e richiesta. È un primo messaggio, **non una vera istruzione di sistema**. Nel confronto finale usate una chat con quel messaggio e una senza.
+
+Se la piattaforma non risponde, seguite la prova a secco collettiva: si legge una richiesta e si cerca nelle istruzioni di uno studente come gestirla. È un controllo del testo, non una risposta eseguita dal modello e non dimostra l'affidabilità dell'agente.
+
+Se il messaggio è troppo lungo, usate soltanto i giorni completi del registro necessari alla richiesta, conservando la sequenza degli eventi. Se il campo delle istruzioni è troppo corto, togliete ripetizioni e accorciate gli esempi, senza perdere fonti, limiti e regole dell'indice.
+
+Prima di chiudere salvate `istruzioni_assistente_P03.txt`. Non dovete caricarlo o consegnarlo.
+
+## I siti usati
+
+Transformer Explainer: Georgia Tech, Polo Club of Data Science, licenza MIT. TensorFlow Playground: Daniel Smilkov e Shan Carter, Apache-2.0. Flappy Learning: xviniette, MIT. I documenti P03 sono inventati per questa esercitazione.

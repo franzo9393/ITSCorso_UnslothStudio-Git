@@ -1,252 +1,319 @@
-# Slide 01 — Un agente che sa fare più cose
+# Slide 01 — Un agente, più lavori
 <!-- layout: COPERTINA -->
 
-Lezione 4 · Reti neurali e agente con più competenze
+Reti neurali da esplorare. Un agente da costruire.
 
-12 novembre 2026 · Microsoft Copilot e giochi nel browser
+ITS MAKER · 12 novembre 2026 · Microsoft Copilot e giochi nel browser
 
 ---
 
-# Slide 02 — La richiesta del responsabile
+# Slide 02 — La stessa richiesta, la stessa risposta?
 <!-- layout: CONTENUTO -->
 
-«Per la pressa P03 mi serve un solo assistente che sappia fare più lavori: la nota per chi arriva al turno dopo, spiegare un allarme a un operatore nuovo, controllare quanto è durato un fermo.»
+> Se chiedete due volte la stessa cosa all’AI, deve rispondere allo stesso modo?
 
-Un assistente solo, che capisce da solo quale lavoro gli chiedete.
-
-Prima capiamo come impara un programma. Poi costruite l'agente.
+Scegliete: sempre, qualche volta, mai.
 
 ---
 
-# Slide 03 — Il percorso di oggi
+# Slide 03 — Come continuereste questa frase?
 <!-- layout: CONTENUTO -->
 
-| Parte | Dove lavorate | Che cosa ottenete |
-| --- | --- | --- |
-| 1. Come sceglie la parola successiva | Browser | Previsioni scritte |
-| 2. Una rete che impara | Browser | La rete più piccola che funziona |
-| 3. Imparare dai risultati | Browser | Quando l'uccellino non muore più |
-| 4. L'agente con più competenze | Copilot | Istruzioni e casi di prova |
+> «La visualizzazione dei dati permette agli utenti di…»
 
-Ognuno da solo, sul proprio computer. Tre file di testo con Blocco note: appunti vostri, non si consegnano. Il docente passa tra i banchi e vi chiede di raccontare.
+Transformer Explainer usa la frase inglese «Data visualization empowers users to».
+
+Il docente vi aiuta a leggere le parole proposte. Non è una prova d’inglese.
 
 ---
 
-# Slide 04 — Come impara un programma
-<!-- layout: SEZIONE -->
-
-Tre giochi nel browser.
-
----
-
-# Slide 05 — Transformer Explainer
+# Slide 04 — Spostate la probabilità
 <!-- layout: CONTENUTO -->
 
-Nel browser: poloclub.github.io/transformer-explainer
+## Prima sopra il 90%. Poi sotto il 30%.
 
-È un modello piccolo che completa frasi in inglese: non è un assistente. Scarica il modello (circa 650 MB): usate il menu Examples.
+Portate la barra più lunga sui due bersagli, cambiando solo Temperature.
 
-1. Scegliete un esempio e guardate le parole proposte, con le probabilità.
-2. Prima di muovere Temperature, scrivete in appunti_reti.txt che cosa pensate che succeda alle probabilità.
-3. Provate, scrivete che cosa avete visto e perché. Poi chiudete la scheda.
+poloclub.github.io/transformer-explainer · primo esempio, k = 5
 
 ---
 
-# Slide 06 — Una rete che impara
+# Slide 05 — La parola più probabile non è l’unica
 <!-- layout: CONTENUTO -->
 
-Rete neurale: tanti piccoli calcoli collegati. Si addestra con esempi: i collegamenti cambiano finché la rete sbaglia meno. I numeri che cambiano si chiamano pesi.
+> Alzando la temperatura, le probabilità si distribuiscono di più.
 
-Nel browser: playground.tensorflow.org
-
-La rete deve dire se un punto è arancione o blu. Metà dei punti serve per addestrare, metà per provare.
+Una barra alta non garantisce quale parola uscirà. E non garantisce che una frase sia vera.
 
 ---
 
-# Slide 07 — Cercate la rete più piccola
+# Slide 06 — Quanto piccola può essere una rete?
 <!-- layout: CONTENUTO -->
 
-Prima il cerchio, poi la spirale.
+## Test loss sotto 0,05
 
-1. Accendete solo X1 e X2, togliete gli strati nascosti (Hidden layers): riuscirà? Scrivete la previsione.
-2. Scrivete il Test loss sotto il quale dite che la rete funziona.
-3. Avviate, guardate, fermate.
-4. Cambiate una cosa alla volta e cercate la rete più piccola che rispetta il criterio.
-5. Cerchio, Noise a 50, rete da 4 e 2 neuroni, qualche migliaio di Epoch: che cosa fanno Training loss e Test loss col tempo?
+Sul cerchio, entro 1.500 Epoch. Con meno neuroni nascosti possibile.
+
+Test loss: errore sui punti di prova. Epoch: giri di addestramento.
+
+playground.tensorflow.org
 
 ---
 
-# Slide 08 — Imparare dai risultati
+# Slide 07 — Togliete un neurone. Funziona ancora?
 <!-- layout: CONTENUTO -->
 
-Nel browser: xviniette.github.io/FlappyLearning
+> Il vostro record è la rete più piccola che avete visto riuscire.
 
-Nessuno dice agli uccellini che cosa fare. Ognuno ha una piccola rete che guarda due numeri: la sua altezza e il varco. Chi muore presto esce; i migliori restano, con piccole variazioni.
+Partite da 4 e 2 neuroni. Cambiate una scelta alla volta, sugli stessi punti.
 
-1. Prevedete dopo quante generazioni un uccellino non muore più.
-2. Con x5, scrivete la generazione in cui il punteggio sale senza fermarsi.
-3. Ricaricate due volte: il numero è lo stesso?
+Poi provate con la spirale: lo stesso criterio è ancora raggiungibile?
 
 ---
 
-# Slide 09 — L'agente con più competenze
-<!-- layout: SEZIONE -->
-
-Un solo assistente, più lavori.
-
----
-
-# Slide 10 — Le parole da conoscere
+# Slide 08 — Continuare è sempre meglio?
 <!-- layout: CONTENUTO -->
 
-- Agente: un assistente di Copilot con le istruzioni che scrivete voi.
-- Competenza: la parte delle istruzioni che spiega come fare un tipo di lavoro.
-- Indice delle richieste: dice quale competenza usare per ogni tipo di richiesta.
-- Orchestrazione: scegliere la competenza e l'ordine, anche quando una richiesta ne tocca due.
-
-Le istruzioni sono testo che Copilot legge prima della vostra richiesta. Indice e competenze sono testo come gli altri: Copilot li legge e decide. Controllate sempre la risposta.
-
----
-
-# Slide 11 — Un esempio: il noleggio di biciclette
-<!-- layout: CONTENUTO -->
-
-Caso diverso dalla P03, per vedere la struttura. Tre competenze: prenotazione, guasto, rimborso.
-
-Le cinque parti dell'agente, in ordine: regole per tutte le richieste, indice delle richieste, una competenza per ogni lavoro, che cosa fare se la richiesta ne tocca due o nessuna, stile delle risposte.
-
-Scrivete in casi_di_prova.txt, sotto «Esempio del docente»: quali richieste toccano più di una competenza? Come le gestisce?
-
----
-
-# Slide 12 — Esempio: regole e indice
-<!-- layout: CONTENUTO -->
-
-Regola: prima di rispondere scegli la competenza guardando l'indice; scrivi in prima riga «Competenza usata:» e il nome.
-
-Regola: se mancano dati, fai una sola domanda e aspetta.
-
-Indice: prenotare o cambiare orario → PRENOTAZIONE. Bici rotta → GUASTO. Soldi indietro → RIMBORSO.
-
-Due competenze insieme: prima GUASTO, poi RIMBORSO; nella prima riga i due nomi nell'ordine.
-
----
-
-# Slide 13 — Esempio: una competenza
-<!-- layout: CONTENUTO -->
-
-COMPETENZA GUASTO
-
-Quando: la bici è rotta.
-
-Dati necessari: numero della bici e che cosa non funziona. Se manca uno, chiedilo.
-
-Regole: freni o sterzo, «Non usare la bici» e cambio bici. Gomma bucata o catena, cambio bici.
-
-Come rispondere: tre punti. Che cosa hai capito, che cosa fare ora, chi se ne occupa.
-
----
-
-# Slide 14 — I tre lavori da fare
-<!-- layout: CONTENUTO -->
-
-| Lavoro | Documento | Che cosa ottiene |
-| --- | --- | --- |
-| 1. Passaggio di turno | Registro P03 | Nota per chi arriva dopo |
-| 2. Spiegare un allarme | Guida allarmi | Risposta breve per un operatore nuovo |
-| 3. Durata del fermo | Regole indicatori e registro | Minuti di fermo e pezzi persi |
-
-Limiti di ogni lavoro: nella consegna. In tutti: solo i testi che gli date, niente di inventato, prima riga «Competenza usata:».
-
----
-
-# Slide 15 — Progettate il vostro agente
-<!-- layout: CONTENUTO -->
-
-Due lavori su tre, a vostra scelta.
-
-Scrivete il testo voi in Blocco note, non chiedetelo a Copilot. In istruzioni_assistente_P03.txt, in ordine: regole per tutte, indice, una competenza per lavoro, che cosa fare con due competenze o nessuna, stile con almeno due vostri esempi.
-
-Le scelte sono vostre: nome, quante competenze, parole dell'indice, quando fare una domanda, stile.
-
----
-
-# Slide 16 — Create e provate
-<!-- layout: CONTENUTO -->
-
-1. In Copilot create l'agente: il docente vi mostra dove. Usate solo il campo delle istruzioni.
-2. Incollate il testo, senza «Correzioni dopo le prove», e salvate.
-3. Nuova conversazione: incollate i documenti che servono e, sotto, la richiesta.
-4. Una richiesta per ogni competenza e una che ne tocca due, ognuna in una nuova conversazione. Se l'agente vi fa una domanda, rispondete.
-5. Controllate la riga «Competenza usata» e la risposta sul documento. Correggete e riprovate.
-
----
-
-# Slide 17 — Mettete alla prova il vostro agente
-<!-- layout: CONTENUTO -->
-
-Rileggete il vostro indice: che cosa non prevede? Dove due competenze si toccano?
-
-Inventate cinque casi critici. Cercate che cosa avete dimenticato di prevedere. Ci devono essere: una richiesta fuori indice, una su due competenze, una a cui manca un dato, una che chiede un dato che il documento non contiene, una per la competenza provata meno.
-
-Prima di provare, in casi_di_prova.txt: richiesta, competenza attesa, dato atteso.
-
-Dopo la risposta: competenza usata, dato nel documento sì o no, OK o ERRORE, perché. ERRORE anche con la competenza giusta e un dato che nel documento non c'è.
-
----
-
-# Slide 18 — Correggete
-<!-- layout: CONTENUTO -->
-
-Per ogni ERRORE decidete che cosa correggere: regola generale, indice, competenza, richiesta o documento.
-
-Scrivete sotto «Correzioni dopo le prove» che cosa avete cambiato, il motivo e l'esito. Tutti OK? Scrivete quale regola ha funzionato e aggiungete la regola per un caso nuovo. Nell'agente mettete solo il testo, senza «Correzioni dopo le prove».
-
----
-
-# Slide 19 — Istruzioni o addestramento
-<!-- layout: CONTENUTO -->
-
-Stessa richiesta e stessi documenti, tre conversazioni nuove:
-
-1. Con il vostro agente.
-2. Con Copilot normale, senza agente.
-3. Ancora con il vostro agente: due risposte uguali? Perché? Scegliete la migliore e scrivete due motivi.
-
-Scelte come questa sono il dato con cui si può addestrare uno stile: quante ne servirebbero? Che cosa cambierebbe dentro il modello?
-
-In Playground e in Flappy cambiavano i pesi. Nel vostro agente: i numeri dentro Copilot o il testo che Copilot legge?
-
----
-
-# Slide 20 — I vostri appunti
-<!-- layout: CONTENUTO -->
-
-Non c'è niente da consegnare o da caricare: i tre file .txt sono appunti vostri, per ricordare e raccontare a voce.
-
-| File | Contenuto |
+| Guardiamo i punti… | Il sito scrive… |
 | --- | --- |
-| appunti_reti.txt | I tre giochi; istruzioni o addestramento |
-| istruzioni_assistente_P03.txt | Il testo dell'agente e le correzioni |
-| casi_di_prova.txt | Esempio del docente e casi per il vostro agente |
+| usati per addestrare | Training loss |
+| tenuti da parte per la prova | Test loss |
+
+Il docente aggiunge rumore. Prima di proseguire, scommettete: miglioreranno entrambi?
 
 ---
 
-# Slide 21 — Se Copilot non funziona
+# Slide 09 — Chi arriva a 10.000?
 <!-- layout: CONTENUTO -->
 
-Avvisate il docente.
+## Score almeno 10.000
 
-- L'agente non si crea o non accetta il testo: conversazione normale. In ogni nuova conversazione incollate per prime le istruzioni, poi documenti e richiesta. Non sono vere istruzioni dell'agente. Scrivetelo nei casi.
-- Copilot non risponde: sulla carta. Per ogni caso cercate nel vostro testo la riga che lo gestisce e copiatela accanto al caso. Nessuna riga: ERRORE.
+In quale fascia di Generation lo vedrete: 1–10, 11–30, 31–60, oltre 60?
+
+Score misura i passi della simulazione, non i tubi superati.
+
+xviniette.github.io/FlappyLearning
 
 ---
 
-# Slide 22 — Che cosa avete verificato?
+# Slide 10 — Stesso gioco. Stessa generazione?
+<!-- layout: CONTENUTO -->
+
+> Ricaricate una volta. Cambiereste la vostra previsione?
+
+Restano le reti con i risultati migliori, con variazioni e nuove reti casuali.
+
+Non state guidando gli uccellini: osservate una selezione. Un volo lungo non è un volo infinito.
+
+---
+
+# Slide 11 — Adesso cambiamo le istruzioni
+<!-- layout: SEZIONE -->
+
+Microsoft Copilot legge il testo che scrivete voi.
+Non state addestrando i suoi pesi.
+
+---
+
+# Slide 12 — La bici è rotta. E il rimborso?
+<!-- layout: CONTENUTO -->
+
+> «La bici 12 ha i freni che non tengono. Mi ridate anche i soldi?»
+
+Quale lavoro viene prima? Quale dato deve chiedere l’agente?
+
+Guardiamo l’esempio del docente.
+
+---
+
+# Slide 13 — Un indice per scegliere il lavoro
+<!-- layout: CONTENUTO -->
+
+| Se la richiesta riguarda… | L’agente usa… |
+| --- | --- |
+| prenotare o cambiare orario | PRENOTAZIONE |
+| una bici rotta | GUASTO |
+| soldi indietro | RIMBORSO |
+
+Ogni competenza è una parte delle istruzioni. Orchestrare significa scegliere quali usare e in quale ordine. Non sono tre programmi separati.
+
+---
+
+# Slide 14 — Un solo agente per la P03
+<!-- layout: CONTENUTO -->
+
+Calcolare un fermo.
+
+Poi, a vostra scelta: spiegare un allarme oppure scrivere una nota di turno.
+
+> Quando la richiesta cambia, deve cambiare anche il lavoro dell’agente.
+
+---
+
+# Slide 15 — Costruite il primo pezzo
+<!-- layout: CONTENUTO -->
+
+## Un agente che calcola il fermo.
+
+Scrivete voi le istruzioni e provatelo subito. Non serve completare l’agente prima di vedere se funziona.
+
+Obiettivi, testi da usare e passaggi sono nella consegna.
+
+---
+
+# Slide 16 — Un messaggio dal reparto
+<!-- layout: CONTENUTO -->
+
+> «Quanto è durato il fermo del 14 ottobre? Mostrami gli orari.»
+
+Date all’agente il registro e le regole degli indicatori.
+
+Prima di inviare: quale risultato vi aspettate?
+
+---
+
+# Slide 17 — Gli orari devono tornare
+<!-- layout: CONTENUTO -->
+
+## {{MINUTI_FERMO}} minuti
+
+{{ORA_FERMO}} → {{ORA_RIPARTENZA}}
+
+Il fermo finisce quando riprende la produzione, non quando finiscono le prove.
+
+Trovate le due note nel registro. Sono questi gli orari usati dal vostro agente?
+
+---
+
+# Slide 18 — Il responsabile insiste
+<!-- layout: CONTENUTO -->
+
+> «E quanti pezzi abbiamo perso?»
+
+Continuate nella stessa conversazione.
+
+Un numero, una domanda o un limite dichiarato: che cosa vi aspettate?
+
+---
+
+# Slide 19 — Qui serve un dato in più
+<!-- layout: CONTENUTO -->
+
+> La cadenza non è nel registro.
+
+Per calcolare i pezzi teorici persi, l’agente deve chiederla.
+
+Dire che manca è corretto. Scegliere un numero al posto vostro non lo è.
+
+---
+
+# Slide 20 — Dategli un secondo mestiere
+<!-- layout: CONTENUTO -->
+
+Spiegare un allarme dalla guida, oppure preparare una nota dal registro?
+
+Scegliete voi. Aggiungete la competenza e l’indice delle richieste.
+
+> Se una richiesta serve a due lavori, quale viene prima?
+
+---
+
+# Slide 21 — Come deve parlare il vostro agente?
+<!-- layout: CONTENUTO -->
+
+> Scrivete due esempi vostri di risposta, nello stile che volete.
+
+Aggiungeteli alle istruzioni. La prova userà una richiesta diversa dagli esempi.
+
+Le istruzioni restano nel vostro file istruzioni_assistente_P03.txt.
+
+---
+
+# Slide 22 — Servono tutte e due le competenze
+<!-- layout: CONTENUTO -->
+
+> Inventate una richiesta che obblighi l’agente a usare entrambi i lavori.
+
+Decidete prima l’ordine e che cosa deve comparire nella risposta.
+
+Poi provate, con i documenti necessari. La riga «Competenza usata» è una dichiarazione: conta la risposta.
+
+---
+
+# Slide 23 — Il vostro caso più scomodo
+<!-- layout: CONTENUTO -->
+
+Inventate una richiesta con un dato mancante, una fonte insufficiente o un lavoro fuori dall’indice.
+
+> Deve rispondere, chiedere o fermarsi?
+
+Decidetelo prima. Poi confrontate la risposta con i testi: nessun diario da compilare.
+
+---
+
+# Slide 24 — Ultimo messaggio dal reparto
+<!-- layout: CONTENUTO -->
+
+> «Come si chiama il tecnico che ha cambiato il filtro?»
+
+Nuova conversazione, con il registro.
+
+---
+
+# Slide 25 — Il registro non fa nomi
+<!-- layout: CONTENUTO -->
+
+> «Non è scritto» è una risposta utile.
+
+Anche dichiarare che la richiesta è fuori dalle proprie competenze è accettabile. Inventare un nome no.
+
+---
+
+# Slide 26 — Quale regola tenete?
+<!-- layout: CONTENUTO -->
+
+Correggete dove serve e riprovate il caso.
+
+Se funzionava già, trovate la regola che ha aiutato. Sapete inventare un’altra richiesta che la metta alla prova?
+
+Poi confrontiamo le vostre istruzioni con un altro esempio.
+
+---
+
+# Slide 27 — Due risposte vere. Quale preferite?
+<!-- layout: CONTENUTO -->
+
+Stessa richiesta, stessi documenti: una nuova risposta del vostro agente e una di Copilot senza agente.
+
+Conservate anche la prima risposta dell’agente.
+
+> Tra le due risposte dell’agente, sceglietene una e difendetela con due motivi.
+
+---
+
+# Slide 28 — Avete scelto. Non avete addestrato.
+<!-- layout: CONTENUTO -->
+
+Le preferenze tra risposte possono diventare dati per un addestramento.
+
+Qui avete cambiato il testo letto da Copilot, non i suoi pesi.
+
+Se le risposte sono uguali, è un risultato valido: il confronto non permette di vedere i pesi del modello.
+
+---
+
+# Slide 29 — Se Copilot si ferma
+<!-- layout: CONTENUTO -->
+
+L’agente non è disponibile? Conversazione normale: prima le vostre istruzioni, poi documenti e richiesta. Non sono vere istruzioni di sistema.
+
+Copilot non risponde? Applichiamo le vostre regole a una richiesta dal proiettore. È una prova a secco, non una risposta del modello.
+
+---
+
+# Slide 30 — Che cosa avete cambiato?
 <!-- layout: CHIUSURA -->
 
-Che cosa cambia in un programma quando lo si addestra, e che cosa quando gli si scrivono istruzioni?
+In Playground cambiavano i pesi. In Copilot, che cosa avete modificato voi?
 
-Quale regola dell'indice ha reso l'agente più affidabile?
-
-Quale caso di prova vi ha fatto cambiare o confermare le istruzioni?
+Quale richiesta ha messo davvero alla prova il vostro indice?

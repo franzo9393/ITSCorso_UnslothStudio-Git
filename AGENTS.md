@@ -23,6 +23,20 @@ Queste regole valgono per la creazione e la revisione dei materiali del corso. L
 - Non inserire tempi di completamento: niente durata complessiva prevista, minuti assegnati agli esercizi, tabelle delle durate o formule come «se resta tempo». La regola vale anche per la guida docente, salvo richiesta esplicita contraria. La stima dei tempi della revisione didattica resta nel rapporto del revisore e non entra nei materiali.
 - Conservare invece date, orari e durate che sono dati del caso, per esempio gli orari e i minuti del fermo macchina.
 
+## Scrittura e diapositive: devono sembrare scritte da una persona
+
+Valgono per slide, consegne, guide e per ogni testo del corso. Le slide in particolare non devono sembrare l'output di uno script: il generatore le impagina, ma il testo lo si scrive e lo si rilegge come lo scriverebbe un docente.
+
+- Una slide, un'idea. Il titolo esprime un punto o una domanda concreta, non un'etichetta generica. Niente numerazione nei titoli visibili. Preferire «Togliete un neurone. Funziona ancora?» a «L'attività pratica».
+- La slide proietta ciò che si guarda o si decide insieme: una domanda, un numero, una schermata, una scelta, una regola in una riga. Le istruzioni passo per passo stanno nella consegna, dove servono. Non riportare sulla slide lo stesso testo della consegna.
+- Poche parole, leggibili dal fondo dell'aula. In genere bastano una domanda e poche righe. Le eccezioni devono servire al confronto, non a comprimere la consegna in una slide. Se servono sei passaggi, non sono una slide.
+- Variare la forma da una slide all'altra: domanda a tutto schermo, un solo numero grande, una frase del responsabile, una scelta tra due, un confronto in tabella. La tabella si usa solo quando ci sono davvero dati da confrontare, non per ogni elenco. Non aprire tutte le slide con la stessa struttura (titolo, tre punti, frase finale).
+- Parlare agli studenti come in aula: «voi», frasi dirette e concrete. Il docente racconta il resto a voce; non spiegare sulla slide ciò che si dice meglio parlando.
+- Evitare i segni di un testo prodotto in serie: elenchi sempre di tre elementi, frasi simmetriche («non solo X, ma Y»), aggettivi enfatici, formule di apertura e di chiusura che riassumono («In sintesi», «Come abbiamo visto»), titoli e blocchi ripetuti identici, grassetto sparso, punti elenco di una sola parola, ripetizione della stessa frase di avviso in più slide.
+- Frasi di una riga che dicono un fatto battono frasi lunghe che dicono un valore. Se una frase può essere tolta senza che si perda nulla, toglierla.
+- Prima di consegnare slide o consegne, rileggerle per intero come le leggerebbe uno studente. Se suonano come un modulo o un manuale, riscriverle. Il prefisso «Slide NN —» nel Markdown sorgente serve solo al generatore e non deve comparire sulla slide.
+- Per nuove lezioni e riprogettazioni leggere e applicare `FLUSSO_SVILUPPO_DIDATTICO.md`: progettazione dell'esperienza, prova concreta, redazione distinta per slide e consegna, revisione indipendente. La revisione didattica obbligatoria resta quella definita più sotto.
+
 ## Programma di intelligenza artificiale e funzioni effettive
 
 - Nominare esplicitamente il prodotto scelto dall'utente. Non parlare genericamente di «assistente» senza spiegare a quale programma ci si riferisce.
@@ -34,6 +48,7 @@ Queste regole valgono per la creazione e la revisione dei materiali del corso. L
 ## Progettazione degli esercizi
 
 - Privilegiare un approccio pratico basato sul fare da parte degli studenti, riducendo al minimo la spiegazione frontale iniziale.
+- Progettare attività che suscitino interesse con una scelta, una scoperta o un oggetto da costruire e un risultato riconoscibile. Scrivere appunti e farli controllare non basta. Il riscontro deve essere leggibile nello strumento o basato su criteri chiari discussi collettivamente; non usare il giro tra i banchi come meccanismo principale. Evitare punti, classifiche e personaggi aggiunti solo per decorare una procedura. Non premiare la fortuna nelle risposte del modello.
 - Evitare esercizi che si risolvano in pochi minuti o si riducano a una sequenza passiva di «copia, incolla e verifica» in cui il lavoro progettuale è già stato svolto nella scheda e l'intelligenza artificiale esegue tutta l'analisi al primo tentativo.
 - Fornire agli studenti l'obiettivo del caso, i vincoli e i risultati attesi, ma non consegnare istruzioni complete già pronte da copiare e incollare: devono essere gli studenti a ideare, scrivere, provare e correggere per tentativi le istruzioni per l'assistente.
 - Prevedere spazi di creatività e decisione autonoma: per esempio progettare assistenti che pongono domande prima di produrre una risposta, incrociare più informazioni o regole (appunti, listini, priorità, vincoli operativi) e prendere decisioni motivate.
@@ -103,10 +118,11 @@ Queste regole valgono per la creazione e la revisione dei materiali del corso. L
 
 - Cartella: `lezione 4 - reti neurali e agenti con orchestrazione/`, giovedì 12 novembre 2026, 2 ore. Generatore: `docente/genera_materiali.py`. Fonti: `docente/backup/SLIDE_LEZIONE4.md`, `studenti/backup/ATTIVITA_LEZIONE4.md`, `docente/backup/GUIDA_DOCENTE.md`. Il percorso delle lezioni 4–7 è in `docente/backup/BOZZA_PERCORSO_LEZIONI_4-7.md` (lezione 5: 18 novembre; lezione 6: 25 novembre; lezione 7: 2 dicembre, 4 ore, lavoro di gruppo e test finale).
 - Programma: Microsoft Copilot con account scolastico, più tre siti che elaborano nel browser (Transformer Explainer, TensorFlow Playground, Flappy Learning). Niente Unsloth Studio: la macchina virtuale con Studio e il modello la prepara il docente a casa e la consegna alla lezione 5. Ciò che resta valido di Studio è in `docente/backup/da_riprendere_lezione_5/NOTE_STUDIO_PER_LEZIONE_5.md`.
-- Lavoro singolo: ogni studente lavora da solo sul proprio computer. Niente scambi di postazione né controlli incrociati tra studenti, coppie o gruppi (decisione del docente del 10 novembre 2026, per questa lezione). Il controllo lo fa il docente a voce.
+- Lavoro singolo: ogni studente lavora da solo sul proprio computer. Niente scambi di postazione né controlli incrociati tra studenti, coppie o gruppi (decisione del docente del 10 novembre 2026, per questa lezione). Niente giro tra i banchi: risultati sullo schermo, criteri rivelati dopo la prova e brevi confronti dal proiettore. Scelta approvata: nessun nuovo cruscotto o servizio.
 - Rete: l'indirizzo pubblico della scuola è condiviso. Nella lezione 3 Copilot non ha risposto per circa 10 minuti (ipotesi: limite di richieste per indirizzo). Perciò: solo siti che elaborano nel browser; niente HackMerlin, Prompt Airlines o Gandalf. Transformer Explainer scarica circa 650 MB all'apertura.
-- Nulla è stato provato in Copilot con l'account studente: non dichiarare provati la creazione dell'agente, la lunghezza massima delle istruzioni o il comportamento degli esempi. L'esempio dell'agente P03 (`da_pubblicare_dopo_parte_4F/`) non è provato in Copilot: non presentarlo come soluzione.
+- Nulla è stato provato in Copilot con l'account studente: non dichiarare provati la creazione e la modifica dell'agente, la lunghezza massima delle istruzioni o il comportamento degli esempi. L'esempio dell'agente P03 (`studenti/da_pubblicare_dopo_collaudo/`) si pubblica dopo il collaudo: non è provato in Copilot e non va presentato come soluzione.
 - Lezione 3: svolta il 4 novembre, finita a 1 h 40 min (il revisore aveva stimato circa 141 minuti: le sue stime sono sovrastimate di circa il 30%).
+- Resta un solo file personale: `istruzioni_assistente_P03.txt`, senza diario delle prove. Primo riscontro dopo la competenza FERMO, poi seconda competenza a scelta, indice e due esempi di stile propri. Ogni studente inventa due casi critici. Non si consegnano file. Transformer: due bersagli sulle probabilità; Playground: record della rete con Test loss sotto 0,05 entro 1.500 Epoch; Flappy: Score almeno 10.000, mai «uccellino immortale».
 
 ## Perimetro delle modifiche e Git
 

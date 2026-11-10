@@ -54,7 +54,7 @@ TEXT_DOCUMENTS = {  # documenti del caso: sorgente Markdown, copia di testo semp
 }
 DECK_NAME = 'Lezione4_Reti_neurali_e_agenti_con_orchestrazione_ITS_MAKER'
 MODEL = HERE / 'MODELLO_ITS_MAKER.pptx'
-TITLE = 'Lezione 4 — Un agente che sa fare più cose'
+TITLE = 'Lezione 4 — Un agente, più lavori'
 LAYOUTS = ('COPERTINA', 'CONTENUTO', 'SEZIONE', 'CHIUSURA')
 PROGRAM = ('UNSLOTH STUDIO', 'MICROSOFT COPILOT')  # il modello riporta ancora il programma della lezione 1: si sostituisce al caricamento
 BLUE, INK, MUTED, PALE = '1064A0', '17344D', '4B6275', 'EAF0F6'
@@ -347,7 +347,8 @@ def build_pptx(slides: list[dict]) -> Path:
                 if block['kind'] == 'table':
                     top = add_slide_table(slide, block['rows'], top)
                 elif 'text' in block:
-                    top = add_paragraph_box(slide, block['text'], top, BODY_SIZE, block['kind'].startswith('h'))
+                    size = 44 if block['kind'] == 'h2' else 36 if block['kind'] == 'blockquote' else BODY_SIZE
+                    top = add_paragraph_box(slide, block['text'], top, size, block['kind'].startswith('h'))
         number = next((shape for shape in slide.placeholders if shape.placeholder_format.idx == 4294967295), None)
         if number is not None:
             number.text = str(index)
@@ -412,7 +413,12 @@ def build_html(slides: list[dict], backgrounds: dict[str, str]) -> None:
         pages.append(f'<section class="slide {layout.lower()}" aria-label="Slide {index}: {title}" style="background-image:url(data:image/png;base64,{backgrounds[layout]})">{inner}</section>')
     css = '''
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:Arial,sans-serif}body{background:#eaf0f6;color:#17344d;overflow:hidden}.deck{position:absolute;left:50%;top:12px;width:1280px;height:800px;transform-origin:top center}.slide{display:none;position:absolute;inset:0;width:1280px;height:800px;background-size:1280px 800px;overflow:hidden}.slide.active{display:block}.slide h1{position:absolute;margin:0;font-weight:700;line-height:1.12}.contenuto h1{left:62.4px;top:59.52px;width:1012.8px;height:100.8px;color:#1064a0;font-size:37.333px}.body{position:absolute;left:72px;top:187.2px;width:1132.8px;height:537.6px;font-size:30.667px;line-height:1.2}.body p{margin:0 0 12px}.body ul,.body ol{margin:0 0 12px;padding-left:29px}.body li{margin:0 0 12px}.body table{width:100%;border-collapse:collapse;margin:0 0 17px;font-size:24px;line-height:1.22}.body th,.body td{border:1px solid #4b6275;padding:8px;text-align:left;vertical-align:top}.body th{background:#1064a0;color:white}.body td{background:#eaf0f6}.slide-number{position:absolute;left:1118.4px;top:763.2px;width:98.9px;height:21.1px;text-align:right;font-size:14.667px;color:#4b6275}.copertina h1{left:62.4px;top:192px;width:1152px;height:139.2px;color:#1064a0;font-size:52px}.copertina .subtitle{position:absolute;left:62.4px;top:345.6px;width:1152px;margin:0;font-size:25.333px;line-height:1.2}.copertina .course{position:absolute;left:62.4px;top:408px;width:1142.4px;margin:0;font-size:24px}.sezione .section-number{position:absolute;left:62.4px;top:129.6px;width:384px;height:144px;color:#f5820b;font-size:106.667px;font-weight:700;line-height:1}.sezione h1{left:62.4px;top:283.2px;width:672px;height:139.2px;color:white;font-size:52px}.section-body{position:absolute;left:62.4px;top:456px;width:662.4px;height:153.6px;color:white;font-size:30.667px;line-height:1.2}.section-body p{margin:0}.chiusura h1{left:62.4px;top:211.2px;width:681.6px;height:153.6px;color:white;font-size:52px}.closing-body{position:absolute;left:62.4px;top:403.2px;width:662.4px;height:211.2px;color:white;font-size:30.667px;line-height:1.2}.closing-body p{margin:0 0 12px}.controls{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;font-size:15px;white-space:nowrap}button{font:inherit;padding:8px 14px;border:1px solid #1064a0;background:white;color:#1064a0;border-radius:3px;min-height:40px}button:disabled{opacity:.45}@media print{@page{size:1280px 800px;margin:0}html,body{height:auto;overflow:visible}.deck{position:static;transform:none!important;width:1280px;height:auto}.slide{display:block!important;position:relative;break-after:page;print-color-adjust:exact;-webkit-print-color-adjust:exact}.slide:last-child{break-after:auto}.controls{display:none}}
-''' + f'.body{{font-size:{BODY_SIZE * 4 / 3:.3f}px}}.body p,.body ul,.body ol,.body li{{margin-bottom:{BODY_GAP * 96:.0f}px}}'
+''' + f'''.body{{font-size:{BODY_SIZE * 4 / 3:.3f}px}}
+.body p,.body ul,.body ol,.body li{{margin-bottom:{BODY_GAP * 96:.0f}px}}
+.body h2{{font-size:58.667px;line-height:1.2;margin:0 0 {BODY_GAP * 96:.0f}px}}
+.body blockquote{{font-size:48px;line-height:1.2;margin:0 0 {BODY_GAP * 96:.0f}px;padding:0}}
+.body blockquote p{{margin:0}}
+'''
     js = '''
 const slides=[...document.querySelectorAll('.slide')];let current=0;const previous=document.getElementById('previous'),next=document.getElementById('next'),position=document.getElementById('position');function show(index){current=Math.max(0,Math.min(slides.length-1,index));slides.forEach((slide,i)=>{slide.classList.toggle('active',i===current);slide.setAttribute('aria-hidden',i===current?'false':'true')});previous.disabled=current===0;next.disabled=current===slides.length-1;position.textContent=`${current+1} / ${slides.length}`}function fit(){const scale=Math.max(.1,Math.min((innerWidth-24)/1280,(innerHeight-72)/800));document.querySelector('.deck').style.transform=`translateX(-50%) scale(${scale})`}previous.addEventListener('click',()=>show(current-1));next.addEventListener('click',()=>show(current+1));document.addEventListener('keydown',event=>{if(event.target.closest('button,input,textarea,select,a'))return;if(['ArrowRight','PageDown',' '].includes(event.key)){event.preventDefault();show(current+1)}if(['ArrowLeft','PageUp'].includes(event.key)){event.preventDefault();show(current-1)}if(event.key==='Home')show(0);if(event.key==='End')show(slides.length-1)});addEventListener('resize',fit);show(0);fit();
 '''
@@ -709,13 +715,20 @@ def main() -> None:
         prepare_model(args.template.resolve())
     elif not MODEL.is_file():
         raise SystemExit('Fornire il modello originale con --template alla prima esecuzione.')
-    slides = parse_slides((TEACHER_BACKUP / 'SLIDE_LEZIONE4.md').read_text(encoding='utf-8'))
+    values = register_values(REGISTER_SOURCE.read_text(encoding='utf-8'))
+    slide_source = (TEACHER_BACKUP / 'SLIDE_LEZIONE4.md').read_text(encoding='utf-8')
+    for key, value in {
+        '{{MINUTI_FERMO}}': str(values['minutes']),
+        '{{ORA_FERMO}}': values['stop']['when'].strftime('%H:%M'),
+        '{{ORA_RIPARTENZA}}': values['restart']['when'].strftime('%H:%M'),
+    }.items():
+        slide_source = slide_source.replace(key, value)
+    slides = parse_slides(slide_source)
     STUDENTS_BACKUP.mkdir(parents=True, exist_ok=True)
     pptx = build_pptx(slides)
     worksheet = STUDENTS / 'ATTIVITA_LEZIONE4.docx'
     guide = HERE / 'GUIDA_DOCENTE.docx'
     markdown_doc(STUDENTS_BACKUP / 'ATTIVITA_LEZIONE4.md', worksheet, 'Lezione 4 — attività')
-    values = register_values(REGISTER_SOURCE.read_text(encoding='utf-8'))  # si ferma se il registro non torna
     replacements = {
         '{{VALORI_REGISTRO}}': register_tables(values),
         '{{NOTE_TURNO}}': turn_notes(REGISTER_SOURCE.read_text(encoding='utf-8')),

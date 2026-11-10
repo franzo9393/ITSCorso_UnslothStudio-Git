@@ -6,7 +6,7 @@ Documento riservato al docente. **Bozza da approvare**: non sono ancora material
 
 | Incontro | Data | Durata | Contenuto |
 | --- | --- | --- | --- |
-| Lezione 4 | 12 novembre 2026 | 2 ore | Modello locale e istruzioni di sistema |
+| Lezione 4 | 12 novembre 2026 | 2 ore | Reti neurali nel browser e agente Copilot con più competenze |
 | Lezione 5 | 18 novembre 2026 | 2 ore | Documenti e recupero (RAG) |
 | Lezione 6 | 25 novembre 2026 | 2 ore | Agenti, permessi e difese |
 | Lezione 7 | 2 dicembre 2026 | 4 ore | Lavoro di gruppo e test finale individuale |
@@ -40,20 +40,20 @@ flowchart LR
 
 Obiettivo: capire, giocando, come impara un programma di intelligenza artificiale e progettare un agente di Microsoft Copilot con più competenze.
 
-**Decisione del 10 novembre 2026: lezione senza Unsloth Studio, con reti neurali nel browser e agente con orchestrazione, a lavoro singolo.** Ognuno lavora da solo sul proprio computer, con il browser e con Copilot (account scolastico), senza scambi di postazione né controlli incrociati con altri studenti. Il percorso nasce da tre richieste del docente: un'attività in browser all'inizio, poi qualcosa di più strutturato; il caso P03 come testo di lavoro; un esempio dato dal docente su un caso diverso dalla P03 (noleggio di biciclette), poi il progetto degli studenti, che non deve essere una copiatura.
+**Decisioni del 10 novembre 2026: senza Unsloth Studio, lavoro singolo, nessun giro di controllo tra i banchi.** Restano la P03 e la dimostrazione del docente sul noleggio di biciclette. La revisione sviluppata con Claude Fable sostituisce i registri da compilare con sfide a risultato visibile e un agente costruito per tappe. Il docente ha scelto Copilot e proiettore, senza un nuovo cruscotto: le richieste si mostrano prima, i criteri dopo la prova. Nessuno controlla il lavoro di un compagno.
 
 Parti, come nella consegna degli studenti:
 
-1. **Come sceglie la parola successiva** · [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) (MIT): previsione sulla temperatura, poi osservazione.
-2. **Una rete che impara** · [TensorFlow Playground](https://playground.tensorflow.org/) (Apache-2.0): prima il cerchio, poi la spirale; criterio scelto prima, rete più piccola che lo rispetta, effetto del rumore sul Training loss e sul Test loss.
-3. **Imparare dai risultati** · [Flappy Learning](https://xviniette.github.io/FlappyLearning/) (MIT): neuroevoluzione; previsione, osservazione e confronto fra ricariche. Fa da ponte verso l'idea di addestrare uno stile premiando risposte preferite.
-4. **L'agente con più competenze** · Microsoft Copilot. Esempio del docente (noleggio di biciclette), tre lavori sui documenti P03 (nota di passaggio dal registro, spiegazione di un allarme dalla guida, durata del fermo dalle regole degli indicatori), progetto individuale di due lavori su tre con regole, indice, competenze, gestione di richieste su più competenze e stile con esempi scritti dallo studente, creazione dell'agente, prova del proprio agente con cinque casi inventati, uno per ciascun tipo indicato nella consegna (prima si scrive che cosa ci si aspetta, poi si guarda la risposta e si controlla il dato sul documento), correzione, e un confronto finale con Copilot normale e tra due risposte dell'agente per vedere che gli esempi nelle istruzioni non cambiano il modello e che scegliere tra risposte è il tipo di dato con cui si addestra uno stile.
+1. **Cambiate le probabilità** · [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) (MIT): sul primo esempio, portare la barra più lunga sopra 90% e sotto 30% con Temperature. Previsione a mano alzata, nessun appunto.
+2. **Quanto piccola può essere la rete?** · [TensorFlow Playground](https://playground.tensorflow.org/) (Apache-2.0): Test loss sotto 0,05 entro 1.500 Epoch con meno neuroni nascosti possibile; cerchio, poi spirale. Il risultato resta sullo schermo. Confronto Training loss/Test loss sul rumore al proiettore, senza promettere un peggioramento.
+3. **Quando arrivano al traguardo?** · [Flappy Learning](https://xviniette.github.io/FlappyLearning/) (MIT): prevedere la fascia di generazioni in cui si osserverà Score almeno 10.000; una ricarica con la stessa soglia. Nessun punteggio per la fortuna e nessun «uccellino immortale».
+4. **Costruite e collaudate l'agente P03** · Dimostrazione biciclette; prima competenza FERMO e subito due richieste dal reparto; seconda competenza ALLARMI o PASSAGGIO, indice e due esempi propri di stile. Due casi critici inventati dallo studente, uno su entrambe le competenze e uno su dati mancanti, fonti insufficienti o fuori indice. Ultima richiesta comune, correzioni mirate, confronto con l'esempio P03. Poi stessa richiesta e stessi documenti con e senza agente e scelta motivata tra due risposte reali dell'agente: gli esempi nelle istruzioni non cambiano i pesi.
 
-Appunti personali di ogni studente, non consegnati (decisione del 6 novembre 2026): `appunti_reti.txt`, `istruzioni_assistente_P03.txt`, `casi_di_prova.txt`. Esempio di istruzioni in `studenti/da_pubblicare_dopo_parte_4F/`, da pubblicare dopo la parte 4F. Non è stato provato in Copilot.
+Un solo file personale da salvare, non da consegnare: `istruzioni_assistente_P03.txt`, con solo le istruzioni. Niente diario delle prove. Esempio P03 in `studenti/da_pubblicare_dopo_collaudo/`, da pubblicare dopo la parte 4E. Non è provato in Copilot. Il processo di sviluppo e le fonti esterne consultate sono in `FLUSSO_SVILUPPO_DIDATTICO.md` alla radice del repository.
 
 ### Rami di riserva della lezione 4
 
-Senza Studio non c'è un modello locale di riserva. Se l'agente non si crea o non accetta il testo si usa una conversazione normale; se Copilot non risponde ogni studente applica alla lettera sulla carta il proprio indice e le proprie competenze (guida docente, «Se Copilot non funziona»).
+Senza Studio non c'è un modello locale di riserva. Se l'agente non è disponibile si usa una conversazione normale, con le istruzioni nel primo messaggio: non sono vere istruzioni di sistema. Se Copilot non risponde si fa una prova a secco collettiva dal proiettore, dichiarando che non è una risposta del modello e che non prova l'affidabilità dell'agente (guida docente, «Se manca il servizio o qualcosa non passa»).
 
 ## Lezione 5 · Il modello legge i documenti
 
