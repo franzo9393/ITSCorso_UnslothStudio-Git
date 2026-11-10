@@ -67,7 +67,7 @@ Un **agente** è un assistente di Copilot con istruzioni salvate. Una **competen
 
 ### 4A · Scegliete prima di vedere la risposta
 
-Il docente mostra un agente per un noleggio di biciclette. Per la richiesta proiettata, scegliete per alzata di mano quale competenza serve, oppure se ne servono due. Poi guardate la risposta e le istruzioni che l'hanno guidata. La riga «Competenza usata» è una dichiarazione del modello: controllate anche quello che fa davvero.
+Il docente mostra un agente per un noleggio di biciclette. Non è la P03: serve a vedere la struttura di un agente con più competenze prima di scrivere il vostro. Per la richiesta proiettata, scegliete per alzata di mano quale competenza serve, oppure se ne servono due. Poi guardate la risposta e le istruzioni che l'hanno guidata. La riga «Competenza usata» è una dichiarazione del modello: controllate anche quello che fa davvero. Poi tornate alla pressa.
 
 ### 4B · Provate subito una competenza
 

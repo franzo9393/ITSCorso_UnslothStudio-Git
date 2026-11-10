@@ -115,14 +115,14 @@ Non state addestrando i suoi pesi.
 
 ---
 
-# Slide 12 — La bici è rotta. E il rimborso?
+# Slide 12 — Prima, un altro caso: il noleggio di biciclette
 <!-- layout: CONTENUTO -->
+
+Non è la P03. Serve a vedere come un agente sceglie tra più lavori, senza darvi un testo da copiare.
 
 > «La bici 12 ha i freni che non tengono. Mi ridate anche i soldi?»
 
 Quale lavoro viene prima? Quale dato deve chiedere l’agente?
-
-Guardiamo l’esempio del docente.
 
 ---
 
@@ -139,14 +139,14 @@ Ogni competenza è una parte delle istruzioni. Orchestrare significa scegliere q
 
 ---
 
-# Slide 14 — Un solo agente per la P03
+# Slide 14 — Adesso torniamo alla pressa P03
 <!-- layout: CONTENUTO -->
 
-Calcolare un fermo.
+Il vostro agente deve calcolare un fermo.
 
 Poi, a vostra scelta: spiegare un allarme oppure scrivere una nota di turno.
 
-> Quando la richiesta cambia, deve cambiare anche il lavoro dell’agente.
+> Le biciclette erano un esempio. Il testo dell’agente lo scrivete voi.
 
 ---
 
