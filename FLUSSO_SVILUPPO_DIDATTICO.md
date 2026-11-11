@@ -49,10 +49,11 @@ Ricerca online dell'11 novembre 2026, dopo il giudizio del docente che la second
 
 | Principio | Fonte | Come lo applichiamo |
 | --- | --- | --- |
-| Quadro d'insieme prima dei dettagli | Ausubel, organizzatori anticipati (1960) | Slide 12–13 della lezione 4: che cosa legge Copilot, che cosa si costruisce |
+| Quadro d'insieme prima dei dettagli | Ausubel, organizzatori anticipati (1960) | Slide 3 (due modi di cambiare un'AI) e slide 18–19 della lezione 4 |
 | Esempio svolto prima del problema | Sweller e Cooper (1985); teoria del carico cognitivo | Bici 5 calcolata davanti agli studenti, poi la bici 12 con il loro agente |
 | Dal concreto al nome | Fyfe, McNeil, Son e Goldstone, «Concreteness fading» (Educational Psychology Review, 2014) | Le frasi vere della pizzeria prima dei nomi delle parti |
 | Un'idea alla volta; togliere il superfluo; testo e tabella vicini | Mayer, Multimedia Learning (principi di segnalazione, coerenza, contiguità) | Una sola azione per slide; tabella che affianca esempio e compito |
+| Testo e immagine insieme, immagine dove serve (codifica doppia) | Mayer, Multimedia Learning (principi di contiguità e di segnalazione); Paivio, teoria della codifica doppia | Schermate dei siti con il punto da trovare cerchiato (slide 5–16) |
 | Piccoli passi, controlli frequenti, pratica guidata poi autonoma | Rosenshine, «Principles of Instruction» (American Educator, 2012) | Previsioni e alzate di mano, criterio dopo la prova |
 
 ## Applicazione nella lezione 4

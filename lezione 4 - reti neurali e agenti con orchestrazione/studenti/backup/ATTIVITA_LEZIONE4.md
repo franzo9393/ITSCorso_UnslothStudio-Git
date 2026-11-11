@@ -16,6 +16,8 @@ Ognuno lavora sul proprio computer. Non ci sono file da consegnare né un diario
 
 **Sfida: portate la barra più lunga sopra il 90%, poi sotto il 30%, cambiando solo Temperature.**
 
+Prima di aprire il sito, scrivete su un foglio la parola con cui continuereste la frase «La visualizzazione dei dati permette agli utenti di…». La confronterete con le parole del sito.
+
 1. Aprite Transformer Explainer: `https://poloclub.github.io/transformer-explainer/`, quando lo dice il docente, oppure seguite il proiettore. La pagina avvia uno scarico di circa 650 MB anche se usate gli esempi. Se compare «What is Transformer?», chiudetelo con la X.
 2. Usate il primo esempio del menu **Examples**: «Data visualization empowers users to». Il docente traduce la frase e le parole candidate: non è una prova d'inglese. È un modello che completa un testo, non un assistente a cui fare domande.
 3. Guardate a destra **Probabilities**, le probabilità delle parole successive. Prima di toccare il cursore, scegliete per alzata di mano: alzando **Temperature**, la barra più lunga salirà o scenderà?
@@ -34,7 +36,7 @@ La pagina si apre già pronta. Controllate tre cose: i dati sono il cerchio, gli
 
 Prima di toccare qualcosa, per alzata di mano: quanti neuroni servono per circondare i punti blu? Nessuno, 1, 2, 3 o 10? Contano solo i neuroni nascosti, quelli tra gli ingressi e l'uscita.
 
-1. Con zero neuroni nascosti, avviate con il triangolo. **Epoch** conta i giri di addestramento. **Test loss** è l'errore sui punti di prova: più è basso, meglio è. Fermatevi a 1.500 giri. Guardate l'area colorata a destra: che forma ha il confine tra i due colori?
+1. Con zero neuroni nascosti, avviate con il triangolo. **Epoch** conta i giri di addestramento. **Test loss** è l'errore sui punti di prova: più è basso, meglio è. Il sito scrive i numeri all'inglese: «001,500» vuol dire 1.500 giri e «0.05» vuol dire 0,05. Fermatevi a 1.500 giri. Guardate l'area colorata a destra: che forma ha il confine tra i due colori?
 2. Con il **+** accanto a «Hidden layers» aggiungete uno strato: nasce già con 2 neuroni. Sopra la colonna dei neuroni, il **−** ne toglie uno e il **+** ne aggiunge uno. Ogni volta che cambiate il numero di neuroni la rete riparte da zero: premete il triangolo e fermatevi a 1.500 giri. Provate con 1, 2, 3 e 4 neuroni. Non cambiate altre impostazioni e non usate **Regenerate**: cambia i punti.
 3. Cercate il numero più piccolo di neuroni con cui Test loss scende sotto 0,05, e lasciate quella prova sullo schermo. Se con un certo numero non ci riuscite, azzerate con il pulsante a sinistra del triangolo e riprovate una volta: i numeri di partenza dei collegamenti cambiano e il risultato può cambiare.
 4. Con la rete che funziona, passate il mouse su un neurone: il suo disegno compare in grande nel riquadro a destra, al posto dell'uscita. Che cosa disegna ogni neurone? Come si mettono insieme nell'uscita?
@@ -47,7 +49,7 @@ Poi guardate il proiettore: il docente aggiunge disturbo (**Noise**) ai punti e 
 
 ## Parte 3 · Un esempio dal proiettore
 
-Il docente apre Flappy Learning: `https://xviniette.github.io/FlappyLearning/`. Ogni uccellino ha una piccola rete che decide quando saltare. A ogni generazione restano le reti dei migliori, con piccole variazioni a caso. Guardate che cosa succede dopo qualche generazione. **Score** conta i passi della simulazione, non i tubi superati.
+Il docente apre Flappy Learning: `https://xviniette.github.io/FlappyLearning/`. Ogni flappy bird ha una piccola rete che decide quando saltare. A ogni generazione restano le reti dei migliori, con piccole variazioni a caso. Guardate che cosa succede dopo qualche generazione. **Score** conta i passi della simulazione, non i tubi superati.
 
 Anche qui cambiano i pesi, ma nessuno li corregge guardando un errore: si copiano le reti migliori con piccole modifiche a caso. È un altro modo di imparare.
 

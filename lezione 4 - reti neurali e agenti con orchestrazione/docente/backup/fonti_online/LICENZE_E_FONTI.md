@@ -10,6 +10,8 @@ Regola: una fonte pubblica si usa solo con un permesso di riuso letto sul sito d
 | TensorFlow Playground | https://playground.tensorflow.org/ | Daniel Smilkov e Shan Carter | Apache-2.0 | Repository https://github.com/tensorflow/playground (10 novembre 2026); la pagina scrive «You're free to use it in any way that follows our Apache License» | Collegamento nella consegna e nelle slide; non si copia il codice |
 | Flappy Learning | https://xviniette.github.io/FlappyLearning/ | xviniette | MIT | Repository https://github.com/xviniette/FlappyLearning (10 novembre 2026) | Collegamento nella consegna e nelle slide; non si copia il codice |
 
+Schermate di questi tre siti compaiono nelle slide 3–16 della lezione 4 (catturate l'11 novembre 2026 con un browser di prova su Linux; i punti da trovare sono cerchiati). Si citano per spiegare dove guardare, sotto le licenze indicate sopra. Le immagini sono in `docente/backup/immagini_slide/`.
+
 Non sono state lette le informative sulla privacy dei tre siti. Playground contatta Google Fonts e Google Analytics; Flappy Learning contatta Google Fonts; Transformer Explainer scarica circa 600 MB e contatta, tra gli altri, Google Tag Manager, DoubleClick, YouTube e Google Analytics (10 novembre 2026, postazione del docente, rete non scolastica).
 
 I documenti del caso Ruota Libera (registro, guida ai guasti, regole del noleggio) sono inventati per l'esercitazione ITS MAKER e non hanno fonti esterne.

@@ -145,7 +145,7 @@ Il docente (tu) aggiunge **Noise**: un disturbo che sposta i punti a caso, così
 
 **Verificato** (10 novembre 2026, Noise 50, 10% di punti per addestrare, 8 e 8 neuroni): in una prova Training/Test sono passati da 0,236/0,375 (circa 172 giri) a 0,066/0,556 (circa 1.000 giri): l'errore sugli esempi è sceso, quello sui punti nuovi è salito. In altre due prove a 1.000 giri: 0,174/0,374 e 0,116/0,545. Sono esecuzioni, non un esito garantito: se Test loss non peggiora, leggi quello che vedi.
 
-**Come dirlo.** Se Training loss scende e Test loss sale, la rete ha imparato anche il disturbo dei punti che ha visto e va peggio sui punti nuovi. Vale anche per un agente: va provato con richieste diverse dagli esempi (è il punto della slide 32 e della parte 4D).
+**Come dirlo.** Se Training loss scende e Test loss sale, la rete ha imparato anche il disturbo dei punti che ha visto e va peggio sui punti nuovi. Vale anche per un agente: va provato con richieste diverse dagli esempi (è il punto della slide 38 e della parte 4D).
 
 ### Spirale
 

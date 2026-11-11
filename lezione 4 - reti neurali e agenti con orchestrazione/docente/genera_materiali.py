@@ -35,7 +35,7 @@ from docx.shared import Pt as DocPt
 from docx.shared import RGBColor as DocColor
 import pymupdf
 from lxml import html as lxml_html
-from PIL import ImageFont
+from PIL import Image, ImageFont
 from pptx import Presentation
 from pptx.dml.color import RGBColor
 from pptx.util import Inches, Pt
@@ -158,7 +158,10 @@ def blocks(text: str) -> list[dict]:
                 result.append({'kind': 'pagebreak'})
             continue
         tag = element.tag.lower()
-        if tag == 'table':
+        if tag == 'p' and element.xpath('.//img'):
+            image = element.xpath('.//img')[0]
+            result.append({'kind': 'image', 'src': image.get('src'), 'alt': image.get('alt') or ''})
+        elif tag == 'table':
             rows = [[cell.text_content().strip() for cell in row] for row in element.xpath('.//tr')]
             result.append({'kind': 'table', 'rows': rows})
         elif tag in ('ul', 'ol'):
@@ -305,6 +308,25 @@ def add_slide_table(slide, rows: list[list[str]], top: float) -> float:
     return top + sum(heights) + 0.18
 
 
+def add_slide_image(slide, source: str, alt: str, top: float) -> float:
+    """Immagine centrata sotto il testo, ridotta per stare nello spazio rimasto (larghezza massima 11,8 pollici)."""
+    path = TEACHER_BACKUP / source
+    if not path.is_file():
+        raise FileNotFoundError(f'Immagine della slide non trovata: {path}')
+    with Image.open(path) as image:
+        ratio = image.width / image.height
+    top += 0.1  # margine di sicurezza: il testo sopra può andare a capo in modo diverso da quello stimato
+    available = 7.55 - top
+    if available < 1.2:
+        raise ValueError(f'Spazio insufficiente per l\'immagine {source}: restano {available:.2f} pollici')
+    height = min(available, 11.8 / ratio)
+    width = height * ratio
+    left = (13.333 - width) / 2
+    picture = slide.shapes.add_picture(str(path), Inches(left), Inches(top), Inches(width), Inches(height))
+    picture._element.nvPicPr.cNvPr.set('descr', alt)
+    return top + height + BODY_GAP
+
+
 def load_model():
     """Modello ufficiale; la fascia in basso delle pagine di contenuto deve riportare il programma della lezione."""
     prs = Presentation(MODEL)
@@ -347,6 +369,8 @@ def build_pptx(slides: list[dict]) -> Path:
             for block in blocks(data['body']):
                 if block['kind'] == 'table':
                     top = add_slide_table(slide, block['rows'], top)
+                elif block['kind'] == 'image':
+                    top = add_slide_image(slide, block['src'], block['alt'], top)
                 elif 'text' in block:
                     url = block['kind'] == 'url'
                     size = 28 if url else 44 if block['kind'] == 'h2' else 36 if block['kind'] == 'blockquote' else BODY_SIZE
@@ -400,7 +424,9 @@ def build_html(slides: list[dict], backgrounds: dict[str, str]) -> None:
     section = 0
     for index, data in enumerate(slides, 1):
         layout = data['layout']
-        content = re.sub(r'<p>(https://\S+)</p>', r'<p class="url">\1</p>', markdown.markdown(data['body'], extensions=['tables', 'sane_lists']))
+        content = markdown.markdown(data['body'], extensions=['tables', 'sane_lists'])
+        content = re.sub(r'<p>(https://\S+)</p>', r'<p class="url">\1</p>', content)
+        content = re.sub(r'src="([^"]+\.png)"', lambda m: 'src="data:image/png;base64,' + base64.b64encode((TEACHER_BACKUP / m.group(1)).read_bytes()).decode('ascii') + '"', content)
         title = html.escape(data['title'])
         if layout == 'COPERTINA':
             paragraphs = [block['text'] for block in blocks(data['body']) if 'text' in block]
@@ -419,6 +445,7 @@ def build_html(slides: list[dict], backgrounds: dict[str, str]) -> None:
 .body p,.body ul,.body ol,.body li{{margin-bottom:{BODY_GAP * 96:.0f}px}}
 .body h2{{font-size:58.667px;line-height:1.2;margin:0 0 {BODY_GAP * 96:.0f}px}}
 .body blockquote{{font-size:48px;line-height:1.2;margin:0 0 {BODY_GAP * 96:.0f}px;padding:0}}
+.body img{{display:block;margin:6px auto;max-width:100%;max-height:430px;object-fit:contain}}
 .body blockquote p{{margin:0}}
 .body p.url{{font-size:37.333px;font-weight:700;color:#1064a0;overflow-wrap:anywhere}}
 '''

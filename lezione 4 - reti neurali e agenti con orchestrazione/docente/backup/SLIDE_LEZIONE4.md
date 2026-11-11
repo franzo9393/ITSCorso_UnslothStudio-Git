@@ -14,69 +14,131 @@ ITS MAKER · 12 novembre 2026 · Microsoft Copilot e giochi nel browser
 
 ---
 
-# Slide 03 — Come continuereste questa frase?
+# Slide 03 — Due modi di cambiare un’AI
 <!-- layout: CONTENUTO -->
 
-> «La visualizzazione dei dati permette agli utenti di…»
+Prima guardiamo come cambiano i pesi. Poi cambiate voi il testo.
 
-Transformer Explainer usa la frase inglese «Data visualization empowers users to».
+![Due schemi. A sinistra una rete con linee di spessore diverso: i pesi. A destra una pagina di testo che entra in Copilot.](immagini_slide/schema_pesi_testo.png)
 
 ---
 
-# Slide 04 — Spostate la probabilità
+# Slide 04 — Come continuereste questa frase?
+<!-- layout: CONTENUTO -->
+
+> «Data visualization empowers users to…»
+
+In italiano: «La visualizzazione dei dati permette agli utenti di…»
+
+Scrivete su un foglio la parola che mettereste. Poi guardiamo che cosa fa il sito.
+
+---
+
+# Slide 05 — Spostate la probabilità
 <!-- layout: CONTENUTO -->
 
 ## Prima sopra il 90%. Poi sotto il 30%.
 
 https://poloclub.github.io/transformer-explainer/
 
-Portate la barra più lunga sui due bersagli, cambiando solo Temperature. Primo esempio, k = 5.
+Primo esempio: muovete solo Temperature.
+
+![Transformer Explainer: il cursore Temperature in alto a sinistra e la barra della parola più probabile, evidenziati.](immagini_slide/transformer_temperature.png)
 
 ---
 
-# Slide 05 — La parola più probabile non è l’unica
+# Slide 06 — Più temperatura, più parole possibili
 <!-- layout: CONTENUTO -->
 
 > Alzando la temperatura, le probabilità si distribuiscono di più.
 
-Una barra alta non garantisce quale parola uscirà. E non garantisce che una frase sia vera.
+![Le barre delle probabilità con Temperature 0,3, 0,8 e 5: la prima parola passa da 90,86% a 54,67% a 24,67%.](immagini_slide/transformer_tre_temperature.png)
 
 ---
 
-# Slide 06 — Quanti neuroni servono per circondare il cerchio?
+# Slide 07 — Tornate alla prima domanda
+<!-- layout: CONTENUTO -->
+
+> Se chiedete due volte la stessa cosa all’AI, deve rispondere allo stesso modo?
+
+Il modello pesca una parola: con il 90% è come avere 90 biglietti su 100 nel sacchetto. Può cambiare, e una frase scorrevole non è per forza vera. Per un calcolo oggi non basta: controllerete gli orari sul registro.
+
+---
+
+# Slide 08 — Quanti neuroni servono per circondare il cerchio?
 <!-- layout: CONTENUTO -->
 
 ## 0 · 1 · 2 · 3 · 10
 
-I punti blu stanno al centro, quelli arancioni attorno. Quanti neuroni servono per separarli? Alzata di mano.
+In TensorFlow Playground i punti blu stanno al centro, quelli arancioni attorno. La rete deve colorare di blu il centro e di arancione il resto. Alzata di mano.
+
+![I punti del cerchio: blu al centro, arancioni attorno.](immagini_slide/playground_cerchio.png)
 
 ---
 
-# Slide 07 — Provate. Un neurone in più alla volta.
+# Slide 09 — Dove si legge il risultato
 <!-- layout: CONTENUTO -->
 
 ## Test loss sotto 0,05
 
-https://playground.tensorflow.org/
+Test loss è l’errore sui punti di prova: più è basso, meglio è. Epoch conta i giri. Il sito scrive all’inglese: 001,500 è 1.500 giri.
 
-Partite da zero neuroni, poi uno, due, tre, quattro. Fermatevi a 1.500 giri (Epoch).
-
-Test loss: l'errore sui punti di prova. Più è basso, meglio è.
+![TensorFlow Playground: Epoch in alto e Test loss sopra il disegno, ingranditi.](immagini_slide/playground_dove_guardare.png)
 
 ---
 
-# Slide 08 — Che cosa disegna ogni neurone?
+# Slide 10 — Partite da zero neuroni
+<!-- layout: CONTENUTO -->
+
+https://playground.tensorflow.org/
+
+Con il − accanto a «Hidden layers» togliete i due strati: devono essere 0. Poi Play, e fermatevi a 1.500 giri.
+
+![TensorFlow Playground senza strati: il tasto Play e la scritta 0 Hidden layers.](immagini_slide/playground_partenza.png)
+
+---
+
+# Slide 11 — Un neurone in più alla volta
+<!-- layout: CONTENUTO -->
+
+Ogni quadratino è un neurone; una colonna è uno strato. Il + degli strati ne crea uno con 2 neuroni: con − e + ne avete 1, 2, 3, 4. Poi Play, fino a 1.500 giri.
+
+![TensorFlow Playground con uno strato di 3 neuroni: i tasti + e − per gli strati e per i neuroni, un neurone e lo strato evidenziati.](immagini_slide/playground_neuroni.png)
+
+---
+
+# Slide 12 — Che cosa disegna ogni neurone?
 <!-- layout: CONTENUTO -->
 
 > Nel disegno di un neurone: una linea o un cerchio?
 
 Passate il mouse su un neurone: il suo disegno compare in grande a destra.
 
-Ogni linea ha un numero, il peso: lo vedete passando il mouse. Mentre la rete impara, le linee cambiano spessore e colore.
+![Con il mouse su un neurone, a destra compare il suo disegno.](immagini_slide/playground_neurone.png)
 
 ---
 
-# Slide 09 — Continuare è sempre meglio?
+# Slide 13 — Ogni linea ha un numero: il peso
+<!-- layout: CONTENUTO -->
+
+Leggete il numero di una linea, avviate fino a 1.500 giri e rileggetelo. Mentre la rete impara, le linee cambiano spessore e colore.
+
+![Con il mouse su una linea compare il suo peso.](immagini_slide/playground_peso.png)
+
+---
+
+# Slide 14 — Continuare è sempre meglio?
+<!-- layout: CONTENUTO -->
+
+> Aggiungiamo disturbo (Noise). Miglioreranno tutti e due gli errori?
+
+Scommettete. Un errore guarda i punti usati per addestrare, l’altro quelli tenuti da parte per la prova.
+
+![Il cursore Noise a 50 e i punti mescolati.](immagini_slide/playground_rumore.png)
+
+---
+
+# Slide 15 — Due errori, due nomi
 <!-- layout: CONTENUTO -->
 
 | Guardiamo i punti… | Il sito scrive… |
@@ -84,22 +146,24 @@ Ogni linea ha un numero, il peso: lo vedete passando il mouse. Mentre la rete im
 | usati per addestrare | Training loss |
 | tenuti da parte per la prova | Test loss |
 
-Aggiungiamo disturbo (Noise). Prima di proseguire, scommettete: miglioreranno entrambi?
+Dopo circa mille giri leggiamo insieme i due numeri dal proiettore.
+
+![Le scritte Training loss e Test loss nel sito, evidenziate.](immagini_slide/playground_perdita.png)
 
 ---
 
-# Slide 10 — Cinquanta flappy birds, una rete ciascuno
+# Slide 16 — Cinquanta flappy birds, una rete ciascuno
 <!-- layout: CONTENUTO -->
 
 > Nessuno corregge queste reti. Si tengono le migliori.
 
 Ogni flappy bird ha una piccola rete che decide quando saltare. A ogni generazione restano le migliori, con piccole variazioni.
 
-xviniette.github.io/FlappyLearning
+![Flappy Learning: gli uccellini in volo e il punteggio in alto.](immagini_slide/flappy.png)
 
 ---
 
-# Slide 11 — Adesso cambiamo le istruzioni
+# Slide 17 — Adesso cambiamo le istruzioni
 <!-- layout: SEZIONE -->
 
 Microsoft Copilot legge il testo che scrivete voi.
@@ -107,7 +171,7 @@ In Playground e in Flappy cambiavano i pesi. Qui cambiate il testo.
 
 ---
 
-# Slide 12 — Che cosa legge Copilot
+# Slide 18 — Che cosa legge Copilot
 <!-- layout: CONTENUTO -->
 
 | Che cosa legge | Chi lo scrive | A che cosa serve |
@@ -120,7 +184,7 @@ Copilot legge le tre cose insieme e risponde. Un agente è un assistente con ist
 
 ---
 
-# Slide 13 — Che cosa costruite oggi
+# Slide 19 — Che cosa costruite oggi
 <!-- layout: CONTENUTO -->
 
 > Un agente per il noleggio di biciclette Ruota Libera.
@@ -131,7 +195,7 @@ Il titolare lo vuole con due lavori: calcolare da quanto tempo una bici è fuori
 
 ---
 
-# Slide 14 — Prima un esempio: la pizzeria
+# Slide 20 — Prima un esempio: la pizzeria
 <!-- layout: CONTENUTO -->
 
 > «La pizza è arrivata fredda e dopo un'ora. Mi ridate anche i soldi?»
@@ -142,7 +206,7 @@ Alzata di mano: l’agente deve rispondere prima alla pizza fredda o ai soldi?
 
 ---
 
-# Slide 15 — Le istruzioni dell’agente della pizzeria
+# Slide 21 — Le istruzioni dell’agente della pizzeria
 <!-- layout: CONTENUTO -->
 
 | Parte | Che cosa c’è scritto (estratti) |
@@ -156,7 +220,7 @@ Alzata di mano: l’agente deve rispondere prima alla pizza fredda o ai soldi?
 
 ---
 
-# Slide 16 — Il docente prova la richiesta
+# Slide 22 — Il docente prova la richiesta
 <!-- layout: CONTENUTO -->
 
 > Quale riga delle istruzioni ha guidato la risposta?
@@ -167,7 +231,7 @@ La prima riga dice «Lavoro usato:». L’ha scritta il modello: controllate voi
 
 ---
 
-# Slide 17 — Adesso tocca a voi: il noleggio
+# Slide 23 — Adesso tocca a voi: il noleggio
 <!-- layout: CONTENUTO -->
 
 | Parte | Pizzeria | Noleggio |
@@ -181,7 +245,7 @@ Stesse quattro parti. Il contenuto lo scrivete voi.
 
 ---
 
-# Slide 18 — Che cosa aprire
+# Slide 24 — Che cosa aprire
 <!-- layout: CONTENUTO -->
 
 | Programma | Che cosa ci fate |
@@ -194,7 +258,7 @@ I tre testi contengono i fatti: non vanno copiati nelle istruzioni.
 
 ---
 
-# Slide 19 — Gli appunti del banco: la bici 5
+# Slide 25 — Gli appunti del banco: la bici 5
 <!-- layout: CONTENUTO -->
 
 Il registro è un quaderno: data, ora e che cosa è successo. Due appunti (estratti):
@@ -208,7 +272,7 @@ Per quanti minuti è stata fuori servizio la bici 5?
 
 ---
 
-# Slide 20 — Un esempio svolto: la bici 5
+# Slide 26 — Un esempio svolto: la bici 5
 <!-- layout: CONTENUTO -->
 
 Fuori servizio: da quando la bici è tolta dal noleggio a quando torna in fila.
@@ -221,7 +285,7 @@ Lo stesso conto, per un’altra bici, lo farà il vostro agente.
 
 ---
 
-# Slide 21 — Prima le regole che valgono sempre
+# Slide 27 — Prima le regole che valgono sempre
 <!-- layout: CONTENUTO -->
 
 ## Scrivete le regole per tutti i casi.
@@ -232,7 +296,7 @@ Voi: chi è l’agente e a chi risponde (al titolare e al banco), la lingua, i t
 
 ---
 
-# Slide 22 — Il primo lavoro: FUORI SERVIZIO
+# Slide 28 — Il primo lavoro: FUORI SERVIZIO
 <!-- layout: CONTENUTO -->
 
 | Riga | Pizzeria, lavoro RECLAMO (in breve) | Voi, lavoro FUORI SERVIZIO |
@@ -246,7 +310,7 @@ La prima riga della risposta dice «Lavoro usato:» e il nome. Scrivete voi, non
 
 ---
 
-# Slide 23 — Dove si salvano le istruzioni
+# Slide 29 — Dove si salvano le istruzioni
 <!-- layout: CONTENUTO -->
 
 > Il docente vi mostra dove incollare le istruzioni dell’agente.
@@ -257,7 +321,7 @@ Se l’agente non c’è: in ogni nuova conversazione inviate prima le vostre is
 
 ---
 
-# Slide 24 — Il messaggio da inviare
+# Slide 30 — Il messaggio da inviare
 <!-- layout: CONTENUTO -->
 
 | Nel messaggio | Che cosa incollate |
@@ -270,7 +334,7 @@ Tutto in un solo messaggio, in una nuova conversazione con il vostro agente.
 
 ---
 
-# Slide 25 — La prima richiesta del titolare
+# Slide 31 — La prima richiesta del titolare
 <!-- layout: CONTENUTO -->
 
 > «Per quanti minuti è stata fuori servizio la bici 12 sabato? Mostrami gli orari.»
@@ -279,7 +343,7 @@ Prima di inviare: quale risultato vi aspettate?
 
 ---
 
-# Slide 26 — Gli orari devono tornare
+# Slide 32 — Gli orari devono tornare
 <!-- layout: CONTENUTO -->
 
 ## {{MINUTI_FUORI_SERVIZIO}} minuti
@@ -292,7 +356,7 @@ Trovate le due note nel registro. Sono questi gli orari usati dal vostro agente?
 
 ---
 
-# Slide 27 — Il titolare insiste
+# Slide 33 — Il titolare insiste
 <!-- layout: CONTENUTO -->
 
 > «E quanto dobbiamo rimborsare al cliente?»
@@ -303,7 +367,7 @@ Un numero, una domanda, oppure «non posso calcolarlo»: che cosa vi aspettate?
 
 ---
 
-# Slide 28 — Quanto è rimasto senza bici il cliente
+# Slide 34 — Quanto è rimasto senza bici il cliente
 <!-- layout: CONTENUTO -->
 
 ## {{MINUTI_SENZA_BICI}} minuti
@@ -316,7 +380,7 @@ Il rimborso conta questi minuti, non i {{MINUTI_FUORI_SERVIZIO}} di fuori serviz
 
 ---
 
-# Slide 29 — Qui serve un dato in più
+# Slide 35 — Qui serve un dato in più
 <!-- layout: CONTENUTO -->
 
 > Nel registro non c’è il tipo di noleggio.
@@ -327,7 +391,7 @@ Dire che manca è corretto. Scegliere una tariffa al posto vostro non lo è.
 
 ---
 
-# Slide 30 — Il secondo lavoro: scegliete voi
+# Slide 36 — Il secondo lavoro: scegliete voi
 <!-- layout: CONTENUTO -->
 
 | Lavoro | Che cosa fa | Testo da usare |
@@ -339,7 +403,7 @@ Scrivetelo con le stesse quattro righe: quando si usa, dati che servono, regole 
 
 ---
 
-# Slide 31 — L’elenco delle richieste
+# Slide 37 — L’elenco delle richieste
 <!-- layout: CONTENUTO -->
 
 | Se il cliente della pizzeria… | L’agente usa… |
@@ -353,7 +417,7 @@ Scrivete l’elenco del noleggio. Due lavori insieme: quale viene prima? E se la
 
 ---
 
-# Slide 32 — Come deve parlare il vostro agente?
+# Slide 38 — Come deve parlare il vostro agente?
 <!-- layout: CONTENUTO -->
 
 > Scrivete due esempi vostri di risposta, nello stile che volete.
@@ -364,7 +428,7 @@ Aggiungeteli alle istruzioni. La prova userà una richiesta diversa dagli esempi
 
 ---
 
-# Slide 33 — Una richiesta che usa tutti e due i lavori
+# Slide 39 — Una richiesta che usa tutti e due i lavori
 <!-- layout: CONTENUTO -->
 
 > Inventate una richiesta che obblighi l’agente a usare entrambi i lavori.
@@ -375,7 +439,7 @@ Poi provatela in una nuova conversazione, con i testi che servono: registro e re
 
 ---
 
-# Slide 34 — Il vostro caso più scomodo
+# Slide 40 — Il vostro caso più scomodo
 <!-- layout: CONTENUTO -->
 
 | Tipo di richiesta | Nella pizzeria |
@@ -388,7 +452,7 @@ Inventatene una per il noleggio. Decidete prima: deve rispondere, chiedere o dir
 
 ---
 
-# Slide 35 — Ultima richiesta dal negozio
+# Slide 41 — Ultima richiesta dal negozio
 <!-- layout: CONTENUTO -->
 
 > «Come si chiama il meccanico che ha cambiato le pastiglie?»
@@ -397,7 +461,7 @@ Nuova conversazione, con il registro.
 
 ---
 
-# Slide 36 — Il registro non fa nomi
+# Slide 42 — Il registro non fa nomi
 <!-- layout: CONTENUTO -->
 
 > «Non è scritto» è una risposta utile.
@@ -406,7 +470,7 @@ Anche dire che la richiesta non è un suo lavoro è accettabile. Inventare un no
 
 ---
 
-# Slide 37 — Correggete e riprovate
+# Slide 43 — Correggete e riprovate
 <!-- layout: CONTENUTO -->
 
 Se una risposta non rispetta i testi: correggete il file, aggiornate l’agente e riprovate in una nuova conversazione.
@@ -417,7 +481,7 @@ Se funzionava già: trovate la regola che ha aiutato e inventate un’altra rich
 
 ---
 
-# Slide 38 — L’esempio del docente
+# Slide 44 — L’esempio del docente
 <!-- layout: CONTENUTO -->
 
 Il docente proietta le istruzioni di esempio per il noleggio.
@@ -428,7 +492,7 @@ Guardate: due lavori insieme, dati che mancano, richieste che non sono un lavoro
 
 ---
 
-# Slide 39 — Tre risposte. Quale preferite?
+# Slide 45 — Tre risposte. Quale preferite?
 <!-- layout: CONTENUTO -->
 
 Scegliete una richiesta già provata. Stessi documenti per tutte e tre le risposte.
@@ -443,7 +507,7 @@ Scegliete una richiesta già provata. Stessi documenti per tutte e tre le rispos
 
 ---
 
-# Slide 40 — Avete scelto. Non avete addestrato.
+# Slide 46 — Avete scelto. Non avete addestrato.
 <!-- layout: CONTENUTO -->
 
 Le preferenze tra risposte possono diventare dati per un addestramento.
@@ -454,7 +518,7 @@ Se le risposte sono uguali, è un risultato valido: il confronto non permette di
 
 ---
 
-# Slide 41 — Che cosa avete cambiato?
+# Slide 47 — Che cosa avete cambiato?
 <!-- layout: CHIUSURA -->
 
 In Playground cambiavano i pesi. In Copilot, che cosa avete modificato voi?
