@@ -12,8 +12,6 @@ ITS MAKER · 12 novembre 2026 · Microsoft Copilot e giochi nel browser
 
 > Se chiedete due volte la stessa cosa all’AI, deve rispondere allo stesso modo?
 
-Scegliete: sempre, qualche volta, mai.
-
 ---
 
 # Slide 03 — Come continuereste questa frase?
@@ -22,8 +20,6 @@ Scegliete: sempre, qualche volta, mai.
 > «La visualizzazione dei dati permette agli utenti di…»
 
 Transformer Explainer usa la frase inglese «Data visualization empowers users to».
-
-Il docente vi aiuta a leggere le parole proposte. Non è una prova d’inglese.
 
 ---
 
@@ -88,18 +84,16 @@ Ogni linea ha un numero, il peso: lo vedete passando il mouse. Mentre la rete im
 | usati per addestrare | Training loss |
 | tenuti da parte per la prova | Test loss |
 
-Il docente aggiunge disturbo (Noise). Prima di proseguire, scommettete: miglioreranno entrambi?
+Aggiungiamo disturbo (Noise). Prima di proseguire, scommettete: miglioreranno entrambi?
 
 ---
 
-# Slide 10 — Cinquanta uccellini, una rete ciascuno
+# Slide 10 — Cinquanta flappy birds, una rete ciascuno
 <!-- layout: CONTENUTO -->
 
 > Nessuno corregge queste reti. Si tengono le migliori.
 
-Ogni uccellino ha una piccola rete che decide quando saltare. A ogni generazione restano le migliori, con piccole variazioni.
-
-Guardate Generation e Score, dal proiettore.
+Ogni flappy bird ha una piccola rete che decide quando saltare. A ogni generazione restano le migliori, con piccole variazioni.
 
 xviniette.github.io/FlappyLearning
 
@@ -113,64 +107,91 @@ In Playground e in Flappy cambiavano i pesi. Qui cambiate il testo.
 
 ---
 
-# Slide 12 — Prima, un altro caso: il noleggio di biciclette
+# Slide 12 — Che cosa costruite oggi
 <!-- layout: CONTENUTO -->
 
-Non è la P03. Serve a vedere come un agente sceglie tra più lavori, senza darvi un testo da copiare.
+> Un assistente per la pressa P03.
+
+Il responsabile del reparto ne vuole uno solo: calcola un fermo e fa anche un secondo lavoro.
+
+## Esempio → fermo → secondo lavoro → prove → confronto
+
+---
+
+# Slide 13 — Prima, un assistente già fatto: le biciclette
+<!-- layout: CONTENUTO -->
 
 > «La bici 12 ha i freni che non tengono. Mi ridate anche i soldi?»
 
-Quale lavoro viene prima? Quale dato deve chiedere l’agente?
+Un agente è un assistente di Copilot con istruzioni salvate. Il docente ne mostra uno per un noleggio di biciclette. Non è la P03.
+
+Alzata di mano: prima i freni o prima i soldi?
 
 ---
 
-# Slide 13 — Un indice per scegliere il lavoro
+# Slide 14 — Com'è fatto
 <!-- layout: CONTENUTO -->
 
-| Se la richiesta riguarda… | L’agente usa… |
+| Parte delle istruzioni | Nelle biciclette | Nella vostra P03 |
+| --- | --- | --- |
+| Regole per tutte le richieste (valgono sempre) | freni che non tengono: «Non usare la bici» | le scrivete voi |
+| Indice delle richieste (dice quale lavoro usare) | bici rotta: GUASTO. Soldi indietro: RIMBORSO | FERMO e il secondo lavoro |
+| Competenze (un lavoro ciascuna, con dati e regole) | PRENOTAZIONE, GUASTO, RIMBORSO | FERMO, poi ALLARMI o PASSAGGIO |
+| Stile delle risposte (come deve parlare) | frasi brevi, il dato prima | due esempi vostri |
+
+Sono parti dello stesso testo, non programmi separati. Scegliere quali usare e in che ordine si chiama orchestrare.
+
+---
+
+# Slide 15 — Che cosa aprire
+<!-- layout: CONTENUTO -->
+
+| Programma | Che cosa ci fate |
 | --- | --- |
-| prenotare o cambiare orario | PRENOTAZIONE |
-| una bici rotta | GUASTO |
-| soldi indietro | RIMBORSO |
+| Teams | scaricate i tre testi della P03: registro, regole degli indicatori, guida allarmi |
+| Blocco note | aprite i tre testi e scrivete le istruzioni, da salvare come istruzioni_assistente_P03.txt |
+| Microsoft Copilot | con l'account scolastico, salvate l'agente e lo provate |
 
-Ogni competenza è una parte delle istruzioni. Orchestrare significa scegliere quali usare e in quale ordine. Non sono tre programmi separati.
+I tre testi sono le fonti: non vanno copiati nelle istruzioni.
 
 ---
 
-# Slide 14 — Adesso torniamo alla pressa P03
+# Slide 16 — Il primo lavoro: il fermo
 <!-- layout: CONTENUTO -->
 
-Il vostro agente deve calcolare un fermo.
+## Scrivete le regole comuni e il lavoro FERMO.
 
-Poi, a vostra scelta: spiegare un allarme oppure scrivere una nota di turno.
+FERMO: quando si usa, quali dati servono, come calcola la durata, che cosa risponde se un dato manca.
 
-> Le biciclette erano un esempio. Il testo dell’agente lo scrivete voi.
+La prima riga della risposta dice «Competenza usata:» e il nome del lavoro.
+
+Scrivete voi, non Copilot.
 
 ---
 
-# Slide 15 — Costruite il primo pezzo
+# Slide 17 — Dove si salvano le istruzioni
 <!-- layout: CONTENUTO -->
 
-## Un agente che calcola il fermo.
+> Il docente vi mostra dove incollare le istruzioni dell’agente.
 
-Scrivete voi le istruzioni e provatelo subito. Non serve completare l’agente prima di vedere se funziona.
+Poi aprite una nuova conversazione con il vostro agente.
 
-Obiettivi, testi da usare e passaggi sono nella consegna.
+Se l’agente non c’è: in ogni nuova conversazione inviate prima le vostre istruzioni; poi, in un secondo messaggio, testi e richiesta.
 
 ---
 
-# Slide 16 — Un messaggio dal reparto
+# Slide 18 — Un messaggio dal reparto
 <!-- layout: CONTENUTO -->
 
 > «Quanto è durato il fermo del 14 ottobre? Mostrami gli orari.»
 
-Date all’agente il registro e le regole degli indicatori.
+In un solo messaggio: il registro, le regole degli indicatori e, in fondo, questa richiesta.
 
 Prima di inviare: quale risultato vi aspettate?
 
 ---
 
-# Slide 17 — Gli orari devono tornare
+# Slide 19 — Gli orari devono tornare
 <!-- layout: CONTENUTO -->
 
 ## {{MINUTI_FERMO}} minuti
@@ -179,11 +200,11 @@ Prima di inviare: quale risultato vi aspettate?
 
 Il fermo finisce quando riprende la produzione, non quando finiscono le prove.
 
-Trovate le due note nel registro. Sono questi gli orari usati dal vostro agente?
+Trovate le due note nel registro. Sono questi gli orari usati dal vostro agente? Se no, correggete le istruzioni e riprovate in una nuova conversazione.
 
 ---
 
-# Slide 18 — Il responsabile insiste
+# Slide 20 — Il responsabile insiste
 <!-- layout: CONTENUTO -->
 
 > «E quanti pezzi abbiamo perso?»
@@ -194,29 +215,39 @@ Un numero, una domanda o un limite dichiarato: che cosa vi aspettate?
 
 ---
 
-# Slide 19 — Qui serve un dato in più
+# Slide 21 — Qui serve un dato in più
 <!-- layout: CONTENUTO -->
 
 > La cadenza non è nel registro.
 
-Per calcolare i pezzi teorici persi, l’agente deve chiederla.
+La cadenza è quanti pezzi all’ora produce la pressa: sta nella ricetta, non nel registro. Per calcolare i pezzi persi, l’agente deve chiederla.
 
 Dire che manca è corretto. Scegliere un numero al posto vostro non lo è.
 
 ---
 
-# Slide 20 — Dategli un secondo mestiere
+# Slide 22 — Il secondo lavoro: scegliete voi
 <!-- layout: CONTENUTO -->
 
-Spiegare un allarme dalla guida, oppure preparare una nota dal registro?
+| Lavoro | Che cosa fa | Fonte |
+| --- | --- | --- |
+| ALLARMI | spiega un allarme: significato, primo controllo, chi interviene | guida allarmi |
+| PASSAGGIO | prepara una nota per il turno dopo: fatti, interventi, controlli da fare | registro |
 
-Scegliete voi. Aggiungete la competenza e l’indice delle richieste.
-
-> Se una richiesta serve a due lavori, quale viene prima?
+Aggiungete al vostro file il lavoro che preferite.
 
 ---
 
-# Slide 21 — Come deve parlare il vostro agente?
+# Slide 23 — L’indice: quale lavoro, in che ordine
+<!-- layout: CONTENUTO -->
+
+> Se una richiesta serve a due lavori, quale viene prima? E se non serve a nessuno?
+
+Scrivete nel file l’indice delle richieste: quale richiesta va a quale lavoro. Poi decidete questi due casi.
+
+---
+
+# Slide 24 — Come deve parlare il vostro agente?
 <!-- layout: CONTENUTO -->
 
 > Scrivete due esempi vostri di risposta, nello stile che volete.
@@ -227,29 +258,29 @@ Le istruzioni restano nel vostro file istruzioni_assistente_P03.txt.
 
 ---
 
-# Slide 22 — Servono tutte e due le competenze
+# Slide 25 — Un caso che usa tutti e due i lavori
 <!-- layout: CONTENUTO -->
 
 > Inventate una richiesta che obblighi l’agente a usare entrambi i lavori.
 
 Decidete prima l’ordine e che cosa deve comparire nella risposta.
 
-Poi provate, con i documenti necessari. La riga «Competenza usata» è una dichiarazione: conta la risposta.
+Poi provatela in una nuova conversazione, con i testi che servono. La riga «Competenza usata» è una dichiarazione del modello: conta la risposta.
 
 ---
 
-# Slide 23 — Il vostro caso più scomodo
+# Slide 26 — Il vostro caso più scomodo
 <!-- layout: CONTENUTO -->
 
-Inventate una richiesta con un dato mancante, una fonte insufficiente o un lavoro fuori dall’indice.
+Inventate una richiesta con un dato che manca, un testo che non basta o un lavoro che l’agente non ha.
 
-> Deve rispondere, chiedere o fermarsi?
+> Deve rispondere, chiedere o dire che non può?
 
 Decidetelo prima. Poi confrontate la risposta con i testi: nessun diario da compilare.
 
 ---
 
-# Slide 24 — Ultimo messaggio dal reparto
+# Slide 27 — Ultimo messaggio dal reparto
 <!-- layout: CONTENUTO -->
 
 > «Come si chiama il tecnico che ha cambiato il filtro?»
@@ -258,7 +289,7 @@ Nuova conversazione, con il registro.
 
 ---
 
-# Slide 25 — Il registro non fa nomi
+# Slide 28 — Il registro non fa nomi
 <!-- layout: CONTENUTO -->
 
 > «Non è scritto» è una risposta utile.
@@ -267,29 +298,33 @@ Anche dichiarare che la richiesta è fuori dalle proprie competenze è accettabi
 
 ---
 
-# Slide 26 — Quale regola tenete?
+# Slide 29 — Quale regola tenete?
 <!-- layout: CONTENUTO -->
 
 Correggete dove serve e riprovate il caso.
 
 Se funzionava già, trovate la regola che ha aiutato. Sapete inventare un’altra richiesta che la metta alla prova?
 
-Poi confrontiamo le vostre istruzioni con un altro esempio.
+Nell’esempio del docente: c’è una regola che a voi manca?
 
 ---
 
-# Slide 27 — Due risposte vere. Quale preferite?
+# Slide 30 — Due risposte vere. Quale preferite?
 <!-- layout: CONTENUTO -->
 
-Stessa richiesta, stessi documenti: una nuova risposta del vostro agente e una di Copilot senza agente.
+Scegliete una richiesta già provata. Stessi documenti per tutte e tre le risposte.
 
-Conservate anche la prima risposta dell’agente.
+| Risposta | Dove la prendete |
+| --- | --- |
+| la prima del vostro agente | la prova già fatta |
+| Copilot senza agente | nuova conversazione, senza le vostre istruzioni |
+| il vostro agente, di nuovo | nuova conversazione con l’agente |
 
 > Tra le due risposte dell’agente, sceglietene una e difendetela con due motivi.
 
 ---
 
-# Slide 28 — Avete scelto. Non avete addestrato.
+# Slide 31 — Avete scelto. Non avete addestrato.
 <!-- layout: CONTENUTO -->
 
 Le preferenze tra risposte possono diventare dati per un addestramento.
@@ -300,16 +335,7 @@ Se le risposte sono uguali, è un risultato valido: il confronto non permette di
 
 ---
 
-# Slide 29 — Se Copilot si ferma
-<!-- layout: CONTENUTO -->
-
-L’agente non è disponibile? Conversazione normale: prima le vostre istruzioni, poi documenti e richiesta. Non sono vere istruzioni di sistema.
-
-Copilot non risponde? Applichiamo le vostre regole a una richiesta dal proiettore. È una prova a secco, non una risposta del modello.
-
----
-
-# Slide 30 — Che cosa avete cambiato?
+# Slide 32 — Che cosa avete cambiato?
 <!-- layout: CHIUSURA -->
 
 In Playground cambiavano i pesi. In Copilot, che cosa avete modificato voi?

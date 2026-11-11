@@ -51,79 +51,109 @@ Il docente apre Flappy Learning: `https://xviniette.github.io/FlappyLearning/`. 
 
 Anche qui cambiano i pesi, ma nessuno li corregge guardando un errore: si copiano le reti migliori con piccole modifiche a caso. È un altro modo di imparare.
 
-## Parte 4 · Costruite e collaudate l'agente P03
+## Parte 4 · Un assistente per la pressa P03
 
-Aprite Microsoft Copilot con l'account scolastico. Scaricate da Teams questi tre testi e apriteli con Blocco note:
+Ora cambia il lavoro: non guardate più reti, scrivete istruzioni per Copilot. Copilot legge il testo che scrivete voi: i suoi pesi non cambiano. Il percorso è questo:
 
-- `Registro_P03_13-15_ottobre_2026.txt`: i fatti della pressa;
-- `Regole_indicatori_P03.txt`: le definizioni per i calcoli;
-- `Guida_allarmi_P03.txt`: le spiegazioni e i limiti degli interventi.
+1. guardate un assistente già fatto, per un altro caso: il noleggio di biciclette;
+2. scrivete il primo lavoro dell'assistente per la P03: il fermo;
+3. aggiungete un secondo lavoro;
+4. inventate due richieste per metterlo alla prova;
+5. confrontate le risposte con e senza le vostre istruzioni.
 
-L'estensione `.txt` indica un file di testo semplice. Per copiarlo: Ctrl+A, Ctrl+C; per incollarlo: Ctrl+V. I documenti restano fonti separate: non vanno copiati nel file delle istruzioni.
+Prima di cominciare, aprite questi programmi:
 
-Un **agente** è un assistente di Copilot con istruzioni salvate. Una **competenza** è una parte delle istruzioni dedicata a un lavoro. L'**indice delle richieste** collega le domande alle competenze. **Orchestrazione** significa scegliere quali usare e in quale ordine: qui lo chiedete con del testo, non programmate funzioni separate.
+| Programma | Che cosa ci fate |
+| --- | --- |
+| Teams | scaricate i tre testi della P03 |
+| Blocco note | aprite i tre testi e scrivete le vostre istruzioni |
+| Microsoft Copilot | con l'account scolastico, salvate l'agente e lo provate |
 
-### 4A · Scegliete prima di vedere la risposta
+| Testo da scaricare | Che cosa contiene |
+| --- | --- |
+| `Registro_P03_13-15_ottobre_2026.txt` | i fatti della pressa |
+| `Regole_indicatori_P03.txt` | le definizioni per i calcoli |
+| `Guida_allarmi_P03.txt` | le spiegazioni e i limiti degli interventi |
 
-Il docente mostra un agente per un noleggio di biciclette. Non è la P03: serve a vedere la struttura di un agente con più competenze prima di scrivere il vostro. Per la richiesta proiettata, scegliete per alzata di mano quale competenza serve, oppure se ne servono due. Poi guardate la risposta e le istruzioni che l'hanno guidata. La riga «Competenza usata» è una dichiarazione del modello: controllate anche quello che fa davvero. Poi tornate alla pressa.
+L'estensione `.txt` indica un file di testo semplice. Per copiarlo: Ctrl+A, Ctrl+C; per incollarlo: Ctrl+V. I tre testi sono le fonti: non vanno copiati nel file delle istruzioni.
 
-### 4B · Provate subito una competenza
+### 4A · Guardate un assistente già fatto
 
-Aprite Blocco note e salvate `istruzioni_assistente_P03.txt`. Scrivete voi, senza far preparare il testo a Copilot:
+Il docente mostra un assistente per un noleggio di biciclette. Un **agente** è un assistente di Copilot con istruzioni salvate: le scrive chi lo crea e Copilot le legge a ogni conversazione. Quello delle biciclette non è la P03: serve a vedere com'è fatto un agente che sa fare più lavori. Le sue istruzioni hanno quattro parti:
 
-- le regole comuni: ruolo, lingua, fonti ammesse e limiti;
-- una competenza **FERMO**, che ricavi la durata secondo le regole, mostri gli orari usati e chieda i dati necessari quando mancano.
+| Parte | A che cosa serve |
+| --- | --- |
+| Regole per tutte le richieste | valgono sempre |
+| Indice delle richieste | dice quale lavoro usare |
+| Competenze | un lavoro ciascuna, con i suoi dati e le sue regole |
+| Stile delle risposte | come deve parlare |
 
-Decidete come deve essere fatta la risposta. Deve cominciare con «Competenza usata:» e il nome. Le istruzioni devono permettere di distinguere un dato documentato da un dato assente: non basta dire «rispondi bene».
+Il docente proietta una richiesta di un cliente. Per alzata di mano: quale lavoro serve per primo, oppure ne servono due? Poi guardate la risposta e il testo che l'ha guidata. La prima riga dice «Competenza usata»: l'ha scritta il modello. Controllate voi se la risposta fa davvero quel lavoro.
 
-Il docente mostra come inserire e salvare le istruzioni, se la funzione agente è disponibile. Non usate la creazione automatica del testo. Copiate le vostre istruzioni, poi aprite una nuova conversazione con l'agente.
+**Orchestrare** significa scegliere quali lavori usare e in che ordine. Qui lo fate con del testo: le competenze non sono programmi separati.
 
-Incollate **registro e regole degli indicatori**, poi la prima richiesta dal proiettore, senza aggiungere suggerimenti. Inviatela prima che il docente mostri i criteri. Confrontate risposta e fonti con i criteri rivelati, poi rispondete per alzata di mano. Se serve, correggete le istruzioni e riprovate in una conversazione nuova.
+Il vostro agente avrà le stesse quattro parti. Il contenuto lo scrivete voi.
 
-Nella chat che contiene la prima prova proseguite con la seconda richiesta del proiettore. Aspettate la risposta prima di leggere il nuovo criterio. Controllate se il modello usa dati presenti oppure sceglie da solo quelli che gli servono. Correggete soltanto dove occorre.
+### 4B · Primo lavoro: il fermo
 
-### 4C · Aggiungete un secondo lavoro
+1. Aprite Blocco note e salvate un file nuovo: `istruzioni_assistente_P03.txt`.
+2. Scrivete voi, senza far preparare il testo a Copilot, due cose:
+   - le regole comuni: ruolo, lingua, quali testi può usare, che cosa non deve fare;
+   - il lavoro **FERMO**: quando si usa, quali dati servono, come calcola la durata secondo le regole degli indicatori, quali orari mostra, che cosa risponde se un dato manca.
+3. Decidete come comincia ogni risposta: con «Competenza usata:» e il nome del lavoro. «Rispondi bene» non basta: dite che cosa fare con un dato scritto nei testi e con un dato che manca.
+4. Il docente vi mostra dove incollare le istruzioni in Copilot, se la funzione agente è disponibile. Non usate la creazione automatica del testo: incollate le vostre istruzioni e salvate l'agente. Se la funzione non c'è, seguite «Se Copilot non è disponibile», in fondo.
+5. Aprite una nuova conversazione con l'agente. In un solo messaggio incollate il registro e le regole degli indicatori e scrivete in fondo la prima richiesta del proiettore, senza aggiungere suggerimenti. Inviatela prima che il docente mostri i criteri.
+6. Confrontate la risposta con i criteri e rispondete per alzata di mano. Se qualcosa non va, correggete le istruzioni e riprovate in una nuova conversazione.
+7. Nella conversazione della prima prova, scrivete la seconda richiesta del proiettore. Aspettate la risposta prima di leggere il nuovo criterio. Controllate che ogni numero usato dal modello sia scritto nel registro o nelle regole degli indicatori. Correggete soltanto dove serve.
 
-Scegliete una delle due competenze:
+### 4C · Secondo lavoro, indice e stile
 
-| Competenza | Fonte | Obiettivo e limiti |
+Scegliete uno dei due lavori:
+
+| Lavoro | Fonte | Obiettivo e limiti |
 | --- | --- | --- |
 | ALLARMI | Guida allarmi | Spiegare significato, primo controllo e chi interviene, dove la guida lo indica. Niente consigli aggiunti né aggiramenti delle protezioni. |
 | PASSAGGIO | Registro | Preparare una nota per il turno successivo con fatti, interventi e controlli ancora richiesti. Chiarire giorno o turno quando non sono identificabili. |
 
-Aggiungete al vostro file la competenza scelta e un indice per riconoscere le richieste. Stabilite che cosa fare se una richiesta richiede **entrambe** le competenze, in quale ordine usarle e che cosa rispondere a una richiesta **fuori indice**. Ogni competenza deve dire quali documenti servono e che cosa fare se le fonti non bastano.
+Aggiungete al vostro file:
 
-Scrivete anche **due esempi vostri** del modo in cui volete ricevere le risposte. Devono mostrare uno stile, non diventare risposte da ripetere a tutte le domande.
+- il lavoro scelto, scritto come FERMO: quando si usa, quali testi usa, quali dati servono, come risponde, che cosa fa se i testi non bastano;
+- l'**indice delle richieste**: quale richiesta va a quale lavoro;
+- che cosa fare se una richiesta serve a **entrambi** i lavori, e quale viene prima;
+- che cosa rispondere a una richiesta che non serve a nessuno dei due, cioè **fuori indice**;
+- **due esempi vostri** del modo in cui volete ricevere le risposte. Devono mostrare uno stile, non diventare risposte da ripetere a tutte le domande.
 
-Salvate e aggiornate le istruzioni in Copilot. Controllate che il testo sia arrivato intero: nel passaggio possono perdersi righe. Il file conserva soltanto le istruzioni, senza appunti sulle modifiche.
+Salvate e aggiornate l'agente in Copilot. Controllate che il testo sia arrivato intero: nel passaggio possono perdersi righe. Il file conserva soltanto le istruzioni, senza appunti sulle modifiche.
 
-### 4D · Inventate due casi che contano
+### 4D · Inventate due richieste per metterlo alla prova
 
 Inventate voi due richieste, diverse dagli esempi di stile:
 
-- una che richieda **entrambe le competenze**;
-- una con **un dato mancante, una fonte insufficiente o una richiesta fuori indice**.
+- una che richieda **entrambi i lavori**;
+- una con **un dato che manca** (la richiesta non lo dice), **un testo che non basta** (i documenti non lo contengono) oppure **un lavoro che l'agente non ha** (fuori indice).
 
-Prima di inviare ogni caso, decidete che cosa conterà come risposta corretta e individuate sullo schermo i passi delle fonti che permettono di controllarla. Potete dirlo a voce: non compilate un registro.
+Prima di inviare ogni richiesta, decidete che cosa conterà come risposta corretta e individuate nei testi i passi che permettono di controllarla. Potete dirlo a voce: non compilate un registro.
 
-Scrivete la richiesta direttamente in Copilot, in una **nuova conversazione per ogni caso**, insieme ai documenti necessari. Con FERMO + ALLARMI servono registro, regole degli indicatori e guida allarmi; con FERMO + PASSAGGIO servono registro e regole. Nel secondo caso scegliete le fonti in base alla richiesta, senza aggiungere il dato che volete mettere alla prova.
+Scrivete la richiesta in Copilot, in una **nuova conversazione per ogni caso**. In un solo messaggio, come nella prima prova, mettete i documenti necessari e in fondo la richiesta. Con FERMO e ALLARMI servono registro, regole degli indicatori e guida allarmi; con FERMO e PASSAGGIO servono registro e regole. Nel secondo caso scegliete i documenti in base alla richiesta, senza aggiungere il dato che volete mettere alla prova.
 
-Confrontate la risposta con ciò che avevate deciso e con i documenti. Una domanda per ottenere un dato davvero necessario può essere la risposta corretta. Se tutto funziona, spiegate quale vostra regola lo rende possibile e inventate un altro caso: non peggiorate le istruzioni per provocare un errore.
+Confrontate la risposta con ciò che avevate deciso e con i documenti. Una domanda per ottenere un dato davvero necessario può essere la risposta corretta. Se tutto funziona, spiegate quale vostra regola lo rende possibile e inventate un'altra richiesta: non peggiorate le istruzioni per provocare un errore.
 
 ### 4E · L'ultima richiesta e le correzioni
 
-Aprite una nuova conversazione, incollate il **registro** e inviate l'ultima richiesta dal proiettore. Solo dopo la risposta il docente mostra il criterio.
+Aprite una nuova conversazione. In un solo messaggio incollate il **registro** e scrivete in fondo l'ultima richiesta dal proiettore. Solo dopo la risposta il docente mostra il criterio.
 
-Riguardate anche i vostri casi originali. Se qualcosa non rispetta fonti o istruzioni, correggete il punto necessario nel file, aggiornate Copilot e riprovate quel caso in una conversazione nuova. Un collaudo superato dopo una correzione vale quanto uno superato al primo invio. Non c'è un errore da ottenere per forza.
+Riguardate anche le vostre due richieste. Se qualcosa non rispetta i testi o le istruzioni, correggete il punto necessario nel file, aggiornate Copilot e riprovate quel caso in una nuova conversazione. Una prova superata dopo una correzione vale quanto una superata al primo invio. Non c'è un errore da ottenere per forza.
 
 Nel confronto finale raccontate dal vostro schermo un caso e la regola che avete mantenuto o cambiato. Niente elenco scritto degli esiti.
 
+Poi il docente proietta un esempio di istruzioni per la P03. Confrontatelo con il vostro file: che cosa avete scritto voi e non c'è nell'esempio? Che cosa c'è nell'esempio e vi manca? Se trovate una regola che vi manca, scrivetela con parole vostre: non si copia l'esempio. Se avete aggiunto una regola, aggiornate l'agente e riprovate una vostra richiesta in una nuova conversazione: questa risposta vi servirà nel confronto finale.
+
 ### 4F · Avete cambiato i pesi o il testo?
 
-1. Scegliete una richiesta del collaudo per cui avete già una risposta reale del vostro agente. Riutilizzate quella risposta e conservate esattamente richiesta e documenti.
-2. In una nuova conversazione con **Copilot normale, senza agente**, inviate gli stessi documenti e la stessa richiesta, senza le vostre istruzioni.
-3. In un'altra nuova conversazione con l'agente, inviate ancora gli stessi documenti e la stessa richiesta. Per il confronto mantenete le stesse istruzioni della prima risposta scelta.
-4. Confrontate ordine, lunghezza e parole delle tre risposte. Tra le due risposte reali dell'agente, scegliete quella che preferite e dite **due motivi** a voce; se sono equivalenti, motivate la parità. Confrontatele anche con quella senza agente.
+1. Scegliete una richiesta provata con le istruzioni che avete adesso, per cui avete una risposta reale del vostro agente. Conservate esattamente richiesta e documenti.
+2. In una nuova conversazione con **Copilot normale, senza agente**, inviate in un solo messaggio gli stessi documenti e la stessa richiesta, senza le vostre istruzioni.
+3. In un'altra nuova conversazione con l'agente, inviate ancora in un solo messaggio gli stessi documenti e la stessa richiesta. Mantenete le stesse istruzioni della prima risposta.
+4. Confrontate ordine, lunghezza e parole delle tre risposte. Tra le due risposte dell'agente, scegliete quella che preferite e dite **due motivi** a voce; se sono equivalenti, motivate la parità. Poi confrontatele con quella senza agente.
 
 Possono uscire risposte uguali o differenze poco visibili: sono risultati validi. Le istruzioni cambiano il **testo letto** da Copilot, non i suoi **pesi**. Le preferenze tra risposte possono diventare dati per un vero addestramento; questa attività non addestra il modello. Flappy e Playground aiutano a distinguere i procedimenti, non riproducono l'addestramento di Copilot.
 

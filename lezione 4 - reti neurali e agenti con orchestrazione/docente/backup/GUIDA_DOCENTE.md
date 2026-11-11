@@ -105,21 +105,36 @@ Nessuna promessa di un uccellino che «non muore più». Un volo lungo non è un
 
 ## Parte 4 · Copilot, richiesta, criterio, correzione
 
+**Il filo da tenere:** nelle reti cambiavano i pesi; adesso gli studenti cambiano il testo che Copilot legge. Dillo alla slide 11 e riprendilo alla slide 31. In mezzo ciascuna slide è un passo della stessa costruzione: un assistente per la P03 che calcola un fermo e fa un secondo lavoro.
+
+| Slide | Passo | Che cosa fanno gli studenti |
+| --- | --- | --- |
+| 11–12 | Dalla rete al testo; che cosa si costruisce | Ascoltano il percorso: esempio, fermo, secondo lavoro, prove, confronto |
+| 13–14 | 4A · Assistente già fatto | Guardano le biciclette e le quattro parti delle istruzioni |
+| 15 | Programmi | Aprono Teams, Blocco note e Copilot |
+| 16–21 | 4B · Primo lavoro: fermo | Scrivono FERMO, lo salvano, provano le due richieste |
+| 22–24 | 4C · Secondo lavoro, indice, stile | Aggiungono ALLARMI o PASSAGGIO, l'indice e due esempi di stile |
+| 25–26 | 4D · Due richieste vostre | Inventano e provano una richiesta con entrambi i lavori e una scomoda |
+| 27–29 | 4E · Ultima richiesta | Provano l'ultima richiesta, correggono, scelgono la regola da tenere |
+| 30–32 | 4F · Testo o pesi | Confrontano tre risposte e concludono |
+
 ### 4A · Prima le biciclette, non le istruzioni P03
 
-Mostra il caso del file del noleggio. Prima della risposta, fai scegliere per alzata di mano quale competenza serve alla richiesta mostrata, o se ne servono due. Usa le richieste già presenti nel file: non serve un personaggio aggiunto o un altro caso.
+**Perché le biciclette.** Gli studenti devono vedere com'è fatto un assistente con più lavori **prima** di scrivere il proprio, ma non si può mostrare un esempio P03: sarebbe la soluzione dell'esercizio. Le biciclette hanno la stessa struttura su un caso diverso. Dillo in una riga: «Non è la P03: serve a vedere com'è fatto. Il vostro avrà le stesse parti.» Poi riporta subito alla P03 con la slide 15.
 
-Poi mostra l'esecuzione reale, se disponibile, e i pezzi del testo che la guidano: regole, indice, competenze, gestione di due competenze o nessuna, stile. Una domanda per ottenere dati effettivamente necessari è un esito corretto. «Competenza usata» è una dichiarazione del modello, non una prova di instradamento software. Indice e competenze restano testo letto da Copilot.
+**Come condurlo.** Slide 13: mostra la richiesta «La bici 12 ha i freni che non tengono. Mi ridate anche i soldi?» e fai scegliere per alzata di mano quale lavoro serve per primo, o se ne servono due. Poi mostra l'esecuzione reale, se disponibile, e il testo che l'ha guidata, con la slide 14 accanto: regole per tutte le richieste, indice, competenze, stile. Usa le richieste già presenti nel file `ESEMPIO_DIMOSTRAZIONE_NOLEGGIO_BICICLETTE.txt`: non serve un personaggio aggiunto o un altro caso.
 
-Nella richiesta sui freni e sul rimborso, la regola 2 dell'esempio dà precedenza a «Non usare la bici» e alla proposta di cambio, anche se manca il numero della bici. Solo dopo viene la domanda sui dati mancanti. Una domanda sul rimborso senza la gestione iniziale del guasto non rispetta le istruzioni.
+**Termini.** Agente, indice, competenza e orchestrare compaiono nelle slide 13–14 con una definizione in una riga ciascuno. Non aggiungerne altri a voce. «Competenza» è soltanto «un lavoro con i suoi dati e le sue regole».
 
-Non distribuire un agente P03 già scritto. L'obiettivo non è copiare le cinque sezioni e aspettare fino alla fine per vedere se funzionano.
+Nella richiesta sui freni e sul rimborso, la regola 2 dell'esempio dà precedenza a «Non usare la bici» e alla proposta di cambio, anche se manca il numero della bici. Solo dopo viene la domanda sui dati mancanti. Una domanda sul rimborso senza la gestione iniziale del guasto non rispetta le istruzioni. Una domanda per ottenere dati effettivamente necessari è un esito corretto. «Competenza usata» è una dichiarazione del modello, non una prova di instradamento software. Indice e competenze restano testo letto da Copilot.
+
+Non distribuire un agente P03 già scritto. L'obiettivo non è copiare le sezioni e aspettare fino alla fine per vedere se funzionano.
 
 ### 4B · FERMO entra subito in prova
 
-Fai aprire Blocco note e salvare `istruzioni_assistente_P03.txt`. Scrivono regole comuni e **solo FERMO**: durata con gli orari secondo le definizioni della fonte, dati mancanti, forma della risposta. Tu dai obiettivi e limiti, non una frase pronta da incollare. Non chiedono a Copilot di scrivere le istruzioni.
+Slide 16: fai aprire Blocco note e salvare `istruzioni_assistente_P03.txt`. Scrivono regole comuni e **solo FERMO**: durata con gli orari secondo le definizioni della fonte, dati mancanti, forma della risposta, prima riga «Competenza usata:». Tu dai obiettivi e limiti, non una frase pronta da incollare. Non chiedono a Copilot di scrivere le istruzioni.
 
-Mostra dove inserire, salvare e modificare le istruzioni **solo se controllato pre-aula**. Se la funzione non c'è, passa al primo messaggio in chat normale. Gli studenti incollano registro e regole degli indicatori in una nuova conversazione, poi inviano:
+Slide 17: mostra dove inserire, salvare e modificare le istruzioni **solo se controllato pre-aula**. Non nominare pulsanti o menu non verificati. Se la funzione non c'è, gli studenti usano la riga della slide: in ogni nuova conversazione incollano prima le proprie istruzioni, poi testi e richiesta (vedi la tabella «Se manca il servizio»). Alla slide 18 incollano registro e regole degli indicatori **in un solo messaggio, con la richiesta in fondo**: se inviano prima i testi da soli, Copilot risponde ai testi e la prova si confonde. Poi inviano:
 
 > **M1 · «Quanto è durato il fermo del 14 ottobre? Mostrami gli orari.»**
 
@@ -148,7 +163,7 @@ Ciascuno inventa:
 - un caso che incroci **entrambe le competenze**;
 - un caso con dato mancante, fonte insufficiente o richiesta fuori indice.
 
-Prima dell'invio decide che cosa conterà come corretto e trova sullo schermo i passi dei documenti utili al confronto. Può dirlo a voce; nessuna riga da compilare. Scrive poi il caso direttamente in Copilot, una chat nuova per caso.
+Prima dell'invio decide che cosa conterà come corretto e trova sullo schermo i passi dei documenti utili al confronto. Può dirlo a voce; nessuna riga da compilare. Scrive poi il caso direttamente in Copilot, una chat nuova per caso, in un solo messaggio con i documenti e in fondo la richiesta.
 
 Per **FERMO + ALLARMI** servono registro, regole degli indicatori e guida allarmi. Per **FERMO + PASSAGGIO** servono registro e regole. Nel secondo caso sceglie le fonti pertinenti senza aggiungere apposta il dato assente. Fai notare la differenza fra un dato non fornito al modello e un dato assente dalla fonte.
 
@@ -156,7 +171,7 @@ Dopo la risposta controlla contenuto e fonti, non soltanto il nome della compete
 
 ### 4E · Ultimo collaudo e correzioni mirate
 
-In una nuova chat fanno la richiesta seguente con il **registro**:
+In una nuova chat, in un solo messaggio, fanno la richiesta seguente con il **registro**:
 
 > **«Come si chiama il tecnico che ha cambiato il filtro?»**
 
@@ -166,11 +181,11 @@ Correggono solo dove occorre: regola, indice, competenza oppure documenti trasfe
 
 Seconda e ultima alzata di mano collettiva P03: «Dopo i controlli e le eventuali correzioni, le risposte rispettano i criteri e le fonti?» Non distinguere chi è riuscito subito da chi ha corretto. Chiedi poi ad alcuni studenti, dal posto e guardando il loro schermo, di raccontare un caso e quale regola hanno mantenuto o cambiato. Non devono necessariamente raccontare un fallimento.
 
-**Solo ora** pubblica l'esempio nella cartella `studenti/da_pubblicare_dopo_collaudo/`. È un testo da confrontare con il loro: non una soluzione garantita e non un motivo per sostituire istruzioni proprie già funzionanti.
+**Solo ora** (slide 29) pubblica su Teams l'esempio `studenti/da_pubblicare_dopo_collaudo/ESEMPIO_ISTRUZIONI_AGENTE_P03.txt` e proiettalo. È un testo da confrontare con il loro: non una soluzione garantita e non un motivo per sostituire istruzioni proprie già funzionanti. Indica tre punti: la regola 2 (dati mancanti: una sola domanda), la riga dell'indice per due lavori insieme (quale prima), la riga di tutte le altre richieste. Per ciascuno chiedi per alzata di mano chi ha una regola che fa la stessa cosa. Chi non ce l'ha la scrive con parole proprie: non si copia l'esempio. Le tre domande scritte in cima al file («Che cosa avete scritto voi e non c'è qui? …») sono quelle da fare.
 
 ### 4F · Lo stile non dimostra un addestramento
 
-Riutilizzano una risposta **reale** dell'agente già ottenuta nel collaudo. Scelgono quella richiesta con i documenti esatti e mantengono le istruzioni che hanno prodotto la risposta scelta: se intanto le hanno cambiate, scelgono una prova ottenuta con la versione che confronteranno.
+Riutilizzano una risposta **reale** dell'agente già ottenuta nel collaudo. Scelgono quella richiesta con i documenti esatti e mantengono le istruzioni che hanno prodotto la risposta scelta. Chi ha cambiato le istruzioni dopo l'esempio (4E) usa la prova rifatta alla fine della 4E: non deve tornare a una versione precedente.
 
 Fanno due nuovi invii in chat separate: stessa richiesta e stessi documenti con **Copilot normale, senza istruzioni proprie**, e poi ancora con **l'agente**. Hanno così due risposte reali dell'agente e una senza. Non sostituire una risposta con un esempio scritto a mano.
 
@@ -206,7 +221,7 @@ La guida non contiene significato, primo controllo e incaricato in modo identico
 
 ## Se manca il servizio o qualcosa non passa
 
-Nella lezione del 4 novembre Copilot non ha risposto alle postazioni per circa 10 minuti. Un limite di richieste sull'indirizzo pubblico condiviso è un'ipotesi, non una causa accertata. Non aggiungere servizi online alternativi: niente HackMerlin, Prompt Airlines o Gandalf. Questa lezione non ha un modello locale di riserva.
+Nella lezione del 4 novembre Copilot non ha risposto alle postazioni per circa 10 minuti. Un limite di richieste sull'indirizzo pubblico condiviso è un'ipotesi, non una causa accertata. Non aggiungere servizi online alternativi: niente HackMerlin, Prompt Airlines o Gandalf. Questa lezione non ha un modello locale di riserva. Non c'è più una slide per questi casi: la conduci a voce con la tabella e con la sezione «Se Copilot non è disponibile» della consegna.
 
 | Situazione | Condotta |
 | --- | --- |
