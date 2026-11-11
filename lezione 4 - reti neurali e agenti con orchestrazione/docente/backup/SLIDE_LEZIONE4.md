@@ -47,31 +47,40 @@ Una barra alta non garantisce quale parola uscirà. E non garantisce che una fra
 
 ---
 
-# Slide 06 — Quanto piccola può essere una rete?
+# Slide 06 — Quanti neuroni servono per circondare il cerchio?
+<!-- layout: CONTENUTO -->
+
+## 0 · 1 · 2 · 3 · 10
+
+I punti blu stanno al centro, quelli arancioni attorno. Quanti neuroni servono per separarli? Alzata di mano.
+
+---
+
+# Slide 07 — Provate. Un neurone in più alla volta.
 <!-- layout: CONTENUTO -->
 
 ## Test loss sotto 0,05
 
-Sul cerchio, entro 1.500 Epoch. Con meno neuroni nascosti possibile.
+Partite da zero neuroni, poi uno, due, tre, quattro. Fermatevi a 1.500 giri (Epoch).
 
-Test loss: errore sui punti di prova. Epoch: giri di addestramento.
+Test loss: l'errore sui punti di prova. Più è basso, meglio è.
 
 playground.tensorflow.org
 
 ---
 
-# Slide 07 — Togliete un neurone. Funziona ancora?
+# Slide 08 — Che cosa disegna ogni neurone?
 <!-- layout: CONTENUTO -->
 
-> Il vostro record è la rete più piccola che avete visto riuscire.
+> Nel disegno di un neurone: una linea o un cerchio?
 
-Partite da 4 e 2 neuroni. Cambiate una scelta alla volta, sugli stessi punti.
+Passate il mouse su un neurone: il suo disegno compare in grande a destra.
 
-Poi provate con la spirale: lo stesso criterio è ancora raggiungibile?
+Ogni linea ha un numero, il peso: lo vedete passando il mouse. Mentre la rete impara, le linee cambiano spessore e colore.
 
 ---
 
-# Slide 08 — Continuare è sempre meglio?
+# Slide 09 — Continuare è sempre meglio?
 <!-- layout: CONTENUTO -->
 
 | Guardiamo i punti… | Il sito scrive… |
@@ -79,31 +88,20 @@ Poi provate con la spirale: lo stesso criterio è ancora raggiungibile?
 | usati per addestrare | Training loss |
 | tenuti da parte per la prova | Test loss |
 
-Il docente aggiunge rumore. Prima di proseguire, scommettete: miglioreranno entrambi?
+Il docente aggiunge disturbo (Noise). Prima di proseguire, scommettete: miglioreranno entrambi?
 
 ---
 
-# Slide 09 — Chi arriva a 10.000?
+# Slide 10 — Cinquanta uccellini, una rete ciascuno
 <!-- layout: CONTENUTO -->
 
-## Score almeno 10.000
+> Nessuno corregge queste reti. Si tengono le migliori.
 
-In quale fascia di Generation lo vedrete: 1–10, 11–30, 31–60, oltre 60?
+Ogni uccellino ha una piccola rete che decide quando saltare. A ogni generazione restano le migliori, con piccole variazioni.
 
-Score misura i passi della simulazione, non i tubi superati.
+Guardate Generation e Score, dal proiettore.
 
 xviniette.github.io/FlappyLearning
-
----
-
-# Slide 10 — Stesso gioco. Stessa generazione?
-<!-- layout: CONTENUTO -->
-
-> Ricaricate una volta. Cambiereste la vostra previsione?
-
-Restano le reti con i risultati migliori, con variazioni e nuove reti casuali.
-
-Non state guidando gli uccellini: osservate una selezione. Un volo lungo non è un volo infinito.
 
 ---
 
@@ -111,7 +109,7 @@ Non state guidando gli uccellini: osservate una selezione. Un volo lungo non è 
 <!-- layout: SEZIONE -->
 
 Microsoft Copilot legge il testo che scrivete voi.
-Non state addestrando i suoi pesi.
+In Playground e in Flappy cambiavano i pesi. Qui cambiate il testo.
 
 ---
 

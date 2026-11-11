@@ -8,7 +8,7 @@ Documento riservato al docente.
 
 Ognuno lavora da solo. Non passi tra i banchi, non raccogli file e non fai compilare appunti o registri di controllo. Gli esiti si leggono sugli schermi; il confronto collettivo avviene dal proiettore. Nessun nuovo strumento, cruscotto o punteggio legato alla fortuna del modello.
 
-L'ordine resta **Transformer Explainer → TensorFlow Playground → Flappy Learning → agente P03**. Si passa da probabilità, pesi e selezione dei risultati alla distinzione fra istruzioni e addestramento. I siti sono dimostrazioni di meccanismi diversi, non riproduzioni di Copilot.
+L'ordine è **Transformer Explainer → TensorFlow Playground → Flappy Learning (solo dal proiettore) → agente P03**. Si passa dalle probabilità di una parola a come una rete piccola impara cambiando numeri, poi a un altro modo di imparare (tenere le reti migliori), infine alla distinzione fra istruzioni e addestramento. I siti sono dimostrazioni di meccanismi diversi, non riproduzioni di Copilot. L'attività su cui si lavora a lungo è Playground: Flappy dura un paio di minuti.
 
 Nella parte P03 si prova subito una competenza, prima di completare l'agente. Poi ciascuno aggiunge un secondo lavoro e inventa due casi critici. Il criterio è superare collaudi controllabili sulle fonti: un risultato corretto al primo invio e uno ottenuto dopo una correzione hanno lo stesso valore. Non occorre provocare un errore.
 
@@ -37,8 +37,8 @@ Unsloth Studio non si usa. Le note per preparare la macchina virtuale della lezi
 | Limiti del testo | Prova istruzioni e messaggi con registro, regole e guida. Controlla che non si perdano righe nel copia-incolla e che le modifiche siano salvate. Non assumere un limite di caratteri non misurato. | |
 | Nuove conversazioni | Verifica come aprire chat separate con l'agente e senza agente. Controlla eventuale memoria o personalizzazione dell'account: possono influire sul confronto finale. | |
 | Transformer Explainer | Primo esempio, Top-k a 5, Probabilities leggibile, bersagli sopra 90% e sotto 30% con il solo Temperature. Controlla anche dopo lo scarico completo: quella condizione non è stata provata. | |
-| Playground | Impostazioni della consegna, velocità, visibilità di Test loss, Training loss ed Epoch. Prepara anche il confronto sul rumore al proiettore. | |
-| Flappy Learning | Pulsanti della pagina pubblicata, ritorno da MAX a x1 e lettura di Score e Generation. La velocità delle postazioni scolastiche non è misurata. | |
+| Playground | Impostazioni della consegna con **zero strati nascosti**; il **+** degli strati crea 2 neuroni, il **−** e il **+** sopra la colonna ne tolgono e aggiungono uno; azzeramento; visibilità di Test loss, Training loss ed Epoch; passando il mouse su un neurone il suo disegno compare nel riquadro grande dell'uscita; passando su una linea compare «Weight is…». Prova tu 0, 1, 2, 3 e 4 neuroni e guarda i disegni. Prepara anche il confronto sul disturbo al proiettore. | |
+| Flappy Learning | Si apre e parte da solo; trova il comando della velocità. Lo usi tu dal proiettore: gli studenti non lo aprono. La velocità delle postazioni scolastiche non è misurata. | |
 | Rete e classe | Apertura simultanea dei siti e richieste Copilot con gli account scolastici. L'indirizzo pubblico è condiviso; prepara il ramo senza servizio. | |
 | Documenti | I tre testi si aprono in Blocco note e si incollano senza perdere accenti, righe e numeri. | |
 
@@ -54,27 +54,54 @@ Se il riquadro «What is Transformer?» copre la pagina, chiudilo con la X. Prob
 
 Punto da dire: il testo precedente influenza le probabilità della prossima parola; la temperatura ne cambia la concentrazione. La parola più probabile non è una verifica di verità. Non conosciamo le impostazioni interne di Copilot.
 
-### TensorFlow Playground · Il proprio risultato con meno neuroni
+### TensorFlow Playground · Quanti neuroni servono per circondare il cerchio
 
-Impostazioni comuni: **Classification; cerchio; solo X1 e X2; Learning rate 0,03; Activation Tanh; Noise 0; 50% addestramento; Batch size 10; nessuna regolarizzazione; due strati da 4 e 2 neuroni**. L'indirizzo può conservare impostazioni precedenti: controllale.
+**Per te, in poche righe.** Non è teoria da leggere agli studenti: serve a capire che cosa si vede.
 
-Regola: **Test loss < 0,05 entro 1.500 Epoch**, usando meno neuroni nascosti possibile. Prima una prova con la struttura iniziale; poi riducono neuroni o strati, una scelta per volta. Non si modificano gli ingressi e non si usa Regenerate. L'azzeramento rinnova i pesi, non i punti. Contano i quadratini nascosti, non ingressi e uscita.
+- Un neurone prende i due numeri che dicono dove sta un punto (X1 e X2), li moltiplica per due **pesi**, li somma e aggiunge un terzo numero suo, che sposta la linea. Ne esce un colore. I pesi sono i numeri dei collegamenti, e sono ciò che la rete cambia mentre impara: il sito li mostra passando il mouse su una linea.
+- Un neurone di questo tipo separa i colori con **una linea**, sfumata dal blu all'arancione: si vede nel suo disegno. Con zero o un neurone nascosto c'è una linea sola. Con due ci sono due linee: possono fare una striscia o un angolo, ma la zona resta aperta e non chiude il cerchio. Con tre si può chiudere un triangolo con gli angoli arrotondati attorno ai punti blu. È la ragione per cui il risultato più probabile è 3.
+- Questa è una spiegazione per leggere ciò che si vede, non una dimostrazione. Le misure la confermano: con 0, 1 e 2 neuroni Test loss resta alta, con 3 e 4 scende. La rete reale può disegnare una forma un po' diversa.
+- Imparare vuol dire cambiare i pesi per ridurre l'errore sui punti di addestramento. L'errore sui punti di prova dice se la rete funziona anche su punti che non ha visto.
 
-Lasciano una prova valida sullo schermo o ne fanno uno screenshot. Se non riescono, mostrano il risultato raggiunto: niente diario e nessun obbligo di riuscire. Il numero ottenuto è un record osservato, non un minimo dimostrato. Ripetono la domanda sulla **spirale**, con gli stessi ingressi e criterio; anche un insuccesso è completo. Non aggiungere un livello sulle Features.
+Se uno studente chiede altro (che cos'è Tanh, che cos'è la discesa del gradiente), puoi dire che non serve per questa attività e che vi tornate se resta interesse. Non devi saperlo spiegare per condurla.
 
-Spiega i termini mentre servono: pesi = numeri dei collegamenti; Epoch = giri sui punti per imparare; Training loss = errore su quei punti; Test loss = errore sui punti riservati alla prova. Indica una linea che cambia: si stanno modificando numeri, non istruzioni testuali.
+**Impostazioni comuni:** Classification; cerchio; solo X1 e X2; Learning rate 0,03; Activation Tanh; Noise 0; 50% addestramento; Batch size 10; nessuna regolarizzazione; **zero strati nascosti**. La pagina aperta senza indirizzo parte già con queste impostazioni e con due strati da 4 e 2 neuroni; il browser può però conservare impostazioni precedenti. Gli studenti controllano solo cerchio, X1 e X2, Noise 0: leggi tu dal proiettore le altre. Tolgono i due strati con il **−** accanto a «Hidden layers».
 
-**Rumore soltanto al proiettore:** cerchio, X1 e X2, Noise 50, quota di addestramento 10%, rete da 8 e 8; lascia le altre impostazioni comuni. Leggi Training loss e Test loss attorno a 200 Epoch, poi di nuovo attorno a 1.000. Chiedi se migliorare sui punti già visti assicura un miglioramento sugli altri. Nessun esito è promesso: se Test loss non peggiora, leggi quel risultato. Non è una gara e non serve ripetere finché compare il peggioramento desiderato.
+**Come funzionano i pulsanti (provati l'11 novembre):** il **+** accanto a «Hidden layers» aggiunge uno strato che nasce con **2 neuroni**. Il **−** sopra la colonna toglie un neurone (si ferma a 1), il **+** ne aggiunge uno. Ogni cambio del numero di neuroni azzera l'addestramento. Quindi la sequenza è: 0 (nessuno strato), 2 (appena aggiunto lo strato), poi **−** per avere 1, poi **+** per 2, 3, 4.
 
-### Flappy Learning · Una previsione, due esecuzioni
+**Sequenza.**
 
-La pagina parte da sola. Fai osservare una generazione a x1: Alive cala e torna a indicare la nuova popolazione. **Score conta passi della simulazione, non tubi.** La rete legge l'altezza dell'uccellino e quella del bordo superiore del prossimo varco; gli ingressi sono ricavati dal codice, non mostrati sullo schermo.
+1. Alzata di mano: quanti neuroni servono per circondare i punti blu? Nessuno, 1, 2, 3 o 10. Nessuna risposta è sbagliata: serve a guardare con un'idea in testa.
+2. Con zero neuroni avviano e fermano a 1.500 giri. Test loss resta intorno a 0,5 e il confine tra i colori è quasi una linea diritta.
+3. Aggiungono uno strato, poi provano con 1, 2, 3 e 4 neuroni, avviando e fermando a 1.500 giri. Non toccano altre impostazioni, non usano Regenerate, non cambiano gli ingressi. Contano i quadratini nascosti, non gli ingressi e l'uscita.
+4. Lasciano sullo schermo la prova con meno neuroni che raggiunge Test loss < 0,05. Se un numero non riesce, azzerano (pulsante a sinistra del triangolo) e riprovano una volta: l'azzeramento rinnova i pesi, non i punti. Se non riesce, mostrano dove sono arrivati: nessun obbligo e nessun diario. Il numero è un record osservato, non un minimo dimostrato.
+5. Con la rete funzionante passano il mouse su un neurone: il suo disegno compare in grande nel riquadro dell'uscita. Chiedi: che cosa disegna ogni neurone? Come si mettono insieme? **Risposta da dare:** ogni neurone divide il foglio con una linea; l'uscita mette insieme le linee, e con tre si chiude una zona attorno ai blu.
+6. Peso: azzerano, passano il mouse su una linea (compare «Weight is…» e il numero), avviano, fermano a 1.500 giri e rileggono la stessa linea. Il numero è cambiato: imparare, per questa rete, vuol dire cambiare questi numeri. Quella finestra dice anche «Click anywhere to edit»: si può cambiare il peso a mano, ma non serve e non lo proponi.
+7. Spirale con la stessa sfida; possono aggiungere strati e neuroni, non cambiare gli ingressi. **Risposta da dare:** la spirale gira su se stessa, servono molte più linee, combinate in più strati. Nelle prove dell'11 novembre (un seme, Test loss alla fine dei 1.500 Epoch) 4 e 2 neuroni davano 0,50; uno strato da 8 dava 0,30; 8 e 4 davano 0,20; 8 e 8 sono arrivati sotto 0,05 a 1.293 e 1.222 Epoch (0,040 e 0,052 a fine prova): vicino alla soglia, non garantito. Anche un insuccesso è completo. Non aggiungere un livello sulle Features.
 
-Prima di MAX fanno una previsione per fasce: **1–10, 11–30, 31–60, oltre 60**. Traguardo **Score ≥ 10.000**. Quando lo vedono, tornano a x1 e leggono Generation. Non chiamarlo «prima generazione esatta»: a MAX possono aver perso passaggi. Max Score, da solo, non identifica la generazione del record. A 100 generazioni senza aver visto la soglia, l'esito è completo.
+**Che cosa aspettarti sul cerchio** (prove dell'11 novembre, sei semi dei punti, impostazioni sopra, uno strato):
 
-Ricaricano una sola volta e ripetono con lo stesso criterio. Un risultato uguale è valido; non chiedere altre ricariche per farlo cambiare. Nessun punto per una previsione fortunata e nessuna promessa di un uccellino che «non muore più».
+| Neuroni nascosti | Test loss dopo circa 1.500 giri o primo passaggio sotto 0,05 |
+| --- | --- |
+| 0 | circa 0,50, in tutte le prove |
+| 1 | 0,40–0,44, in tutte le prove |
+| 2 | 0,22–0,29, in tutte le prove |
+| 3 | sotto 0,05 tra 76 e 110 giri in cinque prove su sei; la sesta è rimasta a 0,19 |
+| 4 | sotto 0,05 tra 79 e 95 giri, in tutte le prove |
 
-Il codice conserva le migliori reti, ne introduce di nuove e combina o varia le precedenti. Il singolo uccellino non corregge i propri pesi durante quel volo. Fai distinguere la selezione di reti dal cambiamento dei pesi mediante esempi in Playground. Le preferenze umane su risposte linguistiche possono diventare dati di addestramento, ma non sono lo stesso algoritmo del gioco.
+Con 3 neuroni la soglia non è garantita. Nella prova rimasta a 0,19, quattro azzeramenti con riavvio ne hanno portate tre sotto 0,05. Dì agli studenti di riprovare una volta prima di concludere. Non presentare «3» come regola: con 4 le prove sono riuscite tutte.
+
+Spiega i termini mentre servono: pesi = numeri dei collegamenti; Epoch = giri sui punti per imparare; Training loss = errore su quei punti; Test loss = errore sui punti riservati alla prova. Indica una linea che cambia: si stanno modificando numeri, non istruzioni testuali. Usa «giri» solo per Epoch e «generazione» per Flappy.
+
+**Disturbo (Noise) soltanto al proiettore:** cerchio, X1 e X2, Noise 50, quota di addestramento 10%, rete da 8 e 8; lascia le altre impostazioni comuni. Leggi Training loss e Test loss attorno a 200 Epoch, poi di nuovo attorno a 1.000. Chiedi se migliorare sui punti già visti assicura un miglioramento sugli altri. Nessun esito è promesso e non è una gara: non ripetere finché compare il peggioramento desiderato. **Se Training loss scende e Test loss sale:** la rete ha imparato anche il disturbo dei punti che ha visto e va peggio sui punti nuovi. **Se scendono tutte e due:** questa volta non è successo, ma per saperlo servono punti tenuti da parte. Vale anche per l'agente: lo proverete con richieste diverse dagli esempi.
+
+### Flappy Learning · Un paio di minuti dal proiettore
+
+Lo apri tu e gli studenti guardano. La pagina parte da sola: lascia una generazione a x1, poi accelera e guarda Generation e Score. Non fare previsioni e non chiedere agli studenti di aprirla.
+
+Cosa dire: ci sono cinquanta uccellini, ognuno con una piccola rete che decide quando saltare. A ogni generazione si tengono le reti dei migliori, con piccole variazioni a caso e qualche rete nuova. Dopo qualche generazione gli uccellini volano a lungo. **Score conta passi della simulazione, non tubi.** La rete legge l'altezza dell'uccellino e quella del varco; gli ingressi sono ricavati dal codice, non mostrati sullo schermo. Il singolo uccellino non corregge i propri pesi durante il volo.
+
+Nessuna promessa di un uccellino che «non muore più». Un volo lungo non è un volo infinito. Una frase basta per il confronto: in Playground i pesi si correggono guardando l'errore; in Flappy si copiano le reti migliori con modifiche a caso, e anche lì cambiano i pesi; in Copilot i pesi restano fermi e gli studenti cambiano il testo che il modello legge.
 
 ## Parte 4 · Copilot, richiesta, criterio, correzione
 
@@ -197,7 +224,8 @@ Le osservazioni seguenti sono del **10 novembre 2026, postazione Linux del docen
 
 - **Transformer Explainer:** il messaggio della pagina parla di un modello da 600 MB; Generate è disattivato durante lo scarico. Le richieste HEAD ai 63 file `gpt2.onnx.part0`–`part62` hanno dato complessivamente **656.662.664 byte**, circa 626 MiB, comunemente arrotondati qui a 650 MB. Le aperture simultanee moltiplicano il traffico anche usando Examples. Sul primo esempio, la prima candidata aveva probabilità **97,66% a Temperature 0,2; 90,86% a 0,3; 54,67% a 0,8; 22,26% a 10**. I bersagli della consegna sono stati osservati, non garantiti per versioni future. Tutti e cinque gli esempi sono stati aperti anche con il download del modello bloccato; il comportamento a download finito resta da provare.
 - **Playground, prove precedenti:** cerchio, X1/X2, rate 0,03, Tanh, Noise 0, 50% addestramento: senza strati nascosti Test loss **0,505 a 963 Epoch**; con 4 e 2 neuroni **0,001 a 902**; con uno strato da 2 **0,28 a 965**. Spirale con 4 e 2: **0,435 a 963**, senza scendere sotto 0,43. Cerchio con Noise 50 e 4 e 2: Training loss da **0,315** (circa 660) a **0,297** (circa 3.500); Test loss da **0,306** (circa 660) a **0,325** (circa 2.100), poi intorno a quel valore. Le reti 8,8,8 erano lente, circa 3 epoche al secondo: non è una misura delle postazioni scolastiche.
-- **Playground, nuove prove:** con uno strato da 4, Test loss **0,014 a 1.085** e **0,009 a 1.072**, cambiando seme dei dati. Con 3 neuroni: **0,028 e 0,015 a 1.265**, ma circa **0,26** con un altro seme. Per la dimostrazione con Noise 50, 10% addestramento, 8 e 8: una prova passava da Training/Test **0,236/0,375** attorno a 172 Epoch a **0,066/0,556** attorno a 1.000; altre prove a 1.000 davano **0,174/0,374** e **0,116/0,545**. Sono esecuzioni, non un esito obbligatorio. Non trasferire alla spirale o a punti diversi una garanzia di successo sul cerchio.
+- **Playground, prove precedenti (10 novembre, letture a quel punto, non primo passaggio sotto 0,05):** con uno strato da 4, Test loss **0,014 a 1.085** e **0,009 a 1.072**, cambiando seme dei dati. Con 3 neuroni: **0,028 e 0,015 a 1.265**, ma circa **0,26** con un altro seme. Per la dimostrazione con Noise 50, 10% addestramento, 8 e 8: una prova passava da Training/Test **0,236/0,375** attorno a 172 Epoch a **0,066/0,556** attorno a 1.000; altre prove a 1.000 davano **0,174/0,374** e **0,116/0,545**. Sono esecuzioni, non un esito obbligatorio. Non trasferire alla spirale o a punti diversi una garanzia di successo sul cerchio.
+- **Playground, prove dell'11 novembre (Chromium senza interfaccia, Linux, rete non scolastica):** cerchio, X1/X2, rate 0,03, Tanh, Noise 0, 50% addestramento, Batch size 10, uno strato nascosto, sei semi dei punti (0,1; 0,2; 0,3; 0,5; 0,7; 0,9), fermata a 1.500 Epoch o alla prima lettura sotto 0,05. 0 neuroni: 0,50–0,54. 1: 0,40–0,44. 2: 0,22–0,29. 3: sotto 0,05 a 76–110 Epoch in cinque semi su sei, 0,19 a 1.505 nel sesto; su quel seme quattro azzeramenti con riavvio hanno dato una prova ferma a 0,19 e tre sotto 0,05 (a 79, 107 e 107 Epoch). 4: sotto 0,05 a 79–95 Epoch in sei semi su sei. Il tempo reale è circa 25 secondi per 1.500 Epoch a questa velocità: non è una misura delle postazioni scolastiche. Pulsanti verificati sul sito: il **+** degli strati crea 2 neuroni; **−** e **+** sopra la colonna cambiano di uno; ogni cambio riporta Epoch a 0; il mouse su un neurone mostra il suo disegno nell'uscita; il mouse su una linea mostra «Weight is 0.35.» con «Click anywhere to edit». **Spirale** (seme 0,5; due prove 8,8 con semi 0,5 e 0,3): 4 e 2 → 0,50; 8 → 0,30; 8 e 4 → 0,20; 8 e 8 → sotto 0,05 a 1.293 e 1.222 Epoch. **Provato e scartato:** zero strati nascosti con X1² e X2² al posto di X1 e X2: sotto 0,001 a circa 20 Epoch in 4 semi su 6, ma 2 su 6 sono rimasti intorno a 1,0. Per questo e perché serve spiegare un ingrediente in più, non è nell'attività. La pagina aperta senza indirizzo parte con due strati da 4 e 2 neuroni.
 - **Flappy Learning:** nessun errore rilevato. Le vecchie prove a MAX descrivevano voli lunghi nelle generazioni **40, 10 e circa 90**, senza una soglia finita: non dimostrano immortalità. Nelle nuove prove, al controllo Score era già oltre 10.000 nelle generazioni **26, 22, 45 e 44**, con rispettivamente **1, 2, 1 e 1** uccellini vivi. Sono letture osservate, non la prima generazione esatta del superamento e non una frequenza attesa per la classe.
 
 ### Chiamate di rete e privacy

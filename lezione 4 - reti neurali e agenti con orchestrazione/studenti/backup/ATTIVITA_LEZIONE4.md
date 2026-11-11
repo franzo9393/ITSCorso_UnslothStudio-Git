@@ -24,34 +24,32 @@ Ognuno lavora sul proprio computer. Non ci sono file da consegnare né un diario
 
 La parola più probabile non è l'unica possibile. Una probabilità alta non significa che un'affermazione sia vera.
 
-## Parte 2 · Quanto piccola può essere la rete?
+## Parte 2 · Quanti neuroni servono?
 
-**Sfida: Test loss sotto 0,05 entro 1.500 Epoch, con meno neuroni nascosti possibile.**
+**Sfida: separare i punti blu da quelli arancioni, con Test loss sotto 0,05 entro 1.500 giri, usando meno neuroni nascosti possibile.**
 
-Aprite TensorFlow Playground: `https://playground.tensorflow.org/`. La rete deve separare punti di due colori. Una parte dei punti serve ad addestrarla; gli altri servono a provarla.
+Aprite TensorFlow Playground: `https://playground.tensorflow.org/`. La rete deve separare punti di due colori. Una parte dei punti serve ad addestrarla; gli altri servono a provarla, come in un compito in classe con domande nuove.
 
-Controllate queste impostazioni: **Classification**, cerchio, solo **X1** e **X2**, **Learning rate** 0,03, **Activation** Tanh, **Noise** 0, 50% dei dati per l'addestramento, **Batch size** 10, nessuna regolarizzazione. Lasciate inizialmente due strati nascosti da **4 e 2 neuroni**: sono le colonne di quadratini tra gli ingressi e l'uscita.
+La pagina si apre già pronta. Controllate tre cose: i dati sono il cerchio, gli ingressi sono solo **X1** e **X2**, **Noise** è 0. Il docente legge dal proiettore le altre impostazioni. Con il pulsante **−**, accanto a «Hidden layers», togliete i due strati nascosti che ci sono all'inizio: devono essere 0.
 
-1. Avviate e guardate **Test loss**, l'errore sui punti di prova: più è basso, meglio è. **Epoch** conta i giri sui punti di addestramento. Fermate alla soglia oppure a 1.500 giri.
-2. Provate a usare meno neuroni o meno strati, cambiando una scelta per prova. Non cambiate le altre impostazioni. L'azzeramento ricomincia con pesi nuovi sugli stessi punti; non usate **Regenerate**, che cambia i punti.
-3. Lasciate sullo schermo la vostra migliore prova valida, oppure fate uno screenshot. Contate solo i neuroni nascosti. È il vostro risultato osservato, non la dimostrazione del minimo possibile. Se non raggiungete la soglia, mostrate dove siete arrivati.
-4. Selezionate la spirale e provate la stessa sfida, mantenendo gli stessi ingressi e criteri. Anche non riuscire entro il limite è un risultato da spiegare.
+Prima di toccare qualcosa, per alzata di mano: quanti neuroni servono per circondare i punti blu? Nessuno, 1, 2, 3 o 10? Contano solo i neuroni nascosti, quelli tra gli ingressi e l'uscita.
 
-I **pesi** sono i numeri dei collegamenti tra i neuroni: durante l'addestramento cambiano. La struttura della rete e i pesi iniziali possono cambiare il risultato.
+1. Con zero neuroni nascosti, avviate con il triangolo. **Epoch** conta i giri di addestramento. **Test loss** è l'errore sui punti di prova: più è basso, meglio è. Fermatevi a 1.500 giri. Guardate l'area colorata a destra: che forma ha il confine tra i due colori?
+2. Con il **+** accanto a «Hidden layers» aggiungete uno strato: nasce già con 2 neuroni. Sopra la colonna dei neuroni, il **−** ne toglie uno e il **+** ne aggiunge uno. Ogni volta che cambiate il numero di neuroni la rete riparte da zero: premete il triangolo e fermatevi a 1.500 giri. Provate con 1, 2, 3 e 4 neuroni. Non cambiate altre impostazioni e non usate **Regenerate**: cambia i punti.
+3. Cercate il numero più piccolo di neuroni con cui Test loss scende sotto 0,05, e lasciate quella prova sullo schermo. Se con un certo numero non ci riuscite, azzerate con il pulsante a sinistra del triangolo e riprovate una volta: i numeri di partenza dei collegamenti cambiano e il risultato può cambiare.
+4. Con la rete che funziona, passate il mouse su un neurone: il suo disegno compare in grande nel riquadro a destra, al posto dell'uscita. Che cosa disegna ogni neurone? Come si mettono insieme nell'uscita?
+5. Azzerate. Passate il mouse su una linea tra due neuroni: compare «Weight is…», un numero. È il **peso** di quel collegamento. Avviate, fermatevi a 1.500 giri e rileggete lo stesso peso: è cambiato. Imparare, per questa rete, vuol dire cambiare questi numeri.
+6. Selezionate la spirale e provate la stessa sfida. Potete aggiungere strati e neuroni; non cambiate gli ingressi. Anche non riuscire entro il limite è un risultato da spiegare.
 
-Poi guardate il proiettore: il docente aggiunge disturbo ai punti e confronta **Training loss**, l'errore sui punti usati per imparare, con **Test loss**. Migliorare sui punti già visti basta per migliorare anche sugli altri? Leggete quello che succede, senza aspettarvi per forza un peggioramento.
+La struttura della rete e i numeri di partenza possono cambiare il risultato.
 
-## Parte 3 · Quando arrivano al traguardo?
+Poi guardate il proiettore: il docente aggiunge disturbo (**Noise**) ai punti e confronta **Training loss**, l'errore sui punti usati per imparare, con **Test loss**. Migliorare sui punti già visti basta per migliorare anche sugli altri?
 
-Aprite Flappy Learning: `https://xviniette.github.io/FlappyLearning/`. Parte da solo: ogni uccellino ha una piccola rete che decide quando saltare. Alla fine di una generazione, i risultati migliori contribuiscono alle reti della successiva, con variazioni.
+## Parte 3 · Un esempio dal proiettore
 
-**Sfida: prevedete in quale fascia vedrete Score arrivare almeno a 10.000: 1–10, 11–30, 31–60 oppure oltre 60 generazioni.**
+Il docente apre Flappy Learning: `https://xviniette.github.io/FlappyLearning/`. Ogni uccellino ha una piccola rete che decide quando saltare. A ogni generazione restano le reti dei migliori, con piccole variazioni a caso. Guardate che cosa succede dopo qualche generazione. **Score** conta i passi della simulazione, non i tubi superati.
 
-1. Guardate una generazione a **x1**. **Alive** indica gli uccellini ancora vivi; **Generation** il giro; **Score** conta i passi della simulazione, non i tubi superati. **Max Score** è il miglior punteggio finora.
-2. Scegliete la fascia prima di passare a **MAX**. Quando vedete **Score ≥ 10.000**, tornate a x1 e leggete Generation. A MAX potete perdere passaggi: è la generazione osservata, non una misura esatta della prima soglia raggiunta. Se arrivate a 100 generazioni senza vederla, la prova è completa così.
-3. Ricaricate una sola volta, fate una nuova previsione e ripetete con la stessa soglia. Il risultato può essere diverso oppure uguale: nessuno guadagna punti per una previsione fortunata.
-
-Discutete a voce: chi decide quali reti contribuiscono al giro dopo? Qui si selezionano reti in base ai risultati; in Playground si modificavano i pesi usando esempi con il colore giusto. Non sono lo stesso procedimento.
+Anche qui cambiano i pesi, ma nessuno li corregge guardando un errore: si copiano le reti migliori con piccole modifiche a caso. È un altro modo di imparare.
 
 ## Parte 4 · Costruite e collaudate l'agente P03
 
