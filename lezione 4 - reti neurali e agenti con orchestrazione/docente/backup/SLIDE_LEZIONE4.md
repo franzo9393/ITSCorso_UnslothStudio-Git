@@ -32,9 +32,9 @@ Il docente vi aiuta a leggere le parole proposte. Non è una prova d’inglese.
 
 ## Prima sopra il 90%. Poi sotto il 30%.
 
-Portate la barra più lunga sui due bersagli, cambiando solo Temperature.
+https://poloclub.github.io/transformer-explainer/
 
-poloclub.github.io/transformer-explainer · primo esempio, k = 5
+Portate la barra più lunga sui due bersagli, cambiando solo Temperature. Primo esempio, k = 5.
 
 ---
 
@@ -61,11 +61,11 @@ I punti blu stanno al centro, quelli arancioni attorno. Quanti neuroni servono p
 
 ## Test loss sotto 0,05
 
+https://playground.tensorflow.org/
+
 Partite da zero neuroni, poi uno, due, tre, quattro. Fermatevi a 1.500 giri (Epoch).
 
 Test loss: l'errore sui punti di prova. Più è basso, meglio è.
-
-playground.tensorflow.org
 
 ---
 

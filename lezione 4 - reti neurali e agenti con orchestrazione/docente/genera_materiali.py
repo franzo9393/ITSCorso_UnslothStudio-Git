@@ -168,7 +168,8 @@ def blocks(text: str) -> list[dict]:
         else:
             value = element.text_content().strip()
             if value:
-                result.append({'kind': tag, 'text': value})
+                url = tag == 'p' and re.fullmatch(r'https://\S+', value) is not None
+                result.append({'kind': 'url' if url else tag, 'text': value})
     return result
 
 
@@ -252,7 +253,7 @@ def set_placeholder(slide, idx: int, text: str, styles: dict, fallback: int = 23
         run.text = value
 
 
-def add_paragraph_box(slide, text: str, top: float, size: float = 23, bold: bool = False) -> float:
+def add_paragraph_box(slide, text: str, top: float, size: float = 23, bold: bool = False, color: str = INK) -> float:
     line_count = lines_needed(text, 11.8 * 72, size, bold)
     height = (line_count * size * 1.2 + 2) / 72
     if top + height > 7.55:
@@ -269,7 +270,7 @@ def add_paragraph_box(slide, text: str, top: float, size: float = 23, bold: bool
     run.font.name = FONT
     run.font.size = Pt(size)
     run.font.bold = bold
-    run.font.color.rgb = RGBColor.from_string(INK)
+    run.font.color.rgb = RGBColor.from_string(color)
     return top + height + BODY_GAP
 
 
@@ -347,8 +348,9 @@ def build_pptx(slides: list[dict]) -> Path:
                 if block['kind'] == 'table':
                     top = add_slide_table(slide, block['rows'], top)
                 elif 'text' in block:
-                    size = 44 if block['kind'] == 'h2' else 36 if block['kind'] == 'blockquote' else BODY_SIZE
-                    top = add_paragraph_box(slide, block['text'], top, size, block['kind'].startswith('h'))
+                    url = block['kind'] == 'url'
+                    size = 28 if url else 44 if block['kind'] == 'h2' else 36 if block['kind'] == 'blockquote' else BODY_SIZE
+                    top = add_paragraph_box(slide, block['text'], top, size, url or block['kind'].startswith('h'), BLUE if url else INK)
         number = next((shape for shape in slide.placeholders if shape.placeholder_format.idx == 4294967295), None)
         if number is not None:
             number.text = str(index)
@@ -398,7 +400,7 @@ def build_html(slides: list[dict], backgrounds: dict[str, str]) -> None:
     section = 0
     for index, data in enumerate(slides, 1):
         layout = data['layout']
-        content = markdown.markdown(data['body'], extensions=['tables', 'sane_lists'])
+        content = re.sub(r'<p>(https://\S+)</p>', r'<p class="url">\1</p>', markdown.markdown(data['body'], extensions=['tables', 'sane_lists']))
         title = html.escape(data['title'])
         if layout == 'COPERTINA':
             paragraphs = [block['text'] for block in blocks(data['body']) if 'text' in block]
@@ -418,6 +420,7 @@ def build_html(slides: list[dict], backgrounds: dict[str, str]) -> None:
 .body h2{{font-size:58.667px;line-height:1.2;margin:0 0 {BODY_GAP * 96:.0f}px}}
 .body blockquote{{font-size:48px;line-height:1.2;margin:0 0 {BODY_GAP * 96:.0f}px;padding:0}}
 .body blockquote p{{margin:0}}
+.body p.url{{font-size:37.333px;font-weight:700;color:#1064a0;overflow-wrap:anywhere}}
 '''
     js = '''
 const slides=[...document.querySelectorAll('.slide')];let current=0;const previous=document.getElementById('previous'),next=document.getElementById('next'),position=document.getElementById('position');function show(index){current=Math.max(0,Math.min(slides.length-1,index));slides.forEach((slide,i)=>{slide.classList.toggle('active',i===current);slide.setAttribute('aria-hidden',i===current?'false':'true')});previous.disabled=current===0;next.disabled=current===slides.length-1;position.textContent=`${current+1} / ${slides.length}`}function fit(){const scale=Math.max(.1,Math.min((innerWidth-24)/1280,(innerHeight-72)/800));document.querySelector('.deck').style.transform=`translateX(-50%) scale(${scale})`}previous.addEventListener('click',()=>show(current-1));next.addEventListener('click',()=>show(current+1));document.addEventListener('keydown',event=>{if(event.target.closest('button,input,textarea,select,a'))return;if(['ArrowRight','PageDown',' '].includes(event.key)){event.preventDefault();show(current+1)}if(['ArrowLeft','PageUp'].includes(event.key)){event.preventDefault();show(current-1)}if(event.key==='Home')show(0);if(event.key==='End')show(slides.length-1)});addEventListener('resize',fit);show(0);fit();
