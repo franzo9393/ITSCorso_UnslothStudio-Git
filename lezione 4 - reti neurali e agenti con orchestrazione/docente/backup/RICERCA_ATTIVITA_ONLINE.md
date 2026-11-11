@@ -15,7 +15,6 @@ Data della ricerca: 4 novembre 2026. Documento riservato al docente.
 | --- | --- | --- | --- |
 | Ricerca per tema (4 in parallelo) | `scout` | ruolo `@task` (Gemini) con ricerca web Perplexity | `ricerca_attivita_online/01`–`04` |
 | Validazione indipendente | `reviewer` | ruolo `@plan` (GPT) | `ricerca_attivita_online/05_validazione_revisore.md` |
-| Approfondimento Colab con Gemini | `scout` + `reviewer` | come sopra | `ricerca_attivita_online/06`–`07` |
 | Sintesi | agente principale | — | questo file |
 
 I rapporti grezzi `01`–`04` contengono errori corretti dalla validazione (elencati sotto) e stime di durata non misurate: fa fede questo file.
