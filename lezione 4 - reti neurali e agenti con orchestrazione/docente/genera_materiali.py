@@ -46,11 +46,11 @@ STUDENTS = LESSON / 'studenti'
 STUDENTS_BACKUP = STUDENTS / 'backup'
 TEACHER_BACKUP = HERE / 'backup'
 SOURCES = TEACHER_BACKUP / 'fonti'
-REGISTER_SOURCE = SOURCES / '04_REGISTRO_P03_13-15_OTTOBRE_2026.txt'
-REGISTER_COPY = STUDENTS / 'Registro_P03_13-15_ottobre_2026.txt'
+REGISTER_SOURCE = SOURCES / '04_REGISTRO_RUOTA_LIBERA_7-8_NOVEMBRE_2026.txt'
+REGISTER_COPY = STUDENTS / 'Registro_Ruota_Libera_7-8_novembre_2026.txt'
 TEXT_DOCUMENTS = {  # documenti del caso: sorgente Markdown, copia di testo semplice da incollare in Copilot
-    SOURCES / '02_GUIDA_ALLARMI_P03.md': STUDENTS / 'Guida_allarmi_P03.txt',
-    SOURCES / '03_REGOLE_INDICATORI_P03.md': STUDENTS / 'Regole_indicatori_P03.txt',
+    SOURCES / '02_GUIDA_GUASTI_RUOTA_LIBERA.md': STUDENTS / 'Guida_guasti_Ruota_Libera.txt',
+    SOURCES / '03_REGOLE_NOLEGGIO_RUOTA_LIBERA.md': STUDENTS / 'Regole_noleggio_Ruota_Libera.txt',
 }
 DECK_NAME = 'Lezione4_Reti_neurali_e_agenti_con_orchestrazione_ITS_MAKER'
 MODEL = HERE / 'MODELLO_ITS_MAKER.pptx'
@@ -549,7 +549,11 @@ NUMBER = r'\d{1,3}(?:\.\d{3})+|\d+'
 
 
 def register_fail(message: str) -> None:
-    raise SystemExit(f'Registro P03 ({REGISTER_SOURCE.name}): {message}')
+    raise SystemExit(f'Registro Ruota Libera ({REGISTER_SOURCE.name}): {message}')
+
+
+def euro(value: float) -> str:
+    return f'{value:.2f}'.replace('.', ',') + ' euro'
 
 
 def register_values(text: str) -> dict:
@@ -562,93 +566,73 @@ def register_values(text: str) -> dict:
         day, month, year, hour, minute = map(int, header.groups())
         body = text[header.end():following.start() if following else len(text)].strip().split('\n\n')[0]
         notes.append({'when': datetime(year, month, day, hour, minute), 'label': f'{day:02}/{month:02}/{year} · {hour:02}:{minute:02}', 'text': ' '.join(body.split())})
-    readings = {'temperature': [], 'counter': [], 'checks': []}
-    limits = set()
-    for note in notes:
-        for sentence in re.split(r'(?<=[.!?])\s+', note['text']):
-            for found in re.finditer(r'(\d+)\s*°C', sentence):
-                value = int(found.group(1))
-                if 'limite' in sentence[:found.start()].lower():
-                    limits.add(value)
-                else:
-                    readings['temperature'].append((note, value, f'{value} °C'))
-            if found := re.search(rf'\bcontatore\b.*?({NUMBER})\s+pezzi', sentence, re.I):
-                readings['counter'].append((note, int(found.group(1).replace('.', '')), f'{found.group(1)} pezzi'))
-        if found := re.search(rf'\bcontrollat[ie]\s+(?:i\s+primi\s+)?(\d+)\b', note['text'], re.I):
-            readings['checks'].append((note, int(found.group(1)), f'{found.group(1)} pezzi'))
-    for name, label in (('temperature', 'letture di temperatura'), ('counter', 'letture del contatore'), ('checks', 'controlli dei pezzi')):
-        if not readings[name]:
-            register_fail(f'nessuna riga trovata per {label}.')
-    if len(limits) != 1:
-        register_fail(f'il limite di allarme deve comparire con un solo valore, trovati: {sorted(limits) or "nessuno"}.')
-    stops = [note for note in notes if re.search(r'\bsi ferma\b', note['text'], re.I) and re.search(r'\ballarme\b', note['text'], re.I)]
-    restarts = [note for note in notes if re.search(r'\briprende a produrre\b', note['text'], re.I)]
-    if len(stops) != 1 or len(restarts) != 1:
-        register_fail(f'attese una nota di fermo e una di ripartenza, trovate {len(stops)} e {len(restarts)}.')
-    stop, restart = stops[0], restarts[0]
-    written = re.search(r'\bdopo\s+(\d+)\s+minuti\b', restart['text'])
-    if not written:
-        register_fail('la nota di ripartenza non riporta «dopo N minuti».')
-    minutes = round((restart['when'] - stop['when']).total_seconds() / 60)
-    if minutes != int(written.group(1)):
-        register_fail(f'il fermo calcolato dagli orari ({stop["label"]} → {restart["label"]}) dura {minutes} minuti, ma la nota di ripartenza scrive {written.group(1)}.')
+    if re.search(r'euro|€|tariffa|scontrino|a ore|per la giornata', text, re.I):
+        register_fail('il registro non deve riportare importi, tariffe o il tipo di noleggio.')
+    if re.search(r'dopo\s+\d+\s+minuti', text, re.I):
+        register_fail('il registro non deve riportare durate già calcolate («dopo N minuti»).')
 
-    def at_stop(name: str) -> str:
-        values = [shown for note, _, shown in readings[name] if note is stop]
-        if not values:
-            register_fail(f'la nota di fermo ({stop["label"]}) non riporta nessun valore tra le letture di {name}.')
-        return values[0]
+    def find(pattern: str, what: str, count: int = 1):
+        found = [note for note in notes if re.search(pattern, note['text'], re.I)]
+        if len(found) != count:
+            register_fail(f'attese {count} note per «{what}», trovate {len(found)}.')
+        return found[0] if count == 1 else found
+
+    def minutes_between(start: dict, end: dict) -> int:
+        return round((end['when'] - start['when']).total_seconds() / 60)
+
+    outages = {}
+    for bike, ending in (('12', r'rimette la bici in fila'), ('5', r'torna in fila con le altre')):
+        start = find(rf'\bbici {bike}\b.*\btolta dal noleggio', f'bici {bike} tolta dal noleggio')
+        end = find(rf'\bbici {bike}\b.*{ending}', f'bici {bike} di nuovo disponibile')
+        outages[bike] = {'start': start, 'end': end, 'minutes': minutes_between(start, end)}
+    report = find(r'cliente della bici 12 torna al banco', 'segnalazione della bici 12')
+    swap = find(r'Rientra la bici 7\b.*al posto di quella guasta', 'cambio della bici 12')
+    test = find(r'prova la bici 12 nel cortile', 'prova del meccanico')
+    if not (report['when'] < outages['12']['start']['when'] < swap['when'] < test['when'] < outages['12']['end']['when']):
+        register_fail('gli orari della bici 12 (segnalazione, fuori servizio, cambio, prova, disponibile) non sono in ordine.')
+    no_bike = minutes_between(report, swap)
+    for note in find(r'ritirano le biciclette', 'ritiri', 2):
+        bikes = re.findall(r'\d+', re.search(r'ritirano le biciclette ([\d, e]+?)\.', note['text']).group(1))
+        left = re.search(r'restano (\d+) biciclette', note['text'])
+        if not left or int(left.group(1)) != 20 - len(bikes):
+            register_fail(f'{note["label"]}: le biciclette rimaste non tornano con {len(bikes)} ritiri su 20.')
     codes = {}
-    for code in ('FLT-992', 'A17'):
+    for code in ('PF-44', 'CA-26'):
         holders = [note for note in notes if code in note['text']]
-        codes[code] = (len(holders), sum(note['text'].count(code) for note in notes))
         if not holders:
             register_fail(f'il codice {code} non compare nel registro.')
-    causes = [note for note in notes if re.search(r'\bintasato\b', note['text'], re.I)]
-    replacements = [note for note in notes if re.search(r'\bcompletata la sostituzione\b', note['text'], re.I)]
-    if not causes or not replacements:
-        register_fail(f'attese una nota con il filtro intasato e una con la sostituzione completata, trovate {len(causes)} e {len(replacements)}.')
-    return {'notes': len(notes), 'words': len(text.split()), 'limit': limits.pop(), 'readings': readings, 'stop': stop, 'restart': restart, 'minutes': minutes, 'stop_temperature': at_stop('temperature'), 'stop_counter': at_stop('counter'), 'codes': codes, 'cause': causes[0], 'replacement': replacements[0]}
+        codes[code] = (len(holders), sum(note['text'].count(code) for note in notes))
+    adjust = find(r'rimette a posto in dieci minuti.*senza togliere la bici dal noleggio', 'aggiustamento al banco della bici 9')
+    cause = find(r'trova le pastiglie del freno posteriore consumate', 'causa del guasto della bici 12')
+    return {'notes': len(notes), 'words': len(text.split()), 'outages': outages, 'report': report, 'swap': swap, 'test': test, 'no_bike': no_bike,
+            'refund_hour': no_bike * 5 / 60, 'refund_day': no_bike * 3 / 60, 'codes': codes, 'adjust': adjust, 'cause': cause,
+            'minutes': outages['12']['minutes'], 'stop': outages['12']['start'], 'restart': outages['12']['end']}
 
 
 def register_tables(values: dict) -> str:
     """Tabelle Markdown dei valori di riferimento, da inserire al posto di {{VALORI_REGISTRO}}."""
-    repeats = {}
-
-    def listing(name: str, header: str) -> list[str]:
-        rows, previous, repeats[name] = [f'| Data e ora | {header} |', '| --- | --- |'], None, 0
-        for note, number, shown in values['readings'][name]:
-            repeated = previous == number and name != 'checks'
-            repeats[name] += repeated
-            rows.append(f'| {note["label"]} | {shown}{" (ripetizione del valore precedente)" if repeated else ""} |')
-            previous = number
-        return rows
-    tables = {'temperature': listing('temperature', 'Valore'), 'counter': listing('counter', 'Valore'), 'checks': listing('checks', 'Pezzi controllati')}
-    counts = {name: f'{len(items)} righe: {len(items) - repeats[name]} letture e {repeats[name]} {"ripetizione" if repeats[name] == 1 else "ripetizioni"}' for name, items in values['readings'].items()}
-    flt, a17 = values['codes']['FLT-992'], values['codes']['A17']
-    summary = [
+    o12, o5 = values['outages']['12'], values['outages']['5']
+    pf, ca = values['codes']['PF-44'], values['codes']['CA-26']
+    rows = [
         '| Dato | Valore |', '| --- | --- |',
         f'| Note nel registro | {values["notes"]} |',
         f'| Parole del registro | {values["words"]} (testo intero, parole separate da spazi) |',
-        f'| Limite di allarme dell\'olio | {values["limit"]} °C |',
-        f'| Inizio del fermo | {values["stop"]["label"]}: allarme, olio a {values["stop_temperature"]}, contatore a {values["stop_counter"]} |',
-        f'| Fine del fermo | {values["restart"]["label"]}: la pressa riprende a produrre |',
-        f'| Durata del fermo | {values["minutes"]} minuti, calcolati dagli orari e uguali a quelli scritti nella nota di ripartenza |',
-        f'| Causa del fermo | filtro intasato, constatato il {values["cause"]["label"]} |',
-        f'| Filtro sostituito | {values["replacement"]["label"]}: sostituzione completata con FLT-992 |',
-        f'| Codice filtro FLT-992 | in {flt[0]} note ({flt[1]} volte) |',
-        f'| Codice pezzo A17 | in {a17[0]} note ({a17[1]} volte) |',
-        f'| Temperature dell\'olio | {counts["temperature"]} |',
-        f'| Contatore dei pezzi | {counts["counter"]} |',
-        f'| Controlli dei pezzi | {len(values["readings"]["checks"])} note |',
+        f'| Segnalazione della bici 12 | {values["report"]["label"]}: i freni non tengono |',
+        f'| Bici 12 tolta dal noleggio | {o12["start"]["label"]} |',
+        f'| Cambio: il cliente riceve la bici 7 | {values["swap"]["label"]} |',
+        f'| Prova del meccanico, bici 12 | {values["test"]["label"]}: i freni tengono, ma la bici resta nel retro |',
+        f'| Bici 12 di nuovo disponibile | {o12["end"]["label"]}: il banco la rimette in fila |',
+        f'| Minuti fuori servizio, bici 12 | {o12["minutes"]}, calcolati dagli orari del registro |',
+        f'| Minuti senza bici del cliente | {values["no_bike"]}, dalla segnalazione al cambio |',
+        f'| Rimborso proposto, se il noleggio era a ore | {euro(values["refund_hour"])} ({values["no_bike"]} ÷ 60 × 5) |',
+        f'| Rimborso proposto, se il noleggio era per la giornata | {euro(values["refund_day"])} ({values["no_bike"]} ÷ 60 × 3) |',
+        f'| Bici 5: tolta dal noleggio e di nuovo disponibile | {o5["start"]["label"]} → {o5["end"]["label"]}, {o5["minutes"]} minuti |',
+        f'| Causa del guasto della bici 12 | pastiglie del freno posteriore consumate, constatate il {values["cause"]["label"]} |',
+        f'| Codice pastiglie PF-44 | in {pf[0]} note ({pf[1]} volte) |',
+        f'| Codice camera d\'aria CA-26 | in {ca[0]} note ({ca[1]} volte) |',
+        f'| Aggiustamento al banco, non fuori servizio | bici 9, {values["adjust"]["label"]}: catena rimessa a posto in dieci minuti |',
     ]
-    return '\n'.join([
-        'Le tabelle elencano ogni riga in cui il valore compare, con data e ora della nota. Dove il valore è uguale a quello della riga precedente è segnato come ripetizione: non è una nuova lettura.',
-        '', *summary, '',
-        '### Temperatura dell\'olio', '', *tables['temperature'], '',
-        '### Contatore dei pezzi', '', *tables['counter'], '',
-        '### Controlli dei pezzi', '', *tables['checks'],
-    ])
+    return '\n'.join(rows)
 
 
 def turn_notes(text: str) -> str:
@@ -675,12 +659,12 @@ def turn_notes(text: str) -> str:
 
 
 def alarm_table(text: str) -> str:
-    """Per ogni allarme della guida: quali delle tre parti del lavoro «Spiegare un allarme» sono scritte, e quali altre parti ha."""
-    parts = ('Che cosa significa', "Primo controllo dell'operatore", 'Chi interviene')
+    """Per ogni guasto della guida: quali delle tre parti del lavoro «Spiegare un guasto» sono scritte, e quali altre parti ha."""
+    parts = ('Che cosa significa', 'Primo controllo del banco', 'Chi interviene')
     sections = re.split(r'^### ', text, flags=re.M)[1:]
     if not sections:
-        raise SystemExit('Guida allarmi: nessun allarme trovato (titoli «### Nome dell\'allarme»).')
-    rows = ['| Allarme | ' + ' | '.join(parts) + ' | Altre parti |', '| --- | ' + ' | '.join('---' for _ in parts) + ' | --- |']
+        raise SystemExit('Guida ai guasti: nessun guasto trovato (titoli «### Nome del guasto»).')
+    rows = ['| Guasto | ' + ' | '.join(parts) + ' | Altre parti |', '| --- | ' + ' | '.join('---' for _ in parts) + ' | --- |']
     for section in sections:
         title, _, body = section.partition('\n')
         labels = re.findall(r'^\*\*(.+?)\.\*\*', body, re.M)
@@ -721,9 +705,9 @@ def main() -> None:
     values = register_values(REGISTER_SOURCE.read_text(encoding='utf-8'))
     slide_source = (TEACHER_BACKUP / 'SLIDE_LEZIONE4.md').read_text(encoding='utf-8')
     for key, value in {
-        '{{MINUTI_FERMO}}': str(values['minutes']),
-        '{{ORA_FERMO}}': values['stop']['when'].strftime('%H:%M'),
-        '{{ORA_RIPARTENZA}}': values['restart']['when'].strftime('%H:%M'),
+        '{{MINUTI_FUORI_SERVIZIO}}': str(values['minutes']),
+        '{{ORA_FUORI_SERVIZIO}}': values['stop']['when'].strftime('%H:%M'),
+        '{{ORA_DISPONIBILE}}': values['restart']['when'].strftime('%H:%M'),
     }.items():
         slide_source = slide_source.replace(key, value)
     slides = parse_slides(slide_source)
@@ -735,7 +719,7 @@ def main() -> None:
     replacements = {
         '{{VALORI_REGISTRO}}': register_tables(values),
         '{{NOTE_TURNO}}': turn_notes(REGISTER_SOURCE.read_text(encoding='utf-8')),
-        '{{VALORI_GUIDA}}': alarm_table((SOURCES / '02_GUIDA_ALLARMI_P03.md').read_text(encoding='utf-8')),
+        '{{VALORI_GUIDA}}': alarm_table((SOURCES / '02_GUIDA_GUASTI_RUOTA_LIBERA.md').read_text(encoding='utf-8')),
     }
     markdown_doc(TEACHER_BACKUP / 'GUIDA_DOCENTE.md', guide, 'Lezione 4 — guida docente', replacements=replacements)
     shutil.copyfile(REGISTER_SOURCE, REGISTER_COPY)  # testo da incollare in Copilot, copia byte per byte (UTF-8)

@@ -1,0 +1,67 @@
+Guida ai guasti delle biciclette di Ruota Libera
+
+Istruzione operativa IO-RL-02 · Revisione 1 del 2 ottobre 2026 · Banco del negozio
+
+Documento inventato per l'esercitazione ITS MAKER. Descrive i guasti più comuni delle biciclette a noleggio e che cosa fa il banco quando un cliente ne segnala uno.
+
+1. Che cosa succede quando una bici ha un guasto
+
+Il banco è l'addetto al bancone che accoglie i clienti. Il meccanico è la persona che ripara le biciclette del negozio.
+
+Quando un cliente segnala un problema, il banco guarda la bici. Se il problema è serio, la bici viene tolta dal noleggio, riceve un cartellino con scritto che cosa non va e viene portata nel retro. Il registro annota l'ora in cui la bici viene tolta dal noleggio.
+
+Dopo la riparazione il meccanico prova la bici nel cortile. La prova non rimette la bici in noleggio: lo fa il banco, dopo avere controllato la bici e tolto il cartellino. Da quel momento la bici è di nuovo disponibile.
+
+Non si rimette mai in fila una bici se la causa del guasto non è stata trovata.
+
+2. Freni e sterzo
+
+Freni che non tengono
+
+Che cosa significa. Tirando la leva, la bici rallenta poco o non rallenta. Con le pastiglie consumate la leva arriva fino al manubrio.
+
+Primo controllo del banco. Provare la bici ferma: la leva non deve arrivare fino al manubrio. Guardare se i cavi sono allentati.
+
+Possibili cause. Pastiglie consumate; cavo allentato.
+
+Chi interviene. Il meccanico.
+
+Regola obbligatoria. Una bici con i freni che non tengono non esce mai dal negozio. Il banco non la sistema davanti al cliente per farlo ripartire subito: va tolta dal noleggio.
+
+Sterzo che gioca
+
+Che cosa significa. Il manubrio si muove in modo strano o la ruota anteriore balla.
+
+Primo controllo del banco. Con la bici ferma, tenere la ruota anteriore tra le gambe e muovere il manubrio: non deve girare da solo.
+
+Regola obbligatoria. Una bici con lo sterzo che gioca non esce mai dal negozio: va tolta dal noleggio.
+
+3. Gomme e catena
+
+Gomma bucata
+
+Che cosa significa. L'aria esce dalla camera d'aria e la ruota si affloscia.
+
+Primo controllo del banco. Togliere la gomma e cercare il chiodo o la spina nel copertone prima di montare la camera d'aria nuova.
+
+Chi interviene. Il banco, con una camera d'aria nuova.
+
+Catena che salta
+
+Che cosa significa. La catena esce dai denti della corona o del pignone.
+
+Primo controllo del banco. Rimettere la catena a posto e guardare se qualche maglia è rovinata.
+
+4. Cambio e luci
+
+Cambio che non cambia
+
+Che cosa significa. Quando si cambia marcia la catena non si sposta sul pignone successivo.
+
+Luce che non si accende
+
+Che cosa significa. La luce anteriore o posteriore non si accende quando si preme il pulsante.
+
+Primo controllo del banco. Cambiare le pile.
+
+Chi interviene. Il banco.

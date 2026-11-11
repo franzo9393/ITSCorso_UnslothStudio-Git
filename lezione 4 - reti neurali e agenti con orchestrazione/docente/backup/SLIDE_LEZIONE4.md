@@ -110,33 +110,33 @@ In Playground e in Flappy cambiavano i pesi. Qui cambiate il testo.
 # Slide 12 — Che cosa costruite oggi
 <!-- layout: CONTENUTO -->
 
-> Un assistente per la pressa P03.
+> Un assistente per il noleggio di biciclette Ruota Libera.
 
-Il responsabile del reparto ne vuole uno solo: calcola un fermo e fa anche un secondo lavoro.
+Il titolare ne vuole uno solo: calcola da quanto tempo una bici è fuori servizio e fa anche un secondo lavoro.
 
-## Esempio → fermo → secondo lavoro → prove → confronto
+## Esempio → fuori servizio → secondo lavoro → prove → confronto
 
 ---
 
-# Slide 13 — Prima, un assistente già fatto: le biciclette
+# Slide 13 — Prima, un esempio già fatto: la pizzeria
 <!-- layout: CONTENUTO -->
 
-> «La bici 12 ha i freni che non tengono. Mi ridate anche i soldi?»
+> «La pizza è arrivata fredda e dopo un'ora. Mi ridate anche i soldi?»
 
-Un agente è un assistente di Copilot con istruzioni salvate. Il docente ne mostra uno per un noleggio di biciclette. Non è la P03.
+Un agente è un assistente di Copilot con istruzioni salvate. Il docente ne mostra uno per una pizzeria d’asporto. Non è il vostro noleggio.
 
-Alzata di mano: prima i freni o prima i soldi?
+Alzata di mano: prima la pizza fredda o prima i soldi?
 
 ---
 
 # Slide 14 — Com'è fatto
 <!-- layout: CONTENUTO -->
 
-| Parte delle istruzioni | Nelle biciclette | Nella vostra P03 |
+| Parte delle istruzioni | Nella pizzeria | Nel vostro noleggio |
 | --- | --- | --- |
-| Regole per tutte le richieste (valgono sempre) | freni che non tengono: «Non usare la bici» | le scrivete voi |
-| Indice delle richieste (dice quale lavoro usare) | bici rotta: GUASTO. Soldi indietro: RIMBORSO | FERMO e il secondo lavoro |
-| Competenze (un lavoro ciascuna, con dati e regole) | PRENOTAZIONE, GUASTO, RIMBORSO | FERMO, poi ALLARMI o PASSAGGIO |
+| Regole per tutte le richieste (valgono sempre) | pizza fredda: prima «Mi dispiace» | le scrivete voi |
+| Indice delle richieste (dice quale lavoro usare) | pizza fredda: RECLAMO. Soldi indietro: RIMBORSO | FUORI SERVIZIO e il secondo lavoro |
+| Competenze (un lavoro ciascuna, con dati e regole) | ORDINE, RECLAMO, RIMBORSO | FUORI SERVIZIO, poi GUASTI o PASSAGGIO |
 | Stile delle risposte (come deve parlare) | frasi brevi, il dato prima | due esempi vostri |
 
 Sono parti dello stesso testo, non programmi separati. Scegliere quali usare e in che ordine si chiama orchestrare.
@@ -148,20 +148,20 @@ Sono parti dello stesso testo, non programmi separati. Scegliere quali usare e i
 
 | Programma | Che cosa ci fate |
 | --- | --- |
-| Teams | scaricate i tre testi della P03: registro, regole degli indicatori, guida allarmi |
-| Blocco note | aprite i tre testi e scrivete le istruzioni, da salvare come istruzioni_assistente_P03.txt |
+| Teams | scaricate i tre testi del noleggio: registro, regole del noleggio, guida ai guasti |
+| Blocco note | aprite i tre testi e scrivete le istruzioni, da salvare come istruzioni_agente_noleggio.txt |
 | Microsoft Copilot | con l'account scolastico, salvate l'agente e lo provate |
 
 I tre testi sono le fonti: non vanno copiati nelle istruzioni.
 
 ---
 
-# Slide 16 — Il primo lavoro: il fermo
+# Slide 16 — Il primo lavoro: il fuori servizio
 <!-- layout: CONTENUTO -->
 
-## Scrivete le regole comuni e il lavoro FERMO.
+## Scrivete le regole comuni e il lavoro FUORI SERVIZIO.
 
-FERMO: quando si usa, quali dati servono, come calcola la durata, che cosa risponde se un dato manca.
+FUORI SERVIZIO: quando si usa, quali dati servono, come calcola i minuti, che cosa risponde se un dato manca.
 
 La prima riga della risposta dice «Competenza usata:» e il nome del lavoro.
 
@@ -180,12 +180,12 @@ Se l’agente non c’è: in ogni nuova conversazione inviate prima le vostre is
 
 ---
 
-# Slide 18 — Un messaggio dal reparto
+# Slide 18 — Un messaggio dal negozio
 <!-- layout: CONTENUTO -->
 
-> «Quanto è durato il fermo del 14 ottobre? Mostrami gli orari.»
+> «Per quanti minuti è stata fuori servizio la bici 12 sabato? Mostrami gli orari.»
 
-In un solo messaggio: il registro, le regole degli indicatori e, in fondo, questa richiesta.
+In un solo messaggio: il registro, le regole del noleggio e, in fondo, questa richiesta.
 
 Prima di inviare: quale risultato vi aspettate?
 
@@ -194,20 +194,20 @@ Prima di inviare: quale risultato vi aspettate?
 # Slide 19 — Gli orari devono tornare
 <!-- layout: CONTENUTO -->
 
-## {{MINUTI_FERMO}} minuti
+## {{MINUTI_FUORI_SERVIZIO}} minuti
 
-{{ORA_FERMO}} → {{ORA_RIPARTENZA}}
+{{ORA_FUORI_SERVIZIO}} → {{ORA_DISPONIBILE}}
 
-Il fermo finisce quando riprende la produzione, non quando finiscono le prove.
+Il fuori servizio finisce quando la bici torna in fila, non quando finiscono la riparazione e la prova.
 
 Trovate le due note nel registro. Sono questi gli orari usati dal vostro agente? Se no, correggete le istruzioni e riprovate in una nuova conversazione.
 
 ---
 
-# Slide 20 — Il responsabile insiste
+# Slide 20 — Il titolare insiste
 <!-- layout: CONTENUTO -->
 
-> «E quanti pezzi abbiamo perso?»
+> «E quanto dobbiamo rimborsare al cliente?»
 
 Continuate nella stessa conversazione.
 
@@ -218,11 +218,13 @@ Un numero, una domanda o un limite dichiarato: che cosa vi aspettate?
 # Slide 21 — Qui serve un dato in più
 <!-- layout: CONTENUTO -->
 
-> La cadenza non è nel registro.
+> Nel registro non c’è il tipo di noleggio.
 
-La cadenza è quanti pezzi all’ora produce la pressa: sta nella ricetta, non nel registro. Per calcolare i pezzi persi, l’agente deve chiederla.
+Il rimborso conta i minuti senza bici: dalla segnalazione al cambio, non il fuori servizio della bici.
 
-Dire che manca è corretto. Scegliere un numero al posto vostro non lo è.
+Il cliente può aver noleggiato a ore o per la giornata, e la tariffa oraria cambia. Per calcolare il rimborso, l’agente deve chiederlo.
+
+Dire che manca è corretto. Scegliere una tariffa al posto vostro non lo è.
 
 ---
 
@@ -231,7 +233,7 @@ Dire che manca è corretto. Scegliere un numero al posto vostro non lo è.
 
 | Lavoro | Che cosa fa | Fonte |
 | --- | --- | --- |
-| ALLARMI | spiega un allarme: significato, primo controllo, chi interviene | guida allarmi |
+| GUASTI | spiega un guasto: significato, primo controllo, chi interviene | guida ai guasti |
 | PASSAGGIO | prepara una nota per il turno dopo: fatti, interventi, controlli da fare | registro |
 
 Aggiungete al vostro file il lavoro che preferite.
@@ -254,7 +256,7 @@ Scrivete nel file l’indice delle richieste: quale richiesta va a quale lavoro.
 
 Aggiungeteli alle istruzioni. La prova userà una richiesta diversa dagli esempi.
 
-Le istruzioni restano nel vostro file istruzioni_assistente_P03.txt.
+Le istruzioni restano nel vostro file istruzioni_agente_noleggio.txt.
 
 ---
 
@@ -280,10 +282,10 @@ Decidetelo prima. Poi confrontate la risposta con i testi: nessun diario da comp
 
 ---
 
-# Slide 27 — Ultimo messaggio dal reparto
+# Slide 27 — Ultimo messaggio dal negozio
 <!-- layout: CONTENUTO -->
 
-> «Come si chiama il tecnico che ha cambiato il filtro?»
+> «Come si chiama il meccanico che ha cambiato le pastiglie?»
 
 Nuova conversazione, con il registro.
 

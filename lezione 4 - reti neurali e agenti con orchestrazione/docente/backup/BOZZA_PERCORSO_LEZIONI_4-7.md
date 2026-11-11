@@ -25,13 +25,13 @@ Documento riservato al docente. **Bozza da approvare**: non sono ancora material
 
 ## Filo conduttore
 
-Ogni lezione riparte dall'assistente costruito nella precedente: il testo delle istruzioni è nel file `istruzioni_assistente_P03.txt` degli appunti personali di ogni studente. Nella lezione 4 è il testo dell'agente di Microsoft Copilot; dalla lezione 5 si può incollare anche nel campo System Prompt di Studio, se la VM resta uguale da una lezione all'altra (controllo da fare nella lezione 5). Nella lezione 7 il gruppo lo estende a un documento nuovo e lo fa collaudare da un altro gruppo.
+Ogni lezione riparte dall'agente costruito nella precedente: il testo delle istruzioni è nel file `istruzioni_agente_noleggio.txt` degli appunti personali di ogni studente (caso del noleggio di biciclette Ruota Libera, deciso l'11 novembre 2026: sostituisce il caso della pressa P03 nella lezione 4). Nella lezione 4 è il testo dell'agente di Microsoft Copilot; dalla lezione 5 si può incollare anche nel campo System Prompt di Studio, se la VM resta uguale da una lezione all'altra (controllo da fare nella lezione 5). Nella lezione 7 il gruppo lo estende a un documento nuovo e lo fa collaudare da un altro gruppo. **Le lezioni 5–7 qui sotto descrivono ancora il corpus P03/P30 del laboratorio: vanno riprogettate sul noleggio quando si progettano.**
 
 ```mermaid
 flowchart LR
-  L4["Lezione 4<br/>istruzioni di sistema"] -->|istruzioni_assistente_P03.txt| L5["Lezione 5<br/>knowledge base"]
+  L4["Lezione 4<br/>istruzioni di sistema"] -->|istruzioni_agente_noleggio.txt| L5["Lezione 5<br/>knowledge base"]
   L5 -->|registro prove + istruzioni riviste| L6["Lezione 6<br/>permessi e difese"]
-  L6 -->|tabella_permessi_P03.txt| L7["Lezione 7<br/>gruppi + test individuale"]
+  L6 -->|tabella_permessi_noleggio.txt| L7["Lezione 7<br/>gruppi + test individuale"]
 ```
 
 ## Lezione 4 · Un agente che sa fare più cose
@@ -40,16 +40,16 @@ flowchart LR
 
 Obiettivo: capire, giocando, come impara un programma di intelligenza artificiale e progettare un agente di Microsoft Copilot con più competenze.
 
-**Decisioni del 10 novembre 2026: senza Unsloth Studio, lavoro singolo, nessun giro di controllo tra i banchi.** Restano la P03 e la dimostrazione del docente sul noleggio di biciclette. La revisione sviluppata con Claude Fable sostituisce i registri da compilare con sfide a risultato visibile e un agente costruito per tappe. Il docente ha scelto Copilot e proiettore, senza un nuovo cruscotto: le richieste si mostrano prima, i criteri dopo la prova. Nessuno controlla il lavoro di un compagno.
+**Decisioni del 10 novembre 2026: senza Unsloth Studio, lavoro singolo, nessun giro di controllo tra i banchi.** Restano la dimostrazione del docente su un caso diverso e un agente costruito per tappe. L'11 novembre 2026 la pressa P03 è stata tolta dalla lezione 4: il caso degli studenti è il noleggio di biciclette Ruota Libera, la dimostrazione del docente passa a una pizzeria d'asporto. La revisione sviluppata con Claude Fable sostituisce i registri da compilare con sfide a risultato visibile. Il docente ha scelto Copilot e proiettore, senza un nuovo cruscotto: le richieste si mostrano prima, i criteri dopo la prova. Nessuno controlla il lavoro di un compagno.
 
 Parti, come nella consegna degli studenti:
 
 1. **Cambiate le probabilità** · [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) (MIT): sul primo esempio, portare la barra più lunga sopra 90% e sotto 30% con Temperature. Previsione a mano alzata, nessun appunto.
 2. **Quanti neuroni servono?** · [TensorFlow Playground](https://playground.tensorflow.org/) (Apache-2.0): sul cerchio, da zero neuroni nascosti in su, con Test loss sotto 0,05 entro 1.500 giri. Previsione a mano alzata, poi i disegni dentro i neuroni (ogni neurone separa i colori con una linea) e il peso di una linea prima e dopo l'addestramento. Poi la spirale, senza obbligo di riuscire. Confronto Training loss/Test loss sul disturbo al proiettore, senza promettere un peggioramento. Decisione dell'11 novembre 2026.
 3. **Un esempio dal proiettore** · [Flappy Learning](https://xviniette.github.io/FlappyLearning/) (MIT): dimostrazione del docente di un paio di minuti, senza previsioni né consegna per gli studenti. Si copiano le reti migliori con modifiche a caso: anche lì cambiano i pesi, ma nessuno li corregge guardando un errore. Decisione dell'11 novembre 2026: il docente ha giudicato le attività su Flappy poco profonde.
-4. **Un assistente per la pressa P03** · Slide 11–32. Si parte dal filo «prima i pesi, ora il testo» e dal percorso (esempio, fermo, secondo lavoro, prove, confronto). Dimostrazione biciclette, introdotta come esempio della struttura (regole, indice, competenze, stile), poi i tre programmi da aprire; prima competenza FERMO e subito due richieste dal reparto; seconda competenza ALLARMI o PASSAGGIO, indice e due esempi propri di stile. Due casi critici inventati dallo studente, uno su entrambe le competenze e uno su dati mancanti, fonti insufficienti o fuori indice. Ultima richiesta comune, correzioni mirate, confronto con l'esempio P03. Poi stessa richiesta e stessi documenti con e senza agente e scelta motivata tra due risposte reali dell'agente: gli esempi nelle istruzioni non cambiano i pesi. Decisione dell'11 novembre 2026: la slide «Se Copilot si ferma» è stata tolta; i casi di riserva restano nella guida e nella consegna.
+4. **Un agente per il noleggio Ruota Libera** · Slide 11–32. Si parte dal filo «prima i pesi, ora il testo» e dal percorso (esempio, fuori servizio, secondo lavoro, prove, confronto). Dimostrazione della pizzeria, introdotta come esempio della struttura (regole, indice, competenze, stile), poi i tre programmi da aprire; prima competenza FUORI SERVIZIO e subito due richieste dal negozio; seconda competenza GUASTI o PASSAGGIO, indice e due esempi propri di stile. Due casi critici inventati dallo studente, uno su entrambe le competenze e uno su dati mancanti, fonti insufficienti o fuori indice. Ultima richiesta comune, correzioni mirate, confronto con l'esempio del noleggio. Poi stessa richiesta e stessi documenti con e senza agente e scelta motivata tra due risposte reali dell'agente: gli esempi nelle istruzioni non cambiano i pesi. Decisione dell'11 novembre 2026: la slide «Se Copilot si ferma» è stata tolta; i casi di riserva restano nella guida e nella consegna.
 
-Un solo file personale da salvare, non da consegnare: `istruzioni_assistente_P03.txt`, con solo le istruzioni. Niente diario delle prove. Esempio P03 in `studenti/da_pubblicare_dopo_collaudo/`, da pubblicare dopo la parte 4E. Non è provato in Copilot. Il processo di sviluppo e le fonti esterne consultate sono in `FLUSSO_SVILUPPO_DIDATTICO.md` alla radice del repository.
+Un solo file personale da salvare, non da consegnare: `istruzioni_agente_noleggio.txt`, con solo le istruzioni. Niente diario delle prove. Esempio del noleggio in `studenti/da_pubblicare_dopo_collaudo/`, da pubblicare dopo la parte 4E. Non è provato in Copilot. Il processo di sviluppo e le fonti esterne consultate sono in `FLUSSO_SVILUPPO_DIDATTICO.md` alla radice del repository.
 
 ### Rami di riserva della lezione 4
 
@@ -63,7 +63,7 @@ Obiettivo: rendere visibile il recupero dei passaggi e distinguere un errore di 
 
 1. **Tagliare il testo in blocchi** · [ChunkViz](https://chunkviz.up.railway.app/). Le coppie fissano un criterio («macchina, orario, allarme e causa nello stesso blocco»), confrontano dimensioni, sovrapposizione e tipo di divisione, e motivano la scelta. Poi si confronta la scelta con la divisione fissa di Studio, che non si imposta da ChunkViz.
 2. **Parole esatte o significato** · [Vector Search Methods Comparison](https://huggingface.co/spaces/arad1367/Vector_Search_Methods_Comparison), riquadro BM25. Breve illustrazione con esempi fissi, prima dei documenti veri.
-3. **Knowledge base BM25** · Unsloth Studio, con il corpus del laboratorio (`laboratorio/corpus/`: P03, P30, catalogo ricambi, bolla). Gli studenti scrivono domande di tipi diversi (codice esatto, più fonti, dato assente, P03 o P30), guardano i passaggi recuperati, cambiano il numero di passaggi e correggono la domanda, il documento o le istruzioni della lezione 4.
+3. **Knowledge base BM25** · Unsloth Studio, con i documenti del noleggio Ruota Libera più un documento nuovo da preparare per la lezione 5 (il corpus P03/P30 di `laboratorio/corpus/` non si usa più). Gli studenti scrivono domande di tipi diversi (codice esatto, più fonti, dato assente, bici o giorno sbagliati), guardano i passaggi recuperati, cambiano il numero di passaggi e correggono la domanda, il documento o le istruzioni della lezione 4.
 4. **Documento aggiornato** · Unsloth Studio. Si sostituisce il catalogo con la revisione 2 e si ripete la prova in una nuova conversazione.
 
 Consegna: registro delle prove (domanda, passaggi recuperati, risposta, giudizio, correzione) in tabella con celle vuote, con i giudizi `OK`, `ERRORE`, `NON_ESEGUITO` già usati in `laboratorio/docente/SOLUZIONI.md`.
@@ -72,12 +72,12 @@ Consegna: registro delle prove (domanda, passaggi recuperati, risposta, giudizio
 
 Obiettivo: vedere che cosa fa un agente oltre a scrivere testo e dove si mettono le protezioni.
 
-1. **Istruzioni nascoste** · attività da riprogettare senza server esterni. HackMerlin e Gandalf sono esclusi perché interrogano un modello sul server. Candidata: le coppie scrivono su carta le istruzioni di difesa per un assistente di reparto, le scambiano e provano ad aggirarle in Unsloth Studio (o con il ramo di riserva della lezione 4). Da approvare.
+1. **Istruzioni nascoste** · attività da riprogettare senza server esterni. HackMerlin e Gandalf sono esclusi perché interrogano un modello sul server. Candidata: le coppie scrivono su carta le istruzioni di difesa per un agente del noleggio, le scambiano e provano ad aggirarle in Unsloth Studio (o con il ramo di riserva della lezione 4). Da approvare.
 2. **Dentro un agente** · attività da riprogettare senza Prompt Airlines (server esterno). Candidata: la scheda ricavata da [Hugging Face Agents Course · Unità 1](https://huggingface.co/learn/agents-course/unit1/agent-steps-and-structure) (Apache-2.0): una persona della coppia fa da programma di controllo, decide quando fermare il modello, quale funzione eseguire e quale risultato reinserire; l'altra fa da modello e risponde solo con il formato Pensiero–Azione–Osservazione. Si svolge sulla carta o in un file di testo, senza rete. Da approvare.
 3. **Istruzioni dentro un documento** · Unsloth Studio. Ogni studente inserisce in un documento sintetico della knowledge base del compagno una nota che contiene un'istruzione. Il compagno controlla se il proprio assistente la tratta come dato o come ordine; entrambi gli esiti si analizzano e si decide che cosa protegge davvero: istruzioni, permessi o controllo umano.
 4. **Tabella dei permessi** · Unsloth Studio, esecuzione di codice. Solo se il collaudo sulla VM riesce: la coppia decide che cosa l'assistente può fare da solo, che cosa deve chiedere e che cosa gli è vietato, poi prova un calcolo eseguito e lo confronta con un riepilogo calcolato con regole note. Senza collaudo positivo la tabella si progetta senza esecuzione.
 
-Consegne: `tabella_permessi_P03.txt`, istruzioni riviste.
+Consegne: `tabella_permessi_noleggio.txt`, istruzioni riviste.
 
 ## Lezione 7 · Lavoro di gruppo e test individuale
 
@@ -86,8 +86,8 @@ Riprende il blocco «Sfida e restituzione» già progettato in `laboratorio/doce
 ### Prima parte · Lavoro di gruppo
 
 - **Gruppi di quattro**, ognuno sulla propria VM. Il gruppo divide il lavoro per argomento: istruzioni di sistema, documenti, permessi, casi di prova.
-- **Consegna del gruppo**: estendere l'assistente P03 a un **documento nuovo scritto dal gruppo** (DOC-T10: titolo, data, revisione, due dati sintetici con macchina e unità, un dato lasciato volutamente fuori dal documento). Il gruppo aggiorna istruzioni, knowledge base e tabella dei permessi.
-- **Collaudo incrociato**: ogni gruppo prepara per un altro gruppo un pacchetto di tranelli inventati (dato assente, P03 o P30, revisione vecchia, istruzione nascosta in un documento, richiesta di azione non permessa). Il gruppo ospite, non l'autore, formula le domande sul DOC-T10, come previsto per T08/T09.
+- **Consegna del gruppo**: estendere l'agente del noleggio a un **documento nuovo scritto dal gruppo** (DOC-T10: titolo, data, revisione, due dati sintetici con bici e unità, un dato lasciato volutamente fuori dal documento; da adattare al noleggio). Il gruppo aggiorna istruzioni, knowledge base e tabella dei permessi.
+- **Collaudo incrociato**: ogni gruppo prepara per un altro gruppo un pacchetto di tranelli inventati (dato assente, bici o giorno sbagliati, revisione vecchia, istruzione nascosta in un documento, richiesta di azione non permessa). Il gruppo ospite, non l'autore, formula le domande sul DOC-T10, come previsto per T08/T09.
 - **Correzione e restituzione**: ogni gruppo corregge dove il collaudo ha trovato falle e presenta alla classe una falla e la correzione, con i passaggi recuperati come prova. Non si valuta la percentuale di risposte corrette del modello.
 
 Consegna del gruppo: istruzioni finali, DOC-T10, registro del collaudo incrociato, tabella dei permessi.
@@ -107,7 +107,7 @@ Consegna del gruppo: istruzioni finali, DOC-T10, registro del collaudo incrociat
 | Modello | `unsloth/Qwen3.5-2B-GGUF` `UD-Q4_K_XL` scelto per la lezione 4: memoria e tempi nella VM con tutte le VM accese, capacità di seguire istruzioni in italiano. Per le lezioni 5–7 decidere in base alle misure raccolte il 12 novembre |
 | Unsloth Studio | Versione installata, campo System Prompt, parametri, knowledge base, impostazioni di recupero, esecuzione di codice |
 | Memoria | Studio e modello entro 8 GB durante indicizzazione e risposta |
-| Corpus | Coerenza di `laboratorio/corpus/` con i dati P03 della lezione 3: stessa macchina, date compatibili, quantità che tornano |
+| Corpus | Coerenza dei nuovi documenti della lezione 5 con quelli del noleggio: stesse bici, date compatibili, quantità che tornano |
 | Siti esterni | Il controllo su pagina e codice, fatto il 5 novembre 2026, conferma che **elaborano nel browser, senza modello sul server**: [Transformer Explainer](https://poloclub.github.io/transformer-explainer/) (GPT-2 nel browser, README), [The Tokenizer Playground](https://huggingface.co/spaces/Xenova/the-tokenizer-playground) (Space statico), [Vector Search Methods Comparison](https://huggingface.co/spaces/arad1367/Vector_Search_Methods_Comparison) (Space statico), [ChunkViz](https://chunkviz.up.railway.app/) (applicazione statica, divisione del testo in `chunkers.js`; ospitata su piano gratuito), [OCTOO VRAM Calculator](https://octooai.com/llm-vram-calculator/) (la pagina dichiara che gira nel browser). Tiktokenizer: tokenizzazione nel browser secondo la validazione. Restano da provare dalla rete della scuola: caricamento del modello e dei tokenizzatori scaricati da ogni postazione, cache e proxy. Un sito statico può comunque scaricare file dalla rete: non è dimostrato che non raggiunga mai un limite per indirizzo. |
 | Collaudo incrociato | Modo di scambiare documenti e istruzioni fra VM (cartella condivisa, chiavetta, posta scolastica) |
 

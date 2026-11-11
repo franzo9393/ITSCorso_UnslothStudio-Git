@@ -4,13 +4,13 @@
 
 ## Da dove partiamo
 
-Il responsabile del reparto presse chiede:
+Il titolare del noleggio di biciclette Ruota Libera chiede:
 
-> «Per la P03 vorrei un solo assistente: deve controllare un fermo e saper fare anche un altro lavoro. Quando gli chiedo due cose insieme, deve capire quali informazioni servono.»
+> «Vorrei un solo assistente: deve dirmi da quanto tempo una bici è fuori servizio e saper fare anche un altro lavoro. Quando gli chiedo due cose insieme, deve capire quali informazioni servono.»
 
-Prima provate come imparano piccole reti nel browser. Poi scrivete e provate le vostre istruzioni in Microsoft Copilot. È un'esercitazione: Copilot produce testo, non comanda la pressa.
+Prima provate come imparano piccole reti nel browser. Poi scrivete e provate le vostre istruzioni in Microsoft Copilot. È un'esercitazione: Copilot produce testo, non gestisce il negozio.
 
-Ognuno lavora sul proprio computer. Non ci sono file da consegnare né un diario da compilare. Il risultato si guarda sullo schermo e si discute insieme dal proiettore. Salvate un solo file vostro: `istruzioni_assistente_P03.txt`, con **solo le istruzioni dell'agente**.
+Ognuno lavora sul proprio computer. Non ci sono file da consegnare né un diario da compilare. Il risultato si guarda sullo schermo e si discute insieme dal proiettore. Salvate un solo file vostro: `istruzioni_agente_noleggio.txt`, con **solo le istruzioni dell'agente**.
 
 ## Parte 1 · Cambiate le probabilità
 
@@ -51,12 +51,12 @@ Il docente apre Flappy Learning: `https://xviniette.github.io/FlappyLearning/`. 
 
 Anche qui cambiano i pesi, ma nessuno li corregge guardando un errore: si copiano le reti migliori con piccole modifiche a caso. È un altro modo di imparare.
 
-## Parte 4 · Un assistente per la pressa P03
+## Parte 4 · Un agente per il noleggio Ruota Libera
 
 Ora cambia il lavoro: non guardate più reti, scrivete istruzioni per Copilot. Copilot legge il testo che scrivete voi: i suoi pesi non cambiano. Il percorso è questo:
 
-1. guardate un assistente già fatto, per un altro caso: il noleggio di biciclette;
-2. scrivete il primo lavoro dell'assistente per la P03: il fermo;
+1. guardate un agente già fatto, per un altro caso: una pizzeria d'asporto;
+2. scrivete il primo lavoro dell'agente per il noleggio: il fuori servizio;
 3. aggiungete un secondo lavoro;
 4. inventate due richieste per metterlo alla prova;
 5. confrontate le risposte con e senza le vostre istruzioni.
@@ -65,21 +65,21 @@ Prima di cominciare, aprite questi programmi:
 
 | Programma | Che cosa ci fate |
 | --- | --- |
-| Teams | scaricate i tre testi della P03 |
+| Teams | scaricate i tre testi del noleggio |
 | Blocco note | aprite i tre testi e scrivete le vostre istruzioni |
 | Microsoft Copilot | con l'account scolastico, salvate l'agente e lo provate |
 
 | Testo da scaricare | Che cosa contiene |
 | --- | --- |
-| `Registro_P03_13-15_ottobre_2026.txt` | i fatti della pressa |
-| `Regole_indicatori_P03.txt` | le definizioni per i calcoli |
-| `Guida_allarmi_P03.txt` | le spiegazioni e i limiti degli interventi |
+| `Registro_Ruota_Libera_7-8_novembre_2026.txt` | gli appunti del banco di un fine settimana |
+| `Regole_noleggio_Ruota_Libera.txt` | orari, listino, termini e calcoli |
+| `Guida_guasti_Ruota_Libera.txt` | i guasti più comuni e che cosa fa il banco |
 
 L'estensione `.txt` indica un file di testo semplice. Per copiarlo: Ctrl+A, Ctrl+C; per incollarlo: Ctrl+V. I tre testi sono le fonti: non vanno copiati nel file delle istruzioni.
 
-### 4A · Guardate un assistente già fatto
+### 4A · Guardate un agente già fatto
 
-Il docente mostra un assistente per un noleggio di biciclette. Un **agente** è un assistente di Copilot con istruzioni salvate: le scrive chi lo crea e Copilot le legge a ogni conversazione. Quello delle biciclette non è la P03: serve a vedere com'è fatto un agente che sa fare più lavori. Le sue istruzioni hanno quattro parti:
+Il docente mostra un agente per una pizzeria d'asporto. Un **agente** è un assistente di Copilot con istruzioni salvate: le scrive chi lo crea e Copilot le legge a ogni conversazione. Quello della pizzeria non è il vostro noleggio: serve a vedere com'è fatto un agente che sa fare più lavori. Le sue istruzioni hanno quattro parti:
 
 | Parte | A che cosa serve |
 | --- | --- |
@@ -94,17 +94,17 @@ Il docente proietta una richiesta di un cliente. Per alzata di mano: quale lavor
 
 Il vostro agente avrà le stesse quattro parti. Il contenuto lo scrivete voi.
 
-### 4B · Primo lavoro: il fermo
+### 4B · Primo lavoro: il fuori servizio
 
-1. Aprite Blocco note e salvate un file nuovo: `istruzioni_assistente_P03.txt`.
+1. Aprite Blocco note e salvate un file nuovo: `istruzioni_agente_noleggio.txt`.
 2. Scrivete voi, senza far preparare il testo a Copilot, due cose:
-   - le regole comuni: ruolo, lingua, quali testi può usare, che cosa non deve fare;
-   - il lavoro **FERMO**: quando si usa, quali dati servono, come calcola la durata secondo le regole degli indicatori, quali orari mostra, che cosa risponde se un dato manca.
+   - le regole comuni: ruolo (l'agente risponde al titolare e al banco, non ai clienti), lingua, quali testi può usare, che cosa non deve fare;
+   - il lavoro **FUORI SERVIZIO**: quando si usa, quali dati servono, come calcola i minuti secondo le regole del noleggio, quali orari mostra, che cosa risponde se un dato manca.
 3. Decidete come comincia ogni risposta: con «Competenza usata:» e il nome del lavoro. «Rispondi bene» non basta: dite che cosa fare con un dato scritto nei testi e con un dato che manca.
 4. Il docente vi mostra dove incollare le istruzioni in Copilot, se la funzione agente è disponibile. Non usate la creazione automatica del testo: incollate le vostre istruzioni e salvate l'agente. Se la funzione non c'è, seguite «Se Copilot non è disponibile», in fondo.
-5. Aprite una nuova conversazione con l'agente. In un solo messaggio incollate il registro e le regole degli indicatori e scrivete in fondo la prima richiesta del proiettore, senza aggiungere suggerimenti. Inviatela prima che il docente mostri i criteri.
+5. Aprite una nuova conversazione con l'agente. In un solo messaggio incollate il registro e le regole del noleggio e scrivete in fondo la prima richiesta del proiettore, senza aggiungere suggerimenti. Inviatela prima che il docente mostri i criteri.
 6. Confrontate la risposta con i criteri e rispondete per alzata di mano. Se qualcosa non va, correggete le istruzioni e riprovate in una nuova conversazione.
-7. Nella conversazione della prima prova, scrivete la seconda richiesta del proiettore. Aspettate la risposta prima di leggere il nuovo criterio. Controllate che ogni numero usato dal modello sia scritto nel registro o nelle regole degli indicatori. Correggete soltanto dove serve.
+7. Nella conversazione della prima prova, scrivete la seconda richiesta del proiettore. Aspettate la risposta prima di leggere il nuovo criterio. Controllate che ogni numero usato dal modello sia scritto nel registro o nelle regole del noleggio. Correggete soltanto dove serve.
 
 ### 4C · Secondo lavoro, indice e stile
 
@@ -112,12 +112,12 @@ Scegliete uno dei due lavori:
 
 | Lavoro | Fonte | Obiettivo e limiti |
 | --- | --- | --- |
-| ALLARMI | Guida allarmi | Spiegare significato, primo controllo e chi interviene, dove la guida lo indica. Niente consigli aggiunti né aggiramenti delle protezioni. |
-| PASSAGGIO | Registro | Preparare una nota per il turno successivo con fatti, interventi e controlli ancora richiesti. Chiarire giorno o turno quando non sono identificabili. |
+| GUASTI | Guida ai guasti | Spiegare significato, primo controllo del banco e chi interviene, dove la guida lo indica. Niente consigli per far uscire dal negozio una bici con freni o sterzo che non funzionano. |
+| PASSAGGIO | Registro | Preparare una nota per il turno successivo con fatti, interventi e controlli ancora da fare. Chiarire giorno o turno quando non sono identificabili. |
 
 Aggiungete al vostro file:
 
-- il lavoro scelto, scritto come FERMO: quando si usa, quali testi usa, quali dati servono, come risponde, che cosa fa se i testi non bastano;
+- il lavoro scelto, scritto come FUORI SERVIZIO: quando si usa, quali testi usa, quali dati servono, come risponde, che cosa fa se i testi non bastano;
 - l'**indice delle richieste**: quale richiesta va a quale lavoro;
 - che cosa fare se una richiesta serve a **entrambi** i lavori, e quale viene prima;
 - che cosa rispondere a una richiesta che non serve a nessuno dei due, cioè **fuori indice**;
@@ -134,7 +134,7 @@ Inventate voi due richieste, diverse dagli esempi di stile:
 
 Prima di inviare ogni richiesta, decidete che cosa conterà come risposta corretta e individuate nei testi i passi che permettono di controllarla. Potete dirlo a voce: non compilate un registro.
 
-Scrivete la richiesta in Copilot, in una **nuova conversazione per ogni caso**. In un solo messaggio, come nella prima prova, mettete i documenti necessari e in fondo la richiesta. Con FERMO e ALLARMI servono registro, regole degli indicatori e guida allarmi; con FERMO e PASSAGGIO servono registro e regole. Nel secondo caso scegliete i documenti in base alla richiesta, senza aggiungere il dato che volete mettere alla prova.
+Scrivete la richiesta in Copilot, in una **nuova conversazione per ogni caso**. In un solo messaggio, come nella prima prova, mettete i documenti necessari e in fondo la richiesta. Con FUORI SERVIZIO e GUASTI servono registro, regole del noleggio e guida ai guasti; con FUORI SERVIZIO e PASSAGGIO servono registro e regole. Nel secondo caso scegliete i documenti in base alla richiesta, senza aggiungere il dato che volete mettere alla prova.
 
 Confrontate la risposta con ciò che avevate deciso e con i documenti. Una domanda per ottenere un dato davvero necessario può essere la risposta corretta. Se tutto funziona, spiegate quale vostra regola lo rende possibile e inventate un'altra richiesta: non peggiorate le istruzioni per provocare un errore.
 
@@ -146,7 +146,7 @@ Riguardate anche le vostre due richieste. Se qualcosa non rispetta i testi o le 
 
 Nel confronto finale raccontate dal vostro schermo un caso e la regola che avete mantenuto o cambiato. Niente elenco scritto degli esiti.
 
-Poi il docente proietta un esempio di istruzioni per la P03. Confrontatelo con il vostro file: che cosa avete scritto voi e non c'è nell'esempio? Che cosa c'è nell'esempio e vi manca? Se trovate una regola che vi manca, scrivetela con parole vostre: non si copia l'esempio. Se avete aggiunto una regola, aggiornate l'agente e riprovate una vostra richiesta in una nuova conversazione: questa risposta vi servirà nel confronto finale.
+Poi il docente proietta un esempio di istruzioni per il noleggio. Confrontatelo con il vostro file: che cosa avete scritto voi e non c'è nell'esempio? Che cosa c'è nell'esempio e vi manca? Se trovate una regola che vi manca, scrivetela con parole vostre: non si copia l'esempio. Se avete aggiunto una regola, aggiornate l'agente e riprovate una vostra richiesta in una nuova conversazione: questa risposta vi servirà nel confronto finale.
 
 ### 4F · Avete cambiato i pesi o il testo?
 
@@ -165,8 +165,8 @@ Se la piattaforma non risponde, seguite la prova a secco collettiva: si legge un
 
 Se il messaggio è troppo lungo, usate soltanto i giorni completi del registro necessari alla richiesta, conservando la sequenza degli eventi. Se il campo delle istruzioni è troppo corto, togliete ripetizioni e accorciate gli esempi, senza perdere fonti, limiti e regole dell'indice.
 
-Prima di chiudere salvate `istruzioni_assistente_P03.txt`. Non dovete caricarlo o consegnarlo.
+Prima di chiudere salvate `istruzioni_agente_noleggio.txt`. Non dovete caricarlo o consegnarlo.
 
 ## I siti usati
 
-Transformer Explainer: Georgia Tech, Polo Club of Data Science, licenza MIT. TensorFlow Playground: Daniel Smilkov e Shan Carter, Apache-2.0. Flappy Learning: xviniette, MIT. I documenti P03 sono inventati per questa esercitazione.
+Transformer Explainer: Georgia Tech, Polo Club of Data Science, licenza MIT. TensorFlow Playground: Daniel Smilkov e Shan Carter, Apache-2.0. Flappy Learning: xviniette, MIT. I documenti del noleggio sono inventati per questa esercitazione.

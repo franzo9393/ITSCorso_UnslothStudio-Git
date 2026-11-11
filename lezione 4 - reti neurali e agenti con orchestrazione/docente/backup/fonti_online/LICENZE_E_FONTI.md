@@ -12,4 +12,4 @@ Regola: una fonte pubblica si usa solo con un permesso di riuso letto sul sito d
 
 Non sono state lette le informative sulla privacy dei tre siti. Playground contatta Google Fonts e Google Analytics; Flappy Learning contatta Google Fonts; Transformer Explainer scarica circa 600 MB e contatta, tra gli altri, Google Tag Manager, DoubleClick, YouTube e Google Analytics (10 novembre 2026, postazione del docente, rete non scolastica).
 
-I documenti del caso P03 (registro, guida agli allarmi, regole degli indicatori) sono inventati per l'esercitazione ITS MAKER e non hanno fonti esterne.
+I documenti del caso Ruota Libera (registro, guida ai guasti, regole del noleggio) sono inventati per l'esercitazione ITS MAKER e non hanno fonti esterne.

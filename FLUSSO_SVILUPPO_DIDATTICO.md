@@ -44,6 +44,6 @@ Sono state lette direttamente la [skill di pianificazione](https://github.com/an
 
 ## Applicazione nella lezione 4
 
-La scelta approvata è Copilot più proiettore, senza nuovi strumenti. Transformer ha due bersagli leggibili sulle probabilità; Playground una ricerca del proprio record; Flappy una previsione su una soglia finita, senza fingere che l'osservazione sia un gioco di abilità. L'agente P03 dà un primo riscontro prima di essere completo. Le richieste comuni servono a confrontare i criteri; due casi inventati dagli studenti verificano che non si tratti soltanto di seguire le richieste del docente. Rimane un solo file utile: le istruzioni dell'agente.
+La scelta approvata è Copilot più proiettore, senza nuovi strumenti. Transformer ha due bersagli leggibili sulle probabilità; Playground una ricerca del proprio record; Flappy una previsione su una soglia finita, senza fingere che l'osservazione sia un gioco di abilità. L'agente del noleggio dà un primo riscontro prima di essere completo. Le richieste comuni servono a confrontare i criteri; due casi inventati dagli studenti verificano che non si tratti soltanto di seguire le richieste del docente. Rimane un solo file utile: le istruzioni dell'agente.
 
 Le prove dei siti eseguite dai collaboratori riguardano Chromium su Linux e una rete non scolastica. Non dimostrano il funzionamento di Copilot con account studente né la riuscita dell'attività con la classe.

@@ -13,16 +13,16 @@
 
 ## 0. Che cos'è l'apprendimento automatico
 
-**L'idea.** Normalmente un programma si scrive con regole: «se la pressione supera un valore, accendi l'allarme». Nell'apprendimento automatico (in inglese *machine learning*) non scrivi la regola. Dai al programma molti esempi e lui trova da solo i numeri che servono per decidere bene.
+**L'idea.** Normalmente un programma si scrive con regole: «se è sabato e c'è il sole, tieni pronte 15 biciclette». Nell'apprendimento automatico (in inglese *machine learning*) non scrivi la regola. Dai al programma molti esempi e lui trova da solo i numeri che servono per decidere bene.
 
-**Esempio (inventato).** Vuoi che un programma riconosca i giorni in cui la pressa si è fermata. Invece di scrivere le regole, gli mostri mille giorni passati, ognuno con la scritta «si è fermata» o «non si è fermata». Il programma prova, sbaglia, corregge i suoi numeri, e dopo molti giri indovina bene anche i giorni che non ha mai visto.
+**Esempio (inventato).** Vuoi che un programma riconosca i giorni in cui un negozio di biciclette fa il pienone. Invece di scrivere le regole, gli mostri mille giorni passati, ognuno con il tempo che faceva e la scritta «pienone» o «tranquillo». Il programma prova, sbaglia, corregge i suoi numeri, e dopo molti giri indovina bene anche i giorni che non ha mai visto.
 
 Quattro parole da avere chiare:
 
 | Parola | Che cosa vuol dire | Esempio |
 | --- | --- | --- |
 | Esempi (dati) | I casi da cui il programma impara | Mille giorni con l'esito scritto |
-| Modello | Il programma che alla fine decide | Quello che dice «fermo» o «non fermo» |
+| Modello | Il programma che alla fine decide | Quello che dice «pienone» o «tranquillo» |
 | Addestramento | Il periodo in cui il modello corregge i suoi numeri | I giri di prova sugli esempi |
 | Uso | Quando il modello decide su un caso nuovo | Un giorno che non ha mai visto |
 
@@ -196,7 +196,7 @@ I modelli come quello dietro Copilot hanno un numero enorme di pesi. Si fissano 
 
 Quando scrivono le istruzioni di un agente, cambiano una cosa diversa: **un testo che il modello legge insieme alla richiesta**. I pesi restano uguali.
 
-**Esempio.** Un collega esperto. Anni di esperienza lo hanno formato: sono i suoi pesi. Un foglio con le regole di oggi («rispondi in due righe, chiedi sempre il numero della pressa») cambia come risponde oggi, ma non gli cambia l'esperienza.
+**Esempio.** Un collega esperto. Anni di esperienza lo hanno formato: sono i suoi pesi. Un foglio con le regole di oggi («rispondi in due righe, chiedi sempre il numero della bici») cambia come risponde oggi, ma non gli cambia l'esperienza.
 
 ### Dove sta il punto nella lezione
 
@@ -209,7 +209,7 @@ Quando scrivono le istruzioni di un agente, cambiano una cosa diversa: **un test
 | Parola | In breve |
 | --- | --- |
 | Agente | Un assistente di Copilot con istruzioni salvate |
-| Competenza | Una parte delle istruzioni dedicata a un lavoro (per esempio FERMO) |
+| Competenza | Una parte delle istruzioni dedicata a un lavoro (per esempio FUORI SERVIZIO) |
 | Indice delle richieste | L'elenco che dice quale competenza usare per quale domanda |
 | Orchestrazione | Scegliere quali competenze usare e in che ordine. Qui si fa con del testo, non con programmi separati |
 
