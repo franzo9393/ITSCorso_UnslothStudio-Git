@@ -15,7 +15,7 @@ Queste regole valgono per la creazione e la revisione dei materiali del corso. L
 ## Materiali destinati agli studenti
 
 - Scrivere in italiano comune, con frasi brevi e istruzioni concrete. Il pubblico è composto da studenti tecnici alle prime armi: attività semplici, comprensibili e coinvolgenti.
-- Niente gergo, anglicismi superflui, sigle non spiegate o nomi di comandi da imparare inutilmente. Preferire parole come istruzioni, richiesta, risposta, registro, tabella, nuova conversazione e controllo. Conservare i nomi reali dei prodotti; spiegare al primo uso le estensioni necessarie, come `.md`.
+- Niente gergo, anglicismi superflui, sigle non spiegate o nomi di comandi da imparare inutilmente. Preferire parole come istruzioni, richiesta, risposta, registro, tabella, nuova conversazione e controllo. Conservare i nomi reali dei prodotti; spiegare al primo uso le estensioni necessarie, come `.md`. Una parola sola per ogni cosa, uguale in slide, consegna e guida; il nome tecnico (per esempio «competenza», «indice», «orchestrazione») resta solo nella guida docente e nella guida di studio.
 - Usare nomi concreti per attività e ruoli. Spiegare al primo uso eventuali termini nuovi o metafore, senza presentarli come funzioni del programma. Nelle consegne indicare chi compie ogni azione, dove scrive e in quale ordine procede. Presentare ogni istruzione e tabella nel passaggio in cui va usata, non dopo.
 - Dire chiaramente quale programma aprire, che cosa scrivere o copiare, che cosa controllare, che cosa salvare e che cosa consegnare.
 - Non inserire note sulla progettazione della lezione, giudizi sul livello degli studenti, riferimenti alle soluzioni o alla loro collocazione, né altre informazioni riservate al docente.
@@ -28,14 +28,26 @@ Queste regole valgono per la creazione e la revisione dei materiali del corso. L
 Valgono per slide, consegne, guide e per ogni testo del corso. Le slide in particolare non devono sembrare l'output di uno script: il generatore le impagina, ma il testo lo si scrive e lo si rilegge come lo scriverebbe un docente.
 
 - Una slide, un'idea. Il titolo esprime un punto o una domanda concreta, non un'etichetta generica. Niente numerazione nei titoli visibili. Preferire «Togliete un neurone. Funziona ancora?» a «L'attività pratica».
-- La slide proietta ciò che si guarda o si decide insieme: una domanda, un numero, una schermata, una scelta, una regola in una riga. Le istruzioni passo per passo stanno nella consegna, dove servono. Non riportare sulla slide lo stesso testo della consegna.
+- La slide proietta ciò che si guarda o si decide insieme: una domanda, un numero, una schermata, una scelta, una regola in una riga, l'azione del momento. Le procedure di più passi stanno nella consegna, dove servono: non riportarle sulla slide.
 - Poche parole, leggibili dal fondo dell'aula. In genere bastano una domanda e poche righe. Le eccezioni devono servire al confronto, non a comprimere la consegna in una slide. Se servono sei passaggi, non sono una slide.
-- Variare la forma da una slide all'altra: domanda a tutto schermo, un solo numero grande, una frase del responsabile, una scelta tra due, un confronto in tabella. La tabella si usa solo quando ci sono davvero dati da confrontare, non per ogni elenco. Non aprire tutte le slide con la stessa struttura (titolo, tre punti, frase finale).
+- Variare la forma da una slide all'altra: domanda a tutto schermo, un solo numero grande, una frase del responsabile, una scelta tra due, un confronto in tabella. La tabella si usa quando ci sono davvero dati da confrontare o quando affianca un esempio e il compito (stesse righe, due colonne), non per ogni elenco. Non aprire tutte le slide con la stessa struttura (titolo, tre punti, frase finale).
 - Parlare agli studenti come in aula: «voi», frasi dirette e concrete. Il docente racconta il resto a voce; non spiegare sulla slide ciò che si dice meglio parlando.
 - Evitare i segni di un testo prodotto in serie: elenchi sempre di tre elementi, frasi simmetriche («non solo X, ma Y»), aggettivi enfatici, formule di apertura e di chiusura che riassumono («In sintesi», «Come abbiamo visto»), titoli e blocchi ripetuti identici, grassetto sparso, punti elenco di una sola parola, ripetizione della stessa frase di avviso in più slide.
 - Frasi di una riga che dicono un fatto battono frasi lunghe che dicono un valore. Se una frase può essere tolta senza che si perda nulla, toglierla.
 - Prima di consegnare slide o consegne, rileggerle per intero come le leggerebbe uno studente. Se suonano come un modulo o un manuale, riscriverle. Il prefisso «Slide NN —» nel Markdown sorgente serve solo al generatore e non deve comparire sulla slide.
 - Per nuove lezioni e riprogettazioni leggere e applicare `FLUSSO_SVILUPPO_DIDATTICO.md`: progettazione dell'esperienza, prova concreta, redazione distinta per slide e consegna, revisione indipendente. La revisione didattica obbligatoria resta quella definita più sotto.
+
+## Chiarezza didattica: come si spiega
+
+Una lezione ben progettata resta incomprensibile se lo studente non vede che cosa fare, in quale ordine e con quali parole. Le regole seguenti vengono dalla ricerca sull'insegnamento (fonti in `FLUSSO_SVILUPPO_DIDATTICO.md`) e dal giudizio del revisore sulla lezione 4. Valgono per slide, consegne e guide.
+
+- **Quadro prima dei dettagli.** Una slide iniziale dice che cosa si costruisce e in quali passi; poi si procede un passo alla volta.
+- **Prima il concreto, poi il nome.** Mostrare un esempio vero (estratti fedeli al file, tagli segnati con […]) prima di dare i nomi delle sue parti. Ogni termine nuovo ha una definizione di una riga, dopo l'esempio.
+- **Esempio svolto, poi problema simile.** Calcolare davanti agli studenti un caso della stessa forma ma diverso da quello richiesto, poi chiedere il loro. Un caso di un altro ambito (per esempio una pizzeria) mostra la forma senza dare la soluzione.
+- **Esercizio a metà.** Dove gli studenti scrivono un testo, mettere accanto l'esempio dell'altro caso e le domande a cui rispondere: mai le risposte già scritte.
+- **Un'azione per slide.** Ogni slide dice un solo gesto o una sola decisione: che cosa fare adesso, in quale programma, che cosa guardare. Se una slide spiega un criterio e chiede anche un'azione, dividerla.
+- **Controlli frequenti.** Previsione o alzata di mano prima di inviare, criterio dopo la prova: si vede subito chi si è perso.
+- **Lettura da studente.** Rileggere ogni slide e ogni consegna chiedendosi: so che cosa fare adesso? So dove? Conosco ogni parola? Chiedere la stessa lettura, slide per slide, al revisore didattico.
 
 ## Programma di intelligenza artificiale e funzioni effettive
 
@@ -81,7 +93,6 @@ Valgono per slide, consegne, guide e per ogni testo del corso. Le slide in parti
 - Controllare che siano conservati i dati del caso, le righe previste, le celle vuote da compilare e il modello grafico. Rimuovere copie e risorse temporanee dopo la verifica.
 - Negli spazi da compilare usare tabelle con celle vuote, non righe di trattini bassi: nel Markdown convertito in Word spariscono.
 - Prima di rigenerare chiudere i file aperti in PowerPoint o Word, che restano bloccati. L'avviso di Windows «Waiting for printer connection» durante le esportazioni di LibreOffice dipende dalla stampante predefinita non raggiungibile e non blocca la conversione.
-- Nei commit, se un file contiene anche modifiche estranee dell'utente, includere solo le righe pertinenti al lavoro svolto.
 
 ## Revisione didattica delle nuove lezioni
 
@@ -112,7 +123,6 @@ Valgono per slide, consegne, guide e per ogni testo del corso. Le slide in parti
 - Il passaggio dal Blocco appunti all'agente è manuale, con la scheda di passaggio scritta dagli studenti. Il rischio di perdere dati e definizioni nel passaggio va reso esplicito: i dati si prendono dal file Excel originale e si confrontano con i riepiloghi mensili.
 - Gli studenti progettano prima le proprie istruzioni dell'agente; `studenti/da_pubblicare_dopo_prova_B/ESEMPIO_ISTRUZIONI_AGENTE_P03.txt` si pubblica solo dopo la Prova B.
 - Le fonti pubbliche aggiunte al Blocco appunti devono avere una licenza di riuso verificata, registrata in `docente/backup/fonti_online/LICENZE_E_FONTI.md` e citata nella consegna per gli studenti.
-- In `studenti/` restano solo i file da distribuire. Sorgenti Markdown, copie in altri formati (PDF, HTML) e fonti del generatore stanno in `studenti/backup/` o `docente/backup/`, che non si pubblicano.
 
 ## Contesto della lezione 4
 
@@ -124,10 +134,11 @@ Valgono per slide, consegne, guide e per ogni testo del corso. Le slide in parti
 - Lezione 3: svolta il 4 novembre, finita a 1 h 40 min (il revisore aveva stimato circa 141 minuti: le sue stime sono sovrastimate di circa il 30%).
 - Caso della lezione 4 (decisione dell'11 novembre 2026): la pressa P03 è stata tolta dalla lezione 4. Gli studenti scrivono l'agente per il noleggio di biciclette Ruota Libera, con tre testi inventati (registro del 7–8 novembre, regole del noleggio, guida ai guasti) e valori di riferimento ricavati da `docente/genera_materiali.py`. La dimostrazione del docente usa una pizzeria d'asporto (`docente/ESEMPIO_DIMOSTRAZIONE_PIZZERIA.txt`). La lezione 3 e il corpus del laboratorio restano sulla P03.
 - Il PowerPoint della lezione 4 è modificato a mano dal docente: non rigenerarlo con `genera_materiali.py` senza avvisare. Le slide 1–11 restano com'è; le slide dalla 12 si sostituiscono nel file esistente dopo una copia di sicurezza, a file chiuso.
-- Resta un solo file personale: `istruzioni_agente_noleggio.txt`, senza diario delle prove. Primo riscontro dopo la competenza FUORI SERVIZIO, poi seconda competenza a scelta (GUASTI o PASSAGGIO), indice e due esempi di stile propri. Ogni studente inventa due casi critici. Non si consegnano file. Transformer: due bersagli sulle probabilità; Playground: quanti neuroni servono a separare il cerchio, con Test loss sotto 0,05 entro 1.500 Epoch; Flappy: solo dimostrazione del docente, mai «uccellino immortale».
+- Resta un solo file personale: `istruzioni_agente_noleggio.txt`, senza diario delle prove. Primo riscontro dopo il lavoro FUORI SERVIZIO, poi secondo lavoro a scelta (GUASTI o PASSAGGIO), elenco delle richieste e due esempi di stile propri. Ogni studente inventa due casi critici. Non si consegnano file. Transformer: due bersagli sulle probabilità; Playground: quanti neuroni servono a separare il cerchio, con Test loss sotto 0,05 entro 1.500 Epoch; Flappy: solo dimostrazione del docente, mai «uccellino immortale».
+- La seconda metà (slide 12–41, in totale 41) è stata riscritta l'11 novembre 2026 secondo «Chiarezza didattica»: esempio della pizzeria, esempio svolto della bici 5, parole «lavoro» ed «elenco delle richieste». Approvata dal revisore.
 
 ## Perimetro delle modifiche e Git
 
 - Non modificare lezioni o varianti non richieste per uniformarle a una scelta locale.
-- Quando l'utente richiede commit e push, includere il lavoro pertinente. Lasciare intatte e fuori dal commit le modifiche estranee non prodotte durante il lavoro, salvo richiesta esplicita di includerle.
+- Quando l'utente richiede commit e push, includere il lavoro pertinente. Lasciare intatte e fuori dal commit le modifiche estranee non prodotte durante il lavoro, salvo richiesta esplicita di includerle; se un file contiene anche modifiche estranee, includere solo le righe pertinenti.
 - Non ripristinare modifiche dell'utente e non usare push forzati senza autorizzazione.

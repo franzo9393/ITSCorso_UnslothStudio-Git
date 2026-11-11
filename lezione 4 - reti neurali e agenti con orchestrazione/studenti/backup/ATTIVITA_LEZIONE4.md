@@ -53,7 +53,15 @@ Anche qui cambiano i pesi, ma nessuno li corregge guardando un errore: si copian
 
 ## Parte 4 · Un agente per il noleggio Ruota Libera
 
-Ora cambia il lavoro: non guardate più reti, scrivete istruzioni per Copilot. Copilot legge il testo che scrivete voi: i suoi pesi non cambiano. Il percorso è questo:
+Ora cambia il lavoro: non guardate più reti, scrivete istruzioni per Copilot. Quando risponde, Copilot legge tre cose insieme. I suoi pesi non cambiano.
+
+| Che cosa legge | Chi lo scrive | A che cosa serve |
+| --- | --- | --- |
+| Le istruzioni | voi | come deve comportarsi |
+| I testi | sono già pronti | i fatti del noleggio |
+| La richiesta | chi usa l'agente | che cosa vuole sapere |
+
+Un **agente** è un assistente di Copilot con istruzioni salvate: Copilot le rilegge a ogni richiesta. Il percorso è questo:
 
 1. guardate un agente già fatto, per un altro caso: una pizzeria d'asporto;
 2. scrivete il primo lavoro dell'agente per il noleggio: il fuori servizio;
@@ -75,62 +83,79 @@ Prima di cominciare, aprite questi programmi:
 | `Regole_noleggio_Ruota_Libera.txt` | orari, listino, termini e calcoli |
 | `Guida_guasti_Ruota_Libera.txt` | i guasti più comuni e che cosa fa il banco |
 
-L'estensione `.txt` indica un file di testo semplice. Per copiarlo: Ctrl+A, Ctrl+C; per incollarlo: Ctrl+V. I tre testi sono le fonti: non vanno copiati nel file delle istruzioni.
+L'estensione `.txt` indica un file di testo semplice. Per copiarlo: Ctrl+A, Ctrl+C; per incollarlo: Ctrl+V. I tre testi contengono i fatti: non vanno copiati nel file delle istruzioni.
 
-### 4A · Guardate un agente già fatto
+### 4A · Un esempio già fatto: la pizzeria
 
-Il docente mostra un agente per una pizzeria d'asporto. Un **agente** è un assistente di Copilot con istruzioni salvate: le scrive chi lo crea e Copilot le legge a ogni conversazione. Quello della pizzeria non è il vostro noleggio: serve a vedere com'è fatto un agente che sa fare più lavori. Le sue istruzioni hanno quattro parti:
+Il docente mostra il messaggio di un cliente a una pizzeria d'asporto: «La pizza è arrivata fredda e dopo un'ora. Mi ridate anche i soldi?» Il suo agente ha già le istruzioni. Per alzata di mano: deve rispondere prima alla pizza fredda o ai soldi?
 
-| Parte | A che cosa serve |
+Ecco alcune frasi delle sue istruzioni. Le istruzioni sono solo testo, diviso in quattro parti:
+
+| Parte | Che cosa c'è scritto (estratti) |
 | --- | --- |
-| Regole per tutte le richieste | valgono sempre |
-| Indice delle richieste | dice quale lavoro usare |
-| Competenze | un lavoro ciascuna, con i suoi dati e le sue regole |
-| Stile delle risposte | come deve parlare |
+| Regole per tutti i casi | «Se la pizza è fredda, sbagliata o in ritardo, scrivi prima "Mi dispiace" e proponi di rifarla, […]» |
+| Elenco delle richieste | «Pizza fredda o in ritardo, pizza sbagliata → RECLAMO. Soldi indietro, conto sbagliato → RIMBORSO.» |
+| Un lavoro, per esempio RECLAMO | «[…] chiedi il numero dell'ordine e che cosa non va. […] pizza fredda o sbagliata: proponi di rifarla.» |
+| Stile delle risposte | «Frasi brevi. Prima il dato, poi la spiegazione.» |
 
-Il docente proietta una richiesta di un cliente. Per alzata di mano: quale lavoro serve per primo, oppure ne servono due? Poi guardate la risposta e il testo che l'ha guidata. La prima riga dice «Competenza usata»: l'ha scritta il modello. Controllate voi se la risposta fa davvero quel lavoro.
+Il docente invia il messaggio all'agente. Guardate la risposta: quale riga delle istruzioni l'ha guidata? La prima riga dice «Lavoro usato:». L'ha scritta il modello: controllate voi se la risposta fa davvero quel lavoro.
 
-**Orchestrare** significa scegliere quali lavori usare e in che ordine. Qui lo fate con del testo: le competenze non sono programmi separati.
-
-Il vostro agente avrà le stesse quattro parti. Il contenuto lo scrivete voi.
+Il vostro agente per il noleggio avrà le stesse quattro parti. Il contenuto lo scrivete voi.
 
 ### 4B · Primo lavoro: il fuori servizio
 
-1. Aprite Blocco note e salvate un file nuovo: `istruzioni_agente_noleggio.txt`.
-2. Scrivete voi, senza far preparare il testo a Copilot, due cose:
-   - le regole comuni: ruolo (l'agente risponde al titolare e al banco, non ai clienti), lingua, quali testi può usare, che cosa non deve fare;
-   - il lavoro **FUORI SERVIZIO**: quando si usa, quali dati servono, come calcola i minuti secondo le regole del noleggio, quali orari mostra, che cosa risponde se un dato manca.
-3. Decidete come comincia ogni risposta: con «Competenza usata:» e il nome del lavoro. «Rispondi bene» non basta: dite che cosa fare con un dato scritto nei testi e con un dato che manca.
-4. Il docente vi mostra dove incollare le istruzioni in Copilot, se la funzione agente è disponibile. Non usate la creazione automatica del testo: incollate le vostre istruzioni e salvate l'agente. Se la funzione non c'è, seguite «Se Copilot non è disponibile», in fondo.
-5. Aprite una nuova conversazione con l'agente. In un solo messaggio incollate il registro e le regole del noleggio e scrivete in fondo la prima richiesta del proiettore, senza aggiungere suggerimenti. Inviatela prima che il docente mostri i criteri.
-6. Confrontate la risposta con i criteri e rispondete per alzata di mano. Se qualcosa non va, correggete le istruzioni e riprovate in una nuova conversazione.
-7. Nella conversazione della prima prova, scrivete la seconda richiesta del proiettore. Aspettate la risposta prima di leggere il nuovo criterio. Controllate che ogni numero usato dal modello sia scritto nel registro o nelle regole del noleggio. Correggete soltanto dove serve.
+Il lavoro FUORI SERVIZIO si scrive in quattro righe. Qui sotto, a sinistra, il lavoro RECLAMO della pizzeria (in breve); a destra, le domande a cui rispondete voi:
 
-### 4C · Secondo lavoro, indice e stile
+| Riga | Pizzeria, lavoro RECLAMO (in breve) | Voi, lavoro FUORI SERVIZIO |
+| --- | --- | --- |
+| Quando si usa | «la pizza è fredda, sbagliata o in ritardo» | Per quali richieste del titolare? |
+| Dati che servono | «il numero dell'ordine e che cosa non va» | Quale bici? Quali orari? |
+| Regole del lavoro | «pizza fredda o sbagliata: proponi di rifarla» | Da quando a quando contano i minuti? |
+| Come risponde | «tre punti: che cosa hai capito, che cosa fare ora, chi se ne occupa» | Che cosa mostra? E se un dato manca? |
+
+1. Guardate gli appunti del banco, che sono nel registro. Ogni appunto ha data, ora e che cosa è successo. Esempio, bici 5: alle 12:35 viene tolta dal noleggio, alle 13:00 torna in fila. Il **fuori servizio** va da quando la bici viene tolta dal noleggio a quando torna in fila: 25 minuti. Lo stesso conto, per un'altra bici, lo farà il vostro agente.
+2. Aprite Blocco note e salvate un file nuovo: `istruzioni_agente_noleggio.txt`. Le istruzioni si scrivono lì.
+3. Scrivete prima le **regole per tutti i casi**. Nella pizzeria cominciano così: «Sei l'assistente della pizzeria d'asporto Da Gino. Rispondi in italiano, con frasi brevi. Usi solo le informazioni che trovi in queste istruzioni e nel messaggio del cliente.» Voi: chi è l'agente e a chi risponde (al titolare e al banco, non ai clienti), la lingua, i testi che può usare, che cosa non deve inventare.
+4. Scrivete le quattro righe del lavoro **FUORI SERVIZIO**, senza far preparare il testo a Copilot.
+5. Decidete come comincia ogni risposta: con «Lavoro usato:» e il nome del lavoro. «Rispondi bene» non basta: dite che cosa fare con un dato scritto nei testi e con un dato che manca.
+6. Il docente vi mostra dove incollare le istruzioni in Copilot, se la funzione agente è disponibile. Non usate la creazione automatica del testo: incollate le vostre istruzioni e salvate l'agente. Se la funzione non c'è, seguite «Se Copilot non è disponibile», in fondo.
+7. Aprite una nuova conversazione con l'agente. Scrivete **un solo messaggio**: prima incollate il registro, poi le regole del noleggio, in fondo scrivete la prima richiesta del proiettore, senza aggiungere suggerimenti. Inviatela prima che il docente mostri i criteri.
+8. Confrontate la risposta con i criteri e rispondete per alzata di mano. Se qualcosa non va, correggete le istruzioni e riprovate in una nuova conversazione.
+9. Nella conversazione della prima prova, scrivete la seconda richiesta del proiettore. Aspettate la risposta prima di leggere il nuovo criterio. Il criterio spiega anche due parole del registro: **segnalazione** (il cliente avvisa il banco) e **cambio** (il cliente riceve un'altra bici). Controllate che ogni numero usato dal modello sia scritto nel registro o nelle regole del noleggio. Correggete soltanto dove serve.
+
+### 4C · Secondo lavoro, elenco delle richieste e stile
 
 Scegliete uno dei due lavori:
 
-| Lavoro | Fonte | Obiettivo e limiti |
+| Lavoro | Testo da usare | Obiettivo e limiti |
 | --- | --- | --- |
 | GUASTI | Guida ai guasti | Spiegare significato, primo controllo del banco e chi interviene, dove la guida lo indica. Niente consigli per far uscire dal negozio una bici con freni o sterzo che non funzionano. |
 | PASSAGGIO | Registro | Preparare una nota per il turno successivo con fatti, interventi e controlli ancora da fare. Chiarire giorno o turno quando non sono identificabili. |
 
-Aggiungete al vostro file:
+Scrivete il lavoro scelto con le stesse quattro righe del primo: quando si usa, dati che servono, regole del lavoro, come risponde. Poi aggiungete al vostro file:
 
-- il lavoro scelto, scritto come FUORI SERVIZIO: quando si usa, quali testi usa, quali dati servono, come risponde, che cosa fa se i testi non bastano;
-- l'**indice delle richieste**: quale richiesta va a quale lavoro;
-- che cosa fare se una richiesta serve a **entrambi** i lavori, e quale viene prima;
-- che cosa rispondere a una richiesta che non serve a nessuno dei due, cioè **fuori indice**;
+- l'**elenco delle richieste**: quale richiesta va a quale lavoro. Nella pizzeria era così: pizza fredda, lavoro RECLAMO; soldi indietro, lavoro RIMBORSO; le due cose insieme, prima RECLAMO e poi RIMBORSO; qualsiasi altra richiesta, risposta «Per questo serve il banco». Scrivete il vostro per il noleggio;
+- che cosa fare se una richiesta serve a **tutti e due** i lavori, e quale viene prima;
+- che cosa rispondere a una richiesta che **non è un lavoro dell'agente**;
 - **due esempi vostri** del modo in cui volete ricevere le risposte. Devono mostrare uno stile, non diventare risposte da ripetere a tutte le domande.
 
 Salvate e aggiornate l'agente in Copilot. Controllate che il testo sia arrivato intero: nel passaggio possono perdersi righe. Il file conserva soltanto le istruzioni, senza appunti sulle modifiche.
 
 ### 4D · Inventate due richieste per metterlo alla prova
 
-Inventate voi due richieste, diverse dagli esempi di stile:
+Inventate voi due richieste, diverse dagli esempi di stile. Esempi dalla pizzeria:
 
-- una che richieda **entrambi i lavori**;
-- una con **un dato che manca** (la richiesta non lo dice), **un testo che non basta** (i documenti non lo contengono) oppure **un lavoro che l'agente non ha** (fuori indice).
+| Tipo di richiesta | Nella pizzeria |
+| --- | --- |
+| una che richieda tutti e due i lavori | «La pizza è fredda e voglio i soldi indietro.» |
+| un dato che manca | «Vorrei due pizze per stasera.» (quali? a che ora?) |
+| un testo che non basta | «Quanto costa una birra?» (il listino non la dice) |
+| un lavoro che l'agente non ha | «Mi prenoti un tavolo per sabato?» |
+
+Voi ne inventate due per il noleggio:
+
+- una che richieda **tutti e due i lavori**;
+- una con **un dato che manca** (la richiesta non lo dice), **un testo che non basta** (i documenti non lo contengono) oppure **un lavoro che l'agente non ha**.
 
 Prima di inviare ogni richiesta, decidete che cosa conterà come risposta corretta e individuate nei testi i passi che permettono di controllarla. Potete dirlo a voce: non compilate un registro.
 
@@ -163,7 +188,7 @@ Avvisate il docente. Se non potete creare un agente, usate una conversazione nor
 
 Se la piattaforma non risponde, seguite la prova a secco collettiva: si legge una richiesta e si cerca nelle istruzioni di uno studente come gestirla. È un controllo del testo, non una risposta eseguita dal modello e non dimostra l'affidabilità dell'agente.
 
-Se il messaggio è troppo lungo, usate soltanto i giorni completi del registro necessari alla richiesta, conservando la sequenza degli eventi. Se il campo delle istruzioni è troppo corto, togliete ripetizioni e accorciate gli esempi, senza perdere fonti, limiti e regole dell'indice.
+Se il messaggio è troppo lungo, usate soltanto i giorni completi del registro necessari alla richiesta, conservando la sequenza degli eventi. Se il campo delle istruzioni è troppo corto, togliete ripetizioni e accorciate gli esempi, senza perdere testi, limiti e regole dell'elenco.
 
 Prima di chiudere salvate `istruzioni_agente_noleggio.txt`. Non dovete caricarlo o consegnarlo.
 

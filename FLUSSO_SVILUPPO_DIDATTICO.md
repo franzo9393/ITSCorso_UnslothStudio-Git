@@ -1,6 +1,6 @@
 # Come sviluppiamo i materiali didattici
 
-Procedura del progetto, aggiornata il 10 novembre 2026. È per chi prepara le lezioni, non per gli studenti. Si applica alle nuove lezioni e alle revisioni richieste, senza cambiare retroattivamente le altre. Le decisioni del docente e `AGENTS.md` prevalgono sulle indicazioni dei progetti esterni.
+Procedura del progetto, aggiornata l'11 novembre 2026. È per chi prepara le lezioni, non per gli studenti. Si applica alle nuove lezioni e alle revisioni richieste, senza cambiare retroattivamente le altre. Le decisioni del docente e `AGENTS.md` prevalgono sulle indicazioni dei progetti esterni.
 
 ## Il problema da evitare
 
@@ -28,6 +28,7 @@ Non serve un nuovo servizio di orchestrazione: l'agente principale assegna i com
 - Eliminare appunti e tabelle che nessun passaggio usa. Salvare ciò che serve davvero per continuare il lavoro.
 - Verificare che ciascun risultato possa essere riconosciuto con criteri comprensibili, non soltanto con «il docente controlla».
 - Chiedersi se lo studente sta progettando qualcosa oppure sta eseguendo le nostre istruzioni complete. Se decide solo dove incollare, riprogettare.
+- Leggere ogni slide come uno studente alle prime armi: so che cosa fare adesso, dove, e conosco ogni parola? Le regole sono in «Chiarezza didattica» di `AGENTS.md`.
 
 ## Ricerca online: che cosa esiste e che cosa prendiamo
 
@@ -41,6 +42,18 @@ Fonti primarie lette il 10 novembre 2026. Questa è una ricognizione di procedur
 | [Agent Skills](https://agentskills.io/home) | Documentazione web consultata il 10 novembre 2026 | Formato portabile per istruzioni e risorse, attivate quando servono | Un formato, non un metodo didattico né una garanzia di qualità. Per ora bastano questa procedura e il richiamo in `AGENTS.md`; non è stata verificata l'attivazione automatica di skill locali in questo progetto. Nessun file dello standard è redistribuito. |
 
 Sono state lette direttamente la [skill di pianificazione](https://github.com/anthropics/k12-teacher-skills/blob/31fd6dbb0c07cb50bb3ce7f62a4135a393bd0e8c/plugin/skills/k12-lesson-plan-creation/SKILL.md), la [skill di preparazione](https://github.com/anthropics/k12-teacher-skills/blob/31fd6dbb0c07cb50bb3ce7f62a4135a393bd0e8c/plugin/skills/k12-lesson-prep/SKILL.md) e la [rubrica comune](https://github.com/anthropics/k12-teacher-skills/blob/31fd6dbb0c07cb50bb3ce7f62a4135a393bd0e8c/evals/k12-lesson-plan-creation/rubrics/shared.csv), non soltanto il riepilogo di un motore di ricerca. Le ricerche hanno proposto anche sistemi accademici; non li trattiamo come strumenti affermati o pronti da integrare senza verificarne implementazione, licenza e risultati.
+
+## Ricerca sulla chiarezza espositiva
+
+Ricerca online dell'11 novembre 2026, dopo il giudizio del docente che la seconda metà della lezione 4 era «incomprensibile». Sono principi generali su altri pubblici: non provano l'efficacia sul nostro. Qui non sono stati riletti gli articoli originali per intero. La prova resta l'aula e la lettura del revisore.
+
+| Principio | Fonte | Come lo applichiamo |
+| --- | --- | --- |
+| Quadro d'insieme prima dei dettagli | Ausubel, organizzatori anticipati (1960) | Slide 12–13 della lezione 4: che cosa legge Copilot, che cosa si costruisce |
+| Esempio svolto prima del problema | Sweller e Cooper (1985); teoria del carico cognitivo | Bici 5 calcolata davanti agli studenti, poi la bici 12 con il loro agente |
+| Dal concreto al nome | Fyfe, McNeil, Son e Goldstone, «Concreteness fading» (Educational Psychology Review, 2014) | Le frasi vere della pizzeria prima dei nomi delle parti |
+| Un'idea alla volta; togliere il superfluo; testo e tabella vicini | Mayer, Multimedia Learning (principi di segnalazione, coerenza, contiguità) | Una sola azione per slide; tabella che affianca esempio e compito |
+| Piccoli passi, controlli frequenti, pratica guidata poi autonoma | Rosenshine, «Principles of Instruction» (American Educator, 2012) | Previsioni e alzate di mano, criterio dopo la prova |
 
 ## Applicazione nella lezione 4
 

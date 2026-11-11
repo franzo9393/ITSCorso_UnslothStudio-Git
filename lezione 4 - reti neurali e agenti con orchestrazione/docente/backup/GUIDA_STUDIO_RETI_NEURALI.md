@@ -145,7 +145,7 @@ Il docente (tu) aggiunge **Noise**: un disturbo che sposta i punti a caso, così
 
 **Verificato** (10 novembre 2026, Noise 50, 10% di punti per addestrare, 8 e 8 neuroni): in una prova Training/Test sono passati da 0,236/0,375 (circa 172 giri) a 0,066/0,556 (circa 1.000 giri): l'errore sugli esempi è sceso, quello sui punti nuovi è salito. In altre due prove a 1.000 giri: 0,174/0,374 e 0,116/0,545. Sono esecuzioni, non un esito garantito: se Test loss non peggiora, leggi quello che vedi.
 
-**Come dirlo.** Se Training loss scende e Test loss sale, la rete ha imparato anche il disturbo dei punti che ha visto e va peggio sui punti nuovi. Vale anche per un agente: va provato con richieste diverse dagli esempi (è il punto della slide 24 e della parte 4D).
+**Come dirlo.** Se Training loss scende e Test loss sale, la rete ha imparato anche il disturbo dei punti che ha visto e va peggio sui punti nuovi. Vale anche per un agente: va provato con richieste diverse dagli esempi (è il punto della slide 32 e della parte 4D).
 
 ### Spirale
 
@@ -209,15 +209,15 @@ Quando scrivono le istruzioni di un agente, cambiano una cosa diversa: **un test
 | Parola | In breve |
 | --- | --- |
 | Agente | Un assistente di Copilot con istruzioni salvate |
-| Competenza | Una parte delle istruzioni dedicata a un lavoro (per esempio FUORI SERVIZIO) |
-| Indice delle richieste | L'elenco che dice quale competenza usare per quale domanda |
-| Orchestrazione | Scegliere quali competenze usare e in che ordine. Qui si fa con del testo, non con programmi separati |
+| Lavoro | Una parte delle istruzioni dedicata a un compito (per esempio FUORI SERVIZIO). Nome tecnico: competenza |
+| Elenco delle richieste | L'elenco che dice quale lavoro usare per quale domanda. Nome tecnico: indice |
+| Orchestrazione | Nome tecnico di «scegliere quali lavori usare e in che ordine». In aula non si usa: basta l'elenco |
 
 ### Domande probabili
 
 - *«Copilot impara dalle mie istruzioni?»* Per questa attività si cambia solo il testo letto. Che cosa Microsoft faccia con le conversazioni non lo sappiamo: non lo dire e non promettere.
 - *«Allora le istruzioni non servono?»* Servono: cambiano le risposte. Non cambiano i pesi.
-- *«Perché la riga «Competenza usata» non basta?»* È una frase scritta dal modello. Conta ciò che fa la risposta, e si controlla sui documenti.
+- *«Perché la riga «Lavoro usato» non basta?»* È una frase scritta dal modello. Conta ciò che fa la risposta, e si controlla sui documenti.
 
 ---
 
@@ -225,14 +225,14 @@ Quando scrivono le istruzioni di un agente, cambiano una cosa diversa: **un test
 
 - **Agente**: assistente di Copilot con istruzioni salvate.
 - **Apprendimento automatico**: far trovare a un programma i numeri giusti partendo da esempi.
-- **Competenza**: parte delle istruzioni dedicata a un lavoro.
+- **Lavoro** (nome tecnico: competenza): parte delle istruzioni dedicata a un compito.
 - **Epoch**: un giro completo sui punti di addestramento. Nella lezione «giri».
 - **Errore (loss)**: numero che dice quanto la rete sbaglia.
-- **Indice delle richieste**: elenco che collega ogni domanda a una competenza.
+- **Elenco delle richieste** (nome tecnico: indice): elenco che collega ogni domanda a un lavoro.
 - **Modello**: il programma che alla fine decide.
 - **Neurone**: piccolo calcolo: moltiplica, somma, restituisce un risultato.
 - **Noise**: disturbo che sposta i punti a caso, così i due colori si mescolano un po'.
-- **Orchestrazione**: scegliere quali competenze usare e in quale ordine.
+- **Orchestrazione**: scegliere quali lavori usare e in quale ordine. In aula non si usa il nome.
 - **Peso**: numero su un collegamento tra neuroni; è ciò che la rete cambia mentre impara.
 - **Probabilità**: quanto una parola è attesa dopo il testo che la precede.
 - **Sovradattamento**: imparare a memoria gli esempi e andare male sui casi nuovi.

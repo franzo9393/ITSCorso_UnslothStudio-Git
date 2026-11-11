@@ -708,6 +708,9 @@ def main() -> None:
         '{{MINUTI_FUORI_SERVIZIO}}': str(values['minutes']),
         '{{ORA_FUORI_SERVIZIO}}': values['stop']['when'].strftime('%H:%M'),
         '{{ORA_DISPONIBILE}}': values['restart']['when'].strftime('%H:%M'),
+        '{{ORA_SEGNALAZIONE}}': values['report']['when'].strftime('%H:%M'),
+        '{{ORA_CAMBIO}}': values['swap']['when'].strftime('%H:%M'),
+        '{{MINUTI_SENZA_BICI}}': str(values['no_bike']),
     }.items():
         slide_source = slide_source.replace(key, value)
     slides = parse_slides(slide_source)

@@ -10,7 +10,7 @@ Ognuno lavora da solo. Non passi tra i banchi, non raccogli file e non fai compi
 
 L'ordine è **Transformer Explainer → TensorFlow Playground → Flappy Learning (solo dal proiettore) → agente per il noleggio Ruota Libera**. Si passa dalle probabilità di una parola a come una rete piccola impara cambiando numeri, poi a un altro modo di imparare (tenere le reti migliori), infine alla distinzione fra istruzioni e addestramento. I siti sono dimostrazioni di meccanismi diversi, non riproduzioni di Copilot. L'attività su cui si lavora a lungo è Playground: Flappy dura un paio di minuti.
 
-Nella parte sul noleggio si prova subito una competenza, prima di completare l'agente. Poi ciascuno aggiunge un secondo lavoro e inventa due casi critici. Il criterio è superare collaudi controllabili sulle fonti: un risultato corretto al primo invio e uno ottenuto dopo una correzione hanno lo stesso valore. Non occorre provocare un errore.
+Nella parte sul noleggio si prova subito un lavoro, prima di completare l'agente. Poi ciascuno aggiunge un secondo lavoro e inventa due casi critici. Il criterio è superare collaudi controllabili sui testi: un risultato corretto al primo invio e uno ottenuto dopo una correzione hanno lo stesso valore. Non occorre provocare un errore.
 
 Si salva un solo file personale, `istruzioni_agente_noleggio.txt`, con **solo le istruzioni**: niente diario delle correzioni, richieste o esiti in fondo. Si usa Blocco note per scrivere un oggetto da provare, non per compilare una scheda. Nessuna consegna e nessun voto in questa lezione.
 
@@ -105,87 +105,100 @@ Nessuna promessa di un uccellino che «non muore più». Un volo lungo non è un
 
 ## Parte 4 · Copilot, richiesta, criterio, correzione
 
-**Il filo da tenere:** nelle reti cambiavano i pesi; adesso gli studenti cambiano il testo che Copilot legge. Dillo alla slide 11 e riprendilo alla slide 31. In mezzo ciascuna slide è un passo della stessa costruzione: un agente per il noleggio Ruota Libera che calcola da quanto tempo una bici è fuori servizio e fa un secondo lavoro.
+**Il filo da tenere:** nelle reti cambiavano i pesi; adesso gli studenti cambiano il testo che Copilot legge. Dillo alla slide 11 e riprendilo alla slide 40. In mezzo ciascuna slide è un passo della stessa costruzione: un agente per il noleggio Ruota Libera che calcola da quanto tempo una bici è fuori servizio e fa un secondo lavoro.
+
+**Come è costruita (e perché).** La parte 4 segue alcune indicazioni dalla ricerca sull'insegnamento, scelte perché gli studenti sono alle prime armi:
+
+- *Prima il quadro d'insieme* (slide 12–13): che cosa legge Copilot, che cosa si costruisce. Una slide sola, prima dei dettagli.
+- *Prima l'esempio, poi il nome* (slide 14–17): le frasi vere delle istruzioni della pizzeria si vedono prima che si diano i nomi delle parti. Poi si passa al noleggio con la stessa tabella.
+- *Esempio svolto, poi esercizio simile* (slide 19–20, poi 25): la bici 5 è calcolata davanti agli studenti, la bici 12 la calcola il loro agente. Lo stesso vale per la scrittura: il lavoro RECLAMO della pizzeria sta accanto alle domande del lavoro FUORI SERVIZIO (slide 22).
+- *Esercizio a metà* (slide 22): le quattro righe del lavoro sono date come domande, non come risposte. Per i casi da inventare (slide 34) ci sono esempi della pizzeria.
+- *Un'idea alla volta, con l'azione in chiaro* (tutte le slide): programma da aprire, che cosa scrivere, in quale ordine.
+- *Controlli frequenti* (alzate di mano, previsioni prima di inviare): servono a far vedere subito se ci si è persi.
+
+Parole in aula e nomi tecnici: in aula si dice **lavoro** (nome tecnico: competenza), **elenco delle richieste** (indice) e **lavoro usato**. «Orchestrare» non compare nelle slide né nella consegna: scegliere quale lavoro usare e in che ordine è già nell'elenco. Se vuoi dargli il nome, dillo a voce solo alla fine.
 
 | Slide | Passo | Che cosa fanno gli studenti |
 | --- | --- | --- |
-| 11–12 | Dalla rete al testo; che cosa si costruisce | Ascoltano il percorso: esempio, fuori servizio, secondo lavoro, prove, confronto |
-| 13–14 | 4A · Agente già fatto | Guardano la pizzeria e le quattro parti delle istruzioni |
-| 15 | Programmi | Aprono Teams, Blocco note e Copilot |
-| 16–21 | 4B · Primo lavoro: fuori servizio | Scrivono FUORI SERVIZIO, lo salvano, provano le due richieste |
-| 22–24 | 4C · Secondo lavoro, indice, stile | Aggiungono GUASTI o PASSAGGIO, l'indice e due esempi di stile |
-| 25–26 | 4D · Due richieste vostre | Inventano e provano una richiesta con entrambi i lavori e una scomoda |
-| 27–29 | 4E · Ultima richiesta | Provano l'ultima richiesta, correggono, scelgono la regola da tenere |
-| 30–32 | 4F · Testo o pesi | Confrontano tre risposte e concludono |
+| 11–13 | Dalla rete al testo; che cosa legge Copilot; che cosa si costruisce | Ascoltano il percorso: esempio, primo lavoro, secondo lavoro, prove, confronto |
+| 14–17 | 4A · La pizzeria | Guardano il messaggio e le frasi delle istruzioni, poi la stessa tabella per il noleggio |
+| 18 | Programmi | Aprono Teams, Blocco note e Copilot |
+| 19–29 | 4B · Primo lavoro: fuori servizio | Leggono due appunti ed esempio svolto, scrivono le regole e le quattro righe, provano le due richieste |
+| 30–32 | 4C · Secondo lavoro, elenco, stile | Aggiungono GUASTI o PASSAGGIO, l'elenco delle richieste e due esempi di stile |
+| 33–34 | 4D · Due richieste vostre | Inventano e provano una richiesta con tutti e due i lavori e una scomoda |
+| 35–38 | 4E · Ultima richiesta | Provano l'ultima richiesta, correggono, confrontano con l'esempio del docente |
+| 39–41 | 4F · Testo o pesi | Confrontano tre risposte e concludono |
 
 ### 4A · Prima la pizzeria, non le istruzioni del noleggio
 
-**Perché la pizzeria.** Gli studenti devono vedere com'è fatto un agente con più lavori **prima** di scrivere il proprio, ma non si può mostrare un esempio sul noleggio: sarebbe la soluzione dell'esercizio. La pizzeria ha la stessa struttura su un caso diverso. Dillo in una riga: «Non è il vostro noleggio: serve a vedere com'è fatto. Il vostro avrà le stesse parti.» Poi riporta subito al noleggio con la slide 15.
+**Perché la pizzeria.** Gli studenti devono vedere com'è fatto un agente con più lavori **prima** di scrivere il proprio, ma non si può mostrare un esempio sul noleggio: sarebbe la soluzione dell'esercizio. La pizzeria ha la stessa struttura su un caso diverso. Dillo in una riga: «Non è il vostro noleggio: serve a vedere com'è fatto. Il vostro avrà le stesse parti.» Poi riporta subito al noleggio con la slide 17.
 
-**Come condurlo.** Slide 13: mostra la richiesta «La pizza è arrivata fredda e dopo un'ora. Mi ridate anche i soldi?» e fai scegliere per alzata di mano quale lavoro serve per primo, o se ne servono due. Poi mostra l'esecuzione reale, se disponibile, e il testo che l'ha guidata, con la slide 14 accanto: regole per tutte le richieste, indice, competenze, stile. Usa le richieste già presenti nel file `ESEMPIO_DIMOSTRAZIONE_PIZZERIA.txt`: non serve un personaggio aggiunto o un altro caso.
+**Come condurlo.** Slide 14: mostra il messaggio «La pizza è arrivata fredda e dopo un'ora. Mi ridate anche i soldi?» e fai scegliere per alzata di mano: prima la pizza fredda o i soldi? Slide 15: le frasi delle istruzioni sono estratti del file `ESEMPIO_DIMOSTRAZIONE_PIZZERIA.txt`: restano uguali al file. Slide 16: invia il messaggio all'agente, se disponibile, e chiedi quale riga ha guidato la risposta. Usa le altre richieste del file se ti servono: non serve un personaggio aggiunto o un altro caso.
 
-**Termini.** Agente, indice, competenza e orchestrare compaiono nelle slide 13–14 con una definizione in una riga ciascuno. Non aggiungerne altri a voce. «Competenza» è soltanto «un lavoro con i suoi dati e le sue regole».
+**Termini.** Agente (slide 12), parti delle istruzioni e lavoro (slide 15) compaiono con una definizione in una riga ciascuno, dopo averli visti nell'esempio. Non aggiungerne altri a voce. «Lavoro» è soltanto «una parte delle istruzioni con i suoi dati e le sue regole».
 
-Nella richiesta sulla pizza fredda e sul rimborso, la regola 2 dell'esempio dà precedenza a «Mi dispiace» e alla proposta di rifare la pizza, anche se manca il numero dell'ordine. Solo dopo viene la domanda sui dati mancanti. Una domanda sul rimborso senza la gestione iniziale del reclamo non rispetta le istruzioni. Una domanda per ottenere dati effettivamente necessari è un esito corretto. «Competenza usata» è una dichiarazione del modello, non una prova di instradamento software. Indice e competenze restano testo letto da Copilot.
+Nella richiesta sulla pizza fredda e sul rimborso, la regola 2 dell'esempio dà precedenza a «Mi dispiace» e alla proposta di rifare la pizza, anche se manca il numero dell'ordine. Solo dopo viene la domanda sui dati mancanti. Una domanda sul rimborso senza la gestione iniziale del reclamo non rispetta le istruzioni. Una domanda per ottenere dati effettivamente necessari è un esito corretto. «Lavoro usato» è una dichiarazione del modello, non una prova di instradamento software. L'elenco e i lavori restano testo letto da Copilot.
 
 Non distribuire un agente del noleggio già scritto. L'obiettivo non è copiare le sezioni e aspettare fino alla fine per vedere se funzionano.
 
 ### 4B · FUORI SERVIZIO entra subito in prova
 
-Slide 16: fai aprire Blocco note e salvare `istruzioni_agente_noleggio.txt`. Scrivono regole comuni e **solo FUORI SERVIZIO**: minuti con gli orari secondo le definizioni della fonte, dati mancanti, forma della risposta, prima riga «Competenza usata:». Tu dai obiettivi e limiti, non una frase pronta da incollare. Non chiedono a Copilot di scrivere le istruzioni.
+Slide 19–20: nel registro mostra due appunti della bici 5 (sono estratti del registro) e il conto svolto: 12:35 → 13:00, 25 minuti. È l'esempio svolto; la bici 5 non è la domanda della classe. Dì la regola in una riga: dal momento in cui la bici è tolta dal noleggio a quando torna in fila.
 
-Slide 17: mostra dove inserire, salvare e modificare le istruzioni **solo se controllato pre-aula**. Non nominare pulsanti o menu non verificati. Se la funzione non c'è, gli studenti usano la riga della slide: in ogni nuova conversazione incollano prima le proprie istruzioni, poi testi e richiesta (vedi la tabella «Se manca il servizio»). Alla slide 18 incollano registro e regole del noleggio **in un solo messaggio, con la richiesta in fondo**: se inviano prima i testi da soli, Copilot risponde ai testi e la prova si confonde. Poi inviano:
+Slide 21–22: fai aprire Blocco note e salvare `istruzioni_agente_noleggio.txt` (la slide 21 lo dice, con l'inizio delle regole della pizzeria). Scrivono prima le regole per tutti i casi, poi le quattro righe di **FUORI SERVIZIO**: quando si usa, dati che servono, regole del lavoro, come risponde. La tabella della slide 22 mette accanto il lavoro RECLAMO della pizzeria (in breve) e le domande per il loro lavoro: le domande, non le risposte. Tu dai obiettivi e limiti, non una frase pronta da incollare. Non chiedono a Copilot di scrivere le istruzioni. La prima riga della risposta è «Lavoro usato:» seguita dal nome.
+
+Slide 23: mostra dove inserire, salvare e modificare le istruzioni **solo se controllato pre-aula**. Non nominare pulsanti o menu non verificati. Se la funzione non c'è, gli studenti usano la riga della slide: in ogni nuova conversazione incollano prima le proprie istruzioni, poi testi e richiesta (vedi la tabella «Se manca il servizio»). Alla slide 24 mostra la struttura del messaggio: registro, poi regole del noleggio, in fondo la domanda, **in un solo messaggio**. Se inviano prima i testi da soli, Copilot risponde ai testi e la prova si confonde. Alla slide 25 inviano:
 
 > **M1 · «Per quanti minuti è stata fuori servizio la bici 12 sabato? Mostrami gli orari.»**
 
-**Rivela il criterio dopo la risposta:** i due estremi devono essere il momento in cui la bici viene tolta dal noleggio e il momento in cui è di nuovo disponibile. Non valgono la segnalazione, il cambio della bici al cliente, la fine della riparazione né la prova del meccanico. Durata e orari devono coincidere con la riga «Minuti fuori servizio, bici 12» nella tavola automatica **Valori di riferimento del registro**. Proietta quei valori generati, senza ricopiarli in questa guida.
+**Rivela il criterio dopo la risposta (slide 26):** i due estremi devono essere il momento in cui la bici viene tolta dal noleggio e il momento in cui è di nuovo disponibile. Non valgono la segnalazione, il cambio della bici al cliente, la fine della riparazione né la prova del meccanico. Durata e orari devono coincidere con la riga «Minuti fuori servizio, bici 12» nella tavola automatica **Valori di riferimento del registro**. Proietta quei valori generati, senza ricopiarli in questa guida.
 
-Prima alzata di mano collettiva: «La vostra risposta rispetta tutti questi criteri?» Il confronto non assegna punti: serve a vedere subito se modificare le istruzioni. Chi deve correggere aggiorna il testo e riprova M1 in una chat nuova con le stesse fonti.
+Prima alzata di mano collettiva: «La vostra risposta rispetta tutti questi criteri?» Il confronto non assegna punti: serve a vedere subito se modificare le istruzioni. Chi deve correggere aggiorna il testo e riprova M1 in una chat nuova con gli stessi testi.
 
-Nella chat di M1 inviano poi:
+Nella chat di M1 inviano poi (slide 27):
 
 > **M2 · «E quanto dobbiamo rimborsare al cliente?»**
 
-**Soltanto dopo rivela:** il rimborso si calcola sui **minuti senza bici** del cliente, dalla segnalazione al cambio, non sui minuti fuori servizio della bici. Serve inoltre il tipo di noleggio, a ore o per la giornata, che non è nel registro: è corretto chiederlo o dichiarare che non si può calcolare il rimborso senza quel dato; non sceglierlo né dedurlo. Se lo studente risponde «a ore» o «per la giornata», il risultato deve coincidere con la riga corrispondente della tavola. Non occorre un'altra alzata di mano: leggono il criterio e correggono dove serve. Il seguito nella stessa chat serve a vedere se il limite viene rispettato anche quando la richiesta riprende un lavoro già avviato.
+**Soltanto dopo rivela (slide 28–29):** il rimborso si calcola sui **minuti senza bici** del cliente, dalla segnalazione al cambio (slide 28), non sui minuti fuori servizio della bici. Serve inoltre il tipo di noleggio, a ore o per la giornata, che non è nel registro (slide 29): è corretto chiederlo o dichiarare che non si può calcolare il rimborso senza quel dato; non sceglierlo né dedurlo. Se lo studente risponde «a ore» o «per la giornata», il risultato deve coincidere con la riga corrispondente della tavola. Non occorre un'altra alzata di mano: leggono il criterio e correggono dove serve. Il seguito nella stessa chat serve a vedere se il limite viene rispettato anche quando la richiesta riprende un lavoro già avviato.
 
-### 4C · Una seconda competenza e un indice proprio
+### 4C · Un secondo lavoro e un elenco delle richieste proprio
 
-Scelgono **GUASTI oppure PASSAGGIO**, oltre a FUORI SERVIZIO. Gli obiettivi e i documenti sono nella consegna; la formulazione delle istruzioni resta loro.
+Scelgono **GUASTI oppure PASSAGGIO**, oltre a FUORI SERVIZIO (slide 30). Gli obiettivi e i documenti sono nella consegna; la formulazione delle istruzioni resta loro. Lo scrivono con le stesse quattro righe del primo lavoro (quando si usa, dati che servono, regole del lavoro, come risponde).
 
-Aggiungono un indice che riconosca le richieste, la gestione di due competenze e delle richieste fuori indice, e **due esempi di stile scritti da loro**. Ogni competenza deve indicare fonti, informazioni necessarie e modo di rispondere quando le fonti non bastano. Non richiedere tutte e tre le competenze.
+Slide 31: la tabella mostra l'elenco della pizzeria; loro scrivono quello del noleggio, la gestione di due lavori insieme e delle richieste che non sono un lavoro dell'agente. Slide 32: **due esempi di stile scritti da loro**, con un esempio della pizzeria. Ogni lavoro deve indicare i testi da usare, le informazioni necessarie e come rispondere quando i testi non bastano. Non richiedere tutti e tre i lavori.
 
-Dopo il salvataggio aggiornano Copilot e controllano che il testo sia stato trasferito intero. Se il campo è corto, eliminano ridondanze e accorciano gli esempi, senza perdere fonti, limiti e regole dell'indice. Il file non contiene una sezione «correzioni».
+Dopo il salvataggio aggiornano Copilot e controllano che il testo sia stato trasferito intero. Se il campo è corto, eliminano ridondanze e accorciano gli esempi, senza perdere testi, limiti e regole dell'elenco. Il file non contiene una sezione «correzioni».
 
 ### 4D · Due casi originali, non un registro da compilare
 
-Ciascuno inventa:
+Slide 33–34 (la 34 mostra tre esempi della pizzeria, uno per tipo). Ciascuno inventa:
 
-- un caso che incroci **entrambe le competenze**;
-- un caso con dato mancante, fonte insufficiente o richiesta fuori indice.
+- un caso che usi **tutti e due i lavori**;
+- un caso con dato mancante, testo insufficiente o lavoro che l'agente non ha.
 
 Prima dell'invio decide che cosa conterà come corretto e trova sullo schermo i passi dei documenti utili al confronto. Può dirlo a voce; nessuna riga da compilare. Scrive poi il caso direttamente in Copilot, una chat nuova per caso, in un solo messaggio con i documenti e in fondo la richiesta.
 
-Per **FUORI SERVIZIO + GUASTI** servono registro, regole del noleggio e guida ai guasti. Per **FUORI SERVIZIO + PASSAGGIO** servono registro e regole. Nel secondo caso sceglie le fonti pertinenti senza aggiungere apposta il dato assente. Fai notare la differenza fra un dato non fornito al modello e un dato assente dalla fonte.
+Per **FUORI SERVIZIO + GUASTI** servono registro, regole del noleggio e guida ai guasti. Per **FUORI SERVIZIO + PASSAGGIO** servono registro e regole. Nel secondo caso sceglie i testi pertinenti senza aggiungere apposta il dato assente. Fai notare la differenza fra un dato non fornito al modello e un dato assente dal testo.
 
-Dopo la risposta controlla contenuto e fonti, non soltanto il nome della competenza. Una risposta corretta al primo invio resta valida. Se tutti i casi funzionano, lo studente spiega quale regola ha reso possibile il comportamento e inventa un altro caso: non deve peggiorare le istruzioni né creare un errore artificiale.
+Dopo la risposta controlla contenuto e testi, non soltanto il nome del lavoro. Una risposta corretta al primo invio resta valida. Se tutti i casi funzionano, lo studente spiega quale regola ha reso possibile il comportamento e inventa un altro caso: non deve peggiorare le istruzioni né creare un errore artificiale.
 
 ### 4E · Ultimo collaudo e correzioni mirate
 
-In una nuova chat, in un solo messaggio, fanno la richiesta seguente con il **registro**:
+Slide 35. In una nuova chat, in un solo messaggio, fanno la richiesta seguente con il **registro**:
 
 > **«Come si chiama il meccanico che ha cambiato le pastiglie?»**
 
-**Rivela dopo:** il nome non è nel registro, che dice solo «il meccanico del negozio». È valido dichiararlo, chiedere la fonte che lo contenga oppure segnalare che la domanda è fuori ambito. Può essere valida anche una competenza diversa da quella prevista dal docente, purché l'agente non inventi un nome e rispetti i propri limiti.
+**Rivela dopo (slide 36):** il nome non è nel registro, che dice solo «il meccanico del negozio». È valido dichiararlo, chiedere il testo che lo contenga oppure segnalare che la domanda non è un lavoro dell'agente. Può essere valido anche un lavoro diverso da quello previsto dal docente, purché l'agente non inventi un nome e rispetti i propri limiti.
 
-Correggono solo dove occorre: regola, indice, competenza oppure documenti trasferiti. Aggiornano Copilot e riprovano in una nuova chat il caso interessato, compreso un caso originale se aveva mostrato un problema. Non chiedere di scrivere gli esiti.
+Correggono solo dove occorre: regola, elenco, lavoro oppure documenti trasferiti. Aggiornano Copilot e riprovano in una nuova chat il caso interessato, compreso un caso originale se aveva mostrato un problema. Non chiedere di scrivere gli esiti.
 
-Seconda e ultima alzata di mano collettiva: «Dopo i controlli e le eventuali correzioni, le risposte rispettano i criteri e le fonti?» Non distinguere chi è riuscito subito da chi ha corretto. Chiedi poi ad alcuni studenti, dal posto e guardando il loro schermo, di raccontare un caso e quale regola hanno mantenuto o cambiato. Non devono necessariamente raccontare un fallimento.
+Seconda e ultima alzata di mano collettiva: «Dopo i controlli e le eventuali correzioni, le risposte rispettano i criteri e i testi?» Non distinguere chi è riuscito subito da chi ha corretto. Chiedi poi ad alcuni studenti, dal posto e guardando il loro schermo, di raccontare un caso e quale regola hanno mantenuto o cambiato. Non devono necessariamente raccontare un fallimento.
 
-**Solo ora** (slide 29) pubblica su Teams l'esempio `studenti/da_pubblicare_dopo_collaudo/ESEMPIO_ISTRUZIONI_AGENTE_NOLEGGIO.txt` e proiettalo. È un testo da confrontare con il loro: non una soluzione garantita e non un motivo per sostituire istruzioni proprie già funzionanti. Indica tre punti: la regola 2 (dati mancanti: una sola domanda), la riga dell'indice per due lavori insieme (quale prima), la riga di tutte le altre richieste. Per ciascuno chiedi per alzata di mano chi ha una regola che fa la stessa cosa. Chi non ce l'ha la scrive con parole proprie: non si copia l'esempio. Le tre domande scritte in cima al file («Che cosa avete scritto voi e non c'è qui? …») sono quelle da fare.
+**Solo ora** (slide 38; la 37 è «Correggete e riprovate») pubblica su Teams l'esempio `studenti/da_pubblicare_dopo_collaudo/ESEMPIO_ISTRUZIONI_AGENTE_NOLEGGIO.txt` e proiettalo. È un testo da confrontare con il loro: non una soluzione garantita e non un motivo per sostituire istruzioni proprie già funzionanti. Indica tre punti: la regola 2 (dati mancanti: una sola domanda), la riga dell'elenco per due lavori insieme (quale prima), la riga di tutte le altre richieste. Per ciascuno chiedi per alzata di mano chi ha una regola che fa la stessa cosa. Chi non ce l'ha la scrive con parole proprie: non si copia l'esempio. Le tre domande scritte in cima al file («Che cosa avete scritto voi e non c'è qui? …») sono quelle da fare.
 
 ### 4F · Lo stile non dimostra un addestramento
 
-Riutilizzano una risposta **reale** dell'agente già ottenuta nel collaudo. Scelgono quella richiesta con i documenti esatti e mantengono le istruzioni che hanno prodotto la risposta scelta. Chi ha cambiato le istruzioni dopo l'esempio (4E) usa la prova rifatta alla fine della 4E: non deve tornare a una versione precedente.
+Slide 39–41. Riutilizzano una risposta **reale** dell'agente già ottenuta nel collaudo. Scelgono quella richiesta con i documenti esatti e mantengono le istruzioni che hanno prodotto la risposta scelta. Chi ha cambiato le istruzioni dopo l'esempio (4E) usa la prova rifatta alla fine della 4E: non deve tornare a una versione precedente.
 
 Fanno due nuovi invii in chat separate: stessa richiesta e stessi documenti con **Copilot normale, senza istruzioni proprie**, e poi ancora con **l'agente**. Hanno così due risposte reali dell'agente e una senza. Non sostituire una risposta con un esempio scritto a mano.
 
@@ -226,8 +239,8 @@ Nella lezione del 4 novembre Copilot non ha risposto alle postazioni per circa 1
 | Situazione | Condotta |
 | --- | --- |
 | Agente non disponibile | Chat normale: prima il messaggio con le istruzioni dello studente, poi documenti e richiesta. Ripetere quel primo messaggio in ogni chat nuova. Non chiamarlo vera istruzione di sistema. In 4F confrontare con e senza quel messaggio. |
-| Copilot non risponde | Prova a secco collettiva dal proiettore: stessa richiesta, fonti e istruzioni di uno studente; cercare quale regola copre il caso o quale manca. Correggere il testo, ma non presentare la discussione come risposta del modello né come prova della sua affidabilità. Il confronto di risposte reali non si può eseguire finché il servizio manca. |
-| Messaggio troppo lungo | Usare soltanto i giorni completi necessari del registro, senza spezzare la sequenza del fuori servizio. Conservare le regole e le altre fonti richieste dal caso. |
+| Copilot non risponde | Prova a secco collettiva dal proiettore: stessa richiesta, testi e istruzioni di uno studente; cercare quale regola copre il caso o quale manca. Correggere il testo, ma non presentare la discussione come risposta del modello né come prova della sua affidabilità. Il confronto di risposte reali non si può eseguire finché il servizio manca. |
+| Messaggio troppo lungo | Usare soltanto i giorni completi necessari del registro, senza spezzare la sequenza del fuori servizio. Conservare le regole e gli altri testi richiesti dal caso. |
 | Istruzioni tagliate o non aggiornate | Controllare il passaggio dal file, accorciare ridondanze e salvare di nuovo; non eliminare le regole sostanziali per fare entrare il testo. |
 | Sito bloccato | Provare un altro browser; se non si apre, usare il proiettore dove disponibile. Non presentare schermate o testi preparati come esecuzioni avvenute in classe. |
 
@@ -263,4 +276,4 @@ Fonti tecniche del controllo del 10 novembre:
 
 Chiedi una regola utile mostrata da un caso reale e la differenza fra cambiare istruzioni e addestrare pesi. Non raccogliere un'autovalutazione scritta. Gli studenti salvano il solo file delle istruzioni.
 
-Dalla discussione puoi conservare tu le informazioni utili per le lezioni successive: funzioni Copilot effettivamente disponibili, limiti osservati, competenze scelte, regole motivate e problemi di rete. Non serve una tabella nominativa né un giro di controllo delle postazioni.
+Dalla discussione puoi conservare tu le informazioni utili per le lezioni successive: funzioni Copilot effettivamente disponibili, limiti osservati, lavori scelti, regole motivate e problemi di rete. Non serve una tabella nominativa né un giro di controllo delle postazioni.
