@@ -7,7 +7,7 @@ Documento riservato al docente. **Bozza da approvare**: non sono ancora material
 | Incontro | Data | Durata | Contenuto |
 | --- | --- | --- | --- |
 | Lezione 4 | 12 novembre 2026 | 2 ore | Reti neurali nel browser e agente Copilot con più competenze |
-| Lezione 5 | 18 novembre 2026 | 2 ore | Documenti e recupero (RAG) |
+| Lezione 5 | 18 novembre 2026 | 2 ore | Coordinatore dell'agente Ruota Libera in Copilot, poi modello locale in Unsloth Studio e opencode (direzione del 12 novembre; struttura in `lezione 5 - coordinatore, Unsloth Studio e opencode/docente/backup/PIANO_LEZIONE5.md`, da approvare) |
 | Lezione 6 | 25 novembre 2026 | 2 ore | Agenti, permessi e difese |
 | Lezione 7 | 2 dicembre 2026 | 4 ore | Lavoro di gruppo e test finale individuale |
 
@@ -55,9 +55,11 @@ Un solo file personale da salvare, non da consegnare: `istruzioni_agente_noleggi
 
 Senza Studio non c'è un modello locale di riserva. Se l'agente non è disponibile si usa una conversazione normale, con le istruzioni nel primo messaggio: non sono vere istruzioni di sistema. Se Copilot non risponde si fa una prova a secco collettiva dal proiettore, dichiarando che non è una risposta del modello e che non prova l'affidabilità dell'agente (guida docente, «Se manca il servizio o qualcosa non passa»).
 
-## Lezione 5 · Il modello legge i documenti
+## Lezione 5 · Il coordinatore, il modello locale e opencode
 
-**Da riprogettare (decisione del 10 novembre 2026).** La lezione 5 è la prima in cui gli studenti usano Unsloth Studio, nella VM che il docente consegna già pronta. Va deciso come entrano avvio, misure di memoria, parametri (Temperature, Top P, Top K) e System Prompt con le istruzioni della lezione 4: il materiale è in `docente/backup/da_riprendere_lezione_5/`. Il resto di questa sezione è la versione precedente e non è stato rivisto.
+**Direzione del 12 novembre 2026, struttura da approvare** in `lezione 5 - coordinatore, Unsloth Studio e opencode/docente/backup/PIANO_LEZIONE5.md`. Parte dall'agente Ruota Libera della lezione 4 con tre novità (piano prima, terzo lavoro che dipende dal primo, controllo con la fonte), poi lo stesso testo nel modello della VM (Unsloth Studio) e infine opencode. Sulla VM il modello gira, ma lento; opencode collegato al modello e le chiamate agli strumenti sono da provare con il modello da 2B.
+
+### Materiale RAG precedente, da collocare (proposta: lezione 6)
 
 Obiettivo: rendere visibile il recupero dei passaggi e distinguere un errore di recupero da un errore di risposta.
 

@@ -1,0 +1,43 @@
+# Regole del noleggio e dei calcoli di Ruota Libera
+
+**Procedura RL-03 · Revisione 2 del 2 ottobre 2026 · Banco del negozio**
+
+Documento inventato per l'esercitazione ITS MAKER. Stabilisce gli orari, i termini e i calcoli che il banco usa per leggere il registro del negozio.
+
+## 1. Orari e biciclette
+
+Il negozio è aperto ogni giorno dalle 9:00 alle 19:00, cioè 10 ore. Il turno del mattino va dalle 9:00 alle 14:00 e il turno del pomeriggio dalle 14:00 alle 19:00.
+
+Le biciclette sono 20. Ogni bicicletta ha un numero scritto sul telaio, da 1 a 20. Il banco scrive nel registro gli appunti del turno con data, ora e numero della bicicletta.
+
+## 2. Il listino
+
+| Tipo di noleggio | Prezzo |
+| --- | --- |
+| A ore | 5 euro all'ora |
+| Giornata intera | 30 euro |
+
+Per i calcoli di questa procedura una giornata intera vale 3 euro all'ora (30 euro divisi per le 10 ore di apertura).
+
+Il tipo di noleggio, a ore o per la giornata, si legge sullo scontrino che il cliente riceve al ritiro.
+
+## 3. I termini
+
+| Termine | Che cosa vuol dire |
+| --- | --- |
+| Segnalazione | Il cliente dice al banco che qualcosa non va. |
+| Fuori servizio | La bici viene tolta dal noleggio e portata nel retro. Comincia nel momento in cui il registro dice che la bici è tolta dal noleggio. |
+| Cambio | Il cliente riceve un'altra bici al posto di quella con il guasto. |
+| Prova | Il meccanico prova la bici nel cortile dopo la riparazione. Una prova riuscita non rimette la bici in noleggio. |
+| Disponibile | Il banco ha controllato la bici e l'ha rimessa in fila con le altre. Solo da questo momento la bici può essere noleggiata di nuovo. |
+| Aggiustamento al banco | Una cosa piccola sistemata davanti al cliente, senza togliere la bici dal noleggio. Non è un fuori servizio. |
+
+## 4. I calcoli
+
+**Minuti fuori servizio.** Per ogni bici tolta dal noleggio: dall'ora in cui viene tolta dal noleggio all'ora in cui è di nuovo disponibile, in minuti. Gli aggiustamenti al banco non si contano.
+
+**Minuti senza bici.** Per un cliente la cui bici ha un guasto: dall'ora della segnalazione all'ora del cambio, in minuti.
+
+**Rimborso proposto per guasto.** Minuti senza bici ÷ 60 × tariffa oraria del noleggio del cliente, arrotondato al centesimo. La tariffa oraria è 5 euro per il noleggio a ore e 3 euro per la giornata intera. Il banco decide: questa procedura dà soltanto la proposta.
+
+Questi calcoli non compaiono nel registro: si fanno quando servono.
