@@ -194,6 +194,12 @@ Il registro non suddivide tutte le note per turno. Per PASSAGGIO, se il giorno o
 
 Dove un'informazione manca, dirlo è corretto. Per freni e sterzo vale la regola obbligatoria della guida: nessun consiglio aggiunto, nessuna autorizzazione a far uscire una bici dal negozio.
 
+## TODO prima dell'aula
+
+- **Schermate dalla VM** (Studio 2026.11.4, opencode v2.2.7), da mettere in `docente/backup/immagini_slide/` e nelle slide, con il punto cerchiato e un testo alternativo: pannello con Context Length e Temperature (slide 24); campo System Prompt (slide 25); avvio di opencode (slide 31); passaggio da Plan a Build (slide 33). Non catturare l'elenco dei passaggi con la lettura del file né la richiesta di permesso: anticiperebbero il risultato delle slide 32 e 34. Finché mancano, le slide dicono «il docente mostra».
+- Collegamento sul desktop della VM che avvia opencode nella cartella `noleggio`: da creare e provare.
+- Ripetere la revisione del `revisore-didattico` dopo le schermate.
+
 ## Che cosa non è stato provato
 
 - Copilot con l'account studente: creazione e modifica dell'agente, comportamento del piano, del controllo e dell'esempio della pizzeria.
