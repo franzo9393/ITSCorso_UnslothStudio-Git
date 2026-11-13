@@ -21,7 +21,8 @@ Non dichiarare provato ciò che non lo è: nulla di questa lezione è stato prov
 - Pubblica su Teams `studenti/ATTIVITA_LEZIONE5.docx` e i tre testi `Registro_Ruota_Libera_7-8_novembre_2026.txt`, `Regole_noleggio_Ruota_Libera.txt`, `Guida_guasti_Ruota_Libera.txt` (copie della lezione 4: stessi fatti). Non pubblicare le cartelle di backup.
 - `studenti/da_pubblicare_a_chi_non_ha_il_file/ISTRUZIONI_DI_PARTENZA_NOLEGGIO.txt`: lo dai solo a chi non ha il proprio `istruzioni_agente_noleggio.txt`. È il testo mostrato nella lezione 4 con un solo esempio cambiato (la bici 5), non una soluzione collaudata. Chi lo riceve aggiunge comunque piano, rimborso e controllo. Il suo «Esempio 1» usa la bici 5, non la bici 12, per non dare la risposta alla richiesta della slide 2.
 - Dimostrazione: `docente/ESEMPIO_DIMOSTRAZIONE_PIZZERIA_L5.txt`. Nelle istruzioni dell'agente va solo il testo **tra i due separatori**. Provalo prima con le richieste in fondo al file, ciascuna in una chat nuova. Se non puoi, mostra il testo dichiarando che non è una risposta del modello. Le risposte non sono scritte nel file: sono quelle del modello.
-- Sulla VM, nella cartella `noleggio`: i tre testi (da questa cartella `studenti/`) e `docente/MODELLI_OPENCODE/opencode.jsonc` nella stessa cartella. Controlla il percorso: le slide 25 e 31 li danno per presenti.
+- Sulla VM, nella cartella `noleggio`: i tre testi (da questa cartella `studenti/`) e `docente/MODELLI_OPENCODE/opencode.jsonc` nella stessa cartella. Fissa il percorso della cartella (le slide e la consegna dicono solo «la cartella `noleggio` del computer virtuale») e controllalo: le slide 26 e 32 la danno per presente.
+- Una chiavetta per gruppo (5 o 6), per portare il file dell'autore sul computer del gruppo (slide 26). Prova prima come si collega la chiavetta alla VM invece che al PC che la ospita, e prepara il gesto esatto da dire a voce.
 - Proiettore: **prima le richieste, dopo i criteri**. I valori vengono dalle tavole in fondo, non da numeri ricopiati.
 
 ### Organizzazione delle VM (da decidere prima)
@@ -45,18 +46,19 @@ Nessuno di questi controlli è stato eseguito: la colonna Esito è vuota.
 | Piano e controllo in Copilot | La pizzeria della lezione 5, con la richiesta suggerita: si ferma dopo il piano? Cita le righe? | Raccontalo come è: un modello non segue sempre una regola, e la prova passa dalla correzione del testo | |
 | Tempo alla prima parola, VM | Registro, regole e istruzioni nel messaggio (circa 3,5–4k token); poi la prima risposta di opencode | Parte 3 come dimostrazione del docente (vedi rami) | |
 | opencode e modello da 2B | Una richiesta di lettura file produce la chiamata allo strumento nel formato giusto. Provare più volte | Parte 3 secondo il ramo di riserva | |
-| Permesso `ask` in Windows | Con `docente/MODELLI_OPENCODE/opencode.jsonc` nella cartella `noleggio`, la richiesta di conferma compare davvero quando il modello vuole scrivere. Controlla che la creazione di un file nuovo passi da `edit` e che anche la shell chieda conferma. Senza quel file Build scrive senza chiedere | Si toglie la parte Build della slide 33 e la slide 34 | |
-| Come arriva il file dell'autore alla VM | Chiavetta o copia e incolla tra PC e VM con VMware Tools | Decidere prima: le slide dicono «come il docente indica» | |
+| Permesso `ask` in Windows | Con `docente/MODELLI_OPENCODE/opencode.jsonc` nella cartella `noleggio` (le regole sono nell'elenco generale, quindi valgono anche per Plan), la richiesta di conferma compare davvero quando il modello vuole scrivere. Controlla che la creazione di un file nuovo passi da `edit`, che anche la shell chieda conferma e che in Plan, con la stessa richiesta, nessun file compaia (un eventuale comando della shell deve chiedere conferma). Senza quel file Build scrive senza chiedere | Si toglie la parte Build della slide 34 e la slide 35 | |
+| Come arriva il file dell'autore alla VM | Deciso: chiavetta (slide 26). Si vede dentro la VM, si apre il file e si copia il testo nel campo System Prompt? Provalo su una VM copiata | Copia e incolla tra PC e VM con VMware Tools, da dire a voce | |
 | Copia della VM su 5 o 6 PC | Dimensione, tempo, domanda «spostata o copiata» alla prima accensione, memoria del PC reale | Un gruppo si unisce a un altro | |
-| Context Length | Impostare 8192 nella VM consegnata; con Auto su Linux la memoria era maggiore | Valore fisso | |
+| Ripristino prima della copia | Copia la VM prima delle prove, oppure dopo le prove cancella `nota_passaggio.txt`, le conversazioni di prova in Studio e in opencode, il testo nel System Prompt e le approvazioni salvate («Allow always» salva una regola `allow` e fa sparire la richiesta). Nella cartella `noleggio` devono restare solo i tre testi e `opencode.jsonc` | VM nuova da copia pulita | |
+| Context Length | Impostare 8192 nella VM consegnata. La slide 25 chiede agli studenti che numero c'è accanto: deve leggere 8192. Con Auto su Linux la memoria era maggiore | Valore fisso | |
 | Search e Tools in Studio | Disattivare Search (usa la rete). Verificare che restino grigi su Windows | Disattivarli a mano a ogni avvio | |
-| Prompt di opencode e Context Length 8192 | Le definizioni degli strumenti di opencode entrano nel contesto fissato per la parte 2? | Alzare Context Length per la parte 3 |  |
+| Prompt di opencode e Context Length 8192 | Le definizioni degli strumenti di opencode entrano nel contesto fissato per la parte 2? | Decidere prima: consegnare la VM con il valore che basta a opencode e correggere il numero atteso alla slide 25. Non si ricarica il modello in aula |  |
 | «Ragionamento» di Qwen3.5-2B | Se è attivo, la risposta si allunga e il tempo cresce. Non verificato | Spegnerlo se Studio lo permette |  |
 | System Prompt dopo una nuova conversazione | Restava nelle prove su Linux; non provato su Windows | Incollarlo di nuovo a ogni conversazione |  |
-| Cambio da Plan a Build | Come si fa nella versione installata di opencode | Mostrarlo prima e metterlo in una slide, non a voce |  |
+| Cambio da Plan a Build | Come si fa nella versione installata di opencode | Mostrarlo prima e scriverlo in una riga della slide 34, non solo a voce | |
 | Avvio di opencode da una finestra nuova | `unsloth start opencode` con il modello già caricato, senza il PATH della sessione di prova | Collegamento sul desktop | |
 
-Riferimenti: opencode, agenti e permessi: https://opencode.ai/docs/agents/. Unsloth e opencode: https://unsloth.ai/docs/integrations/opencode (scritta per un modello da 27B: per il 2B la prova è tua).
+Riferimenti: opencode, agenti e permessi: https://opencode.ai/docs/agents/ e https://opencode.ai/docs/permissions/ (regole generali, regole di Plan, «Allow always» salvato per il progetto). Unsloth e opencode: https://unsloth.ai/docs/integrations/opencode (scritta per un modello da 27B: per il 2B la prova è tua).
 
 ## Parte 1 · Il coordinatore in Copilot
 
@@ -66,15 +68,15 @@ Riferimenti: opencode, agenti e permessi: https://opencode.ai/docs/agents/. Unsl
 | 4–9 | Il piano | Pizzeria; regola e prova; correzione del piano; la scrivono; due lavori insieme; criteri |
 | 10–12 | Il rimborso | Scrivono RIMBORSO (o lo separano da FUORI SERVIZIO) e aggiornano l'elenco |
 | 13–14 | Il controllo | Pizzeria; scrivono la regola |
-| 15–17 | Una sola prova | Richiesta a tre lavori; numeri; controllano la riga citata |
-| 18–19 | Un caso proprio e file | Una richiesta inventata; file completo e agente aggiornato |
-| 20 | Nome | «Coordinare»: lo dici a voce dopo che l'hanno fatto |
+| 15–18 | Una sola prova | Richiesta a tre lavori; risposta al tipo di noleggio; numeri; controllano la riga citata |
+| 19–20 | Un caso proprio e file | Una richiesta inventata; file completo e agente aggiornato |
+| 21 | Nome | «Coordinare»: lo dici a voce dopo che l'hanno fatto |
 
-Non distribuire un agente del noleggio già scritto. Le tabelle a metà (slide 7, 11, 16) hanno le domande, mai le risposte.
+Non distribuire un agente del noleggio già scritto. Le tabelle a metà (slide 7, 11, 14) hanno le domande, mai le risposte.
 
 ### Slide 2 · Riaprite
 
-La richiesta è quella della lezione 4: «Per quanti minuti è stata fuori servizio la bici 12 sabato? Mostrami gli orari.» Controllo: stessi orari della tavola «Valori di riferimento». Serve a vedere che il file e l'agente funzionino ancora: chi ha perso l'agente passa a una chat normale. Non presumere che tutti abbiano finito la lezione 4: chi non ha il file riceve il punto di partenza.
+La richiesta è quella della lezione 4: «Per quanti minuti è stata fuori servizio la bici 12 sabato? Mostrami gli orari.» Controllo: stessi orari della tavola «Valori di riferimento»; dopo il controllo li dici a voce. Serve a vedere che il file e l'agente funzionino ancora: chi ha perso l'agente passa a una chat normale. Non presumere che tutti abbiano finito la lezione 4: chi non ha il file riceve il punto di partenza.
 
 ### Slide 4–9 · Il piano prima
 
@@ -86,9 +88,9 @@ Slide 8: la richiesta dipende dal secondo lavoro scelto in lezione 4 (GUASTI o P
 
 ### Slide 10–12 · Il rimborso diventa un lavoro
 
-Nella lezione 4 il rimborso era la seconda richiesta del titolare dopo il fuori servizio (slide 33–35 di allora); nel file di ogni studente può essere dentro FUORI SERVIZIO o non esserci. Qui si separa, o si scrive da zero: conta altri minuti, dalla segnalazione al cambio, e ha bisogno del tipo di noleggio che il registro non riporta. Dillo una volta, poi lascia lavorare.
+Nella lezione 4 gli studenti hanno scritto da soli l'agente, ognuno il suo, a partire dai tre testi: un chatbot per il noleggio che risponde alle richieste dei clienti (rimborso, aiuto con i guasti e simili). Non è accertato che tutti abbiano trattato il rimborso come richiesta a sé: nel file di ogni studente può essere dentro FUORI SERVIZIO o non esserci. Qui si separa, o si scrive da zero: conta altri minuti, dalla segnalazione al cambio, e ha bisogno del tipo di noleggio che il registro non riporta. Dillo una volta, poi lascia lavorare.
 
-Alla slide 12 tolgono le righe del rimborso da FUORI SERVIZIO se ci sono, scrivono RIMBORSO con le quattro righe e aggiornano l'elenco: quando FUORI SERVIZIO e RIMBORSO vanno insieme, quale viene prima e quali orari usa ciascuno dei due? Non c'è una sola risposta giusta sull'ordine, purché sia scritta e il piano la rispetti. Gli orari sono diversi: il rimborso non usa il risultato di FUORI SERVIZIO.
+Alla slide 11 scrivono RIMBORSO con le quattro righe (e tolgono le righe del rimborso da FUORI SERVIZIO, se ci sono); alla slide 12 aggiornano l'elenco: quando FUORI SERVIZIO e RIMBORSO vanno insieme, quale viene prima e quali orari usa ciascuno dei due? Non c'è una sola risposta giusta sull'ordine, purché sia scritta e il piano la rispetti. Gli orari sono diversi: il rimborso non usa il risultato di FUORI SERVIZIO.
 
 ### Slide 13–14 · Ogni numero, la sua riga
 
@@ -96,52 +98,52 @@ La pizzeria: «Quanto costa una Diavola con la consegna?» (8 più 2, 10 euro). 
 
 Perché serve: quando un'informazione passa da uno strumento all'altro (qui dal testo alla risposta) si può perdere; il controllo è un modo esterno per accorgersene.
 
-### Slide 15–17 · Una sola prova per le due regole nuove
+### Slide 15–18 · Una sola prova per le due regole nuove
 
-Aggiornano l'agente con RIMBORSO e controllo, poi una sola conversazione con la richiesta a tre lavori. Per GUASTI: «Bici 12, sabato: quanto è stata fuori servizio, che cosa significa freni che non tengono, quanto rimborsiamo al cliente?» Per PASSAGGIO: «Bici 12, sabato: quanto è stata fuori servizio, quanto rimborsiamo al cliente? Prepara la nota per il turno dopo.» La previsione prima dell'invio è: che dato chiederà? Il tipo di noleggio manca nel registro; chi ha PASSAGGIO può ricevere anche la domanda sul turno. Risposte: «A ore. Procedi.» e, se serve, «La nota è per chi inizia il pomeriggio di sabato.»
+Aggiornano l'agente con RIMBORSO e controllo, poi una sola conversazione con la richiesta a tre lavori. Per GUASTI: «Bici 12, sabato: quanto è stata fuori servizio, che cosa significa freni che non tengono, quanto rimborsiamo al cliente?» Per PASSAGGIO: «Bici 12, sabato: quanto è stata fuori servizio, quanto rimborsiamo al cliente? Prepara la nota per il turno dopo.» La previsione prima dell'invio (slide 15) è: che dato chiederà? Il tipo di noleggio manca nel registro; chi ha PASSAGGIO può ricevere anche la domanda sul turno. Le risposte da dare sono sulla slide 16, che mostri solo dopo la previsione: «A ore. Procedi.» e, se serve, «La nota è per chi inizia il pomeriggio di sabato.»
 
-**Criterio (slide 16).** Il rimborso conta i **minuti senza bici** del cliente (dalla segnalazione al cambio), non i minuti di fuori servizio della bici. Le cifre sono nelle tavole in fondo (righe «Minuti senza bici del cliente» e «Rimborso proposto»). Se manca il tipo di noleggio l'agente lo chiede: è corretto. Se lo sceglie al posto dello studente, no. È una proposta: l'agente scrive «PROPOSTA DA CONTROLLARE», il banco decide.
+**Criterio (slide 17).** Il rimborso conta i **minuti senza bici** del cliente (dalla segnalazione al cambio), non i minuti di fuori servizio della bici. Le cifre sono nelle tavole in fondo (righe «Minuti senza bici del cliente» e «Rimborso proposto»). Se manca il tipo di noleggio l'agente lo chiede: è corretto. Se lo sceglie al posto dello studente, no. È una proposta: l'agente scrive «PROPOSTA DA CONTROLLARE», il banco decide.
 
-**Slide 17.** Controllano il controllo: scelgono un numero della risposta e cercano la riga che l'agente cita. Una riga inventata o troppo vaga è un problema da correggere nel testo.
+**Slide 18.** Controllano il controllo: scelgono un numero della risposta e cercano nel registro o nelle regole la riga che l'agente cita. Una riga inventata o troppo vaga è un problema da correggere nel testo.
 
 Per GUASTI vale la regola obbligatoria della guida: nessun consiglio per far uscire dal negozio una bici con freni che non tengono. Per PASSAGGIO: se il giorno o il turno non sono identificabili l'agente chiede; non si inventa una divisione dei turni.
 
-### Slide 18–20 · Un caso proprio, file, nome
+### Slide 19–21 · Un caso proprio, file, nome
 
-Slide 18: una richiesta inventata da ciascuno: dato mancante, testo insufficiente o lavoro che l'agente non ha (esempi della pizzeria, come nella lezione 4). Decidono prima la risposta corretta. Se funziona al primo invio, cercano la regola che lo ha reso possibile, senza peggiorare le istruzioni. La correzione del piano da parte di chi scrive la mostri tu alla slide 6, e non la fanno inventare agli studenti.
+Slide 19: una richiesta inventata da ciascuno: dato mancante, testo insufficiente o lavoro che l'agente non ha (esempi della pizzeria, come nella lezione 4). Scrivono su un foglio la risposta corretta prima di provare. Se funziona al primo invio, cercano la regola che lo ha reso possibile, senza peggiorare le istruzioni; se qualcosa non va, correggono il punto necessario e riprovano. La correzione del piano da parte di chi scrive la mostri tu alla slide 6, e non la fanno inventare agli studenti.
 
-Slide 19: il file `istruzioni_agente_noleggio.txt` deve essere completo e arrivato intero in Copilot, perché in parte 2 lo si porta altrove.
+Slide 20: il file `istruzioni_agente_noleggio.txt` deve essere completo e arrivato intero in Copilot, perché in parte 2 lo si porta altrove.
 
-Slide 20: dai il nome **coordinare** e fai la domanda «Dove sta il coordinatore?». Risposta, a voce: era già lì, nel loro testo, letto da Copilot. Nessun programma lo ha eseguito.
+Slide 21: dai il nome **coordinare** e fai la domanda «Dove sta il coordinatore?». Risposta, a voce: era già lì, nel loro testo, letto da Copilot. Nessun programma lo ha eseguito.
 
 ## Parte 2 · Lo stesso testo, un altro modello
 
 Lavoro di gruppo: quattro o cinque persone per ogni computer virtuale. Il modello è lento e risponde a una richiesta alla volta: una sola prova per gruppo.
 
-- **Slide 22:** non conosciamo la dimensione di Copilot. Il modello della VM è Qwen3.5-2B, un file di circa 1,3 GB, e non usa Internet. Non dichiarare differenze di qualità che non hai misurato.
-- **Slide 23:** il gruppo sceglie il file che ha tenuto meglio la richiesta a tre lavori. Si decide a parole, con i criteri delle slide 9 e 16.
-- **Slide 24:** nel pannello **Context Length** (la quantità di testo che il modello riesce a tenere insieme) e **Temperature**. Estimated Memory Usage lo guardi tu, non lo chiedi a loro. Temperature è la manopola di Transformer Explainer: non si tocca ora.
-- **Slide 25:** il file nel campo **System Prompt**, il messaggio con registro, regole (con GUASTI anche la guida ai guasti) e richiesta in una nuova conversazione. Quando il modello chiede il tipo di noleggio, il gruppo risponde «A ore. Procedi.» Le istruzioni nel campo sono vere istruzioni di sistema (il System Prompt di Studio è rimasto dopo una nuova chat nelle prove su Linux; non provato su Windows).
-- **Slide 26–27:** ognuno scrive la previsione su un foglio prima dell'invio. Non anticipare l'esito.
-- **Slide 28:** se non ci arriva, una sola modifica e una riprova. Un modello piccolo può non seguire un testo lungo: non è colpa di chi ha scritto.
-- **Slide 29–30:** un lavoro, un testo: la slide 29 fa la domanda, rispondi tu a voce e poi la slide 30 dice che un programma può dare a ogni lavoro soltanto il suo testo. Per il solo FUORI SERVIZIO il registro e le regole bastano; per quel lavoro la guida ai guasti non serve. Un programma può dare a ogni lavoro solo il suo testo: è il ponte verso la parte 3.
+- **Slide 23:** non conosciamo la dimensione di Copilot. Il modello della VM è Qwen3.5-2B, un file di circa 1,3 GB, e non usa Internet. Non dichiarare differenze di qualità che non hai misurato.
+- **Slide 24:** il gruppo sceglie il file che ha tenuto meglio la richiesta a tre lavori. Si decide a parole, con i criteri delle slide 9 e 17.
+- **Slide 25:** nel pannello **Context Length** (la quantità di testo che il modello riesce a tenere insieme) e **Temperature**. Il numero accanto a Context Length deve essere 8192. Estimated Memory Usage lo guardi tu, non lo chiedi a loro. Temperature è la manopola di Transformer Explainer: non si tocca ora.
+- **Slide 26:** l'autore porta il file sulla chiavetta; lo incolla nel campo **System Prompt**; un altro scrive il messaggio con registro, regole (con GUASTI anche la guida ai guasti) e richiesta in una nuova conversazione. Quando il modello chiede il tipo di noleggio, il gruppo risponde «A ore. Procedi.» Le istruzioni nel campo sono vere istruzioni di sistema (il System Prompt di Studio è rimasto dopo una nuova chat nelle prove su Linux; non provato su Windows).
+- **Slide 27–28:** ognuno scrive la previsione su un foglio prima dell'invio. Non anticipare l'esito. Alla slide 28 ogni gruppo dice una sola cosa diversa da Copilot: i resoconti restano brevi.
+- **Slide 29:** se non ci arriva, una sola modifica e una riprova. Un modello piccolo può non seguire un testo lungo: non è colpa di chi ha scritto. Se il testo non entra, si alleggerisce il messaggio.
+- **Slide 30–31:** un lavoro, un testo: la slide 30 fa la domanda, rispondi tu a voce e poi la slide 31 dice che un programma può dare a ogni lavoro soltanto il suo testo. Per il solo FUORI SERVIZIO il registro e le regole bastano; per quel lavoro la guida ai guasti non serve. Un programma può dare a ogni lavoro solo il suo testo: è il ponte verso la parte 3.
 
-Il passaggio del file dalla postazione dell'autore alla VM è il punto più fragile dal punto di vista organizzativo: decidilo prima (tabella dei controlli).
+Il passaggio del file dalla postazione dell'autore alla VM è il punto più fragile dal punto di vista organizzativo: è deciso (chiavetta, slide 26), ma non provato. Controlla prima che la chiavetta si veda dentro la VM (tabella dei controlli).
 
 ## Parte 3 · opencode
 
-**La parte 3 dipende dal controllo «opencode e modello da 2B» della tabella.** Le slide 30–35 sono scritte per il caso in cui il programma esegua le chiamate agli strumenti con il modello della VM. Se il controllo non riesce, non c'è una versione più semplice eseguibile dagli studenti con quel modello: vale il ramo di riserva.
+**La parte 3 dipende dal controllo «opencode e modello da 2B» della tabella.** Le slide 31–36 sono scritte per il caso in cui il programma esegua le chiamate agli strumenti con il modello della VM. Se il controllo non riesce, non c'è una versione più semplice eseguibile dagli studenti con quel modello: vale il ramo di riserva.
 
 Un passo alla volta, con una persona diversa ai comandi; gli altri scrivono la previsione su un foglio prima del risultato.
 
 | Slide | Passo | Che cosa si vede |
 | --- | --- | --- |
-| 31–32 | 3A · Il programma legge | La richiesta è «Quale codice hanno le pastiglie montate sulla bici 12?»: la risposta sta solo nel registro, quindi il modello deve **chiedere** di leggerlo e il programma lo apre. Chi legge è il programma. Con una domanda generale il modello potrebbe rispondere senza leggere |
-| 33–34 | 3B · Piano, Build, permessi | In Plan il file non compare; in Build il programma chiede conferma prima di scrivere. Dici tu a ogni gruppo se approvare o rifiutare; si confrontano dal proiettore le cartelle: in quali c'è il file? Una sola esecuzione per gruppo (il modello è lento) |
-| 35 | Quadro | Tabella file → Copilot e Studio → opencode: testi, piano, «PROPOSTA DA CONTROLLARE». È dopo l'esperienza, non prima. Una frase: in opencode ogni lavoro può diventare un agente a parte, con i suoi permessi; oggi non l'abbiamo provato |
-| 36 | Chiusura | Quale permesso dareste al vostro agente, e perché? |
+| 32–33 | 3A · Il programma legge | La richiesta è «Quale codice hanno le pastiglie montate sulla bici 12?»: la risposta sta solo nel registro, quindi il modello deve **chiedere** di leggerlo e il programma lo apre. Il modello non conosce i nomi dei file: può prima elencare o cercare i file, poi leggere il registro. Alla slide 33 guardano l'elenco dei passaggi e dicono quale file è stato aperto. Poi dici tu a voce che chi legge il file è il programma, non il modello. Se in 3A compare una richiesta di permesso, il modello ha usato un comando della shell: il gruppo la rifiuta e alla slide 35 la domanda diventa «perché quella volta ha chiesto?». Con una domanda generale il modello potrebbe rispondere senza leggere |
+| 34–35 | 3B · Piano, Build, permessi | La richiesta è «Crea il file nota_passaggio.txt con una sola riga: Controllare i freni della bici 12.»: una sola scrittura, per non appesantire il modello piccolo. In Plan la modifica dei file è negata; in Build il programma chiede conferma prima di scrivere («approvare» corrisponde ad «Allow once»; «Allow always» salva la regola e va evitato). Se in Plan compare una richiesta di permesso, è un comando della shell: Plan blocca la modifica dei file, non i comandi. Il gruppo rifiuta e lo nota: è il motivo per cui nel file anche la shell è `ask`. Ogni gruppo decide se approvare o rifiutare e scrive il perché; se tutti approvano, chiedi a un gruppo di rifiutare. Confronto per alzata di mano: il file c'è? Poi: nella prova con le pastiglie il programma ha letto senza chiedere, perché? Perché in `opencode.jsonc` solo scrittura e shell sono `ask`. Una sola esecuzione per gruppo (il modello è lento) |
+| 36 | Quadro | Tabella testo → Copilot e Studio → opencode: testi, piano, «PROPOSTA DA CONTROLLARE». È dopo l'esperienza, non prima. Una frase: in opencode ogni lavoro può diventare un agente a parte, con i suoi permessi; oggi non l'abbiamo provato |
+| 37 | Chiusura | In opencode il modello decide ancora che cosa chiedere; il programma apre i file, scrive e chiede il permesso. Se il vostro agente potesse registrare un rimborso: allow, ask o deny? Perché? |
 
-**File per opencode.** `docente/MODELLI_OPENCODE/opencode.jsonc` va nella cartella `noleggio` della VM: fa chiedere conferma a Build prima di scrivere. È scritto sulla documentazione, **non è stato provato** con la versione installata (v2.2.7). Gli agenti di lavoro (`subagent`) e il coordinatore con più agenti sono stati tolti dalla lezione: sono materia per un'altra occasione.
+**File per opencode.** `docente/MODELLI_OPENCODE/opencode.jsonc` va nella cartella `noleggio` della VM: fa chiedere conferma prima di scrivere o di eseguire un comando, in Build e in Plan. È scritto sulla documentazione, **non è stato provato** con la versione installata (v2.2.7). Gli agenti di lavoro (`subagent`) e il coordinatore con più agenti sono stati tolti dalla lezione: sono materia per un'altra occasione.
 
 **Differenza da cogliere.** Nel loro file i testi sono incollati nel messaggio; in opencode il programma li apre quando il modello lo chiede. «PROPOSTA DA CONTROLLARE» nel loro file sono parole; in Build il programma si ferma davvero. Se il modello non fa la chiamata, si legge perché: non è un fallimento da nascondere.
 
@@ -196,8 +198,9 @@ Dove un'informazione manca, dirlo è corretto. Per freni e sterzo vale la regola
 
 ## TODO prima dell'aula
 
-- **Schermate dalla VM** (Studio 2026.11.4, opencode v2.2.7), da mettere in `docente/backup/immagini_slide/` e nelle slide, con il punto cerchiato e un testo alternativo: pannello con Context Length e Temperature (slide 24); campo System Prompt (slide 25); avvio di opencode (slide 31); passaggio da Plan a Build (slide 33). Non catturare l'elenco dei passaggi con la lettura del file né la richiesta di permesso: anticiperebbero il risultato delle slide 32 e 34. Finché mancano, le slide non rimandano al docente: apertura di Studio, caricamento del file nel System Prompt, avvio di opencode, passaggio da Plan a Build e risposta al permesso li mostri e li dici tu a voce.
-- Collegamento sul desktop della VM che avvia opencode nella cartella `noleggio`: da creare e provare.
+- **Schermate dalla VM** (Studio 2026.11.4, opencode v2.2.7), da mettere in `docente/backup/immagini_slide/` e nelle slide, con il punto cerchiato e un testo alternativo: campo System Prompt (slide 26); pannello con Context Length e Temperature (slide 25); avvio di opencode e campo in cui si scrive (slide 32); passaggio da Plan a Build (slide 34). Per la slide 33 una schermata di un'altra richiesta, che mostri dove compaiono i passaggi senza anticipare il risultato. Non catturare l'elenco dei passaggi con la lettura del file né la richiesta di permesso: anticiperebbero il risultato delle slide 33 e 35. Finché mancano, le slide non rimandano al docente: apertura di Studio, caricamento del file nel System Prompt, avvio di opencode e passaggio da Plan a Build li mostri e li dici tu a voce.
+- Collegamento sul desktop della VM che avvia opencode nella cartella `noleggio`: da creare e provare. La slide 32 dice «sul desktop c'è il collegamento opencode: fate doppio clic».
+- Scrivere nelle slide, dopo il controllo pre-aula: alla slide 34 il gesto per passare da Plan a Build e che cosa si scrive in Build (la stessa richiesta?); alla slide 33 dove si trovano i passaggi di opencode («Guardate l'elenco dei passaggi» oggi non lo dice); alla slide 25 quante parole entrano in 8192 (cifra misurata nella VM, non stimata).
 - Ripetere la revisione del `revisore-didattico` dopo le schermate.
 
 ## Che cosa non è stato provato
@@ -208,8 +211,8 @@ Dove un'informazione manca, dirlo è corretto. Per freni e sterzo vale la regola
 - Tempi di risposta del modello con i testi della lezione e con opencode.
 - Copia della VM e memoria dei PC reali.
 
-La revisione didattica è stata fatta due volte (12 novembre); la stima dei tempi resta nel rapporto del revisore e non entra nei materiali. Il recupero di documenti (RAG) è rimandato alla lezione 6: le verifiche già raccolte sono nel piano.
+La revisione didattica è stata fatta cinque volte (12 novembre due volte, 13 novembre tre volte; esito dell'ultima: DA CORREGGERE su un solo punto importante, il comportamento di Plan con la shell, corretto poi nel testo e non riesaminato). Corretti nelle revisioni del 13 novembre: previsioni con la risposta già scritta, slide 16 separata, slide 33 trasformata in controllo, decisione del permesso al gruppo, chiavetta per il file, richiesta 3B con una sola scrittura, regole `ask` nell'elenco generale dei permessi, ripristino della VM prima della copia. La stima dei tempi resta nel rapporto del revisore e non entra nei materiali. Il recupero di documenti (RAG) è rimandato alla lezione 6: le verifiche già raccolte sono nel piano.
 
 ## Chiusura dal proiettore
 
-Chiedi quale regola utile hanno scoperto e quale permesso darebbero all'agente. Non raccogliere un'autovalutazione scritta. Dal confronto conserva tu ciò che serve alla lezione 6: che cosa ha tenuto il modello piccolo, quale ramo della parte 3 si è usato, che cosa ha funzionato nella VM.
+Chiedi quale regola utile hanno scoperto e se il loro agente, potendo registrare un rimborso, dovrebbe avere allow, ask o deny, e perché. Non raccogliere un'autovalutazione scritta. Dal confronto conserva tu ciò che serve alla lezione 6: che cosa ha tenuto il modello piccolo, quale ramo della parte 3 si è usato, che cosa ha funzionato nella VM.

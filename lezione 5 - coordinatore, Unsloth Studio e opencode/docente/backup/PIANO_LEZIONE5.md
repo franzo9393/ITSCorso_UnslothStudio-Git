@@ -1,6 +1,6 @@
 # Piano della lezione 5 · 18 novembre 2026
 
-Documento riservato al docente. **Struttura da approvare**: non sono ancora slide né consegna. Nasce dalle indicazioni del 12 novembre 2026, a lezione 4 svolta: «ripartire dall'esercizio Ruota Libera con più caratteristiche del coordinatore, complicando l'agente; poi Unsloth Studio e opencode, il modello gira anche se lento».
+Documento riservato al docente. Struttura approvata il 12 novembre; resta come storico delle decisioni. Per lo stato attuale (slide, consegna, controlli pre-aula) vale la guida docente: alcune righe qui sotto sono superate (percorso `da_pubblicare_dopo_collaudo`, caricamento del modello in aula, previsioni «dai PC»). Nasce dalle indicazioni del 12 novembre 2026, a lezione 4 svolta: «ripartire dall'esercizio Ruota Libera con più caratteristiche del coordinatore, complicando l'agente; poi Unsloth Studio e opencode, il modello gira anche se lento».
 
 ## Come ho letto le indicazioni
 
@@ -38,7 +38,7 @@ flowchart LR
   P1 -. nel frattempo .-> V["copia VM dal disco"]
 ```
 
-La parte 1 usa solo il browser: **mentre la fanno si copia la VM** (disco esterno, circa 23 GB per postazione). Se la copia dura più di quanto previsto non blocca nessuno finché non si passa alla parte 2. È il motivo pratico dell'ordine che hai scelto.
+La parte 1 usa solo il browser. Piano e guida erano in contrasto sul momento della copia della VM; il 13 novembre il piano è stato allineato alla guida: VM copiate e accese prima dell'aula (da confermare). Così la copia non occupa il tempo della parte 1 e sui PC con la VM restano aperti solo Copilot e Blocco note.
 
 ### Parte 0 · Si riparte dall'agente
 
@@ -53,7 +53,7 @@ Una novità alla volta, ognuna con previsione prima e criterio dopo, come nella 
 | Novità | Che cosa cambia nel comportamento | Richiesta di prova (la inventano loro, con un esempio dalla pizzeria) |
 | --- | --- | --- |
 | 1 · Il piano prima | Per le richieste con più lavori l'agente scrive **prima il piano** («Piano: 1 FUORI SERVIZIO, 2 PASSAGGIO; testi: registro e regole») e si ferma. Risponde solo dopo un «Procedi». L'utente può correggere il piano. | Una richiesta con due lavori; poi una correzione del piano («no, solo il passaggio»). |
-| 2 · Il rimborso diventa un lavoro | **Correzione rispetto alla prima versione del piano:** nella lezione 4 il rimborso era già dentro FUORI SERVIZIO (slide 33–35), quindi non è un lavoro nuovo e non «dipende» dal fuori servizio: conta altri minuti (dalla segnalazione al cambio) e un dato che il registro non ha (tipo di noleggio, da chiedere). Gli studenti lo **separano** in un lavoro RIMBORSO a quattro righe e aggiornano l'elenco delle richieste. La richiesta di prova ha tre lavori: FUORI SERVIZIO, RIMBORSO e il secondo lavoro scelto in lezione 4 (GUASTI o PASSAGGIO). Il piano si ferma a chiedere il tipo di noleggio. | Richiesta a tre lavori della slide 13, uguale per tutti nella forma e diversa nel secondo lavoro. |
+| 2 · Il rimborso diventa un lavoro | **Correzione rispetto alla prima versione del piano:** nella lezione 4 il rimborso era già dentro FUORI SERVIZIO (slide 33–35), quindi non è un lavoro nuovo e non «dipende» dal fuori servizio: conta altri minuti (dalla segnalazione al cambio) e un dato che il registro non ha (tipo di noleggio, da chiedere). Gli studenti lo **separano** in un lavoro RIMBORSO a quattro righe e aggiornano l'elenco delle richieste. La richiesta di prova ha tre lavori: FUORI SERVIZIO, RIMBORSO e il secondo lavoro scelto in lezione 4 (GUASTI o PASSAGGIO). Il piano si ferma a chiedere il tipo di noleggio. | Richiesta a tre lavori della slide 15, uguale per tutti nella forma e diversa nel secondo lavoro. |
 | 3 · Il controllo | Alla fine l'agente elenca ogni numero usato con la riga del testo da cui viene. Se non la trova, lo dice. È il controllo esterno che le regole del progetto chiedono quando l'informazione passa da uno strumento all'altro. | Qualunque richiesta con un calcolo: si controlla che la riga indicata esista davvero. |
 
 Perché queste tre e non altre: sono le funzioni che in opencode diventano **visibili** (piano → modalità Plan, lavori separati → un agente per lavoro, controllo → lettura del file da parte del programma). Non si aggiungono difficoltà per far sbagliare il modello.
@@ -77,8 +77,8 @@ Due passi. **Entrambi dipendono dalle chiamate agli strumenti**: 3A e 3B sono es
 
 | Passo | Azione dello studente | Che cosa si vede |
 | --- | --- | --- |
-| 3A · Il programma legge | In una cartella con i tre testi, avviare `unsloth start opencode`. Chiedere: «Quale codice hanno le pastiglie montate sulla bici 12?» (la risposta sta solo nel registro) | Il modello **chiede** di leggere la guida; il programma lo fa e restituisce il testo. Chi legge il file è il programma, non il modello. |
-| 3B · Piano e permessi | Passare da Plan a Build. Chiedere di scrivere la nota di passaggio in `nota_passaggio.txt`. | In Plan il programma non scrive. In Build compare la richiesta di conferma; si approva o si rifiuta. È la differenza fra proposta e azione eseguita. |
+| 3A · Il programma legge | In una cartella con i tre testi, avviare opencode dal collegamento sul desktop. Chiedere: «Quale codice hanno le pastiglie montate sulla bici 12?» (la risposta sta solo nel registro) | Il modello **chiede** di leggere il registro; il programma lo fa e restituisce il testo. Chi legge il file è il programma, non il modello. |
+| 3B · Piano e permessi | Passare da Plan a Build. Chiedere: «Crea il file nota_passaggio.txt con una sola riga: Controllare i freni della bici 12.» | In Plan il programma non scrive. In Build compare la richiesta di conferma; il gruppo decide se approvare o rifiutare. È la differenza fra proposta e azione eseguita. |
 
 Documentazione: [Agents](https://opencode.ai/docs/agents/) per i permessi e le modalità Plan e Build; i `subagent` e i file degli agenti non sono più nella lezione (tolta la 3C il 12 novembre); permessi `allow`/`ask`/`deny` e limite di passaggi; [Unsloth e opencode](https://unsloth.ai/docs/integrations/opencode) per `unsloth start opencode`. La seconda è scritta per modelli grandi (27B): per il 2B la prova è nostra.
 
@@ -99,11 +99,11 @@ Le VM non sono su ogni PC ma su uno ogni quattro o cinque; potenzialmente si pos
 
 Forma approvata il 12 novembre per le parti 2 e 3 (la parte 1 non cambia):
 
-- **Parte 2:** il gruppo sceglie **un solo file di istruzioni**, quello che nella parte 1 ha superato meglio la richiesta a tre lavori con i criteri delle slide 9 e 16, lo incolla nel System Prompt e invia **una** richiesta. Gli altri, dai loro PC, scrivono prima cosa si aspettano e poi confrontano. Si discute: che cosa ha tenuto il modello piccolo e che cosa no.
+- **Parte 2:** il gruppo sceglie **un solo file di istruzioni**, quello che nella parte 1 ha superato meglio la richiesta a tre lavori con i criteri delle slide 9 e 17, lo incolla nel System Prompt e invia **una** richiesta. Gli altri, dai loro PC, scrivono prima cosa si aspettano e poi confrontano. Si discute: che cosa ha tenuto il modello piccolo e che cosa no.
 - **Parte 3:** un passo per volta, con una persona diversa ai comandi. Gli altri prevedono sul proprio PC la risposta e la riga di permesso, prima di vedere il risultato.
 - **Alternativa non adottata:** i PC senza VM si collegano alla VM del gruppo dal browser. Richiede che Studio ascolti sulla rete e che la rete della scuola lo permetta; con quattro richieste lunghe insieme la coda sulla CPU peggiora la lentezza. Non è stata provata: se interessa, è una verifica da aggiungere.
 
-Slide 21–36 e consegna (parti 2 e 3) sono riscritte per questa forma. Il modo di portare il file dell'autore sul computer del gruppo non è deciso (vedi tabella delle verifiche).
+Slide 22–37 e consegna (parti 2 e 3) sono riscritte per questa forma. Il file dell'autore arriva sul computer del gruppo con una chiavetta (deciso il 13 novembre; da provare sulla VM).
 
 ## Recupero di documenti (RAG) con il modello installato
 
@@ -129,8 +129,8 @@ Le prove del 12 novembre dicono che modello e Studio rispondono in italiano e ch
 | Permesso `ask` sulla scrittura in Windows, con la richiesta che arriva davvero dal modello | È il passo che fa vedere la differenza fra proposta ed esecuzione. Richiede che il secondo controllo sia superato | Si toglie 3B; resta 3A se il secondo controllo è superato, altrimenti ramo di riserva |
 | RAM del PC reale con VM da 6 GB accesa, browser e Copilot aperti (solo sui PC con la VM) | Da fermo il PC usa già 6,9 GB su 15,6: con VM e browser si va oltre 13 GB | Chiudere Copilot prima della parte 2 |
 | Come arriva il file dell'autore sul computer del gruppo | Teams è lento e nella VM non ci sono accessi di nessuno; il file sta sul PC dell'autore | Chiavetta, oppure copia e incolla del testo dal PC dell'autore alla VM con VMware Tools; decidere e provare prima |
-| I tre testi del noleggio nella cartella `noleggio` della VM | Le slide 25 e 31 li danno per presenti; nella VM non si scaricano da Teams | Copiarli nell'immagine prima della consegna e controllare il percorso |
-| Copia della VM su 5 o 6 PC | Dimensione immagine e tempo di copia mai misurati; VMware chiede «spostata o copiata» alla prima accensione | Copia nella parte 1; un gruppo si unisce a un altro se la copia non finisce |
+| I tre testi del noleggio nella cartella `noleggio` della VM | Le slide 26 e 32 li danno per presenti; nella VM non si scaricano da Teams | Copiarli nell'immagine prima della consegna e controllare il percorso |
+| Copia della VM su 5 o 6 PC | Dimensione immagine e tempo di copia mai misurati; VMware chiede «spostata o copiata» alla prima accensione | Copia prima dell'aula; un gruppo si unisce a un altro se la copia non finisce |
 | Nuova finestra: `unsloth start opencode` senza il PATH della sessione di prova | Nelle note di costruzione opencode non è stato provato da una finestra nuova | Fornire un collegamento sul desktop |
 | Modello caricato prima di avviare opencode e Context Length scelto | Con Auto il contesto occupava più memoria nelle prove su Linux | Impostare 8192 nella VM consegnata |
 
@@ -160,7 +160,7 @@ Il materiale RAG già progettato (ChunkViz, BM25, documento aggiornato) resta ne
 
 ## Domande per te
 
-1. Che cosa è successo davvero in lezione 4: tutti hanno finito 4E? Quanti hanno il file `istruzioni_agente_noleggio.txt`? Quanto è durata? (Serve per calibrare la parte 1 e per decidere se ripubblicare l'esempio.)
+1. Che cosa è successo davvero in lezione 4? **Risposta del 13 novembre:** gli studenti hanno scritto da soli l'agente, ognuno il suo, a partire dai tre testi, con l'incarico di costruire un chatbot per il noleggio che rispondesse alle richieste dei clienti (rimborso, aiuto con i guasti). Resta da sapere quanti hanno il file `istruzioni_agente_noleggio.txt` e se il rimborso era una richiesta a sé.
 2. Parti 2 e 3 in gruppi di 4–5 attorno a una VM, con un file scelto per gruppo e un pilota diverso a ogni passo: va bene? Oppure preferisci un altro modo di dividersi?
 3. Parola per gli studenti: «coordinatore» (la mia proposta, in aula) o «orchestratore»? Regola del progetto: i nomi tecnici stanno nella guida docente.
 4. Posso spostare il RAG alla lezione 6 come sopra?
@@ -180,11 +180,11 @@ Decisioni assunte per partire, ancora da confermare: «coordinatore» come parol
 
 | File | Stato |
 | --- | --- |
-| `docente/genera_materiali.py` | Fatto. Autonomo, copiato dalla lezione 4; produce PowerPoint (36 slide), HTML, Word e PDF. Aggiunti i valori del rimborso (`{{RIMBORSO_A_ORE}}`, `{{RIMBORSO_GIORNATA}}`): a ore 3,75 euro, a giornata 2,25 euro, su 45 minuti senza bici |
+| `docente/genera_materiali.py` | Fatto. Autonomo, copiato dalla lezione 4; produce PowerPoint (37 slide), HTML, Word e PDF. Aggiunti i valori del rimborso (`{{RIMBORSO_A_ORE}}`, `{{RIMBORSO_GIORNATA}}`): a ore 3,75 euro, a giornata 2,25 euro, su 45 minuti senza bici |
 | Slide, consegna, guida docente | Generati e guardati: nessun segnaposto residuo, fascia in basso aggiornata («Copilot · Unsloth Studio · opencode»). Il PowerPoint non è stato aperto in PowerPoint, solo convertito con LibreOffice |
 | `docente/MODELLI_OPENCODE/` | `opencode.jsonc`, scritto dalla documentazione, **non provato**. Senza il file la modalità Build scrive senza chiedere. Gli agenti `coordinatore.md` e di lavoro sono stati tolti con la 3C |
 | `studenti/da_pubblicare_a_chi_non_ha_il_file/` | Copia del testo mostrato nella lezione 4 con una nuova intestazione |
 | Schermate di Studio e opencode | **TODO**, dalla VM (nessuna immagine nelle slide per ora) |
-| Revisione del `revisore-didattico` | Due passaggi il 12 novembre. Primo: DA CORREGGERE (troppo lunga, circa 135 minuti tarati); il docente ha approvato i tagli (prova unica per RIMBORSO e controllo, una sola richiesta inventata, 3C tolta). Secondo: DA CORREGGERE, stima tarata circa 119 minuti («al limite alto: non aggiungere contenuti»); corretti tutti i problemi tranne uno. Il problema N1 (nessuna schermata di Studio e opencode, regola «Schermate dove servono» di `AGENTS.md`) è **TODO per decisione del docente (12 novembre)**: schermate da catturare nella VM, elenco nella sezione «TODO prima dell'aula» della guida; non mostrare quelle dell'elenco dei passaggi e del permesso. Revisione da ripetere dopo le schermate |
+| Revisione del `revisore-didattico` | Due passaggi il 12 novembre. Primo: DA CORREGGERE (troppo lunga, circa 135 minuti tarati); il docente ha approvato i tagli (prova unica per RIMBORSO e controllo, una sola richiesta inventata, 3C tolta). Secondo: DA CORREGGERE, stima tarata circa 119 minuti («al limite alto: non aggiungere contenuti»); corretti tutti i problemi tranne uno. Il problema N1 (nessuna schermata di Studio e opencode, regola «Schermate dove servono» di `AGENTS.md`) è **TODO per decisione del docente (12 novembre)**: schermate da catturare nella VM, elenco nella sezione «TODO prima dell'aula» della guida; non mostrare quelle dell'elenco dei passaggi e del permesso. Il 13 novembre due passaggi. Terzo: DA CORREGGERE (9 importanti, 8 minori), stima tarata circa 108 minuti; applicate le correzioni, slide 15 divisa in due (37 slide), scartata la proposta di far provare la richiesta inventata al vicino. Quarto: DA CORREGGERE (3 importanti sulla guida e su `opencode.jsonc`, 11 minori); corretti: regole `ask` nell'elenco generale dei permessi (valgono anche in Plan), ripristino della VM prima della copia, chiavette fra i materiali, risposte tolte dalla consegna, domanda finale sul rimborso. Resta da fare: le schermate, il gesto Plan→Build, le prove nella VM |
 
 Non fatto e non dichiarato fatto: nessuna prova in Copilot con l'account studente, nessuna prova di Studio o opencode da parte degli studenti, nessuna prova di apertura in PowerPoint. Da verificare anche la licenza di Unsloth Studio prima di citarla nei materiali (nel codice installato i file sono AGPL-3.0, `config.py`; per i materiali non serve ancora).

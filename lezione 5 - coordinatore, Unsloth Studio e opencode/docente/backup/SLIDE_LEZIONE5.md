@@ -26,7 +26,7 @@ ITS MAKER · 18 novembre 2026 · Microsoft Copilot, Unsloth Studio e opencode
 | --- | --- | --- |
 | 1 | Copilot | al vostro testo aggiungete il piano, il rimborso e il controllo |
 | 2 | il computer virtuale del gruppo | lo stesso testo, letto da un altro modello |
-| 3 | opencode, sullo stesso computer | un programma apre i file e chiede il permesso; il modello decide che cosa chiedere |
+| 3 | opencode, sullo stesso computer | lo stesso testo, con un programma accanto al modello |
 
 Il testo che scrivete resta quello del noleggio. Cambia chi lo legge e chi lo esegue. Il passo 1 è sul vostro computer; i passi 2 e 3 sono in gruppo, quattro o cinque persone per ogni computer virtuale: un computer dentro il computer, con il suo Windows e i suoi programmi.
 
@@ -61,7 +61,7 @@ Prima di vedere la risposta, per alzata di mano: l’agente si ferma dopo il pia
 
 La risposta al piano: «Procedi, ma solo il reclamo.»
 
-Che cosa deve fare adesso l’agente? Che cosa deve non fare?
+Che cosa deve fare adesso l’agente? Che cosa non deve fare?
 
 ---
 
@@ -74,7 +74,7 @@ Che cosa deve fare adesso l’agente? Che cosa deve non fare?
 | Che cosa contiene? | lavori in ordine, dati che mancano | e i testi che userà? |
 | Dove si ferma? | dopo il piano | qual è il segno? |
 | Che parola lo fa ripartire? | «Procedi» | la scegliete voi |
-| E «Lavoro usato:»? | dopo il piano | prima o dopo il piano? |
+| E «Lavoro usato:»? | dopo il piano | il piano viene prima: correggete la regola della prima riga |
 
 Aggiungete la regola alle **regole per tutti i casi**, nel file `istruzioni_agente_noleggio.txt`. Poi aggiornate l’agente in Copilot.
 
@@ -83,7 +83,7 @@ Aggiungete la regola alle **regole per tutti i casi**, nel file `istruzioni_agen
 # Slide 08 — Provate: due lavori insieme
 <!-- layout: CONTENUTO -->
 
-Una nuova conversazione. Registro, regole del noleggio e in fondo la richiesta. Con GUASTI aggiungete anche la guida ai guasti. Con il punto di partenza di una persona che non aveva il file, scegliete una delle due righe.
+Una nuova conversazione. Registro, regole del noleggio e in fondo la richiesta. Con GUASTI aggiungete anche la guida ai guasti. Siete partiti dalle istruzioni di partenza? Scegliete voi GUASTI o PASSAGGIO.
 
 | Il vostro secondo lavoro | Richiesta |
 | --- | --- |
@@ -112,7 +112,7 @@ Una prova riuscita al primo invio vale quanto una riuscita dopo una correzione.
 # Slide 10 — Il rimborso è un lavoro a sé
 <!-- layout: CONTENUTO -->
 
-Nella lezione 4 il titolare ha chiesto, dopo il fuori servizio: «E quanto dobbiamo rimborsare al cliente?»
+Dopo il fuori servizio, il titolare chiede anche: «E quanto dobbiamo rimborsare al cliente?»
 
 Il rimborso conta altri minuti: quelli del cliente senza bici, dalla segnalazione al cambio. E ha bisogno di un dato che il registro non ha: il tipo di noleggio.
 
@@ -120,7 +120,7 @@ Quando una richiesta cresce, le si dà un lavoro a sé.
 
 ---
 
-# Slide 11 — Il lavoro RIMBORSO
+# Slide 11 — Scrivete il lavoro RIMBORSO
 <!-- layout: CONTENUTO -->
 
 | Riga | Pizzeria, lavoro RIMBORSO (in breve) | Voi, lavoro RIMBORSO |
@@ -130,18 +130,16 @@ Quando una richiesta cresce, le si dà un lavoro a sé.
 | Regole del lavoro | «pizza non arrivata: proposta di rimborso intero» | da quando a quando contano i minuti? |
 | Come risponde | «PROPOSTA DA CONTROLLARE, l’importo e il calcolo» | che cosa mostra? E se manca un dato? |
 
-Il banco decide: l’agente propone.
+Se il rimborso è dentro FUORI SERVIZIO, toglietelo da lì. Il banco decide: l’agente propone.
 
 ---
 
-# Slide 12 — Il rimborso, un lavoro a parte
+# Slide 12 — Quale lavoro va prima?
 <!-- layout: CONTENUTO -->
 
-1. Se nel vostro FUORI SERVIZIO c’è il rimborso, toglietelo. Se non c’è, scrivete RIMBORSO da zero.
-2. Scrivete il lavoro RIMBORSO con le quattro righe.
-3. Aggiornate l’elenco delle richieste.
+Aggiornate l’elenco delle richieste.
 
-Nell’elenco: FUORI SERVIZIO e RIMBORSO insieme, quale va prima? Quali orari usa ciascuno dei due?
+FUORI SERVIZIO e RIMBORSO insieme: quale va prima? Quali orari usa ciascuno dei due?
 
 ---
 
@@ -181,11 +179,20 @@ Aggiungete la regola alle regole per tutti i casi.
 
 Una sola prova per le due regole nuove. Aggiornate l’agente. Poi una nuova conversazione, i testi che servono, la richiesta in fondo. Prima di inviare: che dato vi aspettate che chieda?
 
-Quando lo chiede, rispondete: «A ore. Procedi.» Se chiede anche il turno: «La nota è per chi inizia il pomeriggio di sabato.»
+---
+
+# Slide 16 — Ha chiesto il tipo di noleggio?
+<!-- layout: CONTENUTO -->
+
+Quando l’agente chiede il tipo di noleggio, rispondete: «A ore. Procedi.»
+
+Se chiede anche il turno: «La nota è per chi inizia il pomeriggio di sabato.»
+
+Se non lo chiede, guardate che tipo di noleggio ha scelto.
 
 ---
 
-# Slide 16 — Gli orari devono tornare
+# Slide 17 — Gli orari devono tornare
 <!-- layout: CONTENUTO -->
 
 ## {{MINUTI_SENZA_BICI}} minuti senza bici
@@ -197,14 +204,14 @@ Quando lo chiede, rispondete: «A ore. Procedi.» Se chiede anche il turno: «La
 | a ore | {{RIMBORSO_A_ORE}} euro |
 | giornata intera | {{RIMBORSO_GIORNATA}} euro |
 
-Il rimborso non usa i {{MINUTI_FUORI_SERVIZIO}} minuti di fuori servizio della bici. Se avete detto «a ore», il numero giusto è il primo.
+Il rimborso non usa i {{MINUTI_FUORI_SERVIZIO}} minuti di fuori servizio della bici. Con «a ore» il numero giusto è il primo. Se l’agente ha scelto da solo il tipo di noleggio, correggete la regola del RIMBORSO.
 
 ---
 
-# Slide 17 — Controllate il controllo
+# Slide 18 — Controllate il controllo
 <!-- layout: CONTENUTO -->
 
-Nella risposta alla richiesta a tre lavori scegliete un numero e cercate nel testo la riga che l’agente cita.
+Nella risposta alla richiesta a tre lavori scegliete un numero e cercate nel registro o nelle regole del noleggio la riga che l’agente cita.
 
 > La riga esiste davvero? Dice quello che l’agente dice?
 
@@ -212,7 +219,7 @@ Un controllo che cita una riga inventata è peggio di nessun controllo.
 
 ---
 
-# Slide 18 — Una richiesta vostra
+# Slide 19 — Una richiesta vostra
 <!-- layout: CONTENUTO -->
 
 Inventate una richiesta per il noleggio.
@@ -223,11 +230,11 @@ Inventate una richiesta per il noleggio.
 | un testo che non basta | «Quanto costa una birra?» (il listino non la dice) |
 | un lavoro che l’agente non ha | «Mi prenoti un tavolo per sabato?» |
 
-Scegliete un tipo. Decidete prima la risposta corretta. Poi provate, in una nuova conversazione. Se funziona subito, cercate la regola che lo ha reso possibile.
+Scegliete un tipo. Scrivete su un foglio la risposta corretta. Poi provate, in una nuova conversazione. Se funziona subito, cercate la regola che lo ha reso possibile. Se qualcosa non va, correggete il punto necessario e riprovate.
 
 ---
 
-# Slide 19 — Salvate il file
+# Slide 20 — Salvate il file
 <!-- layout: CONTENUTO -->
 
 Il file `istruzioni_agente_noleggio.txt` deve contenere tutto: regole per tutti i casi con piano e controllo, i tre o quattro lavori, l’elenco delle richieste, lo stile.
@@ -238,7 +245,7 @@ Serve tra poco: lo incollerete in un altro programma.
 
 ---
 
-# Slide 20 — Chi ha fatto che cosa?
+# Slide 21 — Chi ha fatto che cosa?
 <!-- layout: CONTENUTO -->
 
 > Scegliere i lavori, decidere l’ordine, fermarsi a chiedere, controllare. Questo lavoro ha un nome: coordinare.
@@ -247,14 +254,14 @@ Il vostro agente ha un coordinatore. Dove sta?
 
 ---
 
-# Slide 21 — Lo stesso testo, un altro modello
+# Slide 22 — Lo stesso testo, un altro modello
 <!-- layout: SEZIONE -->
 
 Computer virtuale, Unsloth Studio
 
 ---
 
-# Slide 22 — Quello che avete davanti
+# Slide 23 — Quello che avete davanti
 <!-- layout: CONTENUTO -->
 
 | | Copilot | il modello del computer virtuale |
@@ -264,11 +271,11 @@ Computer virtuale, Unsloth Studio
 | Dimensione | non la conosciamo | un file di circa 1,3 GB |
 | Chi lo cambia | Microsoft | nessuno |
 
-Unsloth Studio è il programma che lo carica e vi lascia parlarci. Il computer virtuale è un computer dentro il computer, con il suo Windows e i suoi programmi: uno ogni quattro o cinque persone.
+Unsloth Studio è il programma che carica il modello e vi lascia parlarci.
 
 ---
 
-# Slide 23 — Quale file porta il gruppo?
+# Slide 24 — Quale file porta il gruppo?
 <!-- layout: CONTENUTO -->
 
 Una sola richiesta, un solo file di istruzioni. Il modello è lento: non c’è posto per una prova a testa.
@@ -279,31 +286,31 @@ Ognuno dice com’è andata la richiesta a tre lavori nella parte 1: il piano, l
 
 ---
 
-# Slide 24 — Aprite Studio e guardate il pannello
+# Slide 25 — Aprite Studio e guardate il pannello
 <!-- layout: CONTENUTO -->
 
-Aprite Unsloth Studio. Il modello è già caricato.
+Unsloth Studio è già aperto, con il modello caricato.
 
-Nel pannello cercate due voci: **Context Length**, la quantità di testo che il modello riesce a tenere insieme, e **Temperature**.
+Nel pannello trovate due voci. Accanto a **Context Length** (la quantità di testo che il modello riesce a tenere insieme): che numero c’è? L’altra è **Temperature**.
 
-Temperature è la manopola che avete mosso in Transformer Explainer. Non toccatela adesso.
+Temperature è la manopola di Transformer Explainer. Non toccatela adesso.
 
 ---
 
-# Slide 25 — Il file del gruppo nel System Prompt
+# Slide 26 — Il file del gruppo nel System Prompt
 <!-- layout: CONTENUTO -->
 
 | Chi | Che cosa fa |
 | --- | --- |
-| l’autore del file | lo porta sul computer del gruppo |
-| lo stesso | incolla tutto il testo nel campo System Prompt |
+| l’autore del file | lo copia su una chiavetta e la porta al computer del gruppo |
+| lo stesso | apre il file e incolla tutto il testo nel campo System Prompt |
 | un altro del gruppo | in una nuova conversazione scrive un solo messaggio: registro, regole del noleggio e in fondo la richiesta a tre lavori; con GUASTI anche la guida ai guasti |
 
 I tre testi sono già nella cartella `noleggio` del computer virtuale. Le istruzioni nel campo System Prompt sono vere istruzioni di sistema: il modello le legge come istruzioni, non come messaggio.
 
 ---
 
-# Slide 26 — Prima di inviare
+# Slide 27 — Prima di inviare
 <!-- layout: CONTENUTO -->
 
 > Questo modello è molto più piccolo di Copilot. Farà il piano e si fermerà?
@@ -314,7 +321,7 @@ Il modello è lento. Mentre aspettate, rileggete la regola del piano: è scritta
 
 ---
 
-# Slide 27 — Che cosa è successo?
+# Slide 28 — Che cosa è successo?
 <!-- layout: CONTENUTO -->
 
 | Guardate | Che cosa avete visto |
@@ -325,22 +332,22 @@ Il modello è lento. Mentre aspettate, rileggete la regola del piano: è scritta
 | il numero dei minuti | |
 | il controllo con la riga | |
 
-Raccontate alla classe una cosa che ha fatto come Copilot e una che ha fatto in modo diverso.
+Ogni gruppo dice una sola cosa che il modello ha fatto in modo diverso da Copilot.
 
 ---
 
-# Slide 28 — Se non ci arriva
+# Slide 29 — Se non ci arriva
 <!-- layout: CONTENUTO -->
 
 Non è un errore dell’autore. Un modello piccolo può non seguire un testo lungo.
 
 Il gruppo sceglie **una** modifica: accorciare una regola, riscrivere una frase più semplice o togliere un esempio. L’autore la fa. Si riprova una volta.
 
-Se il testo non entra, guardate **Context Length**: è la quantità di testo che il modello riesce a tenere insieme.
+Se il testo non entra, alleggerite il messaggio. **Context Length** dice quanto testo entra.
 
 ---
 
-# Slide 29 — Un solo lavoro, un solo testo
+# Slide 30 — Un solo lavoro, un solo testo
 <!-- layout: CONTENUTO -->
 
 > Per rispondere a una richiesta sul fuori servizio servono tutti e tre i documenti?
@@ -349,19 +356,19 @@ Pensateci nel gruppo.
 
 ---
 
-# Slide 30 — Il programma che coordina
+# Slide 31 — Il programma che coordina
 <!-- layout: SEZIONE -->
 
 opencode: un programma può dare a ogni lavoro soltanto il suo testo
 
 ---
 
-# Slide 31 — Il programma legge il file
+# Slide 32 — Il programma legge il file
 <!-- layout: CONTENUTO -->
 
 Da qui un passo alla volta, con una persona diversa ai comandi. Chi non è ai comandi scrive la previsione su un foglio, prima del risultato.
 
-Ai comandi: una persona che non ha scritto il file del gruppo. Aprite la cartella `noleggio` del computer virtuale e avviate opencode.
+Ai comandi: una persona che non ha scritto il file del gruppo. Sul desktop del computer virtuale c’è il collegamento opencode: fate doppio clic, parte nella cartella `noleggio`.
 
 > «Quale codice hanno le pastiglie montate sulla bici 12?»
 
@@ -369,29 +376,27 @@ Prima di inviare, tutti scrivono: chi leggerà il registro, il modello o il prog
 
 ---
 
-# Slide 32 — Il modello chiede, il programma fa
+# Slide 33 — Che cosa ha aperto il programma?
 <!-- layout: CONTENUTO -->
 
-Guardate l’elenco dei passaggi.
+Guardate l’elenco dei passaggi: le righe che opencode scrive mentre lavora.
 
-Il modello scrive una richiesta di lettura. Il programma apre il file. Il testo torna al modello. Solo dopo c’è la risposta.
-
-Il modello non ha aperto niente.
+Trovate la richiesta di lettura e il file che il programma ha aperto. Quale file è stato aperto?
 
 ---
 
-# Slide 33 — Piano o esecuzione
+# Slide 34 — Piano o esecuzione
 <!-- layout: CONTENUTO -->
 
 opencode ha due modalità: **Plan** guarda e propone, **Build** esegue. Ai comandi, un’altra persona.
 
-> «Scrivi la nota per il turno dopo nel file nota_passaggio.txt.»
+> «Crea il file nota_passaggio.txt con una sola riga: Controllare i freni della bici 12.»
 
 Prima in Plan, poi in Build. Prima di provare, tutti scrivono su un foglio: in quale dei due il file comparirà?
 
 ---
 
-# Slide 34 — Il programma chiede il permesso
+# Slide 35 — Il programma chiede il permesso
 <!-- layout: CONTENUTO -->
 
 | Permesso | Che cosa fa il programma |
@@ -400,26 +405,28 @@ Prima in Plan, poi in Build. Prima di provare, tutti scrivono su un foglio: in q
 | ask | si ferma e chiede a voi |
 | deny | non esegue |
 
-Dal proiettore si confrontano le cartelle dei gruppi: in quali c’è il file? Che differenza c’è dal «PROPOSTA DA CONTROLLARE» del vostro file?
+Prima di rispondere al programma, decidete nel gruppo: approvare o rifiutare la scrittura? Scrivete il perché.
+
+Alzata di mano: nel vostro computer virtuale il file c’è? Nella prova con le pastiglie il programma ha letto il registro senza chiedere: perché?
 
 ---
 
-# Slide 35 — Dov’è il coordinatore, adesso?
+# Slide 36 — Dov’è il coordinatore, adesso?
 <!-- layout: CONTENUTO -->
 
-| Nel vostro file | In Copilot e in Studio | In opencode |
+| Che cosa | In Copilot e in Studio | In opencode |
 | --- | --- | --- |
 | I testi del noleggio | incollati nel messaggio | il programma li apre quando il modello lo chiede |
-| Il piano prima di rispondere | una regola scritta nel testo | modalità Plan: il programma non scrive niente |
+| Il piano prima di rispondere | una regola scritta nel testo | modalità Plan: il programma non modifica i file |
 | «PROPOSTA DA CONTROLLARE» | parole nel testo | il programma si ferma e chiede il permesso |
 
 Non lo abbiamo provato oggi: in opencode ogni lavoro può diventare un agente a parte, con i suoi permessi.
 
 ---
 
-# Slide 36 — Che cosa avete costruito
+# Slide 37 — Che cosa avete costruito
 <!-- layout: CHIUSURA -->
 
-Il coordinatore era un testo. Con opencode è un programma che chiede, esegue e riporta.
+In opencode il modello decide ancora che cosa chiedere. Il programma apre i file, scrive e chiede il permesso.
 
-Quale permesso dareste al vostro agente, e perché?
+Se il vostro agente potesse registrare un rimborso: allow, ask o deny? Perché?

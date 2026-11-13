@@ -1,14 +1,12 @@
 // Da mettere nella cartella noleggio della VM. Senza questo file la modalità Build
-// di opencode scrive nella cartella di lavoro senza chiedere, anche con la shell (documentazione degli agenti).
+// di opencode scrive nella cartella di lavoro senza chiedere, anche con la shell (documentazione dei permessi).
+// Le regole stanno nell'elenco generale, non solo in Build: in Plan la modifica dei file resta negata,
+// ma un comando della shell, che potrebbe creare un file, chiede conferma.
 // Non provato con la versione installata nella VM.
 {
   "$schema": "https://opencode.ai/config.json",
-  "agents": {
-    "build": {
-      "permissions": [
-        { "action": "edit", "resource": "*", "effect": "ask" },
-        { "action": "shell", "resource": "*", "effect": "ask" }
-      ]
-    }
-  }
+  "permissions": [
+    { "action": "edit", "resource": "*", "effect": "ask" },
+    { "action": "shell", "resource": "*", "effect": "ask" }
+  ]
 }
