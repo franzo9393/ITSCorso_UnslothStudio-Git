@@ -258,7 +258,7 @@ def set_placeholder(slide, idx: int, text: str, styles: dict, fallback: int = 23
 
 def add_paragraph_box(slide, text: str, top: float, size: float = 23, bold: bool = False, color: str = INK) -> float:
     line_count = lines_needed(text, 11.8 * 72, size, bold)
-    height = (line_count * size * 1.2 + 2) / 72
+    height = (line_count * size * 1.2 * 1.15 + 2) / 72  # l'interlinea 1,2 si applica all'altezza naturale di Arial (circa 1,15 volte il corpo)
     if top + height > 7.55:
         raise ValueError(f'Testo troppo lungo nella slide {len(slide.shapes)}: {text[:70]}')
     shape = slide.shapes.add_textbox(Inches(0.75), Inches(top), Inches(11.8), Inches(height))

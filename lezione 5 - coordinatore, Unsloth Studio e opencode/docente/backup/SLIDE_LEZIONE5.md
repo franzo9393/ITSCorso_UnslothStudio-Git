@@ -17,8 +17,6 @@ ITS MAKER · 18 novembre 2026 · Microsoft Copilot, Unsloth Studio e opencode
 
 > «Per quanti minuti è stata fuori servizio la bici 12 sabato? Mostrami gli orari.»
 
-Non avete il file `istruzioni_agente_noleggio.txt`? Alzate la mano: il docente vi dà un punto di partenza.
-
 ---
 
 # Slide 03 — Il percorso di oggi
@@ -52,7 +50,7 @@ Una regola nelle istruzioni della pizzeria (estratto):
 
 > «Se la richiesta ha due o più lavori, scrivi prima "Piano:" con i lavori nell’ordine in cui li usi e i dati che mancano. Poi fermati e aspetta la parola "Procedi".»
 
-Il docente prova: «La pizza è arrivata fredda e voglio i soldi indietro.»
+La richiesta: «La pizza è arrivata fredda e voglio i soldi indietro.»
 
 Prima di vedere la risposta, per alzata di mano: l’agente si ferma dopo il piano?
 
@@ -61,7 +59,7 @@ Prima di vedere la risposta, per alzata di mano: l’agente si ferma dopo il pia
 # Slide 06 — Il piano si può correggere
 <!-- layout: CONTENUTO -->
 
-Il docente risponde al piano: «Procedi, ma solo il reclamo.»
+La risposta al piano: «Procedi, ma solo il reclamo.»
 
 Che cosa deve fare adesso l’agente? Che cosa deve non fare?
 
@@ -154,7 +152,7 @@ Una regola nelle istruzioni della pizzeria (estratto):
 
 > «In fondo alla risposta scrivi "Controllo:" e, per ogni numero della risposta, la riga delle istruzioni da cui viene. Se non la trovi, scrivi "Non trovato".»
 
-Il docente prova: «Quanto costa una Diavola con la consegna?»
+La richiesta: «Quanto costa una Diavola con la consegna?»
 
 Dove cercate la riga, per controllare il controllo?
 
@@ -225,7 +223,7 @@ Inventate una richiesta per il noleggio.
 | un testo che non basta | «Quanto costa una birra?» (il listino non la dice) |
 | un lavoro che l’agente non ha | «Mi prenoti un tavolo per sabato?» |
 
-Scegliete un tipo. Decidete prima la risposta corretta. Poi provate, in una nuova conversazione. Se funziona subito, cercate la regola che lo ha reso possibile. Se funziona subito, cercate la regola che lo ha reso possibile.
+Scegliete un tipo. Decidete prima la risposta corretta. Poi provate, in una nuova conversazione. Se funziona subito, cercate la regola che lo ha reso possibile.
 
 ---
 
@@ -284,7 +282,7 @@ Ognuno dice com’è andata la richiesta a tre lavori nella parte 1: il piano, l
 # Slide 24 — Aprite Studio e guardate il pannello
 <!-- layout: CONTENUTO -->
 
-> Il docente vi mostra come aprire Studio e caricare il modello.
+Aprite Unsloth Studio. Il modello è già caricato.
 
 Nel pannello cercate due voci: **Context Length**, la quantità di testo che il modello riesce a tenere insieme, e **Temperature**.
 
@@ -297,7 +295,7 @@ Temperature è la manopola che avete mosso in Transformer Explainer. Non toccate
 
 | Chi | Che cosa fa |
 | --- | --- |
-| l’autore del file | lo porta sul computer del gruppo, come il docente indica |
+| l’autore del file | lo porta sul computer del gruppo |
 | lo stesso | incolla tutto il testo nel campo System Prompt |
 | un altro del gruppo | in una nuova conversazione scrive un solo messaggio: registro, regole del noleggio e in fondo la richiesta a tre lavori; con GUASTI anche la guida ai guasti |
 
@@ -347,7 +345,7 @@ Se il testo non entra, guardate **Context Length**: è la quantità di testo che
 
 > Per rispondere a una richiesta sul fuori servizio servono tutti e tre i documenti?
 
-Pensateci nel gruppo. Poi il docente risponde.
+Pensateci nel gruppo.
 
 ---
 
@@ -363,7 +361,7 @@ opencode: un programma può dare a ogni lavoro soltanto il suo testo
 
 Da qui un passo alla volta, con una persona diversa ai comandi. Chi non è ai comandi scrive la previsione su un foglio, prima del risultato.
 
-Ai comandi: una persona che non ha scritto il file del gruppo. Aprite la cartella `noleggio` del computer virtuale e avviate opencode, come il docente mostra.
+Ai comandi: una persona che non ha scritto il file del gruppo. Aprite la cartella `noleggio` del computer virtuale e avviate opencode.
 
 > «Quale codice hanno le pastiglie montate sulla bici 12?»
 
@@ -385,7 +383,7 @@ Il modello non ha aperto niente.
 # Slide 33 — Piano o esecuzione
 <!-- layout: CONTENUTO -->
 
-opencode ha due modalità: **Plan** guarda e propone, **Build** esegue. Il docente mostra come passare dall’una all’altra. Ai comandi, un’altra persona.
+opencode ha due modalità: **Plan** guarda e propone, **Build** esegue. Ai comandi, un’altra persona.
 
 > «Scrivi la nota per il turno dopo nel file nota_passaggio.txt.»
 
@@ -402,7 +400,7 @@ Prima in Plan, poi in Build. Prima di provare, tutti scrivono su un foglio: in q
 | ask | si ferma e chiede a voi |
 | deny | non esegue |
 
-Il docente dice a ogni gruppo se approvare o rifiutare la scrittura. Poi si confrontano dal proiettore le cartelle dei gruppi: in quali c’è il file? Che differenza c’è dal «PROPOSTA DA CONTROLLARE» del vostro file?
+Dal proiettore si confrontano le cartelle dei gruppi: in quali c’è il file? Che differenza c’è dal «PROPOSTA DA CONTROLLARE» del vostro file?
 
 ---
 
