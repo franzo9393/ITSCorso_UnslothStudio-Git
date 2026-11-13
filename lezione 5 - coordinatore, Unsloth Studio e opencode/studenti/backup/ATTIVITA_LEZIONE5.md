@@ -101,7 +101,7 @@ Poi una sola prova per le due regole nuove: aggiornate l'agente, aprite una nuov
 
 Prima di inviare: che dato vi aspettate che chieda?
 
-Dopo l'invio, se l'agente chiede il tipo di noleggio, rispondete: «A ore. Procedi.» Se chiede anche il turno: «La nota è per chi inizia il pomeriggio di sabato.» Poi controllate i numeri proiettati: minuti senza bici, rimborso a ore e a giornata. Il rimborso deve usare i minuti del cliente senza bici, non quelli di fuori servizio della bici.
+Dopo l'invio, se l'agente chiede il tipo di noleggio, rispondete: «A ore. Procedi.» Se chiede anche il turno: «La nota è per chi inizia il pomeriggio di sabato.» Se non lo chiede, guardate quale tipo ha scelto: se l'ha scelto da solo, correggete la regola del RIMBORSO. Poi controllate i numeri proiettati: minuti senza bici, rimborso a ore e a giornata. Il rimborso deve usare i minuti del cliente senza bici, non quelli di fuori servizio della bici.
 
 Poi scegliete un numero della risposta e cercate nel registro o nelle regole del noleggio la riga che l'agente cita: esiste davvero? Dice quello che l'agente dice? Un controllo con una riga inventata è peggio di nessun controllo.
 
@@ -137,7 +137,7 @@ Da qui lavorate in gruppo, quattro o cinque persone per ogni computer virtuale: 
 1. **Scegliete il file.** Ognuno dice com'è andata la richiesta a tre lavori nella parte 1: il piano, l'ordine, la domanda sul tipo di noleggio, i numeri, il controllo. Il gruppo sceglie il file che ha tenuto meglio e dice perché.
 2. Unsloth Studio è già aperto, con il modello caricato. Nel pannello trovate **Context Length** (la quantità di testo che il modello riesce a tenere insieme): che numero c'è? E **Temperature**, la manopola di Transformer Explainer. Non toccatela adesso.
 3. L'autore del file lo copia su una chiavetta e lo porta al computer del gruppo. Lo apre e incolla tutto il testo nel campo **System Prompt**. Sono vere istruzioni di sistema: il modello le legge come istruzioni, non come messaggio.
-4. Un altro del gruppo apre una nuova conversazione e scrive un solo messaggio: registro, regole del noleggio e in fondo la richiesta con tre lavori del file scelto; con GUASTI anche la guida ai guasti. Aprite con Blocco note i tre testi nella cartella `noleggio` del computer virtuale e copiateli nel messaggio.
+4. Un altro del gruppo apre con Blocco note i testi che servono, nella cartella `noleggio` del computer virtuale: registro e regole del noleggio, con GUASTI anche la guida ai guasti. Poi apre una nuova conversazione e scrive un solo messaggio: i testi e in fondo la richiesta con tre lavori del file scelto.
 5. Prima di inviare, ognuno scrive una riga su un foglio: farà il piano e si fermerà? Sì, no o in parte. Il modello è lento. Mentre aspettate, rileggete la regola del piano: è scritta in modo che un modello piccolo la capisca?
 6. Guardate la risposta. Ha scritto il piano prima di tutto? Ha rispettato l'ordine? Ha chiesto il tipo di noleggio? Quando lo chiede, rispondete: «A ore. Procedi.» Se chiede anche il turno, date la stessa risposta della parte 1. Quanti minuti ha trovato? Ogni numero ha la sua riga?
 7. Se non ci arriva, non è un errore dell'autore: un modello piccolo può non seguire un testo lungo. Il gruppo sceglie **una** modifica, per esempio accorciare una regola. L'autore la fa e si riprova una volta. Se il testo non entra, alleggerite il messaggio: **Context Length** dice quanto testo entra.
