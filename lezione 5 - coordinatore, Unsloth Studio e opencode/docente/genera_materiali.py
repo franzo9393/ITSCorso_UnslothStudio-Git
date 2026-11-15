@@ -506,7 +506,14 @@ def word_table(doc, rows: list[list[str]]) -> None:
     table.style = 'Table Grid'
     table.autofit = False
     width = doc.sections[-1].page_width - doc.sections[-1].left_margin - doc.sections[-1].right_margin
-    proportions = [0.40, 0.60] if count == 2 else [1 / count] * count
+    if count == 2:
+        proportions = [0.40, 0.60]
+    elif count >= 3:
+        weights = [max(1.0, max(len(row[j]) if j < len(row) else 0 for row in rows)) ** 0.5 for j in range(count)]
+        shares = [max(0.12, weight / sum(weights)) for weight in weights]
+        proportions = [share / sum(shares) for share in shares]
+    else:
+        proportions = [1.0]
     for j, part in enumerate(proportions):
         table.columns[j].width = int(width * part)
     for i, values in enumerate(rows):

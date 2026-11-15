@@ -156,9 +156,9 @@ Ai comandi, una persona che non ha scritto il file del gruppo. Sul desktop del c
 
 Prima di inviare, tutti scrivono: chi apre il file, il modello o il programma? Se compare «Permission required» con un comando, il programma chiede il permesso: **Allow once** = approvate una volta, **Reject** = rifiutate, non scegliete mai «Always allow». Confrontate il comando con quello scritto qui sotto.
 
-`Get-ChildItem -Force | Select-Object Mode,Length,Name`
+`Get-ChildItem -Force | Select-Object Mode, Length, Name`
 
-Se è identico, lettera per lettera, scegliete **Allow once**. Se è diverso anche di poco, scegliete **Reject** e ripetete la richiesta. Se dopo il Reject compare di nuovo un comando diverso, alzate la mano.
+Se ci sono le stesse parole e gli stessi simboli, nello stesso ordine, scegliete **Allow once**: gli spazi non contano (`Mode,Length,Name` e `Mode, Length, Name` sono lo stesso comando). Se c'è anche una sola parola o un solo simbolo in più o diverso, scegliete **Reject** e ripetete la richiesta. Se dopo il Reject compare di nuovo un comando diverso, alzate la mano.
 
 Poi guardate i passaggi, le righe con una freccia che opencode scrive mentre lavora. Quante letture ha fatto? Se la risposta dice file e riga, un altro del gruppo apre il registro con Blocco note e cerca con Ctrl+F il codice citato. Se non lo dice, chiedete: «Da quale riga?»
 
