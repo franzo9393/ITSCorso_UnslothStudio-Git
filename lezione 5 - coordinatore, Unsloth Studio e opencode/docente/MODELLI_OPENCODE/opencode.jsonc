@@ -1,12 +1,26 @@
 // Da mettere nella cartella noleggio della VM. Senza questo file la modalità Build
 // di opencode scrive nella cartella di lavoro senza chiedere, anche con la shell (documentazione dei permessi).
-// Le regole stanno nell'elenco generale, non solo in Build: in Plan la modifica dei file resta negata,
-// ma un comando della shell, che potrebbe creare un file, chiede conferma.
-// Non provato con la versione installata nella VM.
+// Le regole generali fanno chiedere conferma prima di scrivere un file e prima di eseguire un comando.
+// Le regole generali vengono dopo quelle di Plan: da sole fanno chiedere il permesso anche in Plan,
+// che invece deve negare la scrittura. Per questo in fondo ci sono le regole dell'agente Plan,
+// che si applicano per ultime (documentazione: «agent rules are appended last»).
+// In Plan anche «execute» è negato: senza, il modello prova a scrivere con un programmino
+// (Code Mode) e ripete lo stesso errore. Un comando della shell chiede conferma anche in Plan.
+// Il modello è Big Pickle, uno dei modelli gratuiti di OpenCode (serve la rete, non serve registrarsi).
+// Scritto qui vale per Plan e per Build; con l'avvio tramite Unsloth Studio resta il modello locale.
 {
   "$schema": "https://opencode.ai/config.json",
+  "model": "opencode/big-pickle",
   "permissions": [
     { "action": "edit", "resource": "*", "effect": "ask" },
     { "action": "shell", "resource": "*", "effect": "ask" }
-  ]
+  ],
+  "agents": {
+    "plan": {
+      "permissions": [
+        { "action": "edit", "resource": "*", "effect": "deny" },
+        { "action": "execute", "resource": "*", "effect": "deny" }
+      ]
+    }
+  }
 }

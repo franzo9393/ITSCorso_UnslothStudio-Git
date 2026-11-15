@@ -16,7 +16,7 @@ Il percorso è questo:
 | --- | --- | --- |
 | 1 | Microsoft Copilot | al vostro testo aggiungete il piano, il rimborso e il controllo |
 | 2 | il computer virtuale del gruppo, Unsloth Studio | lo stesso testo, letto da un altro modello |
-| 3 | opencode, sullo stesso computer | lo stesso testo, con un programma accanto al modello |
+| 3 | opencode, sullo stesso computer | i testi del noleggio, in un altro programma |
 
 ## Riaprite il vostro agente
 
@@ -135,9 +135,9 @@ Da qui lavorate in gruppo, quattro o cinque persone per ogni computer virtuale: 
 | Chi lo cambia | Microsoft | nessuno |
 
 1. **Scegliete il file.** Ognuno dice com'è andata la richiesta a tre lavori nella parte 1: il piano, l'ordine, la domanda sul tipo di noleggio, i numeri, il controllo. Il gruppo sceglie il file che ha tenuto meglio e dice perché.
-2. Unsloth Studio è già aperto, con il modello caricato. Nel pannello trovate **Context Length** (la quantità di testo che il modello riesce a tenere insieme): che numero c'è? E **Temperature**, la manopola di Transformer Explainer. Non toccatela adesso.
+2. Unsloth Studio è già aperto, con il modello caricato. Il pannello si apre con l'icona cerchiata nella figura della slide, in alto a destra. Nel pannello cercate **Context Length** (la quantità di testo che il modello riesce a tenere insieme): che numero c'è? Poi **Temperature**, il cursore di Transformer Explainer: scorrete il pannello verso il basso. Non toccatelo.
 3. L'autore del file lo copia su una chiavetta e lo porta al computer del gruppo. Lo apre e incolla tutto il testo nel campo **System Prompt**. Sono vere istruzioni di sistema: il modello le legge come istruzioni, non come messaggio.
-4. Un altro del gruppo apre con Blocco note i testi che servono, nella cartella `noleggio` del computer virtuale: registro e regole del noleggio, con GUASTI anche la guida ai guasti. Poi apre una nuova conversazione e scrive un solo messaggio: i testi e in fondo la richiesta con tre lavori del file scelto.
+4. Un altro del gruppo apre con Blocco note i testi che servono, nella cartella Documenti › `noleggio` del computer virtuale: registro e regole del noleggio, con GUASTI anche la guida ai guasti. Poi apre una nuova conversazione e scrive un solo messaggio: i testi e in fondo la richiesta con tre lavori del file scelto.
 5. Prima di inviare, ognuno scrive una riga su un foglio: farà il piano e si fermerà? Sì, no o in parte. Il modello è lento. Mentre aspettate, rileggete la regola del piano: è scritta in modo che un modello piccolo la capisca?
 6. Guardate la risposta. Ha scritto il piano prima di tutto? Ha rispettato l'ordine? Ha chiesto il tipo di noleggio? Quando lo chiede, rispondete: «A ore. Procedi.» Se chiede anche il turno, date la stessa risposta della parte 1. Quanti minuti ha trovato? Ogni numero ha la sua riga?
 7. Se non ci arriva, non è un errore dell'autore: un modello piccolo può non seguire un testo lungo. Il gruppo sceglie **una** modifica, per esempio accorciare una regola. L'autore la fa e si riprova una volta. Se il testo non entra, alleggerite il messaggio: **Context Length** dice quanto testo entra.
@@ -148,17 +148,28 @@ Per rispondere a una richiesta sul fuori servizio servono tutti e tre i document
 
 ## Parte 3 · opencode, il programma che coordina
 
-Un passo alla volta, con una persona diversa ai comandi del computer del gruppo. Chi non è ai comandi scrive la previsione su un foglio prima di vedere il risultato.
+Un passo alla volta, con una persona diversa ai comandi del computer del gruppo. Tutti scrivono la previsione su un foglio prima di vedere il risultato.
 
-### 3A · Il programma legge il file
+### 3A · Chi apre il registro?
 
-Ai comandi, una persona che non ha scritto il file del gruppo. Sul desktop del computer virtuale c'è il collegamento opencode: fate doppio clic, parte nella cartella `noleggio`. Scrivete: «Quale codice hanno le pastiglie montate sulla bici 12?»
+Ai comandi, una persona che non ha scritto il file del gruppo. Sul desktop del computer virtuale c'è il collegamento opencode: fate doppio clic, parte nella cartella `noleggio`. Il modello di opencode è Big Pickle: risponde dalla rete, attraverso il servizio di chi fa opencode. Scrivete: «Quale codice hanno le pastiglie montate sulla bici 12?»
 
-Prima di inviare, tutti scrivono: chi leggerà il registro, il modello o il programma? Poi guardate l'elenco dei passaggi, le righe che opencode scrive mentre lavora: trovate la richiesta di lettura e il file che il programma ha aperto. Quale file è stato aperto?
+Prima di inviare, tutti scrivono: chi apre il file, il modello o il programma? Se compare «Permission required» con un comando, il programma chiede il permesso: **Allow once** = approvate una volta, **Reject** = rifiutate, non scegliete mai «Always allow». Confrontate il comando con quello scritto qui sotto.
+
+`Get-ChildItem -Force | Select-Object Mode,Length,Name`
+
+Se è identico, lettera per lettera, scegliete **Allow once**. Se è diverso anche di poco, scegliete **Reject** e ripetete la richiesta. Se dopo il Reject compare di nuovo un comando diverso, alzate la mano.
+
+Poi guardate i passaggi, le righe con una freccia che opencode scrive mentre lavora. Quante letture ha fatto? Se la risposta dice file e riga, un altro del gruppo apre il registro con Blocco note e cerca con Ctrl+F il codice citato. Se non lo dice, chiedete: «Da quale riga?»
 
 ### 3B · Piano, esecuzione e permessi
 
-opencode ha due modalità: **Plan** guarda e propone, **Build** esegue. Ai comandi, un'altra persona. Chiedete: «Crea il file nota_passaggio.txt con una sola riga: Controllare i freni della bici 12.» Prima in Plan, poi in Build. Prima di provare, tutti scrivono su un foglio in quale dei due il file comparirà.
+opencode ha due modalità: **Plan** guarda e propone, **Build** esegue. Ai comandi, un'altra persona. La richiesta è: «Crea il file nota_passaggio.txt con una sola riga: Controllare i freni della bici 12.» Prima di provare, tutti scrivono su un foglio in quale dei due il file comparirà. Poi:
+
+1. Premete Maiusc+Tab (sullo schermo si legge shift+tab): in basso compare Plan.
+2. Inviate la richiesta.
+3. Premete Maiusc+Tab: torna Build.
+4. Inviate di nuovo la stessa richiesta. Se compare la richiesta di permesso, non rispondete ancora: leggete sotto.
 
 I permessi di opencode sono tre:
 
@@ -168,7 +179,7 @@ I permessi di opencode sono tre:
 | ask | si ferma e chiede a voi |
 | deny | non esegue |
 
-Prima di rispondere al programma, decidete nel gruppo se approvare o rifiutare la scrittura e scrivete il perché. Alzata di mano: nel vostro computer virtuale il file c'è? Nella prova con le pastiglie il programma ha letto il registro senza chiedere: perché? Che differenza c'è con «PROPOSTA DA CONTROLLARE» nel vostro file?
+Prima di rispondere al programma, decidete nel gruppo se approvare o rifiutare la scrittura e scrivete il perché. Sullo schermo: **Allow once** = approvate questa volta, **Reject** = rifiutate; non scegliete «Always allow». Alzata di mano: aprite Esplora file, Documenti › noleggio: il file c'è? Nella prova con le pastiglie il programma vi ha chiesto il permesso? Perché sì o perché no? Che differenza c'è con «PROPOSTA DA CONTROLLARE» nel vostro file?
 
 ### Che cosa avete visto
 
@@ -176,11 +187,16 @@ In Copilot e in Studio il coordinatore è un testo che il modello legge. In open
 
 | Che cosa | In Copilot e in Studio | In opencode |
 | --- | --- | --- |
+| Il modello | Copilot in rete; il modello di Studio, piccolo, nel computer del gruppo | Big Pickle, in rete: la dimensione non è dichiarata |
 | I testi del noleggio | incollati nel messaggio | il programma li apre quando il modello lo chiede |
-| Il piano prima di rispondere | una regola scritta nel testo | modalità Plan: il programma non modifica i file |
+| Il piano prima di rispondere | una regola scritta nel testo | modalità Plan: il modello propone; se prova a scrivere, il programma nega |
 | «PROPOSTA DA CONTROLLARE» | parole nel testo | il programma si ferma e chiede il permesso |
 
 Non lo abbiamo provato oggi: in opencode ogni lavoro può diventare un agente a parte, con i suoi permessi.
+
+### Un modello piccolo può imparare da uno grande
+
+DistilBERT ha imparato da BERT, il suo maestro, un modello di Google: doveva dare le stesse probabilità, come le barre di Transformer Explainer. È più piccolo del 40% e nei test ottiene il 97% del punteggio di BERT. Questo si chiama **distillazione**. Big Pickle risponde in secondi, il modello di Studio in minuti. È perché uno dei due è distillato? Come fareste a saperlo?
 
 ## Alla fine
 
@@ -190,8 +206,8 @@ Se il vostro agente potesse registrare un rimborso: allow, ask o deny? Perché? 
 
 Se Copilot non è disponibile, usate una conversazione normale: nel primo messaggio incollate le vostre istruzioni, poi documenti e richiesta. Non sono vere istruzioni di sistema.
 
-Se il computer virtuale del gruppo non parte o il modello non risponde, il gruppo si unisce a un altro, oppure la prova si fa dal proiettore: voi proponete la richiesta.
+Se il computer virtuale del gruppo non parte o il modello non risponde, il gruppo si unisce a un altro, oppure la prova si fa dal proiettore: voi proponete la richiesta. Lo stesso se Big Pickle non risponde dalla rete.
 
 ## I programmi usati
 
-opencode: licenza MIT. I documenti del noleggio sono inventati per questa esercitazione.
+opencode: licenza MIT. Big Pickle è un modello gratuito di OpenCode, offerto per un tempo limitato: quello che scrivete arriva a chi offre il modello e può servire a migliorarlo, quindi non scrivete dati personali. DistilBERT: Sanh e altri, «DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter», 2019, arxiv.org/abs/1910.01108; scheda del modello su huggingface.co/distilbert/distilbert-base-uncased, licenza Apache 2.0. I documenti del noleggio sono inventati per questa esercitazione.

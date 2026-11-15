@@ -26,7 +26,7 @@ ITS MAKER · 18 novembre 2026 · Microsoft Copilot, Unsloth Studio e opencode
 | --- | --- | --- |
 | 1 | Copilot | al vostro testo aggiungete il piano, il rimborso e il controllo |
 | 2 | il computer virtuale del gruppo | lo stesso testo, letto da un altro modello |
-| 3 | opencode, sullo stesso computer | lo stesso testo, con un programma accanto al modello |
+| 3 | opencode, sullo stesso computer | i testi del noleggio, in un altro programma |
 
 Il testo che scrivete resta quello del noleggio. Cambia chi lo legge e chi lo esegue. Il passo 1 è sul vostro computer; i passi 2 e 3 sono in gruppo, quattro o cinque persone per ogni computer virtuale: un computer dentro il computer, con il suo Windows e i suoi programmi.
 
@@ -289,15 +289,13 @@ Ognuno dice com’è andata la richiesta a tre lavori nella parte 1: il piano, l
 # Slide 25 — Aprite Studio e guardate il pannello
 <!-- layout: CONTENUTO -->
 
-Unsloth Studio è già aperto, con il modello caricato.
+Unsloth Studio è già aperto, con il modello caricato. Il pannello si apre con l’icona cerchiata, in alto a destra.
 
-Nel pannello trovate due voci. Accanto a **Context Length** (la quantità di testo che il modello riesce a tenere insieme): che numero c’è? L’altra è **Temperature**.
+Nel pannello cercate due voci. Accanto a **Context Length** (la quantità di testo che il modello riesce a tenere insieme): che numero c’è? L’altra è **Temperature**: scorrete il pannello verso il basso.
 
-Temperature è la manopola di Transformer Explainer. Non toccatela adesso.
+Temperature è il cursore di Transformer Explainer. Non toccatelo.
 
-Il pannello si apre con l’icona in alto a destra.
-
-![Unsloth Studio, pannello Run settings: le voci Context Length e Temperature, evidenziate.](immagini_slide/studio_context_temperature.png)
+![Unsloth Studio: l’icona che apre il pannello, la voce Context Length senza il valore e la voce Temperature, evidenziate.](immagini_slide/studio_context_temperature.png)
 
 ---
 
@@ -310,7 +308,7 @@ Il pannello si apre con l’icona in alto a destra.
 | lo stesso | apre il file e incolla tutto il testo nel campo System Prompt |
 | un altro del gruppo | in una nuova conversazione scrive un solo messaggio: registro, regole e, in fondo, la richiesta a tre lavori (con GUASTI, anche la guida) |
 
-I testi del caso, nella cartella `noleggio`, vanno nel messaggio. Nel System Prompt c’è solo il file del gruppo: il modello lo legge come istruzioni.
+I testi del caso (Documenti › noleggio) vanno nel messaggio. Nel System Prompt c’è solo il file del gruppo.
 
 ![Unsloth Studio, pannello Run settings: il campo System Prompt, evidenziato.](immagini_slide/studio_system_prompt.png)
 
@@ -365,31 +363,31 @@ Pensateci nel gruppo.
 # Slide 31 — Il programma che coordina
 <!-- layout: SEZIONE -->
 
-opencode: un programma può dare a ogni lavoro soltanto il suo testo
+opencode: un programma attorno al modello
 
 ---
 
-# Slide 32 — Il programma legge il file
+# Slide 32 — Chi apre il registro?
 <!-- layout: CONTENUTO -->
 
-Ai comandi, chi non ha scritto il file: doppio clic sul collegamento opencode del desktop. Gli altri scrivono la previsione prima del risultato.
+Ai comandi, chi non ha scritto il file: doppio clic sul collegamento opencode del desktop. Il modello è Big Pickle e risponde dalla rete, attraverso il servizio di chi fa opencode.
 
 > «Quale codice hanno le pastiglie montate sulla bici 12?»
 
-Prima di inviare, tutti scrivono: chi leggerà il registro, il modello o il programma?
+Prima di inviare, tutti scrivono: chi apre il file, il modello o il programma?
 
 ![opencode appena avviato: il campo in cui si scrive la richiesta, evidenziato, con la modalità Build e il nome del modello.](immagini_slide/opencode_avvio.png)
 
 ---
 
-# Slide 33 — Che cosa ha aperto il programma?
+# Slide 33 — Quante volte ha letto?
 <!-- layout: CONTENUTO -->
 
-Guardate i passaggi: sono le righe con una freccia, sotto la vostra richiesta, che opencode scrive mentre lavora.
+Guardate i passaggi: le righe con una freccia, sotto la richiesta, che opencode scrive mentre lavora. Qui sotto, un esempio con un’altra richiesta.
 
-Trovate la richiesta di lettura e il file che il programma ha aperto. Quale file è stato aperto?
+Quante letture ha fatto per la vostra richiesta? Se la risposta dice file e riga, controllate nel registro. Se non lo dice, chiedetelo: «Da quale riga?»
 
-![Una richiesta diversa in opencode, «Quali file ci sono in questa cartella?», e sotto la riga con la freccia «Explored: 1 search», evidenziata.](immagini_slide/opencode_passaggi.png)
+![Una richiesta diversa in opencode, «Quali file ci sono in questa cartella?», e sotto la riga con la freccia «Explored: 1 read», evidenziata.](immagini_slide/opencode_passaggi.png)
 
 ---
 
@@ -400,7 +398,7 @@ Trovate la richiesta di lettura e il file che il programma ha aperto. Quale file
 
 > «Crea il file nota_passaggio.txt con una sola riga: Controllare i freni della bici 12.»
 
-Prima in Plan, poi in Build. opencode parte in Build: si cambia con Maiusc+Tab (sullo schermo: shift+tab). Tutti scrivono su un foglio: in quale dei due il file comparirà?
+Tutti scrivono su un foglio: in quale dei due il file comparirà? Poi Plan e Build: premete Maiusc+Tab (sullo schermo shift+tab) prima di ogni invio.
 
 ![Due ritagli di opencode: la riga con la modalità Build e la riga con la modalità Plan, evidenziate.](immagini_slide/opencode_plan_build.png)
 
@@ -415,9 +413,9 @@ Prima in Plan, poi in Build. opencode parte in Build: si cambia con Maiusc+Tab (
 | ask | si ferma e chiede a voi |
 | deny | non esegue |
 
-Prima di rispondere al programma, decidete nel gruppo: approvare o rifiutare la scrittura? Scrivete il perché.
+Sullo schermo: **Allow once** = approvate questa volta, **Reject** = rifiutate. Non scegliete «Always allow». Decidete nel gruppo e scrivete il perché.
 
-Alzata di mano: nel vostro computer virtuale il file c’è? Nella prova con le pastiglie il programma ha letto il registro senza chiedere: perché?
+Alzata di mano: aprite Esplora file, Documenti › noleggio: il file c’è? Nella prova con le pastiglie il programma vi ha chiesto il permesso? Perché sì o perché no?
 
 ---
 
@@ -426,15 +424,25 @@ Alzata di mano: nel vostro computer virtuale il file c’è? Nella prova con le 
 
 | Che cosa | In Copilot e in Studio | In opencode |
 | --- | --- | --- |
+| Il modello | Copilot in rete; il modello di Studio, piccolo, nel computer del gruppo | Big Pickle, in rete: la dimensione non è dichiarata |
 | I testi del noleggio | incollati nel messaggio | il programma li apre quando il modello lo chiede |
-| Il piano prima di rispondere | una regola scritta nel testo | modalità Plan: il programma non modifica i file |
+| Il piano prima di rispondere | una regola scritta nel testo | modalità Plan: il modello propone; se prova a scrivere, il programma nega |
 | «PROPOSTA DA CONTROLLARE» | parole nel testo | il programma si ferma e chiede il permesso |
 
 Non lo abbiamo provato oggi: in opencode ogni lavoro può diventare un agente a parte, con i suoi permessi.
 
 ---
 
-# Slide 37 — Che cosa avete costruito
+# Slide 37 — Un modello piccolo può imparare da uno grande
+<!-- layout: CONTENUTO -->
+
+DistilBERT ha imparato da BERT, il suo maestro, un modello di Google: doveva dare le stesse probabilità, come le barre di Transformer Explainer. È più piccolo del 40% e nei test ottiene il 97% del punteggio di BERT. Questo si chiama **distillazione**.
+
+Big Pickle risponde in secondi, il modello di Studio in minuti. È perché uno dei due è distillato? Come fareste a saperlo?
+
+---
+
+# Slide 38 — Che cosa avete costruito
 <!-- layout: CHIUSURA -->
 
 In opencode il modello decide ancora che cosa chiedere. Il programma apre i file, scrive e chiede il permesso.
