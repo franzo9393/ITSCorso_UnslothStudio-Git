@@ -295,6 +295,10 @@ Nel pannello trovate due voci. Accanto a **Context Length** (la quantità di tes
 
 Temperature è la manopola di Transformer Explainer. Non toccatela adesso.
 
+Il pannello si apre con l’icona in alto a destra.
+
+![Unsloth Studio, pannello Run settings: le voci Context Length e Temperature, evidenziate.](immagini_slide/studio_context_temperature.png)
+
 ---
 
 # Slide 26 — Il file del gruppo nel System Prompt
@@ -304,9 +308,11 @@ Temperature è la manopola di Transformer Explainer. Non toccatela adesso.
 | --- | --- |
 | l’autore del file | lo copia su una chiavetta e la porta al computer del gruppo |
 | lo stesso | apre il file e incolla tutto il testo nel campo System Prompt |
-| un altro del gruppo | in una nuova conversazione scrive un solo messaggio: registro, regole del noleggio e in fondo la richiesta a tre lavori; con GUASTI anche la guida ai guasti |
+| un altro del gruppo | in una nuova conversazione scrive un solo messaggio: registro, regole e, in fondo, la richiesta a tre lavori (con GUASTI, anche la guida) |
 
-I tre testi sono già nella cartella `noleggio` del computer virtuale. Le istruzioni nel campo System Prompt sono vere istruzioni di sistema: il modello le legge come istruzioni, non come messaggio.
+I testi del caso, nella cartella `noleggio`, vanno nel messaggio. Nel System Prompt c’è solo il file del gruppo: il modello lo legge come istruzioni.
+
+![Unsloth Studio, pannello Run settings: il campo System Prompt, evidenziato.](immagini_slide/studio_system_prompt.png)
 
 ---
 
@@ -366,33 +372,37 @@ opencode: un programma può dare a ogni lavoro soltanto il suo testo
 # Slide 32 — Il programma legge il file
 <!-- layout: CONTENUTO -->
 
-Da qui un passo alla volta, con una persona diversa ai comandi. Chi non è ai comandi scrive la previsione su un foglio, prima del risultato.
-
-Ai comandi: una persona che non ha scritto il file del gruppo. Sul desktop del computer virtuale c’è il collegamento opencode: fate doppio clic, parte nella cartella `noleggio`.
+Ai comandi, chi non ha scritto il file: doppio clic sul collegamento opencode del desktop. Gli altri scrivono la previsione prima del risultato.
 
 > «Quale codice hanno le pastiglie montate sulla bici 12?»
 
 Prima di inviare, tutti scrivono: chi leggerà il registro, il modello o il programma?
+
+![opencode appena avviato: il campo in cui si scrive la richiesta, evidenziato, con la modalità Build e il nome del modello.](immagini_slide/opencode_avvio.png)
 
 ---
 
 # Slide 33 — Che cosa ha aperto il programma?
 <!-- layout: CONTENUTO -->
 
-Guardate l’elenco dei passaggi: le righe che opencode scrive mentre lavora.
+Guardate i passaggi: sono le righe con una freccia, sotto la vostra richiesta, che opencode scrive mentre lavora.
 
 Trovate la richiesta di lettura e il file che il programma ha aperto. Quale file è stato aperto?
+
+![Una richiesta diversa in opencode, «Quali file ci sono in questa cartella?», e sotto la riga con la freccia «Explored: 1 search», evidenziata.](immagini_slide/opencode_passaggi.png)
 
 ---
 
 # Slide 34 — Piano o esecuzione
 <!-- layout: CONTENUTO -->
 
-opencode ha due modalità: **Plan** guarda e propone, **Build** esegue. Ai comandi, un’altra persona.
+**Plan** guarda e propone, **Build** esegue. Ai comandi, un’altra persona.
 
 > «Crea il file nota_passaggio.txt con una sola riga: Controllare i freni della bici 12.»
 
-Prima in Plan, poi in Build. Prima di provare, tutti scrivono su un foglio: in quale dei due il file comparirà?
+Prima in Plan, poi in Build. opencode parte in Build: si cambia con Maiusc+Tab (sullo schermo: shift+tab). Tutti scrivono su un foglio: in quale dei due il file comparirà?
+
+![Due ritagli di opencode: la riga con la modalità Build e la riga con la modalità Plan, evidenziate.](immagini_slide/opencode_plan_build.png)
 
 ---
 

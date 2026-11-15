@@ -200,17 +200,26 @@ Dove un'informazione manca, dirlo è corretto. Per freni e sterzo vale la regola
 
 ## TODO prima dell'aula
 
-- **Schermate dalla VM** (Studio 2026.11.4, opencode v2.2.7), da mettere in `docente/backup/immagini_slide/` e nelle slide, con il punto cerchiato e un testo alternativo: campo System Prompt (slide 26); pannello con Context Length e Temperature (slide 25); avvio di opencode e campo in cui si scrive (slide 32); passaggio da Plan a Build (slide 34). Per la slide 33 una schermata di un'altra richiesta, che mostri dove compaiono i passaggi senza anticipare il risultato. Non catturare l'elenco dei passaggi con la lettura del file né la richiesta di permesso: anticiperebbero il risultato delle slide 33 e 35. Finché mancano, le slide non rimandano al docente: apertura di Studio, caricamento del file nel System Prompt, avvio di opencode e passaggio da Plan a Build li mostri e li dici tu a voce.
-- Collegamento sul desktop della VM che avvia opencode nella cartella `noleggio`: da creare e provare. La slide 32 dice «sul desktop c'è il collegamento opencode: fate doppio clic».
-- Scrivere nelle slide, dopo il controllo pre-aula: alla slide 34 il gesto per passare da Plan a Build e che cosa si scrive in Build (la stessa richiesta?); alla slide 33 dove si trovano i passaggi di opencode («Guardate l'elenco dei passaggi» oggi non lo dice); alla slide 25 quante parole entrano in 8192 (cifra misurata nella VM, non stimata).
+- **Schermate dalla VM**: fatte il 15 novembre (Studio 2026.11.4, opencode v2.2.7) e inserite nelle slide 25, 26, 32, 33 e 34, con il punto cerchiato e il testo alternativo. Immagini in `docente/backup/immagini_slide/`; gli originali non ritoccati in `immagini_slide/originali_vm/`. Per la slide 33 è una richiesta diversa («Quali file ci sono in questa cartella?»); non c'è né l'elenco dei passaggi con la lettura del file né la richiesta di permesso. **Da rifare la schermata della slide 25** quando la VM da consegnare ha Context Length 8192: oggi mostra «Auto» e la slide chiede «che numero c'è?».
+- Collegamento sul desktop della VM che avvia opencode: da creare e provare. Nella VM c'è soltanto il collegamento di Unsloth Studio; non c'è la cartella `noleggio` e opencode non è nel PATH. `unsloth start opencode`, scritto in una finestra PowerShell aperta nella cartella `noleggio`, avvia opencode subito.
+- Slide 25: leggere nella VM quante parole entrano in 8192 (cifra misurata, non stimata); il valore dipende dalla riga «Prompt di opencode e Context Length 8192» della tabella dei controlli.
 - Ripetere la revisione del `revisore-didattico` dopo le schermate.
+
+## Prova nella VM del 15 novembre
+
+Fatta su una copia temporanea della VM `ITSMAKER-Win11-Studio`, aperta con QEMU/KVM (non VMware) su un overlay: il file `.vmdk` sulla chiavetta non è stato toccato. Tastiera della VM: italiana. I tempi non valgono per le VM in aula.
+
+- **Studio.** Si apre dal collegamento in Edge (localhost:8888). Il modello **non è caricato** all'avvio: Select model, scheda On Device, Qwen3.5-2B-GGUF; il caricamento ha richiesto circa tre minuti. Appaiono la proposta di traduzione di Edge e «2 aggiornamenti del runtime» (llama.cpp e whisper.cpp, 21 MB): chiudere la prima, scegliere «Più tardi» sul secondo. Il pannello Run settings è chiuso: si apre con l'icona in alto a destra. Context Length è su **Auto** (nell'intestazione si legge 65.5k) e non 8192; la memoria stimata è 6,48 GiB con l'avviso «Exceeds system RAM».
+- **opencode.** Parte in modalità **Build** con `unsloth/Qwen3.5-2B-GGUF`; **shift+tab** passa a Plan e viceversa. Con «Quali file ci sono in questa cartella?» il modello ha chiamato lo strumento e risposto (una riga «Explored: 1 search», quattro file elencati; le descrizioni dei file erano imprecise): 4 minuti e 11 secondi, 0,7 token al secondo, 5.587 token di contesto già usati dopo la prima richiesta. Con 8192 restano meno di 2.700 token: **[INFERENCE]** non bastano per registro, regole e risposta.
+- **Permesso.** Con `opencode.jsonc` nella cartella `noleggio`, la richiesta «Crea il file nota_passaggio.txt…» in **Build** mostra «Permission required» con Allow once, Always allow e Reject. Il modello ha scritto il nome senza trattino basso (`notapassaggio.txt`). Ho scelto Reject e la richiesta si è interrotta; non ho controllato la cartella.
+- **Plan.** La stessa richiesta in **Plan** chiede lo stesso permesso: la regola generale del file prevale sul divieto di Plan, come previsto nel ramo della tabella dei controlli. La previsione della slide 34 («in quale dei due il file comparirà?») ha quindi risposta «in nessuno, se il gruppo rifiuta»: la differenza tra le due modalità va detta a voce o la slide va cambiata. Decisione tua.
 
 ## Che cosa non è stato provato
 
 - Copilot con l'account studente: creazione e modifica dell'agente, comportamento del piano, del controllo e dell'esempio della pizzeria.
-- Unsloth Studio su Windows nella VM: avvio, System Prompt, Context Length, parametri.
-- opencode con il modello da 2B: connessione, chiamate agli strumenti, permessi.
-- Tempi di risposta del modello con i testi della lezione e con opencode.
+- Unsloth Studio nella VM con le impostazioni da consegnare: Context Length 8192 e Search spento non sono stati provati (vedi la prova del 15 novembre).
+- opencode: la riga dei passaggi quando il modello legge un file (nelle schermate c'è quella di una ricerca nella cartella); il comportamento con 8192 di contesto.
+- Tempi di risposta con i testi della lezione e su VMware: le misure del 15 novembre vengono da un altro programma di virtualizzazione.
 - Copia della VM e memoria dei PC reali.
 
 La revisione didattica è stata fatta cinque volte (12 novembre due volte, 13 novembre tre volte; esito dell'ultima: DA CORREGGERE su un solo punto importante, il comportamento di Plan con la shell, corretto poi nel testo e non riesaminato). Corretti nelle revisioni del 13 novembre: previsioni con la risposta già scritta, slide 16 separata, slide 33 trasformata in controllo, decisione del permesso al gruppo, chiavetta per il file, richiesta 3B con una sola scrittura, regole `ask` nell'elenco generale dei permessi, ripristino della VM prima della copia. La stima dei tempi resta nel rapporto del revisore e non entra nei materiali. Il recupero di documenti (RAG) è rimandato alla lezione 6: le verifiche già raccolte sono nel piano.
