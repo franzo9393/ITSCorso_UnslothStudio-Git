@@ -6,9 +6,9 @@ Documento riservato al docente. Struttura e motivi sono in `docente/backup/PIANO
 
 ## La lezione da condurre
 
-Si riparte dall'agente Ruota Libera della lezione 4. La **parte 1**, in Copilot, è breve (decisione del 16 novembre: il fulcro della lezione sono le parti 2 e 3): il file `istruzioni_agente_noleggio.txt` riceve due novità, il piano mostrato prima della risposta e il controllo che cita la riga di ogni numero. Il rimborso come lavoro a sé e la richiesta inventata in Copilot sono stati tolti. Nelle **parti 2 e 3** il caso del noleggio non c'è più: ogni studente lavora da solo sulla propria macchina virtuale (VM) con due strumenti nuovi, presentati come introduzione. In **Unsloth Studio** un modello piccolo gira sul computer: si toglie la rete e si rifà la domanda, si muovono Temperature, Top K e Top P, si scrivono istruzioni di sistema. In **opencode**, con un modello in rete (Big Pickle), si fa leggere una cartella di file, si fa costruire una pagina web, si rifiuta una scrittura e ognuno inventa una propria richiesta. Il filo è «dove gira il modello e chi agisce sui file».
+Si riparte dall'agente Ruota Libera della lezione 4. La **parte 1**, in Copilot, mostra un agente con più lavori: un testo con un elenco (in guida: indice) che instrada ogni richiesta verso un lavoro (competenza) con i suoi testi e le sue regole. È l'orchestrazione di un agente, nella forma che Copilot permette (decisione del 16 novembre: parte 1 riscritta, piano e controllo con la riga tolti; il fulcro della lezione restano le parti 2 e 3). Gli studenti vedono l'instradamento («Lavoro usato:»), scrivono il lavoro che manca (GUASTI o PASSAGGIO, quello che non hanno scritto nella lezione 4), mettono alla prova l'elenco con casi inventati da loro e controllano a mano un numero che passa da un lavoro all'altro. Il filo di tutta la lezione è «chi controlla che cosa»: in Copilot il modello sceglie il lavoro e lo studente controlla i dati; in Studio il modello gira sul computer; in opencode il programma agisce sui file e chiede il permesso. Nelle **parti 2 e 3** il caso del noleggio non c'è più: ogni studente lavora da solo sulla propria macchina virtuale (VM) con due strumenti nuovi, presentati come introduzione. In **Unsloth Studio** un modello piccolo gira sul computer: si toglie la rete e si rifà la domanda, si muovono Temperature, Top K e Top P, si scrivono istruzioni di sistema. In **opencode**, con un modello in rete (Big Pickle), si fa leggere una cartella di file, si fa costruire una pagina web, si rifiuta una scrittura e ognuno inventa una propria richiesta.
 
-Parole: in aula si dice **coordinatore** per chi sceglie i lavori, decide l'ordine, si ferma a chiedere e controlla (parte 1). «Orchestratore» lo dici tu a voce, se serve. Nomi dei prodotti (Plan, Build, allow, ask, deny, Temperature, Top K, Top P, System Prompt) si lasciano come compaiono nel programma e si spiegano la prima volta.
+Parole: sulle slide e nella consegna si dice **lavoro** ed **elenco delle richieste**, come nella lezione 4 (una parola sola per ogni cosa). «Competenza», «indice» e «orchestratore» restano in guida e a voce, e si dicono alla fine della parte 1 (slide 16). Il nome «coordinatore» non si usa più. Nomi dei prodotti (Plan, Build, allow, ask, deny, Temperature, Top K, Top P, System Prompt) si lasciano come compaiono nel programma e si spiegano la prima volta.
 
 Come nella lezione 4: niente giro tra i banchi, niente file da consegnare, niente voto. I risultati si leggono sugli schermi e dal proiettore; i criteri si mostrano dopo la prova. Una prova riuscita subito vale quanto una riuscita dopo una correzione. Nessuna attività si basa sull'errore del modello. Lavoro singolo in tutta la lezione: decisione del 16 novembre 2026, che sostituisce quella del 12–13 novembre (parti 2 e 3 in gruppo attorno a una VM).
 
@@ -19,8 +19,8 @@ Non dichiarare provato ciò che non lo è: nulla di questa lezione è stato prov
 ### Da predisporre
 
 - Pubblica su Teams `studenti/ATTIVITA_LEZIONE5.docx` e i tre testi `Registro_Ruota_Libera_7-8_novembre_2026.txt`, `Regole_noleggio_Ruota_Libera.txt`, `Guida_guasti_Ruota_Libera.txt` (copie della lezione 4: stessi fatti). Servono solo alla parte 1. Non pubblicare le cartelle di backup.
-- `studenti/da_pubblicare_a_chi_non_ha_il_file/ISTRUZIONI_DI_PARTENZA_NOLEGGIO.txt`: lo dai solo a chi non ha il proprio `istruzioni_agente_noleggio.txt`. È il testo mostrato nella lezione 4 con un solo esempio cambiato (la bici 5), non una soluzione collaudata. Chi lo riceve aggiunge comunque piano e controllo. Il suo «Esempio 1» usa la bici 5, non la bici 12, per non dare la risposta alla richiesta della slide 2.
-- Dimostrazione della parte 1: `docente/ESEMPIO_DIMOSTRAZIONE_PIZZERIA_L5.txt`. Nelle istruzioni dell'agente va solo il testo **tra i due separatori**. Provalo prima con le richieste in fondo al file, ciascuna in una chat nuova. Se non puoi, mostra il testo dichiarando che non è una risposta del modello. Le risposte non sono scritte nel file: sono quelle del modello.
+- `studenti/da_pubblicare_a_chi_non_ha_il_file/ISTRUZIONI_DI_PARTENZA_NOLEGGIO.txt`: lo dai solo a chi non ha il proprio `istruzioni_agente_noleggio.txt`. È il testo mostrato nella lezione 4 con un solo esempio cambiato (la bici 5), non una soluzione collaudata. Ha già tutti e tre i lavori, quindi chi lo riceve salta la scrittura del lavoro che manca (slide 7 e 8) e passa alla prova (slide 9). Il suo «Esempio 1» usa la bici 5, non la bici 12, per non dare la risposta alla richiesta della slide 2.
+- Dimostrazione della parte 1: `docente/ESEMPIO_DIMOSTRAZIONE_PIZZERIA_L5.txt`, un agente a cinque lavori (ORDINE, RECLAMO, RIMBORSO, INFORMAZIONI, ORARI). Nelle istruzioni dell'agente va solo il testo **tra i due separatori**. Provalo prima con le sei richieste in fondo al file, ciascuna in una chat nuova. Se non puoi, mostra il testo dichiarando che non è una risposta del modello. Le risposte non sono scritte nel file: sono quelle del modello. Gli ingredienti, gli allergeni, l'indirizzo e il telefono della scheda sono inventati.
 - Su ogni VM, nella cartella `Documenti\laboratorio`: i tre file di `docente/CARTELLA_LABORATORIO/` (`inventario.csv`, `appunti_riunione.txt`, `da_fare.txt`) e `docente/MODELLI_OPENCODE/opencode.jsonc`. Li crea lo script `docente/PREPARA_VM_LEZIONE5.ps1`, che toglie anche la vecchia cartella `noleggio`. Sul desktop deve esserci il collegamento «opencode». La cartella non deve contenere altro: niente `inventario.html` né `riassunto.txt` delle prove.
 - Per le slide 23 e 28, dal proiettore e dal vivo: una risposta del modello alla richiesta della pizza (Temperature 1,5; poi Top K a 1; poi Top P a 0,1) e all'esempio del cuoco burbero. Se Studio non risponde, mostra le richieste e dichiara che non hai la risposta.
 - Proiettore: **prima le richieste, dopo i criteri**.
@@ -43,7 +43,9 @@ Le righe con «Provato su VMware» o «Provato su QEMU» hanno un esito del 15 n
 | Controllo | Che cosa accertare | Se fallisce | Esito |
 | --- | --- | --- | --- |
 | Copilot, agente | Come in lezione 4: salvare, riaprire, modificare le istruzioni | Chat normale con le istruzioni nel primo messaggio, non vere istruzioni di sistema | |
-| Piano e controllo in Copilot | La pizzeria della lezione 5, con la richiesta suggerita: si ferma dopo il piano? Cita le righe? | Raccontalo come è: un modello non segue sempre una regola, e la prova passa dalla correzione del testo | |
+| Agente della pizzeria a cinque lavori in Copilot | Le sei richieste in fondo al file della pizzeria: la prima riga «Lavoro usato:» dà il lavoro atteso? Per «pizza fredda e soldi indietro» compaiono i due nomi nell'ordine giusto? Il caso della slide 11 (glutine e prezzo) a che cosa va: a uno dei due, ai due insieme, a nessuno? Con cinque voci nell'elenco, «A che ora aprite il sabato?» va a ORARI e non a ORDINE? | Raccontalo com'è: un modello non segue sempre un elenco, e la prova passa dalla correzione del testo. Il caso della slide 11 non ha un esito giusto | |
+| Il noleggio con tre lavori e la catena | Con l'agente completo (per esempio il testo di partenza): le tre richieste della slide 9 vanno al lavoro giusto? La catena della slide 13 porta nella nota il numero della tavola «Valori di riferimento»? | Se Copilot cambia il numero o l'ordine, fallo vedere com'è: è il punto della slide 14 | |
+| Lunghezza delle istruzioni | Regole, elenco, tre lavori e stile entrano nel campo delle istruzioni dell'agente con l'account studente? | Accorcia lo stile o gli esempi; dillo agli studenti | |
 | Velocità di Studio sul PC della scuola | Una risposta breve (circa 40 parole) con Temperature 1,5: quanti secondi? Prova più volte: gli studenti ne chiedono tre di seguito, le altre due manopole le mostri tu | Se una risposta è molto lenta, anche la prova a Temperature alta diventa una dimostrazione dal proiettore | Provato su VMware sul PC del docente (4 processori, 6 GB, 8192) con un messaggio da 3.665 token: in Studio la risposta è finita circa 40 secondi dopo l'invio, a 21,7 token al secondo; `llama-server` da solo legge il messaggio in 16 secondi e genera a 28 token al secondo. Su QEMU erano minuti. Non vale per i PC della scuola: da misurare lì con messaggi brevi |
 | Rete spenta nella VM (2A) | Come si toglie la rete a Windows dentro la VM (icona di rete, modalità aereo) o dal menu di VMware. Con la rete tolta Studio risponde ancora? La pagina di Studio si carica senza risorse esterne? Come si riattiva? | Se Studio non risponde senza rete, la 2A diventa un racconto: dillo com'è. Se non c'è un gesto semplice per gli studenti, lo fai tu dal proiettore | |
 | Temperature, Top K, Top P nel pannello | Con Qwen3.5-2B: compaiono tutte e tre nel pannello della VM (nella schermata del 15 novembre si vedono Temperature 0,7 e Top P 0,8; Top K non compare nel ritaglio)? Il campo accetta 1,5 e 0,1 con la virgola, con il punto o con entrambi? Con Temperature 1,5 e Top K 20 le risposte cambiano a ogni rigenerazione (se sono identiche, cerca un campo Seed fisso)? Con Top K 1 diventano uguali? Con Top P 0,1? Il pulsante Reset all riporta i valori di partenza senza toccare altro (System Prompt, Context Length)? Dov'è il pulsante per rigenerare? | Se Top K 1 non rende uguali le risposte, togli la slide 25 e dici com'è. Se manca Reset all, gli studenti rimettono Temperature a mano, perché è l'unico valore che cambiano | Letto nel codice di Studio 2026.11.4 e in `llama-server --help` (installazione sul portatile del docente): Top K, Top P, Min P, penalità e Max Tokens sono parametri; la sequenza di default dei campionatori è `top_k; typ_p; top_p; min_p; xtc; temperature`, quindi Top K e Top P tagliano prima e la temperatura viene per ultima. Da questo ci si aspetta risposte uguali con Top K 1. Non provato nella VM |
@@ -72,49 +74,54 @@ Le righe con «Provato su VMware» o «Provato su QEMU» hanno un esito del 15 n
 
 Riferimenti: opencode, agenti e permessi: https://opencode.ai/docs/agents/ e https://opencode.ai/docs/permissions/ (regole generali, regole di Plan, «Allow always» salvato per il progetto). Unsloth e opencode: https://unsloth.ai/docs/integrations/opencode (scritta per un modello da 27B: per il 2B la prova è tua).
 
-## Parte 1 · Il coordinatore in Copilot
+## Parte 1 · Un agente con più lavori, in Copilot
+
+Che cosa si mostra: un orchestratore in Copilot. Il testo ha un elenco che dice quale lavoro usare per ogni richiesta e i lavori che eseguono, ognuno con i propri testi e le proprie regole. Che cosa vedono gli studenti: l'instradamento nella prima riga («Lavoro usato:»), l'ordine e il dato che passa da un lavoro all'altro, e che una richiesta che va nel posto sbagliato si corregge nell'elenco, non nel lavoro.
+
+Che cosa **non** dire: in Copilot il testo è letto tutto ogni volta, i lavori non sono caricati separatamente; la spiegazione che il modello dà della propria scelta è scritta dopo, non è il suo ragionamento; non è provato in Copilot con l'account studente. I due controlli sono diversi e vanno tenuti separati: il controllo sui dati lo fa lo studente sul registro; il controllo sulle azioni (chi scrive un file) lo fa opencode nella parte 3 con i permessi, e non verifica che il contenuto sia giusto. La slide 44 riprende la differenza.
 
 | Slide | Passo | Che cosa fanno gli studenti |
 | --- | --- | --- |
 | 1–3 | Si riparte | Riaprono l'agente, rifanno la richiesta della lezione 4; quadro d'insieme |
-| 4–9 | Il piano | Pizzeria; regola e prova; correzione del piano; la scrivono; due lavori insieme; criteri |
-| 10–11 | Il controllo | Pizzeria; scrivono la regola |
-| 12–14 | Una prova | Stessa richiesta a due lavori; orari e minuti; controllano la riga citata |
-| 15–16 | File e nome | File completo e agente aggiornato; «coordinare» a voce |
+| 4 | Elenco e lavori | Guardano due pezzi dell'agente della pizzeria |
+| 5–6 | Quale lavoro sceglie? | Scrivono un pronostico su cinque richieste; guardano le prove dal proiettore; ordine e dato che passa |
+| 7–8 | Il lavoro che manca | Scrivono GUASTI o PASSAGGIO (voce nell'elenco e lavoro); aggiornano l'agente |
+| 9–10 | Una richiesta per lavoro | Provano le tre richieste; guardano la prima riga; correggono la voce dell'elenco |
+| 11–12 | Un caso che l'elenco non prevede | Pizzeria dal proiettore; poi inventano il loro caso e lo provano |
+| 13–14 | Due lavori in catena | FUORI SERVIZIO e poi PASSAGGIO; confrontano il numero con i valori del registro |
+| 15–16 | File e domanda | File completo; chi ha scelto, chi ha controllato |
 
-Non distribuire un agente del noleggio già scritto. Le tabelle a metà (slide 7 e 11) hanno le domande, mai le risposte.
+Non distribuire un agente del noleggio già scritto. La tabella a metà (slide 7) ha le domande, mai le risposte.
 
 ### Slide 2 · Riaprite
 
 La richiesta è quella della lezione 4: «Per quanti minuti è stata fuori servizio la bici 12 sabato? Mostrami gli orari.» Controllo: stessi orari della tavola «Valori di riferimento»; dopo il controllo li dici a voce. Serve a vedere che il file e l'agente funzionino ancora: chi ha perso l'agente passa a una chat normale. Non presumere che tutti abbiano finito la lezione 4: chi non ha il file riceve il punto di partenza.
 
-### Slide 4–9 · Il piano prima
+### Slide 4–6 · Elenco, lavori, instradamento
 
-Slide 5: le frasi sono estratti del file della pizzeria. Chiedi l'alzata di mano prima di provare: si ferma dopo il piano? Prova la richiesta «La pizza è arrivata fredda e voglio i soldi indietro.» Slide 6: rispondi al piano «Procedi, ma solo il reclamo.»; l'agente deve fare solo RECLAMO e lasciare il rimborso fuori. La regola 2 della pizzeria (prima «Mi dispiace») resta valida: «Mi dispiace» viene prima del piano.
+Slide 4: le frasi sono estratti del file della pizzeria. «Prima il concreto, poi il nome»: i due pezzi si vedono prima che si dica a voce che l'elenco instrada e il lavoro esegue. Slide 5: gli studenti scrivono nel Blocco note un pronostico per ognuna delle cinque richieste (uno, due o nessun lavoro). Poi provi ogni richiesta in una chat nuova dal proiettore e mostri la prima riga. Se l'agente ne instrada una in modo diverso dal pronostico di qualcuno, è la discussione utile: guarda la voce dell'elenco. Slide 6: nella risposta alla richiesta «pizza fredda e soldi indietro» compaiono due nomi. Fai notare l'ordine (prima il problema pratico, poi il rimborso) e che cosa passa dal primo al secondo: il numero dell'ordine e l'importo. La domanda finale («chi se ne accorge?») ha risposta «voi»: un numero che cambia tra un lavoro e l'altro non lo segnala nessun programma.
 
-Slide 8: la richiesta dipende dal secondo lavoro scelto in lezione 4 (GUASTI o PASSAGGIO). Per GUASTI serve anche la guida ai guasti, per PASSAGGIO bastano registro e regole.
+### Slide 7–8 · Il lavoro che manca
 
-**Criterio, dopo la prova (slide 9):** il piano viene prima di qualsiasi risposta ai lavori, anche prima di «Lavoro usato:» (la tabella della slide 7 lo chiede esplicitamente: tre regole non devono chiedere tre prime righe diverse); i due lavori sono nell'ordine deciso dallo studente; dice quali testi usa; si ferma; dopo «Procedi» risponde. Se risponde subito senza piano, la regola non l'ha fermato: lo studente guarda la regola e la riscrive, non è un errore dello studente. Se si ferma e chiede altro (per esempio il turno), è corretto. Non chiedere a nessuno di far sbagliare il modello.
+Ognuno aveva FUORI SERVIZIO più GUASTI oppure PASSAGGIO (scelta della lezione 4). Scrive quello che gli manca: voce nell'elenco e lavoro, con la tabella a metà della slide 7 e l'esempio INFORMAZIONI accanto. Non dare l'esempio del noleggio. Chi ha solo FUORI SERVIZIO scrive prima PASSAGGIO, perché serve alla catena (slide 13), poi GUASTI. Chi ha ricevuto il testo di partenza non scrive nulla: legge il file e passa alla slide 9. Slide 8: incollano tutto il testo nelle istruzioni dell'agente; controllo: l'ultima riga del file è anche l'ultima in Copilot? PASSAGGIO ha quattro titoli e il registro: è il lavoro più lungo da scrivere. GUASTI ha la guida ai guasti e la regola obbligatoria sui freni.
 
-### Slide 10–11 · Ogni numero, la sua riga
+### Slide 9–10 · Una richiesta per lavoro
 
-La pizzeria: «Quanto costa una Diavola con la consegna?» (8 più 2, 10 euro). La colonna «Pizzeria» della slide 11 cita «la riga delle istruzioni», come il file. Il controllo deve citare la riga dei prezzi e quella della consegna: proietta le istruzioni della pizzeria accanto alla risposta, perché gli studenti non le hanno. Alla slide 11 scrivono la regola per il noleggio. Si scrive ora, prima della prova: non si aggiorna ancora l'agente.
+Una conversazione nuova per ogni richiesta, con registro, regole del noleggio e guida ai guasti (anche se la richiesta ne usa uno solo: serve a vedere se sceglie bene tra i testi). Prima di inviare scrivono quale lavoro si aspettano. Criterio, dopo la prova (slide 10): la prima riga è «Lavoro usato:» con il nome atteso; il contenuto viene dal testo giusto. Se il lavoro non è quello atteso, lo studente non riscrive il lavoro: legge la voce dell'elenco e la corregge. Non è un errore dello studente. Una prova riuscita al primo invio vale quanto una riuscita dopo una correzione. Per GUASTI vale la regola obbligatoria della guida: nessun consiglio per far uscire dal negozio una bici con freni che non tengono. Per PASSAGGIO la richiesta dice già il giorno (sabato): se il turno non è identificabile l'agente può chiedere, e va bene.
 
-Perché serve: quando un'informazione passa da uno strumento all'altro (qui dal testo alla risposta) si può perdere; il controllo è un modo esterno per accorgersene.
+### Slide 11–12 · Un caso che l'elenco non prevede
 
-### Slide 12–14 · Una prova per la regola del controllo
+Slide 11: «La Diavola ha il glutine e quanto costa?» (INFORMAZIONI e ORDINE). L'elenco non dice che cosa fare con questa coppia. Alzata di mano per il pronostico, poi provi: può partire da uno dei due, rispondere a tutte e due le domande o scegliere un lavoro solo. Va bene qualunque esito: serve a chiedere quale riga aggiungeresti all'elenco. Non dire che il modello deve sbagliare. Slide 12: ognuno inventa una richiesta del noleggio che potrebbe andare a due lavori o a nessuno, scrive dove la manderebbe, la prova, e se va altrove corregge la voce dell'elenco o aggiunge la riga mancante, poi riprova. Esempi per te, da non proiettare prima: «Nota per il turno dopo con i guasti di sabato» (PASSAGGIO o GUASTI?); «Quanto costa il rimborso per la bici 12?» (FUORI SERVIZIO, ma manca il tipo di noleggio: una sola domanda); «Quanto costa un'ora?» (il listino è nelle regole, ma nessun lavoro lo usa: «nessuno»). Le richieste di prova le decidono gli studenti.
 
-Aggiornano l'agente con le due regole, poi una nuova conversazione con la richiesta a due lavori della slide 8 (GUASTI o PASSAGGIO). Rispondono «Procedi» al piano; con PASSAGGIO può arrivare anche la domanda sul turno: «La nota è per chi inizia il pomeriggio di sabato.» Previsione prima dell'invio (slide 12): che cosa scriverà in fondo? Alla slide 13 gli orari e i minuti di fuori servizio vengono dalle tavole in fondo (non ricopiati a mano). Il rimborso non c'è più (tolto il 16 novembre): se un agente dallo studente lo contiene ancora, non farlo toccare.
+### Slide 13–14 · Due lavori in catena
 
-**Slide 14.** Controllano il controllo: scelgono un numero della risposta e cercano nel registro o nelle regole la riga che l'agente cita. Una riga inventata o troppo vaga è un problema da correggere nel testo.
+Richiesta: «Bici 12, sabato: per quanti minuti è stata fuori servizio? Scrivi la nota per il turno dopo.» L'elenco deve avere la riga «PASSAGGIO e FUORI SERVIZIO insieme: prima FUORI SERVIZIO, poi il risultato entra nella nota»: il testo mostrato nella lezione 4 e il testo di partenza di oggi la contengono, ma chi non l'ha scritta la aggiunge ora e aggiorna l'agente. Previsione prima dell'invio: quale numero comparirà nella nota? Alla slide 14 il numero e gli orari vengono dalle tavole in fondo (non ricopiati a mano). Gli studenti guardano sotto «Fuori servizio» nella loro nota: se il numero è diverso da quello del registro, il dato si è perso o cambiato nel passaggio da un lavoro all'altro. Si corregge scrivendo nell'elenco o in FUORI SERVIZIO che il risultato va riportato così com'è. Se è uguale, non lo dai per garantito sempre: un buon risultato vale quanto uno da correggere. Il rimborso non c'è più (tolto il 16 novembre): se un agente lo contiene ancora, non farlo toccare.
 
-Per GUASTI vale la regola obbligatoria della guida: nessun consiglio per far uscire dal negozio una bici con freni che non tengono. Per PASSAGGIO: se il giorno o il turno non sono identificabili l'agente chiede; non si inventa una divisione dei turni.
+### Slide 15–16 · File e domanda
 
-### Slide 15–16 · File e nome
+Slide 15: il file `istruzioni_agente_noleggio.txt` deve essere completo (regole per tutti i casi, elenco con le correzioni, tre lavori, stile) e arrivato intero in Copilot. Non si porta in nessun altro programma: le parti 2 e 3 non usano il noleggio.
 
-Slide 15: il file `istruzioni_agente_noleggio.txt` deve essere completo e arrivato intero in Copilot. Non si porta in nessun altro programma: le parti 2 e 3 non usano il noleggio.
-
-Slide 16: dai il nome **coordinare** e fai la domanda «Dove sta il coordinatore?». Risposta, a voce: era già lì, nel loro testo, letto da Copilot. Nessun programma lo ha eseguito.
+Slide 16: domanda «Il numero nella nota: chi l'ha controllato?» Risposta: loro. Poi, a voce: il testo che sceglie quale lavoro usare, in che ordine e che cosa passare dall'uno all'altro si chiama orchestratore. Qui è un testo letto da Copilot, non un programma che esegue. Nella parte 3 vedranno un programma che chiede il permesso prima di agire: è un altro controllo, sulle azioni.
 
 ## Parte 2 · Un modello sul vostro computer
 
@@ -253,7 +260,7 @@ Fatta su due copie successive della VM `ITSMAKER-Win11-Studio-lezione5`, sul dis
 
 ## Che cosa non è stato provato
 
-- Copilot con l'account studente: creazione e modifica dell'agente, comportamento del piano, del controllo e dell'esempio della pizzeria.
+- Copilot con l'account studente: creazione e modifica dell'agente, instradamento verso i lavori, catena FUORI SERVIZIO → PASSAGGIO, lunghezza delle istruzioni con tre lavori e comportamento dell'esempio della pizzeria.
 - Le parti 2 e 3 nella forma riscritta il 16 novembre, nella VM: rete spenta, effetto di Temperature, Top K e Top P sul modello da 2B, il comportamento del System Prompt con il cuoco burbero, `inventario.html`, Reject e richiesta propria (3D) con la cartella `laboratorio`, il comando della slide 31.
 - Studio e opencode su molte VM insieme sulla rete della scuola; Studio e opencode aperti insieme nella stessa VM (memoria).
 - Big Pickle dalla rete della scuola, con tutte le VM sullo stesso indirizzo.
@@ -265,4 +272,4 @@ Le revisioni didattiche del 12–15 novembre riguardano la versione precedente d
 
 ## Chiusura dal proiettore
 
-Chiedi quale regola utile hanno scoperto nella parte 1 e che cosa ha colpito di più nelle parti 2 e 3. Poi: se opencode potesse cancellare un file, allow, ask o deny, e perché. Non raccogliere un'autovalutazione scritta. Dal confronto conserva tu ciò che serve alla lezione 6: che cosa ha funzionato nella VM, quale ramo della parte 3 si è usato, che cosa ha tenuto il modello piccolo nelle istruzioni di sistema.
+Chiedi quale correzione all'elenco ha cambiato dove andava una richiesta nella parte 1, e che cosa ha colpito di più nelle parti 2 e 3. Poi: se opencode potesse cancellare un file, allow, ask o deny, e perché; e il contenuto di un file nuovo, chi lo controlla. Non raccogliere un'autovalutazione scritta. Dal confronto conserva tu ciò che serve alla lezione 6: che cosa ha funzionato nella VM, quale ramo della parte 3 si è usato, che cosa ha tenuto il modello piccolo nelle istruzioni di sistema.

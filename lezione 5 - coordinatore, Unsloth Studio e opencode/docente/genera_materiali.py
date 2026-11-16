@@ -54,7 +54,7 @@ TEXT_DOCUMENTS = {  # documenti del caso: sorgente Markdown, copia di testo semp
 }
 DECK_NAME = 'Lezione5_Coordinatore_Unsloth_Studio_e_opencode_ITS_MAKER'
 MODEL = HERE / 'MODELLO_ITS_MAKER.pptx'
-TITLE = 'Lezione 5 — Chi decide quale lavoro?'
+TITLE = 'Lezione 5 — Chi controlla che cosa?'
 LAYOUTS = ('COPERTINA', 'CONTENUTO', 'SEZIONE', 'CHIUSURA')
 PROGRAM = ('UNSLOTH STUDIO', 'COPILOT · UNSLOTH STUDIO · OPENCODE')  # il modello riporta ancora il programma della lezione 1: si sostituisce al caricamento
 BLUE, INK, MUTED, PALE = '1064A0', '17344D', '4B6275', 'EAF0F6'

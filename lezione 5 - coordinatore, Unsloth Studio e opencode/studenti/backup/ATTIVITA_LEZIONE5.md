@@ -1,20 +1,18 @@
-# Lezione 5 · Un agente che fa il piano
+# Lezione 5 · Chi controlla che cosa?
 
 **ITS MAKER Bologna · 18 novembre 2026 · Microsoft Copilot, Unsloth Studio e opencode**
 
 ## Da dove partiamo
 
-Il titolare di Ruota Libera ha provato il vostro agente e chiede due cose:
+Il titolare di Ruota Libera ha provato il vostro agente e vuole che sappia fare tutti e tre i lavori: fuori servizio, guasti e passaggio di turno. Oggi completate l'agente e controllate che scelga bene.
 
-> «Quando ti chiedo due cose insieme, voglio vedere il piano prima della risposta. E accanto a ogni numero voglio sapere da quale riga viene.»
-
-Ognuno lavora da solo sul proprio computer. Nella parte 1 partite dal file della lezione 4: `istruzioni_agente_noleggio.txt`. Non avete il file? Ve ne diamo uno di partenza. Non ci sono file da consegnare: il risultato si guarda sullo schermo. Salvate solo il file delle istruzioni, aggiornato.
+Ognuno lavora da solo sul proprio computer. Nella parte 1 partite dal file della lezione 4: `istruzioni_agente_noleggio.txt`. Non avete il file? Ve ne diamo uno di partenza, che ha già i tre lavori. Non ci sono file da consegnare: il risultato si guarda sullo schermo. Salvate solo il file delle istruzioni, aggiornato.
 
 Il percorso è questo:
 
 | Passo | Dove | Che cosa succede |
 | --- | --- | --- |
-| 1 | Microsoft Copilot | al vostro testo aggiungete il piano e il controllo |
+| 1 | Microsoft Copilot | il vostro agente ha più lavori: chi sceglie quale usare? |
 | 2 | Unsloth Studio, nel computer virtuale | un modello nel computer virtuale: serve la rete? |
 | 3 | opencode, nel computer virtuale | un programma accanto ai file: chi li apre? |
 
@@ -26,66 +24,79 @@ Il percorso è questo:
 4. In una nuova conversazione scrivete un solo messaggio: registro, regole del noleggio e in fondo la richiesta: «Per quanti minuti è stata fuori servizio la bici 12 sabato? Mostrami gli orari.»
 5. Controllate gli orari con il registro.
 
-## Parte 1 · Due cose nuove per il vostro agente
+## Parte 1 · Un elenco e dei lavori
 
-### 1A · Il piano prima della risposta
+### 1A · Come è fatto un agente con più lavori
 
-Il titolare vuole vedere che cosa farà l'agente prima che lo faccia. Un **piano** è l'elenco dei lavori, nell'ordine in cui l'agente li userà, con i dati che mancano. Dopo il piano l'agente si ferma e aspetta.
+Il testo del vostro agente ha due parti: l'**elenco delle richieste**, che dice a quale lavoro va ogni richiesta, e i **lavori**, ognuno con le sue regole. Due pezzi dell'agente di una pizzeria d'asporto, proiettati (i tagli sono segnati con […]):
 
-La regola di una pizzeria d'asporto, proiettata:
-
-> «Se la richiesta ha due o più lavori, scrivi prima "Piano:" con i lavori nell'ordine in cui li usi e i dati che mancano. Poi fermati e aspetta la parola "Procedi".»
-
-La richiesta alla pizzeria: «La pizza è arrivata fredda e voglio i soldi indietro.» Per alzata di mano: dopo il piano, l'agente si ferma? Poi si risponde al piano: «Procedi, ma solo il reclamo.» Che cosa deve fare adesso? Che cosa non deve fare?
-
-Ora scrivete la regola del piano per il noleggio, nelle **regole per tutti i casi**. A destra le domande a cui rispondete voi:
-
-| Domanda | Pizzeria | Noleggio |
-| --- | --- | --- |
-| Quando scatta? | «due o più lavori» | Per quali richieste? |
-| Che cosa contiene? | lavori in ordine, dati che mancano | E i testi che userà? |
-| Dove si ferma? | dopo il piano | Qual è il segno? |
-| Che parola lo fa ripartire? | «Procedi» | La scegliete voi |
-| E «Lavoro usato:»? | Dopo il piano | Il piano viene prima: correggete la regola della prima riga. |
-
-Salvate il file e aggiornate l'agente. Poi, in una nuova conversazione, registro, regole del noleggio e in fondo la richiesta che corrisponde al vostro secondo lavoro. Siete partiti dalle istruzioni di partenza? Scegliete voi GUASTI o PASSAGGIO.
-
-| Il vostro secondo lavoro | Richiesta |
+| L'elenco dice | Il lavoro dice |
 | --- | --- |
-| GUASTI (aggiungete anche la guida ai guasti) | «Bici 12, sabato: quanto è stata fuori servizio, e che cosa significa freni che non tengono?» |
-| PASSAGGIO | «Bici 12, sabato: quanto è stata fuori servizio? Scrivi la nota per il turno dopo.» |
+| «Pizza fredda o in ritardo, pizza sbagliata → RECLAMO» | «Quando: la pizza è fredda, sbagliata o in ritardo. […] Come rispondere: tre punti.» |
+| «Che cosa c'è in una pizza, glutine, allergeni → INFORMAZIONI» | «Quando: il cliente chiede gli ingredienti. Testo da usare: solo la scheda degli ingredienti. […]» |
 
-Prima di inviare, decidete che piano vi aspettate. Poi controllate: il piano viene prima di qualsiasi risposta ai lavori? I lavori sono nell'ordine che avevate deciso? Dice quali testi usa? Si ferma? Dopo «Procedi» risponde?
+### 1B · Quale lavoro sceglie?
 
-Una prova riuscita al primo invio vale quanto una riuscita dopo una correzione.
+L'agente della pizzeria ha cinque lavori: ORDINE, RECLAMO, RIMBORSO, INFORMAZIONI, ORARI. Nel Blocco note scrivete, per ogni richiesta, il lavoro che vi aspettate. Può essere uno, due o nessuno. Poi le proviamo una per una in Copilot dal proiettore.
 
-### 1B · Ogni numero, la sua riga
+| Richiesta | Il vostro pronostico |
+| --- | --- |
+| «Vorrei due Margherite per le 20:00.» | |
+| «La Diavola ha il glutine?» | |
+| «La pizza è arrivata fredda e voglio i soldi indietro.» | |
+| «A che ora aprite il sabato?» | |
+| «Mi prenoti un tavolo per sabato?» | |
 
-Il titolare vuole sapere da dove viene ogni numero. La regola della pizzeria, proiettata:
+Guardate la prima riga di ogni risposta: «Lavoro usato:». Alla richiesta con due lavori: perché in quest'ordine? Che cosa deve passare dal primo lavoro al secondo? Se il secondo lavoro usasse un numero d'ordine diverso dal primo, chi se ne accorge?
 
-> «In fondo alla risposta scrivi "Controllo:" e, per ogni numero della risposta, la riga delle istruzioni da cui viene. Se non la trovi, scrivi "Non trovato".»
+### 1C · Il lavoro che manca
 
-La richiesta alla pizzeria: «Quanto costa una Diavola con la consegna?» Dove cercate la riga che il controllo cita? Poi, dal proiettore, le istruzioni della pizzeria.
+Nel vostro file ci sono FUORI SERVIZIO e un secondo lavoro. Scrivete quello che manca: GUASTI se avete PASSAGGIO, PASSAGGIO se avete GUASTI. Servono una voce nell'elenco e il lavoro, nel file `istruzioni_agente_noleggio.txt`. A destra le domande a cui rispondete voi:
 
-Scrivete la regola per il noleggio:
-
-| Domanda | Pizzeria | Noleggio |
+| Domanda | Pizzeria: INFORMAZIONI | Noleggio |
 | --- | --- | --- |
-| Che cosa controlla? | «ogni numero della risposta» | Solo i numeri, o anche gli orari? |
-| Che cosa scrive? | «la riga delle istruzioni» | Quale testo? Con quale data e ora? |
-| E se non trova la riga? | «Non trovato» | Che cosa fa? |
+| Quando scatta? | «il cliente chiede ingredienti, glutine o allergeni» | Per quali richieste? |
+| Che testo usa? | «solo la scheda degli ingredienti» | Quale testo del noleggio? |
+| Se manca un dato? | «Non lo so: chiedi al banco.» | Che cosa fa? |
+| Come risponde? | in una riga | In quale forma? |
 
-Poi la prova: aggiornate l'agente e aprite una nuova conversazione, con gli stessi testi e la stessa richiesta con due lavori della prova del piano. Prima di inviare: quale riga citerà il controllo per i minuti di fuori servizio? Quando l'agente scrive il piano, rispondete «Procedi». Se per PASSAGGIO chiede il turno: «La nota è per chi inizia il pomeriggio di sabato.»
+Avete ricevuto il testo di partenza? Ha già tutti e tre i lavori: leggetelo e passate alla prova.
 
-Poi controllate gli orari e i minuti di fuori servizio proiettati. Scegliete un numero della risposta e cercate nel registro o nelle regole del noleggio la riga che l'agente cita: esiste davvero? Dice quello che l'agente dice? Un controllo con una riga inventata è peggio di nessun controllo.
+Salvate il file. In Copilot incollate tutto il testo nelle istruzioni del vostro agente. L'ultima riga del file è anche l'ultima in Copilot?
+
+### 1D · Provate: una richiesta per lavoro
+
+Una nuova conversazione per ogni richiesta: registro, regole del noleggio, guida ai guasti e in fondo la richiesta. Prima di inviare, scrivete quale lavoro vi aspettate.
+
+| Il lavoro | La richiesta |
+| --- | --- |
+| FUORI SERVIZIO | «Bici 12, sabato: per quanti minuti è stata fuori servizio?» |
+| GUASTI | «Che cosa significa freni che non tengono?» |
+| PASSAGGIO | «Scrivi la nota per il turno dopo, sabato.» |
+
+Guardate la prima riga di ogni risposta. È il lavoro che vi aspettavate? Se non lo è, non partite dal lavoro: leggete la voce dell'elenco. Dice abbastanza chiaramente quando usarlo? Una prova riuscita al primo invio vale quanto una riuscita dopo una correzione.
+
+### 1E · Un caso che l'elenco non prevede
+
+Nella pizzeria: «La Diavola ha il glutine e quanto costa?» Sono due lavori, INFORMAZIONI e ORDINE, e nell'elenco non c'è nessuna riga per questa coppia. Per alzata di mano: parte da INFORMAZIONI, parte da ORDINE, o ne usa uno solo? Poi si prova dal proiettore.
+
+Ora inventate il vostro caso: una richiesta del noleggio che potrebbe andare a due lavori, o a nessuno. Scrivetela nel Blocco note e, prima di inviarla, scrivete dove la mandereste voi. Provatela. Se va dove non volevate, correggete la voce dell'elenco o aggiungete la riga che manca, poi riprovate.
+
+### 1F · Due lavori in catena
+
+Richiesta: «Bici 12, sabato: per quanti minuti è stata fuori servizio? Scrivi la nota per il turno dopo.»
+
+Nel vostro elenco deve esserci una riga per FUORI SERVIZIO e PASSAGGIO insieme: prima FUORI SERVIZIO, poi il risultato entra nella nota. Se manca, scrivetela e aggiornate l'agente. Prima di inviare: quale numero comparirà nella nota?
+
+Poi guardate il numero e gli orari proiettati, che sono quelli del registro per la bici 12, sabato. Nella vostra nota, sotto «Fuori servizio»: sono gli stessi?
 
 ### Salvate il file
 
-Aggiornate l'agente in Copilot e controllate che il testo sia arrivato intero. Il file `istruzioni_agente_noleggio.txt` deve contenere tutto: regole per tutti i casi con piano e controllo, i lavori, l'elenco delle richieste, lo stile.
+Il file `istruzioni_agente_noleggio.txt` deve contenere tutto: regole per tutti i casi, l'elenco delle richieste con le vostre correzioni, i tre lavori, lo stile. Aggiornate l'agente in Copilot e controllate che il testo sia arrivato intero.
 
-### Chi ha fatto che cosa
+### Chi ha scelto? Chi ha controllato?
 
-Scegliere i lavori, decidere l'ordine, fermarsi a chiedere, controllare: questo lavoro si chiama **coordinare**. Il vostro agente ha un coordinatore. Dove sta?
+Copilot ha scelto il lavoro leggendo l'elenco che avete scritto voi. Il numero nella nota: chi l'ha controllato?
 
 ## Parte 2 · Un modello sul vostro computer
 
