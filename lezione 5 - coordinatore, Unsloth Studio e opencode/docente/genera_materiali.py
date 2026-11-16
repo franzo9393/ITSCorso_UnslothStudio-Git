@@ -772,10 +772,13 @@ def main() -> None:
     worksheet = STUDENTS / 'ATTIVITA_LEZIONE5.docx'
     guide = HERE / 'GUIDA_DOCENTE.docx'
     markdown_doc(STUDENTS_BACKUP / 'ATTIVITA_LEZIONE5.md', worksheet, 'Lezione 5 — attività')
+    inventory = (HERE / 'CARTELLA_LABORATORIO' / 'inventario.csv').read_text(encoding='utf-8').splitlines()
+    inventory_rows = [line for line in inventory[1:] if line.strip()]  # righe di dati, senza l'intestazione
     replacements = {
         '{{VALORI_REGISTRO}}': register_tables(values),
         '{{NOTE_TURNO}}': turn_notes(REGISTER_SOURCE.read_text(encoding='utf-8')),
         '{{VALORI_GUIDA}}': alarm_table((SOURCES / '02_GUIDA_GUASTI_RUOTA_LIBERA.md').read_text(encoding='utf-8')),
+        '{{RIGHE_INVENTARIO}}': str(len(inventory_rows)),
     }
     markdown_doc(TEACHER_BACKUP / 'GUIDA_DOCENTE.md', guide, 'Lezione 5 — guida docente', replacements=replacements)
     shutil.copyfile(REGISTER_SOURCE, REGISTER_COPY)  # testo da incollare in Copilot, copia byte per byte (UTF-8)

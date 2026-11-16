@@ -1,4 +1,4 @@
-// Da mettere nella cartella noleggio della VM. Senza questo file la modalità Build
+// Da mettere nella cartella laboratorio della VM. Senza questo file la modalità Build
 // di opencode scrive nella cartella di lavoro senza chiedere, anche con la shell (documentazione dei permessi).
 // Le regole generali fanno chiedere conferma prima di scrivere un file e prima di eseguire un comando.
 // Le regole generali vengono dopo quelle di Plan: da sole fanno chiedere il permesso anche in Plan,

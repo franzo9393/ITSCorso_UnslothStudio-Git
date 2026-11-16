@@ -2,6 +2,20 @@
 
 Documento riservato al docente. Struttura approvata il 12 novembre; resta come storico delle decisioni. Per lo stato attuale (slide, consegna, controlli pre-aula) vale la guida docente: alcune righe qui sotto sono superate (percorso `da_pubblicare_dopo_collaudo`, caricamento del modello in aula, previsioni «dai PC»). Nasce dalle indicazioni del 12 novembre 2026, a lezione 4 svolta: «ripartire dall'esercizio Ruota Libera con più caratteristiche del coordinatore, complicando l'agente; poi Unsloth Studio e opencode, il modello gira anche se lento».
 
+## Riprogettazione del 16 novembre 2026 (vale al posto delle parti 2 e 3 descritte sotto)
+
+Il docente ha giudicato la lezione, così com'era, non soddisfacente: il caso Ruota Libera portato anche in Unsloth Studio e in opencode non convinceva. Decisioni del 16 novembre, che sostituiscono le parti 2 e 3, la forma «un computer virtuale ogni 4–5 postazioni», il file dell'autore, la chiavetta per gruppo e la slide sulla distillazione:
+
+- La parte 1 (Copilot: piano, rimborso, controllo con il noleggio) resta com'è, con il lavoro singolo.
+- Le parti 2 e 3 sono un'introduzione ai due strumenti, senza il noleggio: **Studio** con rete spenta, Temperature, Top K, Top P e istruzioni di sistema; **opencode** con Big Pickle su una cartella `laboratorio` con tre file inventati (inventario, appunti di riunione, cose da fare). Filo: dove gira il modello e chi agisce sui file.
+- Lavoro singolo su una macchina virtuale per studente, in tutta la lezione. Distribuzione: 4–5 copie con la chiavetta, le altre con Veyon (installato in aula) o da una cartella condivisa in rete: da provare.
+- Il PowerPoint della lezione 5 non è stato modificato a mano: si rigenera con `genera_materiali.py`.
+- Attività nuove, tutte da provare nella VM: 2A (togliere la rete e rifare la domanda), 2B (Temperature a 1,5 provata dagli studenti; Top K a 1 e Top P a 0,1 mostrati dal docente; tabella delle tre manopole dopo la prova), 2C (System Prompt inventato dallo studente), 3A (elenco e lettura dei tre file), 3B (pagina `inventario.html` in Plan e in Build), 3C (Reject su `riassunto.txt`).
+- Decisione del docente sulla 2B (16 novembre): provano solo Temperature alta; Top K e Top P li mostra il docente dal proiettore, perché il modello è lento. Il filo della lezione e le altre attività sono approvati.
+- Fonti della riprogettazione: sequenza dei campionatori letta in `llama-server --help` e nel codice di Studio 2026.11.4 (installazione sul portatile del docente); richieste della parte 3 provate con `opencode run` 1.18.27, senza richieste di permesso (non prova la versione 2.2.7 della VM).
+
+Le sezioni sotto (struttura, parti 2 e 3, VM condivise, verifiche, rami di riserva, stato dei lavori) descrivono la versione precedente. Per lo stato attuale vale la guida docente.
+
 ## Come ho letto le indicazioni
 
 | Hai detto | Lo traduco in |

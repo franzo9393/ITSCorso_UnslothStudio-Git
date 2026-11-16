@@ -1,0 +1,14 @@
+Riunione del laboratorio - martedì 10 novembre 2026
+Presenti: Marta, Luca, Giulia
+
+La stampante 3D numero 2 stampa male: serve un ugello nuovo. Luca lo ordina entro venerdì.
+
+Il filamento nero sta finendo. Ne restano 3 bobine. Marta controlla il listino e dice a Luca quante ne servono.
+
+Il corso di saldatura di giovedì 19 novembre si sposta in aula 4, perché il laboratorio è occupato dalla stampante. Marta avvisa il gruppo.
+
+Giulia prepara i kit Arduino per il corso di dicembre: un kit ogni due persone, con breadboard, LED, resistenze e cavi.
+
+Da decidere alla prossima riunione: orario di apertura del sabato.
+
+Ricordarsi di mettere le etichette sugli scaffali.
