@@ -168,19 +168,21 @@ Sul desktop del computer virtuale c’è il collegamento **opencode**: fate dopp
 
 Il modello di opencode è Big Pickle: risponde dalla rete, attraverso il servizio di chi fa opencode. Non scrivete dati personali. Sotto il logo può comparire un avviso di aggiornamento: ignoratelo.
 
-Quando compare **Permission required**, opencode vuole il vostro permesso. Se chiede di eseguire un comando (un’istruzione per Windows), un comando che può comparire è questo:
+Quando compare **Permission required**, opencode vuole il vostro permesso. Se vuole eseguire un comando (un’istruzione per Windows), leggete il comando che opencode mostra e confrontatelo con questo, l’unico che potete approvare:
 
 `Get-ChildItem -Force | Select-Object Mode, Length, Name`
+
+Confrontate tutto il comando, dall’inizio alla fine, lettera per lettera. Contano anche i simboli: i trattini (-), la barra verticale (|) e le virgole. Non deve esserci niente in più, né prima né dopo. Uno spazio in più o in meno non conta: «Mode,Length,Name» va bene come «Mode, Length, Name».
 
 Scegliete così:
 
 | Che cosa chiede | Che cosa scegliete |
 | --- | --- |
 | di scrivere un file con il nome che avete chiesto voi | **Allow once** |
-| di eseguire il comando scritto sopra, con le stesse parole e gli stessi simboli, nello stesso ordine (gli spazi non contano) | **Allow once** |
-| qualunque altro comando | **Reject** |
+| di eseguire il comando qui sopra, uguale lettera per lettera | **Allow once** |
+| qualunque altro comando, anche se cambia un solo simbolo o c’è qualcosa in più | **Reject** |
 
-Non scegliete mai «Always allow»: salva la regola e il programma non chiede più. Se dopo un Reject opencode si ferma, inviate di nuovo la richiesta aggiungendo: «Senza comandi, leggi i file.» Se compare di nuovo un comando diverso, alzate la mano.
+Non scegliete mai «Always allow»: salva la regola e il programma non chiede più. Se avete rifiutato un comando e opencode si ferma senza rispondere, inviate di nuovo la richiesta aggiungendo: «Senza comandi, leggi i file.» Se compare di nuovo un comando diverso, alzate la mano.
 
 ### 3A · Chi apre i file?
 
@@ -198,7 +200,7 @@ Ora tocca a voi. Scrivete una richiesta per una pagina `inventario.html` con i d
 2. Prima di inviare, decidete: in Plan comparirà il file? Poi inviate la richiesta.
 3. Premete Maiusc+Tab: torna **Build**.
 4. Inviate di nuovo la stessa richiesta.
-5. Compare «Permission required» per scrivere il file: scegliete **Allow once**. Se dopo la scrittura chiede un comando di controllo, scegliete **Reject**: il file è già scritto.
+5. Compare «Permission required» per scrivere il file: scegliete **Allow once**. Se dopo la scrittura chiede un comando, anche quello scritto all’inizio della parte 3, scegliete **Reject**: il file è già scritto e non serve inviare di nuovo la richiesta.
 6. Aprite Esplora file, Documenti › laboratorio. Se vedete due file chiamati inventario, quello con la pagina web è `inventario.html`: doppio clic.
 7. Contate le righe della tabella con un componente. Poi aprite `inventario.csv` (tasto destro › Apri con › Blocco note) e contate le righe con un componente. Sono le stesse? C’è quello che avete chiesto?
 
@@ -206,7 +208,7 @@ Ora tocca a voi. Scrivete una richiesta per una pagina `inventario.html` con i d
 
 ### 3C · Dire di no
 
-Scrivete in Build: «Crea riassunto.txt con i punti principali di appunti_riunione.txt.» Prima di inviare, decidete: dopo un Reject, opencode vi darà comunque il riassunto a parole? Quando compare il permesso, scegliete **Reject**.
+Scrivete in Build: «Crea riassunto.txt con i punti principali di appunti_riunione.txt.» Prima di inviare, decidete: dopo un Reject, opencode vi darà comunque il riassunto a parole? Quando compare il permesso, scegliete **Reject**. Non inviate di nuovo la richiesta: guardate che cosa succede.
 
 Che cosa scrive opencode? Aprite Esplora file: `riassunto.txt` c’è?
 
@@ -221,7 +223,7 @@ Ora decidete voi che cosa chiedere a opencode. Usate due dei file della cartella
 | mettere a confronto | «Confronta note_serata.txt e ordine.txt e scrivi in mancanti.txt gli ingredienti che mancano.» |
 
 1. Scrivete la richiesta nel campo di opencode. Prima di inviare, decidete: che cosa deve contenere il file nuovo?
-2. Inviate. Quando compare il permesso, leggete che file vuole scrivere: se è quello che avete chiesto, scegliete **Allow once**. Se chiede un comando, valgono le regole scritte sopra.
+2. Inviate. Quando compare il permesso, leggete che file vuole scrivere: se è quello che avete chiesto, scegliete **Allow once**. Se chiede un comando prima di scrivere il file, valgono le regole scritte all’inizio della parte 3. Se lo chiede dopo, scegliete **Reject** come nella 3B, senza inviare di nuovo la richiesta.
 3. Aprite il file nuovo e confrontate un dato scelto da voi con il file originale: è uguale? Se non torna, correggete la richiesta e riprovate.
 
 ### Dove sono le regole?

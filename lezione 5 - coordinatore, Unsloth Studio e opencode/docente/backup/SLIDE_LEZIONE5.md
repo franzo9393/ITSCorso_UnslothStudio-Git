@@ -382,9 +382,9 @@ Maiusc+Tab: in basso torna Build. Inviate di nuovo la stessa richiesta.
 # Slide 36 — Il programma chiede il permesso
 <!-- layout: CONTENUTO -->
 
-Compare «Permission required»: il programma si ferma e chiede a voi.
+Compare «Permission required» per scrivere inventario.html: scegliete **Allow once**. Non scegliete «Always allow».
 
-Scegliete **Allow once**: approvate questa volta. Non scegliete «Always allow».
+Se dopo la scrittura chiede un comando, anche quello scritto all’inizio della parte 3: **Reject**. Il file è già scritto.
 
 ---
 
@@ -404,7 +404,7 @@ Contate le righe della tabella con un componente. Poi aprite inventario.csv (tas
 
 Prima di inviare: dopo un Reject, opencode vi darà comunque il riassunto a parole?
 
-Quando compare il permesso, scegliete **Reject**. Che cosa scrive opencode? Il file c’è?
+Quando compare il permesso, scegliete **Reject**. Non inviate di nuovo la richiesta. Che cosa scrive opencode? Il file c’è?
 
 ---
 

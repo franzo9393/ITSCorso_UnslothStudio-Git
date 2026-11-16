@@ -148,6 +148,19 @@ def parse_slides(text: str) -> list[dict[str, str]]:
     return slides
 
 
+def cell_runs(cell) -> list[tuple[str, bool]]:
+    """Testo di una cella come pezzi (testo, grassetto): il grassetto del Markdown arriva nel Word."""
+    runs = [(cell.text or '', False)]
+    for child in cell:
+        runs.append((child.text_content(), child.tag in ('strong', 'b')))
+        runs.append((child.tail or '', False))
+    runs = [(text.replace('\n', ' '), bold) for text, bold in runs if text]
+    if runs:
+        runs[0] = (runs[0][0].lstrip(), runs[0][1])
+        runs[-1] = (runs[-1][0].rstrip(), runs[-1][1])
+    return runs
+
+
 def blocks(text: str) -> list[dict]:
     rendered = markdown.markdown(text, extensions=['tables', 'sane_lists'])
     root = lxml_html.fragment_fromstring(rendered, create_parent='div')
@@ -161,9 +174,13 @@ def blocks(text: str) -> list[dict]:
         if tag == 'p' and element.xpath('.//img'):
             image = element.xpath('.//img')[0]
             result.append({'kind': 'image', 'src': image.get('src'), 'alt': image.get('alt') or ''})
+        elif tag == 'p' and len(element) == 1 and element[0].tag == 'code' and not (element.text or '').strip() and not (element[0].tail or '').strip():
+            result.append({'kind': 'code', 'text': element[0].text_content().strip()})
         elif tag == 'table':
-            rows = [[cell.text_content().strip() for cell in row] for row in element.xpath('.//tr')]
-            result.append({'kind': 'table', 'rows': rows})
+            trs = element.xpath('.//tr')
+            rows = [[cell.text_content().strip() for cell in row] for row in trs]
+            runs = [[cell_runs(cell) for cell in row] for row in trs]
+            result.append({'kind': 'table', 'rows': rows, 'runs': runs})
         elif tag in ('ul', 'ol'):
             for index, item in enumerate(element):
                 prefix = f'{index + 1}. ' if tag == 'ol' else '• '
@@ -500,7 +517,7 @@ def document_style(doc, title: str, footer_text: str = 'ITS MAKER Bologna · Lez
     footer._p.append(field)
 
 
-def word_table(doc, rows: list[list[str]]) -> None:
+def word_table(doc, rows: list[list[str]], runs: list[list[list[tuple[str, bool]]]] | None = None) -> None:
     count = max(len(row) for row in rows)
     table = doc.add_table(rows=1, cols=count)
     table.style = 'Table Grid'
@@ -527,17 +544,24 @@ def word_table(doc, rows: list[list[str]]) -> None:
         for j, value in enumerate(values):
             cell = row.cells[j]
             cell.width = int(width * proportions[j])
+            if i == 0:
+                shade = OxmlElement('w:shd')
+                shade.set(qn('w:val'), 'clear')
+                shade.set(qn('w:fill'), PALE)
+                cell._tc.get_or_add_tcPr().append(shade)  # shd prima di vAlign (ordine dello schema)
             cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
-            cell.text = value
+            if runs is not None and i > 0:
+                paragraph = cell.paragraphs[0]
+                for text, bold in runs[i][j]:
+                    paragraph.add_run(text).bold = bold
+            else:
+                cell.text = value
             for p in cell.paragraphs:
                 p.paragraph_format.space_after = p.paragraph_format.space_before = DocPt(2)
                 for run in p.runs:
                     run.font.name, run.font.size = FONT, DocPt(9.5)
-                    run.bold = i == 0
-            if i == 0:
-                shade = OxmlElement('w:shd')
-                shade.set(qn('w:fill'), PALE)
-                cell._tc.get_or_add_tcPr().append(shade)
+                    if runs is None or i == 0:
+                        run.bold = i == 0
 
 
 def markdown_doc(source: Path, target: Path, title: str | None = None, footer_text: str | None = None, replacements: dict[str, str] | None = None) -> None:
@@ -559,13 +583,37 @@ def markdown_doc(source: Path, target: Path, title: str | None = None, footer_te
             pending_break = True
             continue
         if kind == 'table':
+            if not previous_table and not pending_break and doc.paragraphs:
+                doc.paragraphs[-1].paragraph_format.keep_with_next = True  # la frase che introduce la tabella non resta sola a fine pagina
             if previous_table and not pending_break:
                 spacer = doc.add_paragraph()
                 spacer.paragraph_format.space_before = spacer.paragraph_format.space_after = DocPt(1)
                 spacer.paragraph_format.line_spacing = DocPt(2)
-            word_table(doc, block['rows'])
+            word_table(doc, block['rows'], block.get('runs'))
             if pending_break:
                 doc.tables[-1].rows[0].cells[0].paragraphs[0].paragraph_format.page_break_before = True
+        elif kind == 'code':
+            paragraph = doc.add_paragraph()
+            border = OxmlElement('w:pBdr')
+            for side in ('top', 'left', 'bottom', 'right'):
+                edge = OxmlElement(f'w:{side}')
+                edge.set(qn('w:val'), 'single')
+                edge.set(qn('w:sz'), '4')
+                edge.set(qn('w:space'), '4')
+                edge.set(qn('w:color'), '999999')
+                border.append(edge)
+            shade = OxmlElement('w:shd')
+            shade.set(qn('w:val'), 'clear')
+            shade.set(qn('w:fill'), PALE)
+            paragraph._p.get_or_add_pPr().extend([border, shade])  # pBdr prima di shd, prima di spaziatura e rientro (ordine dello schema)
+            paragraph.paragraph_format.left_indent = DocInches(0.2)
+            paragraph.paragraph_format.space_before = paragraph.paragraph_format.space_after = DocPt(6)
+            run = paragraph.add_run(block['text'])
+            run.font.name, run.font.size = 'Consolas', DocPt(10.5)
+            run._element.rPr.rFonts.set(qn('w:eastAsia'), 'Consolas')
+            paragraph.paragraph_format.keep_with_next = True
+            if pending_break:
+                paragraph.paragraph_format.page_break_before = True
         else:
             if re.fullmatch(r'h[1-6]', kind):
                 paragraph = doc.add_heading(block['text'], min(int(kind[1]), 3))
