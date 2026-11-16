@@ -1,6 +1,6 @@
 ESEMPIO DEL DOCENTE · AGENTE DELLA PIZZERIA D'ASPORTO «DA GINO», VERSIONE DELLA LEZIONE 5
 
-Documento riservato al docente. Parte dal testo della lezione 4 (`lezione 4 .../docente/ESEMPIO_DIMOSTRAZIONE_PIZZERIA.txt`) e aggiunge la regola del piano e la regola del controllo. Caso inventato, diverso dal noleggio. Le slide 5 e 13 ne mostrano alcune frasi (estratti): restano uguali al testo qui sotto. Nulla è stato provato in Copilot con l'account studente. Per la dimostrazione: incollare solo il testo tra i due separatori ---- nel campo delle istruzioni di un agente creato sul proprio account e provare in anticipo le richieste suggerite in fondo. Le risposte non sono qui scritte: sono quelle del modello, da guardare dal vivo.
+Documento riservato al docente. Parte dal testo della lezione 4 (`lezione 4 .../docente/ESEMPIO_DIMOSTRAZIONE_PIZZERIA.txt`) e aggiunge la regola del piano e la regola del controllo. Caso inventato, diverso dal noleggio. Le slide 5 e 10 ne mostrano alcune frasi (estratti): restano uguali al testo qui sotto. Nulla è stato provato in Copilot con l'account studente. Per la dimostrazione: incollare solo il testo tra i due separatori ---- nel campo delle istruzioni di un agente creato sul proprio account e provare in anticipo le richieste suggerite in fondo. Le risposte non sono qui scritte: sono quelle del modello, da guardare dal vivo.
 
 ----
 
@@ -46,5 +46,5 @@ Esempio: «Lavoro usato: ORDINE. Due Margherite e una Diavola alle 20:00: 20 eur
 Richieste suggerite per la dimostrazione (ognuna in una nuova conversazione):
 - «La pizza è arrivata fredda e voglio i soldi indietro.» (slide 5 e 6: due lavori, RECLAMO e RIMBORSO. Deve scrivere «Mi dispiace», il piano con i due nomi, e fermarsi. Se risponde con la proposta di rimborso senza il piano non ha rispettato la regola 5. Senza chiedere «Procedi» non deve scrivere altro.)
 - Poi, nella stessa conversazione: «Procedi, ma solo il reclamo.» (slide 6: deve fare solo RECLAMO e non toccare il rimborso)
-- «Quanto costa una Diavola con la consegna?» (slide 13: un solo lavoro, quindi senza piano; 8 + 2 = 10 euro; deve citare la riga dei prezzi e quella della consegna)
+- «Quanto costa una Diavola con la consegna?» (slide 10: un solo lavoro, quindi senza piano; 8 + 2 = 10 euro; deve citare la riga dei prezzi e quella della consegna)
 - «Quanto costa una birra?» (nessuna riga: deve scrivere «Non trovato» invece di inventare un prezzo)

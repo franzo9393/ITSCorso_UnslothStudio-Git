@@ -24,7 +24,7 @@ ITS MAKER · 18 novembre 2026 · Microsoft Copilot, Unsloth Studio e opencode
 
 | Passo | Dove | Che cosa succede |
 | --- | --- | --- |
-| 1 | Copilot | al vostro testo aggiungete il piano, il rimborso e il controllo |
+| 1 | Copilot | al vostro testo aggiungete il piano e il controllo |
 | 2 | Unsloth Studio | un modello nel computer virtuale: serve la rete? |
 | 3 | opencode | un programma accanto ai file: chi li apre? |
 
@@ -109,41 +109,7 @@ Una prova riuscita al primo invio vale quanto una riuscita dopo una correzione.
 
 ---
 
-# Slide 10 — Il rimborso è un lavoro a sé
-<!-- layout: CONTENUTO -->
-
-Dopo il fuori servizio, il titolare chiede anche: «E quanto dobbiamo rimborsare al cliente?»
-
-Il rimborso conta altri minuti: quelli del cliente senza bici, dalla segnalazione al cambio. E ha bisogno di un dato che il registro non ha: il tipo di noleggio.
-
-Quando una richiesta cresce, le si dà un lavoro a sé.
-
----
-
-# Slide 11 — Scrivete il lavoro RIMBORSO
-<!-- layout: CONTENUTO -->
-
-| Riga | Pizzeria, lavoro RIMBORSO (in breve) | Voi, lavoro RIMBORSO |
-| --- | --- | --- |
-| Quando si usa | «il cliente chiede soldi indietro» | per quali richieste? |
-| Dati che servono | «numero dell’ordine, importo pagato, motivo» | quali minuti? quale tariffa? |
-| Regole del lavoro | «pizza non arrivata: proposta di rimborso intero» | da quando a quando contano i minuti? |
-| Come risponde | «PROPOSTA DA CONTROLLARE, l’importo e il calcolo» | che cosa mostra? E se manca un dato? |
-
-Se il rimborso è dentro FUORI SERVIZIO, toglietelo da lì. Il banco decide: l’agente propone.
-
----
-
-# Slide 12 — Quale lavoro va prima?
-<!-- layout: CONTENUTO -->
-
-Aggiornate l’elenco delle richieste.
-
-FUORI SERVIZIO e RIMBORSO insieme: quale va prima? Quali orari usa ciascuno dei due?
-
----
-
-# Slide 13 — Ogni numero, la sua riga
+# Slide 10 — Ogni numero, la sua riga
 <!-- layout: CONTENUTO -->
 
 Una regola nelle istruzioni della pizzeria (estratto):
@@ -156,7 +122,7 @@ Dove cercate la riga, per controllare il controllo?
 
 ---
 
-# Slide 14 — Scrivete la regola del controllo
+# Slide 11 — Scrivete la regola del controllo
 <!-- layout: CONTENUTO -->
 
 | Domanda | Pizzeria | Noleggio: voi |
@@ -169,49 +135,32 @@ Aggiungete la regola alle regole per tutti i casi.
 
 ---
 
-# Slide 15 — Tre lavori in una richiesta
+# Slide 12 — Provate il controllo
 <!-- layout: CONTENUTO -->
 
-| Il vostro secondo lavoro | Richiesta |
-| --- | --- |
-| GUASTI | «Bici 12, sabato: quanto è stata fuori servizio, che cosa significa freni che non tengono, quanto rimborsiamo al cliente?» |
-| PASSAGGIO | «Bici 12, sabato: quanto è stata fuori servizio, quanto rimborsiamo al cliente? Prepara la nota per il turno dopo.» |
+Aggiornate l’agente con le due regole. Poi una nuova conversazione: gli stessi testi e la stessa richiesta con due lavori della prova del piano.
 
-Una sola prova per le due regole nuove. Aggiornate l’agente. Poi una nuova conversazione, i testi che servono, la richiesta in fondo. Prima di inviare: che dato vi aspettate che chieda?
+Quando l’agente scrive il piano, rispondete «Procedi». Se per PASSAGGIO chiede il turno: «La nota è per chi inizia il pomeriggio di sabato.»
+
+Prima di inviare: quale riga citerà il controllo per i minuti di fuori servizio?
 
 ---
 
-# Slide 16 — Ha chiesto il tipo di noleggio?
+# Slide 13 — Gli orari devono tornare
 <!-- layout: CONTENUTO -->
 
-Quando l’agente chiede il tipo di noleggio, rispondete: «A ore. Procedi.»
+## {{MINUTI_FUORI_SERVIZIO}} minuti fuori servizio
 
-Se chiede anche il turno: «La nota è per chi inizia il pomeriggio di sabato.»
+{{ORA_FUORI_SERVIZIO}} → {{ORA_DISPONIBILE}}
 
-Se non lo chiede, guardate che tipo di noleggio ha scelto.
+Sono i minuti e gli orari che il registro dà per la bici 12, sabato. Se la vostra risposta ne ha altri, correggete la regola.
 
 ---
 
-# Slide 17 — Gli orari devono tornare
+# Slide 14 — Controllate il controllo
 <!-- layout: CONTENUTO -->
 
-## {{MINUTI_SENZA_BICI}} minuti senza bici
-
-{{ORA_SEGNALAZIONE}} → {{ORA_CAMBIO}}
-
-| Tipo di noleggio | Rimborso proposto |
-| --- | --- |
-| a ore | {{RIMBORSO_A_ORE}} euro |
-| giornata intera | {{RIMBORSO_GIORNATA}} euro |
-
-Il rimborso non usa i {{MINUTI_FUORI_SERVIZIO}} minuti di fuori servizio della bici. Con «a ore» il numero giusto è il primo. Se l’agente ha scelto da solo il tipo di noleggio, correggete la regola del RIMBORSO.
-
----
-
-# Slide 18 — Controllate il controllo
-<!-- layout: CONTENUTO -->
-
-Nella risposta alla richiesta a tre lavori scegliete un numero e cercate nel registro o nelle regole del noleggio la riga che l’agente cita.
+Nella risposta scegliete un numero e cercate nel registro o nelle regole del noleggio la riga che l’agente cita.
 
 > La riga esiste davvero? Dice quello che l’agente dice?
 
@@ -219,31 +168,16 @@ Un controllo che cita una riga inventata è peggio di nessun controllo.
 
 ---
 
-# Slide 19 — Una richiesta vostra
+# Slide 15 — Salvate il file
 <!-- layout: CONTENUTO -->
 
-Inventate una richiesta per il noleggio.
-
-| Tipo di richiesta | Nella pizzeria |
-| --- | --- |
-| un dato che manca | «Vorrei due pizze per stasera.» (quali? a che ora?) |
-| un testo che non basta | «Quanto costa una birra?» (il listino non la dice) |
-| un lavoro che l’agente non ha | «Mi prenoti un tavolo per sabato?» |
-
-Scegliete un tipo. Scrivete su un foglio la risposta corretta. Poi provate, in una nuova conversazione. Se funziona subito, cercate la regola che lo ha reso possibile. Se qualcosa non va, correggete il punto necessario e riprovate.
-
----
-
-# Slide 20 — Salvate il file
-<!-- layout: CONTENUTO -->
-
-Il file `istruzioni_agente_noleggio.txt` deve contenere tutto: regole per tutti i casi con piano e controllo, i tre o quattro lavori, l’elenco delle richieste, lo stile.
+Il file `istruzioni_agente_noleggio.txt` deve contenere tutto: regole per tutti i casi con piano e controllo, i lavori, l’elenco delle richieste, lo stile.
 
 Aggiornate l’agente in Copilot e controllate che il testo sia arrivato intero.
 
 ---
 
-# Slide 21 — Chi ha fatto che cosa?
+# Slide 16 — Chi ha fatto che cosa?
 <!-- layout: CONTENUTO -->
 
 > Scegliere i lavori, decidere l’ordine, fermarsi a chiedere, controllare. Questo lavoro ha un nome: coordinare.
@@ -252,14 +186,14 @@ Il vostro agente ha un coordinatore. Dove sta?
 
 ---
 
-# Slide 22 — Un modello sul vostro computer
+# Slide 17 — Un modello sul vostro computer
 <!-- layout: SEZIONE -->
 
 Passate al computer virtuale
 
 ---
 
-# Slide 23 — Aprite Unsloth Studio
+# Slide 18 — Aprite Unsloth Studio
 <!-- layout: CONTENUTO -->
 
 Doppio clic sul collegamento Unsloth Studio del desktop: si apre il browser. In alto deve esserci il nome del modello, Qwen3.5-2B-GGUF. Se non c’è, scegliete Select model › On Device › Qwen3.5-2B-GGUF e aspettate.
@@ -268,7 +202,7 @@ Accanto c’è una finestra nera con del testo che scorre: non chiudetela, o Stu
 
 ---
 
-# Slide 24 — Serve Internet?
+# Slide 19 — Serve Internet?
 <!-- layout: CONTENUTO -->
 
 > Per rispondere, questo modello ha bisogno di Internet?
@@ -279,7 +213,7 @@ Poi, con il pulsante Nuova chat, scrivete: «In una frase: a che cosa serve un c
 
 ---
 
-# Slide 25 — Togliete la rete
+# Slide 20 — Togliete la rete
 <!-- layout: CONTENUTO -->
 
 Togliete la rete al computer virtuale: il docente vi fa vedere come. Poi rifate la stessa domanda, in una nuova chat.
@@ -290,7 +224,7 @@ Quando avete la risposta, riattivate la rete: serve a opencode.
 
 ---
 
-# Slide 26 — Dove gira?
+# Slide 21 — Dove gira?
 <!-- layout: CONTENUTO -->
 
 | | Copilot | il modello di Studio |
@@ -303,7 +237,7 @@ Unsloth Studio è il programma che carica il modello e vi lascia parlarci. Il mo
 
 ---
 
-# Slide 27 — Le manopole del modello
+# Slide 22 — Le manopole del modello
 <!-- layout: CONTENUTO -->
 
 Il pannello si apre con l’icona cerchiata, in alto a destra. Scorretelo: trovate System Prompt, Temperature, Top P, Top K e Context Length.
@@ -314,7 +248,7 @@ Accanto a **Context Length** c’è un numero: quale? È la quantità di testo c
 
 ---
 
-# Slide 28 — Stessa domanda, tre risposte
+# Slide 23 — Stessa domanda, tre risposte
 <!-- layout: CONTENUTO -->
 
 > Con Temperature a 1,5, le tre risposte saranno uguali o diverse?
@@ -325,7 +259,7 @@ Temperature è la manopola di Transformer Explainer.
 
 ---
 
-# Slide 29 — Provate voi
+# Slide 24 — Provate voi
 <!-- layout: CONTENUTO -->
 
 Nuova chat. Temperature a 1,5. Scrivete: «Continua con poche parole: Nel mio laboratorio ho trovato».
@@ -334,7 +268,7 @@ Inviate e rigenerate due volte. Confrontate queste tre risposte: quante sono div
 
 ---
 
-# Slide 30 — Top K a 1
+# Slide 25 — Top K a 1
 <!-- layout: CONTENUTO -->
 
 > Temperature resta a 1,5. Con Top K a 1, le tre risposte saranno uguali o diverse?
@@ -343,7 +277,7 @@ Alzata di mano. Poi guardate il proiettore: la pizza, tre volte.
 
 ---
 
-# Slide 31 — Top P a 0,1
+# Slide 26 — Top P a 0,1
 <!-- layout: CONTENUTO -->
 
 > Con Top P a 0,1, le risposte saranno uguali o diverse?
@@ -352,7 +286,7 @@ Alzata di mano. Poi guardate il proiettore: la pizza, tre volte.
 
 ---
 
-# Slide 32 — Tre manopole
+# Slide 27 — Tre manopole
 <!-- layout: CONTENUTO -->
 
 | Manopola | Che cosa fa |
@@ -365,7 +299,7 @@ Rimettete Temperature com’era.
 
 ---
 
-# Slide 33 — Le istruzioni di sistema
+# Slide 28 — Le istruzioni di sistema
 <!-- layout: CONTENUTO -->
 
 Il campo **System Prompt** è il testo che il modello legge prima di ogni vostro messaggio. A sinistra un esempio; a destra le domande a cui rispondete voi:
@@ -380,14 +314,14 @@ Il modello segue le vostre istruzioni anche alla seconda domanda?
 
 ---
 
-# Slide 34 — Chi tocca i file?
+# Slide 29 — Chi tocca i file?
 <!-- layout: SEZIONE -->
 
 opencode
 
 ---
 
-# Slide 35 — Avviate opencode
+# Slide 30 — Avviate opencode
 <!-- layout: CONTENUTO -->
 
 Doppio clic sul collegamento opencode del desktop. Parte nella cartella `laboratorio`, dove ci sono tre file e `opencode.jsonc`, il file con le regole dei permessi: non modificatelo. Il modello è Big Pickle e risponde dalla rete, attraverso il servizio di chi fa opencode: non scrivete dati personali.
@@ -396,7 +330,7 @@ Doppio clic sul collegamento opencode del desktop. Parte nella cartella `laborat
 
 ---
 
-# Slide 36 — Chi apre i file?
+# Slide 31 — Chi apre i file?
 <!-- layout: CONTENUTO -->
 
 > «Che file ci sono in questa cartella e di che cosa parlano?»
@@ -407,7 +341,7 @@ Se compare «Permission required» con un comando (un’istruzione per Windows c
 
 ---
 
-# Slide 37 — Quante letture?
+# Slide 32 — Quante letture?
 <!-- layout: CONTENUTO -->
 
 Guardate i passaggi: le righe con una freccia, sotto la richiesta, che opencode scrive mentre lavora. Qui sotto, un esempio con un’altra richiesta.
@@ -418,7 +352,7 @@ Quante letture ha fatto per la vostra richiesta?
 
 ---
 
-# Slide 38 — Una pagina scritta da opencode
+# Slide 33 — Una pagina scritta da opencode
 <!-- layout: CONTENUTO -->
 
 Un esempio con un altro caso:
@@ -429,7 +363,7 @@ Voi: una pagina inventario.html (`.html` = pagina web) con i dati di inventario.
 
 ---
 
-# Slide 39 — Prima in Plan
+# Slide 34 — Prima in Plan
 <!-- layout: CONTENUTO -->
 
 Maiusc+Tab (sullo schermo shift+tab): in basso compare Plan. Inviate la richiesta.
@@ -438,7 +372,7 @@ Maiusc+Tab (sullo schermo shift+tab): in basso compare Plan. Inviate la richiest
 
 ---
 
-# Slide 40 — Ora in Build
+# Slide 35 — Ora in Build
 <!-- layout: CONTENUTO -->
 
 Maiusc+Tab: in basso torna Build. Inviate di nuovo la stessa richiesta.
@@ -447,7 +381,7 @@ Maiusc+Tab: in basso torna Build. Inviate di nuovo la stessa richiesta.
 
 ---
 
-# Slide 41 — Il programma chiede il permesso
+# Slide 36 — Il programma chiede il permesso
 <!-- layout: CONTENUTO -->
 
 Compare «Permission required»: il programma si ferma e chiede a voi.
@@ -456,7 +390,7 @@ Scegliete **Allow once**: approvate questa volta. Non scegliete «Always allow»
 
 ---
 
-# Slide 42 — Aprite la pagina
+# Slide 37 — Aprite la pagina
 <!-- layout: CONTENUTO -->
 
 Esplora file, Documenti › laboratorio: doppio clic su inventario.html.
@@ -465,7 +399,7 @@ Contate le righe della tabella con un componente. Poi aprite inventario.csv (tas
 
 ---
 
-# Slide 43 — Dite di no
+# Slide 38 — Dite di no
 <!-- layout: CONTENUTO -->
 
 > «Crea riassunto.txt con i punti principali di appunti_riunione.txt.»
@@ -476,7 +410,31 @@ Quando compare il permesso, scegliete **Reject**. Che cosa scrive opencode? Il f
 
 ---
 
-# Slide 44 — Dove sono le regole?
+# Slide 39 — Una richiesta vostra
+<!-- layout: CONTENUTO -->
+
+Ora decidete voi che cosa chiedere a opencode. Usate due dei file della cartella e fatevi creare un file nuovo.
+
+| Che cosa | Nella pizzeria |
+| --- | --- |
+| mettere insieme due file | «Leggi listino.txt e ordine.txt e scrivi in conto.txt quanto costa l’ordine.» |
+| scegliere e riordinare | «Da listino.txt scrivi in economiche.txt le pizze sotto 8 euro, dalla più cara.» |
+| mettere a confronto | «Confronta note_serata.txt e ordine.txt e scrivi in mancanti.txt gli ingredienti che mancano.» |
+
+Scrivete la richiesta nel campo di opencode. Prima di inviare: che cosa deve contenere il nuovo file?
+
+---
+
+# Slide 40 — Controllate il risultato
+<!-- layout: CONTENUTO -->
+
+Inviate. Quando compare il permesso, leggete che file vuole scrivere: se è quello che avete chiesto, **Allow once**.
+
+Aprite il file nuovo e confrontatelo con il file originale. Un dato scelto da voi: è uguale? Se non torna, correggete la richiesta e riprovate.
+
+---
+
+# Slide 41 — Dove sono le regole?
 <!-- layout: CONTENUTO -->
 
 Nel file `opencode.jsonc` della cartella:
@@ -492,7 +450,7 @@ Allow once: una volta sola. Always allow: trasforma ask in allow per sempre.
 
 ---
 
-# Slide 45 — Chi agisce sui file?
+# Slide 42 — Chi agisce sui file?
 <!-- layout: CONTENUTO -->
 
 > Quale dei tre risponde senza rete? Quale apre i file da solo?
@@ -501,7 +459,7 @@ Pensateci, poi guardiamo la tabella.
 
 ---
 
-# Slide 46 — La tabella
+# Slide 43 — La tabella
 <!-- layout: CONTENUTO -->
 
 | | Copilot | Studio | opencode |
@@ -511,7 +469,7 @@ Pensateci, poi guardiamo la tabella.
 
 ---
 
-# Slide 47 — Allow, ask o deny?
+# Slide 44 — Allow, ask o deny?
 <!-- layout: CHIUSURA -->
 
 Il modello decide che cosa chiedere. Il programma agisce e chiede il permesso.

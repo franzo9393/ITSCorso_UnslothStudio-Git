@@ -4,9 +4,9 @@
 
 ## Da dove partiamo
 
-Il titolare di Ruota Libera ha provato il vostro agente e chiede tre cose:
+Il titolare di Ruota Libera ha provato il vostro agente e chiede due cose:
 
-> «Quando ti chiedo due cose insieme, voglio vedere il piano prima della risposta. Il rimborso deve essere un lavoro a parte. E accanto a ogni numero voglio sapere da quale riga viene.»
+> «Quando ti chiedo due cose insieme, voglio vedere il piano prima della risposta. E accanto a ogni numero voglio sapere da quale riga viene.»
 
 Ognuno lavora da solo sul proprio computer. Nella parte 1 partite dal file della lezione 4: `istruzioni_agente_noleggio.txt`. Non avete il file? Ve ne diamo uno di partenza. Non ci sono file da consegnare: il risultato si guarda sullo schermo. Salvate solo il file delle istruzioni, aggiornato.
 
@@ -14,7 +14,7 @@ Il percorso è questo:
 
 | Passo | Dove | Che cosa succede |
 | --- | --- | --- |
-| 1 | Microsoft Copilot | al vostro testo aggiungete il piano, il rimborso e il controllo |
+| 1 | Microsoft Copilot | al vostro testo aggiungete il piano e il controllo |
 | 2 | Unsloth Studio, nel computer virtuale | un modello nel computer virtuale: serve la rete? |
 | 3 | opencode, nel computer virtuale | un programma accanto ai file: chi li apre? |
 
@@ -26,7 +26,7 @@ Il percorso è questo:
 4. In una nuova conversazione scrivete un solo messaggio: registro, regole del noleggio e in fondo la richiesta: «Per quanti minuti è stata fuori servizio la bici 12 sabato? Mostrami gli orari.»
 5. Controllate gli orari con il registro.
 
-## Parte 1 · Tre cose nuove per il vostro agente
+## Parte 1 · Due cose nuove per il vostro agente
 
 ### 1A · Il piano prima della risposta
 
@@ -59,24 +59,7 @@ Prima di inviare, decidete che piano vi aspettate. Poi controllate: il piano vie
 
 Una prova riuscita al primo invio vale quanto una riuscita dopo una correzione.
 
-### 1B · Il rimborso diventa un lavoro
-
-Dopo il fuori servizio il titolare chiede anche il rimborso. Il rimborso conta altri minuti: quelli del cliente senza bici, dalla segnalazione al cambio. E ha bisogno di un dato che nel registro non c'è, il tipo di noleggio. Quando una richiesta cresce, le si dà un lavoro a sé.
-
-Qui sotto, a sinistra, il lavoro RIMBORSO della pizzeria; a destra le domande a cui rispondete voi:
-
-| Riga | Pizzeria, lavoro RIMBORSO (in breve) | Noleggio |
-| --- | --- | --- |
-| Quando si usa | «il cliente chiede soldi indietro» | Per quali richieste? |
-| Dati che servono | «numero dell'ordine, importo pagato, motivo» | Quali minuti? Quale tariffa? |
-| Regole del lavoro | «pizza non arrivata: proposta di rimborso intero» | Da quando a quando contano i minuti? |
-| Come risponde | «PROPOSTA DA CONTROLLARE, l'importo e il calcolo» | Che cosa mostra? E se manca un dato? |
-
-1. Se nel vostro FUORI SERVIZIO c'è il rimborso, toglietelo. Se non c'è, scrivete RIMBORSO da zero.
-2. Scrivete il lavoro RIMBORSO con le quattro righe. Il banco decide: l'agente propone.
-3. Aggiornate l'**elenco delle richieste**. Quando una richiesta ha FUORI SERVIZIO e RIMBORSO insieme: quale va prima? Quali orari usa ciascuno dei due?
-
-### 1C · Ogni numero, la sua riga, e una prova sola
+### 1B · Ogni numero, la sua riga
 
 Il titolare vuole sapere da dove viene ogni numero. La regola della pizzeria, proiettata:
 
@@ -92,32 +75,13 @@ Scrivete la regola per il noleggio:
 | Che cosa scrive? | «la riga delle istruzioni» | Quale testo? Con quale data e ora? |
 | E se non trova la riga? | «Non trovato» | Che cosa fa? |
 
-Poi una sola prova per le due regole nuove: aggiornate l'agente, aprite una nuova conversazione, con i testi che servono. In fondo la richiesta con tre lavori:
+Poi la prova: aggiornate l'agente e aprite una nuova conversazione, con gli stessi testi e la stessa richiesta con due lavori della prova del piano. Prima di inviare: quale riga citerà il controllo per i minuti di fuori servizio? Quando l'agente scrive il piano, rispondete «Procedi». Se per PASSAGGIO chiede il turno: «La nota è per chi inizia il pomeriggio di sabato.»
 
-| Il vostro secondo lavoro | Richiesta |
-| --- | --- |
-| GUASTI | «Bici 12, sabato: quanto è stata fuori servizio, che cosa significa freni che non tengono, quanto rimborsiamo al cliente?» |
-| PASSAGGIO | «Bici 12, sabato: quanto è stata fuori servizio, quanto rimborsiamo al cliente? Prepara la nota per il turno dopo.» |
+Poi controllate gli orari e i minuti di fuori servizio proiettati. Scegliete un numero della risposta e cercate nel registro o nelle regole del noleggio la riga che l'agente cita: esiste davvero? Dice quello che l'agente dice? Un controllo con una riga inventata è peggio di nessun controllo.
 
-Prima di inviare: che dato vi aspettate che chieda?
+### Salvate il file
 
-Dopo l'invio, se l'agente chiede il tipo di noleggio, rispondete: «A ore. Procedi.» Se chiede anche il turno: «La nota è per chi inizia il pomeriggio di sabato.» Se non lo chiede, guardate quale tipo ha scelto: se l'ha scelto da solo, correggete la regola del RIMBORSO. Poi controllate i numeri proiettati: minuti senza bici, rimborso a ore e a giornata. Il rimborso deve usare i minuti del cliente senza bici, non quelli di fuori servizio della bici.
-
-Poi scegliete un numero della risposta e cercate nel registro o nelle regole del noleggio la riga che l'agente cita: esiste davvero? Dice quello che l'agente dice? Un controllo con una riga inventata è peggio di nessun controllo.
-
-### 1D · Una richiesta vostra
-
-Inventate una richiesta per il noleggio, di uno di questi tipi:
-
-| Tipo di richiesta | Nella pizzeria |
-| --- | --- |
-| un dato che manca | «Vorrei due pizze per stasera.» (quali? a che ora?) |
-| un testo che non basta | «Quanto costa una birra?» (il listino non la dice) |
-| un lavoro che l'agente non ha | «Mi prenoti un tavolo per sabato?» |
-
-Scrivete su un foglio la risposta corretta. Provate la richiesta in una nuova conversazione. Se funziona subito, cercate la regola che lo ha reso possibile. Se qualcosa non va, correggete il punto necessario nel file e riprovate. Non peggiorate le istruzioni per provocare un errore.
-
-Prima di passare alla parte 2 il file `istruzioni_agente_noleggio.txt` deve essere completo: regole per tutti i casi con piano e controllo, i lavori, l'elenco delle richieste, lo stile. Controllate che il testo in Copilot sia arrivato intero.
+Aggiornate l'agente in Copilot e controllate che il testo sia arrivato intero. Il file `istruzioni_agente_noleggio.txt` deve contenere tutto: regole per tutti i casi con piano e controllo, i lavori, l'elenco delle richieste, lo stile.
 
 ### Chi ha fatto che cosa
 
@@ -234,6 +198,20 @@ Ora tocca a voi. Scrivete una richiesta per una pagina `inventario.html` con i d
 Scrivete in Build: «Crea riassunto.txt con i punti principali di appunti_riunione.txt.» Prima di inviare, decidete: dopo un Reject, opencode vi darà comunque il riassunto a parole? Quando compare il permesso, scegliete **Reject**.
 
 Che cosa scrive opencode? Aprite Esplora file: `riassunto.txt` c’è?
+
+### 3D · Una richiesta vostra
+
+Ora decidete voi che cosa chiedere a opencode. Usate due dei file della cartella e fatevi creare un file nuovo. Esempi di un altro caso, una pizzeria:
+
+| Che cosa | Nella pizzeria |
+| --- | --- |
+| mettere insieme due file | «Leggi listino.txt e ordine.txt e scrivi in conto.txt quanto costa l'ordine.» |
+| scegliere e riordinare | «Da listino.txt scrivi in economiche.txt le pizze sotto 8 euro, dalla più cara.» |
+| mettere a confronto | «Confronta note_serata.txt e ordine.txt e scrivi in mancanti.txt gli ingredienti che mancano.» |
+
+1. Scrivete la richiesta nel campo di opencode. Prima di inviare, decidete: che cosa deve contenere il file nuovo?
+2. Inviate. Quando compare il permesso, leggete che file vuole scrivere: se è quello che avete chiesto, scegliete **Allow once**. Se chiede un comando, valgono le regole scritte sopra.
+3. Aprite il file nuovo e confrontate un dato scelto da voi con il file originale: è uguale? Se non torna, correggete la richiesta e riprovate.
 
 ### Dove sono le regole?
 
