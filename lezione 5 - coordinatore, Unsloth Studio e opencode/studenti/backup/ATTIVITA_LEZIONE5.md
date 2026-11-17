@@ -6,15 +6,13 @@
 
 Il titolare di Ruota Libera ha provato il vostro agente e vuole che sappia fare tutti e tre i lavori: fuori servizio, guasti e passaggio di turno. Oggi completate l'agente e controllate che scelga bene.
 
-Ognuno lavora da solo sul proprio computer. Nella parte 1 partite dal file della lezione 4: `istruzioni_agente_noleggio.txt`. Non avete il file? Ve ne diamo uno di partenza, che ha già i tre lavori. Non ci sono file da consegnare: il risultato si guarda sullo schermo. Salvate solo il file delle istruzioni, aggiornato.
+Ognuno lavora da solo sul proprio computer. Nella parte 1 partite dal file della lezione 4: `istruzioni_agente_noleggio.txt`. Non avete il file? Chiedete il testo di partenza, poi salvatelo con quel nome: ha già i tre lavori. Non ci sono file da consegnare: il risultato si guarda sullo schermo. Salvate solo il file delle istruzioni, aggiornato.
 
-Il percorso è questo:
+Oggi usate tre strumenti:
 
-| Passo | Dove | Che cosa succede |
-| --- | --- | --- |
-| 1 | Microsoft Copilot | il vostro agente ha più lavori: chi sceglie quale usare? |
-| 2 | Unsloth Studio, nel computer virtuale | un modello nel computer virtuale: serve la rete? |
-| 3 | opencode, nel computer virtuale | un programma accanto ai file: chi li apre? |
+- Microsoft Copilot: il vostro agente con più lavori.
+- Unsloth Studio, nel computer virtuale: un modello che gira sul vostro computer.
+- opencode, nel computer virtuale: un programma che lavora sui file.
 
 ## Riaprite il vostro agente
 
@@ -24,49 +22,32 @@ Il percorso è questo:
 4. In una nuova conversazione scrivete un solo messaggio: registro, regole del noleggio e in fondo la richiesta: «Per quanti minuti è stata fuori servizio la bici 12 sabato? Mostrami gli orari.»
 5. Controllate gli orari con il registro.
 
-## Parte 1 · Un elenco e dei lavori
+## Parte 1 · Un agente con più lavori
 
-### 1A · Come è fatto un agente con più lavori
+### 1A · Le due parti dell'agente
 
-Il testo del vostro agente ha due parti: l'**elenco delle richieste**, che dice a quale lavoro va ogni richiesta, e i **lavori**, ognuno con le sue regole. Due pezzi dell'agente di una pizzeria d'asporto, proiettati (i tagli sono segnati con […]):
+Il testo del vostro agente ha due parti: l'**elenco delle richieste**, che dice a quale lavoro va ogni richiesta, e i **lavori**, ognuno con le sue regole. Aprite `istruzioni_agente_noleggio.txt` e cercatele. Un esempio dal testo di partenza (i tagli sono segnati con […]):
 
 | L'elenco dice | Il lavoro dice |
 | --- | --- |
-| «Pizza fredda o in ritardo, pizza sbagliata → RECLAMO» | «Quando: la pizza è fredda, sbagliata o in ritardo. […] Come rispondere: tre punti.» |
-| «Che cosa c'è in una pizza, glutine, allergeni → INFORMAZIONI» | «Quando: il cliente chiede gli ingredienti. Testo da usare: solo la scheda degli ingredienti. […]» |
+| «Che cosa significa un guasto, che cosa fa il banco → GUASTI» | «Quando: il banco vuole sapere che cosa significa un guasto. […]» |
+| «Nota per il turno dopo, riassunto di un giorno, che cosa è successo → PASSAGGIO» | «Quando: serve una nota per chi inizia il turno dopo. […]» |
 
-### 1B · Quale lavoro sceglie?
+### 1B · Il lavoro che manca
 
-L'agente della pizzeria ha cinque lavori: ORDINE, RECLAMO, RIMBORSO, INFORMAZIONI, ORARI. Nel Blocco note scrivete, per ogni richiesta, il lavoro che vi aspettate. Può essere uno, due o nessuno. Poi le proviamo una per una in Copilot dal proiettore.
+Nel vostro file ci sono FUORI SERVIZIO e un secondo lavoro. Scrivete quello che manca: GUASTI se avete PASSAGGIO, PASSAGGIO se avete GUASTI. Avete solo FUORI SERVIZIO? Scrivete prima PASSAGGIO, poi GUASTI. Servono una voce nell'elenco e il lavoro, nel file `istruzioni_agente_noleggio.txt`. Accanto all'esempio di FUORI SERVIZIO, le domande a cui rispondete voi:
 
-| Richiesta | Il vostro pronostico |
-| --- | --- |
-| «Vorrei due Margherite per le 20:00.» | |
-| «La Diavola ha il glutine?» | |
-| «La pizza è arrivata fredda e voglio i soldi indietro.» | |
-| «A che ora aprite il sabato?» | |
-| «Mi prenoti un tavolo per sabato?» | |
-
-Guardate la prima riga di ogni risposta: «Lavoro usato:». Alla richiesta con due lavori: perché in quest'ordine? Che cosa deve passare dal primo lavoro al secondo? Se il secondo lavoro usasse un numero d'ordine diverso dal primo, chi se ne accorge?
-
-### 1C · Il lavoro che manca
-
-Nel vostro file ci sono FUORI SERVIZIO e un secondo lavoro. Scrivete quello che manca: GUASTI se avete PASSAGGIO, PASSAGGIO se avete GUASTI. Servono una voce nell'elenco e il lavoro, nel file `istruzioni_agente_noleggio.txt`. A destra le domande a cui rispondete voi:
-
-| Domanda | Pizzeria: INFORMAZIONI | Noleggio |
+| Domanda | Esempio: FUORI SERVIZIO | Il lavoro che manca |
 | --- | --- | --- |
-| Quando scatta? | «il cliente chiede ingredienti, glutine o allergeni» | Per quali richieste? |
-| Che testo usa? | «solo la scheda degli ingredienti» | Quale testo del noleggio? |
-| Se manca un dato? | «Non lo so: chiedi al banco.» | Che cosa fa? |
-| Come risponde? | in una riga | In quale forma? |
+| Quando scatta? | «serve la durata di un fuori servizio, i minuti senza bici di un cliente o un rimborso» | Per quali richieste? |
+| Che testo usa? | «le regole del noleggio e il registro» | Quale testo? |
+| Come risponde? | «i due orari usati, la sottrazione e il risultato in minuti» | In quale forma? |
 
-Avete ricevuto il testo di partenza? Ha già tutti e tre i lavori: leggetelo e passate alla prova.
+Salvate il file. In Copilot incollate tutto il testo nelle istruzioni del vostro agente. L'ultima riga del file è anche l'ultima in Copilot? Non avete il file? Usate il testo di partenza: ha già i tre lavori.
 
-Salvate il file. In Copilot incollate tutto il testo nelle istruzioni del vostro agente. L'ultima riga del file è anche l'ultima in Copilot?
+### 1C · Una richiesta per lavoro
 
-### 1D · Provate: una richiesta per lavoro
-
-Una nuova conversazione per ogni richiesta: registro, regole del noleggio, guida ai guasti e in fondo la richiesta. Prima di inviare, scrivete quale lavoro vi aspettate.
+Una nuova conversazione per ogni richiesta: registro, regole del noleggio, guida ai guasti e in fondo la richiesta.
 
 | Il lavoro | La richiesta |
 | --- | --- |
@@ -74,73 +55,79 @@ Una nuova conversazione per ogni richiesta: registro, regole del noleggio, guida
 | GUASTI | «Che cosa significa freni che non tengono?» |
 | PASSAGGIO | «Scrivi la nota per il turno dopo, sabato.» |
 
-Guardate la prima riga di ogni risposta. È il lavoro che vi aspettavate? Se non lo è, non partite dal lavoro: leggete la voce dell'elenco. Dice abbastanza chiaramente quando usarlo? Una prova riuscita al primo invio vale quanto una riuscita dopo una correzione.
+Guardate la prima riga di ogni risposta: «Lavoro usato:». Se il lavoro non è quello giusto, leggete la voce dell'elenco: dice abbastanza chiaramente quando usarlo? Correggetela e riprovate. Una prova riuscita al primo invio vale quanto una riuscita dopo una correzione.
 
-### 1E · Un caso che l'elenco non prevede
+### 1D · Una richiesta vostra
 
-Nella pizzeria: «La Diavola ha il glutine e quanto costa?» Sono due lavori, INFORMAZIONI e ORDINE, e nell'elenco non c'è nessuna riga per questa coppia. Per alzata di mano: parte da INFORMAZIONI, parte da ORDINE, o ne usa uno solo? Poi si prova dal proiettore.
+Inventate una richiesta del noleggio che potrebbe andare a due lavori, o a nessuno. Provatela in una nuova conversazione, con registro, regole e guida. Se va dove non volevate, correggete l'elenco o aggiungete la riga che manca, poi riprovate.
 
-Ora inventate il vostro caso: una richiesta del noleggio che potrebbe andare a due lavori, o a nessuno. Scrivetela nel Blocco note e, prima di inviarla, scrivete dove la mandereste voi. Provatela. Se va dove non volevate, correggete la voce dell'elenco o aggiungete la riga che manca, poi riprovate.
-
-### 1F · Due lavori in catena
+### 1E · Due lavori in catena
 
 Richiesta: «Bici 12, sabato: per quanti minuti è stata fuori servizio? Scrivi la nota per il turno dopo.»
 
-Nel vostro elenco deve esserci una riga per FUORI SERVIZIO e PASSAGGIO insieme: prima FUORI SERVIZIO, poi il risultato entra nella nota. Se manca, scrivetela e aggiornate l'agente. Prima di inviare: quale numero comparirà nella nota?
+Nel vostro elenco deve esserci una riga per FUORI SERVIZIO e PASSAGGIO insieme: prima FUORI SERVIZIO, poi il risultato entra nella nota. Se manca, scrivetela e aggiornate l'agente. Poi inviate la richiesta, in una nuova conversazione con registro, regole e guida.
 
-Poi guardate il numero e gli orari proiettati, che sono quelli del registro per la bici 12, sabato. Nella vostra nota, sotto «Fuori servizio»: sono gli stessi?
+Guardate il numero e gli orari proiettati, che sono quelli del registro per la bici 12, sabato. Nella vostra nota, dove parla del fuori servizio della bici 12: sono gli stessi?
 
 ### Salvate il file
 
-Il file `istruzioni_agente_noleggio.txt` deve contenere tutto: regole per tutti i casi, l'elenco delle richieste con le vostre correzioni, i tre lavori, lo stile. Aggiornate l'agente in Copilot e controllate che il testo sia arrivato intero.
+Il file `istruzioni_agente_noleggio.txt` deve contenere tutto: le regole, l'elenco delle richieste con le vostre correzioni, i tre lavori, lo stile. Aggiornate l'agente in Copilot e controllate che il testo sia arrivato intero.
 
-### Chi ha scelto? Chi ha controllato?
+### Chi ha controllato il numero?
 
-Copilot ha scelto il lavoro leggendo l'elenco che avete scritto voi. Il numero nella nota: chi l'ha controllato?
+Copilot ha scelto il lavoro e scritto la nota. Il numero l'avete confrontato voi con il registro: nessun programma l'ha fatto al vostro posto.
 
 ## Parte 2 · Un modello sul vostro computer
 
 Passate al computer virtuale: un computer dentro il computer, con il suo Windows e i suoi programmi. Ognuno ha il suo. Unsloth Studio è il programma che carica un modello e vi lascia parlarci.
 
+### Da dove viene il modello
+
+Unsloth Studio ha preso il modello da **Hugging Face**: un sito pubblico dove si pubblicano modelli, anche versioni di modelli fatti da altri. Prima di scaricarne uno, lì si legge chi l’ha pubblicato, con quale licenza (che cosa ne potete fare) e quanto pesano i file. Guardate sulla slide la pagina di un altro modello, `bartowski/Llama-3.2-1B-Instruct-GGUF`, con quattro punti cerchiati: chi l’ha pubblicato, la licenza, il file più piccolo e il più grande.
+
+Poi cercate il vostro. Nel browser del computer virtuale scrivete l’indirizzo `https://huggingface.co/unsloth/Qwen3.5-2B-GGUF` e trovate le stesse quattro cose: chi l’ha pubblicato, la licenza, il file più piccolo e il più grande. I file sono nell’elenco a destra della pagina, sotto «Hardware compatibility». GGUF è il tipo di file che legge Studio.
+
+Lo stesso modello ha tanti file, uno per dimensione.
+
 ### Aprite Studio
+
+Chiudete la pagina di Hugging Face.
 
 1. Fate doppio clic sul collegamento **Unsloth Studio** del desktop: si apre il browser.
 2. In alto deve esserci il nome del modello, Qwen3.5-2B-GGUF. Se non c’è, scegliete Select model › On Device › Qwen3.5-2B-GGUF e aspettate che si carichi.
-3. Accanto c’è una finestra nera con del testo che scorre: non chiudetela, o Studio si ferma. Se compare «2 aggiornamenti del runtime», scegliete «Più tardi».
+3. Accanto c’è una finestra nera con del testo che scorre: non chiudetela, o Studio si ferma. Se compare un avviso di aggiornamento, scegliete «Remind me later» o «Più tardi»: non aggiornate.
 
 Il modello si chiama Qwen3.5-2B: «2B» vuol dire due miliardi di pesi, i numeri che ha imparato.
 
 ### 2A · Serve Internet?
 
-1. Prima di provare, decidete: per rispondere, questo modello ha bisogno di Internet? Sì o no. Alzata di mano.
-2. Con il pulsante **Nuova chat**, a sinistra, aprite una chat. Scrivete: «In una frase: a che cosa serve un cacciavite?» Leggete la risposta.
-3. Togliete la rete al computer virtuale. Il docente vi fa vedere come.
-4. In un’altra chat rifate la stessa domanda. Risponde ancora?
+1. Pensate: per rispondere, questo modello ha bisogno di Internet?
+2. Con il pulsante **Nuova chat** (o **New Chat**), a sinistra, aprite una chat. Scrivete: «In una frase: a che cosa serve un cacciavite?» Leggete la risposta.
+3. Togliete la rete al computer virtuale.
+4. In una nuova chat rifate la stessa domanda. Risponde ancora?
 5. Riattivate la rete: serve tra poco a opencode.
 
 Ora guardate dove gira il modello:
 
-| | Copilot | il modello di Studio |
+| | Copilot | Studio |
 | --- | --- | --- |
-| Dove gira | in rete, sui computer di Microsoft | sul vostro computer virtuale |
-| Il codice | non si può leggere | aperto: si può leggere |
-| Di chi è | di Microsoft | vostro: è un file sul vostro computer |
+| Dove gira il modello | in rete, sui computer di Microsoft | sul vostro computer virtuale |
+| Il programma | il codice non si può leggere | il codice è aperto: si può leggere |
+| Di chi è | di Microsoft | una copia sul vostro computer: la licenza che avete letto dice che cosa potete farne |
 
-### 2B · Le manopole del modello
+### 2B · I parametri del modello
 
-Il pannello delle impostazioni si apre con l’icona in alto a destra, nella figura della slide. Scorretelo: trovate **System Prompt**, **Temperature**, **Top P**, **Top K** e **Context Length** (la quantità di testo che il modello riesce a tenere insieme). Quale numero c’è accanto a Context Length? Non toccatelo. Guardate anche il valore di Temperature: alla fine lo rimettete com’era.
+Il pannello delle impostazioni si apre con l’icona in alto a destra, nella figura della slide. Scorretelo: trovate **System Prompt**, **Temperature** e **Context Length** (la quantità di testo che il modello riesce a tenere insieme). Quale numero c’è accanto a Context Length? Non toccatelo. Guardate anche il valore di Temperature: alla fine lo rimettete com’era.
 
-Temperature la conoscete: è la manopola di Transformer Explainer. Il docente la mostra dal proiettore con una richiesta diversa dalla vostra: «Scrivi il nome di una pizza nuova, in poche parole.», tre volte, con Temperature a 1,5. Prima di guardare, alzata di mano: le tre risposte saranno uguali o diverse?
+Temperature la conoscete: è un parametro, come in Transformer Explainer. Prima di guardare: con Temperature a 1,5, le tre risposte saranno uguali o diverse? Poi guardate sul proiettore una richiesta diversa dalla vostra: «Scrivi il nome di una pizza nuova, in poche parole.», tre volte.
 
-Poi tocca a voi. Aprite una nuova chat. Portate Temperature a 1,5. Scrivete: «Continua con poche parole: Nel mio laboratorio ho trovato». Inviate e rigenerate la risposta due volte: il docente vi fa vedere dove. Confrontate queste tre risposte: quante sono diverse?
+Poi tocca a voi. Aprite una nuova chat. Portate Temperature a 1,5. Scrivete: «Continua con poche parole: Nel mio laboratorio ho trovato». Inviate e rigenerate la risposta due volte. Confrontate queste tre risposte: quante sono diverse?
 
-Altre due manopole le mostra il docente dal proiettore, sempre con la pizza. Prima di ogni prova, alzata di mano: con **Top K a 1** (Temperature resta a 1,5), le tre risposte saranno uguali o diverse? E con **Top P a 0,1**?
+Sulla slide c’è poi la tabella dei tre parametri: Temperature, Top K e Top P. Top K e Top P non li provate adesso: sono spunti per l’esplorazione libera. Rimettete Temperature com’era.
 
-Che cosa fa ogni manopola lo dice il docente dopo le prove, con una tabella proiettata. Poi rimettete Temperature com’era.
+### 2C · System prompt
 
-### 2C · Le istruzioni di sistema
-
-Il campo **System Prompt** è il testo che il modello legge prima di ogni vostro messaggio. Sono vere istruzioni di sistema: il modello le legge come regole, non come una richiesta. A sinistra un esempio; a destra le domande a cui rispondete voi:
+Il campo **System Prompt** è il testo che il modello legge prima di ogni vostro messaggio: lo legge come regole, non come una richiesta. A sinistra un esempio; a destra le domande a cui rispondete voi:
 
 | Domanda | Esempio | Voi |
 | --- | --- | --- |
@@ -152,6 +139,19 @@ Il campo **System Prompt** è il testo che il modello legge prima di ogni vostro
 2. In una nuova chat fate le due domande, una dopo l’altra. Il modello segue le istruzioni anche alla seconda?
 3. Se non le segue, correggete una frase e riprovate. Non peggiorate le istruzioni per far sbagliare il modello. Una prova riuscita al primo invio vale quanto una riuscita dopo una correzione.
 4. Alla fine cancellate il testo dal campo System Prompt.
+
+### 2D · Esplorate Studio per conto vostro
+
+Ora potete esplorare Studio da soli. Scegliete una cosa da provare e guardate com’è andata.
+
+| Idea | Che cosa fate |
+| --- | --- |
+| Un parametro | la stessa domanda con due valori molto diversi di Temperature, Top K o Top P (Top K: sceglie solo tra le K parole più probabili; Top P: tiene le parole più probabili finché le loro probabilità, sommate, arrivano a P) |
+| System prompt | un altro ruolo, o istruzioni che obbligano il modello a farvi una domanda prima di rispondere |
+| Hugging Face | cercate un altro modello piccolo e guardate licenza e dimensione dei file |
+| Una voce nuova | una voce del pannello delle impostazioni che non abbiamo provato |
+
+Context Length e il modello caricato restano come sono. Prima di cambiare un’impostazione, scrivete il valore di partenza. Non scaricate niente: sono file molto grandi. Non aggiornate e non cancellate niente, e non chiudete la finestra nera. Alla fine rimettete i valori che avete scritto e cancellate il testo dal campo System Prompt.
 
 ## Parte 3 · opencode
 
@@ -186,7 +186,7 @@ Non scegliete mai «Always allow»: salva la regola e il programma non chiede pi
 
 ### 3A · Chi apre i file?
 
-Scrivete: «Che file ci sono in questa cartella e di che cosa parlano?» Prima di inviare, decidete: chi apre i file, il modello o il programma? Alzata di mano.
+Scrivete: «Che file ci sono in questa cartella e di che cosa parlano?» Prima di inviare: chi apre i file, il modello o il programma?
 
 Poi guardate i passaggi: le righe con una freccia che opencode scrive mentre lavora. Quante letture ha fatto?
 
@@ -208,7 +208,7 @@ Ora tocca a voi. Scrivete una richiesta per una pagina `inventario.html` con i d
 
 ### 3C · Dire di no
 
-Scrivete in Build: «Crea riassunto.txt con i punti principali di appunti_riunione.txt.» Prima di inviare, decidete: dopo un Reject, opencode vi darà comunque il riassunto a parole? Quando compare il permesso, scegliete **Reject**. Non inviate di nuovo la richiesta: guardate che cosa succede.
+Scrivete in Build: «Crea riassunto.txt con i punti principali di appunti_riunione.txt.» Prima di inviare: dopo un Reject, opencode vi darà comunque il riassunto a parole? Quando compare il permesso, scegliete **Reject**. Non inviate di nuovo la richiesta: guardate che cosa succede.
 
 Che cosa scrive opencode? Aprite Esplora file: `riassunto.txt` c’è?
 
@@ -228,7 +228,7 @@ Ora decidete voi che cosa chiedere a opencode. Usate due dei file della cartella
 
 ### Dove sono le regole?
 
-Nel file `opencode.jsonc` della cartella. Il docente ve lo proietta e vi fa vedere queste righe:
+Nel file `opencode.jsonc` della cartella. Ecco queste righe:
 
 | Dove | Che cosa | Regola | Che cosa fa il programma |
 | --- | --- | --- | --- |
@@ -241,7 +241,7 @@ I permessi sono tre: **allow** esegue, **ask** si ferma e chiede a voi, **deny**
 
 ### Che cosa avete visto
 
-Quale dei tre risponde senza rete? Quale apre i file da solo? Pensateci: il docente proietta poi la tabella con Copilot, Studio e opencode.
+Quale dei tre risponde senza rete? Quale apre i file da solo? Pensateci, poi guardiamo la tabella con Copilot, Studio e opencode.
 
 Il modello decide che cosa chiedere; il programma agisce e chiede il permesso.
 
@@ -251,10 +251,12 @@ Un programma come opencode potrebbe anche cancellare un file: allow, ask o deny?
 
 ## Se qualcosa non va
 
-Se Copilot non è disponibile, usate una conversazione normale: nel primo messaggio incollate le vostre istruzioni, poi documenti e richiesta. Non sono vere istruzioni di sistema.
+Se il vostro agente non è disponibile, usate una conversazione normale di Copilot: nel primo messaggio incollate le vostre istruzioni, poi documenti e richiesta. Non è un vero system prompt.
 
-Se il computer virtuale non parte, Studio non risponde o opencode non risponde dalla rete, alzate la mano: il docente fa la prova dal proiettore e voi proponete la richiesta.
+Se il computer virtuale non parte, Studio non risponde o opencode non risponde dalla rete, alzate la mano: la prova si fa dal proiettore e voi proponete la richiesta.
 
 ## I programmi usati
 
-Unsloth Studio: licenza AGPL-3.0 (il testo è nella cartella `studio` dell’installazione, versione 2026.11.4). Qwen3.5-2B: licenza Apache 2.0, come dichiara la scheda del modello su Hugging Face. opencode: licenza MIT. Big Pickle è un modello gratuito di OpenCode, offerto per un tempo limitato: quello che scrivete arriva a chi offre il modello e può servire a migliorarlo. I documenti della cartella `laboratorio` sono inventati per questa esercitazione.
+Unsloth Studio: licenza AGPL-3.0 (il testo è nella cartella `studio` dell’installazione, versione 2026.11.4). Qwen3.5-2B: la licenza è quella scritta nella pagina del modello su Hugging Face. opencode: licenza MIT. Big Pickle è un modello gratuito di OpenCode, offerto per un tempo limitato: quello che scrivete arriva a chi offre il modello e può servire a migliorarlo. I documenti della cartella `laboratorio` sono inventati per questa esercitazione.
+
+Hugging Face: sito pubblico; le pagine dei modelli si leggono senza registrarsi. Ogni modello ha la sua licenza, scritta nella pagina: leggetela prima di usare un modello fuori da questa esercitazione.
