@@ -35,7 +35,7 @@ Da Unsloth Studio in poi lavorate nel computer virtuale: un computer dentro il c
 # Slide 04 — Il vostro agente ha due parti
 <!-- layout: CONTENUTO -->
 
-Aprite il file `istruzioni_agente_noleggio.txt`. Non avete il file? Usate il testo di partenza: ha già i tre lavori. Cercate l’elenco delle richieste e i lavori. Un esempio dal testo di partenza, con i tagli segnati […]:
+Aprite il file `istruzioni_agente_noleggio.txt`. Non avete il file? Chiedete il testo di partenza: ha già i tre lavori. Cercate l’elenco delle richieste e i lavori. Un esempio dal testo di partenza, con i tagli segnati […]:
 
 | L’elenco dice | Il lavoro dice |
 | --- | --- |
@@ -116,7 +116,7 @@ Poi inviate, in una nuova conversazione con registro, regole e guida:
 
 {{ORA_FUORI_SERVIZIO}} → {{ORA_DISPONIBILE}}
 
-Dal registro, per la bici 12, sabato. Nella vostra nota ci sono gli stessi orari e gli stessi minuti?
+Dal registro, per la bici 12, sabato. Nella vostra nota ci sono gli stessi orari e gli stessi minuti? Se no, correggete la riga che dice come il numero passa nella nota, aggiornate l’agente e riprovate.
 
 ---
 

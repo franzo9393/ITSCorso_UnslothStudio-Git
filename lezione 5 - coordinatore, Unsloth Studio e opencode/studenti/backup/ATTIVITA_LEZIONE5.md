@@ -26,7 +26,7 @@ Oggi usate tre strumenti:
 
 ### 1A · Le due parti dell'agente
 
-Il testo del vostro agente ha due parti: l'**elenco delle richieste**, che dice a quale lavoro va ogni richiesta, e i **lavori**, ognuno con le sue regole. Aprite `istruzioni_agente_noleggio.txt` e cercatele. Un esempio dal testo di partenza (i tagli sono segnati con […]):
+Il testo del vostro agente ha due parti: l'**elenco delle richieste**, che dice a quale lavoro va ogni richiesta, e i **lavori**, ognuno con le sue regole. Aprite `istruzioni_agente_noleggio.txt` e cercatele. Non avete il file? Chiedete il testo di partenza: ha già i tre lavori. Un esempio dal testo di partenza (i tagli sono segnati con […]):
 
 | L'elenco dice | Il lavoro dice |
 | --- | --- |
@@ -42,7 +42,7 @@ Nel vostro file ci sono FUORI SERVIZIO e un secondo lavoro. Scrivete quello che 
 | Che testo usa? | «le regole del noleggio e il registro» | Quale testo? |
 | Come risponde? | «i due orari usati, la sottrazione e il risultato in minuti» | In quale forma? |
 
-Salvate il file. In Copilot incollate tutto il testo nelle istruzioni del vostro agente. L'ultima riga del file è anche l'ultima in Copilot? Non avete il file? Usate il testo di partenza: ha già i tre lavori.
+Salvate il file. In Copilot incollate tutto il testo nelle istruzioni del vostro agente. L'ultima riga del file è anche l'ultima in Copilot?
 
 ### 1C · Una richiesta per lavoro
 
@@ -66,7 +66,7 @@ Richiesta: «Bici 12, sabato: per quanti minuti è stata fuori servizio? Scrivi 
 
 Nel vostro elenco deve esserci una riga per FUORI SERVIZIO e PASSAGGIO insieme: prima FUORI SERVIZIO, poi il risultato entra nella nota. Se manca, scrivetela e aggiornate l'agente. Poi inviate la richiesta, in una nuova conversazione con registro, regole e guida.
 
-Guardate il numero e gli orari proiettati, che sono quelli del registro per la bici 12, sabato. Nella vostra nota, dove parla del fuori servizio della bici 12: sono gli stessi?
+Guardate il numero e gli orari proiettati, che sono quelli del registro per la bici 12, sabato. Nella vostra nota, dove parla del fuori servizio della bici 12: sono gli stessi? Se no, cercate la riga del file che dice come il numero passa nella nota, correggetela, aggiornate l'agente e riprovate.
 
 ### Salvate il file
 
