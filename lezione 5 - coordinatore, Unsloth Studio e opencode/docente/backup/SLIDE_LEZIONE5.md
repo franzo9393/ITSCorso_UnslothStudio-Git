@@ -35,12 +35,11 @@ Da Unsloth Studio in poi lavorate nel computer virtuale: un computer dentro il c
 # Slide 04 — Il vostro agente ha due parti
 <!-- layout: CONTENUTO -->
 
-Aprite il file `istruzioni_agente_noleggio.txt`. Cercate l’elenco delle richieste e i lavori. Un esempio dal testo di partenza, con i tagli segnati […]:
+Aprite il file `istruzioni_agente_noleggio.txt`. Non avete il file? Usate il testo di partenza: ha già i tre lavori. Cercate l’elenco delle richieste e i lavori. Un esempio dal testo di partenza, con i tagli segnati […]:
 
 | L’elenco dice | Il lavoro dice |
 | --- | --- |
-| «Che cosa significa un guasto, che cosa fa il banco → GUASTI» | «Quando: il banco vuole sapere che cosa significa un guasto. […]» |
-| «Nota per il turno dopo, riassunto di un giorno, che cosa è successo → PASSAGGIO» | «Quando: serve una nota per chi inizia il turno dopo. […]» |
+| «Quanto è stata fuori servizio una bici, minuti senza bici, rimborso per un guasto → FUORI SERVIZIO» | «Quando: serve la durata di un fuori servizio, i minuti senza bici di un cliente o un rimborso. […]» |
 
 L’elenco dice a quale lavoro va la richiesta. Il lavoro dice come rispondere.
 
@@ -64,8 +63,6 @@ Avete FUORI SERVIZIO e un secondo lavoro. Scrivete quello che manca: GUASTI se a
 
 Salvate il file. Poi in Copilot incollate tutto il testo nelle istruzioni del vostro agente.
 
-Non avete il file? Usate il testo di partenza: ha già i tre lavori.
-
 L’ultima riga del file è anche l’ultima in Copilot?
 
 ---
@@ -88,7 +85,7 @@ Una nuova conversazione per ogni richiesta: registro, regole del noleggio, guida
 
 Guardate la prima riga di ogni risposta: «Lavoro usato:».
 
-Se il lavoro non è quello giusto, leggete la voce dell’elenco: dice abbastanza chiaramente quando usarlo? Correggetela e riprovate.
+Se il lavoro non è quello giusto, leggete la voce dell’elenco: dice abbastanza chiaramente quando usarlo? Correggete il file, aggiornate l’agente e riprovate in una nuova conversazione.
 
 ---
 
@@ -97,14 +94,14 @@ Se il lavoro non è quello giusto, leggete la voce dell’elenco: dice abbastanz
 
 Una richiesta del noleggio che potrebbe andare a due lavori, o a nessuno.
 
-Provatela, in una nuova conversazione con registro, regole e guida. Se va dove non volevate, correggete l’elenco o aggiungete la riga che manca, e riprovate.
+Provatela, in una nuova conversazione con registro, regole e guida. Se va dove non volevate, correggete l’elenco o aggiungete la riga che manca, aggiornate l’agente e riprovate.
 
 ---
 
 # Slide 10 — Due lavori in catena
 <!-- layout: CONTENUTO -->
 
-Nel vostro elenco deve esserci una riga per FUORI SERVIZIO e PASSAGGIO insieme: prima FUORI SERVIZIO, poi il risultato entra nella nota. Se manca, scrivetela.
+Nel vostro elenco deve esserci una riga per FUORI SERVIZIO e PASSAGGIO insieme: prima FUORI SERVIZIO, poi il risultato entra nella nota. Se manca, scrivetela e aggiornate l’agente.
 
 Poi inviate, in una nuova conversazione con registro, regole e guida:
 
@@ -119,7 +116,7 @@ Poi inviate, in una nuova conversazione con registro, regole e guida:
 
 {{ORA_FUORI_SERVIZIO}} → {{ORA_DISPONIBILE}}
 
-Il registro dà questi minuti e questi orari per la bici 12, sabato. Nella vostra nota ci sono gli stessi?
+Dal registro, per la bici 12, sabato. Nella vostra nota ci sono gli stessi orari e gli stessi minuti?
 
 ---
 
@@ -137,7 +134,7 @@ Aggiornate l’agente in Copilot e controllate che il testo sia arrivato intero.
 
 Copilot ha scelto il lavoro e scritto la nota.
 
-Il numero l’avete confrontato voi con il registro. Nessun programma l’ha fatto al vostro posto.
+Il numero l’avete confrontato voi con i dati del registro. Nessun programma l’ha fatto al vostro posto.
 
 ---
 
@@ -341,14 +338,14 @@ Voi: una pagina inventario.html (`.html` = pagina web) con i dati di inventario.
 
 Maiusc+Tab (sullo schermo shift+tab): in basso compare Plan.
 
-> Prima di inviare la richiesta: comparirà il file?
+> Prima di inviare: comparirà il file? Poi inviate la richiesta.
 
 ---
 
 # Slide 33 — Ora in Build
 <!-- layout: CONTENUTO -->
 
-Maiusc+Tab: in basso torna Build. Inviate di nuovo la stessa richiesta.
+Maiusc+Tab: in basso torna Build. Riscrivete la stessa richiesta e inviatela.
 
 ![Due ritagli di opencode: la riga con la modalità Build e la riga con la modalità Plan, evidenziate.](immagini_slide/opencode_plan_build.png)
 

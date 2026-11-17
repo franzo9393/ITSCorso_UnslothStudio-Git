@@ -30,8 +30,7 @@ Il testo del vostro agente ha due parti: l'**elenco delle richieste**, che dice 
 
 | L'elenco dice | Il lavoro dice |
 | --- | --- |
-| «Che cosa significa un guasto, che cosa fa il banco → GUASTI» | «Quando: il banco vuole sapere che cosa significa un guasto. […]» |
-| «Nota per il turno dopo, riassunto di un giorno, che cosa è successo → PASSAGGIO» | «Quando: serve una nota per chi inizia il turno dopo. […]» |
+| «Quanto è stata fuori servizio una bici, minuti senza bici, rimborso per un guasto → FUORI SERVIZIO» | «Quando: serve la durata di un fuori servizio, i minuti senza bici di un cliente o un rimborso. […]» |
 
 ### 1B · Il lavoro che manca
 
@@ -55,11 +54,11 @@ Una nuova conversazione per ogni richiesta: registro, regole del noleggio, guida
 | GUASTI | «Che cosa significa freni che non tengono?» |
 | PASSAGGIO | «Scrivi la nota per il turno dopo, sabato.» |
 
-Guardate la prima riga di ogni risposta: «Lavoro usato:». Se il lavoro non è quello giusto, leggete la voce dell'elenco: dice abbastanza chiaramente quando usarlo? Correggetela e riprovate. Una prova riuscita al primo invio vale quanto una riuscita dopo una correzione.
+Guardate la prima riga di ogni risposta: «Lavoro usato:». Se il lavoro non è quello giusto, leggete la voce dell'elenco: dice abbastanza chiaramente quando usarlo? Correggete il file, aggiornate l'agente e riprovate in una nuova conversazione. Se l'agente vi fa una domanda, rispondete nella stessa conversazione. Una prova riuscita al primo invio vale quanto una riuscita dopo una correzione.
 
 ### 1D · Una richiesta vostra
 
-Inventate una richiesta del noleggio che potrebbe andare a due lavori, o a nessuno. Provatela in una nuova conversazione, con registro, regole e guida. Se va dove non volevate, correggete l'elenco o aggiungete la riga che manca, poi riprovate.
+Inventate una richiesta del noleggio che potrebbe andare a due lavori, o a nessuno. Provatela in una nuova conversazione, con registro, regole e guida. Se va dove non volevate, correggete l'elenco o aggiungete la riga che manca, aggiornate l'agente e riprovate.
 
 ### 1E · Due lavori in catena
 
@@ -75,7 +74,7 @@ Il file `istruzioni_agente_noleggio.txt` deve contenere tutto: le regole, l'elen
 
 ### Chi ha controllato il numero?
 
-Copilot ha scelto il lavoro e scritto la nota. Il numero l'avete confrontato voi con il registro: nessun programma l'ha fatto al vostro posto.
+Copilot ha scelto il lavoro e scritto la nota. Il numero l'avete confrontato voi con i dati del registro: nessun programma l'ha fatto al vostro posto.
 
 ## Parte 2 · Un modello sul vostro computer
 
@@ -151,13 +150,13 @@ Ora potete esplorare Studio da soli. Scegliete una cosa da provare e guardate co
 | Hugging Face | cercate un altro modello piccolo e guardate licenza e dimensione dei file |
 | Una voce nuova | una voce del pannello delle impostazioni che non abbiamo provato |
 
-Context Length e il modello caricato restano come sono. Prima di cambiare un’impostazione, scrivete il valore di partenza. Non scaricate niente: sono file molto grandi. Non aggiornate e non cancellate niente, e non chiudete la finestra nera. Alla fine rimettete i valori che avete scritto e cancellate il testo dal campo System Prompt.
+Context Length e il modello caricato restano come sono. Prima di cambiare un’impostazione, guardate il valore di partenza. Non scaricate niente: sono file molto grandi. Non aggiornate e non cancellate niente, e non chiudete la finestra nera. Alla fine rimettete i valori com’erano e cancellate il testo dal campo System Prompt.
 
 ## Parte 3 · opencode
 
 opencode è un programma che si usa nella finestra nera: scrivete una richiesta e guardate che cosa fa.
 
-Sul desktop del computer virtuale c’è il collegamento **opencode**: fate doppio clic. Parte nella cartella `laboratorio`, dove ci sono quattro file:
+Sul desktop del computer virtuale c’è il collegamento **opencode**: fate doppio clic. Parte nella cartella `laboratorio`, dove ci sono tre file di lavoro e il file delle regole:
 
 | File | Che cosa contiene |
 | --- | --- |
@@ -199,7 +198,7 @@ Ora tocca a voi. Scrivete una richiesta per una pagina `inventario.html` con i d
 1. Premete Maiusc+Tab (sullo schermo si legge shift+tab): in basso compare **Plan**.
 2. Prima di inviare, decidete: in Plan comparirà il file? Poi inviate la richiesta.
 3. Premete Maiusc+Tab: torna **Build**.
-4. Inviate di nuovo la stessa richiesta.
+4. Riscrivete la stessa richiesta e inviatela.
 5. Compare «Permission required» per scrivere il file: scegliete **Allow once**. Se dopo la scrittura chiede un comando, anche quello scritto all’inizio della parte 3, scegliete **Reject**: il file è già scritto e non serve inviare di nuovo la richiesta.
 6. Aprite Esplora file, Documenti › laboratorio. Se vedete due file chiamati inventario, quello con la pagina web è `inventario.html`: doppio clic.
 7. Contate le righe della tabella con un componente. Poi aprite `inventario.csv` (tasto destro › Apri con › Blocco note) e contate le righe con un componente. Sono le stesse? C’è quello che avete chiesto?
@@ -247,11 +246,11 @@ Il modello decide che cosa chiedere; il programma agisce e chiede il permesso.
 
 ## Alla fine
 
-Un programma come opencode potrebbe anche cancellare un file: allow, ask o deny? Perché? Prima di chiudere salvate `istruzioni_agente_noleggio.txt`. Non dovete consegnarlo.
+Un programma come opencode potrebbe anche cancellare un file: allow, ask o deny? Perché? E il contenuto di un file nuovo: chi lo controlla? Prima di chiudere salvate `istruzioni_agente_noleggio.txt`. Non dovete consegnarlo.
 
 ## Se qualcosa non va
 
-Se il vostro agente non è disponibile, usate una conversazione normale di Copilot: nel primo messaggio incollate le vostre istruzioni, poi documenti e richiesta. Non è un vero system prompt.
+Se il vostro agente non è disponibile, usate una conversazione normale di Copilot: nel primo messaggio incollate le vostre istruzioni, poi documenti e richiesta. Le istruzioni in un messaggio non sono istruzioni dell'agente.
 
 Se il computer virtuale non parte, Studio non risponde o opencode non risponde dalla rete, alzate la mano: la prova si fa dal proiettore e voi proponete la richiesta.
 

@@ -1,6 +1,6 @@
 ISTRUZIONI DI PARTENZA PER L'AGENTE DEL NOLEGGIO RUOTA LIBERA
 
-Per chi non ha il proprio file istruzioni_agente_noleggio.txt. Copiate tutto il testo sotto la riga ---- in un file nuovo di Blocco note e salvatelo con quel nome. Non garantisce che Copilot lo segua sempre. Ha già tutti e tre i lavori: leggetelo e passate alla prova delle richieste, senza scrivere il lavoro che manca.
+Per chi non ha il proprio file istruzioni_agente_noleggio.txt. Copiate tutto il testo sotto la riga ---- in un file nuovo di Blocco note e salvatelo con quel nome. Non garantisce che Copilot lo segua sempre. Ha già tutti e tre i lavori: incollatelo nelle istruzioni dell'agente e passate alla prova delle richieste, senza scrivere il lavoro che manca.
 
 ----
 
