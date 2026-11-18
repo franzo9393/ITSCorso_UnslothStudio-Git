@@ -56,9 +56,9 @@ Una nuova conversazione per ogni richiesta: registro, regole del noleggio, guida
 
 Guardate la prima riga di ogni risposta: «Lavoro usato:». Se il lavoro non è quello giusto, leggete la voce dell'elenco: dice abbastanza chiaramente quando usarlo? Correggete il file, aggiornate l'agente e riprovate in una nuova conversazione. Se l'agente vi fa una domanda, rispondete nella stessa conversazione. Una prova riuscita al primo invio vale quanto una riuscita dopo una correzione.
 
-### 1D · Una richiesta vostra
+### 1D · Dove sono finiti i dati?
 
-Inventate una richiesta del noleggio che potrebbe andare a due lavori, o a nessuno. Provatela in una nuova conversazione, con registro, regole e guida. Se va dove non volevate, correggete l'elenco o aggiungete la riga che manca, aggiornate l'agente e riprovate.
+In Copilot avete incollato un registro inventato. Se fosse stato il registro vero di un’azienda, dove sarebbero finiti quei dati? La stessa domanda torna con Studio e con opencode.
 
 ### 1E · Due lavori in catena
 
@@ -112,7 +112,10 @@ Ora guardate dove gira il modello:
 | --- | --- | --- |
 | Dove gira il modello | in rete, sui computer di Microsoft | sul vostro computer virtuale |
 | Il programma | il codice non si può leggere | il codice è aperto: si può leggere |
+| Dove vanno i dati che scrivete | in rete, al servizio di Microsoft | il modello li legge sul vostro computer, anche senza rete |
 | Di chi è | di Microsoft | una copia sul vostro computer: la licenza che avete letto dice che cosa potete farne |
+
+Il modello di Studio gira sul processore del vostro computer, non su macchine grandi: per questo può rispondere piano. Guardate poi sul proiettore la domanda sul cacciavite, fatta a Copilot: che cosa cambia rispetto alla vostra risposta?
 
 ### 2B · I parametri del modello
 
@@ -122,7 +125,7 @@ Temperature la conoscete: è un parametro, come in Transformer Explainer. Prima 
 
 Poi tocca a voi. Aprite una nuova chat. Portate Temperature a 1,5. Scrivete: «Continua con poche parole: Nel mio laboratorio ho trovato». Inviate e rigenerate la risposta due volte. Confrontate queste tre risposte: quante sono diverse?
 
-Sulla slide c’è poi la tabella dei tre parametri: Temperature, Top K e Top P. Top K e Top P non li provate adesso: sono spunti per l’esplorazione libera. Rimettete Temperature com’era.
+Sulla slide c’è poi la tabella dei tre parametri: Temperature, Top K e Top P. Top K e Top P non li provate. Rimettete Temperature com’era.
 
 ### 2C · System prompt
 
@@ -139,18 +142,11 @@ Il campo **System Prompt** è il testo che il modello legge prima di ogni vostro
 3. Se non le segue, correggete una frase e riprovate. Non peggiorate le istruzioni per far sbagliare il modello. Una prova riuscita al primo invio vale quanto una riuscita dopo una correzione.
 4. Alla fine cancellate il testo dal campo System Prompt.
 
-### 2D · Esplorate Studio per conto vostro
+### 2D · Quanto testo tiene insieme il modello?
 
-Ora potete esplorare Studio da soli. Scegliete una cosa da provare e guardate com’è andata.
+Il Context Length della vostra copia di Studio è 8192. Si misura in **token**: pezzetti di parola. Registro, regole e istruzioni del noleggio, insieme, ne occupano circa 3.700.
 
-| Idea | Che cosa fate |
-| --- | --- |
-| Un parametro | la stessa domanda con due valori molto diversi di Temperature, Top K o Top P (Top K: sceglie solo tra le K parole più probabili; Top P: tiene le parole più probabili finché le loro probabilità, sommate, arrivano a P) |
-| System prompt | un altro ruolo, o istruzioni che obbligano il modello a farvi una domanda prima di rispondere |
-| Hugging Face | cercate un altro modello piccolo e guardate licenza e dimensione dei file |
-| Una voce nuova | una voce del pannello delle impostazioni che non abbiamo provato |
-
-Context Length e il modello caricato restano come sono. Prima di cambiare un’impostazione, guardate il valore di partenza. Non scaricate niente: sono file molto grandi. Non aggiornate e non cancellate niente, e non chiudete la finestra nera. Alla fine rimettete i valori com’erano e cancellate il testo dal campo System Prompt.
+Prima di guardare: il messaggio supera 8192, che cosa farà Studio? Poi guardate il proiettore: un testo lungo e una domanda su una frase che sta all’inizio.
 
 ## Parte 3 · opencode
 
@@ -199,7 +195,7 @@ Ora tocca a voi. Scrivete una richiesta per una pagina `inventario.html` con i d
 2. Prima di inviare, decidete: in Plan comparirà il file? Poi inviate la richiesta.
 3. Premete Maiusc+Tab: torna **Build**.
 4. Riscrivete la stessa richiesta e inviatela.
-5. Compare «Permission required» per scrivere il file: scegliete **Allow once**. Se dopo la scrittura chiede un comando, anche quello scritto all’inizio della parte 3, scegliete **Reject**: il file è già scritto e non serve inviare di nuovo la richiesta.
+5. Compare «Permission required» per scrivere il file. Prima di scegliere, leggete il nome del file e il testo che vuole scrivere: c’è il titolo che avete scelto? Poi scegliete **Allow once**. Se dopo la scrittura chiede un comando, anche quello scritto all’inizio della parte 3, scegliete **Reject**: il file è già scritto e non serve inviare di nuovo la richiesta.
 6. Aprite Esplora file, Documenti › laboratorio. Se vedete due file chiamati inventario, quello con la pagina web è `inventario.html`: doppio clic.
 7. Contate le righe della tabella con un componente. Poi aprite `inventario.csv` (tasto destro › Apri con › Blocco note) e contate le righe con un componente. Sono le stesse? C’è quello che avete chiesto?
 
@@ -222,7 +218,7 @@ Ora decidete voi che cosa chiedere a opencode. Usate due dei file della cartella
 | mettere a confronto | «Confronta note_serata.txt e ordine.txt e scrivi in mancanti.txt gli ingredienti che mancano.» |
 
 1. Scrivete la richiesta nel campo di opencode. Prima di inviare, decidete: che cosa deve contenere il file nuovo?
-2. Inviate. Quando compare il permesso, leggete che file vuole scrivere: se è quello che avete chiesto, scegliete **Allow once**. Se chiede un comando prima di scrivere il file, valgono le regole scritte all’inizio della parte 3. Se lo chiede dopo, scegliete **Reject** come nella 3B, senza inviare di nuovo la richiesta.
+2. Inviate. Quando compare il permesso, leggete il nome del file e il testo che vuole scrivere: c’è il dato che avete previsto? Poi scegliete **Allow once**. Se chiede un comando prima di scrivere il file, valgono le regole scritte all’inizio della parte 3. Se lo chiede dopo, scegliete **Reject** come nella 3B, senza inviare di nuovo la richiesta.
 3. Aprite il file nuovo e confrontate un dato scelto da voi con il file originale: è uguale? Se non torna, correggete la richiesta e riprovate.
 
 ### Dove sono le regole?

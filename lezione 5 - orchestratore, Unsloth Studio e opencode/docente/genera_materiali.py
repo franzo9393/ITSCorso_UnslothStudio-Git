@@ -52,7 +52,7 @@ TEXT_DOCUMENTS = {  # documenti del caso: sorgente Markdown, copia di testo semp
     SOURCES / '02_GUIDA_GUASTI_RUOTA_LIBERA.md': STUDENTS / 'Guida_guasti_Ruota_Libera.txt',
     SOURCES / '03_REGOLE_NOLEGGIO_RUOTA_LIBERA.md': STUDENTS / 'Regole_noleggio_Ruota_Libera.txt',
 }
-DECK_NAME = 'Lezione5_Coordinatore_Unsloth_Studio_e_opencode_ITS_MAKER'
+DECK_NAME = 'Lezione5_Orchestratore_Unsloth_Studio_e_opencode_ITS_MAKER'
 MODEL = HERE / 'MODELLO_ITS_MAKER.pptx'
 TITLE = 'Lezione 5 — Chi controlla che cosa?'
 LAYOUTS = ('COPERTINA', 'CONTENUTO', 'SEZIONE', 'CHIUSURA')

@@ -1,6 +1,6 @@
 # Piano della lezione 5 · 18 novembre 2026
 
-Documento riservato al docente. Struttura approvata il 12 novembre; resta come storico delle decisioni. Per lo stato attuale (slide, consegna, controlli pre-aula) vale la guida docente: alcune righe qui sotto sono superate (percorso `da_pubblicare_dopo_collaudo`, caricamento del modello in aula, previsioni «dai PC»). Nasce dalle indicazioni del 12 novembre 2026, a lezione 4 svolta: «ripartire dall'esercizio Ruota Libera con più caratteristiche del coordinatore, complicando l'agente; poi Unsloth Studio e opencode, il modello gira anche se lento».
+Documento riservato al docente. Struttura approvata il 12 novembre; resta come storico delle decisioni. Per lo stato attuale (slide, consegna, controlli pre-aula) vale la guida docente: alcune righe qui sotto sono superate (percorso `da_pubblicare_dopo_collaudo`, caricamento del modello in aula, previsioni «dai PC»). Nasce dalle indicazioni del 12 novembre 2026, a lezione 4 svolta: «ripartire dall'esercizio Ruota Libera con più caratteristiche dell'orchestratore, complicando l'agente; poi Unsloth Studio e opencode, il modello gira anche se lento».
 
 ## Riprogettazione del 16 novembre 2026 (vale al posto delle parti 2 e 3 descritte sotto)
 
@@ -16,6 +16,7 @@ Il docente ha giudicato la lezione, così com'era, non soddisfacente: il caso Ru
 - Terza decisione del docente (17 novembre): la parte 1 si riduce ancora, a favore di un'introduzione a Hugging Face (il sito da cui Studio prende il modello) e di un momento in cui gli studenti esplorano Studio per conto loro. Tolte tre slide: «Due lavori in una richiesta», «Il lavoro era quello giusto?» e «Salvate il file»; il loro contenuto passa a voce (guida, slide 5, 8 e 11–12). Aggiunte la 15 e la 16 (esempio di un altro modello, poi la pagina del modello di Studio: chi lo pubblica, licenza, file più piccolo e più grande) e la 28 (esplorazione libera di Studio, senza download di modelli). Le slide restano 44; dalla 29 in poi la numerazione non cambia. Pagine lette il 17 novembre dal PC del docente, non dalla VM.
 - Quarta decisione del docente (17 novembre): ridotto il carico sulle manopole di Studio. Gli studenti incontrano solo Temperature (già vista con Transformer Explainer nella lezione 4); tolte le slide su Top K e Top P (vecchie 24 e 25). Le slide sono 42; da 26 in su la numerazione scende di 2 (la vecchia 26, la tabella delle tre manopole, diventa la 24). Top K e Top P restano come spunto nella 2D e non sono provati nella VM.
 - Quinta decisione del docente (17 novembre): parte 1 semplificata sul solo noleggio (tolta la pizzeria e i pronostici); tolta ogni scrittura nel Blocco note e ogni alzata di mano; «parametri» al posto di «manopole»; «System prompt» nel titolo della slide 25. Le slide restano 42. Tolto anche il file `docente/ESEMPIO_DIMOSTRAZIONE_PIZZERIA_L5.txt`, non più usato.
+- Sesta decisione del docente (18 novembre, giorno della lezione): coprire cinque lacune (dove vanno i dati, lentezza del modello piccolo, confronto Copilot e Studio sulla stessa domanda, Context Length che si riempie, leggere prima di approvare un permesso) senza aggiungere slide. Forma «leggera»: la slide 9 (era «Inventate una richiesta») diventa «Dove sono finiti i dati?»; la slide 26 (era l'esplorazione libera 2D) diventa «Quanto testo tiene insieme il modello?»; la slide 20 ha la riga sui dati, la frase sulla lentezza e il confronto con la risposta di Copilot; la slide 34 chiede di leggere file e testo prima di approvare; la slide 41 ha la riga sui dati. Le istruzioni nascoste in un file letto da opencode (iniezione di istruzioni) restano solo a voce e nella guida, senza prova per gli studenti. Le slide restano 42. Prima revisione del `revisore-didattico` (18 novembre): DA CORREGGERE, correzioni applicate.
 - Fonti della riprogettazione: sequenza dei campionatori letta in `llama-server --help` e nel codice di Studio 2026.11.4 (installazione sul portatile del docente); richieste della parte 3 provate con `opencode run` 1.18.27, senza richieste di permesso (non prova la versione 2.2.7 della VM).
 
 Le sezioni sotto (struttura, parti 2 e 3, VM condivise, verifiche, rami di riserva, stato dei lavori) descrivono la versione precedente. Per lo stato attuale vale la guida docente.
@@ -37,8 +38,8 @@ Ogni parte del loro agente ha un corrispondente nel programma. Si mostra una ver
 
 | Nel loro file di istruzioni | In Copilot (lezione 4) | In opencode (lezione 5) |
 | --- | --- | --- |
-| Regole per tutti i casi | testo dell'agente | corpo del file del coordinatore |
-| Elenco delle richieste | frase che Copilot legge e interpreta | descrizione di ogni agente di lavoro: la legge il coordinatore per scegliere |
+| Regole per tutti i casi | testo dell'agente | corpo del file dell'orchestratore |
+| Elenco delle richieste | frase che Copilot legge e interpreta | descrizione di ogni agente di lavoro: la legge l'orchestratore per scegliere |
 | Un lavoro | quattro righe dentro lo stesso testo | un file `.md` a parte, con proprie istruzioni e propri permessi |
 | «Lavoro usato:» | riga scritta dal modello, da controllare | chiamata registrata dal programma, visibile nell'elenco dei passaggi |
 | «PROPOSTA DA CONTROLLARE» | parole nel testo | permesso `ask`: il programma si ferma e chiede conferma prima di scrivere un file |
@@ -50,7 +51,7 @@ Il vantaggio concreto, da misurare e non da dichiarare: con un modello piccolo e
 
 ```mermaid
 flowchart LR
-  P0["0 · Avvio<br/>riaprono l'agente"] --> P1["1 · Coordinatore in Copilot<br/>tre novità"]
+  P0["0 · Avvio<br/>riaprono l'agente"] --> P1["1 · Orchestratore in Copilot<br/>tre novità"]
   P1 --> P2["2 · Stesso testo,<br/>modello nella VM"]
   P2 --> P3["3 · opencode<br/>il programma esegue"]
   P1 -. nel frattempo .-> V["copia VM dal disco"]
@@ -62,9 +63,9 @@ La parte 1 usa solo il browser. Piano e guida erano in contrasto sul momento del
 
 - Azione: aprire Copilot, riaprire il proprio agente, inviare di nuovo l'ultima richiesta della lezione 4 (registro incollato, richiesta in fondo). Serve a vedere che l'agente salvato funziona ancora.
 - Chi non ha il file o non ha finito: parte dall'esempio `studenti/da_pubblicare_dopo_collaudo/ESEMPIO_ISTRUZIONI_AGENTE_NOLEGGIO.txt`, che nella lezione 4 era già stato proiettato. Lo si ripubblica come punto di partenza, non come soluzione. **Da confermare con te** (vedi domande).
-- Nome: «coordinatore» è la parola degli studenti per il lavoro che sceglie quali lavori usare e in che ordine; «orchestratore» lo dici tu a voce alla fine.
+- Nome: «orchestratore» è la parola usata con gli studenti per il lavoro che sceglie quali lavori usare e in che ordine (decisione del 18 novembre: sostituisce «coordinatore» in titolo e materiali).
 
-### Parte 1 · Tre novità per il coordinatore (Copilot, browser)
+### Parte 1 · Tre novità per l'orchestratore (Copilot, browser)
 
 Una novità alla volta, ognuna con previsione prima e criterio dopo, come nella lezione 4. Ogni novità sta in poche righe aggiunte al file; gli studenti le scrivono, non le ricevono già pronte.
 
@@ -78,7 +79,7 @@ Perché queste tre e non altre: sono le funzioni che in opencode diventano **vis
 
 Dati: il rimborso è un calcolo sullo stesso registro e sulle stesse regole (formula in `Regole_noleggio_Ruota_Libera.txt` §4). Nessun documento nuovo, quindi nessun rischio di incoerenza fra testi. I valori di riferimento vanno prodotti da `genera_materiali.py` con la solita verifica, non trascritti: `{{RIMBORSO_A_ORE}}` e `{{RIMBORSO_GIORNATA}}` delle slide non esistono ancora nello script, vanno aggiunti accanto a `{{MINUTI_SENZA_BICI}}`, `{{ORA_SEGNALAZIONE}}` e `{{ORA_CAMBIO}}`, che ci sono già.
 
-Chiusura della parte: nomi. «Ognuno di voi ha appena fatto il lavoro del coordinatore: scegliere i lavori, l'ordine, fermarsi a chiedere, controllare.»
+Chiusura della parte: nomi. «Ognuno di voi ha appena fatto il lavoro dell'orchestratore: scegliere i lavori, l'ordine, fermarsi a chiedere, controllare.»
 
 ### Parte 2 · Stesso testo, un altro modello (Unsloth Studio nella VM)
 
@@ -102,7 +103,7 @@ Documentazione: [Agents](https://opencode.ai/docs/agents/) per i permessi e le m
 
 Fuori dalla lezione: nessuna modifica di codice, nessun accesso a file fuori dalla cartella del noleggio, nessuna configurazione di fornitori. Il programma lavora su una cartella preparata dal docente.
 
-Esito atteso a fine lezione, a voce: «il coordinatore non è magia del modello: è un ciclo eseguito da un programma che chiede, esegue e riporta; i permessi decidono che cosa può fare da solo». Prepara la lezione 6.
+Esito atteso a fine lezione, a voce: «l'orchestratore non è magia del modello: è un ciclo eseguito da un programma che chiede, esegue e riporta; i permessi decidono che cosa può fare da solo». Prepara la lezione 6.
 
 ## VM condivise: una ogni 4–5 postazioni (decisione del 12 novembre, forma approvata)
 
@@ -166,11 +167,11 @@ Non si presentano testi scritti a mano come registrazioni del modello. La lezion
 
 ## Che cosa cambia nelle lezioni 6 e 7 (proposta)
 
-Spostare i contenuti non è deciso. Se la lezione 5 prende il coordinatore e i permessi di base, la lezione 6 si alleggerisce:
+Spostare i contenuti non è deciso. Se la lezione 5 prende l'orchestratore e i permessi di base, la lezione 6 si alleggerisce:
 
 | Lezione | Contenuto precedente | Proposta |
 | --- | --- | --- |
-| 5 | Documenti e recupero (RAG) | Coordinatore, modello locale, opencode |
+| 5 | Documenti e recupero (RAG) | Orchestratore, modello locale, opencode |
 | 6 | Agenti, permessi e difese | Documenti e recupero (BM25 in Studio) **e** permessi/difese: la tabella dei permessi riprende quanto visto in 3B |
 | 7 | Gruppi e test finale | invariata; il gruppo estende l'agente a un documento nuovo e ai permessi |
 
@@ -180,7 +181,7 @@ Il materiale RAG già progettato (ChunkViz, BM25, documento aggiornato) resta ne
 
 1. Che cosa è successo davvero in lezione 4? **Risposta del 13 novembre:** gli studenti hanno scritto da soli l'agente, ognuno il suo, a partire dai tre testi, con l'incarico di costruire un chatbot per il noleggio che rispondesse alle richieste dei clienti (rimborso, aiuto con i guasti). Resta da sapere quanti hanno il file `istruzioni_agente_noleggio.txt` e se il rimborso era una richiesta a sé.
 2. Parti 2 e 3 in gruppi di 4–5 attorno a una VM, con un file scelto per gruppo e un pilota diverso a ogni passo: va bene? Oppure preferisci un altro modo di dividersi?
-3. Parola per gli studenti: «coordinatore» (la mia proposta, in aula) o «orchestratore»? Regola del progetto: i nomi tecnici stanno nella guida docente.
+3. Parola per gli studenti: «orchestratore» (deciso dal docente il 18 novembre: è la parola usata nello sviluppo e in aula; la lezione e i file ora si chiamano così).
 4. Posso spostare il RAG alla lezione 6 come sopra?
 
 ## Ordine di lavoro se approvi
@@ -189,12 +190,12 @@ Il materiale RAG già progettato (ChunkViz, BM25, documento aggiornato) resta ne
 2. Aggiungere a `genera_materiali.py` il lavoro RIMBORSO, il piano e il controllo con i valori di riferimento (script, non a mano).
 3. Slide e consegna di lezione 5 in Markdown, scritte con le regole di «Chiarezza didattica» (quadro prima, un'azione per slide, schermate reali di Studio e opencode ricavate dalla VM, non di Copilot).
 4. Guida docente con tabella di verifica pre-aula e rami di riserva.
-5. Cartella `studenti/da_pubblicare_dopo_collaudo/` con un esempio per il coordinatore in Copilot, e un modello di file per opencode (solo righe tecniche).
+5. Cartella `studenti/da_pubblicare_dopo_collaudo/` con un esempio per l'orchestratore in Copilot, e un modello di file per opencode (solo righe tecniche).
 6. Revisore didattico: stima dei tempi nel suo rapporto, non nei materiali.
 
 ## Stato dei lavori (12 novembre 2026, dopo la generazione)
 
-Decisioni assunte per partire, ancora da confermare: «coordinatore» come parola per gli studenti, RAG alla lezione 6, punto di partenza per chi non ha il file (ora in `studenti/da_pubblicare_a_chi_non_ha_il_file/`). Approvate: parti 2 e 3 in gruppi di 4–5 attorno a una VM; dopo la revisione (12 novembre) prova unica per RIMBORSO e controllo, una sola richiesta inventata, 3C tolta.
+Decisioni assunte per partire, ancora da confermare: «orchestratore» come parola per gli studenti (confermata il 18 novembre dal docente), RAG alla lezione 6, punto di partenza per chi non ha il file (ora in `studenti/da_pubblicare_a_chi_non_ha_il_file/`). Approvate: parti 2 e 3 in gruppi di 4–5 attorno a una VM; dopo la revisione (12 novembre) prova unica per RIMBORSO e controllo, una sola richiesta inventata, 3C tolta.
 
 | File | Stato |
 | --- | --- |

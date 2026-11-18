@@ -89,12 +89,14 @@ Se il lavoro non è quello giusto, leggete la voce dell’elenco: dice abbastanz
 
 ---
 
-# Slide 09 — Inventate una richiesta
+# Slide 09 — Dove sono finiti i dati?
 <!-- layout: CONTENUTO -->
 
-Una richiesta del noleggio che potrebbe andare a due lavori, o a nessuno.
+In Copilot avete incollato un registro inventato.
 
-Provatela, in una nuova conversazione con registro, regole e guida. Se va dove non volevate, correggete l’elenco o aggiungete la riga che manca, aggiornate l’agente e riprovate.
+> Se fosse stato il registro vero di un’azienda, dove sarebbero finiti quei dati?
+
+La stessa domanda torna con Studio e con opencode.
 
 ---
 
@@ -203,9 +205,12 @@ Quando avete la risposta, riattivate la rete: serve a opencode.
 | --- | --- | --- |
 | Dove gira il modello | in rete, sui computer di Microsoft | sul vostro computer virtuale |
 | Il programma | il codice non si può leggere | il codice è aperto: si può leggere |
-| Di chi è | di Microsoft | una copia sul vostro computer: la licenza che avete letto dice che cosa potete farne |
+| Dove vanno i dati che scrivete | in rete, al servizio di Microsoft | il modello li legge sul vostro computer, anche senza rete |
+| Di chi è | di Microsoft | una copia sul vostro computer, con la sua licenza |
 
-Unsloth Studio è il programma che carica il modello e vi lascia parlarci. Il modello si chiama Qwen3.5-2B: «2B» vuol dire due miliardi di pesi, i numeri che ha imparato.
+Qwen3.5-2B ha due miliardi di pesi e gira sul vostro processore: per questo può rispondere piano.
+
+Sul proiettore: Copilot risponde alla domanda del cacciavite. Che cosa cambia?
 
 ---
 
@@ -268,19 +273,14 @@ Il modello segue le vostre istruzioni anche alla seconda domanda?
 
 ---
 
-# Slide 26 — Esplorate Studio per conto vostro
+# Slide 26 — Quanto testo tiene insieme il modello?
 <!-- layout: CONTENUTO -->
 
-Scegliete una cosa da provare. Provatela e guardate com’è andata.
+Il Context Length della vostra copia di Studio è 8192. Si misura in token, pezzetti di parola. Registro, regole e istruzioni del noleggio, insieme, ne occupano circa 3.700.
 
-| Idea | Che cosa fate |
-| --- | --- |
-| Un parametro | Temperature, Top K o Top P: la stessa domanda con due valori molto diversi |
-| System prompt | un altro ruolo per il modello |
-| Hugging Face | un altro modello piccolo: licenza e file |
-| Una voce nuova | una voce del pannello delle impostazioni che non abbiamo provato |
+> Il messaggio supera 8192: che cosa farà Studio?
 
-Context Length e il modello caricato restano come sono. Non scaricate niente: sono file molto grandi. Non aggiornate e non cancellate niente.
+Pensateci, poi guardate il proiettore: un testo lungo e una domanda su una frase che sta all’inizio.
 
 ---
 
@@ -354,7 +354,7 @@ Maiusc+Tab: in basso torna Build. Riscrivete la stessa richiesta e inviatela.
 # Slide 34 — Il programma chiede il permesso
 <!-- layout: CONTENUTO -->
 
-Compare «Permission required» per scrivere inventario.html: scegliete **Allow once**. Non scegliete «Always allow».
+Compare «Permission required» per scrivere inventario.html. Prima di scegliere, leggete il nome del file e il testo che vuole scrivere: c’è il titolo che avete scelto? Poi **Allow once**. Non scegliete «Always allow».
 
 Se dopo la scrittura chiede un comando, anche quello scritto all’inizio della parte 3: **Reject**. Il file è già scritto.
 
@@ -398,7 +398,7 @@ Scrivete la richiesta nel campo di opencode. Prima di inviare: che cosa deve con
 # Slide 38 — Controllate il risultato
 <!-- layout: CONTENUTO -->
 
-Inviate. Quando compare il permesso, leggete che file vuole scrivere: se è quello che avete chiesto, **Allow once**.
+Inviate. Quando compare il permesso, leggete il nome del file e il testo che vuole scrivere: c’è il dato che avete previsto? Poi **Allow once**.
 
 Aprite il file nuovo e confrontatelo con il file originale. Un dato scelto da voi: è uguale? Se non torna, correggete la richiesta e riprovate.
 
@@ -436,6 +436,7 @@ Pensateci, poi guardiamo la tabella.
 | --- | --- | --- | --- |
 | Dove gira il modello | in rete | sul vostro computer virtuale | in rete |
 | Chi apre e scrive i file | nessun programma: voi copiate e incollate | nessun programma: solo la chat | il programma, se glielo permettete |
+| Dove vanno i dati che scrivete | in rete, al servizio di Microsoft | il modello li legge sul vostro computer virtuale, anche senza rete | in rete, al servizio di chi offre Big Pickle, con i file che legge |
 
 ---
 

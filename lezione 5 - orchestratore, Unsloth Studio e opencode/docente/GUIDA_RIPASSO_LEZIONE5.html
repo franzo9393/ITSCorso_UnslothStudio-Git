@@ -1,0 +1,422 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><title>Ripasso docente Lezione 5</title><style>body{font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.4;max-width:900px;margin:auto}table{border-collapse:collapse;width:100%}td,th{border:1px solid #999;padding:4px 6px;vertical-align:top}th{background:#e8eef7}code{background:#f0f0f0}</style></head><body><h1>Ripasso per il docente · Lezione 5 · mercoledì 18 novembre 2026</h1>
+<p>Documento riservato al docente. Serve a capire bene i concetti prima di entrare in aula. Non sostituisce <code>backup/GUIDA_DOCENTE.md</code>, che resta la guida di conduzione con le tabelle di controllo pre-aula. Qui c'è la versione corta e in parole semplici.</p>
+<h2>1. La lezione in una pagina</h2>
+<p>Il filo è una domanda: <strong>chi fa che cosa?</strong></p>
+<table width="100%" cellpadding="4" border="1">
+<thead>
+<tr>
+<th>Strumento</th>
+<th>Dove gira il modello</th>
+<th>Chi tocca i file</th>
+<th>Che cosa vedono gli studenti</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Microsoft Copilot (parte 1)</td>
+<td>in rete, da Microsoft</td>
+<td>nessuno: gli studenti copiano e incollano</td>
+<td>un agente con più lavori che sceglie il lavoro giusto</td>
+</tr>
+<tr>
+<td>Unsloth Studio (parte 2)</td>
+<td>sul computer virtuale dello studente</td>
+<td>nessuno: è solo una chat</td>
+<td>un modello che risponde anche senza Internet, e le sue impostazioni</td>
+</tr>
+<tr>
+<td>opencode (parte 3)</td>
+<td>in rete (modello Big Pickle)</td>
+<td>il programma, con il permesso dello studente</td>
+<td>un programma che legge e scrive file e si ferma a chiedere</td>
+</tr>
+</tbody>
+</table>
+<p>Messaggio finale da portare a casa, in una frase: <strong>il modello decide che cosa chiedere; il programma agisce; il permesso decide se può farlo; il contenuto lo controlli tu.</strong></p>
+<p>Ogni studente lavora da solo sul proprio computer. Niente giro tra i banchi, niente file da consegnare, niente voto. Prima si fa provare, poi si mostra il criterio.</p>
+<h2>2. I concetti, spiegati semplici</h2>
+<p>Per ognuno: l'idea, un'immagine (le immagini sono metafore: dichiarale come tali), la frase da dire.</p>
+<h3>2.1 Agente con più lavori («orchestratore»)</h3>
+<ul>
+<li><strong>L'idea.</strong> Nella lezione 4 gli studenti hanno scritto un testo di istruzioni per Copilot. Ora quel testo ha due parti: un <strong>elenco</strong> («se la richiesta parla di minuti fuori servizio, usa il lavoro FUORI SERVIZIO») e i <strong>lavori</strong>, ognuno con le sue regole e i suoi testi da usare.</li>
+<li><strong>L'immagine.</strong> Il banco del noleggio: chi risponde al telefono ascolta, decide a chi passare la chiamata (meccanico, cassa, turno dopo) e riporta la risposta.</li>
+<li><strong>Cosa significa «orchestratore».</strong> Il pezzo che sceglie quale lavoro usare, in quale ordine, e che cosa passa dall'uno all'altro. Lo dici a voce alla fine della parte 1 (slide 13). Sulle slide e nella consegna si dice solo «lavoro» ed «elenco delle richieste».</li>
+<li><strong>Cosa succede davvero in Copilot.</strong> Il modello legge <strong>tutto il testo ogni volta</strong>. I lavori non sono caricati separatamente. La riga «Lavoro usato:» è scritta dal modello <strong>dopo</strong>: è un'etichetta, non una prova di come ha ragionato.</li>
+<li><strong>Dove si corregge.</strong> Se una richiesta va al lavoro sbagliato, si corregge la voce nell'<strong>elenco</strong>, non il lavoro.</li>
+<li><strong>Frase da dire.</strong> «Se la richiesta va nel posto sbagliato, quasi mai è sbagliato il lavoro: è l'elenco che non è abbastanza chiaro.»</li>
+</ul>
+<h3>2.2 Modello e programma: due cose diverse</h3>
+<p>È il concetto più importante della lezione, perché la parte 3 si capisce solo con questo.</p>
+<ul>
+<li><strong>Il modello</strong> è il «cervello»: riceve testo e produce testo. Non apre file, non scrive file, non vede la cartella.</li>
+<li><strong>Il programma</strong> (Unsloth Studio, opencode, Copilot) è ciò che sta attorno al modello: mostra la chat, manda il testo al modello e, se è costruito per farlo, <strong>esegue</strong> azioni.</li>
+<li><strong>L'immagine.</strong> Il modello è un consulente che sta in un'altra stanza e riceve solo bigliettini scritti. Il programma è l'assistente che porta i bigliettini avanti e indietro e, se il consulente scrive «portami il faldone 3», va a prenderlo.</li>
+<li><strong>In pratica.</strong> Quando opencode «legge un file», è il modello che scrive «leggi inventario.csv» e il <strong>programma</strong> che apre il file e rimanda il testo al modello. Lo studente deve vedere questa differenza con i suoi occhi (le righe «Explored: 3 reads» della slide 30).</li>
+</ul>
+<h3>2.3 Hugging Face, pesi, licenza (slide 15–16)</h3>
+<ul>
+<li><strong>Hugging Face</strong> è un sito pubblico dove si trovano modelli, come un negozio di file. Ogni modello ha una pagina.</li>
+<li><strong>Cosa si legge su una pagina, in quest'ordine:</strong> chi l'ha pubblicato, la licenza (che cosa ci si può fare), quanto pesano i file (quanto spazio e memoria servono).</li>
+<li><strong>I «pesi».</strong> Sono i numeri che il modello ha imparato in addestramento: il modello è, in sostanza, un grande file di numeri. «2B» in Qwen3.5-2B vuol dire <strong>due miliardi di pesi</strong>.</li>
+<li><strong>Attenzione alle parole.</strong> I «parametri» di Studio (Temperature, Top K, Top P) sono un'altra cosa: sono le impostazioni con cui si fa rispondere il modello, non i pesi. Dillo a voce, perché sulla pagina di Hugging Face compare «2B params», che sono i pesi.</li>
+<li><strong>GGUF.</strong> È il formato del file pensato per girare su un computer normale. Non serve approfondirlo: basta dire «è il formato adatto a girare sul vostro PC».</li>
+<li><strong>Per prepararti.</strong> Apri la pagina <code>unsloth/Qwen3.5-2B-GGUF</code> e leggi tu stesso editore, licenza, file più piccolo e più grande. La licenza del modello (Apache 2.0) e del programma Studio (AGPL-3.0) sono indicate dalla guida, ma <strong>controllale sui siti prima di dirle</strong>. La dimensione del file del modello non è sicura (1,3 GB o 2,0 GB a seconda della fonte): leggila in Studio, non dirne una a memoria.</li>
+</ul>
+<h3>2.4 Un modello che gira sul PC (slide 18–20)</h3>
+<ul>
+<li><strong>L'idea.</strong> Il modello di Studio è un file sul computer virtuale. Per rispondere non chiede niente a nessuno in rete.</li>
+<li><strong>La prova.</strong> Gli studenti fanno una domanda, tolgono la rete, rifanno la domanda: risponde lo stesso.</li>
+<li><strong>Che cosa NON dire.</strong> Non dire che è «migliore» o «peggiore» di Copilot: non è stato misurato. Dì solo: gira sul processore del computer, quindi può essere lento; il modello legge il testo lì, anche senza rete.</li>
+<li><strong>Attenzione.</strong> Il gesto per togliere la rete dentro la VM non è provato: scoprilo prima dell'aula. Se non c'è un gesto semplice per gli studenti, lo fai tu dal proiettore e dici com'è.</li>
+<li><strong>Il guadagno concreto.</strong> Il modello legge i dati sul computer: per rispondere non servono la rete né un servizio esterno. È uno dei motivi per cui si usano i modelli locali.</li>
+<li><strong>Dove vanno i dati (slide 9 e 20).</strong> In Copilot e in opencode il testo scritto viaggia in rete fino al servizio (Microsoft; chi offre Big Pickle, che nel periodo gratuito, secondo la documentazione di OpenCode, può usarlo per migliorare il modello); in opencode parte anche il contenuto dei file che legge, senza chiedere. In Studio il modello legge il testo sul computer, anche senza rete: che con Search spento non esca nulla non è provato. Non dire che cosa conserva Microsoft con l'account scolastico.</li>
+<li><strong>Perché è lento.</strong> Il modello gira sul processore del PC, non su macchine grandi: per questo risponde piano. È piccolo perché possa girare lì. Non dire che «sbaglia più facilmente»: non è misurato. Vale come frase a voce e sta anche nella slide 20.</li>
+<li><strong>Confronto con Copilot (slide 20).</strong> La stessa domanda del cacciavite, fatta a Copilot dal vivo dal tuo PC, accanto alla risposta di Studio. Non è una gara e non serve a parlare di velocità se la risposta è quella preparata.</li>
+</ul>
+<h3>2.5 Context Length: quanto testo il modello tiene insieme (slide 21)</h3>
+<ul>
+<li><strong>L'idea.</strong> Il modello legge un testo alla volta fino a un limite: è il <strong>Context Length</strong>, misurato in <strong>token</strong> (pezzi di parola; una parola italiana è fatta di uno o più token).</li>
+<li><strong>L'immagine.</strong> La scrivania: più è grande, più fogli ci stanno aperti insieme. Se i fogli sono troppi, i primi cadono.</li>
+<li><strong>Nei numeri della lezione.</strong> La VM ha 8192. Un messaggio con registro, regole e istruzioni del noleggio misurava circa 3.665 token il 15 novembre: ci stava. Controlla prima dell'aula, con il contatore di Studio, che con le istruzioni nel System Prompt si arrivi a circa 3.700.</li>
+<li><strong>Il costo.</strong> Più contesto vuol dire più memoria. In Studio con 8192 la memoria stimata è 3,33 GiB; con «Auto» sale a 6,48 GiB e Studio avvisa che supera la RAM. Perciò gli studenti <strong>non lo toccano</strong>: lo cambi tu (serve «Reload model»).</li>
+<li><strong>Domanda da studenti.</strong> «Perché Copilot non ha questo problema?» Risposta onesta: ce l'ha anche lui, ma con un limite molto più grande, che non vediamo.</li>
+<li><strong>Che cosa succede oltre il limite (slide 26).</strong> Studio potrebbe scartare l'inizio, rifiutare il messaggio o rispondere in un altro modo: non lo so, non è provato. Mostralo com'è, con il contatore del contesto. È il motivo per cui nella lezione 6 serve il RAG.</li>
+</ul>
+<h3>2.6 Temperature, Top K, Top P (slide 22–24)</h3>
+<p>Il modello, a ogni passo, calcola una <strong>probabilità per ogni parola possibile</strong> e poi ne sceglie una. Le tre impostazioni cambiano <strong>come sceglie</strong>. Gli studenti hanno già visto le probabilità in Transformer Explainer (lezione 4).</p>
+<table width="100%" cellpadding="4" border="1">
+<thead>
+<tr>
+<th>Parametro</th>
+<th>Spiegazione semplice</th>
+<th>Immagine (metafora)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Temperature</td>
+<td>Bassa: sceglie quasi sempre la parola più probabile. Alta: dà più possibilità alle parole improbabili.</td>
+<td>Un dado truccato che a poco a poco diventa un dado normale</td>
+</tr>
+<tr>
+<td>Top K</td>
+<td>Il modello guarda solo le K parole più probabili e ignora le altre.</td>
+<td>Una lista della spesa ridotta ai primi K prodotti</td>
+</tr>
+<tr>
+<td>Top P</td>
+<td>Il modello prende le parole più probabili, dall'alto, finché le loro probabilità sommate arrivano a P.</td>
+<td>Si riempie il bicchiere finché si arriva alla linea P</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Cosa fanno gli studenti.</strong> Solo Temperature: Temperature a 1,5, richiesta «Continua con poche parole: Nel mio laboratorio ho trovato», tre risposte (invio e due rigenerazioni), quante sono diverse. Top K e Top P restano solo nella tabella della slide 24 e non si provano.</li>
+<li><strong>Cosa aspettarsi.</strong> Con Temperature alta le risposte dovrebbero essere diverse tra loro. Non è provato nella VM: se identiche, cerca un campo Seed fisso (è nella tabella di controllo della guida). Non fondare la lezione sull'errore del modello: va bene qualunque esito.</li>
+<li><strong>Regola importante.</strong> «Non esiste una Temperature giusta: dipende dal compito.» Per un conteggio in un registro si vuole bassa; per inventare un nome di pizza si può alzare.</li>
+<li><strong>Alla fine.</strong> Gli studenti rimettono Temperature com'era.</li>
+</ul>
+<h3>2.7 System prompt, messaggio normale e RAG (slide 25 e richiamo a voce)</h3>
+<p>Tre modi diversi di dare testo al modello, da tenere separati:</p>
+<table width="100%" cellpadding="4" border="1">
+<thead>
+<tr>
+<th>Che cosa</th>
+<th>Quando il modello lo legge</th>
+<th>Esempio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>System prompt</td>
+<td><strong>prima di ogni</strong> messaggio, sempre</td>
+<td>«Sei un cuoco burbero. Rispondi in una frase.»</td>
+</tr>
+<tr>
+<td>Messaggio normale</td>
+<td>solo in quella conversazione</td>
+<td>la domanda dello studente</td>
+</tr>
+<tr>
+<td>RAG (visto nella lezione 3)</td>
+<td>il programma <strong>sceglie dai documenti</strong>, in base alla domanda, e aggiunge solo i passaggi che c'entrano</td>
+<td>un manuale da cui si pesca la pagina giusta</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Frase da dire a voce dopo la slide 26</strong> (nessuna slide, nessuna attività): «Prima il testo fisso, nel System prompt; con il RAG il testo viene scelto ogni volta dalla domanda.» L'immagine del libro che si apre prima di rispondere è una metafora: dichiarala.</li>
+<li><strong>In Studio il System prompt è un vero testo di sistema.</strong> In Copilot, nella lezione 2, con una normale conversazione, le istruzioni nel primo messaggio <strong>non</strong> lo erano. Se qualcuno lo ricorda, è una buona differenza da far notare.</li>
+<li><strong>Il testo resta dopo «Nuova chat»</strong> (provato su VMware): fai cancellare il testo alla fine dell'attività.</li>
+<li><strong>Un modello da 2 miliardi può non seguire una regola.</strong> Non è un errore dello studente: la correzione fa parte dell'esercizio, e una prova riuscita subito vale quanto una corretta.</li>
+<li><strong>Il cuoco burbero non è provato</strong> con il modello da 2B: provalo prima dell'aula sulla tua VM.</li>
+</ul>
+<h3>2.8 opencode: il programma che agisce (parte 3)</h3>
+<ul>
+<li><strong>Che cos'è.</strong> Un programma che parla con un modello e, a differenza di una chat, può <strong>leggere e scrivere file nella cartella</strong> dove parte. Qui parte in <code>laboratorio</code>, con tre file inventati: <code>inventario.csv</code>, <code>appunti_riunione.txt</code>, <code>da_fare.txt</code> (più <code>opencode.jsonc</code>, il file con le regole).</li>
+<li><strong>Il modello è Big Pickle</strong>, uno dei modelli gratuiti di opencode. Risponde <strong>dalla rete</strong>, quindi serve la rete dalla VM (ecco perché la rete va riattivata dopo la 2A). Dalla documentazione, nel periodo gratuito i dati possono servire a migliorare il modello: ecco perché agli studenti si dice di non scrivere dati personali. Non è provato come si comporti con tutte le VM sullo stesso indirizzo della scuola.</li>
+<li><strong>Chi apre i file (slide 29–30).</strong> Il modello chiede, il programma esegue. «Explored: N reads» dice <strong>quante</strong> letture ha fatto il programma. Per la richiesta «Che file ci sono...», il numero può cambiare da studente a studente: è normale.</li>
+<li><strong>Plan e Build (slide 32–33).</strong></li>
+<li><strong>Plan</strong> = «prima pensa e proponi»: il programma <strong>non</strong> scrive.</li>
+<li><strong>Build</strong> = «ora esegui».</li>
+<li>Si cambia con Maiusc+Tab; in basso si legge quale è attivo.</li>
+<li>Lo studente scrive la stessa richiesta in tutte e due: in Plan il file non compare, in Build sì (dopo il permesso).</li>
+<li><strong>I permessi (slide 34 e 39).</strong> Per ogni azione il file <code>opencode.jsonc</code> dice una di tre cose:</li>
+</ul>
+<table width="100%" cellpadding="4" border="1">
+<thead>
+<tr>
+<th>Regola</th>
+<th>Significato</th>
+<th>Esempio nel file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allow</td>
+<td>fa senza chiedere</td>
+<td>leggere un file</td>
+</tr>
+<tr>
+<td>ask</td>
+<td>si ferma e chiede a te</td>
+<td>scrivere un file in Build; eseguire un comando</td>
+</tr>
+<tr>
+<td>deny</td>
+<td>rifiuta</td>
+<td>scrivere un file in Plan</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>«Allow once» o «Always allow».</strong> Una volta sola, oppure per sempre. <strong>Sempre «Allow once»:</strong> «Always allow» trasforma ask in allow per sempre e la richiesta sparisce. Dillo a voce prima della slide 29.</li>
+<li><strong>Leggere prima di approvare (slide 34).</strong> Il permesso mostra il nome del file e il testo da scrivere. Gli studenti li leggono prima di scegliere. È la parte che l'«ask» affida a loro. Se in Build la richiesta non mostra il testo, toglilo a voce dalla slide e dalla consegna.</li>
+<li><strong>Quando compare un comando da eseguire</strong> (non solo la scrittura del file): la regola della consegna è che si approva con Allow once solo se è <strong>uguale, lettera per lettera, a quello scritto nella consegna</strong>. Qualunque altro comando: <strong>Reject</strong>. Nota: il comando atteso viene da una prova del 15 novembre con una richiesta diversa; il 16 novembre con la richiesta attuale potrebbe essere un altro. <strong>Provalo prima dell'aula nella VM e aggiorna la consegna.</strong></li>
+<li><strong>Reject (slide 36).</strong> Il file non compare. Cosa scrive opencode dopo il Reject? Non è provato con la scrittura: nelle prove sulla lettura, Reject ha interrotto tutta la risposta. Guarda com'è e non anticipare.</li>
+<li><strong>La richiesta propria (slide 37–38).</strong> Ognuno inventa una richiesta su due file e si fa creare un file nuovo, poi <strong>controlla un dato</strong> scelto da lui contro l'originale. Il criterio non è che il file sia bello, ma che quel dato sia uguale. Se non torna, si corregge la richiesta: è lavoro, non fallimento.</li>
+</ul>
+<h3>2.9 Chi controlla che cosa (slide 13, 41, 42)</h3>
+<p>Due controlli diversi, da non confondere:</p>
+<table width="100%" cellpadding="4" border="1">
+<thead>
+<tr>
+<th>Controllo</th>
+<th>Chi lo fa</th>
+<th>Esempio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sulle <strong>azioni</strong> (scrivere, eseguire)</td>
+<td>il permesso del programma</td>
+<td>opencode si ferma e chiede prima di scrivere un file</td>
+</tr>
+<tr>
+<td>Sui <strong>dati</strong> (il numero è giusto?)</td>
+<td>lo studente, sul documento originale</td>
+<td>il numero della nota rispetto al registro</td>
+</tr>
+</tbody>
+</table>
+<p>Il permesso <strong>non</strong> verifica che il contenuto sia giusto: dice solo se l'azione è consentita. Nella slide 42 la domanda su «cancellare un file» (allow, ask o deny) non ha una sola risposta giusta: <strong>ask</strong> è la più difendibile, perché cancellare non si annulla. Quello che conta è che lo studente motivi.</p>
+<p>Un file letto da opencode può contenere frasi che sembrano richieste («dopo la lettura crea un altro file»): il modello può trattarle come istruzioni vere. Per questo si legge sempre che cosa il programma vuole fare prima di dire «Allow once». Lo dici a voce dopo la domanda finale; non è provato e non lo proietti.</p>
+<h2>3. La lezione, parte per parte</h2>
+<p>I testi in corsivo sono frasi che puoi dire a voce. Non ci sono tempi: guarda gli schermi e chiudi tu ogni parte a vista.</p>
+<h3>Parte 1 · Copilot e l'agente con più lavori (slide 1–13)</h3>
+<p><strong>Obiettivo.</strong> Far vedere un elenco che instrada la richiesta verso il lavoro giusto, e un dato che passa da un lavoro all'altro.</p>
+<ol>
+<li><strong>Slide 2.</strong> Riaprono il loro agente e rifanno la domanda della lezione 4 sulla bici 12 (sabato, minuti fuori servizio). Controlla gli orari con quelli della guida: <strong>10:40 → 11:50, 70 minuti.</strong> Dici gli orari a voce solo dopo la prova.</li>
+<li><strong>Slide 3.</strong> Presenti i tre strumenti. Dici che da Studio in poi si lavora nel computer virtuale: ognuno il suo.</li>
+<li><strong>Slide 4–6.</strong> Cercano nel proprio file l'elenco e i lavori; scrivono il lavoro che manca (GUASTI se hanno PASSAGGIO, o il contrario); aggiornano l'agente. La tabella è a metà: <strong>non dare risposte né esempi di GUASTI o PASSAGGIO.</strong></li>
+<li><strong>Slide 7–9.</strong> Tre richieste, una per lavoro; guardano la prima riga «Lavoro usato:» e correggono l'elenco; poi (slide 9) pensano a dove andrebbero i dati se il registro fosse vero.</li>
+<li><strong>Slide 10–11.</strong> La catena FUORI SERVIZIO → PASSAGGIO: il numero entra nella nota. Il numero giusto è <strong>70 minuti</strong>.</li>
+<li><strong>Slide 12–13.</strong> Salvano il file. <em>Il numero l'avete controllato voi, non il programma.</em> Ora dici la parola «orchestratore».</li>
+</ol>
+<p><strong>Chi non ha il file.</strong> Dagli il file <code>da_pubblicare_a_chi_non_ha_il_file/ISTRUZIONI_DI_PARTENZA_NOLEGGIO.txt</code>. Non è una soluzione collaudata: ha già i tre lavori, quindi salta la scrittura (slide 5) e passa alla prova. Non presumere che tutti abbiano finito la lezione 4.</p>
+<p><strong>Se Copilot non risponde</strong> (il 4 novembre è mancato circa 10 minuti, ipotesi: limite di richieste per indirizzo): prova a secco dal proiettore su un testo di uno studente, dichiarando che non è una risposta del modello.</p>
+<p><strong>Non provato:</strong> nulla di questa parte è stato provato in Copilot con l'account studente (creazione e modifica dell'agente, lunghezza massima delle istruzioni con tre lavori).</p>
+<h3>Parte 2 · Unsloth Studio, il modello sul computer (slide 14–26)</h3>
+<ol>
+<li><strong>Slide 14.</strong> Passano al computer virtuale.</li>
+<li><strong>Slide 15–16.</strong> Pagina di un altro modello dal proiettore (<code>bartowski/Llama-3.2-1B-Instruct-GGUF</code>) con quattro punti cerchiati; poi ognuno apre la pagina di Qwen3.5-2B-GGUF e trova gli stessi quattro punti. <em>Prima il concreto, poi il nome.</em></li>
+<li><strong>Slide 17.</strong> Aprono Studio dal collegamento. Se in alto manca «Qwen3.5-2B-GGUF», scelgono Select model › On Device › Qwen3.5-2B-GGUF (circa 50 secondi sul tuo PC; sui PC della scuola non misurato). <strong>Dì a voce: la finestra nera con il testo non va chiusa, altrimenti Studio si ferma. «Remind me later» agli avvisi di aggiornamento.</strong></li>
+<li><strong>Slide 18–19 · 2A.</strong> <em>«Questo modello ha bisogno di Internet?»</em> Domanda a voce, nessuna conta. Prima domanda, poi rete tolta, poi stessa domanda; riattivare la rete.</li>
+<li><strong>Slide 20.</strong> La tabella «Dove gira?» arriva <strong>dopo</strong> che hanno visto la risposta; ha anche la riga su dove vanno i dati. Poi mostri la risposta di Copilot alla stessa domanda del cacciavite: si guarda che cosa cambia (lunghezza, tono, precisione), non quale è migliore.</li>
+<li><strong>Slide 21.</strong> Aprono il pannello, leggono Context Length (deve essere 8192) e Temperature. Non toccano nulla.</li>
+<li><strong>Slide 22–24 · 2B.</strong> Tu mostri dal vivo la pizza con Temperature 1,5, tre volte; poi provano loro; poi la tabella dei tre parametri. Rimettono Temperature com'era.</li>
+<li><strong>Slide 25 · 2C.</strong> Esempio del cuoco burbero dal vivo; poi due righe loro e due domande. Fai cancellare il System prompt alla fine.</li>
+<li><strong>Slide 26 · Quanto testo tiene insieme il modello?</strong> Domanda a voce: il messaggio supera 8192, che cosa farà Studio? Poi la tua dimostrazione dal proiettore, con il contatore del contesto nell'intestazione di Studio. Prima di passare a opencode: la finestra nera resta aperta, Search e Tools restano spenti (Search usa la rete), rimettere Temperature com'era, cancellare il System prompt. A voce, il richiamo al RAG: «Prima il testo fisso, nel System prompt; con il RAG il testo viene scelto ogni volta dalla domanda.»</li>
+</ol>
+<p><strong>Se Studio è lento o non risponde:</strong> 2B e 2C dal proiettore; la 2A dal proiettore se la rete spenta funziona.</p>
+<h3>Parte 3 · opencode (slide 27–42)</h3>
+<ol>
+<li><strong>Slide 27–28.</strong> Doppio clic sul collegamento opencode (parte da <code>laboratorio</code>, modalità Build, modello Big Pickle). Rete riattivata. Dati personali: no.</li>
+<li><strong>Prima della slide 29, a voce a tutta la classe:</strong> se compare «Permission required», si legge che cosa vuole fare; si sceglie <strong>solo Allow once</strong>, mai Always allow; un comando si approva solo se è identico a quello della consegna, altrimenti Reject.</li>
+<li><strong>Slide 29–30 · 3A.</strong> <em>«Chi apre i file: il modello o il programma?»</em> poi inviano e contano le letture.</li>
+<li><strong>Slide 31–35 · 3B.</strong> Scrivono la richiesta per <code>inventario.html</code> senza inviarla; la inviano <strong>prima in Plan</strong> (il file non compare); poi in Build; permesso «Edit» con Allow once; aprono la pagina e contano le righe con un componente rispetto al CSV. Nel CSV ci sono <strong>15 righe di dati</strong> (più la riga delle intestazioni; file <code>CARTELLA_LABORATORIO/inventario.csv</code>). Se lo studente chiede di evidenziare le quantità sotto 5, controlla nel CSV (nella guida: filamenti neri e saldatori).</li>
+<li><strong>Slide 36 · 3C.</strong> Richiesta su <code>riassunto.txt</code>, poi <strong>Reject</strong>; non reinviano. Guardano che cosa scrive opencode e se il file c'è.</li>
+<li><strong>Slide 37–38 · 3D.</strong> Richiesta propria su due file; prevedono il contenuto; Allow once; confronto di un dato.</li>
+<li><strong>Slide 39.</strong> Proietti le righe di <code>opencode.jsonc</code>, poi la tabella allow, ask, deny.</li>
+<li><strong>Slide 40–42.</strong> Domanda sui tre strumenti, <strong>poi</strong> la tabella; chiusura con «allow, ask o deny per cancellare un file?» e «il contenuto di un file nuovo, chi lo controlla?».</li>
+</ol>
+<p><strong>Se Big Pickle non risponde</strong> (rete o limite di richieste con tutte le VM insieme): scegli <strong>una</strong> alternativa e dichiarala.</p>
+<table width="100%" cellpadding="4" border="1">
+<thead>
+<tr>
+<th>Alternativa</th>
+<th>Come dichiararla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a · Qwen locale con <code>unsloth start opencode</code>: solo dimostrazione, è molto lento (provato: oltre 4 minuti a risposta)</td>
+<td>«Qui il modello è piccolo e locale: è lento.»</td>
+</tr>
+<tr>
+<td>b · opencode sul tuo PC con Big Pickle, proiettato (prova con l'hotspot del telefono se il guasto è la rete della scuola)</td>
+<td>«Esecuzione reale sul computer del docente, non sulle VM.»</td>
+</tr>
+<tr>
+<td>c · schema a secco su carta (<code>docente/SCHEMA_A_SECCO_PARTE3.md</code>)</td>
+<td>«Non è un'esecuzione: è uno schema scritto a mano.»</td>
+</tr>
+</tbody>
+</table>
+<p>Chiedi di aspettare prima di riprovare: richieste ripetute peggiorano il limite (ipotesi).</p>
+<h2>4. Domande che gli studenti potrebbero farti</h2>
+<table width="100%" cellpadding="4" border="1">
+<thead>
+<tr>
+<th>Domanda</th>
+<th>Risposta semplice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>«Perché il modello nella VM è così lento?»</td>
+<td>Gira sul processore del tuo PC, non su una grande macchina in rete. In cambio non esce dal computer.</td>
+</tr>
+<tr>
+<td>«È lo stesso modello di Copilot?»</td>
+<td>No. Copilot gira in rete su macchine di Microsoft. Questo è piccolo e si trova su Hugging Face. Non confronto la qualità: non l'abbiamo misurata.</td>
+</tr>
+<tr>
+<td>«Perché Temperature 1,5 e non 100?»</td>
+<td>Perché oltre un certo punto le parole diventano casuali. Si prova e si guarda: non esiste un valore giusto per tutto.</td>
+</tr>
+<tr>
+<td>«Posso fidarmi di opencode che scrive un file?»</td>
+<td>Il permesso dice se l'azione è consentita. Che il contenuto sia giusto lo controlli tu sull'originale.</td>
+</tr>
+<tr>
+<td>«Perché non scelgo Always allow, così smette di chiedere?»</td>
+<td>Perché trasforma ask in allow per sempre: poi non ti chiede più nemmeno quando vuole cambiare altro.</td>
+</tr>
+<tr>
+<td>«Il modello ha davvero letto il file?»</td>
+<td>Lo vedi nelle righe «Explored: N reads»: è il programma che mostra le letture.</td>
+</tr>
+<tr>
+<td>«Questo agente di Copilot è lo stesso che fa opencode?»</td>
+<td>No. In Copilot è un testo letto dal modello: nessun programma agisce al posto tuo. In opencode un programma esegue e si ferma a chiedere.</td>
+</tr>
+<tr>
+<td>«Cos'è un token?»</td>
+<td>Un pezzo di parola. Il modello legge e scrive a pezzi. Un messaggio con registro, regole e istruzioni del noleggio ne misura circa 3.665 (misura del 15 novembre; da rifare oggi con i soli registro e regole).</td>
+</tr>
+<tr>
+<td>«Perché la parola "parametri" ha due significati?»</td>
+<td>Vero, ed è un problema di nome. I «2B» di Qwen3.5-2B sono i pesi imparati; Temperature, Top K e Top P sono impostazioni di risposta. Usiamo «parametri» solo per le seconde.</td>
+</tr>
+</tbody>
+</table>
+<h2>5. Che cosa NON dire (non è provato)</h2>
+<ul>
+<li>Che la creazione o la modifica dell'agente in Copilot funzioni con l'account studente: <strong>non provata</strong>.</li>
+<li>Che lo studente possa togliere la rete nella VM con un gesto semplice, o che Studio risponda senza rete: <strong>non provato</strong>.</li>
+<li>Che Temperature 1,5 dia tre risposte diverse con Qwen 2B, o che il cuoco burbero sia seguito: <strong>non provato</strong>.</li>
+<li>Che il comando che opencode chiede di eseguire in 3A sia quello scritto nella consegna: <strong>va verificato</strong> nella VM.</li>
+<li>Che Reject interrompa la risposta anche con la scrittura: <strong>non provato</strong>.</li>
+<li>Che Big Pickle regga tutte le VM sullo stesso indirizzo della scuola: <strong>non provato</strong>; non dire che i modelli gratuiti restino gratuiti (il periodo è limitato).</li>
+<li>Che Copilot e Studio abbiano qualità diverse, o che Studio sia più sicuro: non misurato. Dì solo dove gira il modello.</li>
+<li>Un risultato scritto a mano come se fosse la risposta del modello: mai.</li>
+<li>Che opencode «capisca» o «decida» come una persona: dì che il modello <strong>propone</strong> e il programma <strong>esegue</strong>.</li>
+<li>Che cosa Microsoft conserva o non conserva dei dati con l'account scolastico: non è verificato. Dì solo che il testo viaggia in rete fino al servizio.</li>
+<li>Che cosa farà Studio con un testo più lungo del limite (slide 26): non è provato. Mostralo com'è.</li>
+</ul>
+<h2>6. Preparazione prima dell'aula, in ordine</h2>
+<p>Fai una volta sola, sulla tua copia della VM (o sulla VM che userai in aula), e cancella le prove prima di copiare.</p>
+<ol>
+<li><strong>Copilot.</strong> Apri il tuo agente con il testo di partenza e prova le tre richieste della slide 7 e la catena della slide 10. Controlla che il numero nella nota sia <strong>70</strong> e che la lunghezza delle istruzioni sia accettata.</li>
+<li><strong>Rete nella VM.</strong> Trova il gesto per togliere e riattivare la rete in Windows dentro la VM. Con la rete tolta, Studio risponde?</li>
+<li><strong>Studio.</strong> Collegamento sul desktop (nome esatto?), modello caricato (intestazione «8.2k»), Search e Tools spenti. Prova Temperature 1,5: dove si scrive, virgola o punto, dov'è il pulsante per rigenerare, che cosa fa «Reset all». Prepara la dimostrazione della slide 26: un testo più lungo di 8192 token (il registro incollato più volte) con una frase distintiva all'inizio e una domanda su quella frase; guarda che cosa fa Studio. Prepara anche la risposta di Copilot alla domanda sul cacciavite (slide 20).</li>
+<li><strong>System prompt.</strong> Prova il cuoco burbero con due domande. Poi cancellalo.</li>
+<li><strong>opencode.</strong> Avvia dal collegamento con la rete attiva. Prova la richiesta della slide 29: quale comando chiede, se lo chiede? <strong>Aggiorna la consegna se è diverso.</strong> Poi la richiesta della slide 31 in Plan e in Build, e la richiesta della 36 con Reject.</li>
+<li><strong>Pulizia.</strong> Nella cartella <code>laboratorio</code> devono restare solo i tre file e <code>opencode.jsonc</code>: via <code>inventario.html</code>, <code>riassunto.txt</code>, conversazioni di prova, approvazioni salvate.</li>
+<li><strong>Materiali da pubblicare su Teams:</strong> <code>studenti/ATTIVITA_LEZIONE5.docx</code> e i tre testi del noleggio. <strong>Non</strong> pubblicare le cartelle di backup. Il file <code>ISTRUZIONI_DI_PARTENZA_NOLEGGIO.txt</code> lo dai solo a chi non ha il proprio file.</li>
+<li><strong>Ramo di riserva.</strong> Decidi <strong>prima di entrare</strong> quale usare se Big Pickle non risponde (di solito b, sul tuo PC con l'hotspot), e tieni pronto lo schema a secco.</li>
+<li><strong>Proiettore.</strong> Prepara la risposta alla pizza con Temperature 1,5 e il cuoco burbero. Se Studio non risponde, mostra le richieste e dichiara che non hai la risposta.</li>
+<li><strong>Cartelle e rete.</strong> Controlla che le VM partano e che la finestra nera dei log non venga chiusa.</li>
+</ol>
+<h2>7. Mini-glossario (per te)</h2>
+<table width="100%" cellpadding="4" border="1">
+<thead>
+<tr>
+<th>Parola</th>
+<th>In una riga</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modello</td>
+<td>Il programma che produce testo a partire da testo. Non agisce da solo.</td>
+</tr>
+<tr>
+<td>Peso</td>
+<td>Un numero imparato in addestramento. «2B» = due miliardi di pesi.</td>
+</tr>
+<tr>
+<td>Token</td>
+<td>Un pezzo di parola. Il modello legge e scrive a pezzi.</td>
+</tr>
+<tr>
+<td>Context Length</td>
+<td>Quanti token il modello tiene insieme. Nella VM: 8192.</td>
+</tr>
+<tr>
+<td>Temperature, Top K, Top P</td>
+<td>Impostazioni che cambiano come il modello sceglie la parola successiva.</td>
+</tr>
+<tr>
+<td>System prompt</td>
+<td>Testo che il modello legge prima di ogni messaggio, in Studio.</td>
+</tr>
+<tr>
+<td>Hugging Face</td>
+<td>Sito pubblico con le pagine dei modelli.</td>
+</tr>
+<tr>
+<td>Orchestratore</td>
+<td>Il pezzo che sceglie quali lavori usare, in che ordine e che cosa passare.</td>
+</tr>
+<tr>
+<td>Plan / Build</td>
+<td>In opencode: Plan non scrive, Build scrive (con il permesso).</td>
+</tr>
+<tr>
+<td>allow / ask / deny</td>
+<td>Fa senza chiedere / chiede / rifiuta.</td>
+</tr>
+<tr>
+<td>Allow once</td>
+<td>Approva questa volta sola. Mai Always allow.</td>
+</tr>
+<tr>
+<td>RAG</td>
+<td>Il programma cerca nei documenti i passaggi che c'entrano e li aggiunge alla richiesta.</td>
+</tr>
+</tbody>
+</table>
+<h2>8. Dopo l'aula (per la lezione 6)</h2>
+<p>Conserva da quello che vedi dal proiettore: che cosa ha tenuto il modello piccolo nel System prompt, quale ramo della parte 3 hai usato, che cosa ha funzionato nella VM e che cosa no. Non raccogliere un'autovalutazione scritta. Il recupero di documenti (RAG) con Studio è rimandato alla lezione 6: i controlli già raccolti sono nel piano.</p></body></html>
