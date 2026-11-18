@@ -3,7 +3,7 @@
 
 Un agente con più lavori, un modello sul vostro computer e un programma che agisce sui file.
 
-ITS MAKER · 18 novembre 2026 · Microsoft Copilot, Unsloth Studio e opencode
+ITS MAKER · 19 novembre 2026 · Microsoft Copilot, Unsloth Studio e opencode
 
 ---
 
@@ -284,10 +284,20 @@ Pensateci, poi guardate il proiettore: un testo lungo e una domanda su una frase
 
 ---
 
-# Slide 27 — Chi tocca i file?
-<!-- layout: SEZIONE -->
+# Slide 27 — opencode non è il solo
+<!-- layout: CONTENUTO -->
 
-opencode
+Conoscete qualcuno di questi programmi? Lavorano sui file, come opencode.
+
+| Programma | Chi lo fa | Il codice è aperto? |
+| --- | --- | --- |
+| Claude Code | Anthropic | no |
+| Codex CLI | OpenAI | sì |
+| Gemini CLI | Google | sì |
+| GitHub Copilot CLI | GitHub (Microsoft) | no |
+| opencode | Anomaly | sì |
+
+CLI, nel nome, vuol dire che si usano scrivendo in una finestra nera. Noi usiamo opencode: il codice è aperto e funziona con molti modelli.
 
 ---
 

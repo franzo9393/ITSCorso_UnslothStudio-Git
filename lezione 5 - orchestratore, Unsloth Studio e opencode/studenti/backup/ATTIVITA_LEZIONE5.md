@@ -1,6 +1,6 @@
 # Lezione 5 · Chi controlla che cosa?
 
-**ITS MAKER Bologna · 18 novembre 2026 · Microsoft Copilot, Unsloth Studio e opencode**
+**ITS MAKER Bologna · 19 novembre 2026 · Microsoft Copilot, Unsloth Studio e opencode**
 
 ## Da dove partiamo
 

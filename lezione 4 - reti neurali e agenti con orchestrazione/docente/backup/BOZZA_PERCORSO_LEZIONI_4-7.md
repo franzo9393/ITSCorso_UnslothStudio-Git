@@ -7,7 +7,7 @@ Documento riservato al docente. **Bozza da approvare**: non sono ancora material
 | Incontro | Data | Durata | Contenuto |
 | --- | --- | --- | --- |
 | Lezione 4 | 12 novembre 2026 | 2 ore | Reti neurali nel browser e agente Copilot con più competenze |
-| Lezione 5 | 18 novembre 2026 | 2 ore | Orchestratore dell'agente Ruota Libera in Copilot, poi modello locale in Unsloth Studio e opencode (direzione del 12 novembre; struttura in `lezione 5 - orchestratore, Unsloth Studio e opencode/docente/backup/PIANO_LEZIONE5.md`, da approvare) |
+| Lezione 5 | 19 novembre 2026 | 2 ore | Orchestratore dell'agente Ruota Libera in Copilot, poi modello locale in Unsloth Studio e opencode (direzione del 12 novembre; struttura in `lezione 5 - orchestratore, Unsloth Studio e opencode/docente/backup/PIANO_LEZIONE5.md`, da approvare) |
 | Lezione 6 | 25 novembre 2026 | 2 ore | Agenti, permessi e difese |
 | Lezione 7 | 2 dicembre 2026 | 4 ore | Lavoro di gruppo e test finale individuale |
 

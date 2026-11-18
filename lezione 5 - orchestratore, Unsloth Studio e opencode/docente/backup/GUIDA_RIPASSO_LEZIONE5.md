@@ -1,4 +1,4 @@
-# Ripasso per il docente · Lezione 5 · mercoledì 18 novembre 2026
+# Ripasso per il docente · Lezione 5 · giovedì 19 novembre 2026
 
 Documento riservato al docente. Serve a capire bene i concetti prima di entrare in aula. Non sostituisce `backup/GUIDA_DOCENTE.md`, che resta la guida di conduzione con le tabelle di controllo pre-aula. Qui c'è la versione corta e in parole semplici.
 
@@ -23,7 +23,7 @@ Per ognuno: l'idea, un'immagine (le immagini sono metafore: dichiarale come tali
 ### 2.1 Agente con più lavori («orchestratore»)
 
 - **L'idea.** Nella lezione 4 gli studenti hanno scritto un testo di istruzioni per Copilot. Ora quel testo ha due parti: un **elenco** («se la richiesta parla di minuti fuori servizio, usa il lavoro FUORI SERVIZIO») e i **lavori**, ognuno con le sue regole e i suoi testi da usare.
-- **L'immagine.** Il banco del noleggio: chi risponde al telefono ascolta, decide a chi passare la chiamata (meccanico, cassa, turno dopo) e riporta la risposta.
+- **L'immagine.** Un attore solo sul palco: a ogni richiesta rilegge tutto il copione e recita la parte che l'elenco gli indica. Non ci sono uffici separati.
 - **Cosa significa «orchestratore».** Il pezzo che sceglie quale lavoro usare, in quale ordine, e che cosa passa dall'uno all'altro. Lo dici a voce alla fine della parte 1 (slide 13). Sulle slide e nella consegna si dice solo «lavoro» ed «elenco delle richieste».
 - **Cosa succede davvero in Copilot.** Il modello legge **tutto il testo ogni volta**. I lavori non sono caricati separatamente. La riga «Lavoro usato:» è scritta dal modello **dopo**: è un'etichetta, non una prova di come ha ragionato.
 - **Dove si corregge.** Se una richiesta va al lavoro sbagliato, si corregge la voce nell'**elenco**, non il lavoro.
@@ -61,7 +61,7 @@ Per ognuno: l'idea, un'immagine (le immagini sono metafore: dichiarale come tali
 ### 2.5 Context Length: quanto testo il modello tiene insieme (slide 21)
 
 - **L'idea.** Il modello legge un testo alla volta fino a un limite: è il **Context Length**, misurato in **token** (pezzi di parola; una parola italiana è fatta di uno o più token).
-- **L'immagine.** La scrivania: più è grande, più fogli ci stanno aperti insieme. Se i fogli sono troppi, i primi cadono.
+- **L'immagine.** La scrivania: più è grande, più fogli ci stanno aperti insieme. Che cosa succede ai fogli in più lo mostra la dimostrazione della slide 26.
 - **Nei numeri della lezione.** La VM ha 8192. Un messaggio con registro, regole e istruzioni del noleggio misurava circa 3.665 token il 15 novembre: ci stava. Controlla prima dell'aula, con il contatore di Studio, che con le istruzioni nel System Prompt si arrivi a circa 3.700.
 - **Il costo.** Più contesto vuol dire più memoria. In Studio con 8192 la memoria stimata è 3,33 GiB; con «Auto» sale a 6,48 GiB e Studio avvisa che supera la RAM. Perciò gli studenti **non lo toccano**: lo cambi tu (serve «Reload model»).
 - **Domanda da studenti.** «Perché Copilot non ha questo problema?» Risposta onesta: ce l'ha anche lui, ma con un limite molto più grande, che non vediamo.
@@ -92,7 +92,7 @@ Tre modi diversi di dare testo al modello, da tenere separati:
 | Messaggio normale | solo in quella conversazione | la domanda dello studente |
 | RAG (visto nella lezione 3) | il programma **sceglie dai documenti**, in base alla domanda, e aggiunge solo i passaggi che c'entrano | un manuale da cui si pesca la pagina giusta |
 
-- **Frase da dire a voce dopo la slide 26** (nessuna slide, nessuna attività): «Prima il testo fisso, nel System prompt; con il RAG il testo viene scelto ogni volta dalla domanda.» L'immagine del libro che si apre prima di rispondere è una metafora: dichiarala.
+- **Frase da dire a voce dopo la slide 26** (nessuna slide, nessuna attività): «Prima il testo fisso, nel System prompt; con il RAG il testo viene scelto ogni volta dalla domanda.» L'immagine del bibliotecario che porta sul banco solo la pagina che serve è una metafora: dichiarala.
 - **In Studio il System prompt è un vero testo di sistema.** In Copilot, nella lezione 2, con una normale conversazione, le istruzioni nel primo messaggio **non** lo erano. Se qualcuno lo ricorda, è una buona differenza da far notare.
 - **Il testo resta dopo «Nuova chat»** (provato su VMware): fai cancellare il testo alla fine dell'attività.
 - **Un modello da 2 miliardi può non seguire una regola.** Non è un errore dello studente: la correzione fa parte dell'esercizio, e una prova riuscita subito vale quanto una corretta.
@@ -101,6 +101,8 @@ Tre modi diversi di dare testo al modello, da tenere separati:
 ### 2.8 opencode: il programma che agisce (parte 3)
 
 - **Che cos'è.** Un programma che parla con un modello e, a differenza di una chat, può **leggere e scrivere file nella cartella** dove parte. Qui parte in `laboratorio`, con tre file inventati: `inventario.csv`, `appunti_riunione.txt`, `da_fare.txt` (più `opencode.jsonc`, il file con le regole).
+- **Gli altri programmi come opencode (slide 27).** Una slide, una domanda a voce, poche frasi. Claude Code (Anthropic, 24 febbraio 2025) è il primo di un grande laboratorio di IA e ha reso popolare questo modo di lavorare; non è il primo in assoluto (Aider, maggio 2023; Goose, gennaio 2025). Codex CLI (OpenAI) e Gemini CLI (Google) sono aperti; Claude Code e GitHub Copilot CLI no. opencode: aperto (MIT), molti modelli, il più seguito su GitHub tra i programmi aperti (non dire «il più usato»). Dettaglio e fonti nella guida docente, parte 3.
+- **Immagini a voce (dal podcast, metafore da dichiarare, sempre dopo la prova o la dimostrazione).** Copilot: un attore solo (dopo la slide 13). Temperature: un dado (dopo la slide 23). Context Length: una scrivania (dopo la dimostrazione della slide 26). RAG: un bibliotecario (richiamo dopo la slide 26). Modello e programma: un consulente chiuso in una stanza e un assistente fuori che porta i file (dopo la slide 30). Stanchezza da permessi: una frase dopo la domanda finale. Elenco in guida docente, «Immagini dal podcast».
 - **Il modello è Big Pickle**, uno dei modelli gratuiti di opencode. Risponde **dalla rete**, quindi serve la rete dalla VM (ecco perché la rete va riattivata dopo la 2A). Dalla documentazione, nel periodo gratuito i dati possono servire a migliorare il modello: ecco perché agli studenti si dice di non scrivere dati personali. Non è provato come si comporti con tutte le VM sullo stesso indirizzo della scuola.
 - **Chi apre i file (slide 29–30).** Il modello chiede, il programma esegue. «Explored: N reads» dice **quante** letture ha fatto il programma. Per la richiesta «Che file ci sono...», il numero può cambiare da studente a studente: è normale.
 - **Plan e Build (slide 32–33).**
@@ -172,7 +174,7 @@ I testi in corsivo sono frasi che puoi dire a voce. Non ci sono tempi: guarda gl
 
 ### Parte 3 · opencode (slide 27–42)
 
-1. **Slide 27–28.** Doppio clic sul collegamento opencode (parte da `laboratorio`, modalità Build, modello Big Pickle). Rete riattivata. Dati personali: no.
+1. **Slide 27–28.** Slide 27: la domanda a voce («Conoscete qualcuno di questi programmi? Lavorano sui file, come opencode.») e la tabella degli altri programmi; non è una rassegna. Slide 28: doppio clic sul collegamento opencode (parte da `laboratorio`, modalità Build, modello Big Pickle). Rete riattivata. Dati personali: no.
 2. **Prima della slide 29, a voce a tutta la classe:** se compare «Permission required», si legge che cosa vuole fare; si sceglie **solo Allow once**, mai Always allow; un comando si approva solo se è identico a quello della consegna, altrimenti Reject.
 3. **Slide 29–30 · 3A.** *«Chi apre i file: il modello o il programma?»* poi inviano e contano le letture.
 4. **Slide 31–35 · 3B.** Scrivono la richiesta per `inventario.html` senza inviarla; la inviano **prima in Plan** (il file non compare); poi in Build; permesso «Edit» con Allow once; aprono la pagina e contano le righe con un componente rispetto al CSV. Nel CSV ci sono **15 righe di dati** (più la riga delle intestazioni; file `CARTELLA_LABORATORIO/inventario.csv`). Se lo studente chiede di evidenziare le quantità sotto 5, controlla nel CSV (nella guida: filamenti neri e saldatori).

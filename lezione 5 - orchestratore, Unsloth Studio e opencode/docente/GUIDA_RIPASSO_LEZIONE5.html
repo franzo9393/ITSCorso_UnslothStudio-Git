@@ -1,4 +1,4 @@
-<!doctype html><html lang="it"><head><meta charset="utf-8"><title>Ripasso docente Lezione 5</title><style>body{font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.4;max-width:900px;margin:auto}table{border-collapse:collapse;width:100%}td,th{border:1px solid #999;padding:4px 6px;vertical-align:top}th{background:#e8eef7}code{background:#f0f0f0}</style></head><body><h1>Ripasso per il docente · Lezione 5 · mercoledì 18 novembre 2026</h1>
+<!doctype html><html lang="it"><head><meta charset="utf-8"><title>Ripasso docente Lezione 5</title><style>body{font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.4;max-width:900px;margin:auto}table{border-collapse:collapse;width:100%}td,th{border:1px solid #999;padding:4px 6px;vertical-align:top}th{background:#e8eef7}code{background:#f0f0f0}</style></head><body><h1>Ripasso per il docente · Lezione 5 · giovedì 19 novembre 2026</h1>
 <p>Documento riservato al docente. Serve a capire bene i concetti prima di entrare in aula. Non sostituisce <code>backup/GUIDA_DOCENTE.md</code>, che resta la guida di conduzione con le tabelle di controllo pre-aula. Qui c'è la versione corta e in parole semplici.</p>
 <h2>1. La lezione in una pagina</h2>
 <p>Il filo è una domanda: <strong>chi fa che cosa?</strong></p>
@@ -39,7 +39,7 @@
 <h3>2.1 Agente con più lavori («orchestratore»)</h3>
 <ul>
 <li><strong>L'idea.</strong> Nella lezione 4 gli studenti hanno scritto un testo di istruzioni per Copilot. Ora quel testo ha due parti: un <strong>elenco</strong> («se la richiesta parla di minuti fuori servizio, usa il lavoro FUORI SERVIZIO») e i <strong>lavori</strong>, ognuno con le sue regole e i suoi testi da usare.</li>
-<li><strong>L'immagine.</strong> Il banco del noleggio: chi risponde al telefono ascolta, decide a chi passare la chiamata (meccanico, cassa, turno dopo) e riporta la risposta.</li>
+<li><strong>L'immagine.</strong> Un attore solo sul palco: a ogni richiesta rilegge tutto il copione e recita la parte che l'elenco gli indica. Non ci sono uffici separati.</li>
 <li><strong>Cosa significa «orchestratore».</strong> Il pezzo che sceglie quale lavoro usare, in quale ordine, e che cosa passa dall'uno all'altro. Lo dici a voce alla fine della parte 1 (slide 13). Sulle slide e nella consegna si dice solo «lavoro» ed «elenco delle richieste».</li>
 <li><strong>Cosa succede davvero in Copilot.</strong> Il modello legge <strong>tutto il testo ogni volta</strong>. I lavori non sono caricati separatamente. La riga «Lavoro usato:» è scritta dal modello <strong>dopo</strong>: è un'etichetta, non una prova di come ha ragionato.</li>
 <li><strong>Dove si corregge.</strong> Se una richiesta va al lavoro sbagliato, si corregge la voce nell'<strong>elenco</strong>, non il lavoro.</li>
@@ -76,7 +76,7 @@
 <h3>2.5 Context Length: quanto testo il modello tiene insieme (slide 21)</h3>
 <ul>
 <li><strong>L'idea.</strong> Il modello legge un testo alla volta fino a un limite: è il <strong>Context Length</strong>, misurato in <strong>token</strong> (pezzi di parola; una parola italiana è fatta di uno o più token).</li>
-<li><strong>L'immagine.</strong> La scrivania: più è grande, più fogli ci stanno aperti insieme. Se i fogli sono troppi, i primi cadono.</li>
+<li><strong>L'immagine.</strong> La scrivania: più è grande, più fogli ci stanno aperti insieme. Che cosa succede ai fogli in più lo mostra la dimostrazione della slide 26.</li>
 <li><strong>Nei numeri della lezione.</strong> La VM ha 8192. Un messaggio con registro, regole e istruzioni del noleggio misurava circa 3.665 token il 15 novembre: ci stava. Controlla prima dell'aula, con il contatore di Studio, che con le istruzioni nel System Prompt si arrivi a circa 3.700.</li>
 <li><strong>Il costo.</strong> Più contesto vuol dire più memoria. In Studio con 8192 la memoria stimata è 3,33 GiB; con «Auto» sale a 6,48 GiB e Studio avvisa che supera la RAM. Perciò gli studenti <strong>non lo toccano</strong>: lo cambi tu (serve «Reload model»).</li>
 <li><strong>Domanda da studenti.</strong> «Perché Copilot non ha questo problema?» Risposta onesta: ce l'ha anche lui, ma con un limite molto più grande, che non vediamo.</li>
@@ -145,7 +145,7 @@
 </tbody>
 </table>
 <ul>
-<li><strong>Frase da dire a voce dopo la slide 26</strong> (nessuna slide, nessuna attività): «Prima il testo fisso, nel System prompt; con il RAG il testo viene scelto ogni volta dalla domanda.» L'immagine del libro che si apre prima di rispondere è una metafora: dichiarala.</li>
+<li><strong>Frase da dire a voce dopo la slide 26</strong> (nessuna slide, nessuna attività): «Prima il testo fisso, nel System prompt; con il RAG il testo viene scelto ogni volta dalla domanda.» L'immagine del bibliotecario che porta sul banco solo la pagina che serve è una metafora: dichiarala.</li>
 <li><strong>In Studio il System prompt è un vero testo di sistema.</strong> In Copilot, nella lezione 2, con una normale conversazione, le istruzioni nel primo messaggio <strong>non</strong> lo erano. Se qualcuno lo ricorda, è una buona differenza da far notare.</li>
 <li><strong>Il testo resta dopo «Nuova chat»</strong> (provato su VMware): fai cancellare il testo alla fine dell'attività.</li>
 <li><strong>Un modello da 2 miliardi può non seguire una regola.</strong> Non è un errore dello studente: la correzione fa parte dell'esercizio, e una prova riuscita subito vale quanto una corretta.</li>
@@ -154,6 +154,8 @@
 <h3>2.8 opencode: il programma che agisce (parte 3)</h3>
 <ul>
 <li><strong>Che cos'è.</strong> Un programma che parla con un modello e, a differenza di una chat, può <strong>leggere e scrivere file nella cartella</strong> dove parte. Qui parte in <code>laboratorio</code>, con tre file inventati: <code>inventario.csv</code>, <code>appunti_riunione.txt</code>, <code>da_fare.txt</code> (più <code>opencode.jsonc</code>, il file con le regole).</li>
+<li><strong>Gli altri programmi come opencode (slide 27).</strong> Una slide, una domanda a voce, poche frasi. Claude Code (Anthropic, 24 febbraio 2025) è il primo di un grande laboratorio di IA e ha reso popolare questo modo di lavorare; non è il primo in assoluto (Aider, maggio 2023; Goose, gennaio 2025). Codex CLI (OpenAI) e Gemini CLI (Google) sono aperti; Claude Code e GitHub Copilot CLI no. opencode: aperto (MIT), molti modelli, il più seguito su GitHub tra i programmi aperti (non dire «il più usato»). Dettaglio e fonti nella guida docente, parte 3.</li>
+<li><strong>Immagini a voce (dal podcast, metafore da dichiarare, sempre dopo la prova o la dimostrazione).</strong> Copilot: un attore solo (dopo la slide 13). Temperature: un dado (dopo la slide 23). Context Length: una scrivania (dopo la dimostrazione della slide 26). RAG: un bibliotecario (richiamo dopo la slide 26). Modello e programma: un consulente chiuso in una stanza e un assistente fuori che porta i file (dopo la slide 30). Stanchezza da permessi: una frase dopo la domanda finale. Elenco in guida docente, «Immagini dal podcast».</li>
 <li><strong>Il modello è Big Pickle</strong>, uno dei modelli gratuiti di opencode. Risponde <strong>dalla rete</strong>, quindi serve la rete dalla VM (ecco perché la rete va riattivata dopo la 2A). Dalla documentazione, nel periodo gratuito i dati possono servire a migliorare il modello: ecco perché agli studenti si dice di non scrivere dati personali. Non è provato come si comporti con tutte le VM sullo stesso indirizzo della scuola.</li>
 <li><strong>Chi apre i file (slide 29–30).</strong> Il modello chiede, il programma esegue. «Explored: N reads» dice <strong>quante</strong> letture ha fatto il programma. Per la richiesta «Che file ci sono...», il numero può cambiare da studente a studente: è normale.</li>
 <li><strong>Plan e Build (slide 32–33).</strong></li>
@@ -251,7 +253,7 @@
 <p><strong>Se Studio è lento o non risponde:</strong> 2B e 2C dal proiettore; la 2A dal proiettore se la rete spenta funziona.</p>
 <h3>Parte 3 · opencode (slide 27–42)</h3>
 <ol>
-<li><strong>Slide 27–28.</strong> Doppio clic sul collegamento opencode (parte da <code>laboratorio</code>, modalità Build, modello Big Pickle). Rete riattivata. Dati personali: no.</li>
+<li><strong>Slide 27–28.</strong> Slide 27: la domanda a voce («Conoscete qualcuno di questi programmi? Lavorano sui file, come opencode.») e la tabella degli altri programmi; non è una rassegna. Slide 28: doppio clic sul collegamento opencode (parte da <code>laboratorio</code>, modalità Build, modello Big Pickle). Rete riattivata. Dati personali: no.</li>
 <li><strong>Prima della slide 29, a voce a tutta la classe:</strong> se compare «Permission required», si legge che cosa vuole fare; si sceglie <strong>solo Allow once</strong>, mai Always allow; un comando si approva solo se è identico a quello della consegna, altrimenti Reject.</li>
 <li><strong>Slide 29–30 · 3A.</strong> <em>«Chi apre i file: il modello o il programma?»</em> poi inviano e contano le letture.</li>
 <li><strong>Slide 31–35 · 3B.</strong> Scrivono la richiesta per <code>inventario.html</code> senza inviarla; la inviano <strong>prima in Plan</strong> (il file non compare); poi in Build; permesso «Edit» con Allow once; aprono la pagina e contano le righe con un componente rispetto al CSV. Nel CSV ci sono <strong>15 righe di dati</strong> (più la riga delle intestazioni; file <code>CARTELLA_LABORATORIO/inventario.csv</code>). Se lo studente chiede di evidenziare le quantità sotto 5, controlla nel CSV (nella guida: filamenti neri e saldatori).</li>

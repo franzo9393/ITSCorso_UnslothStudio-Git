@@ -1,4 +1,4 @@
-# Piano della lezione 5 · 18 novembre 2026
+# Piano della lezione 5 · 19 novembre 2026
 
 Documento riservato al docente. Struttura approvata il 12 novembre; resta come storico delle decisioni. Per lo stato attuale (slide, consegna, controlli pre-aula) vale la guida docente: alcune righe qui sotto sono superate (percorso `da_pubblicare_dopo_collaudo`, caricamento del modello in aula, previsioni «dai PC»). Nasce dalle indicazioni del 12 novembre 2026, a lezione 4 svolta: «ripartire dall'esercizio Ruota Libera con più caratteristiche dell'orchestratore, complicando l'agente; poi Unsloth Studio e opencode, il modello gira anche se lento».
 
