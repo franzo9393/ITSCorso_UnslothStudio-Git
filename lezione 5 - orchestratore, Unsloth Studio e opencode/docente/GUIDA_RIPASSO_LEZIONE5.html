@@ -36,13 +36,13 @@
 <p>Ogni studente lavora da solo sul proprio computer. Niente giro tra i banchi, niente file da consegnare, niente voto. Prima si fa provare, poi si mostra il criterio.</p>
 <h2>2. I concetti, spiegati semplici</h2>
 <p>Per ognuno: l'idea, un'immagine (le immagini sono metafore: dichiarale come tali), la frase da dire.</p>
-<h3>2.1 Agente con più lavori («orchestratore»)</h3>
+<h3>2.1 Agente con più lavori e il suo orchestratore (l'elenco)</h3>
 <ul>
 <li><strong>L'idea.</strong> Nella lezione 4 gli studenti hanno scritto un testo di istruzioni per Copilot. Ora quel testo ha due parti: un <strong>elenco</strong> («se la richiesta parla di minuti fuori servizio, usa il lavoro FUORI SERVIZIO») e i <strong>lavori</strong>, ognuno con le sue regole e i suoi testi da usare.</li>
 <li><strong>L'immagine.</strong> Un attore solo sul palco: a ogni richiesta rilegge tutto il copione e recita la parte che l'elenco gli indica. Non ci sono uffici separati.</li>
-<li><strong>Cosa significa «orchestratore».</strong> Il pezzo che sceglie quale lavoro usare, in quale ordine, e che cosa passa dall'uno all'altro. Lo dici a voce alla fine della parte 1 (slide 13). Sulle slide e nella consegna si dice solo «lavoro» ed «elenco delle richieste».</li>
+<li><strong>Cosa significa «orchestratore».</strong> Il pezzo che sceglie quale lavoro usare, in quale ordine, e che cosa passa dall'uno all'altro. Compare sulla slide 13, dopo la domanda, con la voce dei due lavori insieme come esempio. Sulle slide e nella consegna per il resto si dice «lavoro» ed «elenco delle richieste».</li>
 <li><strong>Cosa succede davvero in Copilot.</strong> Il modello legge <strong>tutto il testo ogni volta</strong>. I lavori non sono caricati separatamente. La riga «Lavoro usato:» è scritta dal modello <strong>dopo</strong>: è un'etichetta, non una prova di come ha ragionato.</li>
-<li><strong>Dove si corregge.</strong> Se una richiesta va al lavoro sbagliato, si corregge la voce nell'<strong>elenco</strong>, non il lavoro.</li>
+<li><strong>Dove si corregge.</strong> Se una richiesta va al lavoro sbagliato, si corregge la voce nell'<strong>elenco</strong>, non il lavoro. Se il lavoro è giusto ma la risposta è sbagliata (per esempio 70 minuti invece di 45), si corregge il lavoro: si aggiunge a FUORI SERVIZIO la definizione dei minuti senza bici.</li>
 <li><strong>Frase da dire.</strong> «Se la richiesta va nel posto sbagliato, quasi mai è sbagliato il lavoro: è l'elenco che non è abbastanza chiaro.»</li>
 </ul>
 <h3>2.2 Modello e programma: due cose diverse</h3>
@@ -228,12 +228,12 @@
 <h3>Parte 1 · Copilot e l'agente con più lavori (slide 1–13)</h3>
 <p><strong>Obiettivo.</strong> Far vedere un elenco che instrada la richiesta verso il lavoro giusto, e un dato che passa da un lavoro all'altro.</p>
 <ol>
-<li><strong>Slide 2.</strong> Riaprono il loro agente e rifanno la domanda della lezione 4 sulla bici 12 (sabato, minuti fuori servizio). Controlla gli orari con quelli della guida: <strong>10:40 → 11:50, 70 minuti.</strong> Dici gli orari a voce solo dopo la prova.</li>
-<li><strong>Slide 3.</strong> Presenti i tre strumenti. Dici che da Studio in poi si lavora nel computer virtuale: ognuno il suo.</li>
+<li><strong>Slide 2.</strong> Il quadro: il titolare vuole che l'agente sappia fare tutti e tre i lavori; si completa in Copilot, poi si passa alla VM per Studio e opencode, ognuno la sua. Nessuna attività.</li>
+<li><strong>Slide 3.</strong> Riaprono il loro agente e rifanno la domanda della lezione 4 sulla bici 12 (sabato, minuti fuori servizio); cercano gli orari nel registro e li confrontano con la risposta. Gli orari giusti: <strong>10:40 → 11:50, 70 minuti.</strong> Non li dici a voce prima del controllo.</li>
 <li><strong>Slide 4–6.</strong> Cercano nel proprio file l'elenco e i lavori; scrivono il lavoro che manca (GUASTI se hanno PASSAGGIO, o il contrario); aggiornano l'agente. La tabella è a metà: <strong>non dare risposte né esempi di GUASTI o PASSAGGIO.</strong></li>
-<li><strong>Slide 7–9.</strong> Tre richieste, una per lavoro; guardano la prima riga «Lavoro usato:» e correggono l'elenco; poi (slide 9) pensano a dove andrebbero i dati se il registro fosse vero.</li>
+<li><strong>Slide 7–9.</strong> Tre richieste, una per lavoro. La prima chiede i minuti senza bici del cliente: la risposta attesa è <strong>45 minuti, dalla segnalazione (10:25) al cambio (11:10)</strong>, non i 70 del fuori servizio. Guardano la prima riga «Lavoro usato:» e il contenuto, e correggono la voce dell'elenco o il lavoro; poi (slide 9) pensano a dove andrebbero i dati se il registro fosse vero.</li>
 <li><strong>Slide 10–11.</strong> La catena FUORI SERVIZIO → PASSAGGIO: il numero entra nella nota. Il numero giusto è <strong>70 minuti</strong>.</li>
-<li><strong>Slide 12–13.</strong> Salvano il file. <em>Il numero l'avete controllato voi, non il programma.</em> Ora dici la parola «orchestratore».</li>
+<li><strong>Slide 12–13.</strong> Salvano il file. <em>Il numero l'avete controllato voi, non il programma.</em> Sulla slide 13 compare la parola «orchestratore», con la voce dei due lavori insieme come esempio. I numeri da controllare (70 e 45) sono nella tavola «Valori di riferimento» della guida docente.</li>
 </ol>
 <p><strong>Chi non ha il file.</strong> Dagli il file <code>da_pubblicare_a_chi_non_ha_il_file/ISTRUZIONI_DI_PARTENZA_NOLEGGIO.txt</code>. Non è una soluzione collaudata: ha già i tre lavori, quindi salta la scrittura (slide 5) e passa alla prova. Non presumere che tutti abbiano finito la lezione 4.</p>
 <p><strong>Se Copilot non risponde</strong> (il 4 novembre è mancato circa 10 minuti, ipotesi: limite di richieste per indirizzo): prova a secco dal proiettore su un testo di uno studente, dichiarando che non è una risposta del modello.</p>

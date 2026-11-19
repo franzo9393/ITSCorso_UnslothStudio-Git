@@ -1,91 +1,97 @@
 # Slide 01 — Chi controlla che cosa?
 <!-- layout: COPERTINA -->
 
-Un agente con più lavori, un modello sul vostro computer e un programma che agisce sui file.
+Oggi un agente sceglie tra più lavori, un modello risponde dal vostro computer e un programma scrive dei file. Ogni volta vi chiedete: chi ha controllato?
 
 ITS MAKER · 19 novembre 2026 · Microsoft Copilot, Unsloth Studio e opencode
 
 ---
 
-# Slide 02 — Riaprite il vostro agente
+# Slide 02 — Il titolare vuole tre lavori
 <!-- layout: CONTENUTO -->
 
-| Dove | Che cosa fate |
-| --- | --- |
-| Microsoft Copilot | aprite il vostro agente del noleggio, in una nuova conversazione |
-| Messaggio | registro, regole del noleggio, e in fondo la richiesta |
+Il titolare di Ruota Libera ha provato il vostro agente. Vuole che sappia fare tutti e tre i lavori: fuori servizio, guasti e passaggio di turno.
+
+In Microsoft Copilot lo completate e controllate che scelga il lavoro giusto.
+
+Poi passate al computer virtuale: un secondo Windows, dentro una finestra del vostro computer. Ognuno ha il suo. Lì provate Unsloth Studio, che fa girare un modello sul vostro computer, e opencode, che legge e scrive i file di una cartella.
+
+---
+
+# Slide 03 — Riaprite il vostro agente
+<!-- layout: CONTENUTO -->
+
+Aprite Microsoft Copilot e il vostro agente, in una nuova conversazione. Nel messaggio incollate il registro, poi le regole del noleggio e in fondo questa richiesta:
 
 > «Per quanti minuti è stata fuori servizio la bici 12 sabato? Mostrami gli orari.»
 
----
-
-# Slide 03 — Oggi: tre strumenti
-<!-- layout: CONTENUTO -->
-
-Microsoft Copilot: il vostro agente con più lavori.
-
-Unsloth Studio: un modello che gira sul vostro computer.
-
-opencode: un programma che lavora sui file.
-
-Da Unsloth Studio in poi lavorate nel computer virtuale: un computer dentro il computer, con il suo Windows. Ognuno ha il suo.
+Cercate nel registro quando la bici 12 viene tolta e quando torna disponibile: sono gli orari della risposta?
 
 ---
 
-# Slide 04 — Il vostro agente ha due parti
+# Slide 04 — Trovate nel vostro file l’elenco e i lavori
 <!-- layout: CONTENUTO -->
 
-Aprite il file `istruzioni_agente_noleggio.txt`. Non avete il file? Chiedete il testo di partenza: ha già i tre lavori. Cercate l’elenco delle richieste e i lavori. Un esempio dal testo di partenza, con i tagli segnati […]:
+Aprite in Blocco note `istruzioni_agente_noleggio.txt`. Non avete il file? Chiedete il testo di partenza.
+
+Ecco FUORI SERVIZIO nel testo di partenza (i tagli sono segnati con […]); nel vostro file le parole possono cambiare:
 
 | L’elenco dice | Il lavoro dice |
 | --- | --- |
 | «Quanto è stata fuori servizio una bici, minuti senza bici, rimborso per un guasto → FUORI SERVIZIO» | «Quando: serve la durata di un fuori servizio, i minuti senza bici di un cliente o un rimborso. […]» |
 
-L’elenco dice a quale lavoro va la richiesta. Il lavoro dice come rispondere.
+L’elenco sceglie il lavoro. Il lavoro dice quando serve, quale testo usare e come rispondere.
 
 ---
 
 # Slide 05 — Scrivete il lavoro che manca
 <!-- layout: CONTENUTO -->
 
-Avete FUORI SERVIZIO e un secondo lavoro. Scrivete quello che manca: GUASTI se avete PASSAGGIO, PASSAGGIO se avete GUASTI. Servono una voce nell’elenco e il lavoro.
+Scrivete il lavoro che manca, GUASTI o PASSAGGIO: una voce nell’elenco e il lavoro. Al centro l’esempio, a destra le domande.
 
-| Domanda | Esempio: FUORI SERVIZIO | Il lavoro che manca |
+| Che cosa scrivete | Esempio: FUORI SERVIZIO | Il lavoro che manca |
 | --- | --- | --- |
-| Quando scatta? | «serve la durata di un fuori servizio, i minuti senza bici di un cliente o un rimborso» | per quali richieste? |
-| Che testo usa? | «le regole del noleggio e il registro» | quale testo? |
-| Come risponde? | «i due orari usati, la sottrazione e il risultato in minuti» | in quale forma? |
+| Voce nell’elenco | «Quanto è stata fuori servizio una bici, […] → FUORI SERVIZIO» | Quali parole della richiesta la fanno scegliere? |
+| Quando serve? | «serve la durata di un fuori servizio, i minuti senza bici di un cliente […]» | Che cosa serve a chi chiede? |
+| Che testo usa? | «le regole del noleggio e il registro» | Quale testo? |
+| Come risponde? | «i due orari usati, la sottrazione e il risultato in minuti» | In quale forma? |
 
 ---
 
 # Slide 06 — Aggiornate l’agente
 <!-- layout: CONTENUTO -->
 
-Salvate il file. Poi in Copilot incollate tutto il testo nelle istruzioni del vostro agente.
+Salvate il file. Nelle istruzioni del vostro agente, in Copilot, cancellate il testo vecchio, incollate tutto il file e salvate l’agente.
 
-L’ultima riga del file è anche l’ultima in Copilot?
+Poi controllate che l’ultima riga sia la stessa nel file e in Copilot: se coincide, il testo è entrato tutto.
 
 ---
 
 # Slide 07 — Una richiesta per lavoro
 <!-- layout: CONTENUTO -->
 
-Una nuova conversazione per ogni richiesta: registro, regole del noleggio, guida ai guasti e in fondo la richiesta.
+Ora provate l’agente con tre richieste, una per ogni lavoro. Per ognuna aprite una nuova conversazione e incollate registro, regole del noleggio e guida ai guasti, con la richiesta in fondo. Se l’agente vi fa una domanda, rispondete nella stessa conversazione.
 
-| Il lavoro | La richiesta |
-| --- | --- |
-| FUORI SERVIZIO | «Bici 12, sabato: per quanti minuti è stata fuori servizio?» |
-| GUASTI | «Che cosa significa freni che non tengono?» |
-| PASSAGGIO | «Scrivi la nota per il turno dopo, sabato.» |
+> «Bici 12, sabato: per quanti minuti è rimasto senza bici il cliente?»
+
+> «Che cosa significa freni che non tengono?»
+
+> «Scrivi la nota per il turno dopo, sabato.»
 
 ---
 
 # Slide 08 — Era il lavoro giusto?
 <!-- layout: CONTENUTO -->
 
-Guardate la prima riga di ogni risposta: «Lavoro usato:».
+Il vostro agente scrive «Lavoro usato:» nella prima riga di ogni risposta. Era il lavoro giusto? La risposta contiene ciò che dice la tabella?
 
-Se il lavoro non è quello giusto, leggete la voce dell’elenco: dice abbastanza chiaramente quando usarlo? Correggete il file, aggiornate l’agente e riprovate in una nuova conversazione.
+| Richiesta | Lavoro atteso | Che cosa c’è nella risposta |
+| --- | --- | --- |
+| Minuti senza bici del cliente | FUORI SERVIZIO | segnalazione del guasto, consegna della nuova bici, minuti |
+| Freni che non tengono | GUASTI | le parole della guida |
+| Nota del turno | PASSAGGIO | i titoli scritti nel vostro PASSAGGIO e gli orari del registro |
+
+Lavoro sbagliato? Correggete la voce dell’elenco. Risposta sbagliata? Correggete il lavoro. Poi aggiornate l’agente e riprovate.
 
 ---
 
@@ -96,16 +102,16 @@ In Copilot avete incollato un registro inventato.
 
 > Se fosse stato il registro vero di un’azienda, dove sarebbero finiti quei dati?
 
-La stessa domanda torna con Studio e con opencode.
+Rispondete a voce. Più avanti vi farete la stessa domanda per Studio e per opencode.
 
 ---
 
 # Slide 10 — Due lavori in catena
 <!-- layout: CONTENUTO -->
 
-Nel vostro elenco deve esserci una riga per FUORI SERVIZIO e PASSAGGIO insieme: prima FUORI SERVIZIO, poi il risultato entra nella nota. Se manca, scrivetela e aggiornate l’agente.
+A una richiesta possono servire due lavori di seguito: FUORI SERVIZIO calcola i minuti, poi PASSAGGIO li mette nella nota per il turno dopo. Quale voce del vostro elenco dice questo ordine? Non c’è? Scrivetela e aggiornate l’agente.
 
-Poi inviate, in una nuova conversazione con registro, regole e guida:
+Poi inviate, in una nuova conversazione come per le altre richieste:
 
 > «Bici 12, sabato: per quanti minuti è stata fuori servizio? Scrivi la nota per il turno dopo.»
 
@@ -114,29 +120,36 @@ Poi inviate, in una nuova conversazione con registro, regole e guida:
 # Slide 11 — Il numero è giusto?
 <!-- layout: CONTENUTO -->
 
+Il calcolo dal registro dà:
+
 ## {{MINUTI_FUORI_SERVIZIO}} minuti fuori servizio
 
 {{ORA_FUORI_SERVIZIO}} → {{ORA_DISPONIBILE}}
 
-Dal registro, per la bici 12, sabato. Nella vostra nota ci sono gli stessi orari e gli stessi minuti? Se no, correggete la riga che dice come il numero passa nella nota, aggiornate l’agente e riprovate.
+La sottrazione, nella vostra risposta, usa questi due orari? La nota riporta lo stesso numero? Se tutto torna, va bene così. Se no, dove è sbagliato?
+
+| Dove è sbagliato | Che cosa correggete |
+| --- | --- |
+| già nella sottrazione | il lavoro FUORI SERVIZIO |
+| solo nella nota | la voce dei due lavori insieme |
 
 ---
 
 # Slide 12 — Salvate il file
 <!-- layout: CONTENUTO -->
 
-Il file `istruzioni_agente_noleggio.txt` deve contenere tutto: le regole, l’elenco con le vostre correzioni, i tre lavori, lo stile.
+Controllate che il file `istruzioni_agente_noleggio.txt` abbia: le regole per tutti i casi, l’elenco delle richieste con le vostre correzioni, i tre lavori e lo stile.
 
-Aggiornate l’agente in Copilot e controllate che il testo sia arrivato intero.
+Studio e opencode usano altri testi, ma salvatelo: serve anche nelle prossime lezioni.
 
 ---
 
 # Slide 13 — Chi ha controllato il numero?
 <!-- layout: CONTENUTO -->
 
-Copilot ha scelto il lavoro e scritto la nota.
+Copilot ha scelto il lavoro e ha scritto la nota. E il numero: chi l’ha confrontato con il registro?
 
-Il numero l’avete confrontato voi con i dati del registro. Nessun programma l’ha fatto al vostro posto.
+Nel testo di partenza la voce «PASSAGGIO e FUORI SERVIZIO insieme: prima FUORI SERVIZIO, poi il risultato entra nella nota di PASSAGGIO» dice quale lavoro usare, in che ordine e che cosa passa dall’uno all’altro. Un elenco così si chiama orchestratore: sceglie e passa il numero, non lo controlla.
 
 ---
 

@@ -126,7 +126,7 @@ def prepare_model(source: Path) -> None:
             if 'notesSlide' in rel.reltype or 'comments' in rel.reltype:
                 slide.part.drop_rel(rel.rId)
     prs.core_properties.title = 'Modello ufficiale ITS MAKER — quattro tipi di pagina'
-    prs.core_properties.subject = 'Modello grafico ripulito, senza contenuti di lezioni precedenti'
+    prs.core_properties.subject = 'Agente con più lavori in Microsoft Copilot, Unsloth Studio e opencode'
     prs.core_properties.keywords = ''
     prs.core_properties.comments = ''
     prs.save(MODEL)
@@ -401,7 +401,7 @@ def build_pptx(slides: list[dict]) -> Path:
                     run.font.size = Pt(11)
                     run.font.color.rgb = RGBColor.from_string(MUTED)
     prs.core_properties.title = TITLE
-    prs.core_properties.subject = 'Reti neurali nel browser e agente con più competenze in Microsoft Copilot'
+    prs.core_properties.subject = 'Agente con più lavori in Microsoft Copilot, Unsloth Studio e opencode'
     prs.core_properties.comments = ''
     output = LESSON / f'{DECK_NAME}.pptx'
     prs.save(output)
@@ -827,8 +827,27 @@ def main() -> None:
         '{{NOTE_TURNO}}': turn_notes(REGISTER_SOURCE.read_text(encoding='utf-8')),
         '{{VALORI_GUIDA}}': alarm_table((SOURCES / '02_GUIDA_GUASTI_RUOTA_LIBERA.md').read_text(encoding='utf-8')),
         '{{RIGHE_INVENTARIO}}': str(len(inventory_rows)),
+        '{{MINUTI_SENZA_BICI}}': str(values['no_bike']),
+        '{{ORA_SEGNALAZIONE}}': values['report']['when'].strftime('%H:%M'),
+        '{{ORA_CAMBIO}}': values['swap']['when'].strftime('%H:%M'),
+        '{{MINUTI_FUORI_SERVIZIO}}': str(values['minutes']),
+        '{{ORA_FUORI_SERVIZIO}}': values['stop']['when'].strftime('%H:%M'),
+        '{{ORA_DISPONIBILE}}': values['restart']['when'].strftime('%H:%M'),
     }
     markdown_doc(TEACHER_BACKUP / 'GUIDA_DOCENTE.md', guide, 'Lezione 5 — guida docente', replacements=replacements)
+    # guida di ripasso: stessi valori calcolati dallo script, nessun numero scritto a mano
+    review_keys = ('{{MINUTI_FUORI_SERVIZIO}}', '{{ORA_FUORI_SERVIZIO}}', '{{ORA_DISPONIBILE}}', '{{MINUTI_SENZA_BICI}}', '{{ORA_SEGNALAZIONE}}', '{{ORA_CAMBIO}}')
+    review_values = {key: replacements[key] for key in review_keys}
+    review_source = TEACHER_BACKUP / 'GUIDA_RIPASSO_LEZIONE5.md'
+    markdown_doc(review_source, HERE / 'GUIDA_RIPASSO_LEZIONE5.docx', 'Ripasso docente Lezione 5', replacements=review_values)
+    review_text = review_source.read_text(encoding='utf-8')
+    for key, value in review_values.items():
+        review_text = review_text.replace(key, value)
+    review_html = HERE / 'GUIDA_RIPASSO_LEZIONE5.html'
+    review_head = review_html.read_text(encoding='utf-8')
+    review_head = review_head[:review_head.index('<body>') + 6]
+    review_body = markdown.markdown(review_text, extensions=['tables']).replace('<table>', '<table width="100%" cellpadding="4" border="1">')
+    review_html.write_text(review_head + review_body + '</body></html>', encoding='utf-8')
     shutil.copyfile(REGISTER_SOURCE, REGISTER_COPY)  # testo da incollare in Copilot, copia byte per byte (UTF-8)
     for source, target in TEXT_DOCUMENTS.items():
         target.write_text(plain_text(source.read_text(encoding='utf-8')), encoding='utf-8')

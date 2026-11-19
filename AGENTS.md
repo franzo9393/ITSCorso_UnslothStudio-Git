@@ -139,6 +139,11 @@ Una lezione ben progettata resta incomprensibile se lo studente non vede che cos
 - Resta un solo file personale: `istruzioni_agente_noleggio.txt`, senza diario delle prove. Primo riscontro dopo il lavoro FUORI SERVIZIO, poi secondo lavoro a scelta (GUASTI o PASSAGGIO), elenco delle richieste e due esempi di stile propri. Ogni studente inventa due casi critici. Non si consegnano file. Transformer: due bersagli sulle probabilità; Playground: quanti neuroni servono a separare il cerchio, con Test loss sotto 0,05 entro 1.500 Epoch; Flappy: solo dimostrazione del docente, mai «uccellino immortale».
 - L'11 novembre 2026 le slide della lezione 4 sono state riscritte secondo «Chiarezza didattica» e portate a 47: quadro d'insieme (slide 3), previsioni e schermate per Transformer, Playground e Flappy (slide 4–16), ponte (slide 17), poi parte 4 sul noleggio (slide 18–47): esempio della pizzeria, esempio svolto della bici 5, parole «lavoro» ed «elenco delle richieste». Il revisore ha approvato l'insieme (stima corretta circa 125 minuti, al limite della fascia: non aggiungere altro).
 
+## Contesto della lezione 5
+
+- Cartella: `lezione 5 - orchestratore, Unsloth Studio e opencode/`, 19 novembre 2026. Generatore: `docente/genera_materiali.py`, che produce anche `GUIDA_RIPASSO_LEZIONE5.docx` e `.html` dal Markdown, con i valori di riferimento calcolati dal registro (segnaposto `{{...}}`). Programmi: Microsoft Copilot, poi Unsloth Studio e opencode nel computer virtuale; lavoro singolo.
+- Parola decisa dal docente il 18 novembre 2026: «orchestratore» si usa con gli studenti, anche sulle slide e nella consegna (eccezione alla regola che riserva «orchestrazione» alla guida docente). Va definito al primo uso con un esempio dell'elenco delle richieste del loro agente.
+
 ## Perimetro delle modifiche e Git
 
 - Non modificare lezioni o varianti non richieste per uniformarle a una scelta locale.

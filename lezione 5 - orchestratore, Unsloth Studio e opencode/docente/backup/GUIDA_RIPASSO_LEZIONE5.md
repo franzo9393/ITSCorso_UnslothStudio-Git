@@ -20,13 +20,13 @@ Ogni studente lavora da solo sul proprio computer. Niente giro tra i banchi, nie
 
 Per ognuno: l'idea, un'immagine (le immagini sono metafore: dichiarale come tali), la frase da dire.
 
-### 2.1 Agente con più lavori («orchestratore»)
+### 2.1 Agente con più lavori e il suo orchestratore (l'elenco)
 
 - **L'idea.** Nella lezione 4 gli studenti hanno scritto un testo di istruzioni per Copilot. Ora quel testo ha due parti: un **elenco** («se la richiesta parla di minuti fuori servizio, usa il lavoro FUORI SERVIZIO») e i **lavori**, ognuno con le sue regole e i suoi testi da usare.
 - **L'immagine.** Un attore solo sul palco: a ogni richiesta rilegge tutto il copione e recita la parte che l'elenco gli indica. Non ci sono uffici separati.
-- **Cosa significa «orchestratore».** Il pezzo che sceglie quale lavoro usare, in quale ordine, e che cosa passa dall'uno all'altro. Lo dici a voce alla fine della parte 1 (slide 13). Sulle slide e nella consegna si dice solo «lavoro» ed «elenco delle richieste».
+- **Cosa significa «orchestratore».** Il pezzo che sceglie quale lavoro usare, in quale ordine, e che cosa passa dall'uno all'altro. Compare sulla slide 13, dopo la domanda, con la voce dei due lavori insieme come esempio. Sulle slide e nella consegna per il resto si dice «lavoro» ed «elenco delle richieste».
 - **Cosa succede davvero in Copilot.** Il modello legge **tutto il testo ogni volta**. I lavori non sono caricati separatamente. La riga «Lavoro usato:» è scritta dal modello **dopo**: è un'etichetta, non una prova di come ha ragionato.
-- **Dove si corregge.** Se una richiesta va al lavoro sbagliato, si corregge la voce nell'**elenco**, non il lavoro.
+- **Dove si corregge.** Se una richiesta va al lavoro sbagliato, si corregge la voce nell'**elenco**, non il lavoro. Se il lavoro è giusto ma la risposta è sbagliata (per esempio {{MINUTI_FUORI_SERVIZIO}} minuti invece di {{MINUTI_SENZA_BICI}}), si corregge il lavoro: si aggiunge a FUORI SERVIZIO la definizione dei minuti senza bici.
 - **Frase da dire.** «Se la richiesta va nel posto sbagliato, quasi mai è sbagliato il lavoro: è l'elenco che non è abbastanza chiaro.»
 
 ### 2.2 Modello e programma: due cose diverse
@@ -145,12 +145,12 @@ I testi in corsivo sono frasi che puoi dire a voce. Non ci sono tempi: guarda gl
 
 **Obiettivo.** Far vedere un elenco che instrada la richiesta verso il lavoro giusto, e un dato che passa da un lavoro all'altro.
 
-1. **Slide 2.** Riaprono il loro agente e rifanno la domanda della lezione 4 sulla bici 12 (sabato, minuti fuori servizio). Controlla gli orari con quelli della guida: **10:40 → 11:50, 70 minuti.** Dici gli orari a voce solo dopo la prova.
-2. **Slide 3.** Presenti i tre strumenti. Dici che da Studio in poi si lavora nel computer virtuale: ognuno il suo.
+1. **Slide 2.** Il quadro: il titolare vuole che l'agente sappia fare tutti e tre i lavori; si completa in Copilot, poi si passa alla VM per Studio e opencode, ognuno la sua. Nessuna attività.
+2. **Slide 3.** Riaprono il loro agente e rifanno la domanda della lezione 4 sulla bici 12 (sabato, minuti fuori servizio); cercano gli orari nel registro e li confrontano con la risposta. Gli orari giusti: **{{ORA_FUORI_SERVIZIO}} → {{ORA_DISPONIBILE}}, {{MINUTI_FUORI_SERVIZIO}} minuti.** Non li dici a voce prima del controllo.
 3. **Slide 4–6.** Cercano nel proprio file l'elenco e i lavori; scrivono il lavoro che manca (GUASTI se hanno PASSAGGIO, o il contrario); aggiornano l'agente. La tabella è a metà: **non dare risposte né esempi di GUASTI o PASSAGGIO.**
-4. **Slide 7–9.** Tre richieste, una per lavoro; guardano la prima riga «Lavoro usato:» e correggono l'elenco; poi (slide 9) pensano a dove andrebbero i dati se il registro fosse vero.
-5. **Slide 10–11.** La catena FUORI SERVIZIO → PASSAGGIO: il numero entra nella nota. Il numero giusto è **70 minuti**.
-6. **Slide 12–13.** Salvano il file. *Il numero l'avete controllato voi, non il programma.* Ora dici la parola «orchestratore».
+4. **Slide 7–9.** Tre richieste, una per lavoro. La prima chiede i minuti senza bici del cliente: la risposta attesa è **{{MINUTI_SENZA_BICI}} minuti, dalla segnalazione ({{ORA_SEGNALAZIONE}}) al cambio ({{ORA_CAMBIO}})**, non i {{MINUTI_FUORI_SERVIZIO}} del fuori servizio. Guardano la prima riga «Lavoro usato:» e il contenuto, e correggono la voce dell'elenco o il lavoro; poi (slide 9) pensano a dove andrebbero i dati se il registro fosse vero.
+5. **Slide 10–11.** La catena FUORI SERVIZIO → PASSAGGIO: il numero entra nella nota. Il numero giusto è **{{MINUTI_FUORI_SERVIZIO}} minuti**.
+6. **Slide 12–13.** Salvano il file. *Il numero l'avete controllato voi, non il programma.* Sulla slide 13 compare la parola «orchestratore», con la voce dei due lavori insieme come esempio. I numeri da controllare ({{MINUTI_FUORI_SERVIZIO}} e {{MINUTI_SENZA_BICI}}) sono nella tavola «Valori di riferimento» della guida docente.
 
 **Chi non ha il file.** Dagli il file `da_pubblicare_a_chi_non_ha_il_file/ISTRUZIONI_DI_PARTENZA_NOLEGGIO.txt`. Non è una soluzione collaudata: ha già i tre lavori, quindi salta la scrittura (slide 5) e passa alla prova. Non presumere che tutti abbiano finito la lezione 4.
 
@@ -225,7 +225,7 @@ Chiedi di aspettare prima di riprovare: richieste ripetute peggiorano il limite 
 
 Fai una volta sola, sulla tua copia della VM (o sulla VM che userai in aula), e cancella le prove prima di copiare.
 
-1. **Copilot.** Apri il tuo agente con il testo di partenza e prova le tre richieste della slide 7 e la catena della slide 10. Controlla che il numero nella nota sia **70** e che la lunghezza delle istruzioni sia accettata.
+1. **Copilot.** Apri il tuo agente con il testo di partenza e prova le tre richieste della slide 7 e la catena della slide 10. Controlla che il numero nella nota sia **{{MINUTI_FUORI_SERVIZIO}}** e che la lunghezza delle istruzioni sia accettata.
 2. **Rete nella VM.** Trova il gesto per togliere e riattivare la rete in Windows dentro la VM. Con la rete tolta, Studio risponde?
 3. **Studio.** Collegamento sul desktop (nome esatto?), modello caricato (intestazione «8.2k»), Search e Tools spenti. Prova Temperature 1,5: dove si scrive, virgola o punto, dov'è il pulsante per rigenerare, che cosa fa «Reset all». Prepara la dimostrazione della slide 26: un testo più lungo di 8192 token (il registro incollato più volte) con una frase distintiva all'inizio e una domanda su quella frase; guarda che cosa fa Studio. Prepara anche la risposta di Copilot alla domanda sul cacciavite (slide 20).
 4. **System prompt.** Prova il cuoco burbero con due domande. Poi cancellalo.
