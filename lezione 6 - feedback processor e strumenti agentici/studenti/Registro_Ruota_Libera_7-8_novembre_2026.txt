@@ -1,0 +1,110 @@
+Registro del noleggio Ruota Libera
+
+ITS MAKER Bologna · Esempio inventato per l'esercizio
+Periodo: 7–8 novembre 2026 · Negozio di biciclette a noleggio
+
+Appunti lasciati sul banco del negozio Ruota Libera durante un fine settimana. Le biciclette sono 20 e ognuna ha un numero scritto sul telaio. Il negozio è aperto dalle 9:00 alle 19:00: il turno del mattino va dalle 9:00 alle 14:00, quello del pomeriggio dalle 14:00 alle 19:00.
+
+Sabato 7 novembre 2026 — Una giornata di sole
+
+07/11/2026 · 09:00
+
+Il turno del mattino apre il negozio. Le 20 biciclette sono in fila davanti al banco, con le gomme gonfie e le catene unte. Alla bici 3 viene raddrizzato il sellino. Fuori c'è il sole e il banco mette fuori il cartello dei prezzi.
+
+07/11/2026 · 09:30
+
+Quattro clienti ritirano le biciclette 5, 7, 8 e 12. Il banco annota i numeri sul quaderno e consegna a ognuno il casco. In negozio restano 16 biciclette. Le biciclette libere sono quasi tutte di taglia piccola.
+
+07/11/2026 · 10:25
+
+Il cliente della bici 12 torna al banco a piedi, dopo meno di un'ora. Dice che i freni non tengono: in discesa ha dovuto fermarsi mettendo i piedi a terra. Il banco prova la bici ferma: la leva del freno posteriore arriva fino al manubrio.
+
+07/11/2026 · 10:40
+
+La bici 12 viene tolta dal noleggio e portata nel retro, con un cartellino: freni, non usare. Il cliente aspetta al banco, perché le biciclette libere sono di taglia piccola e per lui non vanno bene. Viene chiamato il meccanico del negozio.
+
+07/11/2026 · 10:50
+
+Il meccanico arriva e comincia a controllare i freni della bici 12. Non è ancora chiaro che cosa non vada. Intanto il banco prende due prenotazioni per il pomeriggio.
+
+07/11/2026 · 11:10
+
+Rientra la bici 7, di taglia grande. Il banco la consegna al cliente della bici 12, che riparte con questa al posto di quella guasta. La bici 12 resta nel retro, con il cartellino.
+
+07/11/2026 · 11:15
+
+Il meccanico trova le pastiglie del freno posteriore consumate. Chiede al magazzino pastiglie nuove con codice PF-44 e il magazzino conferma che ne ha una scatola. La bici resta nel retro e non viene toccata dal banco.
+
+07/11/2026 · 11:35
+
+Le pastiglie PF-44 vengono montate sulla bici 12. Il meccanico scrive il codice sul cartellino. Il cartellino resta attaccato alla bici e la bici rimane nel retro.
+
+07/11/2026 · 11:40
+
+Il meccanico prova la bici 12 nel cortile: i freni tengono anche in discesa. Dice al banco che ha finito. La bici resta nel retro finché il banco non la controlla.
+
+07/11/2026 · 11:50
+
+Il banco controlla i freni della bici 12, toglie il cartellino e rimette la bici in fila con le altre. Sul quaderno si annotano il problema trovato, cioè le pastiglie consumate, e il codice nuovo, PF-44.
+
+07/11/2026 · 12:30
+
+Rientrano le biciclette 5 e 8. Poco prima era rientrata anche la bici 7, riportata dal cliente della bici 12: nessun problema. Il cliente della bici 8 non ha niente da segnalare. Il cliente della bici 5 dice che la gomma posteriore si è sgonfiata a metà strada. Il banco la prova: la ruota è a terra.
+
+07/11/2026 · 12:35
+
+La bici 5 viene tolta dal noleggio e portata nel retro. Il banco toglie la gomma e trova un chiodo nel copertone. Viene montata una camera d'aria nuova con codice CA-26.
+
+07/11/2026 · 12:55
+
+Il banco gonfia la gomma della bici 5 e la tiene sotto controllo per cinque minuti per vedere se si sgonfia di nuovo. Non perde aria.
+
+07/11/2026 · 13:00
+
+La bici 5 torna in fila con le altre. Sul quaderno si annotano il problema trovato, cioè un chiodo nel copertone, e il codice della camera d'aria nuova, CA-26.
+
+07/11/2026 · 14:00
+
+Al cambio del turno il turno del mattino comunica al pomeriggio che la bici 12 è tornata in fila alle 11:50 con le pastiglie nuove PF-44 e che la bici 5 è tornata in fila alle 13:00 con una camera d'aria nuova. Chi inizia il pomeriggio legge il quaderno. Si chiede di guardare ancora i freni della bici 12 alla prossima riconsegna.
+
+07/11/2026 · 15:30
+
+Un cliente chiede di prenotare quattro biciclette per domenica mattina. Il banco annota: domenica, ore 10, quattro biciclette. Il turno del pomeriggio dice che le biciclette 1, 2, 9 e 12 sono quelle a posto per la mattina.
+
+07/11/2026 · 17:45
+
+Il banco conta le biciclette: sono tutte e 20 in negozio, comprese la 5 e la 12. Il sole sta tramontando e il banco accende le luci dell'insegna.
+
+07/11/2026 · 19:00
+
+Il negozio chiude. Il quaderno viene lasciato sul banco, aperto sulla pagina di sabato. La bici 12 è in fila con le pastiglie nuove e la bici 5 con la camera d'aria nuova.
+
+Domenica 8 novembre 2026 — Pioggia nel pomeriggio
+
+08/11/2026 · 09:00
+
+Il turno del mattino apre il negozio e legge le note di sabato, compresa quella sulla bici 12. Le 20 biciclette sono in fila davanti al banco. Il cielo è coperto e la pioggia è prevista per il pomeriggio.
+
+08/11/2026 · 10:00
+
+Arrivano i quattro clienti con la prenotazione e ritirano le biciclette 1, 2, 9 e 12. Prima di consegnare la bici 12 il banco ne controlla i freni: tengono bene. In negozio restano 16 biciclette.
+
+08/11/2026 · 11:20
+
+Il cliente della bici 9 torna al banco: la catena è saltata. Il banco la rimette a posto in dieci minuti, davanti al cliente, senza togliere la bici dal noleggio. Il cliente riparte alle 11:30.
+
+08/11/2026 · 12:30
+
+Rientrano le biciclette 1, 2, 9 e 12. Il cliente della bici 12 dice che i freni tengono bene anche sul bagnato dei prati. Le altre tre biciclette non hanno problemi.
+
+08/11/2026 · 14:00
+
+Al cambio del turno il turno del mattino comunica che non ci sono guasti da seguire. La catena della bici 9 è saltata una volta: va guardata con più calma. Chi inizia il pomeriggio legge il quaderno.
+
+08/11/2026 · 15:20
+
+Comincia a piovere e i clienti diminuiscono. Il banco accetta solo noleggi di un'ora e sposta le biciclette libere sotto la tettoia. Le luci delle biciclette 4 e 15 non si accendono: il banco cambia le pile e le luci funzionano.
+
+08/11/2026 · 19:00
+
+Il negozio chiude. Tutte le 20 biciclette sono in negozio. Il banco lascia scritto che lunedì vanno guardati con più calma la catena della bici 9 e le pastiglie della bici 12, dopo la prima giornata di uso.

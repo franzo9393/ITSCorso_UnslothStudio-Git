@@ -47,7 +47,7 @@ Proposta, da approvare (il docente non ha ancora fissato il contenuto del filone
 
 Ogni studente parte da uno dei due e può passare all'altro. Obiettivo dichiarato: capire che cosa si può chiedere a ciascuno strumento e dove si ferma, non produrre una consegna.
 
-Tempi: il filone A occupa circa 60 minuti, il filone B circa 40. Il blocco 3 a un solo giro di correzione serve a lasciare spazio a B. Il filone B va aperto alla fine, quando il ciclo A è chiuso; chi finisce prima in A comincia B prima.
+Il blocco 3 a un solo giro di correzione serve a lasciare spazio a B. Il filone B va aperto alla fine, quando il ciclo A è chiuso; chi finisce prima in A comincia B prima. Stima dei tempi: nel rapporto del revisore, non nei materiali.
 
 Il processore può girare in tutti e tre gli strumenti, orchestratore compreso. Quindi chi sceglie Studio o opencode per il filone A ci lavora già: in B approfondisce lo stesso strumento (altre richieste, altre impostazioni) oppure passa all'altro, a sua scelta. Nessun obbligo di cambiare.
 
@@ -82,9 +82,17 @@ Rischio: nel filone B ognuno si ferma al facile (per esempio solo la temperatura
 - [ ] In quale strumento hanno costruito l'orchestratore (Copilot, Studio, opencode).
 - [ ] Prova dell'importazione di orchestratore e processore in Studio e in opencode, prima dell'aula.
 
+## Decisioni dell'utente del 19 novembre 2026 (seconda parte)
+
+- Procedere con i materiali.
+- L'orchestratore è stato costruito in tutti e tre gli strumenti, Copilot soprattutto; gli studenti possono adattarlo agli altri programmi.
+- Serve un punto di partenza per chi non ha l'orchestratore: lo schema dell'esercizio della lezione 5. Il file e lo schema non erano nel repository: il punto di partenza è costruito dalla descrizione di questo piano, in `studenti/da_pubblicare_a_chi_non_ha_l_orchestratore/`. Da confrontare con l'esercizio originale.
+- Dove si sono bloccati: in tutte e tre le parti (competenze, routing, ruoli).
+- Filone B: libertà totale.
+
 ## Stato
 
-Non esistono ancora slide, consegna, guida docente, generatore o dati. Prima di produrli servono: risposta sulle domande qui sopra e approvazione del piano. Poi: materiali, verifica di apertura, revisione del `revisore-didattico`.
+Prodotti: 23 slide (PowerPoint, HTML, PDF), consegna (Word, PDF), guida docente (Word, PDF), generatore `docente/genera_materiali.py`, testo di partenza dell'orchestratore, esempio di istruzioni dell'agente delle correzioni (da pubblicare dopo la prova). Parole per gli studenti: quaderno delle prove, giudizio, agente delle correzioni (il registro resta solo quello del noleggio). Restano: revisione del `revisore-didattico`, prove con l'account studente e le verifiche della tabella pre-aula della guida.
 
 ## Rinviato
 
