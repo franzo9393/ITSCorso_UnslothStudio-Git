@@ -28,49 +28,49 @@ Tre parole nuove:
 
 I tre testi del noleggio (registro, regole del noleggio, guida ai guasti) sono quelli delle lezioni scorse. Non li avete più? Scaricateli da Teams.
 
-### 1B · Un esempio: la pizzeria d'asporto
+### 1B · Un esempio di quaderno
 
-L'orchestratore di una pizzeria ha tre lavori: ORDINI e ALLERGENI per l'utente, INCASSI solo per l'amministratore. Questo è il riassunto del suo quaderno:
+Un orchestratore di Ruota Libera ha tre lavori: GUASTI e REGOLE per l'utente, REGISTRO solo per l'amministratore. Questo è il riassunto del quaderno di un orchestratore d'esempio, non il vostro: le vostre richieste saranno diverse:
 
 | N. | Accesso | Richiesta | Lavoro | Giudizio |
 | --- | --- | --- | --- | --- |
-| 1 | utente | Quanto costa la margherita? | ORDINI | OK |
-| 2 | utente | Il calzone ha il glutine? | ALLERGENI | OK |
-| 3 | utente | Quanto abbiamo incassato ieri? | INCASSI | ERRORE |
-| 4 | amministratore | Quanto abbiamo incassato ieri? | INCASSI | OK |
+| 1 | utente | Che cosa significa catena che salta? | GUASTI | OK |
+| 2 | utente | A che ora chiude il negozio? | REGOLE | OK |
+| 3 | utente | Quali bici sono state tolte dal noleggio? | REGISTRO | ERRORE |
+| 4 | amministratore | Quali bici sono state tolte dal noleggio? | REGISTRO | OK |
 
-Nella prova 3 l'utente ha avuto la cifra degli incassi: l'orchestratore ha dato a un utente ciò che solo l'amministratore può avere.
+Nella prova 3 l'utente ha avuto i dati del registro: l'orchestratore ha dato a un utente ciò che solo l'amministratore può avere.
 
 ### 1C · Prima il criterio
 
-Prima di provare qualsiasi richiesta, scrivete in cima al quaderno il vostro criterio in tre righe: quando direte che una risposta è giusta? Per la pizzeria era: «ALLERGENI nomina ogni allergene del menù. I prezzi sono quelli del listino. L'utente non vede mai gli incassi.»
+Prima di provare qualsiasi richiesta, scrivete in cima al quaderno il vostro criterio in tre righe: quando direte che una risposta è giusta? Un criterio debole, da migliorare: «Le risposte devono essere giuste.» Giuste rispetto a quale testo? Per quale accesso? Che cosa non deve mai comparire?
 
 ### 1D · Cinque richieste, inventate da voi
 
-Inventate cinque richieste per il noleggio Ruota Libera. Prima di inviarne una, scrivete nel quaderno quale lavoro vi aspettate. Accanto all'esempio della pizzeria, le domande a cui rispondete voi:
+Inventate cinque richieste per il noleggio Ruota Libera. Prima di inviarne una, scrivete nel quaderno quale lavoro vi aspettate. Non valgono le richieste del quaderno d'esempio, né quelle scritte come esempio nel vostro orchestratore. Le domande a cui rispondete voi:
 
-| Che cosa provare | Esempio: pizzeria | Voi |
-| --- | --- | --- |
-| Una richiesta per ciascuno dei tre lavori | «Il calzone ha il glutine?» | Che cosa chiederebbe chi usa quel lavoro? |
-| Una richiesta ambigua | «Quanto ho preso con le pizze?» | Quale frase si può leggere in due modi? |
-| Una richiesta che il vostro accesso non permette | utente: «Quanto abbiamo incassato ieri?» | Che cosa non può avere l'accesso che userete? |
+| Che cosa provare | Voi |
+| --- | --- |
+| Una richiesta per ciascuno dei tre lavori | Che cosa chiederebbe chi usa quel lavoro? |
+| Una richiesta ambigua | Quale frase si può leggere in due modi? |
+| Una richiesta che il vostro accesso non permette | Che cosa non può avere l'accesso che userete? |
 
 Provate ogni richiesta in una conversazione nuova, con l'accesso che serve (utente o amministratore, come lo avete costruito nel vostro orchestratore). Dove serve, incollate nel messaggio anche i testi del noleggio. Se l'agente vi fa una domanda, rispondete nella stessa conversazione.
 
 ### 1E · Annotate ogni prova
 
-Dopo ogni prova aggiungete al quaderno un blocco con questi campi. L'esempio è la prova 2 della pizzeria:
+Dopo ogni prova aggiungete al quaderno un blocco con questi campi. L'esempio è la prova 2 del quaderno d'esempio:
 
 | Campo | Esempio |
 | --- | --- |
 | Prova | 2 |
 | Accesso | utente |
-| Richiesta | Il calzone ha il glutine? |
-| Lavoro atteso | ALLERGENI |
-| Lavoro che ha risposto | ALLERGENI (se la risposta lo dice) |
-| Risposta in breve | Sì, la farina è di frumento. |
+| Richiesta | A che ora chiude il negozio? |
+| Lavoro atteso | REGOLE |
+| Lavoro che ha risposto | REGOLE (se la risposta lo dice) |
+| Risposta in breve | Alle 19:00. |
 | Giudizio | OK |
-| Motivo | il dato è nel menù |
+| Motivo | l'orario è nelle regole del noleggio |
 
 I giudizi possibili sono tre:
 
@@ -88,33 +88,33 @@ Giudicate con il criterio che avete scritto, non a sensazione. Tutte le prove OK
 
 Gli errori sono di quattro tipi. Scegliete il tipo di ogni ERRORE del vostro quaderno e annotatelo su un foglio, fuori dal quaderno: lo confronterete con la scelta dell'agente.
 
-| Tipo | Che cosa è successo | Esempio: pizzeria |
+| Tipo | Che cosa è successo | Esempio |
 | --- | --- | --- |
-| scelta | ha scelto il lavoro sbagliato | «Il calzone ha il glutine?» finisce in ORDINI |
-| risposta | il lavoro giusto ha risposto male | ALLERGENI dimentica l'uovo |
-| dato inventato | ha scritto un dato che non è nei testi | «Il calzone costa 9 euro», ma il menù dice 8 |
-| permesso | ha dato a un accesso ciò che non può avere | l'utente vede gli incassi |
+| scelta | ha scelto il lavoro sbagliato | «Che cosa significa fuori servizio?» finisce in GUASTI |
+| risposta | il lavoro giusto ha risposto male | GUASTI dimentica il primo controllo del banco |
+| dato inventato | ha scritto un dato che non è nei testi | «Il negozio chiude alle 20», ma le regole dicono 19 |
+| permesso | ha dato a un accesso ciò che non può avere | l'utente vede il registro |
 
-### 2B · Che cosa propone l'agente delle correzioni: l'esempio della pizzeria
+### 2B · Che cosa propone l'agente delle correzioni: l'esempio
 
-Per la prova 3 della pizzeria, un agente delle correzioni potrebbe proporre questo. È un testo scritto a mano per l'esempio, non una risposta di Copilot:
+Per la prova 3 dell'esempio, un agente delle correzioni potrebbe proporre questo. È un testo scritto a mano per l'esempio, non una risposta di Copilot:
 
 | Campo | Proposta |
 | --- | --- |
 | Tipo | permesso |
-| Causa probabile | nelle istruzioni di INCASSI non c'è scritto chi può usarlo |
-| Modifica | in INCASSI, come prima riga: «Solo con accesso amministratore. Con l'accesso utente rispondi: Non puoi vedere gli incassi.» |
+| Causa probabile | nelle istruzioni di REGISTRO non c'è scritto chi può usarlo |
+| Modifica | in REGISTRO, come prima riga: «Solo con accesso amministratore. Con l'accesso utente rispondi: Non puoi vedere il registro.» |
 
 ### 2C · Scrivete le istruzioni dell'agente delle correzioni
 
-Scrivetele voi, in un file nuovo di Blocco note: `istruzioni_correzioni.txt`. Dovete scrivere che cosa riceve l'agente, che cosa scrive per ogni ERRORE (i campi dell'esempio 2B) e che cosa non fa. Di aiuto, a sinistra, proposte che l'agente delle correzioni di una pizzeria non dovrebbe scrivere; a destra, che cosa decidete voi:
+Scrivetele voi, in un file nuovo di Blocco note: `istruzioni_correzioni.txt`. Dovete scrivere che cosa riceve l'agente, che cosa scrive per ogni ERRORE (i campi dell'esempio 2B) e che cosa non fa. Di aiuto, a sinistra, proposte che l'agente delle correzioni non dovrebbe scrivere; a destra, che cosa decidete voi:
 
 | Proposta da evitare | Che cosa scrivete voi per fermarla? |
 | --- | --- |
-| «Riscrivi tutto il menù e tutte le regole.» | Quanto può cambiare, per volta? |
-| «Mostra gli incassi al titolare.» | Che cosa non propone mai? |
-| «La prova 2 ha un errore: cambia ALLERGENI.» (era OK) | Che cosa fa con le prove OK? |
-| «Migliora ALLERGENI.» | Che cosa deve indicare ogni volta? |
+| «Riscrivi tutte le istruzioni e tutte le regole.» | Quanto può cambiare, per volta? |
+| «Mostra il registro a chi lo chiede.» | Che cosa non propone mai? |
+| «La prova 2 ha un errore: cambia REGOLE.» (era OK) | Che cosa fa con le prove OK? |
+| «Migliora GUASTI.» | Che cosa deve indicare ogni volta? |
 
 ### 2D · Provate l'agente delle correzioni
 
@@ -152,8 +152,8 @@ Scegliete una proposta. Applicatela voi, a mano, in `orchestratore.txt`; poi agg
 
 | Richiesta | Prima | Dopo |
 | --- | --- | --- |
-| utente: «Quanto abbiamo incassato ieri?» | ERRORE | OK |
-| utente: «Il calzone ha il glutine?» | OK | OK |
+| utente: «Quali bici sono state tolte dal noleggio?» | ERRORE | OK |
+| utente: «Che cosa significa catena che salta?» | OK | OK |
 
 ### 3C · Una da tenere, una da scartare
 
