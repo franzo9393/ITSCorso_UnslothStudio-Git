@@ -16,7 +16,7 @@ Oggi fate un giro completo, una volta sola:
 2. Un secondo agente legge il quaderno e propone le correzioni.
 3. Voi decidete quali applicare, correggete e riprovate.
 
-Poi esplorate Unsloth Studio e opencode, come volete.
+Poi portate l’orchestratore in Unsloth Studio o in opencode, e provate quello che volete.
 
 ---
 
@@ -87,7 +87,7 @@ Dopo ogni prova, un blocco così nel quaderno (prova 2 della pizzeria):
 
 ---
 
-# Slide 08 — Tre giudizi
+# Slide 08 — Un rifiuto giusto è OK?
 <!-- layout: CONTENUTO -->
 
 | Giudizio | Quando |
@@ -165,8 +165,8 @@ Scegliete voi dove farlo girare. Legge il quaderno e il testo del vostro orchest
 | Programma | Come |
 | --- | --- |
 | Microsoft Copilot | conversazione nuova: istruzioni, quaderno e orchestratore, tutto nello stesso messaggio |
-| Unsloth Studio | istruzioni nel campo System prompt, quaderno e orchestratore nella chat; il modello è piccolo e può essere lento |
-| opencode | quaderno e orchestratore in file, istruzioni nel messaggio, proposta in un altro file; il programma chiede il permesso prima di scrivere |
+| Unsloth Studio | istruzioni nel campo System Prompt, quaderno e orchestratore nella chat; il modello è piccolo e può essere lento |
+| opencode | quaderno e orchestratore in file, istruzioni in `correzioni.md` (consegna 4B), proposta in un altro file; il programma chiede il permesso prima di scrivere |
 
 ---
 
@@ -202,7 +202,7 @@ Una proposta sbagliata o da ignorare tenetela da parte.
 # Slide 18 — Applicate la modifica
 <!-- layout: CONTENUTO -->
 
-Scegliete una proposta. Applicatela voi, a mano, nel testo dell’orchestratore e aggiornate l’orchestratore.
+Scegliete una proposta. Applicatela voi, a mano, in `orchestratore.txt`; poi aggiornate l’orchestratore nel programma che usate.
 
 ---
 
@@ -261,23 +261,85 @@ Anche le proposte dell’agente delle correzioni possono sbagliare.
 # Slide 24 — Studio o opencode, a vostra scelta
 <!-- layout: SEZIONE -->
 
-Nessuna consegna.
+Prima portate l’orchestratore in uno dei due (consegna 4A o 4B). Poi provate quello che volete. Niente da consegnare.
 
 ---
 
-# Slide 25 — Due idee per cominciare
+# Slide 25 — Lo stesso orchestratore, in un altro programma
+<!-- layout: CONTENUTO -->
+
+Il testo resta lo stesso. In opencode cambia una frase: dove sono i testi del noleggio.
+
+| | Copilot | Unsloth Studio | opencode |
+| --- | --- | --- | --- |
+| Le istruzioni | istruzioni dell’agente, o primo messaggio | campo System Prompt | file dell’agente |
+| I tre testi del noleggio | incollati nel messaggio | incollati nella chat | file nella cartella `laboratorio` |
+| L’accesso | la vostra riga, per esempio «Accesso: utente» | la vostra riga | la vostra riga |
+
+---
+
+# Slide 26 — In Studio le istruzioni vanno nel System Prompt
+<!-- layout: CONTENUTO -->
+
+Qui incollate `orchestratore.txt` (consegna 4A).
+
+![Unsloth Studio: il campo System Prompt, evidenziato, dove si incolla il testo.](immagini_slide/studio_system_prompt.png)
+
+---
+
+# Slide 27 — Una nuova chat: il System Prompt resta com’è
+<!-- layout: CONTENUTO -->
+
+Per l’agente delle correzioni serve un altro testo.
+
+> Che cosa fate prima di aprire la nuova chat?
+
+---
+
+# Slide 28 — In opencode un agente è un file
+<!-- layout: CONTENUTO -->
+
+Il nome dell’agente è il nome del file: `orchestratore.md` si sceglie come `orchestratore`.
+
+| Nel file | Che cosa dice |
+| --- | --- |
+| le quattro righe in cima (l’intestazione) | `description` dice a che cosa serve l’agente; `mode: primary` vuol dire che lo scegliete voi con Maiusc+Tab, come Build e Plan |
+| sotto l’intestazione | il testo di `orchestratore.txt` |
+
+---
+
+# Slide 29 — Dove trova i testi, adesso?
+<!-- layout: CONTENUTO -->
+
+In Copilot i testi del noleggio erano incollati. In opencode sono file nella cartella.
+
+> Quale frase delle vostre istruzioni va cambiata?
+
+---
+
+# Slide 30 — Che file vuole scrivere?
+<!-- layout: CONTENUTO -->
+
+L’agente delle correzioni si ferma e chiede il permesso.
+
+Leggete il nome del file. Solo `proposta_correzioni.txt`: Allow once. Qualsiasi altro file: Reject. Se chiede un comando: Reject e scrivete «Senza comandi, leggi i file.»
+
+---
+
+# Slide 31 — Da dove cominciate?
 <!-- layout: CONTENUTO -->
 
 Scegliete voi che cosa provare, anche altro. Potete passare da un programma all’altro.
 
 | Programma | Idea | Che cosa guardare |
 | --- | --- | --- |
-| Unsloth Studio | una richiesta con istruzioni di sistema e temperatura diverse | lunghezza, forma e correttezza delle risposte; quanto testo tiene insieme il modello |
+| Unsloth Studio | due richieste del vostro quaderno, giudicate con il vostro criterio | se il modello piccolo si comporta come Copilot |
+| Unsloth Studio | una richiesta con System Prompt e temperatura diverse | lunghezza, forma e correttezza delle risposte; quanto testo tiene insieme il modello |
 | opencode | estendere la pagina `.html` della lezione 5: nuovi dati o una sezione, prima in Plan e poi in Build | i permessi, letti prima di approvare; la pagina aperta nel browser |
 
 ---
 
-# Slide 26 — Dove si è fermato il vostro programma?
+# Slide 32 — Dove si è fermato il vostro programma?
 <!-- layout: CHIUSURA -->
 
 Che cosa avete chiesto? Che cosa ha fatto da solo? Dove si è fermato?

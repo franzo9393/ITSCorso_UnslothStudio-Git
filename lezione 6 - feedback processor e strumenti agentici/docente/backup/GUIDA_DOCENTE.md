@@ -10,7 +10,7 @@ Si riparte dall'orchestratore costruito nella lezione 5. Due filoni distinti, co
 
 **Filone A: il ciclo della correzione.** Gli studenti scrivono il criterio con cui giudicheranno (slide 5), inventano cinque richieste (una per ciascun lavoro, una ambigua, una che l'accesso non permette) e annotano ogni prova nel quaderno (slide 6–9). Poi scelgono il tipo di ogni errore (slide 11), scrivono le istruzioni di un secondo agente, l'**agente delle correzioni** (nel piano: feedback processor), che legge il quaderno e il testo dell'orchestratore e per ogni ERRORE propone tipo, causa e una modifica (slide 12–15). Un solo giro di correzione: leggono la proposta, la applicano a mano, ripetono la richiesta sbagliata e una giusta e confrontano prima e dopo (slide 17–19). Si chiude con due correzioni da confrontare, una proposta riuscita e una scartata, i criteri e la domanda su come si controlla una proposta (slide 20–23).
 
-**Filone B: Unsloth Studio e opencode a scelta** (slide 24–26). Libertà totale, nessuna consegna: le due righe della slide 25 sono idee di partenza. Si apre quando il filone A è chiuso; chi finisce prima comincia prima. La domanda finale (slide 26) si fa a voce.
+**Filone B: Unsloth Studio e opencode** (slide 24–32). Si apre quando il filone A è chiuso; chi finisce prima comincia prima. Comincia con la miniguida per portare lo stesso orchestratore e lo stesso agente delle correzioni in Studio oppure in opencode (slide 25–30, consegna 4A o 4B; l'altro programma è facoltativo); poi libertà totale, nessuna consegna: le tre righe della slide 31 sono idee di partenza. La domanda finale (slide 32) si fa a voce.
 
 Parole: sulle slide e nella consegna si dice **lavoro** (la consegna ricorda che nella lezione 5 si chiamava anche skill), **elenco delle richieste** (spiegato alla slide 17), **accesso** (utente o amministratore), **quaderno delle prove**, **giudizio**, **agente delle correzioni**. «Competenza», «instradamento» e «feedback processor» restano in guida e a voce. «Registro» indica solo il registro del noleggio: per le prove si dice quaderno, per non avere tre registri.
 
@@ -39,8 +39,10 @@ Nessuna riga è stata provata con Copilot e l'account studente né sui PC della 
 | Agente delle correzioni in Copilot | Con l'esempio di istruzioni e un quaderno di due o tre prove (una ERRORE): scrive tipo, causa e modifica nel formato? Non cambia nulla? Con tutte OK scrive «Nessuna modifica necessaria.»? | Le istruzioni nel primo messaggio (è già il percorso principale): se il formato non è rispettato, mostra com'è e passa avanti | |
 | Agente delle correzioni in Studio | Il modello da 2B accetta quaderno e orchestratore in 8192 token? Rispetta il formato? Quanto è lento? | Resta una scelta, con i limiti detti a voce | |
 | Agente delle correzioni in opencode | Legge il quaderno da un file, scrive la proposta in un altro, chiede il permesso prima di scrivere? Rete della scuola con molti studenti insieme? | Si usa Copilot | |
-| Quaderno e testi nel computer virtuale | Come si portano nel computer virtuale quaderno, orchestratore e testi del noleggio (appunti condivisi, cartella)? | Dillo a voce all'inizio del filone che lo richiede | |
-| Importare l'orchestratore in Studio e opencode | Le istruzioni nel campo System prompt (Studio) e il formato dei file degli agenti di opencode (intestazione con modalità e permessi): li hai detti semplici da importare, non sono provati qui. Il modello da 2B può non seguire il routing a tre lavori | Chi sceglie quella strada lo sa: nessuna condizione per la lezione | |
+| Quaderno e testi nel computer virtuale | Come si portano nel computer virtuale `orchestratore.txt`, `quaderno_prove.txt`, `istruzioni_correzioni.txt` e i tre testi del noleggio (Teams nel browser della macchina, cartella condivisa, altro)? La consegna (parte 4) dice solo «portate lì i file»: aggiungi il modo che funziona | Scrivi il modo alla lavagna o sulla prima slide del filone B | |
+| Importare l'orchestratore in Studio e opencode (miniguida, slide 25–30) | Studio: `orchestratore.txt` nel System Prompt, tre testi nella chat con la riga dell'accesso; il contatore resta sotto …/8.2k con ragionamento attivo? Il modello da 2B segue l'elenco delle richieste e i permessi? opencode: gli agenti in `.opencode/agents/*.md` compaiono con Maiusc+Tab, con il nome del file? Serve riavviare dopo la modifica? Il nuovo agente eredita le regole di `opencode.jsonc` (permesso prima di scrivere, comandi) e il modello Big Pickle? Leggendo i tre file chiede di eseguire comandi (nella lezione 5 aveva chiesto `Get-ChildItem …`)? `correzioni` chiede il permesso prima di scrivere `proposta_correzioni.txt`? Formato dei file ricavato dalla documentazione di opencode (opencode.ai/docs/agents), non provato qui | Chi sceglie quella strada lo sa: nessuna condizione per la lezione | |
+| Intestazione dei file degli agenti di opencode | `description` senza due punti seguiti da spazio nel testo (in YAML romperebbero la lettura): i due file di `MODELLI_OPENCODE_LEZIONE6/` sono già a posto, ma chi li modifica deve saperlo | Togli i due punti dal testo | |
+| Cartella `.opencode\agents` nel computer virtuale | Copia i due file di `docente/MODELLI_OPENCODE_LEZIONE6/` (`orchestratore.md`, `correzioni.md`, con la sola intestazione) in `Documenti\laboratorio\.opencode\agents\`. La consegna dice che la cartella e i file ci sono già. Esplora risorse non accetta nomi che cominciano con il punto (da verificare: `.opencode.`, oppure `mkdir .opencode\agents` da terminale). Blocco note può salvare `.md.txt` con le estensioni nascoste: per questo i file sono già creati e lo studente li apre e li salva senza cambiare nome | Dalla finestra di opencode chiusa: `mkdir .opencode\agents`, poi copia i due file | |
 | Lunghezza del quaderno | Cinque prove con otto campi restano leggibili e incollabili con l'orchestratore? | Dì di annotare in breve | |
 | Pagina `.html` della lezione 5 | Chi vuole estenderla in opencode la ha ancora? Plan e Build funzionano come in lezione 5? | L'idea di opencode da riformulare a voce | |
 | Che cosa si è fatto davvero in lezione 5 | Nell'aula del 19 novembre l'esercizio ha usato davvero i termini «lavoro» ed «elenco delle richieste»? Si diceva «skill» e «routing»? | Adegua le parole a voce; i materiali dicono «lavoro» e ricordano skill | |
@@ -77,13 +79,13 @@ Che cosa si fa: gli studenti scelgono il tipo di ogni errore, scrivono le istruz
 - **Slide 22.** I criteri dopo la prova: una riga precisa, la causa nel testo giusto, le prove OK restano OK, i permessi si rispettano, i dati vengono dai testi.
 - **Slide 23.** Anche le proposte dell'agente delle correzioni possono sbagliare. Che cosa permette di capirlo: il criterio scritto prima, il tipo annotato prima, il confronto prima e dopo. Non richiamare la domanda «chi ha controllato il numero?» della lezione 5, se non l'hai fatta davvero in aula.
 
-## Parte 4 · Studio e opencode a scelta (slide 24–26)
+## Parte 4 · Studio e opencode (slide 24–32)
 
-Libertà totale. Le due righe della slide 25 sono idee di partenza, non consegne. Rischio: ognuno si ferma al facile (per esempio solo la temperatura). Non guidare i passi; se serve, ricorda la domanda finale.
-
-- **Studio.** Più richieste con la stessa istruzione e temperature diverse. Ricorda: il modello da 2B è lento; il contesto è 8192.
-- **opencode.** Estendere la pagina `.html` in Plan, poi in Build, leggendo i permessi prima di approvare. Rete della scuola condivisa: controlla prima che il modello risponda.
-- **Chiusura.** Slide 26: tre domande a voce a chi vuole rispondere. Nessuna consegna.
+- **Slide 25.** Una tabella che confronta i tre programmi: le istruzioni, i tre testi, la riga dell'accesso. Il testo dell'orchestratore resta lo stesso; in opencode cambia solo la frase su dove sono i testi. L'accesso è la riga che usa l'orchestratore dello studente (per esempio «Accesso: utente»): una convenzione scritta nel messaggio, non un vero login.
+- **Slide 26–27 (Studio).** Schermata del campo System Prompt (dalla lezione 5); poi la domanda «che cosa fate prima di aprire la nuova chat?»: la risposta (cancellare l'orchestratore e incollare le istruzioni delle correzioni) è nella consegna 4A, punto 5. Nella guida della lezione 5 il System Prompt è rimasto dopo «Nuova chat» (provato su VMware). Il modello da 2B è lento e il contesto è 8.192 token (il contatore mostra …/8.2k): una richiesta per chat; nel quaderno il criterio e due o tre prove. Un orchestratore che sbaglia il lavoro è materiale per il quaderno, non un guasto della lezione.
+- **Slide 28–30 (opencode).** Un agente è un file; il nome dell'agente è il nome del file. I due file con la sola intestazione sono già nella cartella (vedi controlli). I tre testi del noleggio restano file e l'agente li legge: lo studente cambia la frase che dice dove prendere i testi, nell'orchestratore e nell'agente delle correzioni, ed è parte dell'esercizio. Dopo ogni modifica ai file degli agenti, riavvio di opencode (non verificato se serva). Se compare un comando: Reject e «Senza comandi, leggi i file.», come nella lezione 5. L'agente delle correzioni scrive solo dopo il permesso, Allow once e il nome del file letto prima. Il file `opencode.jsonc` della lezione 5 fa già chiedere prima di scrivere (modello Big Pickle, in rete: controlla prima che risponda). La consegna chiede 4A oppure 4B; l'altra è facoltativa.
+- **Dopo la miniguida (slide 31).** Libertà totale. Le tre righe sono idee di partenza, non consegne. Rischio: ognuno si ferma al facile (per esempio solo la temperatura). Non guidare i passi; se serve, ricorda la domanda finale.
+- **Chiusura.** Slide 32: tre domande a voce a chi vuole rispondere. Nessuna consegna.
 
 ## Valori di riferimento per giudicare le richieste degli studenti
 
@@ -109,11 +111,11 @@ Che cosa contiene la guida ai guasti, guasto per guasto:
 ## Che cosa non è stato provato
 
 - L'orchestratore di partenza, l'agente delle correzioni (in nessuno dei tre strumenti), l'esempio di istruzioni e il comportamento di Copilot con quaderno e orchestratore insieme in un messaggio.
-- L'importazione dell'orchestratore in Unsloth Studio e in opencode.
+- L'importazione dell'orchestratore e dell'agente delle correzioni in Unsloth Studio e in opencode (miniguida, slide 25–30): per opencode il formato dei file è quello della documentazione ufficiale, non è stato eseguito.
 - La rete della scuola con molti studenti insieme (il 4 novembre Copilot non ha risposto per circa 10 minuti).
 - L'esercizio della lezione 5 originale e il suo schema: non erano nel repository; il testo di partenza è costruito dal piano.
 - Nessuna prova è stata fatta con l'account studente.
 
 ## Chiusura dal proiettore
 
-Slide 26: «Dove si è fermato il vostro programma?» A voce, per chi vuole rispondere. Poi si chiude: la prossima lezione è la 7.
+Slide 32: «Dove si è fermato il vostro programma?» A voce, per chi vuole rispondere. Poi si chiude: la prossima lezione è la 7.

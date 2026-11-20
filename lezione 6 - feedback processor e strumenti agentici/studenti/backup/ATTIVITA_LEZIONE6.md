@@ -22,7 +22,7 @@ Tre parole nuove:
 
 ### 1A · Preparate i file
 
-1. Aprite il vostro orchestratore e copiatene le istruzioni in un file nuovo di Blocco note: `orchestratore.txt`. Servirà più avanti.
+1. Aprite il vostro orchestratore e copiatene le istruzioni in un file nuovo di Blocco note: `orchestratore.txt`. Se i lavori sono in file separati (per esempio `skill_guasti.md`), copiate anche il loro testo, sotto le istruzioni. Servirà più avanti.
 2. Create un altro file di Blocco note: `quaderno_prove.txt`.
 3. Scrivete nel quaderno i tre lavori e, accanto a ciascuno, chi può usarlo: utente o amministratore.
 
@@ -118,13 +118,13 @@ Scrivetele voi, in un file nuovo di Blocco note: `istruzioni_correzioni.txt`. Do
 
 ### 2D · Provate l'agente delle correzioni
 
-Scegliete voi dove farlo girare. In ogni caso riceve le vostre istruzioni, il quaderno e il testo dell'orchestratore (`orchestratore.txt`), e scrive soltanto una proposta. Non vede le risposte vere, solo il quaderno: se il Motivo manca, la causa che propone è un'ipotesi.
+Scegliete voi dove farlo girare. In ogni caso riceve le vostre istruzioni, il quaderno e il testo dell'orchestratore (`orchestratore.txt`), e scrive soltanto una proposta. Non vede le risposte vere, solo il quaderno: se il Motivo manca, la causa che propone è un'ipotesi. Per Studio e opencode i passi sono in 4A e 4B.
 
 | Programma | Come |
 | --- | --- |
 | Microsoft Copilot | Conversazione nuova: istruzioni, quaderno e orchestratore, tutto nello stesso messaggio. |
-| Unsloth Studio | Istruzioni nel campo System prompt, quaderno e orchestratore nella chat. Il modello è piccolo e può essere lento. |
-| opencode | Quaderno e orchestratore in file, istruzioni nel messaggio, proposta scritta in un altro file. In modalità Build il programma chiede il permesso prima di scrivere. |
+| Unsloth Studio | Istruzioni nel campo System Prompt, quaderno e orchestratore nella chat. Il modello è piccolo e può essere lento. |
+| opencode | Quaderno e orchestratore in file, istruzioni in `correzioni.md` (vedi 4B), proposta scritta in un altro file. Il programma chiede il permesso prima di scrivere. |
 
 Studio e opencode girano nel computer virtuale: i file vanno portati lì.
 
@@ -148,7 +148,7 @@ Una proposta sbagliata o da ignorare tenetela da parte: serve alla discussione. 
 
 ### 3B · Applicate la modifica e riprovate
 
-Scegliete una proposta. Applicatela voi, a mano, nel testo dell'orchestratore e aggiornate l'orchestratore. Poi, in una conversazione nuova, ripetete la richiesta che era ERRORE e una richiesta che era OK: la richiesta OK deve restare OK. Scrivete nel quaderno Prima e Dopo.
+Scegliete una proposta. Applicatela voi, a mano, in `orchestratore.txt`; poi aggiornate l'orchestratore nel programma che usate. Poi, in una conversazione nuova, ripetete la richiesta che era ERRORE e una richiesta che era OK: la richiesta OK deve restare OK. Scrivete nel quaderno Prima e Dopo.
 
 | Richiesta | Prima | Dopo |
 | --- | --- | --- |
@@ -161,11 +161,48 @@ Alcune proposte vanno guardate insieme: una riuscita e una scartata. Che cosa le
 
 ## Parte 4 · Unsloth Studio o opencode, a vostra scelta
 
-Non c'è una consegna. Scegliete voi che cosa provare. Due idee per cominciare:
+Prima portate l'orchestratore in un altro programma: scegliete 4A (Unsloth Studio) oppure 4B (opencode), e l'altro se volete. Poi provate quello che volete (4C). Niente da consegnare.
+
+Lavorate nel computer virtuale. Portate lì i file che vi servono: `orchestratore.txt`, `quaderno_prove.txt`, `istruzioni_correzioni.txt` e i tre testi del noleggio (registro, regole del noleggio, guida ai guasti). Se i lavori del vostro orchestratore sono in file separati, portate anche quelli.
+
+### 4A · Unsloth Studio: lo stesso orchestratore e lo stesso agente delle correzioni
+
+In Copilot le istruzioni stavano nell'agente o nel primo messaggio. In Studio vanno nel campo System Prompt: è il testo che il modello legge prima di ogni messaggio. Il modello è piccolo e lento, e può non seguire l'elenco delle richieste: se sbaglia, è materiale per il quaderno.
+
+1. Fate doppio clic sul collegamento Unsloth Studio del desktop. Se in alto non c'è il modello, sceglietelo come nella lezione 5. Aprite il pannello delle impostazioni (icona in alto a destra) e trovate System Prompt.
+2. Incollate il contenuto di `orchestratore.txt` nel campo System Prompt.
+3. Nella chat incollate i tre testi del noleggio, poi una riga con l'accesso (per esempio «Accesso: utente») e la richiesta. Una richiesta per chat: per la successiva aprite una nuova chat e incollate di nuovo i testi.
+4. Guardate il contatore in alto: mostra …/8.2k. Sono 8.192 token, cioè pezzetti di parola. Se lo superate, mettete nella chat solo il testo che serve alla richiesta.
+5. Per l'agente delle correzioni, cancellate l'orchestratore dal System Prompt e incollate `istruzioni_correzioni.txt`: il System Prompt resta uguale anche in una nuova chat, quindi lo cambiate voi. Poi aprite una nuova chat.
+6. Nella chat incollate il testo di `orchestratore.txt`, il criterio e i blocchi di due o tre prove del quaderno, almeno una con ERRORE.
+7. Alla fine cancellate il testo del System Prompt.
+
+### 4B · opencode: lo stesso orchestratore e lo stesso agente delle correzioni
+
+In opencode un agente è un file di testo. Il nome dell'agente è il nome del file (`orchestratore`). In cima al file ci sono quattro righe, l'intestazione: `description` dice a che cosa serve l'agente, `mode: primary` vuol dire che lo scegliete voi con Maiusc+Tab, come Build e Plan. Sotto l'intestazione ci sono le istruzioni, le stesse che avete scritto per Copilot.
+
+Nella cartella `laboratorio` trovate la cartella `.opencode` e dentro la cartella `agents`, con due file già pronti che hanno solo l'intestazione: `orchestratore.md` e `correzioni.md`.
+
+1. Nella cartella `laboratorio` mettete i tre testi del noleggio, `quaderno_prove.txt` e `orchestratore.txt`.
+2. Aprite `orchestratore.md` con Blocco note (tasto destro, Apri con). Sotto l'intestazione incollate il testo di `orchestratore.txt`.
+3. Nel testo cambiate la frase che dice dove prendere i testi del noleggio: non sono più incollati nella conversazione, sono file nella cartella e l'agente li legge quando servono.
+4. Aprite `correzioni.md` e incollate sotto l'intestazione il testo di `istruzioni_correzioni.txt`. Cambiate anche qui la frase che dice dove riceve il quaderno e l'orchestratore: sono file nella cartella.
+5. Salvate i due file senza cambiarne il nome. Dopo ogni modifica a un file in `agents`, chiudete opencode e riapritelo.
+6. Fate doppio clic sul collegamento opencode del desktop: parte nella cartella `laboratorio`. Premete Maiusc+Tab finché in basso compare `orchestratore`.
+7. Scrivete una riga con l'accesso (per esempio «Accesso: utente») e la richiesta. Se chiede di eseguire un comando, premete Reject e scrivete «Senza comandi, leggi i file.»
+8. Per l'agente delle correzioni premete Maiusc+Tab finché compare `correzioni`. Chiedetegli di leggere `quaderno_prove.txt` e `orchestratore.txt` e di scrivere la proposta in `proposta_correzioni.txt`.
+9. Il programma si ferma a chiedere il permesso di scrivere. Leggete il nome del file e il testo: Allow once solo se il file è `proposta_correzioni.txt`. Per qualsiasi altro file, Reject.
+
+Se `orchestratore` o `correzioni` non compaiono con Maiusc+Tab, chiudete opencode e riapritelo; poi controllate che i file siano in `.opencode`, dentro `agents`, e che finiscano con `.md`.
+
+### 4C · Poi, a vostra scelta
+
+Scegliete voi che cosa provare. Tre idee per cominciare:
 
 | Programma | Idea | Che cosa guardare |
 | --- | --- | --- |
-| Unsloth Studio | Una richiesta con istruzioni di sistema e temperatura diverse. | La lunghezza, la forma e la correttezza delle risposte; quanto testo tiene insieme il modello. |
+| Unsloth Studio | Due richieste del vostro quaderno, con lo stesso System Prompt, giudicate con il criterio che avete scritto. | Se il modello piccolo si comporta come Copilot; quanto testo tiene insieme. |
+| Unsloth Studio | Una richiesta con System Prompt e temperatura diverse. | La lunghezza, la forma e la correttezza delle risposte. |
 | opencode | Estendere la pagina `.html` della lezione 5: nuovi dati o una sezione, prima in Plan e poi in Build. | I permessi, letti prima di approvare; la pagina aperta nel browser. |
 
 Potete passare da un programma all'altro. Alla fine rispondete a voce: che cosa avete chiesto, che cosa ha fatto da solo, dove si è fermato?
