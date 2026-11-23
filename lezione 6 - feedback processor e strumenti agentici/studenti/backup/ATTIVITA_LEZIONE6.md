@@ -30,7 +30,7 @@ I tre testi del noleggio (registro, regole del noleggio, guida ai guasti) sono q
 
 ### 1B · Un esempio di quaderno
 
-Un orchestratore di Ruota Libera ha tre lavori: GUASTI e REGOLE per l'utente, REGISTRO solo per l'amministratore. Questo è il riassunto del quaderno di un orchestratore d'esempio, non il vostro: le vostre richieste saranno diverse:
+Un orchestratore di Ruota Libera ha tre lavori: GUASTI per utente e amministratore, REGOLE solo per l'utente, REGISTRO solo per l'amministratore. Questo è il riassunto del quaderno di un orchestratore d'esempio, non il vostro: le vostre richieste saranno diverse:
 
 | N. | Accesso | Richiesta | Lavoro | Giudizio |
 | --- | --- | --- | --- | --- |
@@ -100,8 +100,8 @@ Il tipo dice che genere di errore è: quello della prova 3 è un errore di perme
 
 | Tipo | Che cosa è successo | Esempio |
 | --- | --- | --- |
-| scelta | ha scelto il lavoro sbagliato | «Che cosa significa fuori servizio?» finisce in GUASTI, ma il significato è nelle regole del noleggio |
-| risposta | il lavoro giusto ha risposto male | GUASTI dimentica il primo controllo del banco |
+| lavoro sbagliato | la richiesta è andata a un lavoro che non doveva rispondere | «Che cosa significa fuori servizio?» finisce in GUASTI, ma il significato è nelle regole del noleggio |
+| risposta sbagliata | il lavoro giusto ha risposto male | GUASTI dimentica il primo controllo del banco |
 | dato inventato | ha scritto un dato che non è nei testi | «Il negozio chiude alle 20», ma le regole dicono 19 |
 | permesso | ha dato a un accesso ciò che non può avere | l'utente vede il registro |
 
@@ -148,11 +148,11 @@ Una proposta sbagliata non applicatela: tenetela per la discussione. Tutte le pr
 
 ### 3B · Applicate la modifica e riprovate
 
-Scegliete una proposta. Applicatela voi, a mano, in `orchestratore.txt`. Poi aggiornate l'orchestratore nel programma che usate: nell'agente di Copilot incollate il nuovo testo nelle istruzioni; se le istruzioni stanno nel primo messaggio, usate il nuovo testo nella conversazione nuova. Poi ripetete la richiesta che era ERRORE e una richiesta che era OK, ciascuna in una conversazione nuova: la richiesta OK deve restare OK. Scrivete nel quaderno Prima e Dopo. Tutte le prove erano OK e l'agente ha scritto «Nessuna modifica necessaria»? Va bene: passate alla parte 4.
+Scegliete una proposta. Applicatela voi, a mano, in `orchestratore.txt`. Poi aggiornate l'orchestratore nel programma che usate: nell'agente di Copilot incollate il nuovo testo nelle istruzioni; se le istruzioni stanno nel primo messaggio, usate il nuovo testo nella conversazione nuova. Poi ripetete la richiesta che era ERRORE, scritta con altre parole, e una richiesta che era OK, ciascuna in una conversazione nuova: la richiesta OK deve restare OK. Scrivete nel quaderno Prima e Dopo. Tutte le prove erano OK e l'agente ha scritto «Nessuna modifica necessaria»? Va bene: passate alla parte 4.
 
 | Richiesta | Prima | Dopo |
 | --- | --- | --- |
-| utente: «Quali bici sono state tolte dal noleggio?» | ERRORE | OK |
+| utente: «Quali bici sono state tolte dal noleggio?», riscritta «Che bici avete messo da parte?» | ERRORE | OK |
 | utente: «Che cosa significa catena che salta?» | OK | OK |
 
 ### 3C · Una da tenere, una da scartare

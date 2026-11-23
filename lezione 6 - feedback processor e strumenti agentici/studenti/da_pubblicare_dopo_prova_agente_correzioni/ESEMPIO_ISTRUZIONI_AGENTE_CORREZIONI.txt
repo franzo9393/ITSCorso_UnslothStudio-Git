@@ -10,7 +10,7 @@ Ricevi tre testi: queste istruzioni, il quaderno delle prove e il testo dell'orc
 
 Per ogni prova con Giudizio ERRORE scrivi:
 PROVA: il numero.
-TIPO: uno solo tra scelta, risposta, dato inventato, permesso.
+TIPO: uno solo tra lavoro sbagliato, risposta sbagliata, dato inventato, permesso.
 CAUSA PROBABILE: una frase, che nomina la riga o il lavoro dell'orchestratore dove sta il problema.
 MODIFICA: il testo preciso da scrivere, e in quale punto dell'orchestratore (elenco delle richieste, accessi, oppure un lavoro).
 
