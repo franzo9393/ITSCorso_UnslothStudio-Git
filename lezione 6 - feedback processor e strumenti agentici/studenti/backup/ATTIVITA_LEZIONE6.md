@@ -1,4 +1,4 @@
-# Lezione 6 · Chi corregge l'agente?
+# Lezione 6 · Feedback processor: chi corregge l'agente?
 
 **ITS MAKER Bologna · 25 novembre 2026 · Microsoft Copilot, Unsloth Studio e opencode**
 
@@ -16,7 +16,7 @@ Tre parole nuove:
 | --- | --- |
 | Quaderno delle prove | Un file di Blocco note, `quaderno_prove.txt`, dove scrivete ogni richiesta provata e come è andata. |
 | Giudizio | La valutazione che date a una risposta: OK, ERRORE oppure NON_ESEGUITO. |
-| Agente delle correzioni | Un secondo agente che legge il quaderno e scrive una proposta. Non cambia niente: propone, voi applicate. |
+| Agente delle correzioni | Un secondo agente che legge il quaderno e scrive una proposta. In inglese si chiama feedback processor. Non cambia niente: propone, voi applicate. |
 
 ## Parte 1 · Mettete alla prova l'orchestratore
 
@@ -55,22 +55,22 @@ Inventate cinque richieste per il noleggio Ruota Libera. Prima di inviarne una, 
 | Una richiesta ambigua | Quale frase si può leggere in due modi? |
 | Una richiesta che il vostro accesso non permette | Che cosa non può avere l'accesso che userete? |
 
-Provate ogni richiesta in una conversazione nuova, con l'accesso che serve (utente o amministratore, come lo avete costruito nel vostro orchestratore). Dove serve, incollate nel messaggio anche i testi del noleggio. Se l'agente vi fa una domanda, rispondete nella stessa conversazione.
+Provate ogni richiesta in una conversazione nuova. In fondo al messaggio scrivete l'accesso come lo chiede il vostro orchestratore, per esempio «Accesso: utente». Dove serve, incollate nel messaggio anche i tre testi del noleggio. Se l'agente vi fa una domanda, rispondete nella stessa conversazione.
 
 ### 1E · Annotate ogni prova
 
-Dopo ogni prova aggiungete al quaderno un blocco con questi campi. L'esempio è la prova 2 del quaderno d'esempio:
+Dopo ogni prova aggiungete al quaderno un blocco con questi campi. L'esempio è la prova 3 del quaderno d'esempio:
 
 | Campo | Esempio |
 | --- | --- |
-| Prova | 2 |
+| Prova | 3 |
 | Accesso | utente |
-| Richiesta | A che ora chiude il negozio? |
-| Lavoro atteso | REGOLE |
-| Lavoro che ha risposto | REGOLE (se la risposta lo dice) |
-| Risposta in breve | Alle 19:00. |
-| Giudizio | OK |
-| Motivo | l'orario è nelle regole del noleggio |
+| Richiesta | Quali bici sono state tolte dal noleggio? |
+| Lavoro atteso | REGISTRO, che deve rifiutare: l'utente non può usarlo |
+| Lavoro che ha risposto | REGISTRO (se la risposta lo dice) |
+| Risposta in breve | elenca le bici del registro |
+| Giudizio | ERRORE |
+| Motivo | l'utente ha visto il registro, che è solo dell'amministratore |
 
 I giudizi possibili sono tre:
 
@@ -78,24 +78,13 @@ I giudizi possibili sono tre:
 | --- | --- |
 | OK | La risposta rispetta il vostro criterio. Anche un rifiuto giusto è OK. |
 | ERRORE | Non lo rispetta. |
-| NON_ESEGUITO | Copilot non ha risposto: non c'è niente da valutare. |
+| NON_ESEGUITO | Il programma non ha risposto: non c'è niente da valutare. |
 
 Giudicate con il criterio che avete scritto, non a sensazione. Tutte le prove OK? È un risultato valido. Controllate solo che il criterio fosse scritto prima e che la richiesta ambigua e quella non permessa fossero le più difficili che vi venivano in mente.
 
 ## Parte 2 · L'agente delle correzioni
 
-### 2A · Quattro tipi di errore
-
-Gli errori sono di quattro tipi. Scegliete il tipo di ogni ERRORE del vostro quaderno e annotatelo su un foglio, fuori dal quaderno: lo confronterete con la scelta dell'agente.
-
-| Tipo | Che cosa è successo | Esempio |
-| --- | --- | --- |
-| scelta | ha scelto il lavoro sbagliato | «Che cosa significa fuori servizio?» finisce in GUASTI |
-| risposta | il lavoro giusto ha risposto male | GUASTI dimentica il primo controllo del banco |
-| dato inventato | ha scritto un dato che non è nei testi | «Il negozio chiude alle 20», ma le regole dicono 19 |
-| permesso | ha dato a un accesso ciò che non può avere | l'utente vede il registro |
-
-### 2B · Che cosa propone l'agente delle correzioni: l'esempio
+### 2A · Che cosa propone l'agente delle correzioni: l'esempio
 
 Per la prova 3 dell'esempio, un agente delle correzioni potrebbe proporre questo. È un testo scritto a mano per l'esempio, non una risposta di Copilot:
 
@@ -105,9 +94,20 @@ Per la prova 3 dell'esempio, un agente delle correzioni potrebbe proporre questo
 | Causa probabile | nelle istruzioni di REGISTRO non c'è scritto chi può usarlo |
 | Modifica | in REGISTRO, come prima riga: «Solo con accesso amministratore. Con l'accesso utente rispondi: Non puoi vedere il registro.» |
 
+### 2B · Quattro tipi di errore
+
+Il tipo dice che genere di errore è: quello della prova 3 è un errore di permesso. Gli errori sono di quattro tipi. Scegliete il tipo di ogni ERRORE del vostro quaderno e annotatelo su un foglio, fuori dal quaderno: lo confronterete con la scelta dell'agente. Nessun ERRORE? Allora la proposta giusta sarà «Nessuna modifica necessaria».
+
+| Tipo | Che cosa è successo | Esempio |
+| --- | --- | --- |
+| scelta | ha scelto il lavoro sbagliato | «Che cosa significa fuori servizio?» finisce in GUASTI, ma il significato è nelle regole del noleggio |
+| risposta | il lavoro giusto ha risposto male | GUASTI dimentica il primo controllo del banco |
+| dato inventato | ha scritto un dato che non è nei testi | «Il negozio chiude alle 20», ma le regole dicono 19 |
+| permesso | ha dato a un accesso ciò che non può avere | l'utente vede il registro |
+
 ### 2C · Scrivete le istruzioni dell'agente delle correzioni
 
-Scrivetele voi, in un file nuovo di Blocco note: `istruzioni_correzioni.txt`. Dovete scrivere che cosa riceve l'agente, che cosa scrive per ogni ERRORE (i campi dell'esempio 2B) e che cosa non fa. Di aiuto, a sinistra, proposte che l'agente delle correzioni non dovrebbe scrivere; a destra, che cosa decidete voi:
+Scrivetele voi, in un file nuovo di Blocco note: `istruzioni_correzioni.txt`. Oltre alle vostre istruzioni, l'agente riceverà il quaderno e `orchestratore.txt`. Dovete scrivere che cosa scrive per ogni ERRORE (i campi dell'esempio 2A) e che cosa non fa. Di aiuto, a sinistra, proposte che l'agente delle correzioni non dovrebbe scrivere; a destra, che cosa decidete voi:
 
 | Proposta da evitare | Che cosa scrivete voi per fermarla? |
 | --- | --- |
@@ -118,12 +118,12 @@ Scrivetele voi, in un file nuovo di Blocco note: `istruzioni_correzioni.txt`. Do
 
 ### 2D · Provate l'agente delle correzioni
 
-Scegliete voi dove farlo girare. In ogni caso riceve le vostre istruzioni, il quaderno e il testo dell'orchestratore (`orchestratore.txt`), e scrive soltanto una proposta. Non vede le risposte vere, solo il quaderno: se il Motivo manca, la causa che propone è un'ipotesi. Per Studio e opencode i passi sono in 4A e 4B.
+Scegliete voi dove farlo girare. In ogni caso riceve le vostre istruzioni, il quaderno e il testo dell'orchestratore (`orchestratore.txt`), e scrive soltanto una proposta. Non vede le risposte vere, solo il quaderno: se il Motivo manca, la causa che propone è un'ipotesi. Per Studio i passi sono in 4A (1 e 5–7), per opencode in 4B (1, 4–6 e 8–9).
 
 | Programma | Come |
 | --- | --- |
 | Microsoft Copilot | Conversazione nuova: istruzioni, quaderno e orchestratore, tutto nello stesso messaggio. |
-| Unsloth Studio | Istruzioni nel campo System Prompt, quaderno e orchestratore nella chat. Il modello è piccolo e può essere lento. |
+| Unsloth Studio | Istruzioni nel campo System Prompt (vedi 4A), quaderno e orchestratore nella chat. Il modello è piccolo e può essere lento. |
 | opencode | Quaderno e orchestratore in file, istruzioni in `correzioni.md` (vedi 4B), proposta scritta in un altro file. Il programma chiede il permesso prima di scrivere. |
 
 Studio e opencode girano nel computer virtuale: i file vanno portati lì.
@@ -132,7 +132,7 @@ Dopo la prova controllate: ha scritto una proposta, o ha cambiato qualcosa da so
 
 ### 2E · Che cosa manca nelle vostre istruzioni?
 
-Aprite su Teams `ESEMPIO_ISTRUZIONI_AGENTE_CORREZIONI.txt`: è un esempio scritto a mano, non provato. Che cosa c'è nel vostro che qui manca? Che cosa manca nel vostro?
+Aprite su Teams `ESEMPIO_ISTRUZIONI_AGENTE_CORREZIONI.txt`: è un esempio scritto a mano, non provato. Che cosa ha l'esempio che nel vostro manca?
 
 ## Parte 3 · Un giro di correzione
 
@@ -141,14 +141,14 @@ Aprite su Teams `ESEMPIO_ISTRUZIONI_AGENTE_CORREZIONI.txt`: è un esempio scritt
 Leggete la proposta e rispondete a tre domande:
 
 1. Il tipo di errore è quello che avevate annotato voi?
-2. La causa guarda il testo giusto: l'elenco delle richieste (le righe che dicono a quale lavoro va una richiesta), un accesso o un lavoro?
+2. La causa indica il punto giusto: l'elenco delle richieste (le righe che dicono a quale lavoro va una richiesta), le righe su chi può usare che cosa, oppure le istruzioni di un lavoro?
 3. La modifica sistema questa prova senza rompere le altre?
 
-Una proposta sbagliata o da ignorare tenetela da parte: serve alla discussione. Tutte le prove erano OK? La proposta giusta è «nessuna modifica necessaria»: se l'agente ha proposto modifiche lo stesso, giudicatele come le altre.
+Una proposta sbagliata non applicatela: tenetela per la discussione. Tutte le prove erano OK? La proposta giusta è «Nessuna modifica necessaria»: se l'agente ha proposto modifiche lo stesso, giudicatele come le altre.
 
 ### 3B · Applicate la modifica e riprovate
 
-Scegliete una proposta. Applicatela voi, a mano, in `orchestratore.txt`; poi aggiornate l'orchestratore nel programma che usate. Poi, in una conversazione nuova, ripetete la richiesta che era ERRORE e una richiesta che era OK: la richiesta OK deve restare OK. Scrivete nel quaderno Prima e Dopo.
+Scegliete una proposta. Applicatela voi, a mano, in `orchestratore.txt`. Poi aggiornate l'orchestratore nel programma che usate: nell'agente di Copilot incollate il nuovo testo nelle istruzioni; se le istruzioni stanno nel primo messaggio, usate il nuovo testo nella conversazione nuova. Poi ripetete la richiesta che era ERRORE e una richiesta che era OK, ciascuna in una conversazione nuova: la richiesta OK deve restare OK. Scrivete nel quaderno Prima e Dopo. Tutte le prove erano OK e l'agente ha scritto «Nessuna modifica necessaria»? Va bene: passate alla parte 4.
 
 | Richiesta | Prima | Dopo |
 | --- | --- | --- |
@@ -157,7 +157,7 @@ Scegliete una proposta. Applicatela voi, a mano, in `orchestratore.txt`; poi agg
 
 ### 3C · Una da tenere, una da scartare
 
-Alcune proposte vanno guardate insieme: una riuscita e una scartata. Che cosa le distingue? Prima si discute, poi si scrive il criterio.
+Alcune proposte vanno guardate insieme: una riuscita e una scartata, che chi le ha scelte incolla nella chat della lezione su Teams. Che cosa le distingue? Prima si discute, poi guardate insieme che cosa rende utile una correzione.
 
 ## Parte 4 · Unsloth Studio o opencode, a vostra scelta
 
@@ -173,13 +173,13 @@ In Copilot le istruzioni stavano nell'agente o nel primo messaggio. In Studio va
 2. Incollate il contenuto di `orchestratore.txt` nel campo System Prompt.
 3. Nella chat incollate i tre testi del noleggio, poi una riga con l'accesso (per esempio «Accesso: utente») e la richiesta. Una richiesta per chat: per la successiva aprite una nuova chat e incollate di nuovo i testi.
 4. Guardate il contatore in alto: mostra …/8.2k. Sono 8.192 token, cioè pezzetti di parola. Se lo superate, mettete nella chat solo il testo che serve alla richiesta.
-5. Per l'agente delle correzioni, cancellate l'orchestratore dal System Prompt e incollate `istruzioni_correzioni.txt`: il System Prompt resta uguale anche in una nuova chat, quindi lo cambiate voi. Poi aprite una nuova chat.
+5. Per l'agente delle correzioni, se nel System Prompt c'è l'orchestratore cancellatelo; poi incollate `istruzioni_correzioni.txt`. Il System Prompt resta uguale anche in una nuova chat, quindi lo cambiate voi. Poi aprite una nuova chat.
 6. Nella chat incollate il testo di `orchestratore.txt`, il criterio e i blocchi di due o tre prove del quaderno, almeno una con ERRORE.
 7. Alla fine cancellate il testo del System Prompt.
 
 ### 4B · opencode: lo stesso orchestratore e lo stesso agente delle correzioni
 
-In opencode un agente è un file di testo. Il nome dell'agente è il nome del file (`orchestratore`). In cima al file ci sono quattro righe, l'intestazione: `description` dice a che cosa serve l'agente, `mode: primary` vuol dire che lo scegliete voi con Maiusc+Tab, come Build e Plan. Sotto l'intestazione ci sono le istruzioni, le stesse che avete scritto per Copilot.
+In opencode un agente è un file di testo. Il nome dell'agente è il nome del file (`orchestratore`). In cima al file c'è l'intestazione: due righe, chiuse tra due righe di trattini (---). `description` dice a che cosa serve l'agente, `mode: primary` vuol dire che lo scegliete voi con Maiusc+Tab, come Build e Plan. Sotto l'intestazione ci sono le istruzioni, le stesse che avete scritto per Copilot.
 
 Nella cartella `laboratorio` trovate la cartella `.opencode` e dentro la cartella `agents`, con due file già pronti che hanno solo l'intestazione: `orchestratore.md` e `correzioni.md`.
 
@@ -189,9 +189,9 @@ Nella cartella `laboratorio` trovate la cartella `.opencode` e dentro la cartell
 4. Aprite `correzioni.md` e incollate sotto l'intestazione il testo di `istruzioni_correzioni.txt`. Cambiate anche qui la frase che dice dove riceve il quaderno e l'orchestratore: sono file nella cartella.
 5. Salvate i due file senza cambiarne il nome. Dopo ogni modifica a un file in `agents`, chiudete opencode e riapritelo.
 6. Fate doppio clic sul collegamento opencode del desktop: parte nella cartella `laboratorio`. Premete Maiusc+Tab finché in basso compare `orchestratore`.
-7. Scrivete una riga con l'accesso (per esempio «Accesso: utente») e la richiesta. Se chiede di eseguire un comando, premete Reject e scrivete «Senza comandi, leggi i file.»
+7. Scrivete una riga con l'accesso (per esempio «Accesso: utente») e la richiesta. Se chiede di eseguire un comando, premete Reject (rifiuta) e scrivete «Senza comandi, leggi i file.»
 8. Per l'agente delle correzioni premete Maiusc+Tab finché compare `correzioni`. Chiedetegli di leggere `quaderno_prove.txt` e `orchestratore.txt` e di scrivere la proposta in `proposta_correzioni.txt`.
-9. Il programma si ferma a chiedere il permesso di scrivere. Leggete il nome del file e il testo: Allow once solo se il file è `proposta_correzioni.txt`. Per qualsiasi altro file, Reject.
+9. Il programma si ferma a chiedere il permesso di scrivere. Leggete il nome del file e il testo: Allow once (consenti una volta) solo se il file è `proposta_correzioni.txt`. Per qualsiasi altro file, Reject (rifiuta).
 
 Se `orchestratore` o `correzioni` non compaiono con Maiusc+Tab, chiudete opencode e riapritelo; poi controllate che i file siano in `.opencode`, dentro `agents`, e che finiscano con `.md`.
 
@@ -202,8 +202,8 @@ Scegliete voi che cosa provare. Tre idee per cominciare:
 | Programma | Idea | Che cosa guardare |
 | --- | --- | --- |
 | Unsloth Studio | Due richieste del vostro quaderno, con lo stesso System Prompt, giudicate con il criterio che avete scritto. | Se il modello piccolo si comporta come Copilot; quanto testo tiene insieme. |
-| Unsloth Studio | Una richiesta con System Prompt e temperatura diverse. | La lunghezza, la forma e la correttezza delle risposte. |
-| opencode | Estendere la pagina `.html` della lezione 5: nuovi dati o una sezione, prima in Plan e poi in Build. | I permessi, letti prima di approvare; la pagina aperta nel browser. |
+| Unsloth Studio | La stessa richiesta con due temperature (più alta, risposte più varie). | La lunghezza, la forma e la correttezza delle risposte. |
+| opencode | Estendere la pagina `.html` della lezione 5, prima in Plan (propone) e poi in Build (scrive, dopo il vostro permesso). | I permessi, letti prima di approvare; la pagina aperta nel browser. |
 
 Potete passare da un programma all'altro. Alla fine rispondete a voce: che cosa avete chiesto, che cosa ha fatto da solo, dove si è fermato?
 
