@@ -245,23 +245,14 @@ Se va bene: Allow once (consenti una volta). Altrimenti: Reject (rifiuta) e risc
 
 ---
 
-# Slide 22 — Build ha corretto: l’errore c’è ancora?
-<!-- layout: CONTENUTO -->
-
-Chiudete opencode e riapritelo. Scegliete `orchestratore` con Maiusc+Tab e scrivete la richiesta che era ERRORE con altre parole.
-
-Qui risponde un altro modello: un risultato diverso da quello di Copilot non dice per forza che la correzione è sbagliata.
-
----
-
-# Slide 23 — Tre correzioni, una sola da tenere
+# Slide 22 — Tre correzioni, una sola da tenere
 <!-- layout: SEZIONE -->
 
 La vostra, quella di Copilot, quella di Build.
 
 ---
 
-# Slide 24 — Mettete a confronto le tre correzioni
+# Slide 23 — Mettete a confronto le tre correzioni
 <!-- layout: CONTENUTO -->
 
 1. La causa è la stessa?
@@ -273,7 +264,7 @@ Tenete la vostra, una delle altre due o un misto. In `mia_correzione.txt` scrive
 
 ---
 
-# Slide 25 — Applicate la correzione che tenete
+# Slide 24 — Applicate la correzione che tenete
 <!-- layout: CONTENUTO -->
 
 Applicatela voi, a mano, in `orchestratore.txt`. Se tenete quella di Build, copiatela da `orchestratore.md`. Come aggiornare l’orchestratore: consegna 5B.
@@ -282,7 +273,7 @@ Nessuna correzione necessaria? Saltate questo passo e la prova.
 
 ---
 
-# Slide 26 — Che cosa è cambiato?
+# Slide 25 — Che cosa è cambiato?
 <!-- layout: CONTENUTO -->
 
 Ripetete la richiesta che era ERRORE, scritta con altre parole, e la prova OK indicata al punto 4. Ciascuna in una conversazione nuova. Scrivete nel quaderno Prima e Dopo. L’esempio:
@@ -294,20 +285,7 @@ Ripetete la richiesta che era ERRORE, scritta con altre parole, e la prova OK in
 
 ---
 
-# Slide 27 — Quale di queste due tenete?
-<!-- layout: CONTENUTO -->
-
-Un’altra prova finita male: «Che cosa significa fuori servizio?» è andata a GUASTI, ma il significato è nelle regole del noleggio. Due correzioni. Quale tenete? Perché?
-
-| Correzione A | Correzione B |
-| --- | --- |
-| Nell’elenco delle richieste, alla voce REGOLE: aggiungere l’esempio «Che cosa significa fuori servizio?». | In GUASTI: se la domanda chiede il significato di un termine, rispondi tu. |
-
-Se qualcuno scrive «Che vuol dire che una bici è fuori servizio?», dove va con la A?
-
----
-
-# Slide 28 — Che cosa rende utile una correzione
+# Slide 26 — Che cosa rende utile una correzione
 <!-- layout: CONTENUTO -->
 
 | Utile | Pericolosa |
@@ -322,7 +300,7 @@ Chi ha corretto meglio nel vostro caso: voi, Copilot o Build?
 
 ---
 
-# Slide 29 — Chi ha deciso che cosa?
+# Slide 27 — Chi ha deciso che cosa?
 <!-- layout: CHIUSURA -->
 
 Che cosa avete deciso voi? Che cosa hanno deciso gli agenti?

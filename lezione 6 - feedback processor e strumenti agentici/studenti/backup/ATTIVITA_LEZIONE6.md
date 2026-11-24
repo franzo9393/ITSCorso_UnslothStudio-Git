@@ -123,7 +123,7 @@ Dopo la risposta controllate: ha scritto una sola modifica o ha riscritto tutte 
 
 In opencode ci sono due modalità: Plan legge e propone, senza scrivere file; Build modifica i file, ma chiede il permesso. Qui Build corregge il file dell'orchestratore. Lavorate nel computer virtuale: portate lì i file che vi servono (`orchestratore.txt`, `quaderno_prove.txt` e i tre testi del noleggio). Non portate `mia_correzione.txt`.
 
-In opencode un agente è un file di testo. Il nome dell'agente è il nome del file (`orchestratore`). In cima al file c'è l'intestazione: due righe, chiuse tra due righe di trattini (---). `description` dice a che cosa serve l'agente, `mode: primary` vuol dire che lo scegliete voi con Maiusc+Tab, come Build e Plan. Sotto l'intestazione ci sono le istruzioni, le stesse che avete scritto per Copilot.
+In opencode un agente è un file di testo. Il nome dell'agente è il nome del file (`orchestratore`). In cima al file c'è l'intestazione: due righe, chiuse tra due righe di trattini (---). `description` dice a che cosa serve l'agente, `mode: primary` vuol dire che è un agente principale, come Build e Plan. Sotto l'intestazione ci sono le istruzioni, le stesse che avete scritto per Copilot.
 
 Nella cartella `laboratorio` trovate la cartella `.opencode` e dentro la cartella `agents`, con un file già pronto che ha solo l'intestazione: `orchestratore.md`.
 
@@ -143,9 +143,6 @@ Chi non riesce ad aprire opencode passa alla parte 5 e confronta due correzioni 
 2. Scrivete voi la richiesta. Decidete: per quale prova del quaderno; quali file può leggere (servono anche i testi del noleggio?); quale file può modificare; quanto può cambiare. Non scrivete la vostra correzione né quella di Copilot.
 3. Il programma si ferma a chiedere il permesso di modificare un file. Leggete il nome del file e la modifica che mostra. Allow once (consenti una volta) solo se il file è `orchestratore.md` e la modifica è piccola e precisa. Altrimenti Reject (rifiuta) e riscrivete la richiesta più precisa.
 4. Se chiede di eseguire un comando, premete Reject (rifiuta) e scrivete «Senza comandi, leggi i file.»
-5. Chiudete opencode e riapritelo. Premete Maiusc+Tab finché compare `orchestratore`. Scrivete una riga con l'accesso (per esempio «Accesso: utente») e la richiesta che era ERRORE, scritta con altre parole. L'errore c'è ancora? Qui risponde un altro modello: un risultato diverso da quello di Copilot non dice per forza che la correzione è sbagliata.
-
-Se `orchestratore` non compare con Maiusc+Tab, chiudete opencode e riapritelo; poi controllate che il file sia in `.opencode`, dentro `agents`, e che finisca con `.md`.
 
 ## Parte 5 · Tre correzioni, una sola da tenere
 
@@ -171,15 +168,9 @@ Applicatela voi, a mano, in `orchestratore.txt`. Se tenete quella di Build, copi
 
 Nessuna correzione necessaria? Saltate questo passo.
 
-### 5C · Una da tenere, una da scartare
+### 5C · Che cosa rende utile una correzione
 
-Un'altra prova finita male: «Che cosa significa fuori servizio?» è andata a GUASTI, ma il significato è nelle regole del noleggio. Due correzioni:
-
-| Correzione A | Correzione B |
-| --- | --- |
-| Nell'elenco delle richieste, alla voce REGOLE: aggiungere l'esempio «Che cosa significa fuori servizio?». | In GUASTI: se la domanda chiede il significato di un termine, rispondi tu. |
-
-Quale tenete? Perché? E se qualcuno scrive «Che vuol dire che una bici è fuori servizio?», dove va con la A? Poi guardate insieme che cosa rende utile una correzione e chi ha corretto meglio nel vostro caso: voi, Copilot o Build.
+Guardate insieme che cosa rende utile una correzione. Poi rispondete: nel vostro caso ha corretto meglio voi, Copilot o Build?
 
 ## Salvate
 

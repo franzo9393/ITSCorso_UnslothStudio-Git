@@ -438,7 +438,7 @@ def background_images(work: Path) -> dict[str, str]:
 
 def build_html(slides: list[dict], backgrounds: dict[str, str]) -> None:
     pages = []
-    section = 0
+    section = 1  # come nel PowerPoint: la parte 1 non ha pagina di sezione, la prima è la 02
     for index, data in enumerate(slides, 1):
         layout = data['layout']
         content = markdown.markdown(data['body'], extensions=['tables', 'sane_lists'])

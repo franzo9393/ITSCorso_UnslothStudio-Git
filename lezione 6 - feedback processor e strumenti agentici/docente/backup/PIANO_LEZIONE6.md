@@ -26,6 +26,8 @@ Del 24 novembre 2026, dopo la prima versione (lo studente scriveva le istruzioni
 3. Si confrontano tre correzioni: dello studente, di Copilot, di Build.
 4. Tolti: istruzioni dell'agente scritte dagli studenti, quattro tipi di errore, Unsloth Studio, esempio di istruzioni dell'agente, estensione della pagina `.html`.
 
+Del 24 novembre 2026, sera, per alleggerire la lezione: tolti il caso d'esempio «fuori servizio» con le correzioni A e B (consegna 5C, slide 27) e la prova dell'orchestratore dentro opencode dopo la modifica di Build (consegna 4B passo 5, slide 22). Il Prima e Dopo resta quello della parte 5 (slide 25).
+
 ## Struttura
 
 | Blocco | Azione dello studente | Risultato visibile |
@@ -34,7 +36,7 @@ Del 24 novembre 2026, dopo la prima versione (lo studente scriveva le istruzioni
 | 2 · La correzione dello studente | Prende il primo ERRORE e scrive Causa e Modifica in `mia_correzione.txt`, senza applicarla. | Una correzione scritta da lui. |
 | 3 · Copilot come feedback processor | Scrive lui la richiesta a Copilot (quaderno e orchestratore, senza la propria correzione) e legge la proposta. | La correzione di Copilot. |
 | 4 · opencode in Build | Porta nel computer virtuale i file, prepara `orchestratore.md`, scrive la richiesta a Build, legge la modifica e approva o rifiuta. | `orchestratore.md` modificato, o rifiuto motivato. |
-| 5 · Tre correzioni, una sola | Confronta con quattro domande, tiene una (o un mix), la applica in `orchestratore.txt`, riprova con la richiesta riscritta e una richiesta OK, giudica un caso d'esempio. | Prima e Dopo nel quaderno; criteri discussi dopo la prova. |
+| 5 · Tre correzioni, una sola | Confronta con quattro domande, tiene una (o un mix), la applica in `orchestratore.txt`, riprova con la richiesta riscritta e una richiesta OK. | Prima e Dopo nel quaderno; criteri discussi dopo la prova. |
 
 ## Cose da non fare
 
@@ -49,7 +51,7 @@ Vedi la tabella dei controlli nella guida docente. I rischi maggiori: Copilot co
 
 ## Stato
 
-Prodotti: 29 slide (PowerPoint, HTML, PDF), consegna (Word, PDF), guida docente (Word, PDF), generatore `docente/genera_materiali.py`, testo di partenza dell'orchestratore, file di partenza dell'agente di opencode (`docente/MODELLI_OPENCODE_LEZIONE6/orchestratore.md`). Gli esempi sono tutti sul noleggio Ruota Libera (decisione del 20 novembre: niente pizzeria): l'errore d'esempio della correzione è un dato inventato (orario), diverso dal permesso che quasi tutti avranno nel quaderno. Restano: prove con l'account studente e le verifiche della guida.
+Prodotti: 27 slide (PowerPoint, HTML, PDF), consegna (Word, PDF), guida docente (Word, PDF), generatore `docente/genera_materiali.py`, testo di partenza dell'orchestratore, file di partenza dell'agente di opencode (`docente/MODELLI_OPENCODE_LEZIONE6/orchestratore.md`). Gli esempi sono tutti sul noleggio Ruota Libera (decisione del 20 novembre: niente pizzeria): l'errore d'esempio della correzione è un dato inventato (orario), diverso dal permesso che quasi tutti avranno nel quaderno. Restano: prove con l'account studente e le verifiche della guida.
 
 ## Rinviato
 
