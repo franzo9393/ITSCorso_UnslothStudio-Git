@@ -56,7 +56,7 @@ DECK_NAME = 'Lezione6_Chi_corregge_l_agente_ITS_MAKER'
 MODEL = HERE / 'MODELLO_ITS_MAKER.pptx'
 TITLE = 'Lezione 6 — Feedback processor: chi corregge l’agente?'
 LAYOUTS = ('COPERTINA', 'CONTENUTO', 'SEZIONE', 'CHIUSURA')
-PROGRAM = ('UNSLOTH STUDIO', 'COPILOT · UNSLOTH STUDIO · OPENCODE')  # il modello riporta ancora il programma della lezione 1: si sostituisce al caricamento
+PROGRAM = ('UNSLOTH STUDIO', 'COPILOT · OPENCODE')  # il modello riporta ancora il programma della lezione 1: si sostituisce al caricamento
 BLUE, INK, MUTED, PALE = '1064A0', '17344D', '4B6275', 'EAF0F6'
 FONT = 'Arial'
 BODY_SIZE, BODY_GAP = 26, 0.16  # punti e pollici: testo delle slide di contenuto e spazio fra i paragrafi
@@ -126,7 +126,7 @@ def prepare_model(source: Path) -> None:
             if 'notesSlide' in rel.reltype or 'comments' in rel.reltype:
                 slide.part.drop_rel(rel.rId)
     prs.core_properties.title = 'Modello ufficiale ITS MAKER — quattro tipi di pagina'
-    prs.core_properties.subject = 'Orchestratore e agente delle correzioni in Microsoft Copilot, Unsloth Studio e opencode'
+    prs.core_properties.subject = 'Correzione di un orchestratore in Microsoft Copilot e opencode'
     prs.core_properties.keywords = ''
     prs.core_properties.comments = ''
     prs.save(MODEL)
@@ -401,7 +401,7 @@ def build_pptx(slides: list[dict]) -> Path:
                     run.font.size = Pt(11)
                     run.font.color.rgb = RGBColor.from_string(MUTED)
     prs.core_properties.title = TITLE
-    prs.core_properties.subject = 'Orchestratore e agente delle correzioni in Microsoft Copilot, Unsloth Studio e opencode'
+    prs.core_properties.subject = 'Correzione di un orchestratore in Microsoft Copilot e opencode'
     prs.core_properties.comments = ''
     output = LESSON / f'{DECK_NAME}.pptx'
     prs.save(output)
