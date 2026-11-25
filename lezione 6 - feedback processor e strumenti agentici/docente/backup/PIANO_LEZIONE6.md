@@ -36,12 +36,12 @@ Del 25 novembre 2026, mattina, per alleggerire la lezione (la lezione 5 è durat
 | 1 · Le prove | Scrive il criterio. Inventa tre richieste (una normale, una ambigua, una non permessa). Le prova in Copilot e le annota in una riga ciascuna. | Il quaderno compilato. |
 | 2 · La correzione dello studente | Prende il primo ERRORE e scrive Causa e Modifica in sotto CORREZIONE nel quaderno, senza applicarla. | Una correzione scritta da lui. |
 | 3 · Copilot come feedback processor | Scrive lui la richiesta a Copilot (quaderno e orchestratore, senza la propria correzione) e legge la proposta. | La correzione di Copilot. |
-| 4 · opencode in Build, dal proiettore | Decide con la classe la richiesta a Build, vota il permesso e copia la modifica. Non apre opencode. | `orchestratore.md` d'esempio modificato, o rifiuto motivato. |
+| 4 · opencode in Build, dal proiettore | Decide con la classe la richiesta a Build, vota il permesso e copia la modifica. Non apre opencode. | `orchestratore_esempio.md` d'esempio modificato, o rifiuto motivato. |
 | 5 · Tre correzioni, una sola | Confronta con tre domande, tiene una (o un mix), la applica in `orchestratore.txt`, riprova con la richiesta riscritta e una seconda prova (di solito OK). | Prima e Dopo nel quaderno; criteri discussi dopo la prova. |
 
 ## Cose da non fare
 
-- Nessun agente applica da solo le modifiche, salvo Build in `orchestratore.md` dopo il permesso: va dichiarato.
+- Nessun agente applica da solo le modifiche, salvo Build in `orchestratore_esempio.md` dopo il permesso: va dichiarato.
 - Nessuna aspettativa che l'orchestratore sbagli: un quaderno con tutti `OK` è valido, ma il criterio va scritto prima e le richieste difficili devono esserlo davvero.
 - La correzione dello studente non va incollata né in Copilot né in opencode: altrimenti il confronto non è onesto.
 - Non presentare testi preparati a mano come risposte vere del modello.
