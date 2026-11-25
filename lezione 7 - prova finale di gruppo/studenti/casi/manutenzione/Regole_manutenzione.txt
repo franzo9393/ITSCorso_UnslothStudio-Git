@@ -1,0 +1,42 @@
+# Regole della manutenzione programmata del laboratorio
+
+**Procedura ML-01 · Revisione 1 del 1 settembre 2026 · Laboratorio**
+
+Documento inventato per l'esercitazione ITS MAKER. Dice ogni quanto si fanno gli interventi sulle tre macchine e come si leggono le scadenze. Per questo esercizio oggi è mercoledì 2 dicembre 2026.
+
+## 1. Persone e interventi
+
+Valeria è la responsabile della manutenzione. Ettore è il tecnico del laboratorio. Paolo prende il suo posto quando Ettore manca. Cesare cambia le lame. Bianca e gli altri insegnanti portano le classi in laboratorio.
+
+Un intervento è un lavoro fatto su una macchina: un controllo, una pulizia, un pezzo da cambiare.
+
+| Macchina | Intervento | Si ripete ogni |
+| --- | --- | --- |
+| Trapano a colonna | Lubrificazione colonna | 30 giorni |
+| Trapano a colonna | Controllo cinghia | 90 giorni |
+| Sega a nastro | Cambio lama | 60 giorni |
+| Sega a nastro | Pulizia guide | 30 giorni |
+| Compressore | Scarico condensa | 14 giorni |
+| Compressore | Cambio filtro aria | 120 giorni |
+
+## 2. Come si calcola la scadenza
+
+La scadenza è la data dell'ultimo intervento di quel tipo più i giorni della tabella. Conta il giorno in cui l'intervento è stato fatto, non quello in cui era previsto.
+
+| Stato | Che cosa vuol dire |
+| --- | --- |
+| Scaduto | La data di scadenza è prima di oggi. |
+| In scadenza | La scadenza va da oggi a 7 giorni dopo oggi. Oggi è compreso. |
+| In regola | La scadenza è tra più di 7 giorni. |
+
+## 3. Chi vede che cosa
+
+Chi usa il laboratorio, studente o insegnante, è un utente. Valeria ed Ettore sono amministratori e vedono il registro.
+
+L'utente vede macchina, intervento, data di scadenza e stato. Non vede il registro: né chi ha fatto l'intervento, né l'ora, né le note, né l'ultima data.
+
+Una macchina con un intervento scaduto non si usa. Torna in uso quando l'intervento è fatto e la scadenza si calcola di nuovo.
+
+## 4. Spostare una scadenza
+
+Una scadenza la sposta solo Valeria. L'agente non sposta scadenze e non dice mai che una scadenza è stata spostata. Raccoglie macchina, intervento, motivo e nome di chi chiede, e passa la richiesta a Valeria. Fino alla risposta di Valeria vale la data calcolata.

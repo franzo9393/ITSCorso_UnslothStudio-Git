@@ -1,0 +1,41 @@
+# Guida all'archivio degli attrezzi in prestito
+
+**Istruzione del magazzino · Revisione 1 del 12 novembre 2026 · Laboratorio di prototipazione**
+
+Documento inventato per l'esercitazione ITS MAKER. Descrive che cosa fa il magazzino quando qualcuno chiede, ritira o riporta un attrezzo.
+
+## 1. Chi fa che cosa
+
+L'addetto sta al banco del magazzino e scrive il registro. Il responsabile del laboratorio decide le proroghe. L'utente è chi chiede o ritira un attrezzo.
+
+Quando qualcuno ritira un attrezzo, l'addetto scrive chi lo prende, il numero, la data e l'ora. Il prestito resta aperto fino al rientro.
+
+## 2. Qualcuno chiede un attrezzo
+
+**Che cosa significa.** Un utente vuole sapere se può ritirare un attrezzo.
+
+**Primo controllo.** Guardare se quel numero ha un prestito aperto. Se non ce l'ha, è disponibile.
+
+**Regola obbligatoria.** All'utente non si dice mai chi ha l'attrezzo e non si mostra lo storico, nemmeno in parte.
+
+## 3. Attrezzo fuori oltre la data prevista
+
+**Che cosa significa.** La data prevista è passata e il rientro non è scritto nel registro.
+
+**Primo controllo.** Contare i giorni di ritardo e guardare se c'è una proroga.
+
+**Chi interviene.** L'addetto, che avvisa la persona. L'elenco dei ritardi è solo per l'amministratore.
+
+## 4. Qualcuno dice di avere riportato un attrezzo
+
+**Che cosa significa.** La persona sostiene di avere già restituito l'attrezzo, ma il registro non ha il rientro.
+
+**Chi interviene.** L'addetto, quando ha l'attrezzo in mano.
+
+**Regola obbligatoria.** L'agente non segna mai un attrezzo come restituito, nemmeno se la persona lo assicura. Può preparare la riga di rientro. La scrive l'addetto.
+
+## 5. Proroga
+
+**Che cosa significa.** Chi ha un attrezzo chiede più giorni.
+
+**Chi interviene.** Solo il responsabile del laboratorio. L'agente non concede proroghe. Se la proroga è nel registro, la data prevista la comprende.

@@ -1,0 +1,65 @@
+# Guida alle segnalazioni di sicurezza del laboratorio
+
+**Istruzione operativa · Revisione 1 del 9 novembre 2026 · Turno del laboratorio**
+
+Documento inventato per l'esercitazione ITS MAKER. Descrive che cosa fa chi è di turno quando arriva una segnalazione e chi interviene dopo.
+
+## 1. Che cosa succede quando arriva una segnalazione
+
+Chi è di turno è la persona che sta in laboratorio e scrive il registro. Ascolta chi segnala, guarda il punto indicato e annota il numero della segnalazione. Gli acquisti li fa la segreteria tecnica.
+
+Se una macchina non si può usare, chi è di turno la spegne e vi appende un cartello «non usare». Il cartello lo toglie solo il tecnico, dopo avere controllato la macchina e scritto nel registro che cosa ha fatto.
+
+## 2. Macchine
+
+### Protezione rotta, tolta o che non si chiude
+
+**Che cosa significa.** La protezione davanti alla punta del trapano, alla lama della sega o al mandrino del tornio non copre più la parte che gira, oppure non resta ferma.
+
+**Primo gesto di chi è di turno.** Spegnere la macchina e appendere il cartello. Non provare a sistemare la protezione.
+
+**Chi interviene.** Il tecnico.
+
+**Regola obbligatoria.** Una macchina con la protezione rotta non si usa finché il cartello è appeso.
+
+### Macchina che non si ferma
+
+**Che cosa significa.** Premendo il pulsante rosso di arresto la macchina continua a girare, o si ferma solo a volte.
+
+**Primo gesto.** Fare allontanare tutti dalla macchina e staccare la spina, se la presa è lontana dalle parti che girano. Non premere il pulsante un'altra volta.
+
+**Chi interviene.** Il tecnico e il responsabile della sicurezza.
+
+## 3. Elettricità
+
+### Fumo o odore di bruciato
+
+**Che cosa significa.** Un apparecchio scalda troppo, si sente odore di bruciato o esce fumo.
+
+**Primo gesto.** Far uscire le persone dall'aula, staccare la spina dalla presa a muro se non serve avvicinarsi al fumo, avvisare a voce il responsabile della sicurezza.
+
+**Chi interviene.** Il responsabile della sicurezza e il tecnico.
+
+**Regola obbligatoria.** Un apparecchio che ha fatto fumo non si riaccende.
+
+### Prolunga con la guaina aperta
+
+**Che cosa significa.** Si vede il filo di rame.
+
+**Primo gesto.** Staccare la spina dalla presa senza toccare il filo. Non coprirlo con il nastro.
+
+**Chi interviene.** Il tecnico.
+
+## 4. Pavimento, occhiali e luci
+
+### Olio o liquido sul pavimento
+
+**Primo gesto.** Coprire con la segatura, asciugare e appoggiare un cartello. **Chi interviene.** Chi è di turno.
+
+### Occhiali o guanti che mancano
+
+**Primo controllo.** Contare le paia nell'armadietto e confrontarle con i banchi. **Chi interviene.** La segreteria tecnica.
+
+### Luce o cartello rovinati
+
+**Primo controllo.** Annotare dove si trovano. **Chi interviene.** Il tecnico.

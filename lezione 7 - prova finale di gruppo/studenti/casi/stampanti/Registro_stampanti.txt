@@ -1,0 +1,150 @@
+Registro del laboratorio delle stampanti 3D
+
+ITS MAKER Bologna · Esempio inventato per l'esercizio
+Periodo: 16–19 novembre 2026 · Tre stampanti a filo
+
+Appunti lasciati sul tavolo del laboratorio durante quattro giorni. Le stampanti sono tre e ognuna ha un nome: Lince, Gufo e Tasso. Gli appunti li scrive chi è presente. Oggi è giovedì 19 novembre 2026.
+
+16/11/2026 · 08:30
+
+Greta apre il laboratorio. Le tre stampanti sono libere: la Lince con filo base bianco, il Gufo con filo base grigio, la Tasso con filo resistente nero.
+
+16/11/2026 · 09:10
+
+Flavio avvia sulla Lince una staffa per sensore. Il programma prevede 38 g di filo base.
+
+16/11/2026 · 10:25
+
+La staffa per sensore della Lince è finita ed è buona. Flavio la porta via.
+
+16/11/2026 · 11:05
+
+Giulia avvia sul Gufo una custodia per scheda. Il programma prevede 62 g di filo base.
+
+16/11/2026 · 11:50
+
+Il Gufo si ferma a metà della custodia e mostra S-43. La bobina non gira più e il filo è aggrovigliato. Giulia lo scioglie, butta il pezzo (27 g persi) e riavvia la custodia.
+
+16/11/2026 · 14:20
+
+Noemi avvia sulla Tasso un gancio per cavi. Il programma prevede 21 g di filo resistente.
+
+16/11/2026 · 14:55
+
+Sulla Tasso il gancio si stacca dal piano al secondo strato e compare S-42. Sul piano ci sono tracce di grasso. Noemi lo pulisce con un panno e riavvia il gancio. Persi 6 g.
+
+16/11/2026 · 15:55
+
+Il gancio per cavi della Tasso è finito ed è buono.
+
+16/11/2026 · 16:15
+
+La custodia per scheda del Gufo è finita ed è buona.
+
+17/11/2026 · 09:00
+
+Marco lascia accanto alla Lince una bobina di filo base di scorta e controlla che le tre stampanti abbiano la loro bobina.
+
+17/11/2026 · 10:15
+
+Anna avvia sulla Lince un supporto per cavi. Il programma prevede 45 g di filo base.
+
+17/11/2026 · 11:00
+
+Durante il supporto per cavi la Lince smette di spingere il filo e mostra S-41. Anna ferma la stampa. Persi 12 g.
+
+17/11/2026 · 11:05
+
+Greta blocca la Lince: sullo schermo compare il segno rosso. Chiama il tecnico, Marco.
+
+17/11/2026 · 14:05
+
+Marco smonta l'ugello della Lince: è intasato. Lo cambia con un ugello nuovo, U-04.
+
+17/11/2026 · 14:40
+
+Marco fa una stampa di prova sulla Lince: riuscita.
+
+17/11/2026 · 15:00
+
+Greta controlla la Lince, toglie il segno rosso e la rimette disponibile. Anna riavvia il supporto per cavi.
+
+17/11/2026 · 16:50
+
+Il supporto per cavi della Lince è finito ed è buono.
+
+18/11/2026 · 08:30
+
+Greta apre il laboratorio e legge le note di ieri: la Lince è tornata disponibile alle 15:00. Le tre stampanti sono disponibili.
+
+18/11/2026 · 09:20
+
+Flavio avvia sul Gufo un coperchio per scatola. Il programma prevede 51 g di filo base.
+
+18/11/2026 · 10:00
+
+Durante il coperchio il Gufo mostra S-44: la temperatura dell'ugello scende e il filo non esce più. Flavio ferma la stampa. Persi 9 g.
+
+18/11/2026 · 10:05
+
+Greta blocca il Gufo con il segno rosso e chiama il tecnico.
+
+18/11/2026 · 11:30
+
+Marco trova rotto il sensore della temperatura del Gufo e lo cambia con uno nuovo, T-08.
+
+18/11/2026 · 12:10
+
+Marco fa una stampa di prova sul Gufo: riuscita.
+
+18/11/2026 · 12:30
+
+Greta controlla il Gufo, toglie il segno rosso e lo rimette disponibile. Flavio riavvia il coperchio per scatola.
+
+18/11/2026 · 14:15
+
+Noemi avvia sulla Tasso un fermaglio. Il programma prevede 18 g di filo resistente.
+
+18/11/2026 · 14:50
+
+Sulla Tasso il fermaglio si stacca dal piano e compare S-42. Sul piano ci sono ancora tracce di grasso. Noemi lo pulisce e riavvia il fermaglio. Persi 5 g.
+
+18/11/2026 · 15:45
+
+Il fermaglio della Tasso è finito ed è buono.
+
+18/11/2026 · 16:20
+
+Il coperchio per scatola del Gufo è finito ed è buono.
+
+19/11/2026 · 08:30
+
+Greta apre il laboratorio e legge le note di ieri: il Gufo è tornato disponibile alle 12:30. Le tre stampanti sono disponibili.
+
+19/11/2026 · 09:30
+
+Giulia avvia sulla Tasso una ruota dentata. Il programma prevede 74 g di filo resistente.
+
+19/11/2026 · 10:40
+
+La Tasso mostra S-45: gli strati della ruota dentata si sono spostati di lato. Giulia ferma la stampa. Persi 34 g.
+
+19/11/2026 · 10:45
+
+Greta blocca la Tasso con il segno rosso e chiama il tecnico.
+
+19/11/2026 · 11:30
+
+Marco controlla la Tasso e fa una stampa di prova: riuscita.
+
+19/11/2026 · 12:00
+
+Greta controlla la Tasso, toglie il segno rosso e la rimette disponibile. Giulia riavvia la ruota dentata.
+
+19/11/2026 · 13:30
+
+Greta guarda le tre stampanti: ognuna ha la sua bobina e nessuna è bloccata.
+
+19/11/2026 · 15:10
+
+La ruota dentata della Tasso è finita ed è buona.

@@ -1,0 +1,118 @@
+Registro delle segnalazioni di sicurezza del laboratorio
+
+ITS MAKER Bologna · Esempio inventato per l'esercizio
+Periodo: 23–26 novembre 2026 · Laboratorio di officina e di elettronica
+
+Appunti scritti da chi è di turno in laboratorio durante una settimana di lezione. Il laboratorio ha tre zone: l'officina, l'aula di elettronica e il magazzino. Ogni segnalazione riceve un numero, da 1 in poi, nell'ordine in cui arriva. Oggi è giovedì 26 novembre 2026.
+
+23/11/2026 · 08:30
+
+Apre il turno del mattino. In officina lavora la classe 3B: trapano a colonna, tornio e sega a nastro sono pronti, la saldatrice è sotto il telo. In aula di elettronica ci sono sei banchi, ognuno con il suo alimentatore.
+
+23/11/2026 · 09:40
+
+Marta, della 3B, dice che la luce del corridoio davanti al magazzino lampeggia. Il corridoio si vede bene lo stesso. Segnalazione 1.
+
+23/11/2026 · 10:15
+
+Luca, della 3B, dice che la protezione trasparente davanti alla punta del trapano a colonna è crepata e a destra non si chiude più. Il trapano è acceso e nessuno lo sta usando. Segnalazione 2.
+
+23/11/2026 · 10:20
+
+Chi è di turno spegne il trapano e vi appende un cartello «non usare». La segnalazione 2 viene inoltrata.
+
+23/11/2026 · 11:30
+
+Il tecnico del laboratorio guarda il trapano a colonna: la protezione va cambiata. Ne chiede una nuova alla segreteria tecnica. Il cartello resta.
+
+23/11/2026 · 13:10
+
+Il magazzino è chiuso a chiave dalle 13:00 alle 14:00. Il turno del pomeriggio legge il registro: ci sono le segnalazioni 1 e 2.
+
+23/11/2026 · 15:20
+
+Omar, della 4A, entra in aula di elettronica e sente odore di bruciato. Dall'alimentatore del banco 4 esce un filo di fumo. Segnalazione 3.
+
+23/11/2026 · 15:22
+
+Chi è di turno fa uscire la classe 4A, stacca la spina del banco 4 dalla presa a muro e chiama il responsabile della sicurezza. La segnalazione 3 viene inoltrata.
+
+23/11/2026 · 16:10
+
+Il tecnico apre l'alimentatore del banco 4: dentro è caldo e annerito. Lo porta in magazzino in una cassetta. Il banco 4 resta senza alimentatore.
+
+24/11/2026 · 08:30
+
+Apre il turno del mattino e legge il registro di ieri. In officina lavora la classe 3A. Il trapano a colonna ha ancora il cartello «non usare»; il banco 4 dell'aula di elettronica è senza alimentatore.
+
+24/11/2026 · 09:05
+
+Sara, della 3A, dice che sulla sega a nastro la protezione della lama è aperta e non resta ferma: scivola verso l'alto. La sega è spenta. Segnalazione 4.
+
+24/11/2026 · 09:10
+
+Chi è di turno ferma la sega a nastro con un cartello. La segnalazione 4 viene inoltrata.
+
+24/11/2026 · 10:50
+
+Tiziana, collaboratrice scolastica, dice che vicino al tornio c'è una macchia d'olio sul pavimento. Segnalazione 5.
+
+24/11/2026 · 11:00
+
+Chi è di turno copre l'olio con la segatura e lo asciuga. La segnalazione 5 viene inoltrata.
+
+24/11/2026 · 12:40
+
+Il tecnico stringe la vite di fermo della protezione della sega a nastro e la prova: resta ferma. Toglie il cartello e scrive «sega a nastro: protezione sistemata».
+
+24/11/2026 · 14:30
+
+Renzo, docente di elettronica, dice che nell'armadietto ci sono quattro paia di occhiali di protezione: per i sei banchi ne servono sei. Segnalazione 6.
+
+24/11/2026 · 14:40
+
+La segnalazione 6 viene inoltrata.
+
+25/11/2026 · 09:00
+
+Il tecnico monta sul trapano a colonna la protezione nuova, la prova e toglie il cartello. Scrive «trapano a colonna: protezione sostituita».
+
+25/11/2026 · 10:30
+
+Elia, della 3A, dice che sul trapano a colonna la protezione non si chiude più a destra, come lunedì. Il trapano è spento. Segnalazione 7.
+
+25/11/2026 · 10:35
+
+Chi è di turno rimette il cartello «non usare» sul trapano. La segnalazione 7 viene inoltrata.
+
+25/11/2026 · 11:15
+
+Davide, della 3A, dice che il tornio non si ferma quando preme il pulsante rosso di arresto. Continua a girare finché lui toglie la spina. Segnalazione 8.
+
+25/11/2026 · 11:17
+
+Chi è di turno fa allontanare la classe dal tornio e chiama il responsabile della sicurezza. La segnalazione 8 viene inoltrata. Il tornio resta con la spina staccata.
+
+25/11/2026 · 13:20
+
+Il responsabile della sicurezza guarda il tornio e decide di tenerlo fermo. Il tecnico appende un cartello «non usare» e porta via la chiave di avviamento.
+
+25/11/2026 · 15:00
+
+Il turno del pomeriggio chiude. Il banco 4 resta senza alimentatore: la classe 4A usa gli altri cinque banchi. La segreteria tecnica ha ordinato un alimentatore nuovo.
+
+26/11/2026 · 08:30
+
+Apre il turno del mattino. Il tornio e il trapano a colonna hanno il cartello «non usare». La sega a nastro è in uso. Oggi in aula di elettronica lavora la classe 4A.
+
+26/11/2026 · 09:20
+
+Gloria, della 4A, dice che la prolunga del banco 2 ha la guaina aperta: si vede il filo di rame. La prolunga è ancora nella presa. Segnalazione 9.
+
+26/11/2026 · 09:25
+
+Chi è di turno stacca la prolunga dalla presa, senza toccare il filo, e la appoggia sul tavolo del tecnico. La segnalazione 9 viene inoltrata.
+
+26/11/2026 · 10:10
+
+Renzo, docente di elettronica, propone di appendere un cartello con i numeri di emergenza anche all'ingresso del magazzino. Segnalazione 10.

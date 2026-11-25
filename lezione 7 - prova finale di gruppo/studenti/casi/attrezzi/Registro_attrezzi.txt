@@ -1,0 +1,110 @@
+Registro del magazzino attrezzi
+
+ITS MAKER Bologna · Esempio inventato per l'esercizio
+Periodo: 23 novembre – 1 dicembre 2026 · Laboratorio di prototipazione
+
+Appunti lasciati sul banco del magazzino del laboratorio. Gli attrezzi sono 12 e ognuno ha un numero scritto sul cartellino. L'addetto annota ogni ritiro e ogni rientro con data, ora e numero dell'attrezzo.
+
+23/11/2026 · 08:30
+
+L'addetto apre il magazzino. I 12 attrezzi sono sullo scaffale, ognuno con il suo cartellino numerato. Il registro nuovo parte da questa pagina.
+
+23/11/2026 · 09:15
+
+Irene ritira il trapano 2 per forare i supporti del suo progetto. L'addetto scrive il numero sul registro.
+
+23/11/2026 · 09:40
+
+Bruno ritira il saldatore 4. Prende anche una bobina di stagno dal cassetto, che non va annotata.
+
+23/11/2026 · 10:30
+
+Giada ritira il calibro 7 per misurare i pezzi della sua prova.
+
+23/11/2026 · 14:25
+
+Pietro chiede un multimetro e ritira il multimetro 9. Il multimetro 10 resta sullo scaffale.
+
+24/11/2026 · 08:35
+
+L'addetto rimette in fila i cartellini sullo scaffale. Il trapano 1 e il trapano 3 sono ai loro posti.
+
+24/11/2026 · 09:50
+
+Bruno riporta il saldatore 4 e lo appoggia sul banco.
+
+24/11/2026 · 11:05
+
+Sofia ritira il saldatore 4, quello che Bruno ha riportato questa mattina.
+
+24/11/2026 · 15:10
+
+Stefano ritira la levigatrice 11 per finire una piastra.
+
+25/11/2026 · 08:40
+
+Irene riporta il trapano 2.
+
+25/11/2026 · 10:20
+
+Chiara ritira il seghetto 12 per tagliare due listelli.
+
+25/11/2026 · 16:00
+
+Passa un tecnico di un altro reparto a guardare gli scaffali. Non ritira niente.
+
+26/11/2026 · 09:05
+
+Matteo ritira il trapano 2, quello riportato ieri da Irene.
+
+26/11/2026 · 09:45
+
+Ugo ritira il multimetro 10.
+
+26/11/2026 · 14:30
+
+L'addetto scrive di nuovo il numero sul cartellino del calibro 8, perché era sbiadito. Il calibro 8 è sullo scaffale.
+
+27/11/2026 · 09:00
+
+Ludovica ritira il calibro 8.
+
+27/11/2026 · 11:30
+
+Stefano riporta la levigatrice 11.
+
+27/11/2026 · 15:40
+
+Chiara riporta il seghetto 12.
+
+30/11/2026 · 08:45
+
+L'addetto riapre il magazzino dopo il fine settimana e rimette in fila i cartellini.
+
+30/11/2026 · 09:20
+
+Corrado, il responsabile del laboratorio, concede a Pietro tre giorni in più per il multimetro 9. L'addetto lo annota.
+
+30/11/2026 · 10:00
+
+Ludovica riporta il calibro 8.
+
+30/11/2026 · 11:15
+
+Ornella ritira il saldatore 5.
+
+30/11/2026 · 15:50
+
+Arriva un pacco con due cartellini nuovi. L'addetto li mette nel cassetto: per ora non servono.
+
+01/12/2026 · 09:10
+
+Matteo riporta il trapano 2.
+
+01/12/2026 · 09:50
+
+Nico ritira il trapano 1.
+
+01/12/2026 · 14:00
+
+Una classe visita il magazzino e guarda gli attrezzi sullo scaffale. Nessuno ritira niente.

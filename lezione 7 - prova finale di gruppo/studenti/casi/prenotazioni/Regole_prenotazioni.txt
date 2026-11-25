@@ -1,0 +1,50 @@
+# Regole di prenotazione dei laboratori della Casa dei Mestieri
+
+**Procedura 1 · Revisione 1 del 30 novembre 2026 · Segreteria**
+
+Documento inventato per l'esercitazione ITS MAKER. Stabilisce come si prenotano i laboratori e come la segreteria legge il calendario. Per questo caso oggi è mercoledì 16 dicembre 2026.
+
+## 1. Laboratori e fasce
+
+La Casa dei Mestieri ha tre laboratori, aperti da lunedì a venerdì.
+
+| Laboratorio | Posti |
+| --- | --- |
+| Legno | 8 |
+| Elettronica | 12 |
+| Ceramica | 6 |
+
+Ogni giorno ci sono due fasce per ogni laboratorio: la mattina va dalle 9:00 alle 13:00 e il pomeriggio dalle 14:00 alle 18:00. In una settimana le fasce sono 3 × 10 = 30. Una prenotazione riguarda un solo laboratorio e una sola fascia.
+
+Chi prenota è il referente, cioè la persona che parla a nome del suo gruppo. I posti sono il numero massimo di persone che possono stare insieme nel laboratorio.
+
+## 2. I termini
+
+| Termine | Che cosa vuol dire |
+| --- | --- |
+| Richiesta | Il referente chiede un laboratorio, un giorno e una fascia e dice quante persone saranno. La segreteria la annota nel registro. |
+| Prenotazione attiva | Richiesta annotata e non disdetta. Occupa la fascia anche prima della conferma. |
+| Conferma | La segreteria scrive nel registro che la prenotazione è confermata. Solo la segreteria conferma. |
+| Modifica | Il referente sposta una sua prenotazione in un altro giorno, un'altra fascia o un altro laboratorio. La fascia lasciata si libera, quella nuova si occupa. |
+| Disdetta | La prenotazione viene cancellata e la fascia si libera. |
+| Conflitto | Due prenotazioni attive nella stessa fascia dello stesso laboratorio, oppure una prenotazione che non rispetta una regola d'uso. |
+
+## 3. Le regole d'uso
+
+- Una fascia di un laboratorio ha una sola prenotazione.
+- Le persone non superano i posti del laboratorio.
+- Esistono anche regole d'uso interne. Le vede solo l'amministratore. Chi chiede una prenotazione non le vede.
+
+## 4. Chi fa che cosa
+
+L'agente non conferma mai una prenotazione. Prepara il riepilogo e la segreteria conferma.
+
+## 5. I calcoli
+
+**Fasce occupate.** Fasce diverse con almeno una prenotazione attiva. Se in una fascia ce ne sono due, la fascia si conta una volta sola.
+
+**Fasce libere.** Le fasce della settimana meno le fasce occupate.
+
+**Prenotazioni attive di un laboratorio.** Tutte le prenotazioni attive di quel laboratorio, anche quelle non confermate.
+
+Questi calcoli non compaiono nel registro: si fanno quando servono.

@@ -1,0 +1,65 @@
+# Guida ai guasti delle stampanti 3D
+
+**Istruzione operativa del laboratorio · Revisione 1 del 2 novembre 2026**
+
+Documento inventato per l'esercitazione ITS MAKER. Descrive i codici di guasto che le tre stampanti mostrano sullo schermo e che cosa si fa quando compaiono.
+
+## 1. Che cosa succede quando compare un codice
+
+Lo schermo mostra un codice che comincia con S. L'utente è chi ha avviato la stampa.
+
+Se il guasto è serio, l'incaricata blocca la stampante: sullo schermo compare il segno rosso e nessuno la usa. Il registro annota l'ora del blocco. Il tecnico ripara e fa una stampa di prova.
+
+La prova non rimette la stampante in uso: lo fa l'incaricata, dopo aver controllato e tolto il segno rosso. Da quel momento la stampante è di nuovo disponibile.
+
+## 2. Filo e piano
+
+### S-43 Filo fermo
+
+**Che cosa significa.** La stampa si ferma a metà e la bobina non gira più.
+
+**Primo controllo.** Guardare se il filo sulla bobina è aggrovigliato o finito.
+
+**Chi interviene.** L'utente.
+
+### S-42 Pezzo staccato dal piano
+
+**Che cosa significa.** Durante i primi strati il pezzo si stacca dal piano.
+
+**Primo controllo.** Guardare se il piano è pulito. Toccarlo solo ai bordi.
+
+**Chi interviene.** L'utente, con un panno pulito.
+
+## 3. Ugello e temperatura
+
+### S-41 Il filo non esce
+
+**Che cosa significa.** L'ugello, cioè la punta da cui esce il filo, non spinge più filo.
+
+**Primo controllo.** Caricare un po' di filo a mano e guardare se esce.
+
+**Chi interviene.** Il tecnico.
+
+**Regola obbligatoria.** Con S-41 la stampante non si usa: va bloccata.
+
+### S-44 Temperatura che non sale
+
+**Che cosa significa.** La temperatura dell'ugello sullo schermo sale poco o scende, e il filo non esce.
+
+**Primo controllo.** Guardare il numero della temperatura sullo schermo. Non toccare l'ugello: può essere caldo.
+
+**Chi interviene.** Il tecnico.
+
+**Regola obbligatoria.** Con S-44 la stampante non si usa: va bloccata.
+
+## 4. Strati
+
+### S-45 Strati spostati
+
+**Che cosa significa.** Gli strati si spostano di lato e il pezzo esce storto.
+
+**Primo controllo.** Fermare la stampa e guardare se lo spostamento è sempre dallo stesso lato.
+
+**Chi interviene.** Il tecnico.
+
+**Regola obbligatoria.** Con S-45 la stampante non si usa: va bloccata.

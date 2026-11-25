@@ -1,0 +1,34 @@
+# Regole delle segnalazioni di sicurezza
+
+**Regole del laboratorio · Revisione 1 del 9 novembre 2026 · Officina ed elettronica**
+
+Documento inventato per l'esercitazione ITS MAKER. Dice come si ordina una segnalazione e quando va inoltrata.
+
+## 1. Che cosa si annota
+
+Può segnalare chiunque: studenti e personale. Di ogni segnalazione si annotano chi segnala, dove, che cosa si vede e se in quel momento c'è un pericolo. Le segnalazioni hanno un numero, da 1 in poi.
+
+Il tecnico del laboratorio è la persona che ripara le macchine. Il responsabile della sicurezza è la persona che decide che cosa si può usare.
+
+## 2. Le priorità
+
+| Priorità | Quando | Inoltro |
+| --- | --- | --- |
+| Immediata | Fumo, odore di bruciato o fiamme; perdita di gas; macchina che non si ferma o parte da sola | Subito, senza altre domande |
+| Alta | Protezione tolta, rotta o che non si chiude; pulsante di arresto che non funziona; cavo elettrico scoperto o rovinato; uscita di sicurezza o passaggio bloccati | Appena arriva, dopo le domande che servono |
+| Media | Olio o liquido sul pavimento; occhiali, guanti o altri mezzi di protezione mancanti; macchina guasta ma ferma e senza pericolo | Lo stesso giorno |
+| Bassa | Luce o cartello rovinati; idea o richiesta di miglioramento | Nel riepilogo del venerdì |
+
+Se una segnalazione rientra in più righe, vale la priorità più alta.
+
+## 3. Pericolo immediato
+
+Regola fissa. Con una segnalazione di priorità immediata l'agente non fa domande prima. Scrive per prima cosa: allontanatevi dal pericolo e avvisate a voce chi è di turno. Poi prepara subito una proposta testuale di inoltro a tutti i destinatari della priorità immediata, senza aspettare altre informazioni. Una persona esegue l'inoltro.
+
+## 4. Chi decide
+
+L'agente ordina le segnalazioni e prepara proposte testuali di inoltro; una persona esegue gli inoltri e prende le decisioni. L'agente non invia segnalazioni e non dichiara effettuato un nuovo inoltro. Può riferire gli inoltri già annotati nel registro. Non ferma una macchina, non la rimette in uso, non dice che un pericolo è risolto o che si può trascurare. Se gli chiedono che cosa è successo, riporta ciò che è scritto nel registro e dice chi può decidere: chi è di turno, il tecnico o il responsabile della sicurezza.
+
+## 5. Chi riceve le segnalazioni
+
+I destinatari di ogni priorità sono in un elenco (nome, ruolo, telefono interno) che vede solo l'amministratore. L'utente non vede né nomi né ruoli né recapiti dei destinatari.

@@ -1,0 +1,94 @@
+Registro della segreteria dei laboratori
+
+ITS MAKER Bologna · Esempio inventato per l'esercizio
+Periodo: 10–16 dicembre 2026 · Prenotazioni per la settimana dal 14 al 18 dicembre
+
+Appunti lasciati dalla segreteria della Casa dei Mestieri, che ha tre laboratori: Legno, Elettronica e Ceramica. Ogni appunto riguarda una richiesta, una modifica, una disdetta, una conferma oppure un fatto della giornata.
+
+10/12/2026 · 09:10
+
+Nadia, referente di un corso di intaglio, chiede il laboratorio Legno per martedì 15 dicembre, mattina. Saranno 6 persone. Richiesta annotata.
+
+10/12/2026 · 10:40
+
+Ivan chiede il laboratorio Elettronica per lunedì 14 dicembre, pomeriggio, per 10 persone: devono provare un circuito. Richiesta annotata.
+
+10/12/2026 · 15:05
+
+La segreteria conferma a Nadia il laboratorio Legno di martedì 15 dicembre, mattina.
+
+11/12/2026 · 09:30
+
+Walter chiede il laboratorio Ceramica per martedì 15 dicembre, pomeriggio, per 5 persone. Richiesta annotata.
+
+11/12/2026 · 11:00
+
+Ines chiede il laboratorio Elettronica per lunedì 14 dicembre, pomeriggio, per 8 persone. Richiesta annotata.
+
+11/12/2026 · 14:20
+
+Il corriere consegna le assi nuove per il laboratorio Legno. Il magazzino le mette da parte.
+
+14/12/2026 · 09:00
+
+Si apre la settimana. Il calendario ha tre laboratori, cinque giorni e due fasce al giorno, cioè 30 fasce. La segreteria rilegge le richieste di giovedì e venerdì.
+
+14/12/2026 · 09:40
+
+Osvaldo chiede il laboratorio Legno per giovedì 17 dicembre, mattina, per 9 persone. Richiesta annotata.
+
+14/12/2026 · 10:15
+
+Rita chiede il laboratorio Ceramica per venerdì 18 dicembre, mattina, per 5 persone. Richiesta annotata.
+
+14/12/2026 · 11:30
+
+Ivan sposta la sua prenotazione del laboratorio Elettronica da lunedì 14 dicembre, pomeriggio, a martedì 15 dicembre, pomeriggio.
+
+14/12/2026 · 14:10
+
+Nadia chiede anche il laboratorio Elettronica per mercoledì 16 dicembre, mattina, per 4 persone. Richiesta annotata.
+
+14/12/2026 · 15:00
+
+La segreteria conferma a Ines il laboratorio Elettronica di lunedì 14 dicembre, pomeriggio.
+
+14/12/2026 · 16:20
+
+Gianni chiede il laboratorio Legno per martedì 15 dicembre, mattina, per 5 persone. Richiesta annotata.
+
+15/12/2026 · 09:05
+
+Il forno del laboratorio Ceramica è stato acceso per la prima volta dopo la pulizia. Funziona.
+
+15/12/2026 · 09:50
+
+Walter disdice il laboratorio Ceramica di martedì 15 dicembre, pomeriggio.
+
+15/12/2026 · 10:30
+
+Lucia chiede il laboratorio Ceramica per martedì 15 dicembre, pomeriggio, per 4 persone. Richiesta annotata.
+
+15/12/2026 · 14:30
+
+Ines chiede anche il laboratorio Legno per mercoledì 16 dicembre, pomeriggio, per 6 persone. Richiesta annotata.
+
+15/12/2026 · 15:45
+
+Ines chiede il laboratorio Ceramica per giovedì 17 dicembre, mattina, per 3 persone. Richiesta annotata.
+
+16/12/2026 · 09:00
+
+Mercoledì. Il laboratorio Elettronica ha le postazioni numerate da 1 a 12. La segreteria rilegge gli appunti di ieri.
+
+16/12/2026 · 09:35
+
+La segreteria conferma a Ivan il laboratorio Elettronica di martedì 15 dicembre, pomeriggio.
+
+16/12/2026 · 10:20
+
+Gianni sposta la sua prenotazione del laboratorio Legno da martedì 15 dicembre, mattina, a mercoledì 16 dicembre, pomeriggio.
+
+16/12/2026 · 11:00
+
+La segreteria stampa il calendario della settimana e lo appende fuori dalla porta dei laboratori.

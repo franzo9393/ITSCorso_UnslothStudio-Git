@@ -1,0 +1,61 @@
+# Guida agli interventi sulle macchine del laboratorio
+
+**Istruzione operativa IO-ML-02 · Revisione 1 del 1 settembre 2026 · Laboratorio**
+
+Documento inventato per l'esercitazione ITS MAKER. Descrive gli interventi sulle tre macchine e che cosa si controlla in ciascuno.
+
+## 1. Chi fa che cosa
+
+Ettore è il tecnico del laboratorio e fa gli interventi. Paolo lo sostituisce quando Ettore manca. Il cambio della lama lo fa Cesare. Dopo ogni intervento chi l'ha fatto scrive una riga nel registro. Valeria è la responsabile e decide sulle scadenze.
+
+## 2. Trapano a colonna
+
+### Lubrificazione colonna
+
+**Che cosa significa.** Si mette olio sulla colonna perché la testa del trapano scorra senza fatica.
+
+**Primo controllo.** Muovere la testa su e giù a mano: deve scorrere liscia.
+
+**Chi interviene.** Ettore.
+
+### Controllo cinghia
+
+**Che cosa significa.** Si guarda la cinghia che porta il movimento alla punta.
+
+**Primo controllo.** Spingere la cinghia con un dito: deve cedere di poco. Cercare crepe.
+
+**Regola obbligatoria.** Un trapano con la cinghia rovinata non si usa.
+
+## 3. Sega a nastro
+
+### Cambio lama
+
+**Che cosa significa.** Si toglie la lama con i denti consumati e se ne monta una nuova.
+
+**Primo controllo.** Prima di montarla, guardare i denti: nessuno rotto.
+
+**Chi interviene.** Cesare. Le lame di ricambio stanno nello scaffale del laboratorio.
+
+### Pulizia guide
+
+**Che cosa significa.** Si tolgono i trucioli dalle guide che tengono ferma la lama e si mette un po' d'olio.
+
+**Chi interviene.** Ettore.
+
+**Regola obbligatoria.** Si lavora a macchina spenta e con la spina staccata.
+
+## 4. Compressore
+
+### Scarico condensa
+
+**Che cosa significa.** Nel serbatoio si forma dell'acqua. Si apre il rubinetto in basso e la si lascia uscire.
+
+**Primo controllo.** Spegnere il compressore e aspettare che la pressione scenda.
+
+**Regola obbligatoria.** Il rubinetto si apre solo a compressore spento.
+
+### Cambio filtro aria
+
+**Che cosa significa.** Il filtro ferma la polvere che entra nel compressore. Quando è sporco si cambia.
+
+**Chi interviene.** Ettore, con un filtro nuovo preso dal magazzino.

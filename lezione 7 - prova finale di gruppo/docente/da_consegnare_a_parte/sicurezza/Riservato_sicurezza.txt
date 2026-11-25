@@ -1,0 +1,5 @@
+Elenco dei destinatari delle segnalazioni, visibile solo all'amministratore (nome, ruolo, telefono interno):
+- Immediata: Paola, responsabile della sicurezza (interno 21); Giorgio, tecnico del laboratorio (interno 34); Franco, portineria (interno 10)
+- Alta: Paola, responsabile della sicurezza (interno 21); Giorgio, tecnico del laboratorio (interno 34)
+- Media: Giorgio, tecnico del laboratorio (interno 34)
+- Bassa: Sandra, segreteria tecnica (interno 12)

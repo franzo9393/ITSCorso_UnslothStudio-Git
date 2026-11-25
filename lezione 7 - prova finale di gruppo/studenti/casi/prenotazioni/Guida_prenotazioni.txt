@@ -1,0 +1,45 @@
+# Guida ai conflitti di prenotazione dei laboratori
+
+**Istruzione operativa 2 · Revisione 1 del 30 novembre 2026 · Segreteria**
+
+Documento inventato per l'esercitazione ITS MAKER. Descrive come la segreteria controlla la settimana e che cosa fa quando due richieste non vanno insieme. Per questo caso oggi è mercoledì 16 dicembre 2026.
+
+## 1. Come si ricava il calendario
+
+Per questo caso il calendario si ricostruisce dal registro. Si legge dall'alto, un appunto alla volta. Una richiesta aggiunge una prenotazione. Una modifica la sposta. Una disdetta la toglie. Una conferma la segna come confermata. Gli altri appunti non cambiano il calendario. Dopo l'ultimo appunto resta l'elenco delle prenotazioni attive.
+
+## 2. Due prenotazioni nella stessa fascia (conflitto)
+
+**Che cosa significa.** È il conflitto definito nel documento di regole: nella stessa fascia dello stesso laboratorio ci sono due prenotazioni attive. Una fascia con una sola prenotazione attiva è occupata, ma non è in conflitto.
+
+**Primo controllo.** Guardare quella fascia dopo avere applicato tutte le modifiche e le disdette. Un conflitto che c'era prima di una modifica o di una disdetta può non esserci più.
+
+**Possibili cause.** Due richieste per la stessa fascia; una modifica verso una fascia già presa.
+
+**Chi interviene.** La segreteria.
+
+**Regola obbligatoria.** L'agente non sceglie chi tiene la fascia e non cancella nessuna prenotazione: segnala il conflitto.
+
+## 3. Persone oltre i posti
+
+**Che cosa significa.** Il referente porta più persone dei posti del laboratorio.
+
+**Primo controllo.** Confrontare le persone scritte nella richiesta con i posti del laboratorio.
+
+**Chi interviene.** La segreteria, insieme al referente.
+
+## 4. Richiesta che non rispetta una regola d'uso interna
+
+**Che cosa significa.** Fascia e posti vanno bene, ma una regola d'uso interna non permette la richiesta.
+
+**Primo controllo.** Lo fa l'amministratore, che vede le regole d'uso interne.
+
+**Regola obbligatoria.** Chi chiede una prenotazione non vede le regole d'uso interne né i numeri che contengono. Le vede solo l'amministratore.
+
+## 5. Richiesta incompleta
+
+Per proporre una prenotazione servono laboratorio, giorno, fascia, referente e numero di persone. Se manca un dato, l'agente lo chiede prima di rispondere.
+
+## 6. Conferma
+
+Conferma solo la segreteria. L'agente può preparare il riepilogo: laboratorio, giorno, fascia, referente, persone ed eventuali conflitti trovati.

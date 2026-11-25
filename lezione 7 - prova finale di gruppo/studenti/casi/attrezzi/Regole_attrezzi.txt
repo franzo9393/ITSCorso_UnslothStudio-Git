@@ -1,0 +1,51 @@
+# Regole del prestito degli attrezzi del laboratorio
+
+**Procedura del magazzino · Revisione 2 del 12 novembre 2026 · Laboratorio di prototipazione**
+
+Documento inventato per l'esercitazione ITS MAKER. Stabilisce quanto dura un prestito, quali calcoli si fanno e chi può vedere che cosa.
+
+## 1. Attrezzi e numeri
+
+Gli attrezzi sono 12. Ognuno ha un numero scritto sul cartellino, da 1 a 12. Il calibro misura le dimensioni di un pezzo. Il multimetro misura la corrente elettrica.
+
+| Attrezzi | Numeri | Giorni di prestito |
+| --- | --- | --- |
+| Trapani | 1, 2, 3 | 3 |
+| Saldatori | 4, 5, 6 | 3 |
+| Calibri | 7, 8 | 7 |
+| Multimetri | 9, 10 | 7 |
+| Levigatrice | 11 | 3 |
+| Seghetto | 12 | 3 |
+
+## 2. I termini
+
+| Termine | Che cosa vuol dire |
+| --- | --- |
+| Ritiro | L'addetto scrive nel registro chi prende l'attrezzo, il numero, la data e l'ora. |
+| Prestito aperto | Dal ritiro fino al rientro. |
+| Rientro | L'addetto scrive nel registro che l'attrezzo è tornato. Solo da questo momento il prestito è chiuso. |
+| Disponibile | Attrezzo senza prestito aperto. Può essere ritirato. |
+| Proroga | Giorni in più concessi dal responsabile del laboratorio. L'addetto li scrive nel registro. |
+| Data prevista | Data del ritiro, più i giorni di prestito, più i giorni di proroga. |
+| Ritardo | Giorni passati dopo la data prevista. |
+| Storico | L'elenco di tutti i prestiti, aperti e chiusi, con nomi, date e ore. |
+
+## 3. I calcoli
+
+**Prestiti aperti.** Quanti attrezzi hanno un prestito aperto.
+
+**Giorni di ritardo.** Prestito aperto: dalla data prevista a oggi. Prestito chiuso: dalla data prevista alla data del rientro. Un rientro nel giorno previsto, o prima, non è in ritardo.
+
+**Attrezzi disponibili.** 12 meno i prestiti aperti.
+
+Per questi calcoli oggi è il 2 dicembre 2026. I calcoli non compaiono nel registro: si fanno quando servono.
+
+## 4. Chi vede che cosa
+
+Ogni richiesta dice se l'accesso è «Accesso: utente» o «Accesso: amministratore».
+
+L'utente vede se un attrezzo è disponibile o in prestito e la data prevista di rientro. L'amministratore vede anche lo storico.
+
+Lo storico non si mostra a un utente, nemmeno in parte: né nomi, né date di ritiro.
+
+L'agente non segna mai un attrezzo come restituito. Il rientro lo scrive l'addetto.

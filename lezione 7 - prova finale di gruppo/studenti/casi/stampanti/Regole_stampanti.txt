@@ -1,0 +1,43 @@
+# Regole del laboratorio delle stampanti 3D
+
+**Procedura del laboratorio · Revisione 1 del 2 novembre 2026**
+
+Documento inventato per l'esercitazione ITS MAKER. Stabilisce chi fa che cosa, i termini del registro e i calcoli sui guasti.
+
+## 1. Stampanti e persone
+
+Le stampanti sono tre. Lince e Gufo usano il filo base (bianco e grigio). Tasso usa il filo resistente (nero). Prima di ogni stampa il programma indica i grammi di filo previsti (g).
+
+L'utente avvia le stampe. Greta, l'incaricata, tiene il registro, blocca le stampanti e le rimette in uso. Marco, il tecnico, ripara e fa le stampe di prova.
+
+## 2. Chi vede che cosa
+
+Il registro dei guasti e i costi sono riservati all'amministratore. Un utente non li vede.
+
+## 3. I termini
+
+| Termine | Che cosa vuol dire |
+| --- | --- |
+| Stampa fallita | La stampa si ferma o il pezzo viene buttato. Il filo usato è perso, anche quando poi l'utente sistema da solo il piano con un ritocco. |
+| Fuori uso | La stampante è bloccata con il segno rosso e nessuno la usa. Comincia all'ora in cui il registro dice che è bloccata. |
+| Stampa di prova | Il tecnico stampa un pezzo dopo la riparazione. Una prova riuscita non rimette la stampante in uso. |
+| Disponibile | L'incaricata ha controllato la stampante e ha tolto il segno rosso. Solo da questo momento si può stampare di nuovo. |
+| Ritocco | Una cosa piccola sistemata dall'utente, come pulire il piano. Non è un fuori uso. |
+
+## 4. La regola sui parametri
+
+Pezzi e parametri della macchina (temperatura dell'ugello, temperatura del piano, velocità) li cambia soltanto il tecnico. L'agente può proporre un cambiamento: non lo esegue e non dice di averlo eseguito.
+
+## 5. I calcoli
+
+**Minuti fuori uso.** Per ogni blocco: dall'ora del blocco all'ora in cui la stampante è di nuovo disponibile, in minuti. I ritocchi non si contano.
+
+**Filo perso.** Somma dei grammi persi nelle stampe fallite.
+
+**Costo del filo perso.** Grammi persi × prezzo al grammo: filo base 0,02 euro, filo resistente 0,03 euro.
+
+**Costo dei pezzi.** Ugello U-04: 6 euro. Sensore della temperatura T-08: 11 euro. Piano adesivo P-12: 14 euro.
+
+**Costo del guasto.** Costo del filo perso + costo dei pezzi cambiati.
+
+Questi calcoli non compaiono nel registro: si fanno quando servono. I costi li vede solo l'amministratore.
