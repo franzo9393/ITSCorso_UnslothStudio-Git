@@ -296,7 +296,7 @@ def add_paragraph_box(slide, text: str, top: float, size: float = 23, bold: bool
 
 def add_slide_table(slide, rows: list[list[str]], top: float) -> float:
     count = max(len(row) for row in rows)
-    proportions = [0.38, 0.62] if count == 2 else [1 / count] * count
+    proportions = [0.38, 0.62] if count == 2 else [0.07, 0.53, 0.22, 0.18] if rows[0][0] == 'N.' and count == 4 else [1 / count] * count
     heights = []
     for row_index, row in enumerate(rows):
         n = max(lines_needed(cell, 11.8 * 72 * proportions[j] - 12, 18, row_index == 0) for j, cell in enumerate(row))

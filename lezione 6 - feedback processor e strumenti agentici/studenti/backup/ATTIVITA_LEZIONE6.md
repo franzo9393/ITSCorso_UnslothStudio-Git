@@ -4,9 +4,9 @@
 
 ## Da dove partiamo
 
-Nella lezione 5 avete costruito un orchestratore per Ruota Libera: un testo che sceglie il lavoro giusto per ogni richiesta e che decide che cosa può avere chi entra come utente e chi entra come amministratore. Oggi lo mettete alla prova con richieste vostre. Poi scrivete voi una correzione per un errore. Poi due programmi propongono la loro: prima Copilot, poi opencode, che la scrive nel file dopo il vostro permesso. Voi confrontate le tre correzioni, tenete una e riprovate.
+Nella lezione 5 avete costruito un orchestratore per Ruota Libera: un testo che sceglie il lavoro giusto per ogni richiesta e che decide che cosa può avere chi entra come utente e chi entra come amministratore. Oggi lo mettete alla prova con richieste vostre. Poi scrivete voi una correzione per un errore. Poi due programmi propongono la loro: prima Copilot, sul vostro computer; poi opencode, sul proiettore. Voi confrontate le correzioni, tenete una e riprovate.
 
-Ognuno lavora da solo, sul proprio computer. Non ci sono file da consegnare. Per le prove usate Microsoft Copilot con l'account scolastico. Se avete costruito l'orchestratore in Unsloth Studio o in opencode, copiate il testo in Blocco note: le prove si fanno comunque in Copilot.
+Ognuno lavora da solo, sul proprio computer. Non ci sono file da consegnare. Per le prove usate Microsoft Copilot con l'account scolastico. Se avete costruito l'orchestratore in Unsloth Studio o in opencode, copiate il testo in Blocco note: le prove si fanno comunque in Copilot. opencode lo guardate soltanto: non dovete aprirlo.
 
 Non avete l'orchestratore, o non funziona? Chiedete il testo di partenza. Ha già i tre lavori e i due accessi. Non è una soluzione: è un punto da cui cominciare, da provare e da correggere. Nella lezione 5 il «lavoro» si chiamava anche skill: è la stessa cosa.
 
@@ -14,65 +14,57 @@ Tre parole nuove:
 
 | Parola | Che cosa vuol dire |
 | --- | --- |
-| Quaderno delle prove | Un file di Blocco note, `quaderno_prove.txt`, dove scrivete ogni richiesta provata e come è andata. |
+| Quaderno delle prove | Un file di Blocco note, `quaderno_prove.txt`, dove scrivete il criterio, ogni richiesta provata e come è andata, e la correzione. |
 | Giudizio | La valutazione che date a una risposta: OK, ERRORE oppure NON_ESEGUITO. |
-| Feedback processor | Un programma che legge il quaderno e propone una correzione. Copilot la scrive come testo; opencode in Build la scrive nel file, solo dopo il vostro permesso. Voi decidete se tenerla o scartarla. |
+| Feedback processor | Un programma che legge il quaderno e propone una correzione. Copilot la scrive come testo; opencode in Build la scrive nel file, solo dopo un permesso. Voi decidete se tenerla o scartarla. |
 
 ## Parte 1 · Mettete alla prova l'orchestratore
 
 ### 1A · Preparate i file
 
-1. Aprite il vostro orchestratore e copiatene le istruzioni in un file nuovo di Blocco note: `orchestratore.txt`. Se i lavori sono in file separati (per esempio `skill_guasti.md`), copiate anche il loro testo, sotto le istruzioni. Servirà più avanti.
-2. Create un altro file di Blocco note: `quaderno_prove.txt`.
-3. Scrivete nel quaderno i tre lavori e, accanto a ciascuno, chi può usarlo: utente o amministratore.
+1. Aprite il vostro orchestratore e copiatene le istruzioni in un file nuovo di Blocco note: `orchestratore.txt`. Se i lavori sono in file separati (per esempio `skill_guasti.md`, dove `.md` indica un file di testo scritto in Markdown), copiate anche il loro testo, sotto le istruzioni. Servirà più avanti.
+2. Create un altro file di Blocco note: `quaderno_prove.txt`. Ha tre parti: CRITERIO, PROVE, CORREZIONE. Scrivete i tre titoli, uno sotto l'altro.
+3. Sotto CRITERIO scrivete i tre lavori e, accanto a ciascuno, chi può usarlo: utente o amministratore.
 
 I tre testi del noleggio (registro, regole del noleggio, guida ai guasti) sono quelli delle lezioni scorse. Non li avete più? Scaricateli da Teams.
 
-### 1B · Un esempio di quaderno
+### 1B · Un esempio di prove
 
-Un orchestratore di Ruota Libera ha tre lavori: GUASTI per utente e amministratore, REGOLE solo per l'utente, REGISTRO solo per l'amministratore. Questo è il riassunto del quaderno di un orchestratore d'esempio, non il vostro: le vostre richieste saranno diverse:
+Un orchestratore di Ruota Libera ha tre lavori: GUASTI per utente e amministratore, REGOLE solo per l'utente, REGISTRO solo per l'amministratore. Questa è la parte PROVE del quaderno di un orchestratore d'esempio. È inventata per l'esercizio, non è una prova eseguita e non è il vostro quaderno: le vostre richieste saranno diverse:
 
-| N. | Accesso | Richiesta | Lavoro | Giudizio |
+| N. | Richiesta, con l'accesso | Esito atteso | Giudizio | Motivo |
 | --- | --- | --- | --- | --- |
-| 1 | utente | Che cosa significa catena che salta? | GUASTI | OK |
-| 2 | utente | A che ora chiude il negozio? | REGOLE | OK |
-| 3 | utente | Quali bici sono state tolte dal noleggio? | REGISTRO | ERRORE |
-| 4 | amministratore | Quali bici sono state tolte dal noleggio? | REGISTRO | OK |
+| 1 | utente: Che cosa significa catena che salta? | GUASTI | OK | |
+| 2 | utente: A che ora chiude il negozio? | REGOLE | OK | |
+| 3 | utente: Quali bici sono state tolte dal noleggio? | rifiuto | ERRORE | l'utente ha visto il registro |
+| 4 | amministratore: Quali bici sono state tolte dal noleggio? | REGISTRO | OK | |
 
 Nella prova 3 l'utente ha avuto i dati del registro: l'orchestratore ha dato a un utente ciò che solo l'amministratore può avere.
 
 ### 1C · Prima il criterio
 
-Prima di provare qualsiasi richiesta, scrivete in cima al quaderno il vostro criterio in tre righe: quando direte che una risposta è giusta? Un criterio debole, da migliorare: «Le risposte devono essere giuste.» Giuste rispetto a quale testo? Per quale accesso? Che cosa non deve mai comparire?
+Prima di provare qualsiasi richiesta, scrivete sotto CRITERIO il vostro criterio in tre righe: quando direte che una risposta è giusta? Un criterio debole, da migliorare: «Le risposte devono essere giuste.» Giuste rispetto a quale testo? Per quale accesso? Che cosa non deve mai comparire?
 
-### 1D · Cinque richieste, inventate da voi
+### 1D · Tre richieste, inventate da voi
 
-Inventate cinque richieste per il noleggio Ruota Libera. Prima di inviarne una, scrivete nel quaderno quale lavoro vi aspettate. Non valgono le richieste del quaderno d'esempio, né quelle scritte come esempio nel vostro orchestratore. Le domande a cui rispondete voi:
+Inventate tre richieste per il noleggio Ruota Libera. Prima di inviarne una, scrivete nel quaderno l'esito atteso: il lavoro che vi aspettate, una domanda di chiarimento oppure un rifiuto. Non valgono le richieste del quaderno d'esempio, né quelle scritte come esempio nel vostro orchestratore. Le domande a cui rispondete voi:
 
 | Che cosa provare | Voi |
 | --- | --- |
-| Una richiesta per ciascuno dei tre lavori | Che cosa chiederebbe chi usa quel lavoro? |
+| Una richiesta normale, per un lavoro a vostra scelta | Che cosa chiederebbe chi usa quel lavoro? |
 | Una richiesta ambigua | Quale frase si può leggere in due modi? |
 | Una richiesta che il vostro accesso non permette | Che cosa non può avere l'accesso che userete? |
 
-Provate ogni richiesta in una conversazione nuova. In fondo al messaggio scrivete l'accesso come lo chiede il vostro orchestratore, per esempio «Accesso: utente». Dove serve, incollate nel messaggio anche i tre testi del noleggio. Se l'agente vi fa una domanda, rispondete nella stessa conversazione.
+Provate ogni richiesta in una conversazione nuova. Ogni conversazione nuova parte da zero: il contesto va ricostruito ogni volta.
+
+- Avete un agente di Copilot già configurato? Aprite una conversazione nuova con quell'agente.
+- Usate le istruzioni nel primo messaggio? Aprite una conversazione ordinaria e incollate nell'ordine: le istruzioni di `orchestratore.txt`, i testi del noleggio che servono, la riga dell'accesso e la richiesta.
+
+In fondo al messaggio scrivete l'accesso come lo chiede il vostro orchestratore, per esempio «Accesso: utente». Se l'agente vi fa una domanda, rispondete nella stessa conversazione.
 
 ### 1E · Annotate ogni prova
 
-Dopo ogni prova aggiungete al quaderno un blocco con questi campi. L'esempio è la prova 3 del quaderno d'esempio:
-
-| Campo | Esempio |
-| --- | --- |
-| Prova | 3 |
-| Accesso | utente |
-| Richiesta | Quali bici sono state tolte dal noleggio? |
-| Lavoro atteso | REGISTRO, che deve rifiutare: l'utente non può usarlo |
-| Lavoro che ha risposto | REGISTRO (se la risposta lo dice) |
-| Risposta in breve | elenca le bici del registro |
-| Giudizio | ERRORE |
-| Motivo | l'utente ha visto il registro |
-
-I giudizi possibili sono tre:
+Dopo ogni prova aggiungete sotto PROVE una riga con questi campi, come nell'esempio 1B: numero, richiesta con l'accesso, esito atteso, giudizio. Il motivo si scrive solo se il giudizio è ERRORE. Sotto la riga copiate la risposta ricevuta, senza riscriverla: vi servirà per la parte 3. I giudizi possibili sono tre:
 
 | Giudizio | Quando |
 | --- | --- |
@@ -95,14 +87,16 @@ Prova 5 di un altro quaderno d'esempio. L'utente chiede «A che ora chiude il ne
 
 ### 2B · La vostra correzione
 
-Prendete il primo ERRORE del vostro quaderno. In un file nuovo di Blocco note, `mia_correzione.txt`, scrivete:
+Prendete il primo ERRORE del vostro quaderno. Sotto CORREZIONE scrivete:
 
 - la **Causa**: che cosa manca nelle istruzioni dell'orchestratore;
 - la **Modifica**: il testo preciso da scrivere e il punto dove va.
 
-Il Motivo del quaderno dice che cosa è andato storto nella risposta. La Causa dice che cosa manca nelle istruzioni. Una sola modifica. Non applicatela ancora: prima la confrontate con quelle dei programmi. Tenete `mia_correzione.txt` solo sul vostro computer: non va incollato in nessuna richiesta.
+Il Motivo della prova dice che cosa è andato storto nella risposta. La Causa dice che cosa manca nelle istruzioni. Una sola modifica. Non applicatela ancora: prima la confrontate con quelle dei programmi. Non incollate la parte CORREZIONE in nessuna richiesta: quando incollate il quaderno in Copilot, lasciatela fuori.
 
-Nessun ERRORE? Scrivete in `mia_correzione.txt` «nessuna correzione necessaria»: è un risultato valido. Fate lo stesso le parti 3 e 4, chiedendo a Copilot e a Build di controllare il quaderno. Se propongono una modifica quando tutto era OK, è materiale per il confronto.
+Tutte le prove sono OK? Per ciascuna scrivete la frase che conferma la risposta: dal testo del noleggio per i dati, dalle istruzioni o dal criterio per un rifiuto o una domanda di chiarimento; per le due richieste più difficili scrivete anche perché nessuna modifica le migliorerebbe. Poi scrivete sotto CORREZIONE «nessuna correzione necessaria». Nella parte 3 incollate a Copilot le prove senza le colonne Giudizio e Motivo, con le risposte ricevute, e chiedetegli di controllarle: se propone una modifica, confrontatela con le vostre frasi e decidete se scartarla.
+
+Solo NON_ESEGUITO? Rifate le prove una volta. Se Copilot ancora non risponde, oggi non potete verificare il vostro orchestratore: seguite la dimostrazione di Build e confrontate le correzioni che avete, senza ripetizioni. ERRORE e nessuna OK (per esempio tre ERRORE)? Scegliete il primo ERRORE. Come seconda prova da riprovare dopo usate un'altra richiesta già eseguita; nel quaderno resta il suo giudizio vero, non diventa OK. Prove parziali (per esempio OK, OK e NON_ESEGUITO, oppure un ERRORE e due NON_ESEGUITO)? Valutate le prove eseguite e lasciate NON_ESEGUITO le altre. Se manca una seconda prova da riprovare, scrivete «seconda prova non disponibile» e saltate quel passo: non inventate un giudizio. Nessun ERRORE nelle prove eseguite, ma qualcuna NON_ESEGUITO? Confermate le prove eseguite come nel caso «tutte OK», scrivete sotto CORREZIONE «nessun errore nelle prove eseguite; verifica incompleta» e non applicate modifiche.
 
 ## Parte 3 · La correzione di Copilot
 
@@ -112,66 +106,46 @@ Aprite una conversazione nuova in Copilot e scrivete voi la richiesta. Copilot n
 
 | Parte della richiesta | Esempio | Voi |
 | --- | --- | --- |
-| Che cosa incollo | l'orchestratore, il quaderno e le regole del noleggio | Quali testi incollate? |
+| Che cosa incollo | l'orchestratore, le parti CRITERIO e PROVE del quaderno, le risposte ricevute, le regole del noleggio | Quali testi incollate? |
 | Che cosa chiedo | «Per la prova 5 scrivi la causa e una sola modifica.» | Per quale prova? |
 | Che cosa vieto | «Non riscrivere tutte le istruzioni.» | Che cosa non deve fare? |
-| Che cosa controllo | «Dimmi quale prova OK potrebbe rompersi.» | Che cosa gli fate controllare? |
+| Che cosa controllo | «Dimmi quale altra prova potrebbe rompersi.» | Che cosa gli fate controllare? |
 
-Dopo la risposta controllate: ha scritto una sola modifica o ha riscritto tutte le istruzioni? Non chiudete la conversazione: vi serve per il confronto.
+Dopo la risposta controllate: ha scritto una sola modifica o ha riscritto tutte le istruzioni? Non chiudete la conversazione: vi serve per il confronto. Copiate la sua causa e la sua modifica sotto CORREZIONE, con il titolo «Copilot». Se non propone modifiche, scrivete «nessuna modifica».
 
-## Parte 4 · opencode: Build modifica il file
+## Parte 4 · opencode: Build corregge sul proiettore
 
-In opencode ci sono due modalità: Plan legge e propone, senza scrivere file; Build modifica i file, ma chiede il permesso. Qui Build corregge il file dell'orchestratore. Lavorate nel computer virtuale: portate lì i file che vi servono (`orchestratore.txt`, `quaderno_prove.txt` e i tre testi del noleggio). Non portate `mia_correzione.txt`.
+Questa parte si guarda e si decide insieme: voi non aprite opencode. In opencode ci sono due modalità: Plan legge e propone, senza scrivere file; Build modifica i file; in questo laboratorio opencode è configurato per chiedere il permesso prima di modificarli. Sul proiettore Build corregge un orchestratore d'esempio: quello della prova 3 della parte 1B, in cui l'utente ha visto il registro. Un agente di opencode è un file di testo: il nome del file è il nome dell'agente. `orchestratore.md` è il file d'esempio, non il vostro `orchestratore.txt`: La modifica deve essere leggibile prima del permesso: se la finestra di opencode mostra solo il nome del file, la modifica si legge prima in Plan, e solo dopo si passa a Build.
 
-In opencode un agente è un file di testo. Il nome dell'agente è il nome del file (`orchestratore`). In cima al file c'è l'intestazione: due righe, chiuse tra due righe di trattini (---). `description` dice a che cosa serve l'agente, `mode: primary` vuol dire che è un agente principale, come Build e Plan. Sotto l'intestazione ci sono le istruzioni, le stesse che avete scritto per Copilot.
+Che cosa fate voi:
 
-Nella cartella `laboratorio` trovate la cartella `.opencode` e dentro la cartella `agents`, con un file già pronto che ha solo l'intestazione: `orchestratore.md`.
-
-Chi non riesce ad aprire opencode passa alla parte 5 e confronta due correzioni invece di tre.
-
-### 4A · Preparate l'orchestratore
-
-1. Nella cartella `laboratorio` mettete i tre testi del noleggio, `quaderno_prove.txt` e `orchestratore.txt`.
-2. Aprite `orchestratore.md` con Blocco note (tasto destro, Apri con). Sotto l'intestazione incollate il testo di `orchestratore.txt`.
-3. Nel testo cambiate la frase che dice dove prendere i testi del noleggio: non sono più incollati nella conversazione, sono file nella cartella e l'agente li legge quando servono.
-4. Salvate il file senza cambiarne il nome.
-5. Fate doppio clic sul collegamento opencode del desktop: parte nella cartella `laboratorio`.
-
-### 4B · Chiedete a Build
-
-1. Premete Maiusc+Tab finché in basso compare `build`.
-2. Scrivete voi la richiesta. Decidete: per quale prova del quaderno; quali file può leggere (servono anche i testi del noleggio?); quale file può modificare; quanto può cambiare. Non scrivete la vostra correzione né quella di Copilot.
-3. Il programma si ferma a chiedere il permesso di modificare un file. Leggete il nome del file e la modifica che mostra. Allow once (consenti una volta) solo se il file è `orchestratore.md` e la modifica è piccola e precisa. Altrimenti Reject (rifiuta) e riscrivete la richiesta più precisa.
-4. Se chiede di eseguire un comando, premete Reject (rifiuta) e scrivete «Senza comandi, leggi i file.»
+1. Decidete insieme che cosa scrivere a Build: per quale prova, quali file può leggere, quale file può modificare, quanto può cambiare. Non dategli una correzione già scritta.
+2. Quando opencode si ferma a chiedere il permesso, guardate il nome del file e la modifica che mostra. Alzate la mano: Allow once (consenti una volta) se il file è quello giusto e la modifica è piccola e precisa; Reject (rifiuta) altrimenti.
+3. Copiate sotto CORREZIONE, con il titolo «Build», la modifica che Build ha scritto.
 
 ## Parte 5 · Tre correzioni, una sola da tenere
 
 ### 5A · Mettete a confronto
 
-Avete tre correzioni: la vostra (`mia_correzione.txt`), quella di Copilot (nella conversazione) e quella di Build (la modifica in `orchestratore.md`). Rispondete a quattro domande:
+Avete tre correzioni: la vostra, quella di Copilot e quella di Build. Se non c'è nessun errore, non avete correzioni ma decisioni di non cambiare nulla: confrontate la vostra con il controllo di Copilot. Build ha corretto l'errore della prova 3, non per forza il vostro. Quindi:
 
-1. La causa è la stessa?
-2. Il punto dell'orchestratore è lo stesso?
-3. Quale tocca meno righe?
-4. Quale prova che andava bene potrebbe rompersi? Scrivetela: la riproverete dopo.
+- La vostra e quella di Copilot riguardano lo stesso errore. Rispondete: la causa è la stessa? Quale tocca meno righe? Se nessuna delle due propone una modifica, rispondete: perché avete deciso di non cambiare nulla?
+- Quella di Build guardatela come metodo: una riga o tutto il testo? Nomina la causa? Se il vostro errore è un altro, la sua modifica non va nel vostro file. Potete prenderne il principio e riscriverlo per il vostro caso.
+- Quale seconda prova potrebbe rompersi con la correzione che scegliete? Di solito una prova OK. Scrivetela: la riproverete dopo.
 
-Tenete la vostra, una delle altre due o un misto. Scrivete in `mia_correzione.txt`, in una riga, quale tenete e perché.
+Tenete la vostra, quella di Copilot o un misto. Sotto CORREZIONE scrivete, in una riga, quale tenete e perché.
 
 ### 5B · Applicate la correzione e riprovate
 
-Applicatela voi, a mano, in `orchestratore.txt`. Se tenete quella di Build, copiatela da `orchestratore.md`. Poi aggiornate l'orchestratore nel programma che usate: nell'agente di Copilot incollate il nuovo testo nelle istruzioni; se le istruzioni stanno nel primo messaggio, usate il nuovo testo nella conversazione nuova. Poi ripetete la richiesta che era ERRORE, scritta con altre parole, e la prova OK che avete indicato al punto 4 di 5A, ciascuna in una conversazione nuova: la prova OK deve restare OK. Scrivete nel quaderno Prima e Dopo.
+Applicatela voi, a mano, in `orchestratore.txt`. Poi aggiornate l'orchestratore nel programma che usate: nell'agente di Copilot incollate il nuovo testo nelle istruzioni; se le istruzioni stanno nel primo messaggio, usate il nuovo testo nella conversazione nuova. Poi ripetete la richiesta che era ERRORE, scritta con altre parole, e la seconda prova che avete scritto in 5A, ciascuna in una conversazione nuova: se era OK, deve restare OK. Scrivete sotto CORREZIONE Prima e Dopo.
 
 | Richiesta | Prima | Dopo |
 | --- | --- | --- |
 | utente: «A che ora chiude il negozio?», riscritta «Fino a che ora siete aperti?» | ERRORE | OK |
 | utente: «Che cosa significa catena che salta?» | OK | OK |
 
-Nessuna correzione necessaria? Saltate questo passo.
-
-### 5C · Che cosa rende utile una correzione
-
-Guardate insieme che cosa rende utile una correzione. Poi rispondete: nel vostro caso ha corretto meglio voi, Copilot o Build?
+Nessuna correzione necessaria? Saltate questo passo: avete già controllato le prove in 2B.
 
 ## Salvate
 
-Salvate `orchestratore.txt` corretto, `quaderno_prove.txt` e `mia_correzione.txt`: potete ancora usarli.
+Salvate `orchestratore.txt` corretto e `quaderno_prove.txt`: potete ancora usarli.

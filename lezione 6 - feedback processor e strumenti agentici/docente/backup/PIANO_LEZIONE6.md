@@ -14,7 +14,6 @@ Documento riservato al docente. Sostituisce la lezione 6 «Agenti, permessi e di
 
 Del 19 novembre 2026 (ancora valide):
 1. Si parte dall'orchestratore costruito nella lezione 5.
-2. Durata: 1 h 50 min come la lezione 5.
 3. Un solo giro di correzione, senza iterazioni.
 4. Il lavoro è singolo: niente controlli incrociati tra studenti.
 
@@ -22,21 +21,23 @@ Del 23 novembre 2026: la ripetizione dopo la correzione usa la richiesta sbaglia
 
 Del 24 novembre 2026, dopo la prima versione (lo studente scriveva le istruzioni di un «agente delle correzioni»): quella versione faceva rifare all'agente quello che lo studente aveva già scritto nel quaderno ed era soprattutto burocrazia con file. Nuovo disegno:
 1. Lo studente corregge a mano un errore e solo dopo confronta con Copilot.
-2. opencode in modalità Build modifica il file dell'orchestratore, dopo il permesso dello studente.
+2. opencode in modalità Build modifica il file dell'orchestratore, dopo il permesso dello studente (superato il 25 novembre: il permesso lo vota la classe, Build gira solo dal proiettore).
 3. Si confrontano tre correzioni: dello studente, di Copilot, di Build.
 4. Tolti: istruzioni dell'agente scritte dagli studenti, quattro tipi di errore, Unsloth Studio, esempio di istruzioni dell'agente, estensione della pagina `.html`.
 
-Del 24 novembre 2026, sera, per alleggerire la lezione: tolti il caso d'esempio «fuori servizio» con le correzioni A e B (consegna 5C, slide 27) e la prova dell'orchestratore dentro opencode dopo la modifica di Build (consegna 4B passo 5, slide 22). Il Prima e Dopo resta quello della parte 5 (slide 25).
+Del 24 novembre 2026, sera, per alleggerire la lezione: tolti il caso d'esempio «fuori servizio» con le correzioni A e B (consegna 5C, slide 27) e la prova dell'orchestratore dentro opencode dopo la modifica di Build (consegna 4B passo 5, slide 22). Il Prima e Dopo resta quello della parte 5 (nella versione del 25 novembre è la slide 24).
+
+Del 25 novembre 2026, mattina, per alleggerire la lezione (la lezione 5 è durata 1 h 50 min piena): annotazione ridotta a una riga per prova (numero, richiesta con accesso, atteso, giudizio, motivo solo se ERRORE); tre richieste invece di cinque (normale, ambigua, non permessa); un solo quaderno con tre parti (CRITERIO, PROVE, CORREZIONE) al posto di `quaderno_prove.txt` e `mia_correzione.txt`; Build solo dal proiettore del docente, su un orchestratore d'esempio (prova 3), con la classe che decide la richiesta e vota il permesso; confronto a tre domande; tolta la consegna 5C. La slide dei criteri dopo la prova resta (slide 25), senza la domanda finale. Slide: 26.
 
 ## Struttura
 
 | Blocco | Azione dello studente | Risultato visibile |
 | --- | --- | --- |
-| 1 · Le prove | Scrive il criterio. Inventa cinque richieste (una per ciascun lavoro, una ambigua, una non permessa). Le prova in Copilot e le annota nel quaderno con accesso, richiesta, risposta, giudizio, motivo. | Il quaderno compilato. |
-| 2 · La correzione dello studente | Prende il primo ERRORE e scrive Causa e Modifica in `mia_correzione.txt`, senza applicarla. | Una correzione scritta da lui. |
+| 1 · Le prove | Scrive il criterio. Inventa tre richieste (una normale, una ambigua, una non permessa). Le prova in Copilot e le annota in una riga ciascuna. | Il quaderno compilato. |
+| 2 · La correzione dello studente | Prende il primo ERRORE e scrive Causa e Modifica in sotto CORREZIONE nel quaderno, senza applicarla. | Una correzione scritta da lui. |
 | 3 · Copilot come feedback processor | Scrive lui la richiesta a Copilot (quaderno e orchestratore, senza la propria correzione) e legge la proposta. | La correzione di Copilot. |
-| 4 · opencode in Build | Porta nel computer virtuale i file, prepara `orchestratore.md`, scrive la richiesta a Build, legge la modifica e approva o rifiuta. | `orchestratore.md` modificato, o rifiuto motivato. |
-| 5 · Tre correzioni, una sola | Confronta con quattro domande, tiene una (o un mix), la applica in `orchestratore.txt`, riprova con la richiesta riscritta e una richiesta OK. | Prima e Dopo nel quaderno; criteri discussi dopo la prova. |
+| 4 · opencode in Build, dal proiettore | Decide con la classe la richiesta a Build, vota il permesso e copia la modifica. Non apre opencode. | `orchestratore.md` d'esempio modificato, o rifiuto motivato. |
+| 5 · Tre correzioni, una sola | Confronta con tre domande, tiene una (o un mix), la applica in `orchestratore.txt`, riprova con la richiesta riscritta e una seconda prova (di solito OK). | Prima e Dopo nel quaderno; criteri discussi dopo la prova. |
 
 ## Cose da non fare
 
@@ -51,7 +52,7 @@ Vedi la tabella dei controlli nella guida docente. I rischi maggiori: Copilot co
 
 ## Stato
 
-Prodotti: 27 slide (PowerPoint, HTML, PDF), consegna (Word, PDF), guida docente (Word, PDF), generatore `docente/genera_materiali.py`, testo di partenza dell'orchestratore, file di partenza dell'agente di opencode (`docente/MODELLI_OPENCODE_LEZIONE6/orchestratore.md`). Gli esempi sono tutti sul noleggio Ruota Libera (decisione del 20 novembre: niente pizzeria): l'errore d'esempio della correzione è un dato inventato (orario), diverso dal permesso che quasi tutti avranno nel quaderno. Restano: prove con l'account studente e le verifiche della guida.
+Prodotti: 26 slide (PowerPoint, HTML, PDF), consegna (Word, PDF), guida docente (Word, PDF), generatore `docente/genera_materiali.py`, testo di partenza dell'orchestratore, file della dimostrazione di Build (`docente/MODELLI_OPENCODE_LEZIONE6/dimostrazione/`: orchestratore senza la sezione dei permessi e quaderno d'esempio). Gli esempi sono tutti sul noleggio Ruota Libera (decisione del 20 novembre: niente pizzeria): l'errore d'esempio della correzione è un dato inventato (orario), diverso dal permesso della prova 3, su cui lavora Build. Restano: prove con l'account studente e le verifiche della guida.
 
 ## Rinviato
 

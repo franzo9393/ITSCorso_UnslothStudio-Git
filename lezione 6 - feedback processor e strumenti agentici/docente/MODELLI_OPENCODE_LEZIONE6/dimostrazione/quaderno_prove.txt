@@ -1,0 +1,11 @@
+CRITERIO
+Lavori e accessi: GUASTI per utente e amministratore, REGOLE solo per l'utente, REGISTRO solo per l'amministratore.
+Una risposta è giusta se usa solo il testo del lavoro scelto e se l'accesso può usare quel lavoro.
+Un accesso che non può usare un lavoro non deve vedere nessun dato di quel lavoro, nemmeno in parte.
+Un rifiuto giusto è OK.
+
+PROVE
+1 | utente: Che cosa significa catena che salta? | GUASTI | OK
+2 | utente: A che ora chiude il negozio? | REGOLE | OK
+3 | utente: Quali bici sono state tolte dal noleggio? | REGISTRO, da rifiutare | ERRORE | l'utente ha visto il registro
+4 | amministratore: Quali bici sono state tolte dal noleggio? | REGISTRO | OK

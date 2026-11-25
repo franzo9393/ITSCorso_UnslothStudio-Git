@@ -40,19 +40,17 @@ Ma il registro lo può vedere solo l’amministratore. Chi se ne accorge? Chi lo
 
 1. Provate il vostro orchestratore e annotate ogni prova.
 2. Scrivete voi una correzione, senza applicarla.
-3. Chiedete una correzione a Copilot e poi a opencode, senza mostrare la vostra.
+3. Chiedete una correzione a Copilot, senza mostrare la vostra. Poi guardate opencode farla sul proiettore.
 4. Confrontate, tenete una correzione, applicatela e riprovate.
 
-Copilot e opencode fanno da feedback processor: leggono le prove e propongono una correzione. Copilot scrive solo testo. opencode la scrive nel file, ma solo se gli date il permesso.
+Copilot e opencode fanno da feedback processor: leggono le prove e propongono una correzione. Copilot scrive solo testo. opencode la scrive nel file, ma qui è configurato per chiedere prima un permesso.
 
 ---
 
 # Slide 05 — Due file in Blocco note, prima di provare
 <!-- layout: CONTENUTO -->
 
-Seguite la consegna, parte 1A: copiate il vostro orchestratore in `orchestratore.txt` e create `quaderno_prove.txt`.
-
-Il quaderno serve a segnare ogni prova. Nel quaderno scrivete i tre lavori e, accanto a ciascuno, chi può usarlo.
+Consegna, parte 1A: `orchestratore.txt` e `quaderno_prove.txt`. Il quaderno ha tre parti: CRITERIO, PROVE, CORREZIONE.
 
 Non avete l’orchestratore? Chiedete il testo di partenza: è un orchestratore da provare e correggere, non una soluzione.
 
@@ -61,14 +59,14 @@ Non avete l’orchestratore? Chiedete il testo di partenza: è un orchestratore 
 # Slide 06 — Stessa richiesta: perché la 3 è ERRORE e la 4 è OK?
 <!-- layout: CONTENUTO -->
 
-Riassunto di un quaderno d’esempio, non il vostro. Il giudizio è OK se la risposta va bene, ERRORE se no.
+Le PROVE di un quaderno d’esempio, non il vostro. Il giudizio è OK se la risposta va bene, ERRORE se no.
 
-| N. | Accesso | Richiesta | Giudizio |
+| N. | Accesso e richiesta | Esito atteso | Giudizio |
 | --- | --- | --- | --- |
-| 1 | utente | Che cosa significa catena che salta? | OK |
-| 2 | utente | A che ora chiude il negozio? | OK |
-| 3 | utente | Quali bici sono state tolte dal noleggio? | ERRORE |
-| 4 | amministratore | Quali bici sono state tolte dal noleggio? | OK |
+| 1 | utente: Che cosa significa catena che salta? | GUASTI | OK |
+| 2 | utente: A che ora chiude il negozio? | REGOLE | OK |
+| 3 | utente: Quali bici sono state tolte dal noleggio? | rifiuto | ERRORE |
+| 4 | amministratore: Quali bici sono state tolte dal noleggio? | REGISTRO | OK |
 
 ---
 
@@ -79,37 +77,31 @@ Riassunto di un quaderno d’esempio, non il vostro. Il giudizio è OK se la ris
 
 Il criterio è la regola con cui decidete se una risposta è OK. Giuste rispetto a quale testo? Per quale accesso? Che cosa non deve mai comparire?
 
-Scrivete il vostro criterio in tre righe, in cima al quaderno, prima di provare qualsiasi richiesta.
+Sotto CRITERIO, prima di provare qualsiasi richiesta: tre righe.
 
 ---
 
-# Slide 08 — Cinque richieste, inventate da voi
+# Slide 08 — Tre richieste, inventate da voi
 <!-- layout: CONTENUTO -->
 
-Prima di inviarne una, scrivete nel quaderno quale lavoro vi aspettate. Non valgono le richieste del quaderno d’esempio né quelle scritte come esempio nel vostro orchestratore. Come scrivere l’accesso nel messaggio: consegna 1D.
+Non valgono le richieste del quaderno d’esempio né quelle scritte come esempio nel vostro orchestratore. Come inviarle: consegna 1D.
 
 | Che cosa provare | Voi |
 | --- | --- |
-| Una richiesta per ciascuno dei tre lavori | Che cosa chiederebbe chi usa quel lavoro? |
+| Una richiesta normale, per un lavoro a vostra scelta | Che cosa chiederebbe chi usa quel lavoro? |
 | Una richiesta ambigua | Quale frase si può leggere in due modi? |
 | Una richiesta che il vostro accesso non permette | Che cosa non può avere l’accesso che userete? |
 
 ---
 
-# Slide 09 — Dopo ogni prova, scrivete com’è andata
+# Slide 09 — Dopo ogni prova, una riga nel quaderno
 <!-- layout: CONTENUTO -->
 
-Un blocco nel quaderno per ogni prova. Questo è il blocco della prova 3 d’esempio, ridotto:
+Sotto PROVE, una riga per ogni prova. Questa è la prova 3 d’esempio:
 
-Accesso: utente
+3 · utente: Quali bici sono state tolte dal noleggio? · esito atteso: rifiuto · ERRORE
 
-Richiesta: Quali bici sono state tolte dal noleggio?
-
-Atteso: REGISTRO, che deve rifiutare. Ha risposto: REGISTRO
-
-Giudizio: ERRORE
-
-Motivo: l’utente ha visto il registro
+Il motivo si scrive solo se è ERRORE: l’utente ha visto il registro.
 
 ---
 
@@ -155,7 +147,7 @@ L’orchestratore risponde: «Alle 20:00». Le regole del noleggio dicono 19:00.
 
 ---
 
-# Slide 14 — Una correzione scritta bene
+# Slide 14 — Che cosa manca, e dove?
 <!-- layout: CONTENUTO -->
 
 Per la prova 5 la correzione potrebbe essere questa. Una causa, una modifica.
@@ -170,113 +162,94 @@ Per la prova 5 la correzione potrebbe essere questa. Una causa, una modifica.
 # Slide 15 — Correggete il vostro primo ERRORE
 <!-- layout: CONTENUTO -->
 
-In `mia_correzione.txt` scrivete la Causa: che cosa manca nelle istruzioni. Poi la Modifica: il testo preciso e il punto dove va. Una sola modifica. Non applicatela ancora.
+Sotto CORREZIONE: Causa e Modifica, una sola, senza applicarla.
 
 Il Motivo dice che cosa è andato storto nella risposta. La Causa dice che cosa manca nelle istruzioni.
 
-Nessun ERRORE? Scrivete «nessuna correzione necessaria» e fate lo stesso le parti con Copilot e opencode: è un risultato valido.
+Nessun ERRORE? Consegna 2B.
 
 ---
 
-# Slide 16 — La correzione di Copilot
+# Slide 16 — Copilot trova la stessa causa?
 <!-- layout: SEZIONE -->
 
-Copilot, in una conversazione nuova, legge il vostro quaderno e propone la sua.
+Copilot, in una conversazione nuova, legge le vostre prove e propone la sua.
 
 ---
 
 # Slide 17 — Che cosa chiedete a Copilot?
 <!-- layout: CONTENUTO -->
 
-Scrivete la richiesta. Non incollate la vostra correzione: Copilot deve arrivarci da solo. Un esempio, per la prova 5:
+Consegna 3A. Lasciate fuori CORREZIONE: Copilot deve arrivarci da solo. Un esempio, per la prova 5:
 
 | Parte della richiesta | Esempio | Voi |
 | --- | --- | --- |
-| Che cosa incollo | l’orchestratore, il quaderno e le regole del noleggio | Quali testi incollate? |
+| Che cosa incollo | l’orchestratore, CRITERIO e PROVE, le risposte, le regole del noleggio | Quali testi incollate? |
 | Che cosa chiedo | «Per la prova 5 scrivi la causa e una sola modifica.» | Per quale prova? |
 | Che cosa vieto | «Non riscrivere tutte le istruzioni.» | Che cosa non deve fare? |
-| Che cosa controllo | «Dimmi quale prova OK potrebbe rompersi.» | Che cosa gli fate controllare? |
+| Che cosa controllo | «Dimmi quale altra prova potrebbe rompersi.» | Che cosa gli fate controllare? |
 
 ---
 
-# Slide 18 — opencode: Build modifica il file
+# Slide 18 — opencode: Build corregge
 <!-- layout: SEZIONE -->
 
-Plan propone e basta. Build modifica i file, dopo il vostro permesso. Qui Build corregge il file dell’orchestratore.
+Guardate il proiettore: Build corregge l’orchestratore d’esempio della prova 3. Plan propone e basta. Build modifica i file, e qui chiede prima un permesso. Voi non aprite opencode.
 
 ---
 
-# Slide 19 — In opencode un agente è un file
+# Slide 19 — Che cosa scrivereste a Build?
 <!-- layout: CONTENUTO -->
 
-Il file `orchestratore.md` è già nella cartella `.opencode`, dentro `agents`. In cima ha l’intestazione: due righe, chiuse tra due righe di trattini (---).
-
-| Riga | Esempio |
-| --- | --- |
-| description | Orchestratore del noleggio Ruota Libera |
-| mode | primary |
-
-Sotto incollate il testo di `orchestratore.txt`. Il nome del file è il nome dell’agente.
-
----
-
-# Slide 20 — Che cosa chiedete a Build?
-<!-- layout: CONTENUTO -->
-
-Quattro cose da decidere e scrivere nella richiesta:
+Quattro cose da decidere insieme per la richiesta:
 
 1. Per quale prova del quaderno.
 2. Quali file può leggere.
 3. Quale file può modificare.
 4. Quanto può cambiare.
 
-Non scrivete la vostra correzione né quella di Copilot.
+Nessuno detta la correzione: Build deve arrivarci da solo.
 
 ---
 
-# Slide 21 — Che cosa guardate prima di approvare?
+# Slide 20 — Allow once o Reject?
 <!-- layout: CONTENUTO -->
 
-opencode si ferma e mostra la modifica che vuole fare.
+Quando opencode chiede il permesso, guardate il file e la modifica.
 
-> Il file è `orchestratore.md`? Cambia una riga o tutto il testo? Rompe una regola che andava bene?
+> Il file è `orchestratore.md`, quello d’esempio (un file di testo, non il vostro `orchestratore.txt`)? Cambia una riga o tutto il testo? Rompe una regola che andava bene?
 
-Se va bene: Allow once (consenti una volta). Altrimenti: Reject (rifiuta) e riscrivete la richiesta.
+Alzate la mano: Allow once (consenti una volta) oppure Reject (rifiuta)? Perché?
 
 ---
 
-# Slide 22 — Tre correzioni, una sola da tenere
+# Slide 21 — Tre correzioni, una sola da tenere
 <!-- layout: SEZIONE -->
 
 La vostra, quella di Copilot, quella di Build.
 
 ---
 
-# Slide 23 — Mettete a confronto le tre correzioni
+# Slide 22 — Mettete a confronto le tre correzioni
 <!-- layout: CONTENUTO -->
 
-1. La causa è la stessa?
-2. Il punto dell’orchestratore è lo stesso?
-3. Quale tocca meno righe?
-4. Quale prova che andava bene potrebbe rompersi? Scrivetela: la riproverete dopo.
-
-Tenete la vostra, una delle altre due o un misto. In `mia_correzione.txt` scrivete quale e perché.
+La vostra, quella di Copilot, quella di Build: quale tenete? Consegna 5A.
 
 ---
 
-# Slide 24 — Applicate la correzione che tenete
+# Slide 23 — Applicate la correzione che tenete
 <!-- layout: CONTENUTO -->
 
-Applicatela voi, a mano, in `orchestratore.txt`. Se tenete quella di Build, copiatela da `orchestratore.md`. Come aggiornare l’orchestratore: consegna 5B.
+Applicatela voi, a mano, in `orchestratore.txt`. Come aggiornare l’orchestratore: consegna 5B.
 
-Nessuna correzione necessaria? Saltate questo passo e la prova.
+Nessuna correzione necessaria? Saltate questo passo e la prova: avete già controllato le prove eseguite; quelle NON_ESEGUITO restano da verificare.
 
 ---
 
-# Slide 25 — Che cosa è cambiato?
+# Slide 24 — Che cosa è cambiato?
 <!-- layout: CONTENUTO -->
 
-Ripetete la richiesta che era ERRORE, scritta con altre parole, e la prova OK indicata al punto 4. Ciascuna in una conversazione nuova. Scrivete nel quaderno Prima e Dopo. L’esempio:
+Prima e Dopo: che cosa è cambiato? Consegna 5B. L’esempio:
 
 | Richiesta | Prima | Dopo |
 | --- | --- | --- |
@@ -285,7 +258,7 @@ Ripetete la richiesta che era ERRORE, scritta con altre parole, e la prova OK in
 
 ---
 
-# Slide 26 — Che cosa rende utile una correzione
+# Slide 25 — Che cosa rende utile una correzione
 <!-- layout: CONTENUTO -->
 
 | Utile | Pericolosa |
@@ -296,11 +269,9 @@ Ripetete la richiesta che era ERRORE, scritta con altre parole, e la prova OK in
 | rispetta i permessi | apre un’eccezione per chi scrive «sono il titolare» |
 | usa solo dati dei testi | aggiunge un dato inventato |
 
-Chi ha corretto meglio nel vostro caso: voi, Copilot o Build?
-
 ---
 
-# Slide 27 — Chi ha deciso che cosa?
+# Slide 26 — Chi ha deciso che cosa?
 <!-- layout: CHIUSURA -->
 
 Che cosa avete deciso voi? Che cosa hanno deciso gli agenti?
